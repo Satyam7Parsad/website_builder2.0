@@ -1,0 +1,189 @@
+{
+  "template_name": "test_import",
+  "source_url": "https://example.com",
+  "sections": [
+    {
+      "type": "hero",
+      "name": "Hero Section",
+      "title": "Welcome",
+      "subtitle": "Imported from example.com",
+      "height": 600,
+      "y_position": 0,
+      "bg_color": "rgba(30,30,30,1)",
+      "text_color": "#ffffff",
+      "styles": {},
+      "content": {
+        "text": "",
+        "images": []
+      }
+    }
+  ],
+  "metadata": {
+    "name": "test_import",
+    "source_url": "https://example.com",
+    "domain": "example.com",
+    "scraped_at": "2026-01-19T23:08:08.021555",
+    "scraper": "StealthBrowserMCP",
+    "version": "1.0"
+  },
+  "typography": [
+    [
+      "h1",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "system-ui, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "700"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "p",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "system-ui, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "a",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "system-ui, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(51, 68, 136)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "grid_system": {},
+  "images": {
+    "directory": "scraped_images/test_import",
+    "count": 0,
+    "mapping": {}
+  },
+  "custom_fonts": [],
+  "raw_html": "<!DOCTYPE html><html lang=\"en\"><head><title>Example Domain</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><style>body{background:#eee;width:60vw;margin:15vh auto;font-family:system-ui,sans-serif}h1{font-size:1.5em}div{opacity:0.8}a:link,a:visited{color:#348}</style></head><body><div><h1>Example Domain</h1><p>This domain is for use in documentation examples without needing permission. Avoid use in operations.</p><p><a href=\"https://iana.org/domains/example\">Learn more</a></p></div>\n</body></html>"
+}

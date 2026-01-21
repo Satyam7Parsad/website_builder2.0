@@ -1,0 +1,953 @@
+{
+  "template_name": "test_gradients_final",
+  "url": "http://localhost:8888/test_gradients.html",
+  "scraped_date": "2026-01-15T11:23:43.903034",
+  "sections": [
+    {
+      "index": 0,
+      "type": 1,
+      "y_position": 0,
+      "height": 80,
+      "width": 1920,
+      "html_tag": "nav",
+      "classes": [],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "100px 50px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Gradient Test Website",
+        "subtitle": "",
+        "content": "",
+        "headings": [
+          {
+            "text": "Gradient Test Website",
+            "tag": "h1",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 32,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(255, 255, 255)",
+          "padding": "0px",
+          "paddingTop": "0px",
+          "paddingRight": "0px",
+          "paddingBottom": "0px",
+          "paddingLeft": "0px",
+          "margin": "0px",
+          "border": "0px none rgb(255, 255, 255)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+          "fontSize": "32px",
+          "fontWeight": "700",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textAlign": "start",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "all",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 32,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(255, 255, 255)",
+      "css_opacity": "1",
+      "css_background_image": "none",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "100px",
+      "padding_right": "50px",
+      "padding_bottom": "100px",
+      "padding_left": "50px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto"
+    },
+    {
+      "index": 1,
+      "type": 0,
+      "y_position": 78,
+      "height": 600,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "hero"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(255, 255, 255)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Beautiful CSS Gradients",
+        "subtitle": "",
+        "content": "Testing gradient rendering in Website Builder",
+        "headings": [
+          {
+            "text": "Beautiful CSS Gradients",
+            "tag": "h1",
+            "fontSize": 48,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Testing gradient rendering in Website Builder",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+          "palette": [
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 48,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 24,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(255, 255, 255)",
+          "padding": "100px 50px",
+          "paddingTop": "100px",
+          "paddingRight": "50px",
+          "paddingBottom": "100px",
+          "paddingLeft": "50px",
+          "margin": "0px",
+          "border": "0px none rgb(255, 255, 255)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textAlign": "center",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "all",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "padding": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+      "color_palette": [
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 48,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 24,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(255, 255, 255)",
+      "css_opacity": "1",
+      "css_background_image": "linear-gradient(rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%)",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "0px",
+      "padding_right": "0px",
+      "padding_bottom": "0px",
+      "padding_left": "0px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "none",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto"
+    },
+    {
+      "index": 2,
+      "type": 3,
+      "y_position": 578,
+      "height": 251,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "features"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "80px 50px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Linear Gradient Features",
+        "subtitle": "",
+        "content": "This section uses a 135deg diagonal gradient from purple to blue",
+        "headings": [
+          {
+            "text": "Linear Gradient Features",
+            "tag": "h2",
+            "fontSize": 36,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "This section uses a 135deg diagonal gradient from purple to blue",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+          "palette": [
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 36,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(255, 255, 255)",
+          "padding": "80px 50px",
+          "paddingTop": "80px",
+          "paddingRight": "50px",
+          "paddingBottom": "80px",
+          "paddingLeft": "50px",
+          "margin": "0px",
+          "border": "0px none rgb(255, 255, 255)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textAlign": "start",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "all",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "padding": 120,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+      "color_palette": [
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 36,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(255, 255, 255)",
+      "css_opacity": "1",
+      "css_background_image": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "80px",
+      "padding_right": "50px",
+      "padding_bottom": "80px",
+      "padding_left": "50px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%)",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto",
+      "visual_height": 1037,
+      "cv_adjusted": true,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 3,
+      "type": 6,
+      "y_position": 829,
+      "height": 251,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "pricing"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "80px 50px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Gradient Pricing",
+        "subtitle": "",
+        "content": "This section uses a left-to-right gradient from pink to yellow",
+        "headings": [
+          {
+            "text": "Gradient Pricing",
+            "tag": "h2",
+            "fontSize": 36,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "This section uses a left-to-right gradient from pink to yellow",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+          "palette": [
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 36,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(255, 255, 255)",
+          "padding": "80px 50px",
+          "paddingTop": "80px",
+          "paddingRight": "50px",
+          "paddingBottom": "80px",
+          "paddingLeft": "50px",
+          "margin": "0px",
+          "border": "0px none rgb(255, 255, 255)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textAlign": "start",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "all",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "padding": 120,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+      "color_palette": [
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 36,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(255, 255, 255)",
+      "css_opacity": "1",
+      "css_background_image": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "80px",
+      "padding_right": "50px",
+      "padding_bottom": "80px",
+      "padding_left": "50px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "linear-gradient(to left, rgb(250, 112, 154) 0%, rgb(254, 225, 64) 100%)",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto",
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 4,
+      "type": 8,
+      "y_position": 1080,
+      "height": 359,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "cta"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Radial Gradient CTA",
+        "subtitle": "",
+        "content": "This section uses a radial gradient from the center",
+        "headings": [
+          {
+            "text": "Radial Gradient CTA",
+            "tag": "h2",
+            "fontSize": 42,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "This section uses a radial gradient from the center",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Get Started",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(102, 126, 234)",
+            "borderColor": "rgb(102, 126, 234)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "fontFamily": "Arial",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "normal",
+            "padding": "15px 40px",
+            "margin": "20px 0px 0px",
+            "width": 172.0625,
+            "height": 51,
+            "borderRadius": "8px",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "all",
+            "backgroundImage": "none"
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(255, 255, 255)",
+            "rgb(102, 126, 234)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {}
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(255, 255, 255)",
+        "rgb(102, 126, 234)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "button_text": "Get Started",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgb(102, 126, 234)",
+      "button_border_radius": "8px",
+      "button_border_width": "0px",
+      "button_border_color": "rgb(102, 126, 234)",
+      "button_box_shadow": "none",
+      "button_padding": "15px 40px",
+      "button_text_transform": "none",
+      "button_letter_spacing": "normal",
+      "button_font_size": 18,
+      "button_font_weight": 400
+    },
+    {
+      "index": 5,
+      "type": 10,
+      "y_position": 1439,
+      "height": 300,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Footer with cyan gradient",
+        "headings": [],
+        "paragraphs": [
+          {
+            "text": "Footer with cyan gradient",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+        },
+        "css": {}
+      },
+      "padding": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif"
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, sans-serif",
+      "Arial"
+    ],
+    "sizes": {
+      "h1": 40,
+      "h2": 38,
+      "p": 18,
+      "button": 18
+    },
+    "weights": [
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  }
+}

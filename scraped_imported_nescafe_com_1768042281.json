@@ -1,0 +1,1511 @@
+{
+  "template_name": "imported_nescafe_com_1768042281",
+  "description": "Imported from www.nescafe.com",
+  "url": "https://www.nescafe.com/in/",
+  "scraped_date": "2026-01-10T16:22:08.156298",
+  "sections": [
+    {
+      "index": 0,
+      "element": "<section aria-label=\"Search Autocomplete Module\" class=\"search-autocomplete\" id=\"search-autocomplete\">\n<button aria-label=\"Close Search Overlay\" class=\"search-autocomplete--close\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L5.93934 7L0.469669 12.4697C0.176777 12.7626 0.176777 13.2374 0.469669 13.5303C0.762563 13.8232 1.23744 13.8232 1.53033 13.5303L7 8.06066L12.4697 13.5303C12.7626 13.8232 13.2374 13.8232 13.5303 13.5303C13.8232 13.2374 13.8232 12.7626 13.5303 12.4697L8.06066 7L13.5303 1.53033C13.8232 1.23744 13.8232 0.762563 13.5303 0.46967C13.2374 0.176777 12.7626 0.176777 12.4697 0.46967L7 5.93934L1.53033 0.46967Z\" fill=\"black\" fill-rule=\"evenodd\"></path>\n</svg>\n</button><div class=\"search-autocomplete--block\">\n<div class=\"search-autocomplete--container\">\n<div class=\"search-autocomplete--form-placeholder\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">\n<div class=\"views-element-container\">\n<div class=\"js-view-dom-id-26571fc9d1a8574f9391fbc5f29ed6eac624a7790e8b6d5919ec455072a839e0\">\n<form accept-charset=\"UTF-8\" action=\"https://www.nescafe.com/in/search-results\" class=\"views-exposed-form\" data-drupal-selector=\"views-exposed-form-solr-search-block-1\" id=\"views-exposed-form-solr-search-block-1\" method=\"get\">\n<div class=\"js-form-item form-item js-form-type-search-api-autocomplete form-item-search-term js-form-item-search-term form-no-label\">\n<input autocomplete=\"off\" class=\"form-autocomplete form-text ui-autocomplete-input\" data-autocomplete-path=\"/in/search_api_autocomplete/solr_search?display=block_1&amp;&amp;filter=search_term\" data-drupal-selector=\"edit-search-term\" data-once=\"autocomplete search-api-autocomplete\" data-search-api-autocomplete-search=\"solr_search\" id=\"edit-search-term\" maxlength=\"128\" name=\"search_term\" size=\"30\" type=\"text\" value=\"\"/>\n<button aria-label=\"Clear Search\" class=\"refresh-search-input-icon\" type=\"button\"></button>\n</div>\n<div class=\"form-actions js-form-wrapper form-wrapper\" data-drupal-selector=\"edit-actions\" id=\"edit-actions\"><input class=\"button js-form-submit form-submit is-disabled\" data-drupal-selector=\"edit-submit-solr-search\" disabled=\"disabled\" id=\"edit-submit-solr-search\" type=\"submit\" value=\"Apply\"/>\n</div>\n</form>\n</div>\n</div>\n</div></div>\n<div class=\"search-autocomplete--trend-placeholder\">\n<section aria-label=\"Search Suggestion Module\" class=\"grid-container search-suggestion\">\n<div class=\"padding-x search-suggestion--wrapper\">\n<div class=\"grid-x max-width-container\">\n<div class=\"cell small-12 large-offset-1 large-10 search-suggestion--cell\">\n<span class=\"search-suggestion--title utilityTagHighCaps suggestion-item\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">Trending</span><ul class=\"search-suggestion--list\">\n<li class=\"search-suggestion--list-item suggestion-item\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">\n<div class=\"search-suggestion--block\">\n<a class=\"search-suggestion--link\" href=\"https://www.nescafe.com/in/sustainability/our-world/empowering-women\">\n<span class=\"search-suggestion--label bodyMediumRegular\">Empowering women in coffee farming</span>\n</a>\n</div> </li>\n<li class=\"search-suggestion--list-item suggestion-item\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">\n<div class=\"search-suggestion--block\">\n<a class=\"search-suggestion--link\" href=\"https://www.nescafe.com/in/coffee-culture/knowledge/coffee-tasting\">\n<span class=\"search-suggestion--label bodyMediumRegular\">Explore the world of coffee tasting</span>\n</a>\n</div> </li>\n<li class=\"search-suggestion--list-item suggestion-item\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0%, 100%);\">\n<div class=\"search-suggestion--block\">\n<a class=\"search-suggestion--link\" href=\"https://www.nescafe.com/in/sustainability/our-world/resist-climate-change\">\n<span class=\"search-suggestion--label bodyMediumRegular\">Future-Proofing Coffee Plants to Resist Climate Change</span>\n</a>\n</div> </li></ul>\n</div>\n</div>\n</div>\n</section> </div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.62\")>",
+      "y_position": 0,
+      "height": 941,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "search-autocomplete"
+      ],
+      "id": "search-autocomplete",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "70px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "70px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "none",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "fixed"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 70,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 1,
+      "element": "<section aria-label=\"Main Navigation Section\" class=\"main-navigation grid-container js-navigation\">\n<div class=\"main-header\"> <!-- updated header to div to remove the duplicate landmarks issue  -->\n<div class=\"grid-x padding-x main-header--container align-justify align-middle\">\n<div class=\"main-header--search-mobile hide-for-large\">\n<button aria-label=\"Search\" class=\"button brown square-icon corner-round search-btn sm-transparent md-transparent\">\n<svg fill=\"none\" height=\"16\" viewbox=\"0 0 16 16\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\">\n<circle cx=\"6.5998\" cy=\"6.63203\" r=\"5.3\" stroke=\"#ffffff\" stroke-width=\"2\"></circle>\n<line stroke=\"#ffffff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" x1=\"14.2855\" x2=\"10.7997\" y1=\"14.332\" y2=\"10.8462\"></line>\n</svg>\n</button>\n</div>\n<div class=\"main-header--left logo\">\n<a class=\"logo-link\" href=\"https://www.nescafe.com/in/\" title=\"Nescafe Logo\"><img alt=\"Nescafe Logo\" class=\"logo-img\" src=\"/in/sites/default/files/latest_logo_white.png\"/></a>\n</div>\n<nav class=\"persistent-navigation--wrapper js-persistent-nav\" style=\"margin-left: 27px; opacity: 1;\">\n<ul class=\"persistent-navigation grid-x\">\n<li class=\"persistent-navigation--list\">\n<button aria-controls=\"level-1\" aria-expanded=\"false\" aria-label=\"Our coffees\" class=\"persistent-navigation--link persistent-nav--level1 level1 utilityTagLowCaps bold-600\" data-nav-wrapper=\"level-1\" id=\"nav-title-1\">\n                    Our coffees\n                </button>\n<div aria-labelledby=\"nav-title-1\" class=\"persistent-navigation--menu-wrapper\" id=\"level-1\">\n<div class=\"persistent-nav--level2 level2 grid-x\">\n<div class=\"small-12 large-4 xlarge-3 persistent-nav--level2-items\">\n<div class=\"persistent-nav--level2--close hide-for-large\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"18\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p aria-level=\"2\" class=\"persistent-nav--level2--title headline-h2\" role=\"heading\">Our coffees</p>\n<ul class=\"persistent-nav--level2-list\">\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<button aria-controls=\"persistentNavLevel3List-level-1-desktop-1\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Our ranges</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-1\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tOur ranges\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-1\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Classic\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/classic\" title=\"NESCAF\u00c9\u00ae Classic\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae Classic\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/N-Classic-LogoBanner-80x80px-7-10-24-01.jpg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Classic</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Gold Blend\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/gold\" title=\"NESCAF\u00c9\u00ae Gold Blend\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"Nescafe Gold\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/N-Gold-LogoBanner-80x80px-7-10-24-01.jpg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Gold Blend</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Roastery\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/ranges/nescafe-roastery\" title=\"NESCAF\u00c9\u00ae Roastery\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae Roastery\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/N-Roastery-LogoBanner-80x80px-7-10-24-01.jpg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Roastery</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Sunrise\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/ranges/nescafe-sunrise\" title=\"NESCAF\u00c9\u00ae Sunrise\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae Sunrise\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/N-Sunrise-LogoBanner-80x80px-7-10-24-01.jpg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Sunrise</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Ready to Drink\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/ranges/nescafe-ready-drink\" title=\"NESCAF\u00c9\u00ae Ready to Drink\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae Ready to Drink\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/N-RTD-Logo-Resize-80x80-15-10-24_0.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Ready to Drink</span>\n</a>\n<div class=\"cell small-12 xlarge-4 show-for-xlarge persistent-nav--level3 sub-banner\">\n<picture class=\"persistent-nav--level3-banner-picture\">\n<img alt=\"img\" class=\"persistent-nav--level3-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-03/Frame%20648067%20%288%29.png\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n<div class=\"persistent-nav--level3-banner-desc grid-x align-middle\">\n<div class=\"bodySmallRegular\">Inspired by barista-made coffee, packed with aroma, texture, and flavour</div>\n</div>\n</div>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"NESCAF\u00c9\u00ae Allin1\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/ranges/nescafe-all-in-1\" title=\"NESCAF\u00c9\u00ae Allin1\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae Allin1\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-10/Navigation-Component3-BannerImage5-738x800-1_0.jpg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">NESCAF\u00c9\u00ae Allin1</span>\n</a>\n</div>\n<span class=\"persistent-nav--level3-see-all\" role=\"listitem\">\n<a aria-label=\"See all ranges\" class=\"link black labelSmallBold persistent-nav--level3-see-all-link\" href=\"https://www.nescafe.com/in/coffees/ranges\" rel=\"follow\">\n<span class=\"button-text\">See all ranges</span>\n</a>\n</span>\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<button aria-controls=\"persistentNavLevel3List-level-1-desktop-2\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Coffee types</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-2\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tCoffee types\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-2\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Black coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/types/black-coffee\" title=\"Black coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"black coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Black%20coffee_icon_1.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Black coffee</span>\n</a>\n<div class=\"cell small-12 xlarge-4 show-for-xlarge persistent-nav--level3 sub-banner no-desc\">\n<picture class=\"persistent-nav--level3-banner-picture\">\n<img alt=\"Black coffee\" class=\"persistent-nav--level3-banner-img lazyload\" data-src=\"/in/sites/default/files/2024-11/SBU_NES_GEN_Gold-Latte%20Mugs%20without%20Logo-2_IMG_738by800px_241007_1_1728451397798.png\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n</div>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Frothy coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/types/frothy-coffee\" title=\"Frothy coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"frothy coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Frothy_icon.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Frothy coffee</span>\n</a>\n<div class=\"cell small-12 xlarge-4 show-for-xlarge persistent-nav--level3 sub-banner no-desc\">\n<picture class=\"persistent-nav--level3-banner-picture\">\n<img alt=\"frothy coffee\" class=\"persistent-nav--level3-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-04/FullCoffeeCups_738x800_Frothy.png\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n</div>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Cappuccino\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/types/cappuccino\" title=\"Cappuccino\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"Cappucino Coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Cappucino_icon_0.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Cappuccino</span>\n</a>\n<div class=\"cell small-12 xlarge-4 show-for-xlarge persistent-nav--level3 sub-banner no-desc\">\n<picture class=\"persistent-nav--level3-banner-picture\">\n<img alt=\"cappuccino coffee\" class=\"persistent-nav--level3-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-04/FullCoffeeCups_738x800_CAPPUCCINO.png\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n</div>\n</div>\n<span class=\"persistent-nav--level3-see-all\" role=\"listitem\">\n<a aria-label=\"See all drinks\" class=\"link black labelSmallBold persistent-nav--level3-see-all-link\" href=\"https://www.nescafe.com/in/coffees/types\" rel=\"follow\">\n<span class=\"button-text\">See all drinks</span>\n</a>\n</span>\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<button aria-controls=\"persistentNavLevel3List-level-1-desktop-3\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Coffee formats</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-3\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tCoffee formats\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-3\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Instant coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/formats/instant-coffee\" title=\"Instant coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"soluble instant coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Lungo_1.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Instant coffee</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Coffee sachets\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/formats/sachets\" title=\"Coffee sachets\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"NESCAF\u00c9\u00ae sachets\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-05/Sachet_icon_0.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Coffee sachets</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Coffee to go\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffees/formats/ready-to-drink\" title=\"Coffee to go\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"Coffee to go\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2024-11/RTD_icon.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Coffee to go</span>\n</a>\n</div>\n<span class=\"persistent-nav--level3-see-all\" role=\"listitem\">\n<a aria-label=\"See all formats\" class=\"link black labelSmallBold persistent-nav--level3-see-all-link\" href=\"https://www.nescafe.com/in/coffees/formats\" rel=\"follow\">\n<span class=\"button-text\">See all formats</span>\n</a>\n</span>\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/coffees\">\n                                All products\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-4\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tAll products\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-4\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/coffee-finder\">\n                                Help me choose\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-5\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tHelp me choose\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-5\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x border-top\">\n<button aria-controls=\"persistentNavLevel3List-level-1-desktop-6\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Coffee culture</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-1-6\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Our coffees</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tCoffee culture\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-1-desktop-6\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Magazine hub\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffee-culture\" title=\"Magazine hub\">\n<span class=\"persistent-nav--level3-title no-icon\">Magazine hub</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Coffee lifestyle\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffee-culture/lifestyle\" title=\"Coffee lifestyle\">\n<span class=\"persistent-nav--level3-title no-icon\">Coffee lifestyle</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Coffee knowledge\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/coffee-culture/knowledge\" title=\"Coffee knowledge\">\n<span class=\"persistent-nav--level3-title no-icon\">Coffee knowledge</span>\n</a>\n</div>\n</div>\n</div>\n</div>\n</li>\n</ul>\n</div>\n<div class=\"small-12 large-8 xlarge-offset-1 xlarge-8 persistent-nav--level2-banner show-for-large\">\n<picture class=\"persistent-nav--level2-banner-picture\">\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" media=\"(min-width: 1440px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"300\" media=\"(min-width: 1024px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172_1.jpg\" height=\"640\" media=\"(min-width: 768px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172_1.jpg\" height=\"640\" media=\"(min-width: 0px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<img alt=\"nescaf\u00e9 coffee types\" class=\"persistent-nav--level2-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n<div class=\"persistent-nav--level2-banner--info\">\n<div class=\"bodyMediumRegular persistent-nav--level2-banner-desc\"><p>Welcome to the world of NESCAF\u00c9\u00ae, where you'll find all your favourited products &amp; recipes.</p></div>\n</div>\n</div>\n</div>\n</div> </li>\n<li class=\"persistent-navigation--list\">\n<button aria-controls=\"level-2\" aria-expanded=\"false\" aria-label=\"Recipes\" class=\"active persistent-navigation--link persistent-nav--level1 level1 utilityTagLowCaps bold-600\" data-nav-wrapper=\"level-2\" id=\"nav-title-2\">\n                    Recipes\n                </button>\n<div aria-labelledby=\"nav-title-2\" class=\"persistent-navigation--menu-wrapper\" id=\"level-2\">\n<div class=\"persistent-nav--level2 level2 grid-x\">\n<div class=\"small-12 large-4 xlarge-3 persistent-nav--level2-items\">\n<div class=\"persistent-nav--level2--close hide-for-large\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"18\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p aria-level=\"2\" class=\"persistent-nav--level2--title headline-h2\" role=\"heading\">Recipes</p>\n<ul class=\"persistent-nav--level2-list\">\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/nescafe-recipe\">\n                                Recipes home\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-2-1\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Recipes</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tRecipes home\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-2-desktop-1\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<button aria-controls=\"persistentNavLevel3List-level-2-desktop-2\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Drinks</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-2-2\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Recipes</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tDrinks\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-2-desktop-2\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Inaccessible\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/\" title=\"Inaccessible\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"black coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Black%20coffee_icon_2.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Inaccessible</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Frothy\u200b coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/frothy-coffee\" title=\"Frothy\u200b coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"frothy coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Frothy_icon_0.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Frothy\u200b coffee</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Mocha\u200b\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/mocha\" title=\"Mocha\u200b\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"mocha coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Mocha_icon_3.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Mocha\u200b</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Cappuccino\u200b\u200b\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/cappuccino\" title=\"Cappuccino\u200b\u200b\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"cappuccino coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Cappucino_icon_1.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Cappuccino\u200b\u200b</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Latte\u200b\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/latte\" title=\"Latte\u200b\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"latte coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Latte_icon_0.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Latte\u200b</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Flavoured coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/flavored-coffee\" title=\"Flavoured coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"flavoured coffee\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Flavoured%20Coffee_0.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Flavoured coffee</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Iced coffee\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/drinks/iced-coffee\" title=\"Iced coffee\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"img\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-04/Cappucino_icon%20%282%29.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Iced coffee</span>\n</a>\n</div>\n<span class=\"persistent-nav--level3-see-all\" role=\"listitem\">\n<a aria-label=\"See all drinks recipes\" class=\"link black labelSmallBold persistent-nav--level3-see-all-link\" href=\"https://www.nescafe.com/in/recipes/drinks\" rel=\"follow\">\n<span class=\"button-text\">See all drinks recipes</span>\n</a>\n</span>\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<button aria-controls=\"persistentNavLevel3List-level-2-desktop-3\" aria-expanded=\"false\" class=\"persistent-nav--level2-link labelMediumRegular text-left js-persistent-nav--level2-link\">Seasonal</button>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-2-3\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Recipes</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tSeasonal\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-2-desktop-3\">\n<div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Spring/Summer\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/seasonals/spring-summer\" title=\"Spring/Summer\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"spring/summer season\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-05/Summer_icon.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Spring/Summer</span>\n</a>\n</div> <div class=\"persistent-nav--level3-list-item\" role=\"listitem\">\n<a aria-label=\"Autumn/Winter\" class=\"persistent-nav--level3-link grid-x align-left align-middle\" href=\"https://www.nescafe.com/in/recipes/seasonals/autumn-winter\" title=\"Autumn/Winter\">\n<span class=\"persistent-nav--level3-icon\"><img alt=\"autumn/winter season\" class=\"persistent-nav--level3-icon-img lazyload\" data-src=\"/in/sites/default/files/2023-05/Winter%20Seasonal_icon.svg\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/></span>\n<span class=\"persistent-nav--level3-title\">Autumn/Winter</span>\n</a>\n</div>\n<span class=\"persistent-nav--level3-see-all\" role=\"listitem\">\n<a aria-label=\"See all seasonal recipes\" class=\"link black labelSmallBold persistent-nav--level3-see-all-link\" href=\"https://www.nescafe.com/in/recipes/seasonals\" rel=\"follow\">\n<span class=\"button-text\">See all seasonal recipes</span>\n</a>\n</span>\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/recipes\">\n                                See all recipes\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-2-4\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Recipes</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tSee all recipes\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-2-desktop-4\">\n</div>\n</div>\n</div>\n</li>\n</ul>\n</div>\n<div class=\"small-12 large-8 xlarge-offset-1 xlarge-8 persistent-nav--level2-banner show-for-large\">\n<picture class=\"persistent-nav--level2-banner-picture\">\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" media=\"(min-width: 1440px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"300\" media=\"(min-width: 1024px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172.jpg\" height=\"640\" media=\"(min-width: 768px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172.jpg\" height=\"640\" media=\"(min-width: 0px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<img alt=\"nescaf\u00e9 coffee types\" class=\"persistent-nav--level2-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n<div class=\"persistent-nav--level2-banner--info\">\n<p class=\"headline-h4\">Delicious &amp; easy to make at home. Have you found your favourite recipe yet?</p>\n</div>\n</div>\n</div>\n</div> </li>\n<li class=\"persistent-navigation--list\">\n<button aria-controls=\"level-3\" aria-expanded=\"false\" aria-label=\"Sustainability\" class=\"persistent-navigation--link persistent-nav--level1 level1 utilityTagLowCaps bold-600\" data-nav-wrapper=\"level-3\" id=\"nav-title-3\">\n                    Sustainability\n                </button>\n<div aria-labelledby=\"nav-title-3\" class=\"persistent-navigation--menu-wrapper\" id=\"level-3\">\n<div class=\"persistent-nav--level2 level2 grid-x\">\n<div class=\"small-12 large-4 xlarge-3 persistent-nav--level2-items\">\n<div class=\"persistent-nav--level2--close hide-for-large\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"18\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p aria-level=\"2\" class=\"persistent-nav--level2--title headline-h2\" role=\"heading\">Sustainability</p>\n<ul class=\"persistent-nav--level2-list\">\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/sustainability\">\n                                Make your world\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-3-1\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Sustainability</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tMake your world\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-3-desktop-1\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/sustainability/our-world\">\n                                Our world\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-3-2\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Sustainability</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tOur world\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-3-desktop-2\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/sustainability/the-world\">\n                                The world\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-3-3\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Sustainability</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tThe world\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-3-desktop-3\">\n</div>\n</div>\n</div>\n</li>\n<li class=\"persistent-nav--level2-list-item grid-x\">\n<a aria-label=\"\" class=\"persistent-nav--level2-link js-persistent-nav--level2-link labelMediumRegular text-left no-submenu\" href=\"https://www.nescafe.com/in/recycling\">\n                                Recycling\n                                                            </a>\n<div class=\"small-12 large-8 xlarge-9 persistent-nav--level3-wrapper\" id=\"level-3-4\">\n<div class=\"persistent-nav--level3 grid-x\" data-full-banner=\"\" role=\"list\">\n<div class=\"persistent-nav--level2--close level3 hide-for-large\" role=\"listitem\">\n<button aria-label=\"Back to previous navigation\" class=\"persistent-nav--control-prev persistent-nav--control js-persistent-nav-l2--close\">\n<svg fill=\"none\" height=\"18\" role=\"presentation\" viewbox=\"0 0 10 18\" width=\"10\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 1L1 9L9 17\" stroke=\"#302216\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"></path>\n</svg>\n</button>\n<span class=\"persistent-nav--control-title utilityTagHighCaps js-persistent-nav-l2--close\">Sustainability</span>\n<button aria-label=\"Close navigation\" class=\"persistent-nav--control-close persistent-nav--control js-persistent-nav-l1--close\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 14 14\" width=\"14\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M12.4697 0.46967C12.7626 0.176777 13.2374 0.176777 13.5303 0.46967C13.8232 0.762563 13.8232 1.23744 13.5303 1.53033L8.06066 7L13.5303 12.4697C13.8232 12.7626 13.8232 13.2374 13.5303 13.5303C13.2374 13.8232 12.7626 13.8232 12.4697 13.5303L7 8.06066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.469669 13.5303C0.176777 13.2374 0.176777 12.7626 0.469669 12.4697L5.93934 7L0.46967 1.53033C0.176777 1.23744 0.176777 0.762563 0.46967 0.46967C0.762563 0.176777 1.23744 0.176777 1.53033 0.46967L7 5.93934L12.4697 0.46967Z\" fill=\"#302216\" fill-rule=\"evenodd\"></path>\n</svg>\n</button>\n</div>\n<p class=\"persistent-nav--level3--title text-center hide-for-large headline-h2\" role=\"listitem\">\n\t\tRecycling\n\t</p>\n<div class=\"cell small-12 large-12 xlarge-8 persistent-nav--level3-list\" id=\"persistentNavLevel3List-level-3-desktop-4\">\n</div>\n</div>\n</div>\n</li>\n</ul>\n</div>\n<div class=\"small-12 large-8 xlarge-offset-1 xlarge-8 persistent-nav--level2-banner show-for-large\">\n<picture class=\"persistent-nav--level2-banner-picture\">\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" media=\"(min-width: 1440px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"300\" media=\"(min-width: 1024px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172_0_0.jpg\" height=\"640\" media=\"(min-width: 768px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<source data-srcset=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v3_688x172_0_0.jpg\" height=\"640\" media=\"(min-width: 0px)\" srcset=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<img alt=\"nescaf\u00e9 coffee types\" class=\"persistent-nav--level2-banner-img lazyload\" data-src=\"/in/sites/default/files/2023-05/CoffeeTypeFormat_Header_v5_2000_1374.jpg\" height=\"640\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n</picture>\n<div class=\"persistent-nav--level2-banner--info\">\n<p class=\"headline-h4\">Caring for the planet - one cup of coffee at a time.</p>\n</div>\n</div>\n</div>\n</div> </li>\n</ul>\n</nav>\n<div class=\"main-header--right grid-x align-middle\">\n<button aria-label=\"Search\" class=\"button brown square-icon corner-round search-btn show-for-large\">\n<svg aria-hidden=\"true\" fill=\"none\" height=\"16\" role=\"presentation\" viewbox=\"0 0 16 16\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\">\n<circle cx=\"6.5998\" cy=\"6.63203\" r=\"5.3\" stroke=\"#ffffff\" stroke-width=\"2\"></circle>\n<line stroke=\"#ffffff\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" x1=\"14.2855\" x2=\"10.7997\" y1=\"14.332\" y2=\"10.8462\"></line>\n</svg>\n</button>\n<button aria-controls=\"burger-nav-wrapper\" aria-expanded=\"false\" aria-label=\"Open Navigation\" class=\"button brown square-icon corner-round burger-btn sm-transparent md-transparent js-burger-menu\" data-nav-wrapper=\"burger-nav-wrapper\" id=\"burger-nav\">\n<svg aria-hidden=\"true\" fill=\"#ffffff\" height=\"15\" role=\"presentation\" viewbox=\"0 0 20 15\" width=\"20\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect height=\"2\" rx=\"1\" width=\"20\" y=\"0.332031\"></rect>\n<rect height=\"2\" rx=\"1\" width=\"20\" y=\"6.33203\"></rect>\n<rect height=\"2\" rx=\"1\" width=\"20\" y=\"12.332\"></rect>\n</svg>\n</button>\n</div>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.63\")>",
+      "y_position": 0,
+      "height": 97,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "main-navigation",
+        "grid-container",
+        "js-navigation"
+      ],
+      "id": "",
+      "type": 1,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 38,
+          "weight": 400,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Our coffees Our ranges Coffee types",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_1.png"
+    },
+    {
+      "index": 2,
+      "element": "<section aria-label=\"Toaster Signin Module\" class=\"toaster toaster-signin\" data-is-loggedin=\"\" data-signin-msg=\"You are logged in\" data-signout-msg=\"You are signed out\" data-timer=\"2000\">\n<div class=\"toaster--container\">\n<svg class=\"toaster--arrow\" fill=\"none\" height=\"12\" role=\"presentation\" viewbox=\"0 0 16 12\" width=\"16\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M6.26351 1.03885C7.0313 -0.304777 8.9687 -0.304778 9.73649 1.03885L16 12L0 12L6.26351 1.03885Z\" fill=\"white\"></path>\n</svg>\n<div class=\"toaster--container-inner\">\n<div class=\"toaster--message-wrapper\">\n<div class=\"toaster--user\">\n<svg class=\"toaster--user--icon\" fill=\"none\" height=\"18\" viewbox=\"0 0 18 18\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path clip-rule=\"evenodd\" d=\"M11.1917 11.1114C11.1532 11.1405 11.1605 11.2014 11.205 11.2201C11.8441 11.4879 12.4247 11.8804 12.9139 12.3753C13.403 12.8701 13.791 13.4576 14.0557 14.1041C14.1939 14.4417 14.2971 14.7919 14.3642 15.1492C14.4661 15.692 14.009 16.1434 13.4567 16.1434H13.0714C13.0307 16.3379 12.9391 16.5287 12.7986 16.7102C12.6025 16.9637 12.3151 17.1941 11.9527 17.3881C11.5903 17.5821 11.1601 17.736 10.6866 17.841C10.2131 17.946 9.70563 18 9.19314 18C8.68065 18 8.17318 17.946 7.6997 17.841C7.22622 17.736 6.796 17.5821 6.43361 17.3881C6.07123 17.1941 5.78377 16.9637 5.58765 16.7102C5.44722 16.5287 5.35559 16.3379 5.31487 16.1434H4.92181C4.36952 16.1434 3.91241 15.692 4.0143 15.1492C4.08136 14.7919 4.18455 14.4417 4.32277 14.1041C4.58748 13.4576 4.97547 12.8701 5.4646 12.3753C5.95373 11.8804 6.5344 11.4879 7.17348 11.2201C7.21833 11.2013 7.2257 11.1399 7.18689 11.1106C6.36802 10.4923 5.83782 9.5044 5.83782 8.39118C5.83782 6.51828 7.33856 5 9.18982 5C11.0411 5 12.5418 6.51828 12.5418 8.39118C12.5418 9.50488 12.0112 10.4932 11.1917 11.1114Z\" fill=\"#222222\" fill-rule=\"evenodd\"></path>\n<path d=\"M17.25 9C17.25 4.44365 13.5563 0.75 9 0.75L8.96717 0.750065C8.967 0.750065 8.96683 0.750067 8.96666 0.750067C4.42569 0.767996 0.75 4.45476 0.75 9C0.75 13.5563 4.44365 17.25 9 17.25C13.5563 17.25 17.25 13.5563 17.25 9Z\" stroke=\"#222222\" stroke-width=\"1.5\"></path>\n</svg>\n</div>\n<div class=\"toaster--user-message bodySmallRegular\">\n                                            You are signed out\n                                    </div>\n</div>\n<div class=\"toaster--close\">\n<button aria-label=\"Close tooltip\" class=\"icon cross-icon-black toaster--close-btn js-close-toaster\" type=\"button\"></button>\n</div>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.65\")>",
+      "y_position": 0,
+      "height": 941,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "toaster",
+        "toaster-signin"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": true,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "fixed"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "0",
+        "transform": "none",
+        "transition": "opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0.5s ease-in-out",
+        "transitionDuration": "0.5s, 0.5s, 0.5s",
+        "transitionProperty": "opacity, visibility, z-index",
+        "transitionTimingFunction": "ease-in-out, ease-in-out, ease-in-out",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 3,
+      "element": "<section class=\"grid-container homepage-banner-wrapper variation--banner bg--paper-white\" data-is-banner=\"true\">\n<div class=\"homepage-banner reveal-effect-container\" style=\"opacity: 1; clip-path: unset; transform: scale(1);\">\n<div class=\"media-container\">\n<video class=\"video--large show-for-large\" data-poster=\"/in/sites/default/files/2023-04/Poster_Frame_16_9.jpg\" muted=\"\" playsinline=\"\" poster=\"/in/sites/default/files/2023-04/Poster_Frame_16_9.jpg\" preload=\"\">\n<source src=\"https://www.nescafe.com/in/themes/custom/nescafe/assets/homepage/large.mp4\" type=\"video/mp4\"/>\n</video>\n<video class=\"video--small hide-for-large\" data-poster=\"/in/sites/default/files/2023-04/Poster_Frame_9_16.jpg\" muted=\"\" playsinline=\"\" poster=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\" preload=\"\">\n<source src=\"https://www.nescafe.com/in/themes/custom/nescafe/assets/homepage/small.mp4\" type=\"video/mp4\"/>\n</video>\n</div>\n<div class=\"content-container animate-enter in-view\">\n<div class=\"max-width-container\">\n<div class=\"content-wrapper\">\n<h1 class=\"primary-title\" style=\"translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;\">We\u2019re using our global scale for good, one cup at a time</h1>\n<div class=\"cta-container primary-title-cta-container\">\n<a aria-label=\"\" class=\"button red\" href=\"https://www.nescafe.com/in/sustainability\" rel=\"follow\">\n<span class=\"button-text\">Find out more</span>\n</a>\n</div>\n<div class=\"secondary-title\" style=\"translate: none; rotate: none; scale: none; display: none; transform: translate(0px, 50px); opacity: 0;\">\n<div class=\"headline-h1 font-weight-bold\">Discover how NESCAF\u00c9\u00ae is making a difference for you, coffee communities and our world.</div>\n<div class=\"cta-container\">\n<a aria-label=\"\" class=\"button red\" href=\"https://www.nescafe.com/in/sustainability\" rel=\"follow\">\n<span class=\"button-text\">Find out more</span>\n</a>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div>\n<div class=\"greeting-container bodyLargeRegular\" style=\"translate: none; rotate: none; scale: none; opacity: 0; transform: translate(0px, 250px);\">\n<div class=\"greeting-wrapper animate\">\n<span class=\"greeting greeting--morning\">Good morning!</span>\n<span class=\"greeting greeting--afternoon\">Good afternoon!</span>\n<span class=\"greeting greeting--evening\" style=\"display: block;\">Good evening!</span>\n<span class=\"greeting greeting--night\">Good night!</span>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.10\")>",
+      "y_position": 97,
+      "height": 844,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "homepage-banner-wrapper",
+        "variation--banner",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "type": 0,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "url(\"https://www.nescafe.com/in/themes/custom/nescafe/UI/build/images/30DECzi.jpg\")",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "1.00,1.00,1.00,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "We\u2019re using our global scale for good, one cup at a time",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "background_image": "scraped_images/imported_nescafe_com_1768042281/bg_3.jpg"
+    },
+    {
+      "index": 4,
+      "element": "<section aria-label=\"Home Page Description Module\" class=\"home-page-description grid-container padding animate-enter in-view\">\n<div class=\"grid-x max-width-container\">\n<div class=\"cell large-offset-1 large-10 xlarge-offset-2 xlarge-8 text-center wrapper\">\n<div class=\"image-container animate-enter-fade-up-short animate-delay-3\">\n<img alt=\"nescaf\u00e9 make your world\" data-src=\"/in/sites/default/files/2023-04/MYW_sign_in.png\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/MYW_sign_in.png\"/>\n</div>\n<div class=\"description1 bodyMediumRegular animate-enter-fade-up-short animate-delay-5\">At NESCAF\u00c9<sup>\u00ae</sup> we believe every cup of coffee has the power to make your world better. Join us to help make a difference and discover how rewarding it can be.</div>\n<div class=\"cta-container\">\n<a aria-label=\"Sign in\" class=\"link small black sign-in animate-enter-fade-up-short animate-delay-9\" href=\"https://www.nescafe.com/in/login\" rel=\"follow\">\n<span class=\"button-text\">Sign in</span>\n</a>\n<span class=\"labelSmallBold separator animate-enter-fade-up-short animate-delay-9\"> / </span>\n<a aria-label=\"Register\" class=\"link small black register animate-enter-fade-up-short animate-delay-9\" href=\"https://www.nescafe.com/in/register\" rel=\"follow\">\n<span class=\"button-text\">Register</span>\n</a>\n</div>\n<div class=\"product-card__wtb\">\n</div>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.66\")>",
+      "y_position": 941,
+      "height": 374,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "home-page-description",
+        "grid-container",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 60px",
+        "paddingBottom": "80px",
+        "paddingLeft": "60px",
+        "paddingRight": "60px",
+        "paddingTop": "80px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 80,
+          "paddingLeft": 60,
+          "paddingRight": 60,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_4.png"
+    },
+    {
+      "index": 5,
+      "element": "<section class=\"sustainability-hub-recycle-section grid-container bg--paper-white homepage-recommended-article padding animate-enter in-view\" style=\"padding-bottom: 141px;\">\n<div class=\"grid-x pos-rel\">\n<div class=\"cell bg-container animate-enter-fade animate-delay-3\">\n<picture>\n<source data-srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\" media=\"(min-width: 1440px)\" srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\"/>\n<source data-srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\" media=\"(min-width: 1024px)\" srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\"/>\n<source data-srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\" media=\"(min-width: 768px)\" srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\"/>\n<source data-srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe-Cl_Mobile-Banner-750x904_Resize_feedback-1.jpg\" media=\"(min-width: 0px)\" srcset=\"/in/sites/default/files/2025-05/IN_2025_Nescafe-Cl_Mobile-Banner-750x904_Resize_feedback-1.jpg\"/>\n<img alt=\"nescaf\u00e9 coffee range\" class=\"animate-enter-fade animate-delay-3 lazyloaded\" data-src=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\" src=\"/in/sites/default/files/2025-05/IN_2025_Nescafe%20Cl_Website%20Banner%202880x1200_Resize-01.jpg\"/>\n</picture>\n</div>\n<div class=\"cell\">\n<div class=\"grid-x white-bg-patch\">\n<div class=\"text-container text-center\">\n<h2 class=\"title headline-h2 animate-enter-fade-up-short animate-delay-3\">Discover a world of flavours and formats in one place</h2>\n<div class=\"description bodyMediumRegular animate-enter-fade-up-short animate-delay-5\"><p>Explore the full range of NESCAF\u00c9<sup>\u00ae</sup> to find your perfect coffee product.</p></div>\n<a aria-label=\"\" class=\"button transparent-black see-all-products animate-enter-fade-up-short animate-delay-7\" href=\"https://www.nescafe.com/in/coffees\" rel=\"follow\" title=\"See all products\">\n<span class=\"button-text\">See all products</span>\n</a>\n</div>\n</div>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.67\")>",
+      "y_position": 1315,
+      "height": 970,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-hub-recycle-section",
+        "grid-container",
+        "bg--paper-white",
+        "homepage-recommended-article",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "url(\"https://www.nescafe.com/in/themes/custom/nescafe/UI/build/images/30DECzi.jpg\")",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 61px 141px",
+        "paddingBottom": "141px",
+        "paddingLeft": "61px",
+        "paddingRight": "61px",
+        "paddingTop": "80px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 38,
+          "weight": 400,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 141,
+          "paddingLeft": 61,
+          "paddingRight": 61,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "Discover a world of flavours and formats in one place",
+        "subtitle": "",
+        "content": "Explore the full range of NESCAF\u00c9\u00aeto find your perfect coffee product.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "background_image": "scraped_images/imported_nescafe_com_1768042281/bg_5.jpg",
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_5.jpg"
+    },
+    {
+      "index": 6,
+      "element": "<section class=\"recipe-home grid-container overflow-x-hidden recipe-home--has-icon animate-enter in-view\">\n<div class=\"grid-x\">\n<div class=\"grid-x recipe-home--image-text\">\n<div class=\"cell small-12 large-10 large-offset-1\">\n<div class=\"recipe-home--icon-section animate-enter-fade-left-long animate-delay-3 text-center\">\n<img alt=\"Winter\" class=\"recipe-home--icon-section-img\" data-src=\"/in/sites/default/files/2023-04/Winter%20Seasonal_icon_1.svg\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/Winter%20Seasonal_icon_1.svg\"/>\n</div>\n<div class=\"recipe-home--text-section animate-enter-fade-up-short animate-delay-3\">\n<h2 class=\"recipe-home--title\">Make your day a little cozier</h2>\n<div class=\"recipe-home--desc bodyMediumRegular\"><p>Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.</p>\n</div>\n</div>\n</div>\n</div>\n<div class=\"cell small-12 recipe-home--wrapper\">\n<div class=\"swiper swipper--full-view-padding recipe-home--wrapper--in swiper-backface-hidden swiper-initialized swiper-horizontal\">\n<div class=\"recipe-home--btn-control recipe-home--prev show-for-large\">\n<button aria-controls=\"swiper-wrapper-e10101f8d93eb2f6e1\" aria-disabled=\"true\" aria-label=\"Previous slide\" class=\"swiper-control swiper--prev elevation-1 animate-enter-fade-right-short animate-delay-9 swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1 7L17 7M1 7L6.33333 2M1 7L6.33333 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<div class=\"recipe-home--btn-control recipe-home--next show-for-large\">\n<button aria-controls=\"swiper-wrapper-e10101f8d93eb2f6e1\" aria-disabled=\"false\" aria-label=\"Next slide\" class=\"swiper-control swiper--next elevation-1 animate-enter-fade-left-short animate-delay-9\" tabindex=\"0\">\n<svg fill=\"none\" height=\"14\" role=\"presentation\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17 7L1 7M17 7L11.6667 2M17 7L11.6667 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<ul aria-live=\"polite\" class=\"swiper-wrapper recipe-home--list\" id=\"swiper-wrapper-e10101f8d93eb2f6e1\">\n<li aria-label=\"1 / 3\" class=\"swiper-slide recipe-home--list-item swiper-slide-active\" style=\"width: 553px; margin-right: 32px;\">\n<a aria-label=\"Maple Caf\u00e9 au Lait\" class=\"recipe-card-grid-view--link\" data-key=\"recipe\" href=\"/in/recipes/maple-cafe-au-lait\" id=\"recipe-3017\" title=\"Maple Caf\u00e9 au Lait\">\n<div class=\"grid-x recipe-card recipe-card--grid-view-card elevation-2 has-hover recipe-card-grid-view\">\n<div class=\"cell small-12 medium-12 large-6 recipe-img-container animate-enter-fade animate-delay-5\">\n<div class=\"recipe-tag-mobile animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<picture>\n<source data-srcset=\"/in/sites/default/files/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg\" media=\"(min-width: 768px)\" srcset=\"/in/sites/default/files/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg\"/>\n<source data-srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg?h=08f66884&amp;itok=kpRLeNuU\" media=\"(min-width: 0px)\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg?h=08f66884&amp;itok=kpRLeNuU\"/>\n<img alt=\"Maple Caf\u00e9 au Lait recipe\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/RecipeHero_MapleCafeAuLait_1066x1066.jpg\"/>\n</picture>\n</div>\n<div class=\"cell small-12 medium-12 large-6 recipe-details\">\n<div class=\"recipe-info\">\n<div class=\"recipe-tag-desktop animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<div class=\"recipe-name labelLargeBold animate-enter-fade-up-short animate-delay-9\">Maple Caf\u00e9 au Lait</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-description bodySmallRegular animate-enter-fade-up-short animate-delay-11\">A classic recipe with rich maple twist</div>\n</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-steps-and-ingredients animate-enter-fade-up-short animate-delay-11\">\n<div class=\"recipe-steps-container\">\n<span class=\"recipe-steps-count labelSmallBold\">5</span>\n<span class=\"recipe-steps-label utilityTagHighCaps\">Steps</span>\n</div>\n<div class=\"recipe-steps-separator\"></div>\n<div class=\"recipe-ingredients-container\">\n<span class=\"recipe-ingredients-count labelSmallBold\">5</span>\n<span class=\"recipe-ingredients-label utilityTagHighCaps\">Ingredients</span>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div> </a>\n</li>\n<li aria-label=\"2 / 3\" class=\"swiper-slide recipe-home--list-item swiper-slide-next\" style=\"width: 553px; margin-right: 32px;\">\n<a aria-label=\"Hazelnut Latte Coffee with Nescafe\" class=\"recipe-card-grid-view--link\" data-key=\"recipe\" href=\"/in/recipes/hazelnut-latte\" id=\"recipe-3012\" title=\"Hazelnut Latte Coffee with Nescafe\">\n<div class=\"grid-x recipe-card recipe-card--grid-view-card elevation-2 has-hover recipe-card-grid-view\">\n<div class=\"cell small-12 medium-12 large-6 recipe-img-container animate-enter-fade animate-delay-5\">\n<div class=\"recipe-tag-mobile animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<picture>\n<source data-srcset=\"/in/sites/default/files/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg\" media=\"(min-width: 768px)\" srcset=\"/in/sites/default/files/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg\"/>\n<source data-srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg?h=08f66884&amp;itok=U7_RQk1j\" media=\"(min-width: 0px)\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg?h=08f66884&amp;itok=U7_RQk1j\"/>\n<img alt=\"Hazelnut Latte recipe\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/RecipeHero_HazelnutLatte_1066x1066.jpg\"/>\n</picture>\n</div>\n<div class=\"cell small-12 medium-12 large-6 recipe-details\">\n<div class=\"recipe-info\">\n<div class=\"recipe-tag-desktop animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<div class=\"recipe-name labelLargeBold animate-enter-fade-up-short animate-delay-9\">Hazelnut Latte Coffee with Nescafe</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-description bodySmallRegular animate-enter-fade-up-short animate-delay-11\">Creamy, nutty and sweet</div>\n</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-steps-and-ingredients animate-enter-fade-up-short animate-delay-11\">\n<div class=\"recipe-steps-container\">\n<span class=\"recipe-steps-count labelSmallBold\">4</span>\n<span class=\"recipe-steps-label utilityTagHighCaps\">Steps</span>\n</div>\n<div class=\"recipe-steps-separator\"></div>\n<div class=\"recipe-ingredients-container\">\n<span class=\"recipe-ingredients-count labelSmallBold\">4</span>\n<span class=\"recipe-ingredients-label utilityTagHighCaps\">Ingredients</span>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div> </a>\n</li>\n<li aria-label=\"3 / 3\" class=\"swiper-slide recipe-home--list-item\" style=\"width: 553px; margin-right: 32px;\">\n<a aria-label=\"Chocolate Melted Mocha\" class=\"recipe-card-grid-view--link\" data-key=\"recipe\" href=\"/in/recipes/chocolate-mocha\" id=\"recipe-3009\" title=\"Chocolate Melted Mocha\">\n<div class=\"grid-x recipe-card recipe-card--grid-view-card elevation-2 has-hover recipe-card-grid-view\">\n<div class=\"cell small-12 medium-12 large-6 recipe-img-container animate-enter-fade animate-delay-5\">\n<div class=\"recipe-tag-mobile animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<picture>\n<source data-srcset=\"/in/sites/default/files/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg\" media=\"(min-width: 768px)\" srcset=\"/in/sites/default/files/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg\"/>\n<source data-srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg?h=08f66884&amp;itok=g1N1iGMM\" media=\"(min-width: 0px)\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/recipe_home_card/public/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg?h=08f66884&amp;itok=g1N1iGMM\"/>\n<img alt=\"Chocolate Melted Mocha recipe\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/RecipeHero_InstMeltedChocMocha_1066x1066.jpg\"/>\n</picture>\n</div>\n<div class=\"cell small-12 medium-12 large-6 recipe-details\">\n<div class=\"recipe-info\">\n<div class=\"recipe-tag-desktop animate-enter-fade-up-short animate-delay-9\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Christmas treat</span>\n</div>\n</div>\n<div class=\"recipe-name labelLargeBold animate-enter-fade-up-short animate-delay-9\">Chocolate Melted Mocha</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-description bodySmallRegular animate-enter-fade-up-short animate-delay-11\">Melted chocolate. Need we say more?</div>\n</div>\n<div class=\"grid-x\">\n<div class=\"cell recipe-steps-and-ingredients animate-enter-fade-up-short animate-delay-11\">\n<div class=\"recipe-steps-container\">\n<span class=\"recipe-steps-count labelSmallBold\">4</span>\n<span class=\"recipe-steps-label utilityTagHighCaps\">Steps</span>\n</div>\n<div class=\"recipe-steps-separator\"></div>\n<div class=\"recipe-ingredients-container\">\n<span class=\"recipe-ingredients-count labelSmallBold\">5</span>\n<span class=\"recipe-ingredients-label utilityTagHighCaps\">Ingredients</span>\n</div>\n</div>\n</div>\n</div>\n</div>\n</div> </a>\n</li>\n</ul>\n<div class=\"recipe-home--pagination animate-enter-fade-left-long animate-delay-8\">\n<div class=\"swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal\"><span aria-current=\"true\" aria-label=\"Go to slide 1\" class=\"swiper-pagination-bullet swiper-pagination-bullet-active\" role=\"button\" tabindex=\"0\"></span><span aria-label=\"Go to slide 2\" class=\"swiper-pagination-bullet\" role=\"button\" tabindex=\"0\"></span></div>\n</div>\n<span aria-atomic=\"true\" aria-live=\"assertive\" class=\"swiper-notification\"></span></div>\n</div>\n</div>\n<div class=\"grid-x recipe-home--cta-container text-center animate-enter-fade-up-short animate-delay-10\">\n<div class=\"cell large-10 large-offset-1 see-all-recipies-cta\">\n<a aria-label=\"\" class=\"button transparent-auto\" href=\"https://www.nescafe.com/in/recipes\" rel=\"follow\" title=\"See all recipes\">\n<span class=\"button-text\">See all recipes</span>\n</a>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.24\")>",
+      "y_position": 2285,
+      "height": 773,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "recipe-home",
+        "grid-container",
+        "overflow-x-hidden",
+        "recipe-home--has-icon",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 0px",
+        "paddingBottom": "80px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "80px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 38,
+          "weight": 400,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 80,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "Make your day a little cozier",
+        "subtitle": "",
+        "content": "Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_6.jpg"
+    },
+    {
+      "index": 7,
+      "element": "<section class=\"sustainability-article-carousel grid-container bg--paper-green animate-enter in-view\">\n<div class=\"max-width-container\">\n<div class=\"grid-x\">\n<div class=\"cell small-12 large-10 large-offset-1 xlarge-8 xlarge-offset-2\">\n<div class=\"sustainability-article-carousel__text-section\">\n<h2 class=\"sustainability-article-carousel__title animate-enter-fade-up-short\">See the difference we make from bean to cup</h2>\n</div>\n</div>\n</div>\n</div>\n<div class=\"grid-x\">\n<div class=\"cell small-12 large-offset-1 large-11 sustainability-article-carousel__wrapper\" style=\"margin-left: 0px; padding-left: 0px; width: 100%;\">\n<div class=\"swiper swipper--full-view-padding sustainability-article-carousel__wrapper--inner swiper-backface-hidden swiper-initialized swiper-horizontal\">\n<div class=\"sustainability-article-carousel__btn-control sustainability-article-carousel--prev show-for-large\">\n<button aria-controls=\"swiper-wrapper-e1f859e74c7fa8d0\" aria-disabled=\"true\" aria-label=\"Previous slide\" class=\"swiper-control swiper-button swiper--prev elevation-1 swiper-button-lock swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1 7L17 7M1 7L6.33333 2M1 7L6.33333 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<div class=\"sustainability-article-carousel__btn-control sustainability-article-carousel--next show-for-large\">\n<button aria-controls=\"swiper-wrapper-e1f859e74c7fa8d0\" aria-disabled=\"true\" aria-label=\"Next slide\" class=\"swiper-control swiper-button swiper--next elevation-1 swiper-button-lock swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17 7L1 7M17 7L11.6667 2M17 7L11.6667 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<ul aria-live=\"polite\" class=\"swiper-wrapper sustainability-article-carousel__list\" id=\"swiper-wrapper-e1f859e74c7fa8d0\" style=\"transition-duration: 0ms; transform: translate3d(406px, 0px, 0px);\">\n<li aria-label=\"1 / 3\" class=\"swiper-slide sustainability-article-carousel__list-item animate-enter-fade-left-short animate-delay-1 inactive-slide swiper-slide-active\" style=\"margin-right: 32px;\">\n<a aria-label=\"Empowering women in coffee farming\" class=\"sustainability-card elevation-2 has-hover\" href=\"https://www.nescafe.com/in/sustainability/our-world/empowering-women\">\n<div class=\"sustainability-card__img-container animate-enter-fade animate-delay-5\">\n<div class=\"sustainability-card__tag\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Sustainability</span>\n</div>\n</div>\n<picture>\n<source media=\"(min-width: 1440px)\" sizes=\"348px\" srcset=\"/in/sites/default/files/2023-05/FuelingJourney_Dorotee_2188x1230_compressed.jpg\"/>\n<source media=\"(min-width: 1024px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 768px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 0px)\" sizes=\"348px\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/sustainability_article_card/public/2023-05/FuelingJourney_Dorotee_2188x1230_compressed.jpg?h=8d93d12c&amp;itok=e6CjL1Z9\"/>\n<img alt=\"sustainability\" class=\"lazyautosizes ls-is-cached lazyloaded\" data-sizes=\"auto\" data-src=\"/in/sites/default/files/2023-05/FuelingJourney_Dorotee_2188x1230_compressed.jpg\" sizes=\"348px\" src=\"/in/sites/default/files/2023-05/FuelingJourney_Dorotee_2188x1230_compressed.jpg\"/>\n</picture>\n</div>\n<div class=\"sustainability-card__content\">\n<div>\n<div class=\"sustainability-card__title animate-enter-fade-up-short animate-delay-7\">\n<span class=\"labelLargeBold\">Empowering women in coffee farming</span>\n</div>\n<div class=\"sustainability-card__description animate-enter-fade-up-short animate-delay-9\">\n<div class=\"bodyMediumRegular\">\n          Meet Dorotee, one of around 3,500 Rwandan women in farming who have benefitted from the Nestl\u00e9 Farmer Training Program\n        </div>\n</div>\n</div>\n<div class=\"signIn-Info-Tooltip animate-enter-fade-up-short animate-delay-9\">\n</div>\n<div class=\"sustainability-card__reading-duration\">\n<span class=\"labelSmallBold animate-enter-fade-up-short animate-delay-11\">\n            3 \n          </span>\n<span class=\"utilityTagHighCaps text-uppercase sustainability-card__reading-duration-suffix animate-enter-fade-up-short animate-delay-13\">\n            mins\n          </span>\n</div>\n</div>\n</a>\n</li>\n<li aria-label=\"2 / 3\" class=\"swiper-slide sustainability-article-carousel__list-item animate-enter-fade-left-short animate-delay-1 inactive-slide swiper-slide-next\" style=\"margin-right: 32px;\">\n<a aria-label=\"Future-Proofing Coffee Plants to Resist Climate Change\" class=\"sustainability-card elevation-2 has-hover\" href=\"https://www.nescafe.com/in/sustainability/our-world/resist-climate-change\">\n<div class=\"sustainability-card__img-container animate-enter-fade animate-delay-5\">\n<div class=\"sustainability-card__tag\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Sustainability</span>\n</div>\n</div>\n<picture>\n<source media=\"(min-width: 1440px)\" sizes=\"348px\" srcset=\"/in/sites/default/files/2023-04/2188%20x%201230%20%283.jpg\"/>\n<source media=\"(min-width: 1024px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 768px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 0px)\" sizes=\"348px\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/sustainability_article_card/public/2023-04/2188%20x%201230%20%283.jpg?h=8d93d12c&amp;itok=ZXQwwsSI\"/>\n<img alt=\"Sustainability\" class=\"lazyautosizes ls-is-cached lazyloaded\" data-sizes=\"auto\" data-src=\"/in/sites/default/files/2023-04/2188%20x%201230%20%283.jpg\" sizes=\"348px\" src=\"/in/sites/default/files/2023-04/2188%20x%201230%20%283.jpg\"/>\n</picture>\n</div>\n<div class=\"sustainability-card__content\">\n<div>\n<div class=\"sustainability-card__title animate-enter-fade-up-short animate-delay-7\">\n<span class=\"labelLargeBold\">Future-Proofing Coffee Plants to Resist Climate Change</span>\n</div>\n<div class=\"sustainability-card__description animate-enter-fade-up-short animate-delay-9\">\n<div class=\"bodyMediumRegular\">\n          Since 2010, NESCAF\u00c9<sup>\u00ae</sup> helps farmers grow more resilient crops by distributing plantlets that can resist the effects of climate change.\n        </div>\n</div>\n</div>\n<div class=\"signIn-Info-Tooltip animate-enter-fade-up-short animate-delay-9\">\n</div>\n<div class=\"sustainability-card__reading-duration\">\n<span class=\"labelSmallBold animate-enter-fade-up-short animate-delay-11\">\n            3 \n          </span>\n<span class=\"utilityTagHighCaps text-uppercase sustainability-card__reading-duration-suffix animate-enter-fade-up-short animate-delay-13\">\n            mins\n          </span>\n</div>\n</div>\n</a>\n</li>\n<li aria-label=\"3 / 3\" class=\"swiper-slide sustainability-article-carousel__list-item animate-enter-fade-left-short animate-delay-1 inactive-slide\" style=\"padding-right: 0px; margin-right: 32px;\">\n<a aria-label=\"Regenerative Agriculture and NESCAF\u00c9&lt;sup&gt;\u00ae&lt;/sup&gt; Coffee\" class=\"sustainability-card elevation-2 has-hover\" href=\"https://www.nescafe.com/in/sustainability/our-world/regenerative-agriculture\">\n<div class=\"sustainability-card__img-container animate-enter-fade animate-delay-5\">\n<div class=\"sustainability-card__tag\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Sustainability</span>\n</div>\n</div>\n<picture>\n<source media=\"(min-width: 1440px)\" sizes=\"348px\" srcset=\"/in/sites/default/files/2023-04/2188%20x%201230%20%281%29.jpg\"/>\n<source media=\"(min-width: 1024px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 768px)\" sizes=\"348px\" srcset=\"\"/>\n<source media=\"(min-width: 0px)\" sizes=\"348px\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/sustainability_article_card/public/2023-04/2188%20x%201230%20%281%29.jpg?h=8d93d12c&amp;itok=bDScNN32\"/>\n<img alt=\"Sustainability\" class=\"lazyautosizes ls-is-cached lazyloaded\" data-sizes=\"auto\" data-src=\"/in/sites/default/files/2023-04/2188%20x%201230%20%281%29.jpg\" sizes=\"348px\" src=\"/in/sites/default/files/2023-04/2188%20x%201230%20%281%29.jpg\"/>\n</picture>\n</div>\n<div class=\"sustainability-card__content\">\n<div>\n<div class=\"sustainability-card__title animate-enter-fade-up-short animate-delay-7\">\n<span class=\"labelLargeBold\">Regenerative Agriculture and NESCAF\u00c9<sup>\u00ae</sup> Coffee</span>\n</div>\n<div class=\"sustainability-card__description animate-enter-fade-up-short animate-delay-9\">\n<div class=\"bodyMediumRegular\">\n          Every day, tons of green beans arrive at a NESCAF\u00c9<sup>\u00ae</sup> roasting facility, and every bean has its own story to tell.\n        </div>\n</div>\n</div>\n<div class=\"signIn-Info-Tooltip animate-enter-fade-up-short animate-delay-9\">\n</div>\n<div class=\"sustainability-card__reading-duration\">\n<span class=\"labelSmallBold animate-enter-fade-up-short animate-delay-11\">\n            3\n          </span>\n<span class=\"utilityTagHighCaps text-uppercase sustainability-card__reading-duration-suffix animate-enter-fade-up-short animate-delay-13\">\n            mins\n          </span>\n</div>\n</div>\n</a>\n</li>\n</ul>\n<div class=\"sustainability-article-carousel__pagination animate-enter-fade-left-short animate-delay-3\">\n<div class=\"swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock\"><span aria-current=\"true\" aria-label=\"Go to slide 1\" class=\"swiper-pagination-bullet swiper-pagination-bullet-active\" role=\"button\" tabindex=\"0\"></span></div>\n</div>\n<span aria-atomic=\"true\" aria-live=\"assertive\" class=\"swiper-notification\"></span></div>\n</div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.68\")>",
+      "y_position": 3058,
+      "height": 904,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-article-carousel",
+        "grid-container",
+        "bg--paper-green",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(82, 162, 123)",
+        "backgroundImage": "url(\"https://www.nescafe.com/in/themes/custom/nescafe/UI/build/images/pU0mx2H.jpg\")",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 0px",
+        "paddingBottom": "80px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "80px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 80,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "See the difference we make from bean to cup",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "background_image": "scraped_images/imported_nescafe_com_1768042281/bg_7.jpg",
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_7.jpg"
+    },
+    {
+      "index": 8,
+      "element": "<section class=\"campaign-carousel grid-container bg--paper-white\">\n<div class=\"parallax-bg js-parallax-bg lazyLoadedImage\" style='background-position-x: 0%; background-image: url(\"/in/sites/default/files/2023-05/MicrosoftTeams-image%20%2816%29.png\");'></div>\n<div>\n<div class=\"grid-x campaign-carousel__header-grid\">\n<div class=\"cell large-2 xlarge-3\"></div>\n<div class=\"cell small-12 large-8 xlarge-6 campaign-carousel__header-wrapper\">\n<h2 class=\"campaign-carousel__title\">\n          Your NESCAF\u00c9\u00ae today\n        </h2>\n<div class=\"campaign-carousel__description bodyMediumRegular\">\n          We believe everyone deserves a great cup of coffee - and that starts with making better choices for the world we live in. For us, that means using our global scale to make a real difference - and unlock the true power of coffee.\n        </div>\n</div>\n<div class=\"cell large-2 xlarge-3\"></div>\n</div>\n<!-- Swiper -->\n<div class=\"swiper campaign-carousel__swiper swiper-backface-hidden swiper-initialized swiper-horizontal\">\n<div aria-live=\"polite\" class=\"swiper-wrapper campaign-carousel__swiper-wrapper\" id=\"swiper-wrapper-f22adee7ae164ea9\" style=\"transition-duration: 0ms; transform: translate3d(61.75px, 0px, 0px);\">\n<div aria-label=\"1 / 4\" class=\"swiper-slide campaign-carousel__swiper__quotation-slide inactive-slide swiper-slide-active\" tabindex=\"0\">\n<div class=\"campaign-quotation\">\n<div class=\"campaign-quotation__text headline-h4\">\n        By 2025, NESCAF\u00c9\u00ae aims to reach 100% responsible sourced coffee.\n                <span class=\"campaign-quotation__quote-icon-wrapper\">\n<i class=\"icon quote-start-brown\"></i>\n</span>\n</div>\n<div class=\"campaign-quotation__author-and-location-wrapper\">\n<div class=\"labelSmallBold campaign-quotation__author\">\n            NESCAF\u00c9\u00ae Coffee Plan\n        </div>\n</div>\n<div class=\"campaign-quotation__background-image-wrapper\">\n<picture>\n<source media=\"(min-width: 1440px)\" srcset=\"/in/sites/default/files/2023-04/Homepage_MISC_Quote_794x764.png\"/>\n<source media=\"(min-width: 1024px)\" srcset=\"\"/>\n<source media=\"(min-width: 768px)\" srcset=\"\"/>\n<source media=\"(min-width: 0px)\" srcset=\"https://www.nescafe.com/in/sites/default/files/styles/campaign_quotation_card/public/2023-04/Homepage_MISC_Quote_794x764.png?h=46642db2&amp;itok=G-7G9buo\"/>\n<img alt=\"nescaf\u00e9 responsible sourced coffee\" class=\"ls-is-cached lazyloaded\" data-src=\"/in/sites/default/files/2023-04/Homepage_MISC_Quote_794x764.png\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/Homepage_MISC_Quote_794x764.png\"/>\n</picture>\n</div>\n</div> </div>\n<div aria-label=\"2 / 4\" class=\"swiper-slide campaign-carousel__swiper__recipe-card-slide inactive-slide swiper-slide-next\">\n<a aria-label=\"Dalgona Coffee - Read More\" class=\"campaign-recipe-card elevation-4\" href=\"/in/recipes/dalgona-coffee-recipe\">\n<div class=\"campaign-recipe-card__img-container\">\n<img alt=\"Dalgona Coffee\" loading=\"lazy\" src=\"/in/sites/default/files/2025-05/Dalgona_566x500.png\"/>\n</div>\n<div class=\"campaign-recipe-card__details\">\n<div class=\"campaign-recipe-card__tag\">\n<div class=\"tag bg--brand-green\">\n<span class=\"tag__label\">Cold</span>\n</div>\n</div>\n<div class=\"labelLargeBold campaign-recipe-card__name\">\n            Dalgona Coffee</div>\n<div class=\"bodySmallRegular campaign-recipe-card__description\">\n            Treat yourself with this delicious twist on iced coffee!</div>\n<div class=\"campaign-recipe-card__steps-and-ingredients\">\n<div class=\"campaign-recipe-card__steps-container\">\n<span class=\"labelSmallBold campaign-recipe-card__steps-count\">3</span>\n<span class=\"utilityTagHighCaps campaign-recipe-card__steps-label\">Steps </span>\n</div>\n<div class=\"campaign-recipe-card__steps-separator\"></div>\n<div class=\"campaign-recipe-card__ingredients-container\">\n<span class=\"labelSmallBold campaign-recipe-card__ingredients-count\">3</span>\n<span class=\"utilityTagHighCaps campaign-recipe-card__ingredients-label\">Ingredients</span>\n</div>\n</div>\n</div>\n</a> </div>\n<div aria-label=\"3 / 4\" class=\"swiper-slide campaign-carousel__swiper__fact-card-slide inactive-slide\">\n<div class=\"campaign-fact-card campaign-fact elevation-4 bg--paper-green\">\n<div class=\"campaign-fact-card__img-container\">\n<img alt=\"nescaf\u00e9 responsible sourced coffee\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2025-05/Nes_Web3_Article_Header_Sourcing_630x342.png\" loading=\"lazy\" src=\"/in/sites/default/files/2025-05/Nes_Web3_Article_Header_Sourcing_630x342.png\"/>\n</div>\n<div class=\"campaign-fact-card__details\">\n<div class=\"campaign-fact-card__name utilityScriptLarge\">\n            Did you know?</div>\n<div class=\"bodyMediumRegular campaign-fact-card__description\">\n<p>Since 2010, NESCAF\u00c9\u00ae Plan farmers received over 250 million coffee plantlets.</p></div>\n<div class=\"campaign-fact-card__cta\">\n<a aria-label=\"\" class=\"link link-auto labelSmallBold\" href=\"https://www.nescafe.com/in/sustainability/our-world/resist-climate-change\" rel=\"follow\" title=\"Explore more\">\n<span class=\"button-text\">Explore more</span>\n</a>\n</div>\n</div>\n</div> </div>\n<div aria-label=\"4 / 4\" class=\"swiper-slide campaign-carousel__swiper__fact-card-slide campaign-make-difference inactive-slide\">\n<div class=\"campaign-fact-card campaign-make-difference elevation-4 bg--paper-brown\">\n<div class=\"campaign-fact-card__img-container\">\n<img alt=\"nescaf\u00e9 sustainability\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-04/Homepage_MISC_DYK_630x342_0.png\" loading=\"lazy\" src=\"/in/sites/default/files/2023-04/Homepage_MISC_DYK_630x342_0.png\"/>\n</div>\n<div class=\"campaign-fact-card__details\">\n<div class=\"campaign-fact-card__name utilityScriptLarge\">\n            One cup makes a big difference</div>\n<div class=\"bodyMediumRegular campaign-fact-card__description\">\n<p>We are dedicated to renewing the working environments of coffee communities across the world, so they can live a better life.</p></div>\n<div class=\"campaign-fact-card__cta\">\n<a aria-label=\"\" class=\"link link-auto labelSmallBold\" href=\"https://www.nescafe.com/in/sustainability/our-world/greenhouse-gas-emissions\" rel=\"follow\" title=\"Explore more\">\n<span class=\"button-text\">Explore more</span>\n</a>\n</div>\n</div>\n</div> </div>\n</div>\n<div class=\"campaign-carousel__btn-control campaign-carousel--prev show-for-large\">\n<button aria-controls=\"swiper-wrapper-f22adee7ae164ea9\" aria-disabled=\"true\" aria-label=\"Previous slide\" class=\"swiper-control swiper-button swiper--prev elevation-1 swiper-button-lock swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1 7L17 7M1 7L6.33333 2M1 7L6.33333 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<div class=\"campaign-carousel__btn-control campaign-carousel--next show-for-large\">\n<button aria-controls=\"swiper-wrapper-f22adee7ae164ea9\" aria-disabled=\"true\" aria-label=\"Next slide\" class=\"swiper-control swiper-button swiper--next elevation-1 swiper-button-lock swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17 7L1 7M17 7L11.6667 2M17 7L11.6667 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<div class=\"swiper-pagination campaign-carousel__swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock\"><span aria-current=\"true\" aria-label=\"Go to slide 1\" class=\"swiper-pagination-bullet swiper-pagination-bullet-active\" role=\"button\" tabindex=\"0\"></span></div>\n<span aria-atomic=\"true\" aria-live=\"assertive\" class=\"swiper-notification\"></span></div>\n</div>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.69\")>",
+      "y_position": 3962,
+      "height": 933,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "campaign-carousel",
+        "grid-container",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "url(\"https://www.nescafe.com/in/themes/custom/nescafe/UI/build/images/30DECzi.jpg\")",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 38,
+          "weight": 400,
+          "color": "0.13,0.13,0.13,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "Your NESCAF\u00c9\u00ae today",
+        "subtitle": "",
+        "content": "Since 2010, NESCAF\u00c9\u00ae Plan farmers received over 250 million coffee plantlets. We are dedicated to renewing the working environments of coffee communities across the world, so they can live a better life.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "background_image": "scraped_images/imported_nescafe_com_1768042281/bg_8.jpg",
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_8.png"
+    },
+    {
+      "index": 9,
+      "element": "<section class=\"grid-container coffee-profiler animate-enter in-view\" data-api-url=\"https://www.nescafe.com/in/nc/cprofiler-status\">\n<div class=\"bg--paper-blue dummy-to-load-bg\"></div>\n<div class=\"bg--paper-white-heavy dummy-to-load-bg\"></div>\n<div class=\"parallax-bg-img-container\">\n<div class=\"parallax-img lazyLoadedImage\" style='background-image: url(\"/in/sites/default/files/2023-04/Product%20Finder_Header.jpeg.jpg\");'></div>\n</div>\n<div class=\"max-width-container grid-x\">\n<div class=\"cell small-12 medium-offset-1 medium-10 xlarge-offset-2 xlarge-8 padding-x\">\n<h2 class=\"heading animate-enter-fade-up-short animate-delay-3\">NESCAF\u00c9\u00ae Product Guide</h2>\n<div class=\"intro-info animate-enter-fade animate-delay-1 no-avatar-image\">\n<div class=\"greetings-container headline-h4 animate-enter-fade-up-short animate-delay-3 stagger-1\">\n<span class=\"hide greeting--morning\">Good Morning</span>\n<span class=\"hide greeting--afternoon\">Good Afternoon</span>\n<span class=\"greeting--evening\">Good Evening</span>\n<span class=\"hide greeting--night\">Good Night</span>\n</div>\n<div class=\"guide-text labelMediumRegular animate-enter-fade-up-short animate-delay-6\">We've got a wide range of products, so let's find the right NESCAF\u00c9\u00ae for you.</div>\n</div>\n</div>\n<div class=\"cell small-12 medium-offset-1 medium-10 xlarge-offset-2 xlarge-8 swiper-pagination-container padding-x animate-enter-fade-up-short animate-delay-15\">\n<div class=\"swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal\"><span class=\"swiper-pagination-progressbar-fill\" style=\"transform: translate3d(0px, 0px, 0px) scaleX(0.2) scaleY(1); transition-duration: 1000ms;\"></span></div>\n</div>\n<div class=\"cell small-12\">\n<div class=\"swiper coffee-profiler-swiper swiper-initialized swiper-horizontal swiper-backface-hidden\" style=\"min-height: 359px;\">\n<div aria-live=\"polite\" class=\"swiper-wrapper\" id=\"swiper-wrapper-49410ac55e6bc56bb\">\n<div aria-label=\"1 / 5\" class=\"swiper-slide initial-slide swiper-slide-active\" data-slide-index=\"0\" style=\"width: 1440px;\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"\" data-q-id=\"initq\" data-slide-index=\"\">\n<h3 class=\"question-label\">What\u2019s your experience with the world of coffee?</h3>\n<div class=\"options-container options-count--2\">\n<button aria-label=\"I love coffee and have been drinking it for years\" class=\"option elevation-2 has-hover bg--paper-white\" data-is-yes=\"1\" data-opt-exc-filter=\"\" data-opt-filter=\"\" data-opt-filter-vals=\"\" data-opt-id=\"inityes\" data-q-id=\"initq\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyloaded\" data-src=\"/in/sites/default/files/2023-03/yes-icon_0.png\" src=\"/in/sites/default/files/2023-03/yes-icon_0.png\"/>\n<span class=\"option-label labelMediumRegular\">I love coffee and have been drinking it for years</span>\n</button>\n<button aria-label=\"I'm brand new to the world of coffee\" class=\"option elevation-2 has-hover bg--paper-white\" data-is-yes=\"\" data-opt-exc-filter=\"\" data-opt-filter=\"\" data-opt-filter-vals=\"\" data-opt-id=\"initno\" data-q-id=\"initq\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyloaded\" data-src=\"/in/sites/default/files/2023-03/no-icon.png\" src=\"/in/sites/default/files/2023-03/no-icon.png\"/>\n<span class=\"option-label labelMediumRegular\">I'm brand new to the world of coffee</span>\n</button>\n</div>\n</div>\n<div class=\"grid-container\">\n<div class=\"grid-x\">\n</div>\n</div>\n</div>\n<div aria-label=\"2 / 5\" class=\"swiper-slide swiper-slide-next\" data-slide-index=\"1\" style=\"width: 1440px;\">\n<div class=\"slide-type--no\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"format\" data-q-id=\"391\" data-slide-index=\"1\">\n<h3 class=\"question-label\">Do you typically prefer hot or cold drinks?</h3>\n<div class=\"options-container options-count--2\">\n<button aria-label=\"Hot drinks\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"1\" data-opt-filter=\"format\" data-opt-filter-vals=\"508\" data-opt-id=\"394\" data-q-id=\"391\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/hot-coffee.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Hot drinks</span>\n</button>\n<button aria-label=\"Cold drinks\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"\" data-opt-filter-vals=\"\" data-opt-id=\"395\" data-q-id=\"391\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/cold-coffee.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Cold drinks</span>\n</button>\n</div>\n</div>\n</div>\n<div class=\"slide-type--yes hide\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"format\" data-q-id=\"390\" data-slide-index=\"1\">\n<h3 class=\"question-label\">Which of these match the way you have your coffee?</h3>\n<div class=\"options-container options-count--2\">\n<button aria-label=\"Hot\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"1\" data-opt-filter=\"format\" data-opt-filter-vals=\"508\" data-opt-id=\"392\" data-q-id=\"390\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/hot-coffee.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Hot</span>\n</button>\n<button aria-label=\"Cold\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"1\" data-opt-filter=\"format\" data-opt-filter-vals=\"187\" data-opt-id=\"393\" data-q-id=\"390\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/cold-coffee.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Cold</span>\n</button>\n</div>\n</div>\n</div>\n</div>\n<div aria-label=\"3 / 5\" class=\"swiper-slide\" data-slide-index=\"2\" style=\"width: 1440px;\">\n<div class=\"slide-type--no\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"type,features\" data-q-id=\"298\" data-slide-index=\"2\">\n<h3 class=\"question-label\">Which of these drink types do you think you'd prefer?</h3>\n<div class=\"options-container options-count--4\">\n<button aria-label=\"Coffee with milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"192,451,191,87\" data-opt-id=\"302\" data-q-id=\"298\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_withmilk.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with milk</span>\n</button>\n<button aria-label=\"Coffee without milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"88,196,194,197\" data-opt-id=\"303\" data-q-id=\"298\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q2_black.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee without milk</span>\n</button>\n<button aria-label=\"Coffee with added flavours\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"502\" data-opt-id=\"307\" data-q-id=\"298\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/DairyAltMilk_pictogram_0.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with added flavours</span>\n</button>\n<button aria-label=\"Coffee with non-dairy milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"features\" data-opt-filter-vals=\"73,253\" data-opt-id=\"450\" data-q-id=\"298\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/Q3_withmilk_1.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with non-dairy milk</span>\n</button>\n</div>\n</div>\n</div>\n<div class=\"slide-type--yes hide\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"type,features\" data-q-id=\"179\" data-slide-index=\"2\">\n<h3 class=\"question-label\">How do you mainly prefer to drink your coffee?</h3>\n<div class=\"options-container options-count--4\">\n<button aria-label=\"Coffee with milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"192,451,191,87\" data-opt-id=\"304\" data-q-id=\"179\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_withmilk_1.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with milk</span>\n</button>\n<button aria-label=\"Coffee with non-dairy milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"features\" data-opt-filter-vals=\"73,253\" data-opt-id=\"449\" data-q-id=\"179\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-08/Q3_withmilk_1.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with non-dairy milk</span>\n</button>\n<button aria-label=\"Coffee without milk\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"88,196,194,197\" data-opt-id=\"305\" data-q-id=\"179\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q2_black.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee without milk</span>\n</button>\n<button aria-label=\"Coffee with added flavours\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"type\" data-opt-filter-vals=\"502\" data-opt-id=\"203\" data-q-id=\"179\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/DairyAltMilk_pictogram_0.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Coffee with added flavours</span>\n</button>\n</div>\n</div>\n</div>\n</div>\n<div aria-label=\"4 / 5\" class=\"swiper-slide\" data-slide-index=\"3\" style=\"width: 1440px;\">\n<div class=\"slide-type--no\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"intensity\" data-q-id=\"312\" data-slide-index=\"3\">\n<h3 class=\"question-label\">What kind of intensity profile do you like in your drinks?</h3>\n<div class=\"options-container options-count--3\">\n<button aria-label=\"Smooth\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"76\" data-opt-id=\"309\" data-q-id=\"312\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_LightRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Smooth</span>\n</button>\n<button aria-label=\"Medium\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"77\" data-opt-id=\"310\" data-q-id=\"312\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_MediumRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Medium</span>\n</button>\n<button aria-label=\"Intense\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"78\" data-opt-id=\"311\" data-q-id=\"312\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_DarkRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Intense</span>\n</button>\n</div>\n</div>\n</div>\n<div class=\"slide-type--yes hide\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"intensity\" data-q-id=\"308\" data-slide-index=\"3\">\n<h3 class=\"question-label\">How intense do you like your coffee?</h3>\n<div class=\"options-container options-count--3\">\n<button aria-label=\"Light &amp; delicate\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"76\" data-opt-id=\"213\" data-q-id=\"308\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_LightRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Light &amp; delicate</span>\n</button>\n<button aria-label=\"Well-balanced\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"77\" data-opt-id=\"214\" data-q-id=\"308\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_MediumRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Well-balanced</span>\n</button>\n<button aria-label=\"Rich &amp; intense\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"intensity\" data-opt-filter-vals=\"78\" data-opt-id=\"215\" data-q-id=\"308\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q3_DarkRoast.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Rich &amp; intense</span>\n</button>\n</div>\n</div>\n</div>\n</div>\n<div aria-label=\"5 / 5\" class=\"swiper-slide last-slide\" data-slide-index=\"4\" style=\"width: 1440px;\">\n<div class=\"slide-type--no\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"format\" data-q-id=\"182\" data-slide-index=\"4\">\n<h3 class=\"question-label\">Now that you're getting into the coffee world, how do you think you'd enjoy coffee best?</h3>\n<div class=\"options-container options-count--2\">\n<button aria-label=\"Out and about\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"format\" data-opt-filter-vals=\"508\" data-opt-id=\"216\" data-q-id=\"182\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q4_OnTheGo.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Out and about</span>\n</button>\n<button aria-label=\"Quick &amp; easy,made in minutes\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"format\" data-opt-filter-vals=\"506,185\" data-opt-id=\"217\" data-q-id=\"182\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q4_Kettle.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Quick &amp; easy,made in minutes</span>\n</button>\n</div>\n</div>\n</div>\n<div class=\"slide-type--yes hide\">\n<div class=\"coffee-profiler-slide animate-enter-fade-up-short animate-delay-7\" data-q-filter=\"format\" data-q-id=\"183\" data-slide-index=\"4\">\n<h3 class=\"question-label\">Picture yourself sipping on coffee. Which of these match up to your imagination?</h3>\n<div class=\"options-container options-count--2\">\n<button aria-label=\"Out and about\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"format\" data-opt-filter-vals=\"508\" data-opt-id=\"314\" data-q-id=\"183\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-04/Q4_OnTheGo.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Out and about</span>\n</button>\n<button aria-label=\"Easy to make at home\" class=\"option elevation-2 has-hover bg--paper-white\" data-opt-exc-filter=\"\" data-opt-filter=\"format\" data-opt-filter-vals=\"506,185\" data-opt-id=\"313\" data-q-id=\"183\" disabled=\"disabled\" style=\"min-height: 159px;\">\n<img alt=\"\" class=\"option-icon lazyload\" data-src=\"/in/sites/default/files/2023-09/Q4_Kettle_0.png\" src=\"data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==\"/>\n<span class=\"option-label labelMediumRegular\">Easy to make at home</span>\n</button>\n</div>\n</div>\n</div>\n</div>\n</div>\n<div class=\"swiper-controls animate-enter-fade animate-delay-15\">\n<button aria-controls=\"swiper-wrapper-49410ac55e6bc56bb\" aria-disabled=\"true\" aria-label=\"Previous slide\" class=\"swiper-control swiper-button swiper-control--prev elevation-1 animate-enter-fade-right-short animate-delay-15 swiper-button-disabled\" disabled=\"\" tabindex=\"-1\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M1 7L17 7M1 7L6.33333 2M1 7L6.33333 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n<button aria-controls=\"swiper-wrapper-49410ac55e6bc56bb\" aria-disabled=\"false\" aria-label=\"Next slide\" class=\"swiper-control swiper-button swiper-control--next elevation-1 animate-enter-fade-left-short animate-delay-15\" disabled=\"disabled\" tabindex=\"0\">\n<svg fill=\"none\" height=\"14\" viewbox=\"0 0 18 14\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M17 7L1 7M17 7L11.6667 2M17 7L11.6667 12\" stroke=\"#222222\" stroke-linecap=\"square\" stroke-linejoin=\"round\" stroke-width=\"1.5\"></path>\n</svg>\n</button>\n</div>\n<span aria-atomic=\"true\" aria-live=\"assertive\" class=\"swiper-notification\"></span></div>\n</div>\n</div>\n<div class=\"error-message\" data-default-message=\"Error! Please try again.\">\n<span class=\"error-message-text bodyLargeRegular\">Error! Please try again.</span>\n</div>\n<form action=\"https://www.nescafe.com/in/coffee-profiler/result\" class=\"hide coffee-profiler-form\" method=\"POST\">\n<input name=\"type\" type=\"hidden\" value=\"\"/>\n<input name=\"intensity\" type=\"hidden\" value=\"\"/>\n<input name=\"format\" type=\"hidden\" value=\"\"/>\n<input name=\"features\" type=\"hidden\" value=\"\"/>\n<input name=\"exc-type\" type=\"hidden\" value=\"\"/>\n<input name=\"exc-intensity\" type=\"hidden\" value=\"\"/>\n<input name=\"exc-format\" type=\"hidden\" value=\"\"/>\n<input name=\"exc-features\" type=\"hidden\" value=\"\"/>\n</form>\n</section>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.37\")>",
+      "y_position": 4894,
+      "height": 941,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "coffee-profiler",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 0px",
+        "paddingBottom": "80px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "80px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "1.00,1.00,1.00,1.00"
+        },
+        "subtitle": {
+          "size": 32,
+          "weight": 700,
+          "color": "1.00,1.00,1.00,1.00"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 80,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "NESCAF\u00c9\u00ae Product Guide",
+        "subtitle": "What\u2019s your experience with the world of coffee?",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_9.png"
+    },
+    {
+      "index": 10,
+      "element": "<footer aria-label=\"Page Footer\">\n<section aria-label=\"Back to top module\" class=\"back-to-top\" style=\"display: none;\">\n<div class=\"back-to-top__cta\">\n<a aria-label=\"Back To Top\" class=\"button light-beige-accent bodySmallRegular\" href=\"javascript:void(0)\" rel=\"follow\" title=\"Back To Top\">\n<span class=\"button-text\">Back To Top</span>\n</a>\n</div>\n</section>\n<div class=\"global-footer grid-container\" id=\"global-footer\">\n<section aria-label=\"Global Footer Module\" class=\"footer-section grid-container\">\n<div class=\"logo-lang-container\">\n<div class=\"footer-logo\">\n<a aria-label=\"Nescafe logo links to the home page\" href=\"https://www.nescafe.com/in/\" title=\"Nescafe Logo\">\n<img alt=\"Nescafe Logo\" class=\"ls-is-cached lazyloaded\" data-src=\"/in/sites/default/files/latest_logo_white.png\" src=\"/in/sites/default/files/latest_logo_white.png\"/>\n</a>\n</div>\n<a aria-label=\"Link to select language and country\" class=\"link--underlined country-selector\" href=\"https://www.nescafe.com/in/country-selector\" title=\"India\">\n<img alt=\"Country Selector\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-02/country-selector_0.svg\" src=\"/in/sites/default/files/2023-02/country-selector_0.svg\"/>\n<span class=\"labelMediumRegular\">India</span>\n</a>\n</div>\n<div class=\"footer-social\">\n<span class=\"utilityLegend footer-social-title\">Follow NESCAF\u00c9\u00ae on social media for even more tasty content</span>\n<ul class=\"footer-social-links\">\n<li>\n<a aria-label=\"Facebook\" href=\"https://www.facebook.com/NescafeIndia/\" title=\"Facebook\">\n<img alt=\"facebook\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-02/Facebook.svg\" src=\"/in/sites/default/files/2023-02/Facebook.svg\"/>\n</a>\n</li>\n<li>\n<a aria-label=\"YouTube\" href=\"https://www.youtube.com/channel/UCJHur_-BZHdv32cWGvUt5FQ\" title=\"YouTube\">\n<img alt=\"youtube\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-02/Youtube.svg\" src=\"/in/sites/default/files/2023-02/Youtube.svg\"/>\n</a>\n</li>\n<li>\n<a aria-label=\"Instagram\" href=\"https://www.instagram.com/nescafeindia/?hl=en\" title=\"Instagram\">\n<img alt=\"instagram\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-02/Instagram_0.svg\" src=\"/in/sites/default/files/2023-02/Instagram_0.svg\"/>\n</a>\n</li>\n<li>\n<a aria-label=\"Twitter\" href=\"https://twitter.com/nescafeindia?lang=en\" title=\"Twitter\">\n<img alt=\"twitter\" class=\"lazyloaded\" data-src=\"/in/sites/default/files/2023-02/Twitter.svg\" src=\"/in/sites/default/files/2023-02/Twitter.svg\"/>\n</a>\n</li>\n</ul>\n</div>\n<div class=\"footer-site-links\">\n<div class=\"footer-links\">\n<ul>\n<li class=\"\">\n<a class=\"labelMediumRegular\" href=\"https://www.nescafe.com/in/contact-us\" title=\"Contact Us\">Contact Us</a>\n</li>\n<li class=\"\">\n<a class=\"labelMediumRegular\" href=\"https://www.nescafe.com/in/terms-conditions\" title=\"Terms &amp; Conditions\">Terms &amp; Conditions</a>\n</li>\n<li class=\"\">\n<a class=\"labelMediumRegular\" href=\"https://www.nescafe.com/in/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>\n</li>\n<li class=\"\">\n<a class=\"labelMediumRegular\" href=\"https://www.nescafe.com/in/cookies\" title=\"Cookies\">Cookies</a>\n</li>\n<li class=\"\">\n<a class=\"labelMediumRegular\" href=\"https://www.nescafe.com/in/sitemap\" title=\"Sitemap\">Sitemap</a>\n</li>\n<li class=\"external\">\n<a class=\"labelMediumRegular\" href=\"https://www.nestleprofessional.in/\" target=\"blank\" title=\"Visit Nestl\u00e9 Professional\">Visit Nestl\u00e9 Professional</a>\n</li>\n</ul>\n</div>\n<div class=\"legal-links\">\n<a aria-label=\"\" class=\"utilityNav\" href=\"https://www.nescafe.com/in/copyright\" title=\"NESCAFE\u00ae is registered trademarks of Soci\u00e9t\u00e9 de Produits Nestl\u00e9 S.A.\">NESCAFE<sup>\u00ae</sup> is registered trademarks of Soci\u00e9t\u00e9 de Produits Nestl\u00e9 S.A.</a>\n</div>\n</div>\n<!-- FeedBack button -->\n<div class=\"feedback_alt_text\" data-alttext=\"qsiFeedback Button\"></div>\n</section>\n</div>\n</footer>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"b3d23282a8ecb0c2836c693d16df6193\", element=\"f.25CB8AFC1D8A756AFC234883CE9D96B8.d.5AA7D2A0F7527E2BD94A9FD0D777C553.e.71\")>",
+      "y_position": 5835,
+      "height": 362,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [],
+      "id": "",
+      "type": 10,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(34, 34, 34)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(34, 34, 34)",
+        "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.13,0.13,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768042281/img_10.png"
+    }
+  ]
+}

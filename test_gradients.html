@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Gradient Test Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* Navbar with gradient */
+        nav {
+            background-image: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: white;
+        }
+
+        /* Hero section with vertical gradient */
+        .hero {
+            background-image: linear-gradient(to bottom, #f093fb 0%, #f5576c 100%);
+            min-height: 500px;
+            padding: 100px 50px;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 24px;
+        }
+
+        /* Features section with diagonal gradient */
+        .features {
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 50px;
+            color: white;
+        }
+
+        .features h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Pricing section with gradient */
+        .pricing {
+            background-image: linear-gradient(to left, #fa709a 0%, #fee140 100%);
+            padding: 80px 50px;
+            color: white;
+        }
+
+        .pricing h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* CTA section with radial gradient */
+        .cta {
+            background-image: radial-gradient(circle, #667eea 0%, #764ba2 100%);
+            padding: 100px 50px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta button {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* Footer with gradient */
+        footer {
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            padding: 60px 50px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Gradient Test Website</h1>
+    </nav>
+
+    <section class="hero">
+        <h1>Beautiful CSS Gradients</h1>
+        <p>Testing gradient rendering in Website Builder</p>
+    </section>
+
+    <section class="features">
+        <h2>Linear Gradient Features</h2>
+        <p>This section uses a 135deg diagonal gradient from purple to blue</p>
+    </section>
+
+    <section class="pricing">
+        <h2>Gradient Pricing</h2>
+        <p>This section uses a left-to-right gradient from pink to yellow</p>
+    </section>
+
+    <section class="cta">
+        <h2>Radial Gradient CTA</h2>
+        <p>This section uses a radial gradient from the center</p>
+        <button>Get Started</button>
+    </section>
+
+    <footer>
+        <p>Footer with cyan gradient</p>
+    </footer>
+</body>
+</html>

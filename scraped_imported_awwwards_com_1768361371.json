@@ -1,0 +1,3057 @@
+{
+  "template_name": "imported_awwwards_com_1768361371",
+  "url": "https://www.awwwards.com",
+  "scraped_date": "2026-01-14T09:00:59.950251",
+  "sections": [
+    {
+      "index": 0,
+      "type": 8,
+      "y_position": 58,
+      "height": 54,
+      "width": 380.3125,
+      "html_tag": "nav",
+      "classes": [
+        "nav-header-main"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(233, 233, 233)",
+        "color": "rgb(34, 34, 34)",
+        "padding": "71px 0px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 30,
+            "height": 16
+          },
+          {
+            "text": "Directory",
+            "href": "https://www.awwwards.com/directory/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 56.671875,
+            "height": 54
+          },
+          {
+            "text": "Academy\n\t\t\t\t\t\t\t\t\tNew",
+            "href": "https://www.awwwards.com/academy/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 90.53125,
+            "height": 54
+          },
+          {
+            "text": "Jobs",
+            "href": "https://www.awwwards.com/jobs/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 29.90625,
+            "height": 54
+          },
+          {
+            "text": "Market",
+            "href": "https://www.awwwards.com/market/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 43.328125,
+            "height": 54
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 14,
+            "height": 42
+          },
+          {
+            "text": "Be Pro",
+            "href": "https://www.awwwards.com/pro",
+            "bgColor": "rgb(34, 34, 34)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 80.015625,
+            "height": 42
+          },
+          {
+            "text": "Submit Website",
+            "href": "https://www.awwwards.com/submit/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 138.65625,
+            "height": 42
+          }
+        ],
+        "colors": {
+          "background": "rgb(233, 233, 233)",
+          "text": "rgb(34, 34, 34)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(233, 233, 233)",
+            "rgb(237, 237, 237)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(233, 233, 233)",
+      "text_color": "rgb(34, 34, 34)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(233, 233, 233)",
+        "rgb(237, 237, 237)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "Arial",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 14,
+      "button_font_weight": 400,
+      "visual_height": 12487,
+      "cv_adjusted": true
+    },
+    {
+      "index": 1,
+      "type": 8,
+      "y_position": 111,
+      "height": 208,
+      "width": 180,
+      "html_tag": "nav",
+      "classes": [
+        "search-inspiration__nav"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(34, 34, 34)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "Site of the Day\n                                Jan 13, 2026\n                                Score 7.37 of 10",
+        "subtitle": null,
+        "content": "",
+        "headings": [
+          {
+            "text": "Site of the Day\n                                Jan 13, 2026\n                                Score 7.37 of 10",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Lightship",
+            "tag": "h3",
+            "fontSize": 170,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "Collections",
+            "href": "https://www.awwwards.com/collections/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 16px 0px 38px",
+            "width": 180,
+            "height": 40
+          },
+          {
+            "text": "Blog",
+            "href": "https://www.awwwards.com/blog/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 16px 0px 38px",
+            "width": 180,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/lightship-1",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 1920,
+            "height": 1536
+          }
+        ],
+        "colors": {
+          "background": "rgb(233, 233, 233)",
+          "text": "rgb(34, 34, 34)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(237, 237, 237)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(233, 233, 233)",
+      "text_color": "rgb(34, 34, 34)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(237, 237, 237)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "Collections",
+      "button_link": "https://www.awwwards.com/collections/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 14,
+      "button_font_weight": 400
+    },
+    {
+      "index": 2,
+      "type": 2,
+      "y_position": 1124,
+      "height": 138.375,
+      "width": 246,
+      "html_tag": "div",
+      "classes": [
+        "video-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/innovative-web-design-in-figma-a-step-by-step-process",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 13,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 246,
+            "height": 138.375
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(255, 255, 255)",
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(255, 255, 255)",
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/academy/course/innovative-web-design-in-figma-a-step-by-step-process",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 13,
+      "button_font_weight": 300
+    },
+    {
+      "index": 3,
+      "type": 3,
+      "y_position": 1873.1875,
+      "height": 999,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "nominees",
+      "styles": {},
+      "content": {
+        "title": "Latest",
+        "subtitle": "Granyon - Designing for Good",
+        "content": "",
+        "headings": [
+          {
+            "text": "Latest",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Nominees",
+            "tag": "h3",
+            "fontSize": 170,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Granyon - Designing for Good",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Granyon - Designing for Good",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Auriga Space",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Auriga Space",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "EE72",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "EE72",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/granyon-designing-for-good",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "Vote Now",
+            "href": "https://www.awwwards.com/sites/granyon-designing-for-good",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "8px",
+            "padding": "9.8px 19.6px",
+            "width": 120.328125,
+            "height": 47.59375
+          },
+          {
+            "text": "",
+            "href": "https://granyon.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Granyon - Designing for Good",
+            "href": "https://www.awwwards.com/sites/granyon-designing-for-good",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 292.84375,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/auriga-space",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "Vote Now",
+            "href": "https://www.awwwards.com/sites/auriga-space",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "8px",
+            "padding": "9.8px 19.6px",
+            "width": 120.328125,
+            "height": 47.59375
+          },
+          {
+            "text": "",
+            "href": "https://www.aurigaspace.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Auriga Space",
+            "href": "https://www.awwwards.com/sites/auriga-space",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 132.203125,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/ee72",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "Vote Now",
+            "href": "https://www.awwwards.com/sites/ee72",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "8px",
+            "padding": "9.8px 19.6px",
+            "width": 120.328125,
+            "height": 47.59375
+          },
+          {
+            "text": "",
+            "href": "https://ee72.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "EE72",
+            "href": "https://www.awwwards.com/sites/ee72",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 49.8125,
+            "height": 26
+          },
+          {
+            "text": "View Nominees",
+            "href": "https://www.awwwards.com/websites/nominees/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 136.15625,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/sites/granyon-designing-for-good",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 22,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_20.png"
+    },
+    {
+      "index": 4,
+      "type": 3,
+      "y_position": 3072.1875,
+      "height": 1396,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "winners",
+      "styles": {},
+      "content": {
+        "title": "Winners",
+        "subtitle": "Lightship",
+        "content": "",
+        "headings": [
+          {
+            "text": "Winners",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Recent Sitesof the Day.",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Lightship",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Lightship",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Max Mara - Untamed Heroine",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Max Mara - Untamed Heroine",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "OGAKI",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "OGAKI",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "IntegratedBio",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "IntegratedBio",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Estrela",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Estrela",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Slush",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Slush",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/lightship-1",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://www.lightshiprv.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Lightship",
+            "href": "https://www.awwwards.com/sites/lightship-1",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 91.265625,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/max-mara-untamed-heroine",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://untamedheroinegame.maxmara.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Max Mara - Untamed Heroine",
+            "href": "https://www.awwwards.com/sites/max-mara-untamed-heroine",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 289.890625,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/ogaki",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://www.ogakidigital.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "OGAKI",
+            "href": "https://www.awwwards.com/sites/ogaki",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 65.90625,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/integratedbio",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://integratedbiosciences.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "IntegratedBio",
+            "href": "https://www.awwwards.com/sites/integratedbio",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 133.484375,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/estrela",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://estrela.studio/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Estrela",
+            "href": "https://www.awwwards.com/sites/estrela",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 67.6875,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/sites/slush",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 592,
+            "height": 444
+          },
+          {
+            "text": "",
+            "href": "https://slush.app/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Slush",
+            "href": "https://www.awwwards.com/sites/slush",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 54.875,
+            "height": 26
+          },
+          {
+            "text": "View Winners",
+            "href": "https://www.awwwards.com/websites/sites_of_the_day/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 123.609375,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/sites/lightship-1",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 22,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_14.jpg"
+    },
+    {
+      "index": 5,
+      "type": 3,
+      "y_position": 4668.1875,
+      "height": 933.59375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "courses",
+      "styles": {},
+      "content": {
+        "title": "Academy",
+        "subtitle": "Learn UI Design with Figma from Scratch",
+        "content": "",
+        "headings": [
+          {
+            "text": "Academy",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Learn from thebest instructors.",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Learn UI Design with Figma from Scratch",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Nordic Design Intensive Course: Complete Branding",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Innovative Web Design in Figma: A Step-by-Step Process",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Learn Figma from 0 to 100 (10 Courses)",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/ui-design-for-beginners-with-figma",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 263
+          },
+          {
+            "text": "Learn UI Design with Figma from Scratch",
+            "href": "https://www.awwwards.com/academy/course/ui-design-for-beginners-with-figma",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 348.0625,
+            "height": 57
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/ui-design-for-beginners-with-figma",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 20,
+            "height": 20
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/nordic-design-intensive-course-complete-branding",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 263
+          },
+          {
+            "text": "Nordic Design Intensive Course: Complete Branding",
+            "href": "https://www.awwwards.com/academy/course/nordic-design-intensive-course-complete-branding",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 344.78125,
+            "height": 57
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/nordic-design-intensive-course-complete-branding",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 20,
+            "height": 20
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/innovative-web-design-in-figma-a-step-by-step-process",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 263
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/innovative-web-design-in-figma-a-step-by-step-process",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 20,
+            "height": 20
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/learn-figma-from-a-to-z",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 263
+          },
+          {
+            "text": "Learn Figma from 0 to 100 (10 Courses)",
+            "href": "https://www.awwwards.com/academy/course/learn-figma-from-a-to-z",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 317.296875,
+            "height": 57
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/academy/course/learn-figma-from-a-to-z",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 20,
+            "height": 20
+          },
+          {
+            "text": "View Academy",
+            "href": "https://www.awwwards.com/academy/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 131.65625,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgba(255, 255, 255, 0.9)",
+            "rgb(237, 237, 237)",
+            "rgb(255, 240, 131)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgba(255, 255, 255, 0.9)",
+        "rgb(237, 237, 237)",
+        "rgb(255, 240, 131)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/academy/course/ui-design-for-beginners-with-figma",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 15,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8
+    },
+    {
+      "index": 6,
+      "type": 3,
+      "y_position": 5801.78125,
+      "height": 1067.703125,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "collections",
+      "styles": {},
+      "content": {
+        "title": "Collections",
+        "subtitle": "Transitions",
+        "content": "",
+        "headings": [
+          {
+            "text": "Collections",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Explore a wide variety of collections.",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Transitions",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "CSS Animations",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/awwwards/collections/transitions/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 898,
+            "height": 641.703125
+          },
+          {
+            "text": "Transitions",
+            "href": "https://www.awwwards.com/awwwards/collections/transitions/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 109.65625,
+            "height": 26
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/du-haihang/collections/css-animations/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 898,
+            "height": 641.703125
+          },
+          {
+            "text": "CSS Animations",
+            "href": "https://www.awwwards.com/du-haihang/collections/css-animations/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 159.4375,
+            "height": 26
+          },
+          {
+            "text": "View Collections",
+            "href": "https://www.awwwards.com/collections/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 143.96875,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/awwwards/collections/transitions/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 22,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_2.jpg"
+    },
+    {
+      "index": 7,
+      "type": 3,
+      "y_position": 7069.484375,
+      "height": 1658.984375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "directory",
+      "styles": {},
+      "content": {
+        "title": "Directory",
+        "subtitle": "Merlin",
+        "content": "International International International",
+        "headings": [
+          {
+            "text": "Directory",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "w.creators",
+            "tag": "h3",
+            "fontSize": 170,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Merlin",
+            "tag": "h2",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Baunfire",
+            "tag": "h2",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Isadora Digital Agency",
+            "tag": "h2",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "International",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "International",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "International",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/MerlinStudio/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "text": "Merlin",
+            "href": "https://www.awwwards.com/MerlinStudio/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 140.1875,
+            "height": 60
+          },
+          {
+            "text": "merlin.studio",
+            "href": "https://merlin.studio/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 83.609375,
+            "height": 19
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/baunfire/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "text": "Baunfire",
+            "href": "https://www.awwwards.com/baunfire/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 187.953125,
+            "height": 60
+          },
+          {
+            "text": "baunfire.com",
+            "href": "https://www.baunfire.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 85.828125,
+            "height": 19
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/isadoradigitalagency/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 22,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 52,
+            "height": 52
+          },
+          {
+            "text": "Isadora Digital Agency",
+            "href": "https://www.awwwards.com/isadoradigitalagency/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 318.515625,
+            "height": 115
+          },
+          {
+            "text": "isadoradigitalagency.com",
+            "href": "http://isadoradigitalagency.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 166.3125,
+            "height": 19
+          },
+          {
+            "text": "View",
+            "href": "https://www.awwwards.com/visualidentity/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 71.40625,
+            "height": 42
+          },
+          {
+            "text": "View",
+            "href": "https://www.awwwards.com/TheFinchDesign/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 71.40625,
+            "height": 42
+          },
+          {
+            "text": "View",
+            "href": "https://www.awwwards.com/Lumina-Design/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 71.40625,
+            "height": 42
+          },
+          {
+            "text": "View",
+            "href": "https://www.awwwards.com/enricsneelamkavil/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 20px",
+            "width": 71.40625,
+            "height": 42
+          },
+          {
+            "text": "View Directory",
+            "href": "https://www.awwwards.com/directory/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 129.953125,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgba(255, 255, 255, 0.2)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 15,
+          "contentWeight": 300,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.2)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 15,
+      "content_font_weight": 300,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/MerlinStudio/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(255, 255, 255)",
+      "button_font_size": 22,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_24.png"
+    },
+    {
+      "index": 8,
+      "type": 3,
+      "y_position": 8928.46875,
+      "height": 918.84375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "blog",
+      "styles": {},
+      "content": {
+        "title": "Blog",
+        "subtitle": "Shopify vs WooCommerce: What's the better?",
+        "content": "",
+        "headings": [
+          {
+            "text": "Blog",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Explore thesepopular posts.",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Shopify vs WooCommerce: What's the better?",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "100 Best Free Fonts for Designers in 2025",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Trendy Gradients in Web Design",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "30 Great Websites with Parallax Scrolling",
+            "tag": "h3",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/shopify-vs-woocommerce.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329.25
+          },
+          {
+            "text": "Shopify vs WooCommerce: What's the better?",
+            "href": "https://www.awwwards.com/shopify-vs-woocommerce.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 294.015625,
+            "height": 57
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/best-free-fonts.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329.25
+          },
+          {
+            "text": "100 Best Free Fonts for Designers in 2025",
+            "href": "https://www.awwwards.com/best-free-fonts.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 360.421875,
+            "height": 57
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/gradients-in-web-design-elements.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329.25
+          },
+          {
+            "text": "Trendy Gradients in Web Design",
+            "href": "https://www.awwwards.com/gradients-in-web-design-elements.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 345.09375,
+            "height": 29
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/30-great-websites-with-parallax-scrolling.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329.25
+          },
+          {
+            "text": "30 Great Websites with Parallax Scrolling",
+            "href": "https://www.awwwards.com/30-great-websites-with-parallax-scrolling.html",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 342.375,
+            "height": 57
+          },
+          {
+            "text": "View Blog",
+            "href": "https://www.awwwards.com/blog/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 95.359375,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/shopify-vs-woocommerce.html",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 14,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_18.jpg"
+    },
+    {
+      "index": 9,
+      "type": 3,
+      "y_position": 10047.3125,
+      "height": 1047.8125,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "market",
+      "styles": {},
+      "content": {
+        "title": "Market",
+        "subtitle": "Roundsite \u2014 Professional & SaaS Webflow Template",
+        "content": "",
+        "headings": [
+          {
+            "text": "Market",
+            "tag": "h2",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "A curated marketplace  for digital & physical products",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Roundsite \u2014 Professional & SaaS Webflow Template",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "KYMA - AI Automation Agency Framer Template",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Vertical \u2014 Editorial-Style Portfolio Template",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Catalis | Technology Webflow template (FREE FIGMA)",
+            "tag": "h3",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/market/product_6964a4be25755947633443",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329
+          },
+          {
+            "text": "Roundsite \u2014 Professional & SaaS Webflow Template",
+            "href": "https://www.awwwards.com/market/product_6964a4be25755947633443",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 326.546875,
+            "height": 52.40625
+          },
+          {
+            "text": "View Product",
+            "href": "https://www.awwwards.com/market/product_6964a4be25755947633443",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 90
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/market/product_69606503229fc228951067",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329
+          },
+          {
+            "text": "KYMA - AI Automation Agency Framer Template",
+            "href": "https://www.awwwards.com/market/product_69606503229fc228951067",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 378.28125,
+            "height": 52.40625
+          },
+          {
+            "text": "View Product",
+            "href": "https://www.awwwards.com/market/product_69606503229fc228951067",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 90
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/market/product_695bb7df59387335260142",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329
+          },
+          {
+            "text": "Vertical \u2014 Editorial-Style Portfolio Template",
+            "href": "https://www.awwwards.com/market/product_695bb7df59387335260142",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 22,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 334.609375,
+            "height": 52.40625
+          },
+          {
+            "text": "View Product",
+            "href": "https://www.awwwards.com/market/product_695bb7df59387335260142",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 90
+          },
+          {
+            "text": "",
+            "href": "https://www.awwwards.com/market/product_695bfed8bdf05325245874",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 329
+          },
+          {
+            "text": "View Product",
+            "href": "https://www.awwwards.com/market/product_695bfed8bdf05325245874",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 15,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 439,
+            "height": 90
+          },
+          {
+            "text": "View Market",
+            "href": "https://www.awwwards.com/market/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 114.140625,
+            "height": 16
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgba(255, 255, 255, 0.9)",
+            "rgb(250, 93, 41)"
+          ]
+        },
+        "typography": {
+          "titleSize": 14,
+          "titleWeight": 400,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgba(255, 255, 255, 0.9)",
+        "rgb(250, 93, 41)"
+      ],
+      "title_font_size": 14,
+      "title_font_weight": 400,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "",
+      "button_link": "https://www.awwwards.com/market/product_6964a4be25755947633443",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 15,
+      "button_font_weight": 300,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8
+    },
+    {
+      "index": 10,
+      "type": 3,
+      "y_position": 11295.125,
+      "height": 558,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "anchor-section"
+      ],
+      "id": "recomendations",
+      "styles": {},
+      "content": {
+        "title": "Submit your website for visibility and recognition",
+        "subtitle": null,
+        "content": "Share your work Be a member",
+        "headings": [
+          {
+            "text": "Submit your website for visibility and recognition",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Get access to special pro features",
+            "tag": "h3",
+            "fontSize": 50,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Share your work",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          },
+          {
+            "text": "Be a member",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Inter Tight\""
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Submit Website",
+            "href": "https://www.awwwards.com/submit/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 28.8px",
+            "width": 180.453125,
+            "height": 72
+          },
+          {
+            "text": "FAQs",
+            "href": "https://www.awwwards.com/faqs/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 31.671875,
+            "height": 14
+          },
+          {
+            "text": "Be Pro",
+            "href": "https://www.awwwards.com/plans/user-plans",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "8px",
+            "padding": "0px 28.8px",
+            "width": 110.3125,
+            "height": 72
+          },
+          {
+            "text": "FAQs",
+            "href": "https://www.awwwards.com/faqs/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14,
+            "fontWeight": 300,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 31.671875,
+            "height": 14
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 50,
+          "titleWeight": 600,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 14,
+          "contentWeight": 300,
+          "contentColor": "rgb(255, 255, 255)",
+          "fontFamily": "\"Inter Tight\""
+        }
+      },
+      "padding": 120,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 50,
+      "title_font_weight": 600,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 14,
+      "content_font_weight": 300,
+      "content_color": "rgb(255, 255, 255)",
+      "font_family": "\"Inter Tight\"",
+      "button_text": "Submit Website",
+      "button_link": "https://www.awwwards.com/submit/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(255, 255, 255)",
+      "button_font_size": 18,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_awwwards_com_1768361371/img_34.jpg"
+    },
+    {
+      "index": 11,
+      "type": 3,
+      "y_position": 12053.125,
+      "height": 433.796875,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [],
+      "id": "footer",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "Websites",
+            "href": "https://www.awwwards.com/websites/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 58.765625,
+            "height": 17
+          },
+          {
+            "text": "Collections",
+            "href": "https://www.awwwards.com/collections/search/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 70.5625,
+            "height": 17
+          },
+          {
+            "text": "Elements",
+            "href": "https://www.awwwards.com/elements/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 58.546875,
+            "height": 17
+          },
+          {
+            "text": "Academy",
+            "href": "https://www.awwwards.com/academy/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 59.78125,
+            "height": 17
+          },
+          {
+            "text": "Jobs",
+            "href": "https://www.awwwards.com/jobs/search/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 30.671875,
+            "height": 17
+          },
+          {
+            "text": "Market",
+            "href": "https://www.awwwards.com/market/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 44.453125,
+            "height": 17
+          },
+          {
+            "text": "Directory",
+            "href": "https://www.awwwards.com/directory/search/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 58.296875,
+            "height": 17
+          },
+          {
+            "text": "Conferences",
+            "href": "https://conference.awwwards.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 81.125,
+            "height": 17
+          },
+          {
+            "text": "FAQs",
+            "href": "https://www.awwwards.com/faqs/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 33,
+            "height": 17
+          },
+          {
+            "text": "About Us",
+            "href": "https://www.awwwards.com/about-us/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 58.4375,
+            "height": 17
+          },
+          {
+            "text": "Contact Us",
+            "href": "https://www.awwwards.com/contact-us/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 70.5,
+            "height": 17
+          },
+          {
+            "text": "Cookies Policy",
+            "href": "https://www.awwwards.com/cookies-policy/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 87.21875,
+            "height": 17
+          },
+          {
+            "text": "Legal Terms",
+            "href": "https://www.awwwards.com/terms/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 73.1875,
+            "height": 17
+          },
+          {
+            "text": "Privacy Policy",
+            "href": "https://www.awwwards.com/privacy-policy/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 82.203125,
+            "height": 17
+          },
+          {
+            "text": "Instagram",
+            "href": "https://www.instagram.com/awwwards",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 60.125,
+            "height": 17
+          },
+          {
+            "text": "LinkedIn",
+            "href": "https://www.linkedin.com/company/awwwards",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 49.984375,
+            "height": 17
+          },
+          {
+            "text": "Twitter",
+            "href": "https://twitter.com/awwwards",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 41.640625,
+            "height": 17
+          },
+          {
+            "text": "Facebook",
+            "href": "https://www.facebook.com/awwwards",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 59.703125,
+            "height": 17
+          },
+          {
+            "text": "YouTube",
+            "href": "https://www.youtube.com/awwwardstv",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 52.15625,
+            "height": 17
+          },
+          {
+            "text": "TikTok",
+            "href": "https://www.tiktok.com/@awwwards.com",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 39.046875,
+            "height": 17
+          },
+          {
+            "text": "Pinterest",
+            "href": "https://www.pinterest.es/awwwards/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 53.140625,
+            "height": 17
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "Websites",
+      "button_link": "https://www.awwwards.com/websites/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 14,
+      "button_font_weight": 600,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Inter Tight\""
+    ],
+    "sizes": {
+      "h2": 24,
+      "h3": 38,
+      "p": 15,
+      "button": 14,
+      "a": 17
+    },
+    "weights": [
+      300,
+      400,
+      500,
+      600
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [
+      6
+    ],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "template_name": "imported_wix_com_1768849607",
+  "source_url": "https://www.wix.com/website-template/view/html/5601?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F5&tpClick=view_button&esi=ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f",
+  "sections": [
+    {
+      "type": "content",
+      "name": "Content Section 1",
+      "index": 0,
+      "html_tag": "section",
+      "classes": [],
+      "id": "",
+      "bounds": {},
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {},
+        "typography": {},
+        "css": {}
+      },
+      "height": 500,
+      "width": 1920,
+      "y_position": 0,
+      "title": "Content Section 1",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)",
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgb(200, 100, 125)",
+      "button_text_color": "rgb(255, 255, 255)",
+      "buttons": [],
+      "images": [
+        {
+          "src": "//static.wixstatic.com/media/6b32a101-4078-4c4a-9c84-c55c222d2a54.png",
+          "alt": "",
+          "width": 150.0,
+          "height": 120.0,
+          "y": 399.5,
+          "local_path": "scraped_images/imported_wix_com_1768849607/image_000.png"
+        }
+      ],
+      "section_image": "//static.wixstatic.com/media/6b32a101-4078-4c4a-9c84-c55c222d2a54.png",
+      "background_image": "",
+      "hero_animation_images": [],
+      "enable_hero_animation": false,
+      "hero_animation_speed": 2.0,
+      "gallery_images": []
+    }
+  ],
+  "metadata": {
+    "name": "imported_wix_com_1768849607",
+    "source_url": "https://www.wix.com/website-template/view/html/5601?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F5&tpClick=view_button&esi=ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f",
+    "domain": "www.wix.com",
+    "scraped_at": "2026-01-20T00:39:01.895292",
+    "scraper": "StealthBrowserMCP",
+    "version": "1.0"
+  },
+  "typography": [
+    [
+      "span",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u00e3\u0083\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u00aa\u00e3\u0082\u00aa, meiryo, \"\u00e3\u0083\u0092\u00e3\u0083\u00a9\u00e3\u0082\u00ae\u00e3\u0083\u008e\u00e8\u00a7\u0092\u00e3\u0082\u00b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(32, 48, 60)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "a",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u00e3\u0083\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u00aa\u00e3\u0082\u00aa, meiryo, \"\u00e3\u0083\u0092\u00e3\u0083\u00a9\u00e3\u0082\u00ae\u00e3\u0083\u008e\u00e8\u00a7\u0092\u00e3\u0082\u00b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 238)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "p",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u00e3\u0083\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u00aa\u00e3\u0082\u00aa, meiryo, \"\u00e3\u0083\u0092\u00e3\u0083\u00a9\u00e3\u0082\u00ae\u00e3\u0083\u008e\u00e8\u00a7\u0092\u00e3\u0082\u00b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(32, 48, 60)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h1",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Madefor Display\", \"Helvetica Neue\", Helvetica, Arial, \u00e3\u0083\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u00aa\u00e3\u0082\u00aa, meiryo, \"\u00e3\u0083\u0092\u00e3\u0083\u00a9\u00e3\u0082\u00ae\u00e3\u0083\u008e\u00e8\u00a7\u0092\u00e3\u0082\u00b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "36px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "48px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(32, 48, 60)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h3",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u00e3\u0083\u00a1\u00e3\u0082\u00a4\u00e3\u0083\u00aa\u00e3\u0082\u00aa, meiryo, \"\u00e3\u0083\u0092\u00e3\u0083\u00a9\u00e3\u0082\u00ae\u00e3\u0083\u008e\u00e8\u00a7\u0092\u00e3\u0082\u00b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "700"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(32, 48, 60)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "grid_system": {},
+  "images": {
+    "directory": "scraped_images/imported_wix_com_1768849607",
+    "count": 3,
+    "mapping": {
+      "https://static.wixstatic.com/media/6b32a101-4078-4c4a-9c84-c55c222d2a54.png": "scraped_images/imported_wix_com_1768849607/image_000.png",
+      "https://wix-2-adswizz.attribution.adswizz.com/fire?pixelId=e56c7ecd-4d0c-46f2-8786-7128ffea61b0&type=sitevisit&subtype=PageVisit1&aw_0_req.gdpr=true&redirectURL=aHR0cHM6Ly9waXhlbC50YXBhZC5jb20vaWRzeW5jL2V4L3JlY2VpdmU_cGFydG5lcl9pZD0yOTk0JjwjaWYgcmVxdWVzdC5saXN0ZW5lcklkP21hdGNoZXMoJ1swLTlhLWZdezh9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezEyfScpPnBhcnRuZXJfdHlwZWRfZGlkPSU3QiUyMkhBUkRXQVJFX0FORFJPSURfQURfSUQlMjIlM0ElMjIke3JlcXVlc3QubGlzdGVuZXJJZH0lMjIlN0Q8I2Vsc2VpZiByZXF1ZXN0Lmxpc3RlbmVySWQ_bWF0Y2hlcygnWzAtOUEtRl17OH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17MTJ9Jyk-cGFydG5lcl90eXBlZF9kaWQ9JTdCJTIySEFSRFdBUkVfSURGQSUyMiUzQSUyMiR7cmVxdWVzdC5saXN0ZW5lcklkfSUyMiU3RDwjZWxzZT5wYXJ0bmVyX2RldmljZV9pZD0ke3JlcXVlc3QubGlzdGVuZXJJZCF9PC8jaWY-": "scraped_images/imported_wix_com_1768849607/image_001.png",
+      "https://static.wixstatic.com/media/53d18152-2a6c-49d6-9c36-3e0ba63fcce9.png": "scraped_images/imported_wix_com_1768849607/image_002.png"
+    }
+  },
+  "custom_fonts": [],
+  "raw_html": "<!DOCTYPE html><html><head>\n    <title>Physiotherapy Clinic (Contemporary) Website Template | WIX</title>\n    \n    <!-- BEGIN SENTRY -->\n    <script src=\"https://ct.pinterest.com/static/ct/token_create.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://analytics.tiktok.com/i18n/pixel/static/identify_b46e7c41.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://www.googletagmanager.com/gtag/destination?id=AW-1041825691&amp;cx=c&amp;gtm=4e61e1\"></script><script type=\"text/javascript\" async=\"\" src=\"https://www.googletagmanager.com/gtag/destination?id=AW-1006927621&amp;cx=c&amp;gtm=4e61e1\"></script><script type=\"text/javascript\" async=\"\" src=\"https://analytics.tiktok.com/i18n/pixel/static/main.MTBmYzFiNDExMA.js\" data-id=\"CKA47TJC77U7REM9C0R0\"></script><script type=\"text/javascript\" async=\"\" src=\"https://analytics.tiktok.com/i18n/pixel/static/main.MTBmYzFiNDExMQ.js\" data-id=\"C3SI0CO4C3S2QIOV7NI0\"></script><script async=\"\" src=\"https://s.pinimg.com/ct/lib/main.e258cfd2.js\"></script><script async=\"\" src=\"https://cdn.mgln.ai/pixel.min.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=C3SI0CO4C3S2QIOV7NI0&amp;lib=ttq\"></script><script src=\"https://s.yimg.com/wi/ytc.js\" async=\"\"></script><script type=\"text/javascript\" async=\"\" src=\"https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=CKA47TJC77U7REM9C0R0&amp;lib=ttq\"></script><script src=\"https://connect.facebook.net/signals/config/704136006388169?v=2.9.250&amp;r=stable&amp;domain=www.wix.com&amp;hme=842ba5a67bc11ec88742f1d93fdc2338abd91b60fc0531689cc660af96e193d9&amp;ex_m=94%2C156%2C134%2C20%2C66%2C67%2C127%2C62%2C42%2C128%2C71%2C61%2C10%2C141%2C80%2C15%2C93%2C122%2C115%2C69%2C72%2C121%2C138%2C102%2C143%2C7%2C3%2C4%2C6%2C5%2C2%2C81%2C91%2C144%2C223%2C167%2C56%2C225%2C226%2C49%2C182%2C27%2C68%2C231%2C230%2C170%2C29%2C55%2C9%2C58%2C87%2C88%2C89%2C95%2C118%2C28%2C26%2C120%2C117%2C116%2C135%2C70%2C137%2C136%2C44%2C54%2C111%2C14%2C140%2C39%2C212%2C214%2C177%2C23%2C24%2C25%2C17%2C18%2C38%2C34%2C36%2C35%2C76%2C82%2C86%2C100%2C126%2C129%2C40%2C101%2C21%2C19%2C107%2C63%2C32%2C131%2C130%2C132%2C123%2C22%2C31%2C53%2C99%2C139%2C64%2C16%2C133%2C104%2C75%2C30%2C192%2C163%2C282%2C210%2C154%2C195%2C188%2C164%2C97%2C119%2C74%2C109%2C48%2C41%2C43%2C103%2C108%2C114%2C52%2C59%2C113%2C47%2C50%2C46%2C90%2C142%2C0%2C112%2C13%2C110%2C11%2C1%2C51%2C83%2C57%2C60%2C106%2C79%2C78%2C145%2C146%2C84%2C85%2C8%2C92%2C45%2C124%2C77%2C73%2C65%2C105%2C96%2C37%2C125%2C33%2C98%2C12%2C147\" async=\"\"></script><script async=\"\" src=\"//connect.facebook.net/en_US/fbevents.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://s.pinimg.com/ct/core.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://snap.licdn.com/li.lms-analytics/insight.min.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://static.ads-twitter.com/uwt.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://bat.bing.com/bat.js\"></script><script type=\"text/javascript\" async=\"\" src=\"https://www.googletagmanager.com/gtag/js?id=G-46CXENL4NC&amp;cx=c&amp;gtm=4e61e1\"></script><script type=\"text/javascript\" async=\"\" src=\"https://www.googletagmanager.com/gtag/js?id=DC-4382365&amp;cx=c&amp;gtm=4e61e1\"></script><script type=\"text/javascript\" async=\"\" src=\"https://www.redditstatic.com/ads/pixel.js\"></script><script async=\"\" src=\"https://www.googletagmanager.com/gtm.js?id=GTM-MDD5C4\"></script><script id=\"sentry\">\n  (function(c,u,v,n,p,e,z,A,w){function k(a){if(!x){x=!0;var l=u.getElementsByTagName(v)[0],d=u.createElement(v);d.src=A;d.crossorigin=\"anonymous\";d.addEventListener(\"load\",function(){try{c[n]=r;c[p]=t;var b=c[e],d=b.init;b.init=function(a){for(var b in a)Object.prototype.hasOwnProperty.call(a,b)&&(w[b]=a[b]);d(w)};B(a,b)}catch(g){console.error(g)}});l.parentNode.insertBefore(d,l)}}function B(a,l){try{for(var d=m.data,b=0;b<a.length;b++)if(\"function\"===typeof a[b])a[b]();var e=!1,g=c.__SENTRY__;\"undefined\"!==\n  typeof g&&g.hub&&g.hub.getClient()&&(e=!0);g=!1;for(b=0;b<d.length;b++)if(d[b].f){g=!0;var f=d[b];!1===e&&\"init\"!==f.f&&l.init();e=!0;l[f.f].apply(l,f.a)}!1===e&&!1===g&&l.init();var h=c[n],k=c[p];for(b=0;b<d.length;b++)d[b].e&&h?h.apply(c,d[b].e):d[b].p&&k&&k.apply(c,[d[b].p])}catch(C){console.error(C)}}for(var f=!0,y=!1,q=0;q<document.scripts.length;q++)if(-1<document.scripts[q].src.indexOf(z)){f=\"no\"!==document.scripts[q].getAttribute(\"data-lazy\");break}var x=!1,h=[],m=function(a){(a.e||a.p||a.f&&\n  -1<a.f.indexOf(\"capture\")||a.f&&-1<a.f.indexOf(\"showReportDialog\"))&&f&&k(h);m.data.push(a)};m.data=[];c[e]=c[e]||{};c[e].onLoad=function(a){h.push(a);f&&!y||k(h)};c[e].forceLoad=function(){y=!0;f&&setTimeout(function(){k(h)})};\"init addBreadcrumb captureMessage captureException captureEvent configureScope withScope showReportDialog\".split(\" \").forEach(function(a){c[e][a]=function(){m({f:a,a:arguments})}});var r=c[n];c[n]=function(a,e,d,b,f){m({e:[].slice.call(arguments)});r&&r.apply(c,arguments)};\n  var t=c[p];c[p]=function(a){m({p:a.reason});t&&t.apply(c,arguments)};f||setTimeout(function(){k(h)})})(window,document,\"script\",\"onerror\",\"onunhandledrejection\",\"Sentry\",\"b4e7a2b423b54000ac2058644c76f718\",\"https://static.parastorage.com/unpkg/@sentry/browser@5.27.4/build/bundle.min.js\",{\"dsn\":\"https://b4e7a2b423b54000ac2058644c76f718@sentry.wixpress.com/217\"});\n  </script>\n\n    <script type=\"text/javascript\">\n    window.Sentry.onLoad(function () {\n      window.Sentry.init({\n        \"release\": \"marketing-template-viewer@1.2626.0\",\n        \"environment\": \"production\",\n        \"allowUrls\": undefined,\n        \"denyUrls\": undefined\n});\n      window.Sentry.configureScope(function (scope) {\n        scope.setUser({\n          id: \"null-user-id:ac96a901-1e9c-4f06-b884-af0fba95ec69\",\n          clientId: \"ac96a901-1e9c-4f06-b884-af0fba95ec69\",\n        });\n        scope.setExtra(\"user.authenticated\", false);\n        scope.setExtra(\"sessionId\", \"68111a7d-9a4f-4689-b321-323b52958298\");\n      });\n    });\n    </script>\n    <!-- END SENTRY -->\n\n    <script>\n        window.onWixFedopsLoggerLoaded = function () {\n            window.fedopsLogger && window.fedopsLogger.reportAppLoadStarted('marketing-template-viewer');\n        }\n    </script>\n    <script onload=\"onWixFedopsLoggerLoaded()\" src=\"//static.parastorage.com/unpkg/@wix/fedops-logger@5.519.0/dist/statics/fedops-logger.bundle.min.js\" crossorigin=\"\"></script>\n\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\">\n    \n      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\">\n    \n\n    <link rel=\"icon\" sizes=\"192x192\" href=\"https://www.wix.com/favicon.ico\" type=\"image/x-icon\">\n    <link rel=\"shortcut icon\" href=\"https://www.wix.com/favicon.ico\" type=\"image/x-icon\">\n    <link rel=\"apple-touch-icon\" href=\"https://www.wix.com/favicon.ico\" type=\"image/x-icon\">\n\n    <link rel=\"stylesheet\" href=\"https://static.parastorage.com/services/third-party/fonts/Helvetica/fontFace.css\">\n    <link rel=\"stylesheet\" href=\"https://static.parastorage.com/unpkg/@wix/wix-fonts@1.14.0/madefor.min.css\">\n    <link rel=\"stylesheet\" href=\"https://static.parastorage.com/unpkg/@wix/wix-fonts@1.14.0/madeforDisplay.min.css\">\n    <link rel=\"stylesheet\" href=\"//static.parastorage.com/services/marketing-template-viewer/1.2626.0/app.min.css\">\n\n    <meta name=\"description\" content=\"Elevate your physiotherapy clinic's online presence with this contemporary template designed for easy patient engagement. The Wix Bookings app ensures seamless appointment scheduling, making it convenient for clients to secure their sessions. Showcase your services and share valuable resources to help your clients on their wellness journey. Ready to create a dynamic website? Click 'Edit' to get started!\">\n    <meta name=\"author\" content=\"Wixpress\">\n    <meta http-equiv=\"content-language\" content=\"en\">\n    <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n\n    <meta property=\"og:title\" content=\"Physiotherapy Clinic (Contemporary) Website Template | WIX\">\n    <meta property=\"og:type\" content=\"website\">\n    <meta property=\"og:url\" content=\"https://www.wix.com/website-template/view/html/5601\">\n    <meta property=\"og:image\" content=\"//static.wixstatic.com/media/\">\n    <meta content=\"Wix\" property=\"og:site_name\">\n    <meta property=\"og:description\" content=\"Elevate your physiotherapy clinic's online presence with this contemporary template designed for easy patient engagement. The Wix Bookings app ensures seamless appointment scheduling, making it convenient for clients to secure their sessions. Showcase your services and share valuable resources to help your clients on their wellness journey. Ready to create a dynamic website? Click 'Edit' to get started!\">\n    <meta property=\"fb:admins\" content=\"731184828\">\n    <meta name=\"fb:app_id\" content=\"236335823061286\">\n    <meta name=\"google-site-verification\" content=\"QXhlrY-V2PWOmnGUb8no0L-fKzG48uJ5ozW0ukU7Rpo\">\n\n    <link rel=\"canonical\" href=\"https://www.wix.com/website-template/view/html/5601\">\n\n    \n      <link rel=\"alternate\" hreflang=\"en\" href=\"https://www.wix.com/website-template/view/html/5601\">\n    \n    \n      <link rel=\"alternate\" hreflang=\"x-default\" href=\"https://www.wix.com/website-template/view/html/5601\">\n    \n\n    <script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":\"https://www.wix.com\",\"name\":\"Wix.com\"},{\"@type\":\"ListItem\",\"position\":2,\"item\":\"https://www.wix.com/website/templates\",\"name\":\"Website Templates\"},{\"@type\":\"ListItem\",\"position\":3,\"item\":\"https://www.wix.com/website/templates/html/health-wellness\",\"name\":\"Health &amp; Wellness\"},{\"@type\":\"ListItem\",\"position\":4,\"item\":\"https://www.wix.com/website/templates/html/health-wellness/health\",\"name\":\"Health\"},{\"@type\":\"ListItem\",\"position\":5,\"name\":\"Physiotherapy Clinic (Contemporary) Website Template\",\"item\":\"https://www.wix.com/website-template/view/html/5601\"}]}</script>\n  <script src=\"//static.parastorage.com/services/tag-manager-host-scripts/1.971.0//assets/TEMPLATES/google-tag-manager.js\"></script><script type=\"text/javascript\" src=\"//static.parastorage.com/services/dealer-lightbox/2.0.260/dealer-lightbox-module.bundle.min.js\"></script><link rel=\"stylesheet\" type=\"text/css\" href=\"//static.parastorage.com/services/dealer-lightbox/2.0.260/dealer-lightbox-module.min.css\"><script src=\"https://bat.bing.com/p/action/36000948.js\" type=\"text/javascript\" async=\"\" data-ueto=\"ueto_e4e9ffa061\"></script><script type=\"text/javascript\" async=\"\" src=\"https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1041825691/?random=1768849611213&amp;cv=11&amp;fst=1768849611213&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=45be61e1z86319694za20gzb6319694zd6319694xea&amp;gcd=13t3t3t3t5l1&amp;dma=0&amp;tag_exp=103116026~103200004~104527906~104528501~104684208~104684211~105391252~115938466~115938468~117041587~117099529&amp;u_w=800&amp;u_h=600&amp;url=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f&amp;label=FYMYCO-T6gMQm__j8AM&amp;frm=0&amp;tiba=Physiotherapy%20Clinic%20(Contemporary)%20Website%20Template%20%7C%20WIX&amp;userId=null-user-id&amp;hn=www.googleadservices.com&amp;npa=0&amp;pscdl=noapi&amp;auid=662728150.1768849610&amp;uaa=x86&amp;uab=64&amp;uafvl=Google%2520Chrome%3B143.0.7499.169%7CChromium%3B143.0.7499.169%7CNot%2520A(Brand%3B24.0.0.0&amp;uamb=0&amp;uam=&amp;uap=Linux&amp;uapv=6.13.0&amp;uaw=0&amp;_tu=KA&amp;rfmt=3&amp;fmt=4\"></script><meta http-equiv=\"origin-trial\" content=\"A7JYkbIvWKmS8mWYjXO12SIIsfPdI7twY91Y3LWOV/YbZmN1ZhYv8O+Zs6/IPCfBE99aV9tIC8sWZSCN09vf7gkAAACWeyJvcmlnaW4iOiJodHRwczovL2N0LnBpbnRlcmVzdC5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9\"></head>\n  <body>\n    <script>\n        window.onWixRecorderLoaded = function () {\n            window.dispatchEvent(new Event('wixRecorderReady'));\n        };\n    </script>\n\n    <script async=\"\" src=\"//static.parastorage.com/unpkg-semver/wix-recorder/app.bundle.min.js\" crossorigin=\"\" onload=\"onWixRecorderLoaded()\"></script>\n\n    <script src=\"//static.parastorage.com/services/cookie-sync-service/1.347.20/embed-cidx.bundle.min.js\"></script>\n    <script src=\"//static.parastorage.com/services/tag-manager-client/1.1028.0/hostTags.bundle.min.js\"></script>\n    <div id=\"root\"><span data-newcolorsbranding=\"true\" class=\"wds_1_186_1_newColorsBranding__root wds_1_186_1_madefor__madefor\"><div data-hook=\"app\"><div data-hook=\"tool-bar\" class=\"sbWfkE\"><div class=\"Mn4893\"><div class=\"bZOLNF\"><a data-hook=\"logo\" href=\"/\" class=\"nHuSJZ\"><span class=\"AV8G6s\">wix.com</span></a></div><div class=\"wKSaYa\"><button class=\"oOZ5cH FrcaLY\"><svg viewBox=\"0 0 25 23\" xmlns=\"http://www.w3.org/2000/svg\" class=\"NSqhIv\"><path d=\"M22.444 18H2.558A1.56 1.56 0 0 1 1 16.441V15h23v1.444c0 .858-.698 1.556-1.556 1.556ZM10 22h5v-3h-5v3ZM2.558 1h19.886C23.302 1 24 1.698 24 2.556V14H1V2.559C1 1.699 1.7 1 2.558 1Zm19.886-1H2.558A2.562 2.562 0 0 0 0 2.559v13.882A2.562 2.562 0 0 0 2.558 19H9v3H7v1h11v-1h-2v-3h6.444A2.559 2.559 0 0 0 25 16.444V2.556A2.559 2.559 0 0 0 22.444 0Z\" fill=\"currentColor\" fill-rule=\"evenodd\"></path></svg><span class=\"XFdFwl\">show desktop view</span></button><hr class=\"VZdZnK\"><button class=\"oOZ5cH\"><svg id=\"mobile-new-ui_svg__Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" x=\"0\" y=\"0\" viewBox=\"0 0 15 26\" style=\"enable-background:new 0 0 15 26\" xml:space=\"preserve\" class=\"lDC7OW\"><style>.mobile-new-ui_svg__st1{fill:currentColor}</style><path d=\"M12 1H3c-1.1 0-2 .9-2 2v20c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zM9 23H6v-1h3v1zm4-4c0 .6-.4 1-1 1H3c-.6 0-1-.4-1-1V4c0-.6.4-1 1-1h9c.6 0 1 .4 1 1v15z\" style=\"fill:none\"></path><path class=\"mobile-new-ui_svg__st1\" d=\"M6 22h3v1H6zM12 3H3c-.6 0-1 .4-1 1v15c0 .6.4 1 1 1h9c.6 0 1-.4 1-1V4c0-.6-.4-1-1-1zm0 16H3V4h9v15z\"></path><path class=\"mobile-new-ui_svg__st1\" d=\"M12 0H3C1.3 0 0 1.3 0 3v20c0 1.7 1.3 3 3 3h9c1.7 0 3-1.3 3-3V3c0-1.7-1.3-3-3-3zm2 23c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h9c1.1 0 2 .9 2 2v20z\"></path></svg><span class=\"XFdFwl\">show mobile view</span></button></div></div><div class=\"TYXuEX\"><div class=\"RyxoSg\"><p data-hook=\"tool-bar-title\" class=\"VaexPL\">Click edit and create your own amazing website</p><a data-hook=\"info-view\" class=\"bggdgE LCjeiB\" tabindex=\"0\" role=\"dialog\" href=\"#\">Read More</a><a class=\"Ydu4WK Y_xMZ5\" data-hook=\"editor-link\" href=\"https://manage.wix.com/edit-template/from-intro?originTemplateId=cddfe6b4-595e-4794-af90-0ede65d77eb3&amp;editorSessionId=ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f\" target=\"_blank\" tabindex=\"0\">Edit this site</a></div></div></div><div data-hook=\"template-demo\" class=\"CJ4D6R _TGeKT\"><div data-hook=\"desktop-view\" class=\"Woz8P7\"><iframe data-hook=\"desktop-iframe\" src=\"https://www.wix.com/sgtemplates/ph-c-contemporary\" title=\"Physiotherapy Clinic (Contemporary)\" width=\"100%\" height=\"100%\" class=\"eZTjsa\"></iframe></div></div><div data-hook=\"info-pop-up\" class=\"M05QSQ gDaLU4\"><div class=\"E0wHmq gsBZch\"><button data-hook=\"card-close\" class=\"gVJ7eC\"><svg viewBox=\"0 0 19 20\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"currentColor\" fill=\"none\" fill-rule=\"evenodd\"><path d=\"m0 1 18.584 17.606M0 18.606 18.584 1\"></path></g></svg><span class=\"ydbrSa\">close info popup</span></button><div class=\"qLnKwP\"><h1 data-hook=\"card-title\" class=\"PHJvhr gVsOUG\">Physiotherapy Clinic (Contemporary) - Website Template</h1><div class=\"CEjC4K _lzLfK\"><h3 data-hook=\"card-good-for-title\" class=\"xqspyG\">Good For:</h3><p data-hook=\"card-good-for\" class=\"gsbPc5\">Physiotherapy clinics, Wellness centers, Health professionals</p></div><div class=\"CEjC4K ZkSmOj\"><h3 class=\"xqspyG\">Description:</h3><p data-hook=\"card-description\" class=\"gsbPc5\">Elevate your physiotherapy clinic's online presence with this contemporary template designed for easy patient engagement. The Wix Bookings app ensures seamless appointment scheduling, making it convenient for clients to secure their sessions. Showcase your services and share valuable resources to help your clients on their wellness journey. Ready to create a dynamic website? Click 'Edit' to get started!</p></div></div><div class=\"KiqsRq\"><a data-hook=\"card-editor-url\" class=\"XpwCp3 sKD7vO kX8CZg\" target=\"_blank\" href=\"https://manage.wix.com/edit-template/from-intro?originTemplateId=cddfe6b4-595e-4794-af90-0ede65d77eb3&amp;editorSessionId=ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f\">Edit Now</a></div></div></div></div></span></div>\n    <script>\n        window.__BASEURL__ = \"https:\\u002F\\u002Fwww.wix.com\\u002Fwebsite-template\\u002Fview\\u002Fhtml\\u002F\";\n        window.__INITIAL_I18N__ = {\"locale\":\"en\",\"resources\":{\"errorPage.templatesLinkText\":\"Templates\",\"template.viewer.page.title\":\"{{- title}} Website Template | WIX\",\"template.viewer.studio.page.title\":\"{{- title}} Responsive Template | Wix Studio\",\"template.viewer.studio.page.description\":\"This {{- title}} is ready to be customized to your exact needs. Click \\\"Edit Template\\\" and try it on any device\",\"template_button_label\":\"Edit Website\",\"template_seeFeatures_label\":\"See All Features\",\"template_expand_examples_text\":\"Great for\",\"template_expand_header\":\"Template Features\",\"template.viewer.title\":\"Click edit and create your own amazing website\",\"template.viewer.title.chooseTemplate\":\"Choose template and create your amazing website\",\"template.viewer.saveTemplate.button\":\"Save Template\",\"template.viewer.choose.button\":\"Choose Template\",\"template.viewer.edit.button\":\"Edit this site\",\"template.viewer.read.more\":\"Read More\",\"template.viewer.back\":\"Back\",\"template.viewer.info.edit.button\":\"Edit Now\",\"template.viewer.price\":\"Price:\",\"template.viewer.info.title\":\"{{- title}} - Website Template\",\"template.viewer.info.goodFor\":\"Good For:\",\"template.viewer.info.description\":\"Description:\",\"template.viewer.info.desktop.only.notice\":\"Edit this template by going to Wix.com from your desktop, where you can customise any of our beautiful templates.\",\"template.viewer.see.all.templates\":\"See All Templates\",\"template.viewer.seeAllExpressions\":\"See all expressions\",\"template.viewer.goToBiggerScreen\":\"To start designing, go to your desktop.\",\"template.viewer.getStarted\":\"Get Started\",\"template.viewer.startNow\":\"Start Now\",\"template.viewer.features\":\"Features\",\"template.viewer.allFeatures\":\"All Features\",\"template.viewer.expressions\":\"Expressions\",\"template.viewer.tutorials\":\"Tutorials\",\"template.viewer.updatesAndReleases\":\"Updates & Releases\",\"template.viewer.comingSoon\":\"Coming soon\",\"template.viewer.academy\":\"Academy\",\"template.viewer.editTemplate\":\"Edit Template\",\"template.viewer.header.backToTemplates\":\"Back to Templates\",\"template.viewer.hint.copyPaste.title\":\"Tip: \",\"template.viewer.hint.copyPaste.text\":\"You can save sections that you like from this template to reuse on your Studio sites. \",\"template.viewer.hint.copyPaste.urlTitle\":\"Learn more\",\"a11y.desktop.button\":\"show desktop view\",\"a11y.mobile.button\":\"show mobile view\",\"a11y.close.popup.button\":\"close info popup\",\"toolbar.tooltip.desktop\":\"1001px & up\",\"toolbar.tooltip.tablet\":\"751 to 1000px\",\"toolbar.tooltip.mobile\":\"320 to 750px\",\"errorPage.4xx.title\":\"We couldn't find the template you're looking for\",\"errorPage.5xx.title\":\"We couldn't load our template\",\"errorPage.subTitle\":\"Error {{- code }}\",\"errorPage.4xx.details\":\"Try searching for another template \\u003Clink\\u003Ehere\\u003C\\u002Flink\\u003E.\",\"errorPage.5xx.details\":\"A temporary technical issue on our end stopped us from loading this page. Please wait a few minutes and then try again.\",\"errorPage.5xx.action\":\"Refresh\",\"seo.breadcrumbs.home\":\"Wix.com\",\"seo.breadcrumbs.websiteTemplates\":\"Website Templates\",\"seo.breadcrumbs.studioTemplates\":\"Studio Templates\",\"seo.breadcrumbs.template\":\"{{- title}} Website Template\",\"template.viewer.v2.choose.button\":\"Choose Template\",\"template.viewer.v2.edit.button\":\"Edit This Site\",\"template.viewer.v2.demo.button\":\"View Demo Site\",\"template.viewer.v2.template.info\":\"This template is good for\",\"template.viewer.v2.template.details\":\"About this template\",\"template.viewer.v2.demo.template.name\":\"{{name}} Website Template\",\"template.viewer.v2.template.likeThis.title\":\"Templates like this\",\"template.viewer.v2.template.button.edit\":\"Edit\",\"template.viewer.v2.template.button.view\":\"View\",\"template.viewer.v2.template.button.view_details\":\"View Details\",\"template.viewer.v2.header.description\":\"Click edit and create your own amazing website\",\"template.viewer.v2.header.chooseTemplate\":\"Choose template and create your amazing website\",\"template.viewer.v2.demo.template.view\":\"View in Full Screen\",\"APP_PORTFOLIO\":\"Wix Portfolio\",\"APP_PORTFOLIO_DESCRIPTION\":\"Showcase your work in a beautiful portfolio\",\"APP_DONATIONS\":\"Wix Donations\",\"APP_DONATIONS_DESCRIPTION\":\"Collect and manage online donations\",\"APP_EVENTS\":\"Wix Events\",\"APP_EVENTS_DESCRIPTION\":\"Create events, sell tickets & track RSVPs\",\"APP_BOOKINGS\":\"Wix Bookings\",\"APP_BOOKINGS_DESCRIPTION\":\"Let clients schedule appointments on your site\",\"APP_BLOG\":\"Wix Blog\",\"APP_BLOG_DESCRIPTION\":\"Write posts to drive traffic and share your ideas\",\"APP_MENUS\":\"Wix Restaurants Menus\",\"APP_MENUS_DESCRIPTION\":\"Create and display your menu online\",\"APP_ORDERS\":\"Wix Restaurants Orders\",\"APP_ORDERS_DESCRIPTION\":\"Take online orders for pickup and delivery\",\"APP_RESERVATIONS\":\"Wix Table Reservations\",\"APP_RESERVATIONS_DESCRIPTION\":\"Take reservations 24\\u002F7 directly from your site\",\"APP_STORES\":\"Wix Stores\",\"APP_STORES_DESCRIPTION\":\"Sell your products or find new products to sell\",\"APP_PLANS\":\"Wix Pricing Plans\",\"APP_PLANS_DESCRIPTION\":\"Sell subscriptions & memberships\",\"APP_PROGRAMS\":\"Wix Online Programs\",\"APP_PROGRAMS_DESCRIPTION\":\"Build and sell multi-step programs\",\"APP_HOTELS\":\"Wix Hotels\",\"APP_HOTELS_DESCRIPTION\":\"Manage and grow your hospitality business\",\"APP_CHAT\":\"Wix Chat\",\"APP_CHAT_DESCRIPTION\":\"Let your site\u00e2\u0080\u0099s visitors reach out 24\\u002F7\",\"APP_FORMS\":\"Wix Forms\",\"APP_FORMS_DESCRIPTION\":\"Capture leads, collect payments and more\",\"APP_INSTAGRAM\":\"Instagram Feed (New)\",\"APP_INSTAGRAM_DESCRIPTION\":\"Display your pics & videos from Instagram\",\"APP_VIDEO\":\"Wix Video\",\"APP_VIDEO_DESCRIPTION\":\"Share, stream and sell your videos\",\"APP_MUSIC\":\"Wix Music\",\"APP_MUSIC_DESCRIPTION\":\"Stream and sell your music commission-free\",\"APP_GROUPS\":\"Wix Groups\",\"APP_GROUPS_DESCRIPTION\":\"Host & manage monetizable online communities\",\"APP_FILE_SHARE\":\"Wix File Share\",\"APP_FILE_SHARE_DESCRIPTION\":\"Create a shared site library for site members\",\"thankYou.error.title\":\"Sorry, something went wrong!\",\"thankYou.error.description\":\"There\u00e2\u0080\u0099s a technical problem on our end. Please re-select your template and try saving again.\",\"thankYou.error.cta\":\"View Templates\",\"thankYou.wixOwnerAppBanner.cta\":\"Install\",\"thankYou.wixOwnerAppBanner.description\":\"Get the Wix app, build and manage your site on the go\",\"thankYou.success.title\":\"The template you saved was sent to your email\",\"thankYou.success.alternativeTitle\":\"Your template will be sent to your email shortly\",\"thankYou.success.description\":\"Open from desktop to start creating your site.\",\"template.newMobileFlow.preview.saveTemplate\":\"Save Template\"}};\n        window.__INITIAL_STATE__ = {\"viewMode\":\"desktop\",\"isInfoShown\":false,\"isEditButtonHidden\":false,\"template\":{\"title\":\"Physiotherapy Clinic (Contemporary)\",\"description\":\"Elevate your physiotherapy clinic's online presence with this contemporary template designed for easy patient engagement. The Wix Bookings app ensures seamless appointment scheduling, making it convenient for clients to secure their sessions. Showcase your services and share valuable resources to help your clients on their wellness journey. Ready to create a dynamic website? Click 'Edit' to get started!\",\"image\":\"\",\"slug\":\"5601\",\"lng\":\"en\",\"languages\":[\"en\"],\"templatePrice\":\"FREE\",\"docUrl\":\"https:\\u002F\\u002Fwww.wix.com\\u002Fsgtemplates\\u002Fph-c-contemporary\",\"editorUrl\":\"https:\\u002F\\u002Fmanage.wix.com\\u002Fedit-template\\u002Ffrom-intro?originTemplateId=cddfe6b4-595e-4794-af90-0ede65d77eb3&editorSessionId=ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f\",\"goodFor\":\"Physiotherapy clinics, Wellness centers, Health professionals\",\"siteId\":\"b6f25f07-6589-46ed-8ce9-eb16435c76d1\",\"mobileImage\":{\"type\":\"MOBILE\",\"url\":\"\\u002Ftemplates\\u002Fimage\\u002Ff5ebd0019548b960cdacfd28e1f69dea41c5a58638bf3509f3ea4c8df7f62a7a1750756211992.jpg\",\"absoluteUrl\":\"https:\\u002F\\u002Fimages-wixmp-530a50041672c69d335ba4cf.wixmp.com\\u002Ftemplates\\u002Fimage\\u002Ff5ebd0019548b960cdacfd28e1f69dea41c5a58638bf3509f3ea4c8df7f62a7a1750756211992.jpg\",\"alt\":\"\",\"width\":162,\"height\":287},\"metaSiteId\":\"cddfe6b4-595e-4794-af90-0ede65d77eb3\",\"editorSessionId\":\"ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f\",\"isResponsive\":false,\"isStudio\":false,\"templateId\":\"489d4b48-4604-4b41-8f28-606f133145fb\",\"url\":\"https:\\u002F\\u002Fwww.wix.com\\u002Fsgtemplates\\u002Fph-c-contemporary\"},\"activeExperiments\":[\"TemplateViewerEnableSeoBreadcrumbs\",\"templatePageUiV2Fixes\"],\"config\":{\"locale\":\"en\",\"dealerCmsTranslationsUrl\":\"\\u002F\\u002Fstatic.parastorage.com\\u002Fservices\\u002Fdealer-cms-translations\\u002F1.7381.0\\u002F\",\"dealerLightboxUrl\":\"\\u002F\\u002Fstatic.parastorage.com\\u002Fservices\\u002Fdealer-lightbox\\u002F2.0.260\\u002F\"},\"userData\":{\"isLoggedIn\":false},\"mostRelatedCategories\":[{\"categoryId\":\"9efd7464-7e7a-484c-b68f-87bea3baf5da\",\"displayName\":\"Health & Wellness\",\"slug\":\"health-wellness\",\"type\":\"BUSINESS\"},{\"categoryId\":\"f819b853-0275-468b-93e5-764dffdccfbf\",\"displayName\":\"Health\",\"slug\":\"health\",\"type\":\"BUSINESS\"}]};\n        window.__BI__ = {\"siteId\":\"b6f25f07-6589-46ed-8ce9-eb16435c76d1\",\"originUrl\":\"https:\\u002F\\u002Fwww.wix.com\\u002Fwebsite\\u002Ftemplates\\u002Fhtml\\u002Fall\\u002F5\",\"editorSessionId\":\"ea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f\"};\n        window.__DEVICE__ = \"desktop\";\n        window.__CONSENT_POLICY__ = {\"essential\":true,\"functional\":true,\"analytics\":true,\"advertising\":true,\"dataToThirdParty\":true};\n    </script>\n\n    <script src=\"//static.parastorage.com/unpkg/react@18.2.0/umd/react.production.min.js\" crossorigin=\"\"></script>\n    <script src=\"//static.parastorage.com/unpkg/react-dom@18.2.0/umd/react-dom.production.min.js\" crossorigin=\"\"></script>\n    <script src=\"//static.parastorage.com/services/cookie-consent-policy-client/1.972.0/app.bundle.min.js\"></script>\n\n    \n      <script src=\"//static.parastorage.com/services/dealer-lightbox/2.0.260/dealer-lightbox.bundle.min.js\"></script>\n    \n\n    <script src=\"//static.parastorage.com/services/marketing-template-viewer/1.2626.0/app.bundle.min.js\"></script>\n  \n\n<div id=\"react-lightbox\" style=\"position: absolute; z-index: 99999999;\"></div><script type=\"text/javascript\" id=\"\" charset=\"\">var cookieName=\"_wixCIDX\",wixClientId=null;try{var cookies=document.cookie,cookieMatch=cookies.split(\"; \").find(function(b){return b.startsWith(cookieName+\"\\x3d\")});cookieMatch&&(wixClientId=decodeURIComponent(cookieMatch.split(\"\\x3d\")[1])+\"-page-view\")}catch(b){wixClientId=null}\ntypeof fbq===\"undefined\"&&!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version=\"2.0\",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],setTimeout(function(){d.parentNode.insertBefore(c,d)},3E3))}(window,document,\"script\",\"//connect.facebook.net/en_US/fbevents.js\");fbq(\"init\",\"704136006388169\",{external_id:wixClientId});\nfbq(\"trackSingle\",\"704136006388169\",\"PageView\",{},{eventID:wixClientId});</script>\n<script type=\"text/javascript\" id=\"\" charset=\"\">!function(d,g,e){d.TiktokAnalyticsObject=e;var a=d[e]=d[e]||[];a.methods=\"page track identify instances debug on off once ready alias group enableCookie disableCookie holdConsent revokeConsent grantConsent\".split(\" \");a.setAndDefer=function(b,c){b[c]=function(){b.push([c].concat(Array.prototype.slice.call(arguments,0)))}};for(d=0;d<a.methods.length;d++)a.setAndDefer(a,a.methods[d]);a.instance=function(b){b=a._i[b]||[];for(var c=0;c<a.methods.length;c++)a.setAndDefer(b,a.methods[c]);return b};a.load=\nfunction(b,c){var f=\"https://analytics.tiktok.com/i18n/pixel/events.js\";a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o||{};a._o[b]=c||{};c=document.createElement(\"script\");c.type=\"text/javascript\";c.async=!0;c.src=f+\"?sdkid\\x3d\"+b+\"\\x26lib\\x3d\"+e;b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(c,b)};a.load(\"CKA47TJC77U7REM9C0R0\");a.page()}(window,document,\"ttq\");</script>\n<script type=\"text/javascript\" id=\"\" charset=\"\">(function(a,c,e,k,b){a[b]=a[b]||[];a[b].push({projectId:\"10000\",properties:{pixelId:\"10196208\",he:\"\\x3cemail_address\\x3e\"}});var d=c.createElement(e);d.src=k;d.async=!0;d.onload=d.onreadystatechange=function(){var f=this.readyState,l=a[b];if(!f||\"complete\"==f||\"loaded\"==f)try{var g=YAHOO.ywa.I13N.fireBeacon;a[b]=[];a[b].push=function(h){g([h])};g(l)}catch(h){}};c=c.getElementsByTagName(e)[0];e=c.parentNode;e.insertBefore(d,c)})(window,document,\"script\",\"https://s.yimg.com/wi/ytc.js\",\"dotq\");</script>\n<script type=\"text/javascript\" id=\"\" charset=\"\">!function(d,g,e){d.TiktokAnalyticsObject=e;var a=d[e]=d[e]||[];a.methods=\"page track identify instances debug on off once ready alias group enableCookie disableCookie holdConsent revokeConsent grantConsent\".split(\" \");a.setAndDefer=function(b,c){b[c]=function(){b.push([c].concat(Array.prototype.slice.call(arguments,0)))}};for(d=0;d<a.methods.length;d++)a.setAndDefer(a,a.methods[d]);a.instance=function(b){b=a._i[b]||[];for(var c=0;c<a.methods.length;c++)a.setAndDefer(b,a.methods[c]);return b};a.load=\nfunction(b,c){var f=\"https://analytics.tiktok.com/i18n/pixel/events.js\";a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o||{};a._o[b]=c||{};c=document.createElement(\"script\");c.type=\"text/javascript\";c.async=!0;c.src=f+\"?sdkid\\x3d\"+b+\"\\x26lib\\x3d\"+e;b=document.getElementsByTagName(\"script\")[0];b.parentNode.insertBefore(c,b)};a.load(\"C3SI0CO4C3S2QIOV7NI0\");a.page()}(window,document,\"ttq\");</script>\n <script type=\"text/javascript\" id=\"\" charset=\"\">(function(a,b,d){if(!a.MAI){a.MAI=a.MAI||{emit:function(){(a.MAI.q=a.MAI.q||[]).push(arguments)}};var c=b.createElement(d);c.async=1;c.src=\"https://cdn.mgln.ai/pixel.min.js\";b=b.getElementsByTagName(d)[0];b.parentNode.insertBefore(c,b)}})(window,document,\"script\");MAI.emit(\"conf\",\"20d4adecfa814f1ebc58100d0465060b\");MAI.emit(\"view\");MAI.emit(\"identify\",google_tag_manager[\"rm\"][\"319694\"](18));</script><iframe height=\"0\" width=\"0\" style=\"display: none; visibility: hidden;\"></iframe><img src=\"https://wix-2-adswizz.attribution.adswizz.com/fire?pixelId=e56c7ecd-4d0c-46f2-8786-7128ffea61b0&amp;type=sitevisit&amp;subtype=PageVisit1&amp;aw_0_req.gdpr=true&amp;redirectURL=aHR0cHM6Ly9waXhlbC50YXBhZC5jb20vaWRzeW5jL2V4L3JlY2VpdmU_cGFydG5lcl9pZD0yOTk0JjwjaWYgcmVxdWVzdC5saXN0ZW5lcklkP21hdGNoZXMoJ1swLTlhLWZdezh9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezR9LVswLTlhLWZdezEyfScpPnBhcnRuZXJfdHlwZWRfZGlkPSU3QiUyMkhBUkRXQVJFX0FORFJPSURfQURfSUQlMjIlM0ElMjIke3JlcXVlc3QubGlzdGVuZXJJZH0lMjIlN0Q8I2Vsc2VpZiByZXF1ZXN0Lmxpc3RlbmVySWQ_bWF0Y2hlcygnWzAtOUEtRl17OH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17NH0tWzAtOUEtRl17MTJ9Jyk-cGFydG5lcl90eXBlZF9kaWQ9JTdCJTIySEFSRFdBUkVfSURGQSUyMiUzQSUyMiR7cmVxdWVzdC5saXN0ZW5lcklkfSUyMiU3RDwjZWxzZT5wYXJ0bmVyX2RldmljZV9pZD0ke3JlcXVlc3QubGlzdGVuZXJJZCF9PC8jaWY-\"><img class=\"ywa-10000\" src=\"https://sp.analytics.yahoo.com/sp.pl?a=10000&amp;d=Mon%2C%2019%20Jan%202026%2019%3A06%3A50%20GMT&amp;n=0&amp;b=Physiotherapy%20Clinic%20(Contemporary)%20Website%20Template%20%7C%20WIX&amp;.yp=10196208&amp;f=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f&amp;enc=UTF-8&amp;yv=1.16.6&amp;tagmgr=gtm\" alt=\"dot image pixel\" style=\"display: none;\"><img src=\"https://t.co/1/i/adsct?bci=4&amp;dv=UTC%26en-US%2Cen%26Google%20Inc.%26Linux%20x86_64%26255%26800%26600%26128%2624%26800%26600%260%26na&amp;eci=3&amp;event=%7B%7D&amp;event_id=960f0c99-95fb-44a4-a091-321e1f363ad1&amp;integration=gtm&amp;p_id=Twitter&amp;p_user_id=0&amp;pl_id=7b924b33-35de-45e6-a3f4-5e9523207bb3&amp;pt=Physiotherapy%20Clinic%20(Contemporary)%20Website%20Template%20%7C%20WIX&amp;tw_document_href=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f&amp;tw_iframe_status=0&amp;txn_id=of9ur&amp;type=javascript&amp;version=2.3.35\" height=\"1\" width=\"1\" style=\"display: none;\"><img src=\"https://analytics.twitter.com/1/i/adsct?bci=4&amp;dv=UTC%26en-US%2Cen%26Google%20Inc.%26Linux%20x86_64%26255%26800%26600%26128%2624%26800%26600%260%26na&amp;eci=3&amp;event=%7B%7D&amp;event_id=960f0c99-95fb-44a4-a091-321e1f363ad1&amp;integration=gtm&amp;p_id=Twitter&amp;p_user_id=0&amp;pl_id=7b924b33-35de-45e6-a3f4-5e9523207bb3&amp;pt=Physiotherapy%20Clinic%20(Contemporary)%20Website%20Template%20%7C%20WIX&amp;tw_document_href=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f&amp;tw_iframe_status=0&amp;txn_id=of9ur&amp;type=javascript&amp;version=2.3.35\" height=\"1\" width=\"1\" style=\"display: none;\"><iframe height=\"0\" width=\"0\" src=\"https://4382365.fls.doubleclick.net/activityi;src=4382365;type=count;cat=websi0;ord=1;num=6233715854939;npa=0;auiddc=662728150.1768849610;u1=ac96a901-1e9c-4f06-b884-af0fba95ec69;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B143.0.7499.169%7CChromium%3B143.0.7499.169%7CNot%2520A(Brand%3B24.0.0.0;uamb=0;uam=;uap=Linux;uapv=6.13.0;uaw=0;pscdl=noapi;frm=0;_tu=KJA;gtm=45fe61e1v9190195959z86319694za20gzb6319694zd6319694xea;gcs=G111;gcd=13t3t3t3t5l1;dma=0;dc_fmt=2;tag_exp=103116026~103200004~104527906~104528501~104684208~104684211~105391253~115616986~115938466~115938468~117041588;epver=2;dc_random=1768849610_pbSJayjZBFFa2lCIm8QQJy0_CqlThnNRGQ;_dc_test=1;~oref=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f?\" style=\"display: none; visibility: hidden;\"></iframe><iframe height=\"0\" width=\"0\" src=\"https://4382365.fls.doubleclick.net/activityi;src=4382365;type=audie0;cat=pagev0;ord=1;num=7409333401836;npa=0;auiddc=662728150.1768849610;u1=ac96a901-1e9c-4f06-b884-af0fba95ec69;u2=null-user-id;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B143.0.7499.169%7CChromium%3B143.0.7499.169%7CNot%2520A(Brand%3B24.0.0.0;uamb=0;uam=;uap=Linux;uapv=6.13.0;uaw=0;pscdl=noapi;frm=0;_tu=KJA;gtm=45fe61e1v9190195959z86319694za20gzb6319694zd6319694xea;gcs=G111;gcd=13t3t3t3t5l1;dma=0;dc_fmt=2;tag_exp=103116026~103200004~104527906~104528501~104684208~104684211~105391253~115616986~115938466~115938468~117041588;epver=2;dc_random=1768849610_bb1Irjx5lzOyAf6ntph6KR5J8VnTI2UiOw;_dc_test=1;~oref=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f?\" style=\"display: none; visibility: hidden;\"></iframe><div id=\"batBeacon171298613175\" style=\"width: 0px; height: 0px; display: none; visibility: hidden;\"><img id=\"batBeacon938817349518\" width=\"0\" height=\"0\" alt=\"\" src=\"https://bat.bing.com/action/0?ti=36000948&amp;tm=gtm002&amp;Ver=2&amp;mid=8f733bcc-2756-4c24-8f7b-9a162fb828cb&amp;bo=1&amp;sid=0270a380f56a11f09c0f8dccfc05a429&amp;vid=0270b200f56a11f0bfbabd8a6fd2a135&amp;vids=1&amp;msclkid=N&amp;pi=918639831&amp;lg=en-US&amp;sw=800&amp;sh=600&amp;sc=24&amp;tl=Physiotherapy%20Clinic%20(Contemporary)%20Website%20Template%20%7C%20WIX&amp;p=https%3A%2F%2Fwww.wix.com%2Fwebsite-template%2Fview%2Fhtml%2F5601%3ForiginUrl%3Dhttps%253A%252F%252Fwww.wix.com%252Fwebsite%252Ftemplates%252Fhtml%252Fall%252F5%26tpClick%3Dview_button%26esi%3Dea99c2f4-ddbe-4bbb-91b6-6126ed8cf82f&amp;r=&amp;lt=662&amp;evt=pageLoad&amp;sv=2&amp;cdb=AQAS&amp;rn=522715\" style=\"width: 0px; height: 0px; display: none; visibility: hidden;\"></div><script type=\"text/javascript\" id=\"\" charset=\"\">var wixUuidForFb=null;try{var _getCookie=function(b){var c=\"; \"+document.cookie;b=c.split(\"; \"+b+\"\\x3d\");if(b.length==2)return b.pop().split(\";\").shift()};wixUuidForFb=_getCookie(\"_wixCIDX\")}catch(b){}\ntypeof fbq===\"undefined\"&&!function(b,c,f,g,a,d,e){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version=\"2.0\",a.queue=[],d=c.createElement(f),d.async=!0,d.src=g,e=c.getElementsByTagName(f)[0],setTimeout(function(){e.parentNode.insertBefore(d,e)},3E3))}(window,document,\"script\",\"//connect.facebook.net/en_US/fbevents.js\");fbq(\"init\",\"704136006388169\",{external_id:google_tag_manager[\"rm\"][\"319694\"](31)});\nfbq(\"trackSingle\",\"704136006388169\",\"EngagedAnon\",{},{eventID:google_tag_manager[\"rm\"][\"319694\"](32)});fbq(\"trackSingle\",\"704136006388169\",\"EngagedAnonTest\",{},{eventID:google_tag_manager[\"rm\"][\"319694\"](33)});</script></body></html>"
+}

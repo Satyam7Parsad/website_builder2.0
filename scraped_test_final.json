@@ -1,0 +1,596 @@
+{
+  "template_name": "test_final",
+  "source_url": "https://www.realme.com/in/",
+  "sections": [
+    {
+      "type": "content",
+      "name": "Content 1",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 1",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 2",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 2",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 3",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 3",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 4",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 4",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 5",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 5",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 6",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 6",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 7",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 7",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 8",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 8",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 9",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 9",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 10",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 10",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 11",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 11",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 12",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 12",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 13",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 13",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 14",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 14",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 15",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 15",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 16",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 16",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 17",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 17",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 18",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 18",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 19",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 19",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "type": "content",
+      "name": "Content 20",
+      "selector": "",
+      "bounds": {},
+      "styles": {},
+      "content": {},
+      "height": 500,
+      "y_position": 0,
+      "title": "Content 20",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)"
+    }
+  ],
+  "metadata": {
+    "name": "test_final",
+    "source_url": "https://www.realme.com/in/",
+    "domain": "www.realme.com",
+    "scraped_at": "2026-01-19T23:27:15.785310",
+    "scraper": "StealthBrowserMCP",
+    "version": "1.0"
+  },
+  "typography": [
+    [
+      "a",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "span",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "li",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "p",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "600"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "18px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h2",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "32px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "700"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "80px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "grid_system": {},
+  "images": {
+    "directory": "scraped_images/test_final",
+    "count": 1,
+    "mapping": {
+      "https://static.myoas.net/v3/common/images/toApp_icon-59b38c1c07.png": "scraped_images/test_final/image_001.png"
+    }
+  },
+  "custom_fonts": [],
+  "raw_html": ""
+}

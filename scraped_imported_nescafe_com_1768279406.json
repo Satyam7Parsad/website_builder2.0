@@ -1,0 +1,811 @@
+{
+  "template_name": "imported_nescafe_com_1768279406",
+  "url": "https://www.nescafe.com/in/",
+  "scraped_date": "2026-01-13T10:14:36.038382",
+  "sections": [
+    {
+      "index": 0,
+      "type": 1,
+      "y_position": 0,
+      "height": 80,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "main-navigation",
+        "grid-container",
+        "js-navigation"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "118px 0px 0px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "We\u2019re using our global scale for good, one cup at a time",
+        "subtitle": "",
+        "content": "",
+        "buttons": [
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability"
+          },
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability"
+          }
+        ]
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_38.png"
+    },
+    {
+      "index": 1,
+      "type": 0,
+      "y_position": 97,
+      "height": 900,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "homepage-banner-wrapper",
+        "variation--banner",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "118px 0px 0px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "We\u2019re using our global scale for good, one cup at a time",
+        "subtitle": "",
+        "content": "",
+        "buttons": [
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability"
+          },
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability"
+          }
+        ]
+      },
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_49.jpg",
+      "background_image": "scraped_images/imported_nescafe_com_1768279406/img_22.jpg"
+    },
+    {
+      "index": 2,
+      "type": 2,
+      "y_position": 1009.390625,
+      "height": 70.609375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "ot-sdk-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "background_image": "scraped_images/imported_nescafe_com_1768279406/img_22.jpg"
+    },
+    {
+      "index": 3,
+      "type": 3,
+      "y_position": 1080,
+      "height": 374,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "home-page-description",
+        "grid-container",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 4,
+      "type": 3,
+      "y_position": 1160,
+      "height": 214,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "grid-x",
+        "max-width-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 5,
+      "type": 3,
+      "y_position": 1454,
+      "height": 970.25,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-hub-recycle-section",
+        "grid-container",
+        "bg--paper-white",
+        "homepage-recommended-article",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_26.jpg"
+    },
+    {
+      "index": 6,
+      "type": 2,
+      "y_position": 1534,
+      "height": 749.265625,
+      "width": 1798,
+      "html_tag": "div",
+      "classes": [
+        "cell",
+        "bg-container",
+        "animate-enter-fade",
+        "animate-delay-3"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_26.jpg"
+    },
+    {
+      "index": 7,
+      "type": 2,
+      "y_position": 2174.265625,
+      "height": 210,
+      "width": 1364.328125,
+      "html_tag": "div",
+      "classes": [
+        "text-container",
+        "text-center"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {}
+    },
+    {
+      "index": 8,
+      "type": 3,
+      "y_position": 2424.25,
+      "height": 772.5,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "recipe-home",
+        "grid-container",
+        "overflow-x-hidden",
+        "recipe-home--has-icon",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_0.jpg"
+    },
+    {
+      "index": 9,
+      "type": 2,
+      "y_position": 2544.25,
+      "height": 92,
+      "width": 761.984375,
+      "html_tag": "div",
+      "classes": [
+        "recipe-home--text-section",
+        "animate-enter-fade-up-short",
+        "animate-delay-3"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {}
+    },
+    {
+      "index": 10,
+      "type": 2,
+      "y_position": 2687.25,
+      "height": 276.5,
+      "width": 276.5,
+      "html_tag": "div",
+      "classes": [
+        "cell",
+        "small-12",
+        "medium-12",
+        "large-6",
+        "recipe-img-container",
+        "animate-enter-fade",
+        "animate-delay-5"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_0.jpg"
+    },
+    {
+      "index": 11,
+      "type": 3,
+      "y_position": 3019.75,
+      "height": 97,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "grid-x",
+        "recipe-home--cta-container",
+        "text-center",
+        "animate-enter-fade-up-short",
+        "animate-delay-10"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 12,
+      "type": 3,
+      "y_position": 3196.75,
+      "height": 903.984375,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-article-carousel",
+        "grid-container",
+        "bg--paper-green",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_16.jpg"
+    },
+    {
+      "index": 13,
+      "type": 2,
+      "y_position": 3276.75,
+      "height": 96,
+      "width": 880,
+      "html_tag": "div",
+      "classes": [
+        "sustainability-article-carousel__text-section"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {}
+    },
+    {
+      "index": 14,
+      "type": 2,
+      "y_position": 3424.75,
+      "height": 194.984375,
+      "width": 348,
+      "html_tag": "div",
+      "classes": [
+        "sustainability-card__img-container",
+        "animate-enter-fade",
+        "animate-delay-5"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_16.jpg"
+    },
+    {
+      "index": 15,
+      "type": 3,
+      "y_position": 4100.734375,
+      "height": 932.6875,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "campaign-carousel",
+        "grid-container",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_45.png"
+    },
+    {
+      "index": 16,
+      "type": 2,
+      "y_position": 4359.59375,
+      "height": 250,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-recipe-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_45.png"
+    },
+    {
+      "index": 17,
+      "type": 2,
+      "y_position": 4462.734375,
+      "height": 171.1875,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-fact-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_39.png"
+    },
+    {
+      "index": 18,
+      "type": 2,
+      "y_position": 4558.734375,
+      "height": 171.1875,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-fact-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_39.png"
+    },
+    {
+      "index": 19,
+      "type": 3,
+      "y_position": 5033.421875,
+      "height": 1080,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "coffee-profiler",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_29.png"
+    },
+    {
+      "index": 20,
+      "type": 3,
+      "y_position": 5113.421875,
+      "height": 639,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "max-width-container",
+        "grid-x"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_29.png"
+    },
+    {
+      "index": 21,
+      "type": 2,
+      "y_position": 5465.421875,
+      "height": 287,
+      "width": 1160,
+      "html_tag": "div",
+      "classes": [
+        "options-container",
+        "options-count--2"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_29.png"
+    },
+    {
+      "index": 22,
+      "type": 10,
+      "y_position": 6113.421875,
+      "height": 362,
+      "width": 1440,
+      "html_tag": "section",
+      "classes": [
+        "footer-section",
+        "grid-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/imported_nescafe_com_1768279406/img_38.png"
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "GothamHTFMedium, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "sizes": {
+      "h1": 42,
+      "h2": 34,
+      "h3": 29,
+      "h4": 14,
+      "p": 30,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 4,
+    "spacingScale": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32
+    ],
+    "commonSpacings": [
+      3,
+      6,
+      8,
+      16,
+      39,
+      80,
+      118
+    ],
+    "gridColumns": "1920px"
+  }
+}

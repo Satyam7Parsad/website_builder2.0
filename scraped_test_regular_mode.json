@@ -1,0 +1,319 @@
+{
+  "template_name": "test_regular_mode",
+  "url": "https://example.com",
+  "scraped_date": "2026-01-19T23:35:30.158595",
+  "sections": [
+    {
+      "index": 0,
+      "type": 1,
+      "y_position": 162,
+      "height": 80,
+      "width": 1152,
+      "html_tag": "div",
+      "classes": [],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(0, 0, 0)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "Times",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Example Domain",
+        "subtitle": "",
+        "content": "This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+        "headings": [
+          {
+            "text": "Example Domain",
+            "tag": "h1",
+            "fontSize": 24,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "system-ui, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "system-ui, sans-serif"
+          },
+          {
+            "text": "Learn more",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "system-ui, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Learn more",
+            "href": "https://iana.org/domains/example",
+            "bgColor": "#000000",
+            "textColor": "#334488",
+            "borderColor": "rgb(51, 68, 136)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "fontFamily": "system-ui, sans-serif",
+            "textDecoration": "underline",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "normal",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "8px",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "all",
+            "backgroundImage": "none"
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(238, 238, 238)",
+            "rgb(51, 68, 136)"
+          ]
+        },
+        "typography": {
+          "titleSize": 24,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "system-ui, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(0, 0, 0)",
+          "padding": "0px",
+          "paddingTop": "0px",
+          "paddingRight": "0px",
+          "paddingBottom": "0px",
+          "paddingLeft": "0px",
+          "margin": "16px 0px",
+          "border": "0px none rgb(0, 0, 0)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(0, 0, 0)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "system-ui, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textAlign": "start",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "all",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "nav_items": [
+        {
+          "text": "Learn more",
+          "href": "https://iana.org/domains/example",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "rgb(51, 68, 136)"
+        }
+      ],
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "rgb(0, 0, 0)",
+        "background": "#000000"
+      },
+      "title_font_size": 24,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Times",
+      "button_text": "Learn more",
+      "button_link": "https://iana.org/domains/example",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(51, 68, 136)",
+      "button_border_radius": "0px",
+      "button_border_width": "0px",
+      "button_border_color": "rgb(51, 68, 136)",
+      "button_box_shadow": "none",
+      "button_padding": "0px",
+      "button_text_transform": "none",
+      "button_letter_spacing": "normal",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(0, 0, 0)",
+      "css_opacity": "1",
+      "css_background_image": "none",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "0px",
+      "padding_right": "0px",
+      "padding_bottom": "0px",
+      "padding_left": "0px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "none",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto"
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "system-ui, sans-serif"
+    ],
+    "sizes": {
+      "h1": 24,
+      "p": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 8,
+    "cv_verified": true
+  },
+  "forms": [],
+  "social_links": [],
+  "seo_data": {
+    "title": "Example Domain",
+    "description": "",
+    "keywords": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": "",
+      "url": ""
+    },
+    "twitter": {
+      "card": "",
+      "title": "",
+      "description": "",
+      "image": ""
+    },
+    "favicon": "",
+    "canonical": "",
+    "lang": "en"
+  },
+  "custom_fonts": [],
+  "advanced_css": {
+    "hoverEffects": [],
+    "animations": [
+      {
+        "selector": "a",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "a",
+        "transition": "all"
+      }
+    ]
+  }
+}

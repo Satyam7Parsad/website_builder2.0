@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuildPro Construction - Premier Construction Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #f39c12;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2316213e" width="1200" height="600"/><path fill="%231a1a2e" d="M0 300L50 280L100 290L150 270L200 285L250 275L300 295L350 280L400 290L450 275L500 285L550 270L600 290L650 275L700 285L750 295L800 280L850 290L900 275L950 285L1000 270L1050 290L1100 280L1150 275L1200 290V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #f39c12;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #16213e;
+        }
+
+        section {
+            padding: 5rem 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #16213e;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #16213e;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .services {
+            background: #f8f9fa;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #16213e;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-text h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 220px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: #16213e;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        .process {
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #f39c12;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .projects {
+            background: #f8f9fa;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            height: 250px;
+            background: linear-gradient(135deg, #16213e, #1a1a2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #f39c12;
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #16213e;
+        }
+
+        .team {
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 240px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            height: 200px;
+            background: linear-gradient(135deg, #16213e, #f39c12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-role {
+            color: #f39c12;
+            font-size: 0.9rem;
+        }
+
+        .why-choose {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .certifications {
+            background: #16213e;
+            color: white;
+        }
+
+        .certifications h2 {
+            color: white;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 220px));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .cert-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .cert-badge:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq {
+            background: #f8f9fa;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #16213e;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .contact {
+            background: #16213e;
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #f39c12;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 0 4rem;
+        }
+
+        .footer-section h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #f39c12;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .project-grid,
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🏗️ BuildPro</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building Your Dreams</h1>
+            <p>Premier Construction Services Since 2005</p>
+            <div>
+                <a href="#contact" class="btn">Get a Free Quote</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Comprehensive Services</h2>
+        <p class="section-subtitle">From concept to completion, we handle every aspect of your construction project</p>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Residential Construction</h3>
+                <p>Custom homes designed and built to your exact specifications. From single-family homes to luxury estates, we bring your vision to life with meticulous attention to detail.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>Commercial Buildings</h3>
+                <p>Professional commercial construction for offices, retail spaces, and industrial facilities. We understand the unique requirements of commercial projects.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔨</div>
+                <h3>Renovation & Remodeling</h3>
+                <p>Transform your existing space with expert renovation services. Kitchen remodels, bathroom upgrades, room additions, and complete home makeovers.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Project Management</h3>
+                <p>Comprehensive project management ensuring every phase runs smoothly. We coordinate all trades, manage timelines, and maintain budget control.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Design & Planning</h3>
+                <p>Architectural design services and construction planning. Our team works with top architects to create functional and beautiful spaces.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Infrastructure Projects</h3>
+                <p>Large-scale infrastructure development including roads, bridges, and public facilities. Experienced in complex civil engineering projects.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About BuildPro Construction</h2>
+        <p class="section-subtitle">Building excellence for nearly two decades</p>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>Founded in 2005, BuildPro Construction has grown from a small local contractor to one of the region's most trusted construction companies. Our journey began with a simple mission: to deliver exceptional quality construction services with integrity and professionalism.</p>
+                <p>Over the years, we've completed hundreds of successful projects, from intimate residential renovations to large-scale commercial developments. Our reputation is built on consistent excellence, transparent communication, and unwavering commitment to our clients' vision.</p>
+                <p>Today, we're proud to employ a team of over 50 skilled professionals, including architects, engineers, project managers, and master craftsmen who share our passion for building excellence.</p>
+            </div>
+            <div class="about-image">
+                🏗️
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">500+</div>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">450+</div>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">19</div>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">50+</div>
+                <p>Team Members</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <h2>Our Construction Process</h2>
+        <p class="section-subtitle">A streamlined approach to bringing your project to life</p>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Initial Consultation</h3>
+                <p>We meet to discuss your vision, requirements, and budget. Understanding your needs is our first priority.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Design & Planning</h3>
+                <p>Our team creates detailed plans and designs, incorporating your feedback at every stage.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Permits & Approvals</h3>
+                <p>We handle all necessary permits and regulatory approvals, ensuring full compliance.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Construction</h3>
+                <p>Expert execution with regular updates and quality control at every phase.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Final Walkthrough</h3>
+                <p>Comprehensive inspection ensuring every detail meets our high standards and your expectations.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <h3>Project Handover</h3>
+                <p>Complete documentation, warranties, and ongoing support for your new space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>Featured Projects</h2>
+        <p class="section-subtitle">A showcase of our recent work</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">🏡</div>
+                <div class="project-info">
+                    <span class="project-tag">Residential</span>
+                    <h3>Modern Family Home</h3>
+                    <p>A stunning 4,500 sq ft custom home featuring sustainable materials, smart home technology, and contemporary design elements.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🏢</div>
+                <div class="project-info">
+                    <span class="project-tag">Commercial</span>
+                    <h3>Downtown Office Complex</h3>
+                    <p>12-story commercial building with state-of-the-art facilities, completed on schedule and within budget.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🏘️</div>
+                <div class="project-info">
+                    <span class="project-tag">Development</span>
+                    <h3>Riverside Housing Community</h3>
+                    <p>45-unit residential development featuring modern amenities, green spaces, and community facilities.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🏪</div>
+                <div class="project-info">
+                    <span class="project-tag">Retail</span>
+                    <h3>Shopping Center Renovation</h3>
+                    <p>Complete transformation of a 50,000 sq ft retail space with modern facades and improved infrastructure.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🏛️</div>
+                <div class="project-info">
+                    <span class="project-tag">Public</span>
+                    <h3>Community Center</h3>
+                    <p>Multi-purpose community facility featuring sports courts, meeting rooms, and event spaces.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🏨</div>
+                <div class="project-info">
+                    <span class="project-tag">Hospitality</span>
+                    <h3>Boutique Hotel</h3>
+                    <p>Luxury 50-room hotel with restaurant, spa, and conference facilities in the heart of the city.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <h2>Why Choose BuildPro?</h2>
+        <p class="section-subtitle">What sets us apart from the competition</p>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <h3>Quality Craftsmanship</h3>
+                <p>We never compromise on quality. Every project receives the same attention to detail and superior workmanship.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⏱️</div>
+                <h3>On-Time Delivery</h3>
+                <p>We respect your time and budget. Our projects are known for being completed on schedule.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Transparent Pricing</h3>
+                <p>No hidden costs or surprises. We provide detailed estimates and keep you informed throughout.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h3>Client-Focused</h3>
+                <p>Your satisfaction is our priority. We maintain open communication and welcome your input.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🌱</div>
+                <h3>Sustainable Building</h3>
+                <p>We incorporate eco-friendly materials and energy-efficient solutions in all our projects.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Fully Insured</h3>
+                <p>Comprehensive insurance coverage protects you and your investment throughout the project.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Meet Our Leadership Team</h2>
+        <p class="section-subtitle">The experts behind your successful project</p>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">👨‍💼</div>
+                <div class="member-info">
+                    <h3>James Anderson</h3>
+                    <p class="member-role">CEO & Founder</p>
+                    <p>25 years of construction experience with a vision for excellence.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">👩‍💼</div>
+                <div class="member-info">
+                    <h3>Sarah Mitchell</h3>
+                    <p class="member-role">Chief Operations Officer</p>
+                    <p>Expert in project management and operational efficiency.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">👨‍🔧</div>
+                <div class="member-info">
+                    <h3>Michael Chen</h3>
+                    <p class="member-role">Chief Engineer</p>
+                    <p>Licensed engineer specializing in structural design and safety.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">👩‍🎨</div>
+                <div class="member-info">
+                    <h3>Emily Rodriguez</h3>
+                    <p class="member-role">Lead Architect</p>
+                    <p>Award-winning architect with a passion for innovative design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Clients Say</h2>
+        <p class="section-subtitle">Real feedback from real clients</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">BuildPro transformed our vision into reality. Their attention to detail and commitment to quality exceeded all expectations. Our new home is everything we dreamed of and more.</p>
+                <p class="testimonial-author">- Robert & Jennifer Martinez</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">As a business owner, I needed a reliable partner for our office expansion. BuildPro delivered exceptional results, on time and within budget. Highly recommended!</p>
+                <p class="testimonial-author">- David Thompson, CEO TechStart Inc.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">The renovation of our retail space was handled with utmost professionalism. The team was responsive, creative, and delivered beyond our expectations.</p>
+                <p class="testimonial-author">- Lisa Chen, Store Owner</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Ready to start your project? Contact us today for a free consultation</p>
+        <div class="contact-content">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Select Service</option>
+                            <option>Residential Construction</option>
+                            <option>Commercial Buildings</option>
+                            <option>Renovation & Remodeling</option>
+                            <option>Project Management</option>
+                            <option>Design & Planning</option>
+                            <option>Infrastructure Projects</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell us about your project"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Address</h3>
+                        <p>123 Construction Ave<br>BuildCity, BC 12345</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p>(555) 123-4567<br>(555) 987-6543</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@buildpro.com<br>projects@buildpro.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div>
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 8AM - 6PM<br>Saturday: 9AM - 4PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Ready to Build Your Dream Project?</h2>
+        <p>Let's discuss how we can bring your vision to life</p>
+        <a href="#contact" class="btn btn-secondary">Schedule a Consultation</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About BuildPro</h3>
+                <p>We're dedicated to delivering exceptional construction services with integrity, quality, and professionalism. Your dream project is our mission.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#services">Residential Construction</a></li>
+                    <li><a href="#services">Commercial Buildings</a></li>
+                    <li><a href="#services">Renovation</a></li>
+                    <li><a href="#services">Project Management</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Follow us on social media for updates and inspiration</p>
+                <div style="font-size: 1.5rem; margin-top: 1rem;">
+                    <span style="margin-right: 1rem;">📘</span>
+                    <span style="margin-right: 1rem;">📷</span>
+                    <span style="margin-right: 1rem;">🐦</span>
+                    <span>💼</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BuildPro Construction. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .project-card, .team-member, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

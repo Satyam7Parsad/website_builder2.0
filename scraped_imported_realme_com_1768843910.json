@@ -1,0 +1,273 @@
+{
+  "metadata": {
+    "name": "imported_realme_com_1768843910",
+    "source_url": "https://www.realme.com/in/",
+    "domain": "www.realme.com",
+    "scraped_at": "2026-01-19T23:03:49.330954",
+    "scraper": "StealthBrowserMCP",
+    "version": "1.0"
+  },
+  "sections": [],
+  "typography": [
+    [
+      "a",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "span",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "li",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "p",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "600"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "18px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h2",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"PingFang SC\", \"Noto Sans\", \"Noto Sans CJK SC\", \"Microsoft YaHei\", \u00e5\u00be\u00ae\u00e8\u00bd\u00af\u00e9\u009b\u0085\u00e9\u00bb\u0091, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "32px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "700"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "80px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(0, 0, 0)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "grid_system": {},
+  "images": {
+    "directory": "scraped_images/imported_realme_com_1768843910",
+    "count": 1,
+    "mapping": {
+      "https://static.myoas.net/v3/common/images/toApp_icon-59b38c1c07.png": "scraped_images/imported_realme_com_1768843910/image_001.png"
+    }
+  },
+  "custom_fonts": [],
+  "raw_html": ""
+}

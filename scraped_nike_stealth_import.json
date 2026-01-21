@@ -1,0 +1,828 @@
+{
+  "template_name": "nike_stealth_import",
+  "source_url": "https://www.nike.com",
+  "sections": [
+    {
+      "type": "navigation",
+      "name": "New & Featured Details ",
+      "index": 0,
+      "html_tag": "header",
+      "classes": [
+        "no-animation",
+        "nav-css-gpek3"
+      ],
+      "id": "",
+      "bounds": {
+        "x": 0.0,
+        "y": 36.0,
+        "width": 1905.0,
+        "height": 60.0
+      },
+      "height": 300,
+      "width": 1920,
+      "y_position": 36,
+      "title": "New & Featured Details ",
+      "subtitle": ":host summary {",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)",
+      "content": {
+        "title": "New & Featured Details ",
+        "subtitle": ":host summary {",
+        "text": "New & Featured Details \n:host summary {\n  display: list-item;\n  counter-increment: list-item 0;\n  list-style: disclosure-closed inside;\n}\n:host([open]) summary {\n  list-style-type: disclosure-open;\n}\n Featured Upcoming Drops New Arrivals Bestsellers SNKRS Launch Calendar Customise with Nike By You Jordan Kobe Bryant LeBron James All Conditions Gear Trending Just Do the Work Ready for the Cold More Colours, More Running What's Trending 24.7 Collection Colours of the Season Retro Running Running S"
+      },
+      "styles": {
+        "backgroundColor": "rgba(30, 30, 40, 1)",
+        "color": "rgba(255, 255, 255, 1)"
+      },
+      "images": [
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1905,c_limit/459fe6b8-e51d-4d96-9880-66d7199de533/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 1905.0,
+          "height": 700.0,
+          "y": 154.0,
+          "local_path": "scraped_images/nike_stealth_import/image_016.jpg"
+        }
+      ],
+      "buttons": [],
+      "section_image": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1905,c_limit/459fe6b8-e51d-4d96-9880-66d7199de533/nike-just-do-it.png"
+    },
+    {
+      "type": "navigation",
+      "name": "Court Styles Shop Nike GP Challenge Pro Women's Ha",
+      "index": 1,
+      "html_tag": "section",
+      "classes": [
+        "nds-carousel",
+        "_37j5pXS8",
+        "navigation-mode-buttonAbove",
+        "css-p68jm2",
+        "e1qnw47h0"
+      ],
+      "id": "",
+      "bounds": {
+        "x": 24.0,
+        "y": 3092.921875,
+        "width": 1857.0,
+        "height": 776.375
+      },
+      "height": 776,
+      "width": 1920,
+      "y_position": 3092,
+      "title": "Court Styles Shop Nike GP Challenge Pro Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 9 695.00 Nike GP C",
+      "subtitle": "",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)",
+      "content": {
+        "title": "Court Styles Shop Nike GP Challenge Pro Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 9 695.00 Nike GP C",
+        "subtitle": "",
+        "text": "Court Styles Shop Nike GP Challenge Pro Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 9 695.00 Nike GP Challenge Pro Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 9 695.00 Nike Vapor 12 Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 15 995.00 NikeCourt Slam Men's Dri-FIT ADV Tank Top MRP : \u00e2\u0082\u00b9 4 495.00 NikeCourt Slam Women's Dri-FIT High-Waisted Tennis Skirt MRP : \u00e2\u0082\u00b9 3 995.00 NikeCourt Slam Women's Tank Top MRP : \u00e2\u0082\u00b9 4 495.00 Nike Zoom GP Challenge 1.5 PRM Women's Hard Court Tennis Shoes MRP : \u00e2\u0082\u00b9 14 995.00"
+      },
+      "styles": {
+        "backgroundColor": "rgba(30, 30, 40, 1)",
+        "color": "rgba(255, 255, 255, 1)"
+      },
+      "images": [
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/cbddbaeb-68b8-437b-a5a0-25a85c1d4aaf/gp-challenge-pro-hard-court-tennis-shoes-3hxffJQG.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_036.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/582f3324-45c9-448f-a32e-96974eee6007/gp-challenge-pro-hard-court-tennis-shoes-3hxffJQG.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_020.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/95c86e49-cba3-41fe-9dbb-fb22531005f2/vapor-12-hard-court-tennis-shoes-sn1WvVIV.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_013.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/bf671837-a494-45f1-bde6-0b9fdb223533/nikecourt-slam-dri-fit-adv-tank-top-H26z8HGy.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_010.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/a4dd01f8-001f-4c2b-8c95-55aad1747059/nikecourt-slam-dri-fit-high-waisted-tennis-skirt-hTYirP3y.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_033.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/2e73cc24-6e7e-4820-b3ae-be97114de006/nikecourt-slam-tank-top-YUHOwomq.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_034.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/149feefd-a40b-42ad-a3f0-68ffb0db4e77/zoom-gp-challenge-1-5-prm-hard-court-tennis-shoes-08rck1LN.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_025.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/223eb5ee-dde3-4cb7-b8d7-97099ca51c6f/nikecourt-slam-dri-fit-tennis-dress-6Qtk1BZV.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_006.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/d7bb0e58-b702-46c7-9cea-dd9bc0b5f04d/nikecourt-slam-dri-fit-high-waisted-tennis-skirt-hTYirP3y.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_017.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/4f6239c3-871a-45e4-9ab8-49518dab5c09/vapor-pro-3-hard-court-tennis-shoes-gUkqxmcJ.png",
+          "alt": "",
+          "width": 594.984375,
+          "height": 594.984375,
+          "y": 3167.3125,
+          "local_path": "scraped_images/nike_stealth_import/image_008.jpg"
+        }
+      ],
+      "buttons": [],
+      "section_image": "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/cbddbaeb-68b8-437b-a5a0-25a85c1d4aaf/gp-challenge-pro-hard-court-tennis-shoes-3hxffJQG.png"
+    },
+    {
+      "type": "navigation",
+      "name": "Shop by Sport Nike. Just Do It Running  Nike. Just",
+      "index": 2,
+      "html_tag": "section",
+      "classes": [
+        "nds-carousel",
+        "_37j5pXS8",
+        "card",
+        "navigation-mode-buttonAbove",
+        "grid-aligned",
+        "grid-aligned-3",
+        "css-sjc58a",
+        "e1qnw47h0"
+      ],
+      "id": "",
+      "bounds": {
+        "x": 40.5,
+        "y": 3953.296875,
+        "width": 1824.0,
+        "height": 881.765625
+      },
+      "height": 881,
+      "width": 1920,
+      "y_position": 3953,
+      "title": "Shop by Sport Nike. Just Do It Running  Nike. Just Do It Football Nike. Just Do It Basketball Nike. ",
+      "subtitle": "",
+      "bg_color": "rgba(45, 45, 55, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)",
+      "content": {
+        "title": "Shop by Sport Nike. Just Do It Running  Nike. Just Do It Football Nike. Just Do It Basketball Nike. ",
+        "subtitle": "",
+        "text": "Shop by Sport Nike. Just Do It Running  Nike. Just Do It Football Nike. Just Do It Basketball Nike. Just Do It Gym & Training Nike. Just Do It Yoga Nike. Just Do It Golf Nike. Just Do It Tennis Nike. Just Do It Skateboarding"
+      },
+      "styles": {
+        "backgroundColor": "rgba(45, 45, 55, 1)",
+        "color": "rgba(255, 255, 255, 1)"
+      },
+      "images": [
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/1f6dcd2f-749b-412d-938b-abac8e505a10/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_024.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/d6b91c33-af3b-4b08-811b-07f65e94c12c/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_011.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/a6e005d8-11ca-4684-895e-2a6c9116ea43/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_030.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/edf91243-2922-4f9e-95e4-df7f45d38f0b/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_015.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/97703c04-744f-415d-934a-0ea52d4cbb25/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_012.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/bdefd13f-b003-4c75-b7b3-c945faac3c30/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_032.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/6e7852d1-446e-462e-bc0a-453c36f860a0/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_007.jpg"
+        },
+        {
+          "src": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/1235a29e-b218-407f-a552-99b093fc723e/nike-just-do-it.png",
+          "alt": "Nike. Just Do It",
+          "width": 567.984375,
+          "height": 709.96875,
+          "y": 4015.296875,
+          "local_path": "scraped_images/nike_stealth_import/image_004.jpg"
+        }
+      ],
+      "buttons": [],
+      "section_image": "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/1f6dcd2f-749b-412d-938b-abac8e505a10/nike-just-do-it.png"
+    },
+    {
+      "type": "navigation",
+      "name": "Details ",
+      "index": 3,
+      "html_tag": "footer",
+      "classes": [
+        "false",
+        "nav-css-1vxx61x"
+      ],
+      "id": "",
+      "bounds": {
+        "x": 0.0,
+        "y": 5533.453125,
+        "width": 1905.0,
+        "height": 577.0
+      },
+      "height": 577,
+      "width": 1920,
+      "y_position": 5533,
+      "title": "Details ",
+      "subtitle": ":host summary {",
+      "bg_color": "rgba(30, 30, 40, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "content_color": "rgba(255, 255, 255, 1)",
+      "content": {
+        "title": "Details ",
+        "subtitle": ":host summary {",
+        "text": "Details \n:host summary {\n  display: list-item;\n  counter-increment: list-item 0;\n  list-style: disclosure-closed inside;\n}\n:host([open]) summary {\n  list-style-type: disclosure-open;\n}\n Resources Find A Store Become A Member Running Shoe Finder Product Advice Nike Coaching Send Us Feedback Details \n:host summary {\n  display: list-item;\n  counter-increment: list-item 0;\n  list-style: disclosure-closed inside;\n}\n:host([open]) summary {\n  list-style-type: disclosure-open;\n}\n Help Get Help Order Sta"
+      },
+      "styles": {
+        "backgroundColor": "rgba(30, 30, 40, 1)",
+        "color": "rgba(255, 255, 255, 1)"
+      },
+      "images": [],
+      "buttons": []
+    }
+  ],
+  "metadata": {
+    "name": "nike_stealth_import",
+    "source_url": "https://www.nike.com",
+    "domain": "www.nike.com",
+    "scraped_at": "2026-01-20T00:04:53.623665",
+    "scraper": "StealthBrowserMCP",
+    "version": "1.0"
+  },
+  "typography": [
+    [
+      "a",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "14px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "26px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "li",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "28px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "p",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "12px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "18px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "span",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h3",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Nike Futura ND\", \"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "96px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "86.4px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(255, 255, 255)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h1",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Display Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "32px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "38.4px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h2",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Display Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "32px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "38.4px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h4",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "500"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(17, 17, 17)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ],
+    [
+      "h5",
+      {
+        "type": "object",
+        "value": [
+          [
+            "fontFamily",
+            {
+              "type": "string",
+              "value": "\"Helvetica Now Text\", Helvetica, Arial, sans-serif"
+            }
+          ],
+          [
+            "fontSize",
+            {
+              "type": "string",
+              "value": "16px"
+            }
+          ],
+          [
+            "fontWeight",
+            {
+              "type": "string",
+              "value": "400"
+            }
+          ],
+          [
+            "lineHeight",
+            {
+              "type": "string",
+              "value": "24px"
+            }
+          ],
+          [
+            "color",
+            {
+              "type": "string",
+              "value": "rgb(112, 112, 114)"
+            }
+          ],
+          [
+            "letterSpacing",
+            {
+              "type": "string",
+              "value": "normal"
+            }
+          ]
+        ]
+      }
+    ]
+  ],
+  "grid_system": {},
+  "images": {
+    "directory": "scraped_images/nike_stealth_import",
+    "count": 38,
+    "mapping": {
+      "https://static.nike.com/a/images/w_144,c_limit/2e967c46-235c-4705-8247-2187fa4a1a2e/image.png": "scraped_images/nike_stealth_import/image_000.png",
+      "https://static.nike.com/a/images/w_144,c_limit/4e2444f5-000d-41e8-addd-9e2157d9ab94/image.png": "scraped_images/nike_stealth_import/image_001.png",
+      "https://static.nike.com/a/images/w_144,c_limit/5a6f0784-1e78-4c6a-9a57-45fd4bcb90b6/image.png": "scraped_images/nike_stealth_import/image_002.png",
+      "https://static.nike.com/a/images/w_144,c_limit/69f10b28-b90e-4d01-86c2-cbe744e93e9f/image.png": "scraped_images/nike_stealth_import/image_003.png",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/1235a29e-b218-407f-a552-99b093fc723e/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_004.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/d5fd04cc-9c96-495d-ae67-d267d8fec001/image.png": "scraped_images/nike_stealth_import/image_005.png",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/223eb5ee-dde3-4cb7-b8d7-97099ca51c6f/nikecourt-slam-dri-fit-tennis-dress-6Qtk1BZV.png": "scraped_images/nike_stealth_import/image_006.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/6e7852d1-446e-462e-bc0a-453c36f860a0/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_007.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/4f6239c3-871a-45e4-9ab8-49518dab5c09/vapor-pro-3-hard-court-tennis-shoes-gUkqxmcJ.png": "scraped_images/nike_stealth_import/image_008.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/57d95623-ba52-41f6-a84b-1aa5b5c9cc02/image.png": "scraped_images/nike_stealth_import/image_009.png",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/bf671837-a494-45f1-bde6-0b9fdb223533/nikecourt-slam-dri-fit-adv-tank-top-H26z8HGy.png": "scraped_images/nike_stealth_import/image_010.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/d6b91c33-af3b-4b08-811b-07f65e94c12c/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_011.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/97703c04-744f-415d-934a-0ea52d4cbb25/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_012.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/95c86e49-cba3-41fe-9dbb-fb22531005f2/vapor-12-hard-court-tennis-shoes-sn1WvVIV.png": "scraped_images/nike_stealth_import/image_013.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/9de56110-9532-4b30-baa2-c4d4655621df/image.png": "scraped_images/nike_stealth_import/image_014.png",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/edf91243-2922-4f9e-95e4-df7f45d38f0b/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_015.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1905,c_limit/459fe6b8-e51d-4d96-9880-66d7199de533/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_016.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/d7bb0e58-b702-46c7-9cea-dd9bc0b5f04d/nikecourt-slam-dri-fit-high-waisted-tennis-skirt-hTYirP3y.png": "scraped_images/nike_stealth_import/image_017.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/4223eeb4-beec-4117-8454-2f229277258f/image.png": "scraped_images/nike_stealth_import/image_018.png",
+      "https://static.nike.com/a/images/w_144,c_limit/d4902a42-5c8a-44c7-a791-f2165f01cb6f/image.png": "scraped_images/nike_stealth_import/image_019.png",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/582f3324-45c9-448f-a32e-96974eee6007/gp-challenge-pro-hard-court-tennis-shoes-3hxffJQG.png": "scraped_images/nike_stealth_import/image_020.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/570e1d92-9a25-4437-8fc5-a63065e8bbb5/image.png": "scraped_images/nike_stealth_import/image_021.png",
+      "https://static.nike.com/a/images/w_144,c_limit/37046247-2d5b-4c76-a530-d7559e64c01a/image.png": "scraped_images/nike_stealth_import/image_022.png",
+      "https://metrics.brightcove.com/tracker/v2/?event=video_view&session=619bf5ca-9c1f-416e-9fa3-d7a8f30e7da9&account=72451143001&video=6385914421112&domain=videocloud&duration=30.113": "scraped_images/nike_stealth_import/image_023.gif",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/1f6dcd2f-749b-412d-938b-abac8e505a10/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_024.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/149feefd-a40b-42ad-a3f0-68ffb0db4e77/zoom-gp-challenge-1-5-prm-hard-court-tennis-shoes-08rck1LN.png": "scraped_images/nike_stealth_import/image_025.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/48ba5398-a354-48ad-b19e-9e7056bfabff/image.png": "scraped_images/nike_stealth_import/image_026.png",
+      "https://static.nike.com/a/images/w_144,c_limit/9879b7ec-e73f-46c7-97c8-7f8c7b93b6e0/image.png": "scraped_images/nike_stealth_import/image_027.png",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_1158,c_limit/9ff8951d-e9fa-4474-8c90-64536622bf03/nike-just-do-it.jpg": "scraped_images/nike_stealth_import/image_028.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_1158,c_limit/00cef77c-bebb-46d9-ae9b-8dfbc978aaf0/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_029.jpg",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/a6e005d8-11ca-4684-895e-2a6c9116ea43/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_030.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/aa2ddfd4-b9b4-4540-a747-1ad353c51f7d/image.png": "scraped_images/nike_stealth_import/image_031.png",
+      "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/h_710,c_limit/bdefd13f-b003-4c75-b7b3-c945faac3c30/nike-just-do-it.png": "scraped_images/nike_stealth_import/image_032.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/a4dd01f8-001f-4c2b-8c95-55aad1747059/nikecourt-slam-dri-fit-high-waisted-tennis-skirt-hTYirP3y.png": "scraped_images/nike_stealth_import/image_033.jpg",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/2e73cc24-6e7e-4820-b3ae-be97114de006/nikecourt-slam-tank-top-YUHOwomq.png": "scraped_images/nike_stealth_import/image_034.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/eb8e59ae-176e-4cbc-afd7-3fb8ad00f75d/image.png": "scraped_images/nike_stealth_import/image_035.png",
+      "https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/h_594,c_limit/cbddbaeb-68b8-437b-a5a0-25a85c1d4aaf/gp-challenge-pro-hard-court-tennis-shoes-3hxffJQG.png": "scraped_images/nike_stealth_import/image_036.jpg",
+      "https://static.nike.com/a/images/w_144,c_limit/b32a2f7c-0faf-495f-9b1a-7a791d511297/image.png": "scraped_images/nike_stealth_import/image_037.png"
+    }
+  },
+  "custom_fonts": [],
+  "raw_html": ""
+}

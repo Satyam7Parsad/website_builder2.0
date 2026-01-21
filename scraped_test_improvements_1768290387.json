@@ -1,0 +1,4880 @@
+{
+  "template_name": "test_improvements_1768290387",
+  "url": "https://www.nescafe.com/in/",
+  "scraped_date": "2026-01-13T13:17:23.817243",
+  "sections": [
+    {
+      "index": 0,
+      "type": 8,
+      "y_position": 0,
+      "height": 97,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "main-navigation",
+        "grid-container",
+        "js-navigation"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "118px 0px 0px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "Which of these match the way you have your coffee?",
+        "subtitle": "How intense do you like your coffee?",
+        "content": "Our ranges Coffee types Coffee formats",
+        "headings": [
+          {
+            "text": "Which of these match the way you have your coffee?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "How do you mainly prefer to drink your coffee?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "How intense do you like your coffee?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Picture yourself sipping on coffee. Which of these match up to your imagination?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Privacy Preference Center",
+            "tag": "h2",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Manage Consent Preferences",
+            "tag": "h3",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Strictly Necessary Cookies",
+            "tag": "h4",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Performance Cookies",
+            "tag": "h4",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Functional Cookies",
+            "tag": "h4",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Targeting Cookies",
+            "tag": "h4",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Cookie List",
+            "tag": "h3",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Our ranges",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Coffee types",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Coffee formats",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "All products",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Help me choose",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Coffee culture",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Recipes home",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Drinks",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Seasonal",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "See all recipes",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Make your world",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Our world",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "The world",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Recycling",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Location selector",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "About us",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Contact us",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services, such as setting your privacy preferences, logging in or filling in forms. You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. These cookies do not store any personally identifiable information.",
+            "fontSize": 12.992,
+            "fontWeight": 400,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us to know which pages are the most and least popular and see how visitors move around the site. All information these cookies collect is aggregated and therefore anonymous. If you do not allow these cookies we will not know when you have visited our site, and will not be able to monitor its performance.",
+            "fontSize": 12.992,
+            "fontWeight": 400,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "These cookies enable the website to provide enhanced functionality and personalisation. They may be set by us or by third party providers whose services we have added to our pages. If you do not allow these cookies then some or all of these services may not function properly.",
+            "fontSize": 12.992,
+            "fontWeight": 400,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts on other sites. They do not store directly personal information, but are based on uniquely identifying your browser and internet device. If you do not allow these cookies, you will experience less targeted advertising.",
+            "fontSize": 12.992,
+            "fontWeight": 400,
+            "color": "rgb(51, 51, 51)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Empowering women in coffee farming",
+            "href": "https://www.nescafe.com/in/sustainability/our-world/empowering-women",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 24px 0px 0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Explore the world of coffee tasting",
+            "href": "https://www.nescafe.com/in/coffee-culture/knowledge/coffee-tasting",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 24px 0px 0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(67, 48, 31)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "https://www.nescafe.com/in/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 101,
+            "height": 37
+          },
+          {
+            "text": "Our coffees",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "borderRadius": "0px",
+            "padding": "35px 18px 35px 10px",
+            "width": 125.96875,
+            "height": 97
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Recipes",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "borderRadius": "0px",
+            "padding": "35px 18px",
+            "width": 101.796875,
+            "height": 97
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Sustainability",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "borderRadius": "0px",
+            "padding": "35px 10px 35px 18px",
+            "width": 141.140625,
+            "height": 97
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(67, 48, 31)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(67, 48, 31)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 42,
+            "height": 42
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability",
+            "bgColor": "rgb(190, 76, 75)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Hot drinks",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cold drinks",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Hot",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cold",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee without milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with added flavours",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with non-dairy milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with non-dairy milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee without milk",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Coffee with added flavours",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Smooth",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Medium",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Intense",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Light & delicate",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Well-balanced",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Rich & intense",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Out and about",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Quick & easy,made in minutes",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Out and about",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Easy to make at home",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Back To Top",
+            "href": "javascript:void(0)",
+            "bgColor": "rgb(241, 237, 233)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px 0px 7px",
+            "padding": "8px 12px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "More information",
+            "href": "https://www.nestle.in/info/privacypolicy",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 12.992,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Allow All",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cookies Details",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 400,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cookies Details",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 400,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cookies Details",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 400,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cookies Details",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 400,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Back Button",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "2px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Filter Icon",
+            "href": "",
+            "bgColor": "rgb(56, 96, 190)",
+            "textColor": "rgb(85, 85, 85)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "17px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Clear",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(51, 51, 51)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "1px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Apply",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Cancel",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 14.4,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Reject All",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 12,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Confirm My Choices",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 12,
+            "fontWeight": 700,
+            "borderRadius": "2px",
+            "padding": "12px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "https://www.onetrust.com/products/cookie-consent/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(101, 101, 101)",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(107, 107, 107)",
+            "rgb(190, 76, 75)",
+            "rgb(48, 34, 22)",
+            "rgb(67, 48, 31)",
+            "rgb(241, 237, 233)",
+            "rgb(245, 241, 237)",
+            "rgba(34, 34, 34, 0.3)",
+            "rgb(250, 250, 250)",
+            "rgb(51, 63, 72)",
+            "rgb(119, 193, 154)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(31, 31, 31)",
+            "rgb(51, 51, 51)",
+            "rgba(0, 0, 0, 0.5)",
+            "rgb(85, 85, 85)",
+            "rgb(249, 255, 250)",
+            "rgb(56, 96, 190)",
+            "rgb(225, 38, 28)",
+            "rgb(39, 69, 92)",
+            "rgb(248, 248, 248)",
+            "rgb(118, 118, 118)",
+            "rgb(105, 105, 105)",
+            "rgb(244, 244, 244)",
+            "rgb(101, 101, 101)",
+            "rgb(106, 170, 228)"
+          ]
+        },
+        "typography": {
+          "titleSize": 32,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 38,
+          "contentWeight": 400,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 20,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(107, 107, 107)",
+        "rgb(190, 76, 75)",
+        "rgb(48, 34, 22)",
+        "rgb(67, 48, 31)",
+        "rgb(241, 237, 233)",
+        "rgb(245, 241, 237)",
+        "rgba(34, 34, 34, 0.3)",
+        "rgb(250, 250, 250)",
+        "rgb(51, 63, 72)",
+        "rgb(119, 193, 154)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(31, 31, 31)",
+        "rgb(51, 51, 51)",
+        "rgba(0, 0, 0, 0.5)",
+        "rgb(85, 85, 85)",
+        "rgb(249, 255, 250)",
+        "rgb(56, 96, 190)",
+        "rgb(225, 38, 28)",
+        "rgb(39, 69, 92)",
+        "rgb(248, 248, 248)",
+        "rgb(118, 118, 118)",
+        "rgb(105, 105, 105)",
+        "rgb(244, 244, 244)",
+        "rgb(101, 101, 101)",
+        "rgb(106, 170, 228)"
+      ],
+      "title_font_size": 32,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 38,
+      "content_font_weight": 400,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_40.png"
+    },
+    {
+      "index": 1,
+      "type": 0,
+      "y_position": 97,
+      "height": 900,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "homepage-banner-wrapper",
+        "variation--banner",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "padding": "118px 0px 0px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "We\u2019re using our global scale for good, one cup at a time",
+        "subtitle": "",
+        "content": "Our coffees Recipes Sustainability",
+        "headings": [
+          {
+            "text": "We\u2019re using our global scale for good, one cup at a time",
+            "tag": "h1",
+            "fontSize": 42,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Our coffees",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Recipes",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Sustainability",
+            "fontSize": 38,
+            "fontWeight": 400,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Let's make sure you're in the right place.",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Get in touch. We're here to help.",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Our ranges",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Classic",
+            "href": "https://www.nescafe.com/in/classic",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Gold Blend",
+            "href": "https://www.nescafe.com/in/gold",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Roastery",
+            "href": "https://www.nescafe.com/in/coffees/ranges/nescafe-roastery",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Sunrise",
+            "href": "https://www.nescafe.com/in/coffees/ranges/nescafe-sunrise",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Ready to Drink",
+            "href": "https://www.nescafe.com/in/coffees/ranges/nescafe-ready-drink",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "NESCAF\u00c9\u00ae Allin1",
+            "href": "https://www.nescafe.com/in/coffees/ranges/nescafe-all-in-1",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "See all ranges",
+            "href": "https://www.nescafe.com/in/coffees/ranges",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 129.65625,
+            "height": 24
+          },
+          {
+            "text": "Coffee types",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Black coffee",
+            "href": "https://www.nescafe.com/in/coffees/types/black-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Frothy coffee",
+            "href": "https://www.nescafe.com/in/coffees/types/frothy-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Cappuccino",
+            "href": "https://www.nescafe.com/in/coffees/types/cappuccino",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "See all drinks",
+            "href": "https://www.nescafe.com/in/coffees/types",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 124.84375,
+            "height": 24
+          },
+          {
+            "text": "Coffee formats",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Instant coffee",
+            "href": "https://www.nescafe.com/in/coffees/formats/instant-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Coffee sachets",
+            "href": "https://www.nescafe.com/in/coffees/formats/sachets",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Coffee to go",
+            "href": "https://www.nescafe.com/in/coffees/formats/ready-to-drink",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "See all formats",
+            "href": "https://www.nescafe.com/in/coffees/formats",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 137.78125,
+            "height": 24
+          },
+          {
+            "text": "All products",
+            "href": "https://www.nescafe.com/in/coffees",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Help me choose",
+            "href": "https://www.nescafe.com/in/coffee-finder",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Coffee culture",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Magazine hub",
+            "href": "https://www.nescafe.com/in/coffee-culture",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 34
+          },
+          {
+            "text": "Coffee lifestyle",
+            "href": "https://www.nescafe.com/in/coffee-culture/lifestyle",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 34
+          },
+          {
+            "text": "Coffee knowledge",
+            "href": "https://www.nescafe.com/in/coffee-culture/knowledge",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 34
+          },
+          {
+            "text": "Recipes home",
+            "href": "https://www.nescafe.com/in/nescafe-recipe",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Drinks",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Inaccessible",
+            "href": "https://www.nescafe.com/in/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Frothy\u200b coffee",
+            "href": "https://www.nescafe.com/in/recipes/drinks/frothy-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Mocha\u200b",
+            "href": "https://www.nescafe.com/in/recipes/drinks/mocha",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Cappuccino\u200b\u200b",
+            "href": "https://www.nescafe.com/in/recipes/drinks/cappuccino",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Latte\u200b",
+            "href": "https://www.nescafe.com/in/recipes/drinks/latte",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Flavoured coffee",
+            "href": "https://www.nescafe.com/in/recipes/drinks/flavored-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Iced coffee",
+            "href": "https://www.nescafe.com/in/recipes/drinks/iced-coffee",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "See all drinks recipes",
+            "href": "https://www.nescafe.com/in/recipes/drinks",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 187.75,
+            "height": 24
+          },
+          {
+            "text": "Seasonal",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Spring/Summer",
+            "href": "https://www.nescafe.com/in/recipes/seasonals/spring-summer",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "Autumn/Winter",
+            "href": "https://www.nescafe.com/in/recipes/seasonals/autumn-winter",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "4px",
+            "width": 439.328125,
+            "height": 48
+          },
+          {
+            "text": "See all seasonal recipes",
+            "href": "https://www.nescafe.com/in/recipes/seasonals",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 208.125,
+            "height": 24
+          },
+          {
+            "text": "See all recipes",
+            "href": "https://www.nescafe.com/in/recipes",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Make your world",
+            "href": "https://www.nescafe.com/in/sustainability",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Our world",
+            "href": "https://www.nescafe.com/in/sustainability/our-world",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "The world",
+            "href": "https://www.nescafe.com/in/sustainability/the-world",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Recycling",
+            "href": "https://www.nescafe.com/in/recycling",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Login",
+            "href": "https://www.nescafe.com/in/login",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "2px 4px",
+            "width": 58.375,
+            "height": 30
+          },
+          {
+            "text": "Register",
+            "href": "https://www.nescafe.com/in/register",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "2px 4px",
+            "width": 81.921875,
+            "height": 30
+          },
+          {
+            "text": "Location selector",
+            "href": "https://www.nescafe.com/in/country-selector",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Explore",
+            "href": "https://www.nescafe.com/in/country-selector",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 68.265625,
+            "height": 27
+          },
+          {
+            "text": "About us",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Our NESCAF\u00c9\u00ae story",
+            "href": "https://www.nescafe.com/in/coffee-culture/knowledge/nescafe-history",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 441.328125,
+            "height": 42
+          },
+          {
+            "text": "FAQs",
+            "href": "https://www.nescafe.com/in/faq",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 441.328125,
+            "height": 42
+          },
+          {
+            "text": "Contact us",
+            "href": "https://www.nescafe.com/in/contact-us",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "8px 4px",
+            "width": 433,
+            "height": 42
+          },
+          {
+            "text": "Contact us",
+            "href": "https://www.nescafe.com/in/contact-us",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 96.59375,
+            "height": 27
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "3px",
+            "padding": "0px",
+            "width": 14,
+            "height": 14
+          },
+          {
+            "text": "Find out more",
+            "href": "https://www.nescafe.com/in/sustainability",
+            "bgColor": "rgb(190, 76, 75)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 176.28125,
+            "height": 46
+          },
+          {
+            "text": "More information",
+            "href": "https://www.nestle.in/info/privacypolicy",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 700,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 110.859375,
+            "height": 15
+          },
+          {
+            "text": "Cookies Settings",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 132.34375,
+            "height": 41.609375
+          },
+          {
+            "text": "Reject All",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 125,
+            "height": 41.609375
+          },
+          {
+            "text": "Accept All Cookies",
+            "href": "",
+            "bgColor": "rgb(34, 34, 34)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 146.53125,
+            "height": 41.609375
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(241, 237, 233)",
+            "rgb(0, 0, 0)",
+            "rgb(245, 241, 237)",
+            "rgb(204, 204, 204)",
+            "rgb(255, 255, 255)",
+            "rgb(63, 32, 33)",
+            "rgb(190, 76, 75)",
+            "rgb(51, 51, 51)",
+            "rgb(56, 96, 190)",
+            "rgb(225, 38, 28)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 38,
+          "contentWeight": 400,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(241, 237, 233)",
+        "rgb(0, 0, 0)",
+        "rgb(245, 241, 237)",
+        "rgb(204, 204, 204)",
+        "rgb(255, 255, 255)",
+        "rgb(63, 32, 33)",
+        "rgb(190, 76, 75)",
+        "rgb(51, 51, 51)",
+        "rgb(56, 96, 190)",
+        "rgb(225, 38, 28)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 38,
+      "content_font_weight": 400,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "Our ranges",
+      "button_link": "",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 18,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_41.jpg",
+      "background_image": "scraped_images/test_improvements_1768290387/img_28.jpg"
+    },
+    {
+      "index": 2,
+      "type": 8,
+      "y_position": 1009.390625,
+      "height": 70.609375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "ot-sdk-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "More information",
+            "href": "https://www.nestle.in/info/privacypolicy",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(56, 96, 190)",
+            "fontSize": 13.008,
+            "fontWeight": 700,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 110.859375,
+            "height": 15
+          },
+          {
+            "text": "Cookies Settings",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 132.34375,
+            "height": 41.609375
+          },
+          {
+            "text": "Reject All",
+            "href": "",
+            "bgColor": "rgb(225, 38, 28)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 125,
+            "height": 41.609375
+          },
+          {
+            "text": "Accept All Cookies",
+            "href": "",
+            "bgColor": "rgb(34, 34, 34)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 13.008,
+            "fontWeight": 600,
+            "borderRadius": "2px",
+            "padding": "12px 10px",
+            "width": 146.53125,
+            "height": 41.609375
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(51, 51, 51)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(51, 51, 51)",
+            "rgb(56, 96, 190)",
+            "rgb(225, 38, 28)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(51, 51, 51)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(51, 51, 51)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(51, 51, 51)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(51, 51, 51)",
+        "rgb(56, 96, 190)",
+        "rgb(225, 38, 28)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(51, 51, 51)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(51, 51, 51)",
+      "font_family": "Arial",
+      "button_text": "More information",
+      "button_link": "https://www.nestle.in/info/privacypolicy",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(56, 96, 190)",
+      "button_font_size": 13.008,
+      "button_font_weight": 700,
+      "background_image": "scraped_images/test_improvements_1768290387/img_28.jpg"
+    },
+    {
+      "index": 3,
+      "type": 8,
+      "y_position": 1080,
+      "height": 374,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "home-page-description",
+        "grid-container",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "Sign in",
+            "href": "https://www.nescafe.com/in/login",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 54.78125,
+            "height": 24
+          },
+          {
+            "text": "Register",
+            "href": "https://www.nescafe.com/in/register",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 84.859375,
+            "height": 24
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(51, 63, 72)",
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 20,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(51, 63, 72)",
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "Sign in",
+      "button_link": "https://www.nescafe.com/in/login",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_13.png"
+    },
+    {
+      "index": 4,
+      "type": 8,
+      "y_position": 1160,
+      "height": 214,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "grid-x",
+        "max-width-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "Sign in",
+            "href": "https://www.nescafe.com/in/login",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 54.78125,
+            "height": 24
+          },
+          {
+            "text": "Register",
+            "href": "https://www.nescafe.com/in/register",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 84.859375,
+            "height": 24
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(51, 63, 72)",
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 20,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(51, 63, 72)",
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "Sign in",
+      "button_link": "https://www.nescafe.com/in/login",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_13.png"
+    },
+    {
+      "index": 5,
+      "type": 3,
+      "y_position": 1454,
+      "height": 970.25,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-hub-recycle-section",
+        "grid-container",
+        "bg--paper-white",
+        "homepage-recommended-article",
+        "padding",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Discover a world of flavours and formats in one place",
+        "subtitle": "",
+        "content": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+        "headings": [
+          {
+            "text": "Discover a world of flavours and formats in one place",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "See all products",
+            "href": "https://www.nescafe.com/in/coffees",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 195.875,
+            "height": 48
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "See all products",
+      "button_link": "https://www.nescafe.com/in/coffees",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 18,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/test_improvements_1768290387/img_3.jpg"
+    },
+    {
+      "index": 6,
+      "type": 2,
+      "y_position": 1534,
+      "height": 749.265625,
+      "width": 1798,
+      "html_tag": "div",
+      "classes": [
+        "cell",
+        "bg-container",
+        "animate-enter-fade",
+        "animate-delay-3"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Discover a world of flavours and formats in one place",
+        "subtitle": "",
+        "content": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+        "headings": [
+          {
+            "text": "Discover a world of flavours and formats in one place",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "section_image": "scraped_images/test_improvements_1768290387/img_3.jpg"
+    },
+    {
+      "index": 7,
+      "type": 2,
+      "y_position": 2174.265625,
+      "height": 210,
+      "width": 1364.328125,
+      "html_tag": "div",
+      "classes": [
+        "text-container",
+        "text-center"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Discover a world of flavours and formats in one place",
+        "subtitle": "",
+        "content": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+        "headings": [
+          {
+            "text": "Discover a world of flavours and formats in one place",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Explore the full range of NESCAF\u00c9\u00ae to find your perfect coffee product.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "See all products",
+            "href": "https://www.nescafe.com/in/coffees",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 195.875,
+            "height": 48
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "See all products",
+      "button_link": "https://www.nescafe.com/in/coffees",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 18,
+      "button_font_weight": 400
+    },
+    {
+      "index": 8,
+      "type": 3,
+      "y_position": 2424.25,
+      "height": 772.5,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "recipe-home",
+        "grid-container",
+        "overflow-x-hidden",
+        "recipe-home--has-icon",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Make your day a little cozier",
+        "subtitle": "",
+        "content": "Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.",
+        "headings": [
+          {
+            "text": "Make your day a little cozier",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "See all recipes",
+            "href": "https://www.nescafe.com/in/recipes",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 180.3125,
+            "height": 48
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)",
+            "rgb(119, 193, 154)",
+            "rgb(51, 63, 72)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(119, 193, 154)",
+        "rgb(51, 63, 72)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgba(16, 16, 16, 0.3)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/test_improvements_1768290387/img_37.jpg"
+    },
+    {
+      "index": 9,
+      "type": 2,
+      "y_position": 2544.25,
+      "height": 92,
+      "width": 761.984375,
+      "html_tag": "div",
+      "classes": [
+        "recipe-home--text-section",
+        "animate-enter-fade-up-short",
+        "animate-delay-3"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Make your day a little cozier",
+        "subtitle": "",
+        "content": "Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.",
+        "headings": [
+          {
+            "text": "Make your day a little cozier",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Whatever your taste, here\u2019s some hot coffee inspiration to make your day better.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    },
+    {
+      "index": 10,
+      "type": 8,
+      "y_position": 2687.25,
+      "height": 276.5,
+      "width": 276.5,
+      "html_tag": "div",
+      "classes": [
+        "cell",
+        "small-12",
+        "medium-12",
+        "large-6",
+        "recipe-img-container",
+        "animate-enter-fade",
+        "animate-delay-5"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)",
+            "rgb(119, 193, 154)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(119, 193, 154)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgba(16, 16, 16, 0.3)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_9.jpg"
+    },
+    {
+      "index": 11,
+      "type": 3,
+      "y_position": 3019.75,
+      "height": 97,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "grid-x",
+        "recipe-home--cta-container",
+        "text-center",
+        "animate-enter-fade-up-short",
+        "animate-delay-10"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "See all recipes",
+            "href": "https://www.nescafe.com/in/recipes",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px 0px 7px",
+            "padding": "10px 24px",
+            "width": 180.3125,
+            "height": 48
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "See all recipes",
+      "button_link": "https://www.nescafe.com/in/recipes",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 18,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 12,
+      "type": 4,
+      "y_position": 3196.75,
+      "height": 903.984375,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "sustainability-article-carousel",
+        "grid-container",
+        "bg--paper-green",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "See the difference we make from bean to cup",
+        "subtitle": "",
+        "content": "",
+        "headings": [
+          {
+            "text": "See the difference we make from bean to cup",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(82, 162, 123)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(255, 255, 255)",
+            "rgb(119, 193, 154)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(82, 162, 123)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(255, 255, 255)",
+        "rgb(119, 193, 154)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgba(16, 16, 16, 0.3)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/test_improvements_1768290387/img_25.jpg"
+    },
+    {
+      "index": 13,
+      "type": 4,
+      "y_position": 3276.75,
+      "height": 96,
+      "width": 880,
+      "html_tag": "div",
+      "classes": [
+        "sustainability-article-carousel__text-section"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "See the difference we make from bean to cup",
+        "subtitle": "",
+        "content": "",
+        "headings": [
+          {
+            "text": "See the difference we make from bean to cup",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 14,
+      "type": 2,
+      "y_position": 3424.75,
+      "height": 194.984375,
+      "width": 348,
+      "html_tag": "div",
+      "classes": [
+        "sustainability-card__img-container",
+        "animate-enter-fade",
+        "animate-delay-5"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(119, 193, 154)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(119, 193, 154)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "section_image": "scraped_images/test_improvements_1768290387/img_25.jpg"
+    },
+    {
+      "index": 15,
+      "type": 3,
+      "y_position": 4100.734375,
+      "height": 932.6875,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "campaign-carousel",
+        "grid-container",
+        "bg--paper-white"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "Your NESCAF\u00c9\u00ae today",
+        "subtitle": "",
+        "content": "Since 2010, NESCAF\u00c9\u00ae Plan farmers received over 250 million coffee plantlets. We are dedicated to renewing the working environments of coffee communities across the world, so they can live a better life.",
+        "headings": [
+          {
+            "text": "Your NESCAF\u00c9\u00ae today",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Since 2010, NESCAF\u00c9\u00ae Plan farmers received over 250 million coffee plantlets.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "We are dedicated to renewing the working environments of coffee communities across the world, so they can live a better life.",
+            "fontSize": 18,
+            "fontWeight": 500,
+            "color": "rgb(34, 34, 34)",
+            "fontFamily": "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Explore more",
+            "href": "https://www.nescafe.com/in/sustainability/our-world/resist-climate-change",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 126.296875,
+            "height": 24
+          },
+          {
+            "text": "Explore more",
+            "href": "https://www.nescafe.com/in/sustainability/our-world/greenhouse-gas-emissions",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(34, 34, 34)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 126.296875,
+            "height": 24
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(119, 193, 154)",
+            "rgb(0, 0, 0)",
+            "rgb(82, 162, 123)",
+            "rgba(16, 16, 16, 0.3)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(34, 34, 34)",
+          "contentSize": 18,
+          "contentWeight": 500,
+          "contentColor": "rgb(34, 34, 34)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(119, 193, 154)",
+        "rgb(0, 0, 0)",
+        "rgb(82, 162, 123)",
+        "rgba(16, 16, 16, 0.3)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(34, 34, 34)",
+      "content_font_size": 18,
+      "content_font_weight": 500,
+      "content_color": "rgb(34, 34, 34)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "Explore more",
+      "button_link": "https://www.nescafe.com/in/sustainability/our-world/resist-climate-change",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(34, 34, 34)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 16,
+      "type": 2,
+      "y_position": 4359.59375,
+      "height": 250,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-recipe-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(119, 193, 154)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(119, 193, 154)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial"
+    },
+    {
+      "index": 17,
+      "type": 2,
+      "y_position": 4462.734375,
+      "height": 171.1875,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-fact-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(119, 193, 154)",
+            "rgb(82, 162, 123)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(119, 193, 154)",
+        "rgb(82, 162, 123)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial"
+    },
+    {
+      "index": 18,
+      "type": 8,
+      "y_position": 4558.734375,
+      "height": 171.1875,
+      "width": 315,
+      "html_tag": "div",
+      "classes": [
+        "campaign-fact-card__img-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "0px",
+            "width": 40,
+            "height": 40
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(119, 193, 154)",
+            "rgb(82, 162, 123)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(255, 255, 255)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(119, 193, 154)",
+        "rgb(82, 162, 123)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(255, 255, 255)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgba(16, 16, 16, 0.3)",
+      "button_font_size": 16,
+      "button_font_weight": 400
+    },
+    {
+      "index": 19,
+      "type": 3,
+      "y_position": 5033.421875,
+      "height": 1080,
+      "width": 1920,
+      "html_tag": "section",
+      "classes": [
+        "grid-container",
+        "coffee-profiler",
+        "animate-enter",
+        "in-view"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "NESCAF\u00c9\u00ae Product Guide",
+        "subtitle": "Do you typically prefer hot or cold drinks?",
+        "content": "",
+        "headings": [
+          {
+            "text": "NESCAF\u00c9\u00ae Product Guide",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "What\u2019s your experience with the world of coffee?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Do you typically prefer hot or cold drinks?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Which of these drink types do you think you'd prefer?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "What kind of intensity profile do you like in your drinks?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Now that you're getting into the coffee world, how do you think you'd enjoy coffee best?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "I love coffee and have been drinking it for years",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          },
+          {
+            "text": "I'm brand new to the world of coffee",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(255, 255, 255)",
+            "rgb(190, 76, 75)",
+            "rgb(0, 0, 0)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(255, 255, 255)",
+        "rgb(190, 76, 75)",
+        "rgb(0, 0, 0)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "I love coffee and have been drinking it for years",
+      "button_link": "",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/test_improvements_1768290387/img_14.png"
+    },
+    {
+      "index": 20,
+      "type": 3,
+      "y_position": 5113.421875,
+      "height": 639,
+      "width": 1440,
+      "html_tag": "div",
+      "classes": [
+        "max-width-container",
+        "grid-x"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "NESCAF\u00c9\u00ae Product Guide",
+        "subtitle": "Do you typically prefer hot or cold drinks?",
+        "content": "",
+        "headings": [
+          {
+            "text": "NESCAF\u00c9\u00ae Product Guide",
+            "tag": "h2",
+            "fontSize": 38,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "What\u2019s your experience with the world of coffee?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Do you typically prefer hot or cold drinks?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Which of these drink types do you think you'd prefer?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "What kind of intensity profile do you like in your drinks?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          },
+          {
+            "text": "Now that you're getting into the coffee world, how do you think you'd enjoy coffee best?",
+            "tag": "h3",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "I love coffee and have been drinking it for years",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          },
+          {
+            "text": "I'm brand new to the world of coffee",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(255, 255, 255)",
+            "rgb(34, 34, 34)",
+            "rgb(190, 76, 75)",
+            "rgb(0, 0, 0)"
+          ]
+        },
+        "typography": {
+          "titleSize": 38,
+          "titleWeight": 700,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+        }
+      },
+      "padding": 60,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(255, 255, 255)",
+        "rgb(34, 34, 34)",
+        "rgb(190, 76, 75)",
+        "rgb(0, 0, 0)"
+      ],
+      "title_font_size": 38,
+      "title_font_weight": 700,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "button_text": "I love coffee and have been drinking it for years",
+      "button_link": "",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/test_improvements_1768290387/img_14.png"
+    },
+    {
+      "index": 21,
+      "type": 8,
+      "y_position": 5465.421875,
+      "height": 287,
+      "width": 1160,
+      "html_tag": "div",
+      "classes": [
+        "options-container",
+        "options-count--2"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "I love coffee and have been drinking it for years",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          },
+          {
+            "text": "I'm brand new to the world of coffee",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "4px",
+            "padding": "64px 16px",
+            "width": 339,
+            "height": 287
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 60,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "I love coffee and have been drinking it for years",
+      "button_link": "",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_14.png"
+    },
+    {
+      "index": 22,
+      "type": 8,
+      "y_position": 6113.421875,
+      "height": 362,
+      "width": 1440,
+      "html_tag": "section",
+      "classes": [
+        "footer-section",
+        "grid-container"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.nescafe.com/in/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 101,
+            "height": 19
+          },
+          {
+            "text": "India",
+            "href": "https://www.nescafe.com/in/country-selector",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 64.25,
+            "height": 27.5
+          },
+          {
+            "text": "",
+            "href": "https://www.facebook.com/NescafeIndia/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 24
+          },
+          {
+            "text": "",
+            "href": "https://www.youtube.com/channel/UCJHur_-BZHdv32cWGvUt5FQ",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 24
+          },
+          {
+            "text": "",
+            "href": "https://www.instagram.com/nescafeindia/?hl=en",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 24
+          },
+          {
+            "text": "",
+            "href": "https://twitter.com/nescafeindia?lang=en",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 24
+          },
+          {
+            "text": "Contact Us",
+            "href": "https://www.nescafe.com/in/contact-us",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 99.171875,
+            "height": 21
+          },
+          {
+            "text": "Terms & Conditions",
+            "href": "https://www.nescafe.com/in/terms-conditions",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 172.890625,
+            "height": 21
+          },
+          {
+            "text": "Privacy Policy",
+            "href": "https://www.nescafe.com/in/privacy-policy",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 124.671875,
+            "height": 21
+          },
+          {
+            "text": "Cookies",
+            "href": "https://www.nescafe.com/in/cookies",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 71.03125,
+            "height": 21
+          },
+          {
+            "text": "Sitemap",
+            "href": "https://www.nescafe.com/in/sitemap",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 73.359375,
+            "height": 21
+          },
+          {
+            "text": "Visit Nestl\u00e9 Professional",
+            "href": "https://www.nestleprofessional.in/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(250, 250, 250)",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 238.953125,
+            "height": 26
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(34, 34, 34)",
+            "rgb(250, 250, 250)",
+            "rgb(48, 34, 22)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(34, 34, 34)",
+        "rgb(250, 250, 250)",
+        "rgb(48, 34, 22)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "",
+      "button_link": "https://www.nescafe.com/in/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(250, 250, 250)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "section_image": "scraped_images/test_improvements_1768290387/img_40.png"
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "inline-block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": true,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "none"
+        },
+        {
+          "visible": false,
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "NescafeSansBold, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "GothamHTFBook, \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "GothamHTFMedium, \"Helvetica Neue\", Helvetica, Arial, sans-serif"
+    ],
+    "sizes": {
+      "h1": 42,
+      "h2": 34,
+      "h3": 29,
+      "h4": 14,
+      "p": 30,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      500,
+      600,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 4,
+    "spacingScale": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32
+    ],
+    "commonSpacings": [
+      3,
+      6,
+      8,
+      16,
+      39,
+      80,
+      118
+    ],
+    "gridColumns": "1920px"
+  }
+}

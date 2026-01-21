@@ -1,0 +1,129 @@
+# ============================================
+# Website Builder v2.0 - Git Ignore File
+# ============================================
+
+# ===================
+# Compiled Binaries
+# ===================
+imgui_website_designer
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dSYM/
+*.dylib
+*.so
+*.a
+
+# ===================
+# Build Artifacts
+# ===================
+build/
+cmake-build-*/
+.build/
+*.log
+
+# ===================
+# Python
+# ===================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+.venv/
+playwright_env/
+*.egg-info/
+dist/
+eggs/
+.eggs/
+
+# ===================
+# IDE & Editors
+# ===================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+
+# ===================
+# Project Specific
+# ===================
+# Downloaded/scraped content (can be regenerated)
+downloaded_sites/
+scraped_images/
+wix-images/
+
+# Temporary import files
+/tmp/figma_import/
+
+# User-specific figma projects (local saves)
+figma_projects/
+figma_templates/
+
+# Database credentials (if any)
+.env
+*.env
+credentials.json
+secrets.json
+
+# ===================
+# ImGui (keep in repo)
+# ===================
+# imgui/ - KEEP THIS (required library)
+
+# ===================
+# Large/Binary Assets
+# ===================
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.bmp
+!imgui/*.png
+
+# Fonts (keep Inter font)
+# Inter-Regular.ttf - KEEP THIS
+
+# ===================
+# Temporary Files
+# ===================
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+
+# ===================
+# Claude/AI
+# ===================
+.claude/
+
+# ===================
+# OS Specific
+# ===================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+.directory

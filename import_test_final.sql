@@ -1,0 +1,1303 @@
+-- Import Scraped Template: test_final
+-- Generated: 2026-01-19 23:27:20
+-- Source: Unknown
+-- Sections: 20
+--
+-- Run this script to import the template into PostgreSQL:
+-- psql -d website_builder < test_final.sql
+--
+
+
+BEGIN;
+
+-- Insert the template
+INSERT INTO templates (template_name, description, project_name, created_date)
+VALUES (
+    'test_final',
+    'Imported from  - Metadata: {"url": "", "scraped_date": "2026-01-19T23:27:20.795817", "forms": [], "social_links": [], "seo_data": {}, "custom_fonts": [], "advanced_css": {}, "typography_system": {}, "grid_system": {}, "responsive_layouts": {}}',  -- Limit to 5000 chars
+    'Test Final',
+    '2026-01-19 23:27:20'
+);
+
+
+-- Get the template ID
+DO $$
+DECLARE
+    template_id_var integer;
+BEGIN
+    SELECT id INTO template_id_var FROM templates WHERE template_name = 'test_final';
+
+
+    -- Section 1: Content 1
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        0,
+        2,
+        'Content 1',
+        'content-1',
+        500,
+        0,
+        'Content 1',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 2: Content 2
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        1,
+        2,
+        'Content 2',
+        'content-2',
+        500,
+        0,
+        'Content 2',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 3: Content 3
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        2,
+        2,
+        'Content 3',
+        'content-3',
+        500,
+        0,
+        'Content 3',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 4: Content 4
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        3,
+        2,
+        'Content 4',
+        'content-4',
+        500,
+        0,
+        'Content 4',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 5: Content 5
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        4,
+        2,
+        'Content 5',
+        'content-5',
+        500,
+        0,
+        'Content 5',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 6: Content 6
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        5,
+        2,
+        'Content 6',
+        'content-6',
+        500,
+        0,
+        'Content 6',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 7: Content 7
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        6,
+        2,
+        'Content 7',
+        'content-7',
+        500,
+        0,
+        'Content 7',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 8: Content 8
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        7,
+        2,
+        'Content 8',
+        'content-8',
+        500,
+        0,
+        'Content 8',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 9: Content 9
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        8,
+        2,
+        'Content 9',
+        'content-9',
+        500,
+        0,
+        'Content 9',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 10: Content 10
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        9,
+        2,
+        'Content 10',
+        'content-10',
+        500,
+        0,
+        'Content 10',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 11: Content 11
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        10,
+        2,
+        'Content 11',
+        'content-11',
+        500,
+        0,
+        'Content 11',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 12: Content 12
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        11,
+        2,
+        'Content 12',
+        'content-12',
+        500,
+        0,
+        'Content 12',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 13: Content 13
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        12,
+        2,
+        'Content 13',
+        'content-13',
+        500,
+        0,
+        'Content 13',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 14: Content 14
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        13,
+        2,
+        'Content 14',
+        'content-14',
+        500,
+        0,
+        'Content 14',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 15: Content 15
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        14,
+        2,
+        'Content 15',
+        'content-15',
+        500,
+        0,
+        'Content 15',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 16: Content 16
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        15,
+        2,
+        'Content 16',
+        'content-16',
+        500,
+        0,
+        'Content 16',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 17: Content 17
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        16,
+        2,
+        'Content 17',
+        'content-17',
+        500,
+        0,
+        'Content 17',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 18: Content 18
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        17,
+        2,
+        'Content 18',
+        'content-18',
+        500,
+        0,
+        'Content 18',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 19: Content 19
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        18,
+        2,
+        'Content 19',
+        'content-19',
+        500,
+        0,
+        'Content 19',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.12,0.12,0.16,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+
+    -- Section 20: Content 20
+    -- CSS Data: {"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"bor...
+    -- Cards: 0 items
+    INSERT INTO sections (
+        template_id, section_order, type, name, section_id, height, y_position,
+        title, subtitle, content, button_text, button_link,
+        title_font_size, subtitle_font_size, content_font_size,
+        title_font_weight, subtitle_font_weight, content_font_weight,
+        button_font_size, button_font_weight, nav_font_size, nav_font_weight,
+        title_color, subtitle_color, content_color, bg_color, text_color,
+        accent_color, button_bg_color, button_text_color,
+        nav_bg_color, nav_text_color,
+        padding, text_align, card_width, card_height, card_spacing, cards_per_row,
+        background_image, section_image, use_bg_image, css_data, interactive_data, layout_data
+    ) VALUES (
+        template_id_var,
+        19,
+        2,
+        'Content 20',
+        'content-20',
+        500,
+        0,
+        'Content 20',
+        '',
+        '',
+        '',
+        '',
+        42,
+        30,
+        16,
+        700,
+        400,
+        400,
+        16,
+        600,
+        15,
+        500,
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.8,0.4,0.5,1.0',
+        '0.78,0.39,0.49,1.00',
+        '1.00,1.00,1.00,1.00',
+        '0.18,0.18,0.22,1.00',
+        '1.00,1.00,1.00,1.00',
+        60,
+        1,
+        300,
+        250,
+        20,
+        3,
+        '',
+        '',
+        FALSE,
+        '{"button": {"borderRadius": "0px", "borderWidth": "0px", "borderColor": "rgb(0,0,0)", "boxShadow": "none", "padding": "10px 20px", "textTransform": "none", "letterSpacing": "normal"}, "section": {"borderRadius": "0px", "boxShadow": "none", "border": "none", "opacity": "1", "backgroundImage": "none", "backgroundSize": "auto", "filter": "none", "transform": "none", "textShadow": "none", "lineHeight": "normal", "letterSpacing": "normal"}}',
+        NULL,
+        '{"padding": {"top": "60px", "right": "60px", "bottom": "60px", "left": "60px"}, "flexbox": {"display": "block", "flexDirection": "row", "justifyContent": "normal", "alignItems": "normal", "gap": "0px"}, "grid": {"gridTemplateColumns": "none", "gridTemplateRows": "none"}, "background": {"backgroundPosition": "0% 0%", "backgroundRepeat": "repeat", "backgroundSize": "auto", "backgroundImage": "none"}, "position": {"position": "static", "top": "auto", "left": "auto", "right": "auto", "bottom": "auto", "zIndex": "auto"}, "typography": {"fontFamily": "system-ui"}}'
+    );
+
+END $$;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+COMMIT;
+
+
+-- Template import complete!
+-- Template name: test_final
+-- Total sections: 20
+--
+-- To verify the import:
+-- SELECT * FROM templates WHERE template_name = 'test_final';
+-- SELECT COUNT(*) FROM sections WHERE template_id = (SELECT id FROM templates WHERE template_name = 'test_final');
+
+-- Update sections with BYTEA image data

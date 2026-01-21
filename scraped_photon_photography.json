@@ -1,0 +1,791 @@
+{
+  "template_name": "photon_photography",
+  "url": "https://html5up.net/photon",
+  "scraped_date": "2026-01-19T21:04:08.333355",
+  "sections": [
+    {
+      "index": 0,
+      "type": 1,
+      "y_position": 0,
+      "height": 80,
+      "width": 1920,
+      "html_tag": "header",
+      "classes": [],
+      "id": "demo-header",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(103, 109, 121)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "zIndex": "auto",
+        "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "Photon",
+        "subtitle": "Need an attribution-free version?",
+        "content": "PS: If you like what I'm doing here, don't forget to ... Check out Pixelarity, my latest and greatest side project that offers attribution-free usage of all of my templates, exclusive new templates, and support (from me) for just $19.",
+        "headings": [
+          {
+            "text": "Photon",
+            "tag": "h1",
+            "fontSize": 24,
+            "fontWeight": 600,
+            "color": "rgb(255, 255, 255)",
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+          },
+          {
+            "text": "Downloading  \u2026",
+            "tag": "h2",
+            "fontSize": 34.6667,
+            "fontWeight": 700,
+            "color": "rgb(103, 109, 121)",
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+          },
+          {
+            "text": "Need an attribution-free version?",
+            "tag": "h3",
+            "fontSize": 21.6667,
+            "fontWeight": 700,
+            "color": "rgb(103, 109, 121)",
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "PS: If you like what I'm doing here, don't forget to ...",
+            "fontSize": 21.6667,
+            "fontWeight": 300,
+            "color": "rgb(103, 109, 121)",
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+          },
+          {
+            "text": "Check out Pixelarity, my latest and greatest side project that offers attribution-free usage of all of my templates, exclusive new templates, and support (from me) for just $19.",
+            "fontSize": 21.6667,
+            "fontWeight": 300,
+            "color": "rgb(103, 109, 121)",
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Pop Out",
+            "href": "https://html5up.net/uploads/demos/photon/",
+            "bgColor": "#000000",
+            "textColor": "#ffffff",
+            "borderColor": "rgb(87, 93, 105)",
+            "fontSize": 15.6,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "42.12px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 42.890625,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Back",
+            "href": "https://html5up.net/",
+            "bgColor": "#000000",
+            "textColor": "#ffffff",
+            "borderColor": "rgb(87, 93, 105)",
+            "fontSize": 15.6,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "42.12px",
+            "padding": "0px 23.4px",
+            "margin": "0px",
+            "width": 150,
+            "height": 42.890625,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Download (307,116)",
+            "href": "https://html5up.net/photon/download",
+            "bgColor": "#e7746f",
+            "textColor": "#ffffff",
+            "borderColor": "rgb(231, 116, 111)",
+            "fontSize": 15.6,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "42.12px",
+            "padding": "0px 23.4px",
+            "margin": "0px 0px 0px 7.8px",
+            "width": 176.953125,
+            "height": 42.890625,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Follow @ajlkn",
+            "href": "http://twitter.com/ajlkn",
+            "bgColor": "#00acee",
+            "textColor": "#ffffff",
+            "borderColor": "rgb(0, 172, 238)",
+            "fontSize": 17.3333,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "51.1333px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Subscribe",
+            "href": "https://html5up.net/photon#",
+            "bgColor": "#000000",
+            "textColor": "#676d79",
+            "borderColor": "rgb(222, 224, 227)",
+            "fontSize": 17.3333,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "46.8px",
+            "padding": "0px 26px",
+            "margin": "0px 0px 0px 17.3333px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Pixelarity",
+            "href": "https://pixelarity.com/",
+            "bgColor": "#000000",
+            "textColor": "#676d79",
+            "borderColor": "rgb(103, 109, 121) rgb(103, 109, 121) rgb(208, 214, 226)",
+            "fontSize": 16,
+            "fontWeight": 300,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "32.5px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "8px",
+            "borderWidth": "0px 0px 1px",
+            "borderStyle": "none none dotted",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Visit Pixelarity",
+            "href": "https://pixelarity.com/",
+            "bgColor": "#676d79",
+            "textColor": "#ffffff",
+            "borderColor": "rgb(103, 109, 121)",
+            "fontSize": 17.3333,
+            "fontWeight": 600,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "46.8px",
+            "padding": "0px 26px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "https://html5up.net/photon#",
+            "bgColor": "#000000",
+            "textColor": "#676d79",
+            "borderColor": "rgb(222, 224, 227)",
+            "fontSize": 17.3333,
+            "fontWeight": 300,
+            "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "34.6667px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out",
+            "backgroundImage": "none"
+          }
+        ],
+        "colors": {
+          "background": "rgba(55, 61, 73, 0.976)",
+          "text": "rgb(255, 255, 255)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(103, 109, 121)",
+            "rgb(250, 251, 253)",
+            "rgb(255, 255, 255)",
+            "rgba(55, 61, 73, 0.976)",
+            "rgb(231, 116, 111)",
+            "rgba(103, 109, 121, 0.8)",
+            "rgb(0, 172, 238)",
+            "rgb(244, 245, 247)"
+          ]
+        },
+        "typography": {
+          "titleSize": 15.6,
+          "titleWeight": 600,
+          "titleColor": "rgb(255, 255, 255)",
+          "contentSize": 21.6667,
+          "contentWeight": 300,
+          "contentColor": "rgb(103, 109, 121)",
+          "fontFamily": "\"Source Sans Pro\", Arial, sans-serif"
+        },
+        "css": {
+          "backgroundColor": "rgba(55, 61, 73, 0.976)",
+          "backgroundImage": "none",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgb(255, 255, 255)",
+          "padding": "0px",
+          "paddingTop": "0px",
+          "paddingRight": "0px",
+          "paddingBottom": "0px",
+          "paddingLeft": "0px",
+          "margin": "0px",
+          "border": "0px none rgb(255, 255, 255)",
+          "borderRadius": "0px",
+          "borderWidth": "0px",
+          "borderStyle": "none",
+          "borderColor": "rgb(255, 255, 255)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "block",
+          "position": "fixed",
+          "zIndex": "10000",
+          "overflow": "visible",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "\"Source Sans Pro\", Arial, sans-serif",
+          "fontSize": "15.6px",
+          "fontWeight": "300",
+          "lineHeight": "26px",
+          "letterSpacing": "normal",
+          "textAlign": "start",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "top 0.25s ease-in-out",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "nav_items": [
+        {
+          "text": "Pop Out",
+          "href": "https://html5up.net/uploads/demos/photon/",
+          "fontSize": 15.6,
+          "fontWeight": 600,
+          "color": "rgb(255, 255, 255)"
+        },
+        {
+          "text": "Back",
+          "href": "https://html5up.net/",
+          "fontSize": 15.6,
+          "fontWeight": 600,
+          "color": "rgb(255, 255, 255)"
+        },
+        {
+          "text": "Download (307,116)",
+          "href": "https://html5up.net/photon/download",
+          "fontSize": 15.6,
+          "fontWeight": 600,
+          "color": "rgb(255, 255, 255)"
+        },
+        {
+          "text": "Follow @ajlkn",
+          "href": "http://twitter.com/ajlkn",
+          "fontSize": 17.3333,
+          "fontWeight": 600,
+          "color": "rgb(255, 255, 255)"
+        },
+        {
+          "text": "Subscribe",
+          "href": "https://html5up.net/photon#",
+          "fontSize": 17.3333,
+          "fontWeight": 600,
+          "color": "rgb(103, 109, 121)"
+        },
+        {
+          "text": "Pixelarity",
+          "href": "https://pixelarity.com/",
+          "fontSize": 21.6667,
+          "fontWeight": 300,
+          "color": "rgb(103, 109, 121)"
+        },
+        {
+          "text": "Visit Pixelarity",
+          "href": "https://pixelarity.com/",
+          "fontSize": 17.3333,
+          "fontWeight": 600,
+          "color": "rgb(255, 255, 255)"
+        }
+      ],
+      "padding": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgba(55, 61, 73, 0.976)",
+      "text_color": "rgb(255, 255, 255)",
+      "gradient": "",
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "rgb(103, 109, 121)",
+        "background": "#000000"
+      },
+      "title_font_size": 15.6,
+      "title_font_weight": 600,
+      "title_color": "rgb(255, 255, 255)",
+      "content_font_size": 21.6667,
+      "content_font_weight": 300,
+      "content_color": "rgb(103, 109, 121)",
+      "font_family": "\"Source Sans Pro\", Arial, sans-serif",
+      "button_text": "Pop Out",
+      "button_link": "https://html5up.net/uploads/demos/photon/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(255, 255, 255)",
+      "button_border_radius": "4px",
+      "button_border_width": "1px",
+      "button_border_color": "rgb(87, 93, 105)",
+      "button_box_shadow": "none",
+      "button_padding": "0px",
+      "button_text_transform": "none",
+      "button_letter_spacing": "normal",
+      "button_font_size": 15.6,
+      "button_font_weight": 600,
+      "cards": [
+        {
+          "title": "Pop Out",
+          "description": "PS: If you like what I'm doing here, don't forget to ...",
+          "link": "https://html5up.net/uploads/demos/photon/",
+          "button_text": "Pop Out",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(255, 255, 255)",
+          "title_font_size": 15,
+          "title_font_weight": 600
+        },
+        {
+          "title": "Back",
+          "description": "Check out Pixelarity, my latest and greatest side project that offers attribution-free usage of all of my templates, exclusive new templates, and support (from me) for just $19.",
+          "link": "https://html5up.net/",
+          "button_text": "Back",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(255, 255, 255)",
+          "title_font_size": 15,
+          "title_font_weight": 600
+        },
+        {
+          "title": "Download (307,116)",
+          "description": "",
+          "link": "https://html5up.net/photon/download",
+          "button_text": "Download (307,116)",
+          "bg_color": "rgb(231, 116, 111)",
+          "text_color": "rgb(255, 255, 255)",
+          "title_font_size": 15,
+          "title_font_weight": 600
+        },
+        {
+          "title": "Follow @ajlkn",
+          "description": "",
+          "link": "http://twitter.com/ajlkn",
+          "button_text": "Follow @ajlkn",
+          "bg_color": "rgb(0, 172, 238)",
+          "text_color": "rgb(255, 255, 255)",
+          "title_font_size": 17,
+          "title_font_weight": 600
+        },
+        {
+          "title": "Subscribe",
+          "description": "",
+          "link": "https://html5up.net/photon#",
+          "button_text": "Subscribe",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(103, 109, 121)",
+          "title_font_size": 17,
+          "title_font_weight": 600
+        },
+        {
+          "title": "Pixelarity",
+          "description": "",
+          "link": "https://pixelarity.com/",
+          "button_text": "Pixelarity",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(103, 109, 121)",
+          "title_font_size": 21,
+          "title_font_weight": 300
+        },
+        {
+          "title": "Visit Pixelarity",
+          "description": "",
+          "link": "https://pixelarity.com/",
+          "button_text": "Visit Pixelarity",
+          "bg_color": "rgb(103, 109, 121)",
+          "text_color": "rgb(255, 255, 255)",
+          "title_font_size": 17,
+          "title_font_weight": 600
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "https://html5up.net/photon#",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(103, 109, 121)",
+          "title_font_size": 17,
+          "title_font_weight": 300
+        }
+      ],
+      "cards_per_row": 3,
+      "title": "Photon",
+      "subtitle": "Downloading  \u2026",
+      "multi_column_text": "Need an attribution-free version?",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(255, 255, 255)",
+      "css_opacity": "1",
+      "css_background_image": "none",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "26px",
+      "css_letter_spacing": "normal",
+      "padding_top": "0px",
+      "padding_right": "0px",
+      "padding_bottom": "0px",
+      "padding_left": "0px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "none",
+      "position": "absolute",
+      "top": "0px",
+      "left": "0px",
+      "right": "0px",
+      "bottom": "0px",
+      "z_index": "auto",
+      "_confidence": 0.95,
+      "_detected_as": "navbar",
+      "nav_bg_color": "rgba(0, 0, 0, 0)",
+      "nav_text_color": "rgb(103, 109, 121)"
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": false,
+          "display": "flex"
+        },
+        {
+          "visible": false,
+          "display": "flex"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Source Sans Pro\", Arial, sans-serif"
+    ],
+    "sizes": {
+      "h1": 16,
+      "h2": 35,
+      "h3": 22,
+      "p": 22,
+      "a": 17
+    },
+    "weights": [
+      300,
+      600,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 8,
+    "cv_verified": true
+  },
+  "forms": [],
+  "social_links": [
+    {
+      "platform": "Twitter",
+      "href": "http://twitter.com/ajlkn",
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "icon": "Follow @ajlkn"
+    }
+  ],
+  "seo_data": {
+    "title": "Photon | HTML5 UP",
+    "description": "A simple (gradient-heavy) single pager that revisits a style I messed with on two previous designs (Tessellate and Telephasic). Fully responsive, built on Sass, and, as usual, loaded with an assortment of pre-styled elements. Have fun! :)",
+    "keywords": "html5, css3, responsive, site template, website template",
+    "og": {
+      "title": "Photon by HTML5 UP",
+      "description": "A simple (gradient-heavy) single pager that revisits a style I messed with on two previous designs (Tessellate and Telephasic). Fully responsive, built on Sass, and, as usual, loaded with an assortment of pre-styled elements. Have fun! :)",
+      "image": "https://html5up.net/uploads/cards/photon.jpg",
+      "url": "http://html5up.net/photon"
+    },
+    "twitter": {
+      "card": "",
+      "title": "",
+      "description": "",
+      "image": ""
+    },
+    "favicon": "https://html5up.net/assets/icons/favicon.ico",
+    "canonical": "https://html5up.net/photon",
+    "lang": ""
+  },
+  "custom_fonts": [
+    "fonts/h5u.woff",
+    "fonts/h5u.ttf"
+  ],
+  "advanced_css": {
+    "hoverEffects": [
+      {
+        "selector": "a:hover",
+        "css": "color: rgb(231, 116, 111); border-color: rgb(231, 116, 111);"
+      },
+      {
+        "selector": ".button:hover",
+        "css": "border-color: rgb(231, 116, 111); color: rgb(231, 116, 111);"
+      },
+      {
+        "selector": ".button.alt.on, .button.alt:hover",
+        "css": "background: rgb(231, 116, 111); border-color: rgb(231, 116, 111);"
+      },
+      {
+        "selector": ".button.twitter.on, .button.twitter:hover",
+        "css": "background: rgb(0, 172, 238); border-color: rgb(0, 172, 238); color: rgb(255, 255, 255);"
+      },
+      {
+        "selector": "ul.selector li:hover",
+        "css": "background: rgb(242, 244, 247);"
+      },
+      {
+        "selector": "body.dark #demo-header .button.alt2:hover",
+        "css": "border-color: rgb(231, 116, 111);"
+      },
+      {
+        "selector": "body.dark #demo-header .selector li:hover",
+        "css": "background: rgb(71, 77, 89);"
+      },
+      {
+        "selector": "#px-banner .px-button:hover",
+        "css": "background: rgb(45, 192, 234);"
+      },
+      {
+        "selector": ".fb_dialog_close_icon:hover",
+        "css": "background: url(\"https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png\") 0px -15px no-repeat scroll transparent;"
+      }
+    ],
+    "animations": [
+      {
+        "selector": "button popout alt2 offsite icon icon-popout solo",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "button back alt2",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "button alt download on",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "offsite button icon icon-twitter twitter on",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "button",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "offsite",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "offsite button alt",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "closer button",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "button popout alt2 offsite icon icon-popout solo",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "button back alt2",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "button alt download on",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "offsite button icon icon-twitter twitter on",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "button",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "offsite",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "offsite button alt",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      },
+      {
+        "selector": "closer button",
+        "transition": "color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out"
+      }
+    ]
+  }
+}

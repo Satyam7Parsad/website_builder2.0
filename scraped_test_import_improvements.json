@@ -1,0 +1,90 @@
+{
+  "template_name": "test_import_improvements",
+  "url": "https://example.com",
+  "scraped_date": "2026-01-19T15:58:39.263185",
+  "sections": [],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "system-ui, sans-serif"
+    ],
+    "sizes": {
+      "h1": 24,
+      "p": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 8,
+    "cv_verified": true
+  },
+  "forms": [],
+  "social_links": [],
+  "seo_data": {
+    "title": "Example Domain",
+    "description": "",
+    "keywords": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": "",
+      "url": ""
+    },
+    "twitter": {
+      "card": "",
+      "title": "",
+      "description": "",
+      "image": ""
+    },
+    "favicon": "",
+    "canonical": "",
+    "lang": "en"
+  },
+  "custom_fonts": [],
+  "advanced_css": {
+    "hoverEffects": [],
+    "animations": [
+      {
+        "selector": "a",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "a",
+        "transition": "all"
+      }
+    ]
+  }
+}

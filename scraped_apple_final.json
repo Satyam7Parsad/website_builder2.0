@@ -1,0 +1,1766 @@
+{
+  "template_name": "apple_final",
+  "description": "Imported from www.apple.com",
+  "url": "https://www.apple.com",
+  "scraped_date": "2026-01-08T16:08:04.284113",
+  "sections": [
+    {
+      "index": 0,
+      "element": "<aside aria-label=\"Choose country or region\" data-analytics-activitymap-region-id=\"locale switcher\" data-analytics-region=\"locale switcher\" dir=\"ltr\" id=\"ac-localeswitcher\" lang=\"en-IN\"><div class=\"ac-ls-content\"><div class=\"ac-ls-copy\">Choose another country or region to see content specific to your location and shop\u00a0online.</div><div class=\"ac-ls-actions\"><div class=\"ac-ls-dropdown ac-ls-actions-item select-collapsed\" id=\"ac-ls-dropdown\"><div aria-controls=\"ac-ls-dropdown-options-list\" aria-haspopup=\"true\" class=\"ac-ls-dropdown-select\" id=\"ac-ls-dropdown-select\" role=\"button\" tabindex=\"0\" type=\"text\"><span id=\"ac-ls-dropdown-title\"><span class=\"ac-ls-dropdown-check\"></span> <span class=\"ac-ls-dropdown-copy\">India</span></span><div class=\"ac-ls-dropdown-scrim\"></div></div><div class=\"ac-ls-dropdown-options\" id=\"ac-ls-dropdown-options\"><ul aria-labelledby=\"ac-ls-dropdown-select\" class=\"ac-ls-dropdown-options-list\" id=\"ac-ls-dropdown-options-list\" role=\"menu\"><li class=\"ac-ls-dropdown-option\" data-ac-ls-selected=\"true\" data-href=\"https://www.apple.com/in/\" id=\"ac-ls-dropdown-option-1\" role=\"menuitem\" tabindex=\"0\"><span class=\"ac-ls-dropdown-check\"></span> <span class=\"ac-ls-dropdown-copy\">India</span></li><li class=\"ac-ls-dropdown-option\" data-href=\"https://www.apple.com/choose-country-region/\" id=\"ac-ls-dropdown-option-country-region\" role=\"menuitem\" tabindex=\"0\"><span class=\"ac-ls-dropdown-check\"></span> <span class=\"ac-ls-dropdown-copy\">Other country or region</span></li></ul></div></div> <a class=\"ac-ls-button ac-ls-actions-item ac-ls-continue\" data-analytics-title=\"continue button\" href=\"https://www.apple.com/in/\" id=\"ac-ls-continue\" role=\"button\">Continue</a> <button aria-label=\"Close country or region selector\" class=\"ac-ls-close ac-ls-actions-item ac-ls-icon\" data-analytics-title=\"exit button\" id=\"ac-ls-close\"><svg height=\"18\" viewbox=\"0 0 18 18\" width=\"18\"><polyline fill=\"none\" points=\"3.5 15, 15 3.5\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></polyline><polyline fill=\"none\" points=\"3.5 3.5, 15 15\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"></polyline></svg></button></div></div></aside>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.325\")>",
+      "y_position": 0,
+      "height": 70,
+      "width": 1920,
+      "html_tag": "aside",
+      "classes": [],
+      "id": "ac-localeswitcher",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(250, 250, 252)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"Myriad Set Pro\", system-ui, -apple-system, \"system-ui\", \"Segoe UI\", \"SF Pro Icons\", \"Apple Legacy Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 1,
+      "element": "<div class=\"unit-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/iphone/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h2 class=\"headline\">iPhone</h2>\n<p class=\"subhead\">Say hello to the latest generation of iPhone.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, iPhone\" class=\"button button-elevated button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - iphone\" href=\"/iphone/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Shop iPhone\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"shop\" data-analytics-title=\"shop iphone\" href=\"/us/shop/goto/buy_iphone\" rel=\"follow\" target=\"_self\">Shop iPhone</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"iPhone 17 Pro, back exterior, Pro Fusion camera system spanning across the top, iPhone Air, very thin titanium side, iPhone 17, back exterior, Dual Fusion camera system in top left corner.\" class=\"unit-image unit-image-iphone-family-hero-iphone-family\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "iPhone",
+        "subtitle": "",
+        "content": "Say hello to the latest generation of iPhone.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_1.jpg"
+    },
+    {
+      "index": 2,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h2 class=\"headline\">iPhone</h2>\n<p class=\"subhead\">Say hello to the latest generation of iPhone.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, iPhone\" class=\"button button-elevated button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - iphone\" href=\"/iphone/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Shop iPhone\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"shop\" data-analytics-title=\"shop iphone\" href=\"/us/shop/goto/buy_iphone\" rel=\"follow\" target=\"_self\">Shop iPhone</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "iPhone",
+        "subtitle": "",
+        "content": "Say hello to the latest generation of iPhone.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 3,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"iPhone 17 Pro, back exterior, Pro Fusion camera system spanning across the top, iPhone Air, very thin titanium side, iPhone 17, back exterior, Dual Fusion camera system in top left corner.\" class=\"unit-image unit-image-iphone-family-hero-iphone-family\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_3.jpg"
+    },
+    {
+      "index": 4,
+      "element": "<div class=\"unit-wrapper\" data-inline-media-hero=\"\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/apple-watch-series-11/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0\n\t\t\t\t\t\t\t\t\t</a>\n<div class=\"unit-copy-wrapper\">\n<h2 class=\"logo-image logo-image-apple-watch-ny-hero-logo-watch-series-11 headline\"><span class=\"visuallyhidden\">Apple Watch Series 11</span></h2>\n<p class=\"subhead\">Turn resolutions into\u00a0routines. Quit quitting your fitness\u00a0goals.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Watch Series 11\" class=\"button button-elevated button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple watch series 11\" href=\"/apple-watch-series-11/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, Apple Watch Series 11\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - apple watch series 11\" href=\"/us/shop/goto/buy_watch/apple_watch_series_11\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<div class=\"animation-wrapper paused loading\">\n<figure aria-hidden=\"true\" class=\"unit-image unit-image-apple-watch-ny-hero-apple-watch-ny-startframe start-frame\"></figure>\n<video aria-label=\"Apple Watch Series 11, dynamic visual display, red, green, blue rings complete a circle on the Activity app face confirming goals have been met\" class=\"apple-watch-ny-video\" data-inline-media=\"\" data-inline-media-basepath=\"/105/media/us/home/2025/dea196de-8579-41b6-b016-a9917c2a723d/anim/hero/\" data-inline-media-pause-on-exit=\"false\" data-inline-media-play-keyframe='{ \"start\": \"t - 60vh\", \"end\": \"b\" }' data-inline-media-plugins=\"LoadTimeout, AnimPlay, PlayOnce\" data-load-timeout=\"5000\" id=\"apple-watch-ny-video\" muted=\"\" playsinline=\"\" preload=\"none\" role=\"img\" src=\"/105/media/us/home/2025/dea196de-8579-41b6-b016-a9917c2a723d/anim/hero/largetall.mp4\"></video>\n</div>\n<figure aria-label=\"Apple Watch Series 11 devices, onscreen: Outdoor Run, Run Goal Achieved, Yoga, Activity rings, Run workout, Exercise Ring Closed, Run workout, Green Gray Braided Solo Loop, Anchor Blue Sport Band, Purple Fog Sport Loop, Black Sport Band, Neon Yellow Braided Solo Loop, Forest Sport Loop, Purple Fog Sport Band\" class=\"unit-image unit-image-apple-watch-ny-hero-apple-watch-ny static-frame\" role=\"img\"></figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "Apple Watch Series 11",
+        "subtitle": "",
+        "content": "Turn resolutions into\u00a0routines. Quit quitting your fitness\u00a0goals.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_4.jpg"
+    },
+    {
+      "index": 5,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h2 class=\"logo-image logo-image-apple-watch-ny-hero-logo-watch-series-11 headline\"><span class=\"visuallyhidden\">Apple Watch Series 11</span></h2>\n<p class=\"subhead\">Turn resolutions into\u00a0routines. Quit quitting your fitness\u00a0goals.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Watch Series 11\" class=\"button button-elevated button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple watch series 11\" href=\"/apple-watch-series-11/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, Apple Watch Series 11\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - apple watch series 11\" href=\"/us/shop/goto/buy_watch/apple_watch_series_11\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "Apple Watch Series 11",
+        "subtitle": "",
+        "content": "Turn resolutions into\u00a0routines. Quit quitting your fitness\u00a0goals.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 6,
+      "element": "<div class=\"unit-image-wrapper\">\n<div class=\"animation-wrapper paused loading\">\n<figure aria-hidden=\"true\" class=\"unit-image unit-image-apple-watch-ny-hero-apple-watch-ny-startframe start-frame\"></figure>\n<video aria-label=\"Apple Watch Series 11, dynamic visual display, red, green, blue rings complete a circle on the Activity app face confirming goals have been met\" class=\"apple-watch-ny-video\" data-inline-media=\"\" data-inline-media-basepath=\"/105/media/us/home/2025/dea196de-8579-41b6-b016-a9917c2a723d/anim/hero/\" data-inline-media-pause-on-exit=\"false\" data-inline-media-play-keyframe='{ \"start\": \"t - 60vh\", \"end\": \"b\" }' data-inline-media-plugins=\"LoadTimeout, AnimPlay, PlayOnce\" data-load-timeout=\"5000\" id=\"apple-watch-ny-video\" muted=\"\" playsinline=\"\" preload=\"none\" role=\"img\" src=\"/105/media/us/home/2025/dea196de-8579-41b6-b016-a9917c2a723d/anim/hero/largetall.mp4\"></video>\n</div>\n<figure aria-label=\"Apple Watch Series 11 devices, onscreen: Outdoor Run, Run Goal Achieved, Yoga, Activity rings, Run workout, Exercise Ring Closed, Run workout, Green Gray Braided Solo Loop, Anchor Blue Sport Band, Purple Fog Sport Loop, Black Sport Band, Neon Yellow Braided Solo Loop, Forest Sport Loop, Purple Fog Sport Band\" class=\"unit-image unit-image-apple-watch-ny-hero-apple-watch-ny static-frame\" role=\"img\"></figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_6.jpg"
+    },
+    {
+      "index": 7,
+      "element": "<div class=\"unit-copy-wrapper\">\n<div class=\"split-wrapper-top\">\n<h2 class=\"logo-image logo-image-ipad-air-hero-logo-ipad-air headline\"><span class=\"visuallyhidden\">iPad Air</span></h2>\n<p class=\"subhead\">Now supercharged by the M3 chip.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, iPad Air\" class=\"button button-elevated\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - ipad air\" href=\"/ipad-air/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, iPad Air\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - ipad air\" href=\"/us/shop/goto/buy_ipad/ipad_air\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"split-wrapper-bottom\">\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "iPad Air",
+        "subtitle": "",
+        "content": "Now supercharged by the M3 chip.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 8,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"iPad Air, blue, back view, camera system in the top left corner\" class=\"unit-image unit-image-ipad-air-hero-ipad-air-avail\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_8.jpg"
+    },
+    {
+      "index": 9,
+      "element": "<div class=\"unit-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link unit-link-mobile\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/fitness-plus/explore?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0\n\t\t\t\t\t\t\t\t\t</a>\n<a aria-hidden=\"true\" class=\"unit-link unit-link-desktop\" data-analytics-region=\"learn more\" href=\"/apple-fitness-plus/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0\n\t\t\t\t\t\t\t\t\t</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-fitness-plus-ny-promo-logo-fitness headline\"><span class=\"visuallyhidden\">Apple Fitness Plus</span></h3>\n<p class=\"subhead\">Start the\u00a0year\u00a0strong\u00a0with guided workouts\u00a0and\u00a0meditations.</p>\n<p class=\"callout available\">Get up to 3 months on us.<sup aria-label=\"Footnote 1\" class=\"footnote footnote-number\">1</sup></p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Fitness Plus\" class=\"button button-primary button-mobile\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple fitness plus\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/fitness-plus/explore?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Learn more, Apple Fitness Plus\" class=\"button button-primary button-desktop\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple fitness plus\" href=\"/apple-fitness-plus/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Try it free, Apple Fitness Plus\" class=\"button button-tertiary button-mobile\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"try it free - apple fitness plus\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/subscribe?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\">Try it free</a>\n<a aria-label=\"Try it free, Apple Fitness Plus\" class=\"button button-tertiary button-desktop\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"try it free - apple fitness plus\" data-modal-trigger=\"\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/subscribe?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\">Try it free</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Fitness Plus trainer holding a dumbbell and doing a strength workout pose in front of the Acitivity rings.\" class=\"unit-image unit-image-apple-fitness-plus-ny-promo-apple-fitness-plus-ny\" data-anim-lazy-image=\"\" role=\"img\"></figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Fitness Plus",
+        "content": "Start the\u00a0year\u00a0strong\u00a0with guided workouts\u00a0and\u00a0meditations. Get up to 3 months on us.1",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_9.jpg"
+    },
+    {
+      "index": 10,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-fitness-plus-ny-promo-logo-fitness headline\"><span class=\"visuallyhidden\">Apple Fitness Plus</span></h3>\n<p class=\"subhead\">Start the\u00a0year\u00a0strong\u00a0with guided workouts\u00a0and\u00a0meditations.</p>\n<p class=\"callout available\">Get up to 3 months on us.<sup aria-label=\"Footnote 1\" class=\"footnote footnote-number\">1</sup></p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Fitness Plus\" class=\"button button-primary button-mobile\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple fitness plus\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/fitness-plus/explore?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Learn more, Apple Fitness Plus\" class=\"button button-primary button-desktop\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple fitness plus\" href=\"/apple-fitness-plus/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Try it free, Apple Fitness Plus\" class=\"button button-tertiary button-mobile\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"try it free - apple fitness plus\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/subscribe?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\">Try it free</a>\n<a aria-label=\"Try it free, Apple Fitness Plus\" class=\"button button-tertiary button-desktop\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"try it free - apple fitness plus\" data-modal-trigger=\"\" data-rid-relay='{\"299\":\"itsct\"}' href=\"https://fitness.apple.com/subscribe?itscg=10000&amp;itsct=fit-hero-hp_tile-apl-ann-250104\">Try it free</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Fitness Plus",
+        "content": "Start the\u00a0year\u00a0strong\u00a0with guided workouts\u00a0and\u00a0meditations. Get up to 3 months on us.1",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 11,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Fitness Plus trainer holding a dumbbell and doing a strength workout pose in front of the Acitivity rings.\" class=\"unit-image unit-image-apple-fitness-plus-ny-promo-apple-fitness-plus-ny\" data-anim-lazy-image=\"\" role=\"img\"></figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_11.jpg"
+    },
+    {
+      "index": 12,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"headline\">MacBook\u00a0Pro 14\u201d</h3>\n<p class=\"subhead\">Supercharged by M5.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, MacBook Pro 14-inch with M5\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - macbook pro 14-inch with m5\" href=\"/macbook-pro/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, MacBook Pro 14-inch with M5\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - macbook pro 14-inch with m5\" href=\"/us/shop/goto/buy_mac/macbook_pro/14_inch\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "MacBook\u00a0Pro 14\u201d",
+        "content": "Supercharged by M5.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 13,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"14-inch MacBook Pro, display partly open, positioned in the shape of a V, silver color, with left side ports: headphone jack, two Thunderbolt ports, and MagSafe connector\" class=\"unit-image unit-image-macbook-pro-m5-promo-macbook-pro-m5\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_13.jpg"
+    },
+    {
+      "index": 14,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-watch-ultra-3-promo-logo-apple-watch-ultra3 headline\"><span class=\"visuallyhidden\">Apple Watch Ultra 3</span></h3>\n<p class=\"subhead\">Personal beast.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Watch Ultra 3\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple watch ultra 3\" href=\"/apple-watch-ultra-3/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, Apple Watch Ultra 3\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - apple watch ultra 3\" href=\"/us/shop/goto/buy_watch/apple_watch_ultra_3\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.96,0.96,0.97,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Watch Ultra 3",
+        "content": "Personal beast.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 15,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Apple Watch Ultra 3, natural titanium case, compass on Orienteering watch face, neon green Ocean Band\" class=\"unit-image unit-image-apple-watch-ultra-3-promo-apple-watch-ultra3\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_15.jpg"
+    },
+    {
+      "index": 16,
+      "element": "<div class=\"unit-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/airpods-pro/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"headline\">AirPods Pro 3</h3>\n<p class=\"subhead\">The world\u2019s best in-ear Active Noise Cancellation.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, AirPods Pro 3\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - airpods pro 3\" href=\"/airpods-pro/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, AirPods Pro 3\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - airpods pro 3\" href=\"/us/shop/goto/buy_airpods/airpods_pro_3\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"AirPods Pro 3, wireless headphones, white color, silicone tips\" class=\"unit-image unit-image-airpods-pro-3-promo-airpodspro-3\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "AirPods Pro 3",
+        "content": "The world\u2019s best in-ear Active Noise Cancellation.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_16.jpg"
+    },
+    {
+      "index": 17,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"headline\">AirPods Pro 3</h3>\n<p class=\"subhead\">The world\u2019s best in-ear Active Noise Cancellation.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, AirPods Pro 3\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - airpods pro 3\" href=\"/airpods-pro/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, AirPods Pro 3\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - airpods pro 3\" href=\"/us/shop/goto/buy_airpods/airpods_pro_3\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "AirPods Pro 3",
+        "content": "The world\u2019s best in-ear Active Noise Cancellation.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 18,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"AirPods Pro 3, wireless headphones, white color, silicone tips\" class=\"unit-image unit-image-airpods-pro-3-promo-airpodspro-3\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_18.jpg"
+    },
+    {
+      "index": 19,
+      "element": "<div class=\"unit-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"buy\" href=\"/us/shop/goto/trade_in\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-iphone-tradein-promo-logo-iphone-tradein headline\"><span class=\"visuallyhidden\">Apple Trade In</span></h3>\n<p class=\"subhead\">Get up to $180\u2013$670 in\u00a0credit when you trade\u00a0in iPhone\u00a013 or higher.<sup aria-label=\"Footnote 2\" class=\"footnote footnote-number\">2</sup></p>\n<div class=\"cta-links\">\n<a aria-label=\"Get your estimate\" class=\"button button-primary\" data-analytics-region=\"buy\" data-analytics-title=\"get your estimate\" href=\"/us/shop/goto/trade_in\" rel=\"follow\" target=\"_self\">Get your estimate</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Side-by-side, hand holding iPhone 13 in silicon case with stickers on back exterior, trade-in with hand holding new iPhone box for iPhone 17 Pro\" class=\"unit-image unit-image-iphone-tradein-promo-iphone-tradein\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Trade In",
+        "content": "Get up to $180\u2013$670 in\u00a0credit when you trade\u00a0in iPhone\u00a013 or higher.2",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_19.jpg"
+    },
+    {
+      "index": 20,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-iphone-tradein-promo-logo-iphone-tradein headline\"><span class=\"visuallyhidden\">Apple Trade In</span></h3>\n<p class=\"subhead\">Get up to $180\u2013$670 in\u00a0credit when you trade\u00a0in iPhone\u00a013 or higher.<sup aria-label=\"Footnote 2\" class=\"footnote footnote-number\">2</sup></p>\n<div class=\"cta-links\">\n<a aria-label=\"Get your estimate\" class=\"button button-primary\" data-analytics-region=\"buy\" data-analytics-title=\"get your estimate\" href=\"/us/shop/goto/trade_in\" rel=\"follow\" target=\"_self\">Get your estimate</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Trade In",
+        "content": "Get up to $180\u2013$670 in\u00a0credit when you trade\u00a0in iPhone\u00a013 or higher.2",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 21,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Side-by-side, hand holding iPhone 13 in silicon case with stickers on back exterior, trade-in with hand holding new iPhone box for iPhone 17 Pro\" class=\"unit-image unit-image-iphone-tradein-promo-iphone-tradein\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_21.jpg"
+    },
+    {
+      "index": 22,
+      "element": "<div class=\"unit-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/apple-card/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-card-logo headline\"><span class=\"visuallyhidden\">Apple Card</span></h3>\n<p class=\"subhead\">Get up to 3% Daily\u00a0Cash back with every purchase.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Card\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple card\" href=\"/apple-card/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Apply now, Apple Card\" class=\"default button button-tertiary\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"Apply now - Apple Card\" data-rid-relay='{\"287\":\"referrer\"}' href=\"https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&amp;start=false\" rel=\"follow\" target=\"_self\">Apply now</a>\n<a aria-label=\"Apply now, Apple Card\" class=\"ios button button-tertiary\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"Apply now - Apple Card\" data-rid-relay='{\"287\":\"referrer\"}' href=\"https://wallet.apple.com/apple-card/setup/feature/ccs?referrer=cid%3Dapy-200-10000036\" rel=\"follow\" target=\"_self\">Apply now</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Apple Card, front, Apple logo in top left, cardholder name in middle left Marisa Robertson, card chip in middle right.\" class=\"unit-image unit-image-apple-card-promo-apple-card\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.13\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Card",
+        "content": "Get up to 3% Daily\u00a0Cash back with every purchase.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_22.jpg"
+    },
+    {
+      "index": 23,
+      "element": "<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-card-logo headline\"><span class=\"visuallyhidden\">Apple Card</span></h3>\n<p class=\"subhead\">Get up to 3% Daily\u00a0Cash back with every purchase.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Card\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple card\" href=\"/apple-card/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Apply now, Apple Card\" class=\"default button button-tertiary\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"Apply now - Apple Card\" data-rid-relay='{\"287\":\"referrer\"}' href=\"https://card.apple.com/apply/application?referrer=cid%3Dapy-200-10000036&amp;start=false\" rel=\"follow\" target=\"_self\">Apply now</a>\n<a aria-label=\"Apply now, Apple Card\" class=\"ios button button-tertiary\" data-analytics-exit-link=\"\" data-analytics-region=\"learn more\" data-analytics-title=\"Apply now - Apple Card\" data-rid-relay='{\"287\":\"referrer\"}' href=\"https://wallet.apple.com/apple-card/setup/feature/ccs?referrer=cid%3Dapy-200-10000036\" rel=\"follow\" target=\"_self\">Apply now</a>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.126\")>",
+      "y_position": 114,
+      "height": 216,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-copy-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "55px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "55px",
+        "textAlign": "center"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Card",
+        "content": "Get up to 3% Daily\u00a0Cash back with every purchase.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 24,
+      "element": "<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Apple Card, front, Apple logo in top left, cardholder name in middle left Marisa Robertson, card chip in middle right.\" class=\"unit-image unit-image-apple-card-promo-apple-card\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.14\")>",
+      "y_position": 114,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-image-wrapper"
+      ],
+      "id": "",
+      "type": 2,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_24.jpg"
+    },
+    {
+      "index": 25,
+      "element": "<div class=\"unit-wrapper split-copy-wrapper\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/ipad-air/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<div class=\"split-wrapper-top\">\n<h2 class=\"logo-image logo-image-ipad-air-hero-logo-ipad-air headline\"><span class=\"visuallyhidden\">iPad Air</span></h2>\n<p class=\"subhead\">Now supercharged by the M3 chip.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, iPad Air\" class=\"button button-elevated\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - ipad air\" href=\"/ipad-air/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, iPad Air\" class=\"button button-elevated button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - ipad air\" href=\"/us/shop/goto/buy_ipad/ipad_air\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"split-wrapper-bottom\">\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"iPad Air, blue, back view, camera system in the top left corner\" class=\"unit-image unit-image-ipad-air-hero-ipad-air-avail\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.131\")>",
+      "y_position": 1522,
+      "height": 692,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper",
+        "split-copy-wrapper"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 247)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(29, 29, 31)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 56,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "iPad Air",
+        "subtitle": "",
+        "content": "Now supercharged by the M3 chip.",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/apple_final/fig_25.jpg"
+    },
+    {
+      "index": 26,
+      "element": "<div class=\"unit-wrapper theme-dark\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/macbook-pro/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"headline\">MacBook\u00a0Pro 14\u201d</h3>\n<p class=\"subhead\">Supercharged by M5.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, MacBook Pro 14-inch with M5\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - macbook pro 14-inch with m5\" href=\"/macbook-pro/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, MacBook Pro 14-inch with M5\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - macbook pro 14-inch with m5\" href=\"/us/shop/goto/buy_mac/macbook_pro/14_inch\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"14-inch MacBook Pro, display partly open, positioned in the shape of a V, silver color, with left side ports: headphone jack, two Thunderbolt ports, and MagSafe connector\" class=\"unit-image unit-image-macbook-pro-m5-promo-macbook-pro-m5\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.145\")>",
+      "y_position": 2226,
+      "height": 580,
+      "width": 942,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper",
+        "theme-dark"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(245, 245, 247)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "MacBook\u00a0Pro 14\u201d",
+        "content": "Supercharged by M5.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 27,
+      "element": "<div class=\"unit-wrapper theme-dark\">\n<a aria-hidden=\"true\" class=\"unit-link\" data-analytics-region=\"learn more\" href=\"/apple-watch-ultra-3/\" rel=\"follow\" tabindex=\"-1\" target=\"_self\">\u00a0</a>\n<div class=\"unit-copy-wrapper\">\n<h3 class=\"logo-image logo-image-apple-watch-ultra-3-promo-logo-apple-watch-ultra3 headline\"><span class=\"visuallyhidden\">Apple Watch Ultra 3</span></h3>\n<p class=\"subhead\">Personal beast.</p>\n<div class=\"cta-links\">\n<a aria-label=\"Learn more, Apple Watch Ultra 3\" class=\"button button-primary\" data-analytics-region=\"learn more\" data-analytics-title=\"learn more - apple watch ultra 3\" href=\"/apple-watch-ultra-3/\" rel=\"follow\" target=\"_self\">Learn more</a>\n<a aria-label=\"Buy, Apple Watch Ultra 3\" class=\"button button-tertiary\" data-analytics-region=\"buy\" data-analytics-title=\"buy - apple watch ultra 3\" href=\"/us/shop/goto/buy_watch/apple_watch_ultra_3\" rel=\"follow\" target=\"_self\">Buy</a>\n</div>\n</div>\n<div class=\"unit-image-wrapper\">\n<figure aria-label=\"Apple Watch Ultra 3, natural titanium case, compass on Orienteering watch face, neon green Ocean Band\" class=\"unit-image unit-image-apple-watch-ultra-3-promo-apple-watch-ultra3\" data-anim-lazy-image=\"\" role=\"img\">\n</figure>\n</div>\n</div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.145\")>",
+      "y_position": 2226,
+      "height": 580,
+      "width": 942,
+      "html_tag": "div",
+      "classes": [
+        "unit-wrapper",
+        "theme-dark"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgb(245, 245, 247)",
+        "fontFamily": "\"SF Pro Text\", \"SF Pro Icons\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "17px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 40,
+          "weight": 600,
+          "color": "0.96,0.96,0.97,1.00"
+        },
+        "content": {
+          "size": 28,
+          "weight": 400,
+          "color": "0.11,0.11,0.12,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Apple Watch Ultra 3",
+        "content": "Personal beast.",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 28,
+      "element": "<footer aria-labelledby=\"ac-gf-label\" class=\"ac-globalfooter-dark js\" data-analytics-region=\"global footer\" id=\"ac-globalfooter\" lang=\"en-US\" role=\"contentinfo\">\n<div class=\"ac-gf-content\" data-nosnippet=\"\">\n<h2 class=\"ac-gf-label\" id=\"ac-gf-label\">Apple Footer</h2>\n<section aria-label=\"Footnotes\" class=\"ac-gf-sosumi\">\n<ul>\n<li><span class=\"fitness-plus-ny-promo-legal\"><span id=\"footnote-1\">1. </span>Offer available to new subscribers who purchase an eligible device. $9.99/month after trial. Only one offer per Apple\u00a0Account and only one offer per family if you\u2019re part of a Family\u00a0Sharing group, regardless of the number of devices you or your family purchase. This offer is not available if you or your family have previously subscribed to Apple\u00a0Fitness+. Offer good for three months after eligible device activation. Plan automatically renews until cancelled. Restrictions and other terms\u00a0apply.</span>\n<span class=\"fitness-plus-ny-promo-legal\">Apple\u00a0Fitness+ requires a subscription and compatible hardware and software. See <a href=\"https://support.apple.com/ht211924?cid=mc-ols-icloud-article_ht211924-ios_ui-08182023\" rel=\"nofollow\">here</a> for compatibility details.</span>\n<span class=\"fitness-plus-ny-promo-legal\">To get the newest features, make sure your devices are running the latest software\u00a0version.\n</span>\n</li>\n<li><span class=\"tax-holiday-legal-hide\" id=\"footnote-2\">2. Trade\u2011in values will vary based on the condition, year, and configuration of your eligible trade\u2011in device. Not all devices are eligible for credit. You must be at least the age of majority to be eligible to trade in for credit or for an Apple\u00a0Gift\u00a0Card. Trade\u2011in value may be applied toward qualifying new device purchase, or added to an Apple\u00a0Gift\u00a0Card. Actual value awarded is based on receipt of a qualifying device matching the description provided when estimate was made. Sales tax may be assessed on full value of a new device purchase. In\u2011store trade\u2011in requires presentation of a valid photo ID (local law may require saving this information). Offer may not be available in all stores and may vary between in\u2011store and online trade\u2011in. Some stores may have additional requirements. Apple or its trade\u2011in partners reserve the right to refuse, cancel, or limit quantity of any trade\u2011in transaction for any reason. More details are available from Apple\u2019s trade-in partner for trade\u2011in and recycling of eligible devices. Restrictions and limitations may\u00a0apply.</span>\n</li>\n<li>To access and use all Apple\u00a0Card features and products available only to Apple\u00a0Card users, you must add Apple\u00a0Card to Wallet on an iPhone or iPad that supports and has the latest version of iOS or iPadOS. Apple\u00a0Card is subject to credit approval, available only for qualifying applicants in the United States, and issued by Goldman Sachs Bank USA, Salt Lake City Branch. </li>\n<li>Apple\u00a0Payments Services LLC, a subsidiary of Apple\u00a0Inc., is a service provider of Goldman Sachs Bank USA for Apple\u00a0Card and Savings accounts. Neither Apple\u00a0Inc. nor Apple\u00a0Payments Services LLC is a bank.\n</li>\n<li>If you reside in the U.S. territories, please call Goldman Sachs at 877-255-5923 with questions about Apple\u00a0Card.\n</li>\n<li>Learn more about how Apple\u00a0Card applications are evaluated at <a href=\"https://support.apple.com/kb/HT209218\">support.apple.com/kb/HT209218</a>.</li>\n<li><span class=\"fam-legal\">A subscription is required for Apple\u00a0Arcade, Apple\u00a0Fitness+, Apple\u00a0Music, and Apple\u00a0TV.</span>\n</li>\n<li>Features are subject to change. Some features, applications, and services may not be available in all regions or all languages.\n</li>\n</ul>\n</section>\n<nav aria-label=\"Apple Directory\" class=\"ac-gf-directory with-5-columns\" role=\"navigation\">\n<div class=\"ac-gf-directory-column\">\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Shop and Learn</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Shop and Learn</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-products\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"store\" href=\"/us/shop/goto/store\">Store</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"mac\" href=\"/mac/\">Mac</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"ipad\" href=\"/ipad/\">iPad</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"iphone\" href=\"/iphone/\">iPhone</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"watch\" href=\"/watch/\">Watch</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"vision\" href=\"/apple-vision-pro/\">Vision</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"airpods\" href=\"/airpods/\">AirPods</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"tv and home\" href=\"/tv-home/\">TV &amp; Home</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"airtag\" href=\"/airtag/\">AirTag</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"accessories\" href=\"/us/shop/goto/buy_accessories\">Accessories</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"gift cards\" href=\"/us/shop/goto/giftcards\">Gift Cards</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Wallet</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Wallet</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-applewallet\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"wallet\" href=\"/wallet/\">Wallet</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple card\" href=\"/apple-card/\">Apple\u00a0Card</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple pay\" href=\"/apple-pay/\">Apple\u00a0Pay</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple cash\" href=\"/apple-cash/\">Apple\u00a0Cash</a></li>\n</ul>\n</div>\n</div>\n<div class=\"ac-gf-directory-column\">\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Account</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Account</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-accounts\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-exit-link=\"\" data-analytics-title=\"apple account\" href=\"https://account.apple.com/\">Manage Your Apple Account</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple store account\" href=\"/us/shop/goto/account\">Apple Store Account</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-exit-link=\"\" data-analytics-title=\"icloud.com\" href=\"https://www.icloud.com\">iCloud.com</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Entertainment</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Entertainment</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-entertainment\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple one\" href=\"/apple-one/\">Apple\u00a0One</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"\" href=\"/apple-tv/\">Apple\u00a0TV</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple music\" href=\"/apple-music/\">Apple\u00a0Music</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple arcade\" href=\"/apple-arcade/\">Apple\u00a0Arcade</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple fitness plus\" href=\"/apple-fitness-plus/\">Apple\u00a0Fitness+</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple news plus\" href=\"/apple-news/\">Apple\u00a0News+</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple podcasts\" href=\"/apple-podcasts/\">Apple Podcasts</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple books\" href=\"/apple-books/\">Apple\u00a0Books</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"app store\" href=\"/app-store/\">App\u00a0Store</a></li>\n</ul>\n</div>\n</div>\n<div class=\"ac-gf-directory-column\">\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Store</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Store</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-storeservices\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"find a store\" href=\"/retail/\">Find a Store</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"genius bar\" href=\"/retail/geniusbar/\">Genius Bar</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"today at apple\" href=\"/today/\">Today at Apple</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"group reservations\" href=\"/today/groups/\">Group Reservations</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple camp\" href=\"/today/camp/\">Apple Camp</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-exit-link=\"\" data-analytics-title=\"apple store app\" href=\"https://apps.apple.com/us/app/apple-store/id375380948\">Apple Store App</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"certified refurbished\" href=\"/us/shop/goto/special_deals\">Certified Refurbished</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple trade in\" href=\"/us/shop/goto/trade_in\">Apple\u00a0Trade\u00a0In</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"financing\" href=\"/us/shop/goto/payment_plan\">Financing</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"carrier deals at apple\" href=\"/us/shop/goto/buy_iphone/carrier_offers\">Carrier Deals at Apple</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"order status\" href=\"/us/shop/goto/order/list\">Order Status</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shopping help\" href=\"/us/shop/goto/help\">Shopping Help</a></li>\n</ul>\n</div>\n</div>\n<div class=\"ac-gf-directory-column\">\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Business</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Business</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-business\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple and business\" href=\"/business/\">Apple and Business</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for business\" href=\"/retail/business/\">Shop for Business</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Education</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Education</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-education\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple and education\" href=\"/education/\">Apple and Education</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for k12\" href=\"/education/k12/how-to-buy/\">Shop for K-12</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for college\" href=\"/us/shop/goto/educationrouting\">Shop for College</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Healthcare</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Healthcare</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-healthcare\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple and healthcare\" href=\"/healthcare/\">Apple and Healthcare</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Government</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">For Government</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-government\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple and government\" href=\"/government/\">Apple and Government</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for veterans and military\" href=\"/us/shop/goto/eppstore/veteransandmilitary\">Shop for Veterans and Military</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for state and local employees\" href=\"/us_epp_67909/store\">Shop for State and Local Employees</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"shop for federal employees\" href=\"/us_epp_55499/store\">Shop for Federal Employees</a></li>\n</ul>\n</div>\n</div>\n<div class=\"ac-gf-directory-column\">\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Values</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">Apple Values</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-responsibility\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"accessibility\" href=\"/accessibility/\">Accessibility</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"education\" href=\"/education-initiative/\">Education</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"environment\" href=\"/environment/\">Environment</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"inclusion and diversity\" href=\"/diversity/\">Inclusion and Diversity</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"privacy\" href=\"/privacy/\">Privacy</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"racial equity and justice\" href=\"/racial-equity-justice-initiative/\">Racial Equity and Justice</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"supply chain innovation\" href=\"/supply-chain/\">Supply Chain Innovation</a></li>\n</ul>\n</div>\n<div class=\"ac-gf-directory-column-section\">\n<h3 class=\"ac-gf-directory-column-section-title\">\n<span class=\"ac-gf-directory-column-section-title-text\">About Apple</span>\n<button class=\"ac-gf-directory-column-section-title-button\" disabled=\"\">\n<span class=\"ac-gf-directory-column-section-title-text\">About Apple</span>\n<span aria-hidden=\"true\" class=\"ac-gf-directory-column-section-title-icon\"><svg class=\"footer-icon-svg\" height=\"6\" viewbox=\"0 0 11 6\" width=\"11\">\n<polyline data-footer-icon-shape=\"\" fill=\"none\" fill-rule=\"evenodd\" points=\"10.075 0.675 5.5 5.323 0.925 0.675\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"expand\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.12, 0, 0.38, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 0.675 5.5 5.323 0.925 0.675;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 5.325 5.5 0.676 0.925 5.325\"></animate>\n<animate attributename=\"points\" begin=\"indefinite\" calcmode=\"spline\" data-footer-animate=\"collapse\" dur=\"320ms\" fill=\"freeze\" keysplines=\"0.2, 0, 0.68, 0;\n\t\t\t\t\t\t0.2, 1, 0.68, 1\" keytimes=\"0;\n\t\t\t\t\t0.5;\n\t\t\t\t\t1\" values=\"10.075 5.325 5.5 0.676 0.925 5.325;\n\t\t\t\t\t10.075 3 5.5 3 0.925 3;\n\t\t\t\t\t10.075 0.675 5.5 5.323 0.925 0.675\"></animate>\n</polyline>\n</svg></span>\n</button>\n</h3>\n<ul class=\"ac-gf-directory-column-section-list\" id=\"footer-directory-column-section-about\" role=\"list\">\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"newsroom\" href=\"/newsroom/\">Newsroom</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"apple leadership\" href=\"/leadership/\">Apple Leadership</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"career opportunities\" href=\"/careers/us/\">Career Opportunities</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-exit-link=\"\" data-analytics-title=\"investors\" href=\"https://investor.apple.com/\">Investors</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"ethics and compliance\" href=\"/compliance/\">Ethics &amp; Compliance</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"events\" href=\"/apple-events/\">Events</a></li>\n<li class=\"ac-gf-directory-column-section-item\" role=\"listitem\"><a class=\"ac-gf-directory-column-section-link\" data-analytics-title=\"contact apple\" href=\"/contact/\">Contact Apple</a></li>\n</ul>\n</div>\n</div>\n</nav>\n<section class=\"ac-gf-footer\">\n<div class=\"ac-gf-footer-shop\" x-ms-format-detection=\"none\">\n\t\t\tMore ways to shop: <a data-analytics-title=\"find an apple store\" href=\"/retail/\">Find an Apple Store</a> or <a data-analytics-exit-link=\"\" data-analytics-title=\"other retailers or resellers\" href=\"https://locate.apple.com/\">other retailer</a> near you. <span class=\"nowrap\">Or call <a href=\"tel:1-800-692-7753\">1-800-MY-APPLE</a> (1-800-692-7753).</span>\n</div>\n<div class=\"ac-gf-footer-locale\">\n<a aria-label=\"United States. Choose your country or region\" class=\"ac-gf-footer-locale-link\" data-analytics-title=\"choose your country\" href=\"/choose-country-region/\" title=\"Choose your country or region\">United States</a>\n</div>\n<div class=\"ac-gf-footer-legal\">\n<div class=\"ac-gf-footer-legal-copyright\">Copyright \u00a9\n\t\t\t\t\n\t\t\t\t2026\n\t\t\t\t Apple Inc. All rights reserved.\n\t\t\t</div>\n<ul class=\"ac-gf-footer-legal-links\" role=\"list\">\n<li class=\"ac-gf-footer-legal-links-item\" role=\"listitem\">\n<a class=\"ac-gf-footer-legal-link\" data-analytics-title=\"privacy policy\" href=\"/legal/privacy/\">Privacy Policy</a>\n</li>\n<li class=\"ac-gf-footer-legal-links-item\" role=\"listitem\">\n<a class=\"ac-gf-footer-legal-link\" data-analytics-title=\"terms of use\" href=\"/legal/internet-services/terms/site.html\">Terms of Use</a>\n</li>\n<li class=\"ac-gf-footer-legal-links-item\" role=\"listitem\">\n<a class=\"ac-gf-footer-legal-link\" data-analytics-title=\"sales and refunds\" href=\"/us/shop/goto/help/sales_refunds\">Sales and Refunds</a>\n</li>\n<li class=\"ac-gf-footer-legal-links-item\" role=\"listitem\">\n<a class=\"ac-gf-footer-legal-link\" data-analytics-title=\"legal\" href=\"/legal/\">Legal</a>\n</li>\n<li class=\"ac-gf-footer-legal-links-item\" role=\"listitem\">\n<a class=\"ac-gf-footer-legal-link\" data-analytics-title=\"site map\" href=\"/sitemap/\">Site Map</a>\n</li>\n</ul>\n</div>\n</section>\n<script src=\"/ac/globalfooter/8/en_US/scripts/ac-globalfooter.built.js\" type=\"text/javascript\"></script>\n<script type=\"application/ld+json\">\n\t{\n\t\t\"@context\": \"http://schema.org\",\n\t\t\"@id\": \"https://www.apple.com/#organization\",\n\t\t\"@type\": \"Organization\",\n\t\t\"name\": \"Apple\",\n\t\t\"url\": \"https://www.apple.com/\",\n\t\t\"logo\": \"https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?202110180743\",\n\t\t\"subOrganization\": {\n\t\t\t\"@type\": \"Organization\",\n\t\t\t\"name\": \"Apple Support\",\n\t\t\t\"url\": \"https://support.apple.com\",\n\t    \"@id\": \"https://support.apple.com/#organization\"\n\t\t},\n\t\t\"contactPoint\": [\n\t\t\t{\n\t\t\t\t\"@type\": \"ContactPoint\",\n\t\t\t\t\"telephone\": \"+1-800-692-7753\",\n\t\t\t\t\"contactType\": \"sales\",\n\t\t\t\t\"areaServed\": \"US\"\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"@type\": \"ContactPoint\",\n\t\t\t\t\"telephone\": \"+1-800-275-2273\",\n\t\t\t\t\"contactType\": \"technical support\",\n\t\t\t\t\"areaServed\": \"US\",\n\t\t\t\t\"availableLanguage\": [\"EN\", \"ES\"]\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"@type\": \"ContactPoint\",\n\t\t\t\t\"telephone\": \"+1-800-275-2273\",\n\t\t\t\t\"contactType\": \"customer support\",\n\t\t\t\t\"areaServed\": \"US\",\n\t\t\t\t\"availableLanguage\": [\"EN\", \"ES\"]\n\t\t\t}\n\t\t],\n\t\t\"sameAs\": [\n\t\t\t\"http://www.wikidata.org/entity/Q312\",\n\t\t\t\"https://www.youtube.com/user/Apple\",\n\t\t\t\"https://www.linkedin.com/company/apple\",\n\t\t\t\"https://www.facebook.com/Apple\",\n\t\t\t\"https://www.twitter.com/Apple\"\n\t\t]\n\t}\n</script>\n<script src=\"/ac/localeswitcher/4/en_US/scripts/localeswitcher.built.js\" type=\"text/javascript\"></script>\n</div>\n</footer>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"240bef38b08b49b4859d2bd419a4b339\", element=\"f.89A3FCFEDDDE6CD707704747943A0919.d.4B3FBD7A327E7CFDF3CA8CB0EB95A118.e.327\")>",
+      "y_position": 5989,
+      "height": 1031,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [
+        "ac-globalfooter-dark",
+        "js"
+      ],
+      "id": "ac-globalfooter",
+      "type": 10,
+      "styles": {
+        "backgroundColor": "rgb(29, 29, 31)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "color": "rgba(255, 255, 255, 0.56)",
+        "fontFamily": "\"SF Pro Text\", \"Myriad Set Pro\", \"SF Pro Icons\", \"Apple Legacy Chevron\", \"Helvetica Neue\", Helvetica, Arial, sans-serif",
+        "fontSize": "12px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "start"
+      },
+      "typography": {
+        "title": {
+          "size": 12,
+          "weight": 400,
+          "color": "1.00,1.00,1.00,0.92"
+        },
+        "subtitle": {
+          "size": 12,
+          "weight": 400,
+          "color": "1.00,1.00,1.00,0.92"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "content": {
+        "title": "Apple Footer",
+        "subtitle": "Shop and LearnShop and Learn",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      }
+    }
+  ]
+}

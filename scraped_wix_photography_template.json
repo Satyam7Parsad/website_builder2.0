@@ -1,0 +1,142 @@
+{
+  "template_name": "wix_photography_template",
+  "url": "https://www.wix.com/website-template/view/html/5605?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F2&tpClick=view_button&esi=808a394b-33fb-4ca1-be60-ef09fa89c4e0",
+  "scraped_date": "2026-01-19T17:40:10.390860",
+  "sections": [],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Madefor Display\", \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+    ],
+    "sizes": {
+      "h1": 36,
+      "h3": 16,
+      "p": 16,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      300,
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  },
+  "forms": [],
+  "social_links": [],
+  "seo_data": {
+    "title": "Facial Therapist (Elegant) Website Template | WIX",
+    "description": "Elevate your online presence with an elegant website that reflects your beauty expertise. This template features the Wix Bookings app, making it effortless for clients to schedule appointments at their convenience. With a stunning design and user-friendly layout, you can showcase your services and create an inviting atmosphere for potential clients. Ready to enhance your business? Click 'Edit' to get started.",
+    "keywords": "",
+    "og": {
+      "title": "Facial Therapist (Elegant) Website Template | WIX",
+      "description": "Elevate your online presence with an elegant website that reflects your beauty expertise. This template features the Wix Bookings app, making it effortless for clients to schedule appointments at their convenience. With a stunning design and user-friendly layout, you can showcase your services and create an inviting atmosphere for potential clients. Ready to enhance your business? Click 'Edit' to get started.",
+      "image": "//static.wixstatic.com/media/",
+      "url": "https://www.wix.com/website-template/view/html/5605"
+    },
+    "twitter": {
+      "card": "",
+      "title": "",
+      "description": "",
+      "image": ""
+    },
+    "favicon": "https://www.wix.com/favicon.ico",
+    "canonical": "https://www.wix.com/website-template/view/html/5605",
+    "lang": ""
+  },
+  "custom_fonts": [],
+  "advanced_css": {
+    "hoverEffects": [],
+    "animations": [
+      {
+        "selector": "nHuSJZ",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "oOZ5cH FrcaLY",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "oOZ5cH",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "bggdgE LCjeiB",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "Ydu4WK Y_xMZ5",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "gVJ7eC",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "XpwCp3 sKD7vO kX8CZg",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "nHuSJZ",
+        "transition": "all"
+      },
+      {
+        "selector": "oOZ5cH FrcaLY",
+        "transition": "all"
+      },
+      {
+        "selector": "oOZ5cH",
+        "transition": "all"
+      },
+      {
+        "selector": "bggdgE LCjeiB",
+        "transition": "all"
+      },
+      {
+        "selector": "Ydu4WK Y_xMZ5",
+        "transition": "all"
+      },
+      {
+        "selector": "gVJ7eC",
+        "transition": "all"
+      },
+      {
+        "selector": "XpwCp3 sKD7vO kX8CZg",
+        "transition": "all"
+      }
+    ]
+  }
+}

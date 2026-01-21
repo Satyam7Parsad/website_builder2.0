@@ -1,0 +1,1443 @@
+{
+  "template_name": "wix_pilates_v6",
+  "url": "https://www.wix.com/website-template/view/html/835?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F223&tpClick=view_button&esi=968b7184-8308-4212-bec7-7827efe451dd",
+  "scraped_date": "2026-01-20T15:29:05.302652",
+  "sections": [
+    {
+      "index": 0,
+      "type": 0,
+      "y_position": 0,
+      "height": 600,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "focus-within"
+      ],
+      "id": "SITE_CONTAINER",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(0, 0, 0)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "static",
+        "top": "auto",
+        "left": "auto",
+        "right": "auto",
+        "bottom": "auto",
+        "zIndex": "auto",
+        "fontFamily": "Arial, Helvetica, sans-serif",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "buttons": [
+          {
+            "text": "Skip to Main Content",
+            "href": "",
+            "bgColor": "#ffffff",
+            "textColor": "#116dff",
+            "borderColor": "rgb(17, 109, 255)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "fontFamily": "Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "normal",
+            "padding": "0px 24px",
+            "margin": "0px 0px 0px -94px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "boxShadow": "none",
+            "opacity": 0,
+            "transform": "none",
+            "transition": "all",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "PILATES\u200bSTUDIO",
+            "href": "https://www.wix.com/demone2/pilates-classes",
+            "bgColor": "#000000",
+            "textColor": "#272c2d",
+            "borderColor": "rgb(39, 44, 45)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "fontFamily": "\"open sans\", sans-serif",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "42px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 217.15625,
+            "height": 40,
+            "borderRadius": "8px",
+            "borderWidth": "0px",
+            "borderStyle": "none",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "all",
+            "backgroundImage": "none"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "PILATES\u200bSTUDIO",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "color": "rgb(39, 44, 45)",
+            "fontFamily": "\"open sans\", sans-serif"
+          },
+          {
+            "text": "FLEXIBILITY. STRENGTH. ENDURANCE",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "color": "rgb(73, 83, 86)",
+            "fontFamily": "arial, \"\uff4d\uff53 \uff50\u30b4\u30b7\u30c3\u30af\", \"ms pgothic\", \ub3cb\uc6c0, dotum, helvetica, sans-serif"
+          },
+          {
+            "text": "THE NUMBER 1 PILATES\nSTUDIO IN MIAMI",
+            "fontSize": 18,
+            "fontWeight": 400,
+            "color": "rgb(39, 44, 45)",
+            "fontFamily": "\"noticia text\", serif"
+          }
+        ],
+        "headings": [
+          {
+            "text": "THE NUMBER 1 PILATES STUDIO IN MIAMI",
+            "fontSize": 21,
+            "fontWeight": 400,
+            "color": "rgb(39, 44, 45)"
+          },
+          {
+            "text": "FLEXIBILITY. STRENGTH. ENDURANCE",
+            "fontSize": 20,
+            "fontWeight": 400,
+            "color": "#6B7280"
+          }
+        ]
+      },
+      "padding": 160,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "rgb(39, 44, 45)",
+        "background": "#000000"
+      },
+      "title_font_size": 21,
+      "title_font_weight": 400,
+      "title_color": "rgb(39, 44, 45)",
+      "content_font_size": 30,
+      "content_font_weight": 400,
+      "content_color": "rgb(39, 44, 45)",
+      "font_family": "Arial, Helvetica, sans-serif",
+      "button_text": "Skip to Main Content",
+      "button_link": "",
+      "button_bg_color": "rgb(255, 255, 255)",
+      "button_text_color": "rgb(17, 109, 255)",
+      "button_border_radius": "24px",
+      "button_border_width": "0px",
+      "button_border_color": "rgb(17, 109, 255)",
+      "button_box_shadow": "none",
+      "button_padding": "0px 24px",
+      "button_text_transform": "none",
+      "button_letter_spacing": "normal",
+      "button_font_size": 14,
+      "button_font_weight": 400,
+      "cards": [
+        {
+          "title": "Skip to Main Content",
+          "description": "PILATES\u200bSTUDIO",
+          "link": "",
+          "button_text": "Skip to Main Content",
+          "bg_color": "rgb(255, 255, 255)",
+          "text_color": "rgb(17, 109, 255)",
+          "title_font_size": 14,
+          "title_font_weight": 400
+        },
+        {
+          "title": "PILATES\u200bSTUDIO",
+          "description": "FLEXIBILITY. STRENGTH. ENDURANCE",
+          "link": "https://www.wix.com/demone2/pilates-classes",
+          "button_text": "PILATES\u200bSTUDIO",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(39, 44, 45)",
+          "title_font_size": 30,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "THE NUMBER 1 PILATES\nSTUDIO IN MIAMI",
+          "link": "https://www.wix.com/demone2/pilates-classes",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Log In",
+          "description": "\u200bCall Us Now: \n1-800-000-0000",
+          "link": "",
+          "button_text": "Log In",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(156, 176, 183)",
+          "title_font_size": 13,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Home",
+          "description": "Home",
+          "link": "https://www.wix.com/demone2/pilates-classes",
+          "button_text": "Home",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "About",
+          "description": "About",
+          "link": "https://www.wix.com/demone2/pilates-classes/about",
+          "button_text": "About",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "Classes",
+          "link": "",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 0)",
+          "title_font_size": 13,
+          "title_font_weight": 400
+        },
+        {
+          "title": "The Studio",
+          "description": "Plans",
+          "link": "https://www.wix.com/demone2/pilates-classes/the-studio",
+          "button_text": "The Studio",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Our Teachers",
+          "description": "Prices",
+          "link": "https://www.wix.com/demone2/pilates-classes/our-teachers",
+          "button_text": "Our Teachers",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Classes",
+          "description": "Contact",
+          "link": "https://www.wix.com/demone2/pilates-classes/classes",
+          "button_text": "Classes",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Plans",
+          "description": "More",
+          "link": "https://www.wix.com/demone2/pilates-classes/pricing-plans/list",
+          "button_text": "Plans",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Prices",
+          "description": "I'm a paragraph. Click here to add your own text and edit me. It\u2019s easy. Just click \u201cEdit Text\u201d or double click me and you can start adding your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I\u2019m a great place for you to tell a story and let y",
+          "link": "https://www.wix.com/demone2/pilates-classes/prices",
+          "button_text": "Prices",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgb(0, 0, 238)",
+          "title_font_size": 10,
+          "title_font_weight": 400
+        }
+      ],
+      "cards_per_row": 3,
+      "title": "THE NUMBER 1 PILATES STUDIO IN MIAMI",
+      "subtitle": "FLEXIBILITY. STRENGTH. ENDURANCE",
+      "multi_column_text": "FIRST CLASS FREE!\u200b\u200b\u200b\u200b\nWhat is\u00a0GYROTONIC?\n",
+      "css_border_radius": "0px",
+      "css_box_shadow": "none",
+      "css_border": "0px none rgb(0, 0, 0)",
+      "css_opacity": "1",
+      "css_background_image": "none",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "normal",
+      "css_letter_spacing": "normal",
+      "padding_top": "0px",
+      "padding_right": "0px",
+      "padding_bottom": "0px",
+      "padding_left": "0px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "scraped_images/wix_pilates_v6/img_8.png",
+      "position": "static",
+      "top": "auto",
+      "left": "auto",
+      "right": "auto",
+      "bottom": "auto",
+      "z_index": "auto",
+      "visual_height": 450,
+      "cv_adjusted": true,
+      "card_width": 800,
+      "card_height": 1000,
+      "card_spacing": 40,
+      "border_radius": 8,
+      "original_height": 1537,
+      "section_image": "scraped_images/wix_pilates_v6/img_8.png",
+      "use_bg_image": true,
+      "name": "Hero",
+      "_confidence": 0.9
+    },
+    {
+      "index": 1,
+      "type": 1,
+      "name": "Navigation",
+      "title": "PILATES STUDIO",
+      "y_position": 0,
+      "height": 80,
+      "width": 1920,
+      "nav_items": [
+        "Home",
+        "About",
+        "Classes",
+        "Plans",
+        "Prices",
+        "Contact"
+      ],
+      "bg_color": "rgba(79, 172, 159, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgb(39, 44, 45)",
+      "accent_color": "rgba(79, 172, 159, 1)",
+      "title_font_size": 21,
+      "content_font_size": 30,
+      "padding": 160,
+      "_detected_as": "navbar",
+      "nav_bg_color": "rgba(79, 172, 159, 1)",
+      "nav_text_color": "rgba(255, 255, 255, 1)",
+      "content": {
+        "headings": [
+          {
+            "text": "PILATES STUDIO",
+            "fontSize": 21,
+            "fontWeight": 700,
+            "color": "rgb(39, 44, 45)"
+          }
+        ],
+        "paragraphs": [],
+        "buttons": []
+      },
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#1F2937",
+        "background": "#FFFFFF"
+      }
+    },
+    {
+      "index": 2,
+      "type": 3,
+      "name": "Services",
+      "title": "What form of exercise works best for you?",
+      "subtitle": "",
+      "content_text": "I'm a paragraph. Click here to add your own text and edit me.",
+      "button_text": "BOOK A CLASS",
+      "y_position": 680,
+      "height": 400,
+      "width": 1920,
+      "bg_color": "rgba(255, 255, 255, 1)",
+      "text_color": "rgb(0, 0, 0)",
+      "title_color": "rgb(39, 44, 45)",
+      "accent_color": "rgba(79, 172, 159, 1)",
+      "title_font_size": 21,
+      "content_font_size": 30,
+      "padding": 160,
+      "content": {
+        "headings": [
+          {
+            "text": "What form of exercise works best for you?",
+            "fontSize": 21,
+            "fontWeight": 700,
+            "color": "rgb(39, 44, 45)"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "I'm a paragraph. Click here to add your own text and edit me.",
+            "fontSize": 18,
+            "color": "#4B5563"
+          }
+        ],
+        "buttons": []
+      },
+      "items": [
+        {
+          "title": "Card 1",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_6.jpg",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 2",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_10.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 4",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_11.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        }
+      ],
+      "cards_per_row": 3,
+      "card_width": 586.6666666666666,
+      "card_height": 400,
+      "card_spacing": 30,
+      "horizontal_padding": 60,
+      "vertical_padding": 80,
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#4B5563",
+        "background": "#FFFFFF"
+      }
+    },
+    {
+      "index": 3,
+      "type": 3,
+      "name": "What is GYROTONIC?",
+      "title": "What is GYROTONIC?",
+      "subtitle": "",
+      "content_text": "I'm a paragraph. Click here to add your own text and edit me.",
+      "y_position": 1080,
+      "height": 400,
+      "width": 1920,
+      "bg_color": "rgba(220, 235, 245, 1)",
+      "text_color": "rgb(0, 0, 0)",
+      "title_color": "rgb(39, 44, 45)",
+      "accent_color": "rgba(79, 172, 159, 1)",
+      "title_font_size": 21,
+      "content_font_size": 30,
+      "padding": 160,
+      "content": {
+        "headings": [
+          {
+            "text": "What is GYROTONIC?",
+            "fontSize": 21,
+            "fontWeight": 700,
+            "color": "rgb(39, 44, 45)"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "I'm a paragraph. Click here to add your own text and edit me.",
+            "fontSize": 18,
+            "color": "#4B5563"
+          }
+        ],
+        "buttons": []
+      },
+      "items": [
+        {
+          "title": "Card 1",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_10.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 5",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_11.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 2",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_2.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 6",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_7.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 3",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_3.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 7",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_13.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 4",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_1.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 8",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_4.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        },
+        {
+          "title": "Card 12",
+          "description": "",
+          "image": "scraped_images/wix_pilates_v6/img_14.png",
+          "icon": "\u2b50",
+          "icon_color": {
+            "r": 59,
+            "g": 130,
+            "b": 246,
+            "a": 255
+          },
+          "bullet_points": [
+            "Feature 1",
+            "Feature 2",
+            "Feature 3"
+          ],
+          "card_style": 1,
+          "bg_color": {
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "title_color": {
+            "r": 31,
+            "g": 41,
+            "b": 55,
+            "a": 255
+          },
+          "desc_color": {
+            "r": 107,
+            "g": 114,
+            "b": 128,
+            "a": 255
+          }
+        }
+      ],
+      "cards_per_row": 3,
+      "card_width": 586.6666666666666,
+      "card_height": 400,
+      "card_spacing": 30,
+      "horizontal_padding": 60,
+      "vertical_padding": 80,
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#4B5563",
+        "background": "#FFFFFF"
+      }
+    },
+    {
+      "index": 4,
+      "type": 8,
+      "name": "First Class Free",
+      "title": "FIRST CLASS FREE!",
+      "subtitle": "",
+      "content_text": "I'm a paragraph. Click here to add your own text.",
+      "button_text": "BOOK NOW",
+      "y_position": 1480,
+      "height": 300,
+      "width": 1920,
+      "bg_color": "rgba(64, 64, 64, 1)",
+      "text_color": "rgba(255, 255, 255, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "accent_color": "rgba(255, 140, 0, 1)",
+      "title_font_size": 21,
+      "content_font_size": 30,
+      "padding": 160,
+      "content": {
+        "headings": [
+          {
+            "text": "FIRST CLASS FREE!",
+            "fontSize": 21,
+            "fontWeight": 700,
+            "color": "rgba(255, 255, 255, 1)"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "I'm a paragraph. Click here to add your own text.",
+            "fontSize": 18,
+            "color": "#4B5563"
+          }
+        ],
+        "buttons": []
+      },
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#4B5563",
+        "background": "#FFFFFF"
+      }
+    },
+    {
+      "index": 5,
+      "type": 10,
+      "name": "Footer",
+      "title": "Contact",
+      "subtitle": "info@pilatesstudio.com",
+      "content_text": "500 Terry Francois Street, San Francisco, CA 94158",
+      "y_position": 1780,
+      "height": 200,
+      "width": 1920,
+      "bg_color": "rgba(32, 48, 60, 1)",
+      "text_color": "rgba(200, 200, 200, 1)",
+      "title_color": "rgba(255, 255, 255, 1)",
+      "accent_color": "rgba(79, 172, 159, 1)",
+      "title_font_size": 21,
+      "content_font_size": 30,
+      "padding": 160,
+      "content": {
+        "headings": [
+          {
+            "text": "Contact",
+            "fontSize": 21,
+            "fontWeight": 700,
+            "color": "rgba(255, 255, 255, 1)"
+          },
+          {
+            "text": "info@pilatesstudio.com",
+            "fontSize": 20,
+            "fontWeight": 400,
+            "color": "#6B7280"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "500 Terry Francois Street, San Francisco, CA 94158",
+            "fontSize": 18,
+            "color": "#4B5563"
+          }
+        ],
+        "buttons": []
+      },
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#4B5563",
+        "background": "#FFFFFF"
+      }
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"noticia text\", serif",
+      "proxima-n-w01-reg, sans-serif",
+      "\"open sans\", sans-serif",
+      "arial, \"\uff4d\uff53 \uff50\u30b4\u30b7\u30c3\u30af\", \"ms pgothic\", \ub3cb\uc6c0, dotum, helvetica, sans-serif",
+      "Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "Arial",
+      "Arial, Helvetica, sans-serif"
+    ],
+    "sizes": {
+      "h2": 24,
+      "h3": 20,
+      "h5": 31,
+      "h6": 21,
+      "p": 17,
+      "button": 14,
+      "a": 12
+    },
+    "weights": [
+      400
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 16,
+    "spacingScale": [
+      16,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "commonSpacings": [
+      36
+    ],
+    "gridColumns": "829px",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  },
+  "forms": [
+    {
+      "y_position": 1243.578125,
+      "height": 164.40625,
+      "width": 485,
+      "inputs": [
+        {
+          "type": "email",
+          "name": "email",
+          "placeholder": "Enter your email here*",
+          "required": true
+        }
+      ],
+      "action": "https://www.wix.com/demone2/pilates-classes",
+      "method": "get"
+    }
+  ],
+  "social_links": [
+    {
+      "platform": "Facebook",
+      "href": "http://www.facebook.com/wix",
+      "position": {
+        "x": 990,
+        "y": 1421.984375
+      },
+      "icon": "<img sizes=\"undefinedpx\" srcset=\"https://static.wixstatic.com/media/4057345bcf57474b96976284050c00df.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4057345bcf57474b96976284050c00df.png 1x, https://static.wixstatic.com/media/4057345bcf57474b96976284050c00df.png/v1/fill/w_44,h_44,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4057345bcf57474b96976284050c00df.png 2x\" id=\"img_0_LnkBr0\" src=\"https://static.wixstatic.com/media/4057345bcf57474b96976284050c00df.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4057345bcf57474b96976284050c00df.png\" alt=\"Facebook - Black Circle\" style=\"object-fit:cover\" class=\"YaS0jR Tj01hh\">"
+    },
+    {
+      "platform": "Instagram",
+      "href": "https://instagram.com/wix",
+      "position": {
+        "x": 1025,
+        "y": 1421.984375
+      },
+      "icon": "<img sizes=\"undefinedpx\" srcset=\"https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e1aa082f7c0747168d9cf43e77046142.png 1x, https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_44,h_44,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e1aa082f7c0747168d9cf43e77046142.png 2x\" id=\"img_1_LnkBr0\" src=\"https://static.wixstatic.com/media/e1aa082f7c0747168d9cf43e77046142.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/e1aa082f7c0747168d9cf43e77046142.png\" alt=\"Instagram - Black Circle\" style=\"object-fit:cover\" class=\"YaS0jR Tj01hh\">"
+    },
+    {
+      "platform": "Twitter",
+      "href": "http://www.twitter.com/wix",
+      "position": {
+        "x": 1060,
+        "y": 1421.984375
+      },
+      "icon": "<img sizes=\"undefinedpx\" srcset=\"https://static.wixstatic.com/media/870f97661ed14a5bb2d96ecbddec0aed.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/870f97661ed14a5bb2d96ecbddec0aed.png 1x, https://static.wixstatic.com/media/870f97661ed14a5bb2d96ecbddec0aed.png/v1/fill/w_44,h_44,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/870f97661ed14a5bb2d96ecbddec0aed.png 2x\" id=\"img_2_LnkBr0\" src=\"https://static.wixstatic.com/media/870f97661ed14a5bb2d96ecbddec0aed.png/v1/fill/w_22,h_22,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/870f97661ed14a5bb2d96ecbddec0aed.png\" alt=\"Twitter - Black Circle\" style=\"object-fit:cover\" class=\"YaS0jR Tj01hh\">"
+    }
+  ],
+  "seo_data": {
+    "title": "Home | pilates-classes",
+    "description": "",
+    "keywords": "",
+    "og": {
+      "title": "Home | pilates-classes",
+      "description": "",
+      "image": "",
+      "url": "https://www.wix.com/demone2/pilates-classes"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Home | pilates-classes",
+      "description": "",
+      "image": ""
+    },
+    "favicon": "https://www.wix.com/favicon.ico",
+    "canonical": "https://www.wix.com/demone2/pilates-classes",
+    "lang": "en"
+  },
+  "custom_fonts": [
+    "//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/64017d81-9430-4cba-8219-8f5cc28b923e.woff2",
+    "//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/e56ecb6d-da41-4bd9-982d-2d295bec9ab0.woff",
+    "//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2aff4f81-3e97-4a83-9e6c-45e33c024796.ttf",
+    "//static.parastorage.com/fonts/v2/09e37a90-97bc-4292-863a-a9e5b278309d/v1/open sans.woff2",
+    "//static.parastorage.com/fonts/v2/e59e6f5c-7ac5-47cf-8fe5-22ee5f11aa42/v1/open sans.woff2",
+    "//static.parastorage.com/fonts/v2/66ed32a6-d63b-4f2e-9895-91f58fc7bde6/v1/open sans.woff2",
+    "//static.parastorage.com/fonts/v2/e3af1b1e-e84c-47bd-96ed-ea490697a5d3/v1/open sans.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJ2dNDF2Yv9qppOePKYRP12aTtYlUndpAjt.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJrdNDF2Yv9qppOePKYRP12YwPhulvdhDXGe9nyfeU.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJodNDF2Yv9qppOePKYRP12YwtVn07_pjjsQdA.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJpdNDF2Yv9qppOePKYRP1-3R5Nt2vQjjLkeenz.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJ2dNDF2Yv9qppOePKYRP12aDtYlUndpAjt.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJrdNDF2Yv9qppOePKYRP12YwPhulvchDXGe9nyfeU.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJodNDF2Yv9qppOePKYRP12YwtUn07_pjjsQdA.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJpdNDF2Yv9qppOePKYRP1-3R5NtmvQjjLkeenz.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJ2dNDF2Yv9qppOePKYRP12ZjtYlUndpA.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJrdNDF2Yv9qppOePKYRP12YwPhulvShDXGe9ny.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJodNDF2Yv9qppOePKYRP12Ywtan07_pjjs.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/noticiatext/v15/VuJpdNDF2Yv9qppOePKYRP1-3R5NuGvQjjLkeQ.woff2",
+    "//static.parastorage.com/tag-bundler/api/v1/fonts-cache/googlefont/woff2/s/ebgaramond/v12/SlGUmQSNjdsmc35JDF1K5GR6SDk_YAPIlWk.woff2"
+  ],
+  "advanced_css": {
+    "hoverEffects": [
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover):not([disabled]).StylableButton2545352419--hasBackgroundColor",
+        "css": "background-color: var(--corvid-background-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:hover:not([disabled]).StylableButton2545352419--hasHoverBackgroundColor",
+        "css": "background-color: var(--corvid-hover-background-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover)[disabled].StylableButton2545352419--hasDisabledBackgroundColor",
+        "css": "background-color: var(--corvid-disabled-background-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover):not([disabled]).StylableButton2545352419--hasBorderColor",
+        "css": "border-color: var(--corvid-border-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:hover:not([disabled]).StylableButton2545352419--hasHoverBorderColor",
+        "css": "border-color: var(--corvid-hover-border-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover)[disabled].StylableButton2545352419--hasDisabledBorderColor",
+        "css": "border-color: var(--corvid-disabled-border-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover):not([disabled]).StylableButton2545352419--hasColor, .StylableButton2545352419__root:not(:hover):not([disabled]).StylableButton2545352419--hasColor .StylableButton2545352419__label",
+        "css": "color: var(--corvid-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:hover:not([disabled]).StylableButton2545352419--hasHoverColor, .StylableButton2545352419__root:hover:not([disabled]).StylableButton2545352419--hasHoverColor .StylableButton2545352419__label",
+        "css": "color: var(--corvid-hover-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover)[disabled].StylableButton2545352419--hasDisabledColor, .StylableButton2545352419__root:not(:hover)[disabled].StylableButton2545352419--hasDisabledColor .StylableButton2545352419__label",
+        "css": "color: var(--corvid-disabled-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover):not([disalbed]).StylableButton2545352419--hasIconColor .StylableButton2545352419__icon svg",
+        "css": "fill: var(--corvid-icon-color) !important; stroke: var(--corvid-icon-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:hover:not([disabled]).StylableButton2545352419--hasHoverIconColor .StylableButton2545352419__icon svg",
+        "css": "fill: var(--corvid-hover-icon-color) !important; stroke: var(--corvid-hover-icon-color) !important;"
+      },
+      {
+        "selector": ".StylableButton2545352419__root:not(:hover)[disabled].StylableButton2545352419--hasDisabledIconColor .StylableButton2545352419__icon svg",
+        "css": "fill: var(--corvid-disabled-icon-color) !important; stroke: var(--corvid-disabled-icon-color) !important;"
+      },
+      {
+        "selector": ":host(:not(.device-mobile-optimized)) .FubTgk[aria-disabled=\"false\"]:hover .uDW_Qe, body:not(.device-mobile-optimized) .FubTgk[aria-disabled=\"false\"]:hover .uDW_Qe",
+        "css": "background-color: var(--corvid-hover-background-color,rgba(var(--bgh,var(--color_18,color_18)),var(--alpha-bgh,1))); border-color: var(--corvid-hover-border-color,rgba(var(--brdh,var(--color_15,color_15)),var(--alpha-brdh,1)));"
+      },
+      {
+        "selector": ":host(:not(.device-mobile-optimized)) .FubTgk[aria-disabled=\"false\"]:hover .l7_2fn, body:not(.device-mobile-optimized) .FubTgk[aria-disabled=\"false\"]:hover .l7_2fn",
+        "css": "color: var(--corvid-hover-color,rgb(var(--txth,var(--color_15,color_15))));"
+      },
+      {
+        "selector": ":host(:not(.device-mobile-optimized)) .Vq4wYb[aria-disabled=\"false\"]:hover .wJVzSK, body:not(.device-mobile-optimized) .Vq4wYb[aria-disabled=\"false\"]:hover .wJVzSK",
+        "css": "color: var(--corvid-hover-color,rgb(var(--txth,var(--color_15,color_15)))); transition: var(--trans,color .4s ease 0s);"
+      },
+      {
+        "selector": ".nTOEE9.sqUyGm:hover",
+        "css": "cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAAH6ji2bAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmMWUzNTlkMS1hYjZhLTNkNDctYmM0ZC03MWMyZDYyMWNmNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6ODM3MEUzMUU4OTAyMTFFMzk3Q0FCMkFEODdDNzUzMjQiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODM3MEUzMUQ4OTAyMTFFMzk3Q0FCMkFEODdDNzUzMjQiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk0ZTkyMTRlLThiNDQtNjc0My04MWZiLTZlYjIzYTA2ZjcwNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpmMWUzNTlkMS1hYjZhLTNkNDctYmM0ZC03MWMyZDYyMWNmNDgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4bqsJgAAACF0lEQVR42mJgQAd8fHz/gdRvRigfxGEACCA4YvwPBMgCbgABBGOAJP6LiooiZBUUFMCC7969Awk6AQQQA1bAxMTUOnXq1P8/f/78j2zdf5BDQDgoKAgiyMgItv0/1AkozlgJlHwPpDWB+AhAACFL1EJVwvBPIGZHd8P/OXPmgI0F2YdmxXQUhX///sVQqK2tDVL4DFkhF8zK2NjY/4aGhshOOMJAJAB5ZjdAADGQCpiB4Cear3uwKQR74vv372BPLFq0CKZ4GnLcdMGiFtnXmzZtQo0Bdnb2r/b29nBFMIwUjkxghby8vHfFxMQwTMQWp0YggZcvX/5HBpqamhgKQdafAQnq6en9j4+P/4/me150nzsCPfYOKrkWKvYCymcjJozPgqIYIMAYcUjKAnEcELsDbVECOpkNiO8B+buAeCEQ3yUqFllYWNYh+4Obm/u/ubn5f0tLy//QPIqM90ATHVagDHTJH5BCfn7+/xcvXvyPC9y7d+8/KHqghv4FYj0M04BxeAOkQEhI6P+vX79QDECOeBj49+/ffzk5OZih91FyP4gAGiIDooH5hIGVlRUsAXQpGMMAMh+Y1xksLCzg5QxGrAFzwAxY2GzYsIGgC48cOYIclsuwBiIbG9sCmCJFRcX/+/fvxwi/EydOwIoDGH6JLQEiA26ga1egxSY2vAUpkcKKEV5iCwVOIObBU8w8RzLYgYHaAAACg5CxaxSLgwAAAABJRU5ErkJggg==\"), auto;"
+      },
+      {
+        "selector": ".nTOEE9.C_JY0G:hover",
+        "css": "cursor: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAAH6ji2bAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmMWUzNTlkMS1hYjZhLTNkNDctYmM0ZC03MWMyZDYyMWNmNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0I4QkNGQTI4OTAyMTFFMzg0RDlBRkM5NDA5QjczRTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0I4QkNGQTE4OTAyMTFFMzg0RDlBRkM5NDA5QjczRTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjk0ZTkyMTRlLThiNDQtNjc0My04MWZiLTZlYjIzYTA2ZjcwNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpmMWUzNTlkMS1hYjZhLTNkNDctYmM0ZC03MWMyZDYyMWNmNDgiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7hiSPZAAACGklEQVR42mJgQAd8fHz/gdRvRigfxGEACCA4YvwPBMgCbgABBGOAJP6LiooiZBUUFMCC7969Awk6AQQQA1bAxMTUOnXq1P8/f/78j2zdf5BDQDgoKAgiyMgItv0/1AkozlgJlHwPpDWB+AhAACFL1EJVwvBPIGZHd8P/OXPm/EcHUA3TURT+/fsXQ6G2tjZI4TNkhVwwK2NjY/8bGhoiO+EIA5EA5JndAAHEQCpgBoKfaL7uwaYQHLrfv38He2LRokUwxdOQ46YLFrXIYNOmTagxwM7O/tXe3h4sCYs3EEYKRyawQl5e3rtiYmL/sQH0ODUCCbx8+RJFkaamJoZCkPVnQIJ6enr/4+Pj/6P5nhfd545Aj72DSq6Fir2A8tmICeOzoCgGCDBGHJKyQBwHxO5AW5SATmYD4ntA/i4gXgjEd4mKRRYWlnXI/uDm5v5vbm7+39LS8j80jyLjPdBEhxUoA13yB6SQn5///8WLF//jAvfu3fsPih6ooX+BWA/DNGAc3gApEBIS+v/r16//hMC/f//+y8nJwQy9j2wWC4gAGiIDooH5hIGVlRUsAXQpVq98/PgRVBAwWFhYMDx69AhczkBj7RdyFpgBC5sNGzYQdOGRI0eQw3IZVpvZ2NgWwBQpKir+379/P4ZBJ06cgBUHMPwSWwJEBtxA165Ai01seAtSIoUVI7zEFgqcQMyDp5h5jmSwAwO1AQBU5q033XYWQwAAAABJRU5ErkJggg==\"), auto;"
+      },
+      {
+        "selector": ".lsOYYV.s01nH_, .lsOYYV:hover",
+        "css": "text-decoration: var(--text-decoration-interactive,none);"
+      },
+      {
+        "selector": ".lsOYYV:hover",
+        "css": "color: var(--text-color-interactive,rgb(var(--txth-dd,var(--color_19,color_19))));"
+      },
+      {
+        "selector": ".K0sbQf:hover .m11Au3",
+        "css": "color: var(--arrow-bg-color,var(--wst-accent-1-color,rgb(var(--txth,var(--color_19,color_19)))));"
+      },
+      {
+        "selector": ".K0sbQf:hover .ukB2Bd",
+        "css": "color: var(--text-color-interactive,rgb(var(--txth,var(--color_19,color_19)))); text-decoration: var(--text-decoration-interactive,none);"
+      },
+      {
+        "selector": ".eUGVn8:hover .LcZX5c",
+        "css": "opacity: 0.7;"
+      },
+      {
+        "selector": ".tpImQl[data-state~=\"drop\"]:hover .CT4EmF, .tpImQl[data-state~=\"drop\"][data-state~=\"over\"] .CT4EmF, .tpImQl[data-state~=\"drop\"][data-state~=\"selected\"] .CT4EmF",
+        "css": "opacity: 1; transition: var(--trans1,opacity .4s ease 0s);"
+      },
+      {
+        "selector": ".tpImQl[data-state~=\"link\"]:hover, .tpImQl[data-state~=\"over\"]",
+        "css": "background: rgba(var(--bgh,var(--color_17,color_17)),var(--alpha-bgh,1)); transition: var(--trans,background-color .4s ease 0s);"
+      },
+      {
+        "selector": ".tpImQl[data-state~=\"link\"]:hover .t6GAPL, .tpImQl[data-state~=\"over\"] .t6GAPL",
+        "css": "color: rgb(var(--txth,var(--color_15,color_15))); display: inline-block; transition: var(--trans2,color .4s ease 0s);"
+      },
+      {
+        "selector": ".MpKiNN .KvoMHf:hover",
+        "css": "background-color: rgba(var(--bgh,255,255,255),var(--alpha-bgh,1)); border-color: rgba(var(--brdh,163,217,246),var(--alpha-brdh,1)); border-style: solid; border-width: var(--brwh,1px);"
+      },
+      {
+        "selector": ".ZXdXNL .KvoMHf:hover",
+        "css": "background-color: rgba(var(--bgh,255,255,255),var(--alpha-bgh,1)); border-color: rgba(var(--brdh,163,217,246),var(--alpha-brdh,1)); border-style: solid; border-width: var(--brwh,1px);"
+      },
+      {
+        "selector": ".xTjc1A[data-state~=\"link\"]:hover .JS76Uv, .xTjc1A[data-state~=\"over\"] .JS76Uv",
+        "css": "color: rgb(var(--txth,var(--color_14,color_14))); transition: var(--trans,color .4s ease 0s);"
+      },
+      {
+        "selector": ".QHD8o4 button, .QHD8o4 button:hover",
+        "css": "background-color: transparent; border-color: transparent;"
+      },
+      {
+        "selector": ".AdBHus:hover",
+        "css": "text-decoration: underline;"
+      }
+    ],
+    "animations": [
+      {
+        "selector": "SKIP_TO_CONTENT_BTN LHrbPP has-custom-focus",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "wixui-rich-text__text",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "j7pOnl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "eUGVn8",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "_pfxlW",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "a",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "a",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "VFOEQr",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "uDW_Qe wixui-button PlZyDq",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "SKIP_TO_CONTENT_BTN LHrbPP has-custom-focus",
+        "transition": "all"
+      },
+      {
+        "selector": "wixui-rich-text__text",
+        "transition": "all"
+      },
+      {
+        "selector": "j7pOnl",
+        "transition": "all"
+      },
+      {
+        "selector": "eUGVn8",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "_pfxlW",
+        "transition": "all"
+      },
+      {
+        "selector": "a",
+        "transition": "all"
+      },
+      {
+        "selector": "a",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "prNH8t wixui-dropdown-menu__item tpImQl",
+        "transition": "background-color 0.4s"
+      },
+      {
+        "selector": "VFOEQr",
+        "transition": "all"
+      },
+      {
+        "selector": "uDW_Qe wixui-button PlZyDq",
+        "transition": "border-color 0.4s, background-color 0.4s"
+      }
+    ]
+  }
+}

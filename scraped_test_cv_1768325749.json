@@ -1,0 +1,52 @@
+{
+  "template_name": "test_cv_1768325749",
+  "url": "https://example.com",
+  "scraped_date": "2026-01-13T23:06:18.726250",
+  "sections": [],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "system-ui, sans-serif"
+    ],
+    "sizes": {
+      "h1": 24,
+      "p": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 8,
+    "cv_verified": true
+  }
+}

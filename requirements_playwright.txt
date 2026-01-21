@@ -1,0 +1,17 @@
+# Advanced Website Scraper Requirements - Playwright Version
+# Install with: pip install -r requirements_playwright.txt
+
+# Core dependencies
+playwright==1.40.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+
+# Image processing
+Pillow==10.1.0
+
+# Computer vision (optional but recommended)
+opencv-python==4.8.1.78
+numpy==1.26.2
+
+# Additional tools
+lxml==4.9.3

@@ -1,0 +1,56 @@
+{
+  "template_name": "imported_wix_com_1768384805",
+  "url": "https://www.wix.com/website-template/view/html/5059?originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fall%2F2&tpClick=view_button&esi=2f2b3dc1-00fd-4be9-a8e0-2e1b8d483984",
+  "scraped_date": "2026-01-14T15:31:50.623165",
+  "sections": [],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Madefor Display\", \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+    ],
+    "sizes": {
+      "h1": 36,
+      "h3": 16,
+      "p": 16,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      300,
+      400,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  }
+}

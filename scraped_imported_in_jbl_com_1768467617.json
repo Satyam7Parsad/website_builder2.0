@@ -1,0 +1,43 @@
+{
+  "template_name": "imported_in_jbl_com_1768467617",
+  "url": "https://in.jbl.com",
+  "scraped_date": "2026-01-15T14:30:49.489205",
+  "sections": [],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [],
+    "sizes": {},
+    "weights": []
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 16,
+    "cv_verified": true
+  }
+}

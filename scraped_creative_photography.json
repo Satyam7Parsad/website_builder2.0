@@ -1,0 +1,720 @@
+{
+  "template_name": "creative_photography",
+  "url": "https://startbootstrap.com/previews/creative",
+  "scraped_date": "2026-01-19T21:07:51.720022",
+  "sections": [
+    {
+      "index": 0,
+      "type": 0,
+      "y_position": 0,
+      "height": 900,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "preview-container"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "color": "rgb(105, 112, 122)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "position": "absolute",
+        "top": "0px",
+        "left": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "zIndex": "auto",
+        "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "backgroundPosition": "0% 0%",
+        "backgroundSize": "auto",
+        "backgroundRepeat": "repeat"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "Overview Page",
+            "href": "https://startbootstrap.com/theme/creative",
+            "bgColor": "#000000",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "12px",
+            "padding": "8px 12px",
+            "margin": "0px",
+            "width": 126.140625,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "#212832",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "14px",
+            "padding": "0px",
+            "margin": "0px 4px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "#000000",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "14px",
+            "padding": "0px",
+            "margin": "0px 4px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "#000000",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "14px",
+            "padding": "0px",
+            "margin": "0px 4px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "https://github.com/StartBootstrap/startbootstrap-creative",
+            "bgColor": "#000000",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "12px",
+            "padding": "8px 12px",
+            "margin": "0px 8px 0px 0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "Free Download",
+            "href": "https://github.com/StartBootstrap/startbootstrap-creative/archive/gh-pages.zip",
+            "bgColor": "#f0e3e7",
+            "textColor": "#dc392d",
+            "borderColor": "rgb(240, 227, 231)",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "12px",
+            "padding": "8px 12px",
+            "margin": "0px 8px 0px 0px",
+            "width": 130.109375,
+            "height": 44,
+            "borderRadius": "4px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "#000000",
+            "textColor": "#212832",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "fontSize": 12,
+            "fontWeight": 400,
+            "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+            "textDecoration": "none",
+            "textTransform": "none",
+            "letterSpacing": "normal",
+            "lineHeight": "12px",
+            "padding": "0px",
+            "margin": "0px",
+            "width": 150,
+            "height": 44,
+            "borderRadius": "12px",
+            "borderWidth": "1px",
+            "borderStyle": "solid",
+            "boxShadow": "none",
+            "opacity": 1,
+            "transform": "none",
+            "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+            "backgroundImage": "none"
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgba(33, 40, 50, 0.5)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(105, 112, 122)",
+            "rgb(255, 255, 255)",
+            "rgb(33, 40, 50)",
+            "rgba(33, 40, 50, 0.5)",
+            "rgba(33, 40, 50, 0.2)",
+            "rgb(51, 51, 51)",
+            "rgb(220, 57, 45)",
+            "rgb(240, 227, 231)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgba(33, 40, 50, 0.5)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgba(33, 40, 50, 0.5)",
+          "fontFamily": "Arial"
+        },
+        "css": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "none",
+          "backgroundSize": "auto",
+          "backgroundPosition": "0% 0%",
+          "backgroundRepeat": "repeat",
+          "color": "rgba(33, 40, 50, 0.5)",
+          "padding": "0px",
+          "paddingTop": "0px",
+          "paddingRight": "0px",
+          "paddingBottom": "0px",
+          "paddingLeft": "0px",
+          "margin": "0px 4px",
+          "border": "1px solid rgba(0, 0, 0, 0)",
+          "borderRadius": "100%",
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "borderColor": "rgba(0, 0, 0, 0)",
+          "boxShadow": "none",
+          "opacity": "1",
+          "filter": "none",
+          "display": "flex",
+          "position": "static",
+          "zIndex": "auto",
+          "overflow": "hidden",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "gap": "normal",
+          "gridTemplateColumns": "none",
+          "gridTemplateRows": "none",
+          "gridGap": "normal",
+          "fontFamily": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+          "fontSize": "14px",
+          "fontWeight": "400",
+          "lineHeight": "14px",
+          "letterSpacing": "normal",
+          "textAlign": "center",
+          "textTransform": "none",
+          "textDecoration": "none",
+          "transform": "none",
+          "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out",
+          "animation": "none 0s ease 0s 1 normal none running"
+        }
+      },
+      "padding": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgba(33, 40, 50, 0.5)",
+      "gradient": "",
+      "color_palette": {
+        "primary": "#3B82F6",
+        "secondary": "#64748B",
+        "accent": "#10B981",
+        "text": "#69707a",
+        "background": "#000000"
+      },
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgba(33, 40, 50, 0.5)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgba(33, 40, 50, 0.5)",
+      "font_family": "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+      "button_text": "Overview Page",
+      "button_link": "https://startbootstrap.com/theme/creative",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgba(33, 40, 50, 0.5)",
+      "button_border_radius": "4px",
+      "button_border_width": "1px",
+      "button_border_color": "rgba(0, 0, 0, 0)",
+      "button_box_shadow": "none",
+      "button_padding": "8px 12px",
+      "button_text_transform": "none",
+      "button_letter_spacing": "normal",
+      "button_font_size": 12,
+      "button_font_weight": 400,
+      "cards": [
+        {
+          "title": "Overview Page",
+          "description": "",
+          "link": "https://startbootstrap.com/theme/creative",
+          "button_text": "Overview Page",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 12,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "",
+          "button_text": "",
+          "bg_color": "rgba(33, 40, 50, 0.2)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 14,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 14,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 14,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "https://github.com/StartBootstrap/startbootstrap-creative",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 12,
+          "title_font_weight": 400
+        },
+        {
+          "title": "Free Download",
+          "description": "",
+          "link": "https://github.com/StartBootstrap/startbootstrap-creative/archive/gh-pages.zip",
+          "button_text": "Free Download",
+          "bg_color": "rgb(240, 227, 231)",
+          "text_color": "rgb(220, 57, 45)",
+          "title_font_size": 12,
+          "title_font_weight": 400
+        },
+        {
+          "title": "",
+          "description": "",
+          "link": "",
+          "button_text": "",
+          "bg_color": "rgba(0, 0, 0, 0)",
+          "text_color": "rgba(33, 40, 50, 0.5)",
+          "title_font_size": 12,
+          "title_font_weight": 400
+        }
+      ],
+      "cards_per_row": 3,
+      "css_border_radius": "100%",
+      "css_box_shadow": "none",
+      "css_border": "1px solid rgba(0, 0, 0, 0)",
+      "css_opacity": "1",
+      "css_background_image": "none",
+      "css_background_size": "auto",
+      "css_filter": "none",
+      "css_transform": "none",
+      "css_text_shadow": "none",
+      "css_line_height": "14px",
+      "css_letter_spacing": "normal",
+      "padding_top": "0px",
+      "padding_right": "0px",
+      "padding_bottom": "0px",
+      "padding_left": "0px",
+      "display": "block",
+      "flex_direction": "row",
+      "justify_content": "normal",
+      "align_items": "normal",
+      "gap": "normal",
+      "grid_template_columns": "none",
+      "grid_template_rows": "none",
+      "background_position": "0% 0%",
+      "background_repeat": "repeat",
+      "background_size": "auto",
+      "background_image": "none",
+      "position": "absolute",
+      "top": "0px",
+      "left": "0px",
+      "right": "0px",
+      "bottom": "0px",
+      "z_index": "auto",
+      "visual_height": 450,
+      "cv_adjusted": true,
+      "_confidence": 0.9
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "Metropolis, -apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+    ],
+    "sizes": {
+      "button": 14,
+      "a": 12
+    },
+    "weights": [
+      400
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 8,
+    "spacingScale": [
+      8,
+      16,
+      24,
+      32,
+      48,
+      64
+    ],
+    "commonSpacings": [],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  },
+  "forms": [],
+  "social_links": [],
+  "seo_data": {
+    "title": "Creative - Theme Preview - Start Bootstrap",
+    "description": "Creative is a fully styled, one page Bootstrap HTML theme for creating creative landing pages quickly and easily.",
+    "keywords": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": "",
+      "url": ""
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Creative - Theme Preview",
+      "description": "Creative is a fully styled, one page Bootstrap HTML theme for creating creative landing pages quickly and easily.",
+      "image": "https://assets.startbootstrap.com/img/meta/products/twitter/twitter-image-creative.png"
+    },
+    "favicon": "https://startbootstrap.com/favicon.png",
+    "canonical": "https://startbootstrap.com/previews/creative",
+    "lang": "en"
+  },
+  "custom_fonts": [
+    "/assets/fonts/metropolis/Metropolis-Thin.otf",
+    "/assets/fonts/metropolis/Metropolis-ThinItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-ExtraLight.otf",
+    "/assets/fonts/metropolis/Metropolis-ExtraLightItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-Light.otf",
+    "/assets/fonts/metropolis/Metropolis-LightItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-Regular.otf",
+    "/assets/fonts/metropolis/Metropolis-RegularItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-Medium.otf",
+    "/assets/fonts/metropolis/Metropolis-MediumItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-SemiBold.otf",
+    "/assets/fonts/metropolis/Metropolis-SemiBoldItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-Bold.otf",
+    "/assets/fonts/metropolis/Metropolis-BoldItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-ExtraBold.otf",
+    "/assets/fonts/metropolis/Metropolis-ExtraBoldItalic.otf",
+    "/assets/fonts/metropolis/Metropolis-Black.otf",
+    "/assets/fonts/metropolis/Metropolis-BlackItalic.otf"
+  ],
+  "advanced_css": {
+    "hoverEffects": [
+      {
+        "selector": "a:hover",
+        "css": "color: var(--bs-link-hover-color); text-decoration: underline;"
+      },
+      {
+        "selector": "a:not([href]):not([class]), a:not([href]):not([class]):hover",
+        "css": "color: inherit; text-decoration: none;"
+      },
+      {
+        "selector": ".form-control:hover:not(:disabled):not([readonly])::file-selector-button",
+        "css": "background-color: rgb(242, 242, 242);"
+      },
+      {
+        "selector": ".btn:hover",
+        "css": "color: var(--bs-btn-hover-color); text-decoration: none; background-color: var(--bs-btn-hover-bg); border-color: var(--bs-btn-hover-border-color);"
+      },
+      {
+        "selector": ".btn-link:hover, .btn-link:focus-visible",
+        "css": "text-decoration: underline;"
+      },
+      {
+        "selector": ".btn-link:hover",
+        "css": "color: var(--bs-btn-hover-color);"
+      },
+      {
+        "selector": ".dropdown-item:hover, .dropdown-item:focus",
+        "css": "color: var(--bs-dropdown-link-hover-color); text-decoration: none; background-color: var(--bs-dropdown-link-hover-bg);"
+      },
+      {
+        "selector": ".btn-group > .btn:hover, .btn-group > .btn:focus, .btn-group > .btn:active, .btn-group > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn.active",
+        "css": "z-index: 1;"
+      },
+      {
+        "selector": ".nav-link:hover, .nav-link:focus",
+        "css": "color: var(--bs-nav-link-hover-color); text-decoration: none;"
+      },
+      {
+        "selector": ".nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus",
+        "css": "isolation: isolate; border-color: var(--bs-nav-tabs-link-hover-border-color);"
+      },
+      {
+        "selector": ".navbar-brand:hover, .navbar-brand:focus",
+        "css": "color: var(--bs-navbar-brand-hover-color); text-decoration: none;"
+      },
+      {
+        "selector": ".navbar-toggler:hover",
+        "css": "text-decoration: none;"
+      },
+      {
+        "selector": ".card-link:hover",
+        "css": "text-decoration: none;"
+      },
+      {
+        "selector": ".list-group-item-action:hover, .list-group-item-action:focus",
+        "css": "z-index: 1; color: var(--bs-list-group-action-hover-color); text-decoration: none; background-color: var(--bs-list-group-action-hover-bg);"
+      },
+      {
+        "selector": ".btn-close:hover",
+        "css": "color: rgb(0, 0, 0); text-decoration: none; opacity: 0.75;"
+      },
+      {
+        "selector": ".carousel-control-prev:hover, .carousel-control-prev:focus, .carousel-control-next:hover, .carousel-control-next:focus",
+        "css": "color: rgb(255, 255, 255); text-decoration: none; outline: 0px; opacity: 0.9;"
+      },
+      {
+        "selector": ".link-red:hover, .link-red:focus",
+        "css": "color: rgb(176, 46, 36) !important;"
+      },
+      {
+        "selector": ".link-green:hover, .link-green:focus",
+        "css": "color: rgb(0, 138, 84) !important;"
+      },
+      {
+        "selector": ".link-blue:hover, .link-blue:focus",
+        "css": "color: rgb(0, 78, 194) !important;"
+      },
+      {
+        "selector": ".lift:hover",
+        "css": "transform: translateY(-0.333333rem); box-shadow: rgba(33, 40, 50, 0.25) 0px 0.5rem 2rem;"
+      },
+      {
+        "selector": ".lift-sm:hover",
+        "css": "transform: translateY(-0.166667rem); box-shadow: rgba(33, 40, 50, 0.25) 0px 0.25rem 1rem;"
+      },
+      {
+        "selector": ".card-link:hover",
+        "css": "color: inherit !important;"
+      },
+      {
+        "selector": ".sidenav-dark .sidenav-menu .nav-link:hover, .sidenav-dark .sidenav-menu .nav-link.active, .sidenav-dark .sidenav-menu .nav-link.active .nav-link-icon",
+        "css": "color: rgb(255, 255, 255);"
+      },
+      {
+        "selector": ".sidenav-light .sidenav-menu .nav-link:hover, .sidenav-light .sidenav-menu .nav-link.active, .sidenav-light .sidenav-menu .nav-link.active .nav-link-icon",
+        "css": "color: rgb(220, 57, 45);"
+      },
+      {
+        "selector": ".litepicker .container__months .month-item-header .button-previous-month:hover",
+        "css": "color: var(--litepicker-button-prev-month-color-hover) !important;"
+      },
+      {
+        "selector": ".litepicker .container__months .month-item-header .button-previous-month:hover > svg",
+        "css": "fill: var(--litepicker-button-prev-month-color-hover) !important;"
+      },
+      {
+        "selector": ".dataTable-pagination .active a, .dataTable-pagination .active a:focus, .dataTable-pagination .active a:hover",
+        "css": "background-color: rgb(220, 57, 45);"
+      },
+      {
+        "selector": ".native-standard .native-banner .native-cta:hover",
+        "css": "box-shadow: none; transform: translateY(1px);"
+      },
+      {
+        "selector": ".post-pager-link:hover",
+        "css": "background-color: rgb(242, 246, 252) !important;"
+      },
+      {
+        "selector": ".preview-img:hover .preview-img-overlay",
+        "css": "opacity: 1; z-index: 1;"
+      }
+    ],
+    "animations": [
+      {
+        "selector": "row align-items-center justify-content-between h-100",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1 active",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm me-2",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-primary-soft text-primary btn-sm d-none d-sm-inline-block me-2",
+        "animation": "none 0s ease 0s 1 normal none running"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm btn-icon",
+        "animation": "none 0s ease 0s 1 normal none running"
+      }
+    ],
+    "transitions": [
+      {
+        "selector": "row align-items-center justify-content-between h-100",
+        "transition": "all"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1 active",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-icon btn-transparent-dark mx-1",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm me-2",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-primary-soft text-primary btn-sm d-none d-sm-inline-block me-2",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      },
+      {
+        "selector": "btn btn-transparent-dark btn-sm btn-icon",
+        "transition": "color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out"
+      }
+    ]
+  }
+}

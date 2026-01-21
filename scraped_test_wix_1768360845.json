@@ -1,0 +1,1730 @@
+{
+  "template_name": "test_wix_1768360845",
+  "url": "https://www.wix.com/website/templates",
+  "scraped_date": "2026-01-14T08:51:30.424021",
+  "sections": [
+    {
+      "index": 0,
+      "type": 8,
+      "y_position": 0,
+      "height": 71,
+      "width": 1512.171875,
+      "html_tag": "nav",
+      "classes": [
+        "nolnRs"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(0, 0, 0)",
+        "padding": "66px 0px",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "gap": "28px",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "Description:",
+        "content": "Good For: High-Tech startups and mobility companies Description:",
+        "headings": [
+          {
+            "text": "",
+            "tag": "h1",
+            "fontSize": 36,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "tag": "h3",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "tag": "h3",
+            "fontSize": 16,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          }
+        ],
+        "paragraphs": [
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "High-Tech startups and mobility companies",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "This template\u2019s visionary aesthetic is here to provide a glimpse of the future. The sophisticated design allows your product to shine, while the Wix Forms app serves as the perfect tool to recruit top talent and invite tech enthusiasts to subscribe for company updates. Click \u201cEdit\u201d to get in the driver\u2019s seat.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Pilates Studios, Fitness Centers, Wellness Businesses",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Energize your Pilates studio's online presence with a vibrant, engaging website! This template features the Wix Bookings app, making it easy for clients to schedule their sessions and manage appointments. With sections designed to showcase classes, instructors, and testimonials, you can create a community that inspires health and wellness. Get started on strengthening your brand today by clicking 'Edit'!",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Startups, applications and high-tech companies.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "A sleek, impressive template that is as innovative as the latest tech. Share your expertise with the Wix Blog to promote yourself as a leader in the field, and take advantage of the built-in contact and subscribe forms to grow your subscriber base. Ready to take your business to the next level? Click \u201cEdit\u201d and get started today.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Bloggers, entrepreneurs and hobbyists",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "It\u2019s time to bring your point of view to life on the screen. This clean, minimal template is the perfect platform to promote yourself or your business, grow your following, or even make some money. Get started with the Wix Blog to share your experiences, adventures, or daily life.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Photographers, artists and creative studios",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Use this elegant and minimalistic template to share your stunning work with the world. Organize your images into unique galleries, customize your portfolio, and add details about your work and artistic vision. Click 'Edit' to get started, get noticed, and gain more followers.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Home improvement, remodeling, and contracting services",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Catch your customer\u2019s eye with this clean and classy design. The template prominently displays your services, past work, and beautiful images throughout the site, so potential clients can get a feel for what you provide. Click 'Edit' and get your business online today!",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Tote bag stores, accessories shops, and other designer retailers.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "This is tote-ally the best template for showcasing your latest, hottest designs. Upload photos of your tote bags, accessories, or any other item, write about yourself and your inspiration, and don't forget to add the necessary information in the FAQ section. Are you ready to turn into an online sensation? It's easy and fun!",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "CVs, resumes and portfolios",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Draw attention to your skills and experience with this professional template. This is the perfect place to highlight your qualifications, show off past projects and give a little insight on what makes you so approachable and professional. Click \"Edit\" to take your talents online today!",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Business advisors, data analysts, small firms and startups",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Professional and goal-oriented, this template is the ideal way to ensure you get those coveted client leads. The design is simple and easy to navigate, highlighting your services and other essential information on one page. The featured testimonials section is a great way to attract potential clients and gain their confidence right from the start, while the customizable contact form invites them to follow through and get in touch. Get down to business and start creating your new site today!",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Building companies, contractors and engineering firms",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "When it comes to construction projects, building your professional website should be the easiest one. Use this impressive and trustworthy template to gain more leads through Wix Forms and watch your client base grow. With a customized area to add your services and showcase your successful projects, your business will soon be bustling. Click \u2018Edit\u2019 to get started.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Physical Therapy Clinics, Healthcare Providers, Wellness Centers",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Create a welcoming online space for patients seeking recovery and rejuvenation. This modern template includes the Wix Bookings app, making it easy for clients to schedule their appointments with just a few clicks. Highlight your services and qualifications to establish trust and encourage new patients to connect. Ready to transform your online presence? Click 'Edit' to get started.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Good For:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Security consultants, maintenance professionals and service providers",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "Description:",
+            "fontSize": 14,
+            "fontWeight": 700,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          },
+          {
+            "text": "The key to success is a strong online presence, and this template will open doors for your business. This professional, straightforward design showcases your services, while the testimonials section proves why you are just the business to turn to. To top it off, the built-in contact form makes it easy for potential customers to reach out. Click \"Edit\" to start building your site today.",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "",
+            "href": "https://www.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 75,
+            "height": 30
+          },
+          {
+            "text": "Get Started",
+            "href": "https://users.wix.com/signin?view=sign-up&sendEmail=true&loginCompName=SignUp_H&referralInfo=SignUp_H&postSignUp=https%3A%2F%2Fwww.wix.com%2Fnew%2Fintro%2F&postLogin=https%3A%2F%2Fmanage.wix.com%2Faccount%2Froute&loginDialogContext=signup&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates",
+            "bgColor": "rgb(22, 106, 234)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "42px",
+            "padding": "8px 30px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Product",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 111.53125,
+            "height": 71
+          },
+          {
+            "text": "Solutions",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 123.0625,
+            "height": 71
+          },
+          {
+            "text": "Resources",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 130.296875,
+            "height": 71
+          },
+          {
+            "text": "Pricing",
+            "href": "https://www.wix.com/plans",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 77.953125,
+            "height": 71
+          },
+          {
+            "text": "Wixel",
+            "href": "https://www.wix.com/wixel",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 67.53125,
+            "height": 71
+          },
+          {
+            "text": "Wix Studio",
+            "href": "https://www.wix.com/studio",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 109.140625,
+            "height": 71
+          },
+          {
+            "text": "Enterprise",
+            "href": "https://www.wix.com/studio/enterprise",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px 12px",
+            "width": 104.890625,
+            "height": 71
+          },
+          {
+            "text": "Log In",
+            "href": "https://users.wix.com/signin?view=sign-up&sendEmail=true&loginCompName=SignUp_H&referralInfo=SignUp_H&postSignUp=https%3A%2F%2Fwww.wix.com%2Fnew%2Fintro%2F&postLogin=https%3A%2F%2Fmanage.wix.com%2Faccount%2Froute&loginDialogContext=login&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "42px",
+            "padding": "8px 0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Get Started",
+            "href": "https://users.wix.com/signin?view=sign-up&sendEmail=true&loginCompName=SignUp_H&referralInfo=SignUp_H&postSignUp=https%3A%2F%2Fwww.wix.com%2Fnew%2Fintro%2F&postLogin=https%3A%2F%2Fmanage.wix.com%2Faccount%2Froute&loginDialogContext=signup&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates",
+            "bgColor": "rgb(22, 106, 234)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "42px",
+            "padding": "8px 0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 22,
+            "height": 22
+          },
+          {
+            "text": "Log In",
+            "href": "https://users.wix.com/signin?view=sign-up&sendEmail=true&loginCompName=SignUp_H&referralInfo=SignUp_H&postSignUp=https%3A%2F%2Fwww.wix.com%2Fnew%2Fintro%2F&postLogin=https%3A%2F%2Fmanage.wix.com%2Faccount%2Froute&loginDialogContext=login&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 45.078125,
+            "height": 20
+          },
+          {
+            "text": "Get Started",
+            "href": "https://users.wix.com/signin?view=sign-up&sendEmail=true&loginCompName=SignUp_H&referralInfo=SignUp_H&postSignUp=https%3A%2F%2Fwww.wix.com%2Fnew%2Fintro%2F&postLogin=https%3A%2F%2Fmanage.wix.com%2Faccount%2Froute&loginDialogContext=signup&originUrl=https%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates",
+            "bgColor": "rgb(22, 106, 234)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "42px",
+            "padding": "8px 30px",
+            "width": 148.75,
+            "height": 40
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "6px",
+            "padding": "1px 6px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "1px 6px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "More Info",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(22, 22, 22)",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Edit This Site",
+            "href": "",
+            "bgColor": "rgb(22, 22, 22)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "borderRadius": "6px",
+            "padding": "16px 28px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "Edit This Site",
+            "href": "",
+            "bgColor": "rgb(22, 22, 22)",
+            "textColor": "rgb(255, 255, 255)",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "borderRadius": "6px",
+            "padding": "16px 28px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "1px 6px",
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "",
+            "href": "",
+            "bgColor": "rgb(255, 255, 255)",
+            "textColor": "rgba(16, 16, 16, 0.3)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "6px",
+            "padding": "1px 6px",
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "colors": {
+          "background": "rgba(0, 0, 0, 0)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(22, 106, 234)",
+            "rgb(185, 185, 189)",
+            "rgb(77, 51, 222)",
+            "rgba(16, 16, 16, 0.3)",
+            "rgb(22, 22, 22)",
+            "rgba(134, 138, 165, 0.2)",
+            "rgb(0, 0, 238)"
+          ]
+        },
+        "typography": {
+          "titleSize": 36,
+          "titleWeight": 400,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 14,
+          "contentWeight": 700,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif"
+        }
+      },
+      "padding": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgba(0, 0, 0, 0)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(22, 106, 234)",
+        "rgb(185, 185, 189)",
+        "rgb(77, 51, 222)",
+        "rgba(16, 16, 16, 0.3)",
+        "rgb(22, 22, 22)",
+        "rgba(134, 138, 165, 0.2)",
+        "rgb(0, 0, 238)"
+      ],
+      "title_font_size": 36,
+      "title_font_weight": 400,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 14,
+      "content_font_weight": 700,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "button_text": "",
+      "button_link": "https://www.wix.com/",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 16,
+      "button_font_weight": 400,
+      "visual_height": 3008,
+      "cv_adjusted": true,
+      "section_image": "scraped_images/test_wix_1768360845/img_1.jpg"
+    },
+    {
+      "index": 1,
+      "type": 8,
+      "y_position": 330,
+      "height": 54,
+      "width": 1920,
+      "html_tag": "nav",
+      "classes": [
+        "Wm5lg8",
+        "evmWiY"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(247, 246, 244)",
+        "color": "rgb(0, 0, 0)",
+        "padding": "40px 96px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "All TemplatesAll",
+            "href": "https://www.wix.com/website/templates",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(77, 51, 222)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 100.25,
+            "height": 54
+          },
+          {
+            "text": "Blank Templates",
+            "href": "https://www.wix.com/website/templates/html/blank",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 122.625,
+            "height": 54
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(77, 51, 222)",
+            "rgba(0, 0, 0, 0.05)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 240,
+      "card_spacing": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(77, 51, 222)",
+        "rgba(0, 0, 0, 0.05)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "All TemplatesAll",
+      "button_link": "https://www.wix.com/website/templates",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(77, 51, 222)",
+      "button_font_size": 16,
+      "button_font_weight": 400
+    },
+    {
+      "index": 2,
+      "type": 8,
+      "y_position": 2196,
+      "height": 172,
+      "width": 1728,
+      "html_tag": "nav",
+      "classes": [
+        "nnXjNG"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "headings": [],
+        "paragraphs": [],
+        "buttons": [
+          {
+            "text": "2",
+            "href": "https://www.wix.com/website/templates/html/all/2",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 13.046875,
+            "height": 32
+          },
+          {
+            "text": "3",
+            "href": "https://www.wix.com/website/templates/html/all/3",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 13.953125,
+            "height": 32
+          },
+          {
+            "text": "4",
+            "href": "https://www.wix.com/website/templates/html/all/4",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 15.34375,
+            "height": 32
+          },
+          {
+            "text": "5",
+            "href": "https://www.wix.com/website/templates/html/all/5",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 13.8125,
+            "height": 32
+          },
+          {
+            "text": "223",
+            "href": "https://www.wix.com/website/templates/html/all/223",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 40.015625,
+            "height": 32
+          },
+          {
+            "text": "",
+            "href": "https://www.wix.com/website/templates/html/all/2",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 17
+          },
+          {
+            "text": "",
+            "href": "https://www.wix.com/website/templates/html/all/223",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 24,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 24,
+            "height": 13
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(77, 51, 222)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 400,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Arial"
+        }
+      },
+      "padding": 240,
+      "card_spacing": 80,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(77, 51, 222)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 400,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Arial",
+      "button_text": "2",
+      "button_link": "https://www.wix.com/website/templates/html/all/2",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 24,
+      "button_font_weight": 400
+    },
+    {
+      "index": 3,
+      "type": 3,
+      "y_position": 2368,
+      "height": 620,
+      "width": 1920,
+      "html_tag": "nav",
+      "classes": [
+        "zEGd0F"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Product Solutions Learn",
+        "headings": [],
+        "paragraphs": [
+          {
+            "text": "Product",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          },
+          {
+            "text": "Solutions",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          },
+          {
+            "text": "Learn",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          },
+          {
+            "text": "Support",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          },
+          {
+            "text": "Company",
+            "fontSize": 16,
+            "fontWeight": 500,
+            "color": "rgb(0, 0, 0)",
+            "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          },
+          {
+            "text": "Wix is a website builder that lets any business or individual build their own professional website. By combining design tools and business solutions in one AI-powered platform, Wix makes it easy for anyone to create without limits and scale confidently online.",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "rgb(47, 47, 48)",
+            "fontFamily": "Madefor-Text, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+          }
+        ],
+        "buttons": [
+          {
+            "text": "Website Templates",
+            "href": "https://www.wix.com/website/templates",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 124.34375,
+            "height": 24
+          },
+          {
+            "text": "Website Builder",
+            "href": "https://www.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 103.25,
+            "height": 24
+          },
+          {
+            "text": "Website Design",
+            "href": "https://www.wix.com/website/design",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 102.203125,
+            "height": 24
+          },
+          {
+            "text": "Wix Features",
+            "href": "https://www.wix.com/features/main",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 84.296875,
+            "height": 24
+          },
+          {
+            "text": "App Market",
+            "href": "https://www.wix.com/app-market",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 76.1875,
+            "height": 24
+          },
+          {
+            "text": "Web Hosting",
+            "href": "https://www.wix.com/free/web-hosting",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 84.75,
+            "height": 24
+          },
+          {
+            "text": "Domain Names",
+            "href": "https://www.wix.com/domains",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 99.59375,
+            "height": 24
+          },
+          {
+            "text": "Website Accessibility",
+            "href": "https://www.wix.com/accessibility",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 137.84375,
+            "height": 24
+          },
+          {
+            "text": "Mobile App Builder",
+            "href": "https://www.wix.com/app-builder",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 125.3125,
+            "height": 24
+          },
+          {
+            "text": "AI Website Builder",
+            "href": "https://www.wix.com/ai-website-builder",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 120.328125,
+            "height": 24
+          },
+          {
+            "text": "Online Store",
+            "href": "https://www.wix.com/ecommerce/online-store",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 81.703125,
+            "height": 24
+          },
+          {
+            "text": "Online Booking",
+            "href": "https://www.wix.com/scheduling-software",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 100.578125,
+            "height": 24
+          },
+          {
+            "text": "Blog Website",
+            "href": "https://www.wix.com/start/blog",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 86.671875,
+            "height": 24
+          },
+          {
+            "text": "Portfolio Website",
+            "href": "https://www.wix.com/portfolio-website",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 111.96875,
+            "height": 24
+          },
+          {
+            "text": "eCommerce Website",
+            "href": "https://www.wix.com/ecommerce/website",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 136.6875,
+            "height": 24
+          },
+          {
+            "text": "Wix Studio",
+            "href": "https://www.wix.com/studio",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 70.59375,
+            "height": 24
+          },
+          {
+            "text": "Enterprise Solutions",
+            "href": "https://www.wix.com/studio/enterprise",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 132.34375,
+            "height": 24
+          },
+          {
+            "text": "Wix University",
+            "href": "https://www.wix.com/university",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 93.078125,
+            "height": 24
+          },
+          {
+            "text": "Professional Tools",
+            "href": "https://www.wix.com/tools",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 117.4375,
+            "height": 24
+          },
+          {
+            "text": "Logo Maker",
+            "href": "https://www.wix.com/logo/maker",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 77.109375,
+            "height": 24
+          },
+          {
+            "text": "Landing Page Builder",
+            "href": "https://www.wix.com/landing-page-builder",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 139.390625,
+            "height": 24
+          },
+          {
+            "text": "Wix Blog",
+            "href": "https://www.wix.com/blog",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 57.578125,
+            "height": 24
+          },
+          {
+            "text": "Privacy and Security Hub",
+            "href": "https://www.wix.com/manage/privacy-security-hub",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 163.921875,
+            "height": 24
+          },
+          {
+            "text": "SEO Learning Hub",
+            "href": "https://www.wix.com/seo/learn",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 120.625,
+            "height": 24
+          },
+          {
+            "text": "Wix Encyclopedia",
+            "href": "https://www.wix.com/encyclopedia",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 115,
+            "height": 24
+          },
+          {
+            "text": "Help Center",
+            "href": "https://support.wix.com/en",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 78.75,
+            "height": 24
+          },
+          {
+            "text": "Hire a Professional",
+            "href": "https://www.wix.com/marketplace",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 120.796875,
+            "height": 24
+          },
+          {
+            "text": "Report Abuse",
+            "href": "https://www.wix.com/abuse",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 89.953125,
+            "height": 24
+          },
+          {
+            "text": "System Status",
+            "href": "https://status.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 94.59375,
+            "height": 24
+          },
+          {
+            "text": "Channel Partnerships",
+            "href": "https://www.wix.com/channels",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 139.84375,
+            "height": 24
+          },
+          {
+            "text": "Press & Media",
+            "href": "https://www.wix.com/press-room/home",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 91.8125,
+            "height": 24
+          },
+          {
+            "text": "Investor Relations",
+            "href": "https://investors.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 116.71875,
+            "height": 24
+          },
+          {
+            "text": "Wix Ventures",
+            "href": "https://www.wix.com/wix-capital",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 85.78125,
+            "height": 24
+          },
+          {
+            "text": "Accessibility Statement",
+            "href": "https://www.wix.com/about/terms-accessibility",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 153.703125,
+            "height": 24
+          },
+          {
+            "text": "Patent Notice",
+            "href": "https://www.wix.com/about/patent-notice",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 88.96875,
+            "height": 24
+          },
+          {
+            "text": "Sitemap",
+            "href": "https://www.wix.com/about/sitemap",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 54.84375,
+            "height": 24
+          },
+          {
+            "text": "Careers",
+            "href": "https://careers.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 50.9375,
+            "height": 24
+          },
+          {
+            "text": "",
+            "href": "https://www.wix.com/",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 71,
+            "height": 28
+          },
+          {
+            "text": "About",
+            "href": "https://www.wix.com/about/us",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 41.046875,
+            "height": 18
+          },
+          {
+            "text": "Contact Us",
+            "href": "https://www.wix.com/about/contact-us",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 500,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 73.1875,
+            "height": 18
+          },
+          {
+            "text": "",
+            "href": "https://www.facebook.com/wix",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://www.youtube.com/user/Wix",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://www.instagram.com/wix",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://www.tiktok.com/@wix",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://www.pinterest.com/wixcom",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://twitter.com/wix",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "",
+            "href": "https://www.linkedin.com/company/wix-com?trk=biz-companies-cym",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 238)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "borderRadius": "50px",
+            "padding": "0px",
+            "width": 36,
+            "height": 36
+          },
+          {
+            "text": "Terms of Use",
+            "href": "https://www.wix.com/about/terms-of-use",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 84.65625,
+            "height": 18
+          },
+          {
+            "text": "Privacy Policy",
+            "href": "https://www.wix.com/about/privacy",
+            "bgColor": "rgba(0, 0, 0, 0)",
+            "textColor": "rgb(0, 0, 0)",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "borderRadius": "0px",
+            "padding": "0px",
+            "width": 89.640625,
+            "height": 18
+          }
+        ],
+        "colors": {
+          "background": "rgb(255, 255, 255)",
+          "text": "rgb(0, 0, 0)",
+          "gradient": "",
+          "palette": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 238)",
+            "rgb(47, 47, 48)"
+          ]
+        },
+        "typography": {
+          "titleSize": 42,
+          "titleWeight": 700,
+          "titleColor": "rgb(0, 0, 0)",
+          "contentSize": 16,
+          "contentWeight": 500,
+          "contentColor": "rgb(0, 0, 0)",
+          "fontFamily": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+        }
+      },
+      "padding": 240,
+      "card_spacing": 40,
+      "container_max_width": 1200,
+      "bg_color": "rgb(255, 255, 255)",
+      "text_color": "rgb(0, 0, 0)",
+      "gradient": "",
+      "color_palette": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 238)",
+        "rgb(47, 47, 48)"
+      ],
+      "title_font_size": 42,
+      "title_font_weight": 700,
+      "title_color": "rgb(0, 0, 0)",
+      "content_font_size": 16,
+      "content_font_weight": 500,
+      "content_color": "rgb(0, 0, 0)",
+      "font_family": "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif",
+      "button_text": "Website Templates",
+      "button_link": "https://www.wix.com/website/templates",
+      "button_bg_color": "rgba(0, 0, 0, 0)",
+      "button_text_color": "rgb(0, 0, 0)",
+      "button_font_size": 14,
+      "button_font_weight": 400,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": []
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": []
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": []
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Madefor Display\", \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 pro w3\", \"hiragino kaku gothic pro\", sans-serif",
+      "Madefor-Text, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif",
+      "Madefor-Text-MediumBold, Madefor, \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif",
+      "Madefor-Display, \"Madefor Display\", \"Helvetica Neue\", Helvetica, Arial, \u30e1\u30a4\u30ea\u30aa, Meiryo, \"\u30d2\u30e9\u30ae\u30ce\u89d2\u30b4 Pro W3\", \"Hiragino Kaku Gothic Pro W3\", \"Hiragino Kaku Gothic Pro\", sans-serif"
+    ],
+    "sizes": {
+      "h1": 38,
+      "h2": 20,
+      "h3": 16,
+      "p": 15,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      500,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 16,
+    "spacingScale": [
+      16,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "commonSpacings": [
+      72
+    ],
+    "gridColumns": "none",
+    "cv_base_unit": 4,
+    "cv_verified": true
+  }
+}

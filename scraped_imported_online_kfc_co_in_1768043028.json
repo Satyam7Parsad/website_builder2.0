@@ -1,0 +1,546 @@
+{
+  "template_name": "imported_online_kfc_co_in_1768043028",
+  "description": "Imported from online.kfc.co.in",
+  "url": "https://online.kfc.co.in",
+  "scraped_date": "2026-01-10T16:36:39.291508",
+  "sections": [
+    {
+      "index": 0,
+      "element": "<div class=\"sticky-header-banner\"><div class=\"setLocationData\" data-testid=\"banner-setLocation\" id=\"kfc-banner-image\"><img alt=\"location-map\" class=\"google-location-img\" data-testid=\"\" loading=\"lazy\" src=\"/static/media/Search_Pin.e88a4d93.svg\"/><div class=\"setLocationText\">Allow location access for local store menu and promos</div><button aria-label=\"Close\" class=\"button whiteButton blackBorder setLocation-button setLocation-button-in\" data-testid=\"set-location-button\">Set Location</button></div><hr class=\"setLocationdivider\" role=\"presentation\"/><div class=\"root-header au INDIA\" data-id=\"root-header\" data-testid=\"HeaderItems-component\" role=\"banner\"><div><div class=\"sc-fqkvVR hjFYGP root-header-view\"><button aria-label=\"Close\" class=\"header-item-buttons header-hamburger-icon\" data-testid=\"hamburger-button\"><img alt=\"hamburger-icon\" loading=\"lazy\" src=\"/static/media/MenuIcon.e607771f.svg\"/></button><div class=\"header-logo-mobile\" data-testid=\"kfc-logo\"><img alt=\"KFC LOGO\" loading=\"lazy\" src=\"/static/media/kfcLogo.492728c6.svg\"/></div><div class=\"menu-links-container\"><div class=\"menu-link\" data-testid=\"menu-link-Menu\"><div class=\"menu-link-name\" data-testid=\"menu-name-Menu\">Menu</div><div class=\"menu-link-image\" style='background-image: url(\"//images.ctfassets.net/wtodlh47qxpt/4k2cm92M32R26grdRRbI3B/e335a7a29e35e5d7aa1900a7f65eea12/menu__1.png?h=undefined&amp;w=undefined\");'></div></div><div class=\"menu-link\" data-testid=\"menu-link-Deals\"><div class=\"menu-link-name\" data-testid=\"menu-name-Deals\">Deals</div><div class=\"menu-link-image\" style='background-image: url(\"//images.ctfassets.net/wtodlh47qxpt/7wp9jn9bCtkSpS2RklLTXD/9f5a47d39f34c6ede838ac01830659db/Deals.png?h=undefined&amp;w=undefined\");'></div></div></div><div class=\"right-nav-container\"><div class=\"language-selector-container no-border\" data-testid=\"language-selector-container\"></div><div class=\"sign-in-container\" data-id=\"header-sign-in\"><div class=\"account-container\" data-testid=\"account-container\"><img alt=\"\" class=\"account-icon\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/6bJdGLRkksNvWP4LI9ZiFF/cb89d6393492fd093e0f99980abfa39e/Account_Icon.svg?h=36&amp;w=36&amp;fm=webp&amp;fit=fill\"/><span class=\"sign-in-text not-cart-icon\">Sign In</span></div></div><div class=\"cart-image\" data-testid=\"cart-image\"><div class=\"shopping-cart\" data-testid=\"normal-icon\" name=\"CART\"><div class=\"lines\"><span class=\"line first\"></span><span class=\"line second\"></span><span class=\"line third\"></span></div><button aria-label=\"Close\" class=\"basket basket-link blank\" style='background: url(\"//images.ctfassets.net/wtodlh47qxpt/6qtBVFuno7pdwOQ9RIvYm9/d13e9b7242980972cf49beddde2cc295/bucket_cart_icon.svg\") no-repeat;'>0</button></div></div></div></div><div class=\"border\"> </div></div></div></div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"21e8d495caecbb8e69b717f7840c9dea\", element=\"f.38807979B373F94BD40B5756B439DF28.d.7E337DB154E0951259475378264D64FF.e.105\")>",
+      "y_position": 0,
+      "height": 153,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "sticky-header-banner"
+      ],
+      "id": "",
+      "type": 0,
+      "styles": {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(33, 37, 41)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(33, 37, 41)",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "sticky"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.15,0.16,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_online_kfc_co_in_1768043028/img_0.jpg"
+    },
+    {
+      "index": 1,
+      "element": "<div class=\"browse-menu-container grid-container\"><div class=\"browse-menu-header browse-menu-header-pos\"><span>BROWSE MENU CATEGORIES</span><div class=\"browse-menu-header-border\"></div></div><div class=\"browse-menu-item-container\"><a class=\"browse-lto\" data-testid=\"category-tile\" href=\"/menu/epic-bucket-of-the-day\"><img alt=\"\" class=\"browse-lto-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/wAKmOMcpTm0yfspLrl20B/a49799960b22ba96b733f54971d96825/KFC-category-EPIC-Bucket-1_All-in-one-bucket-delivery_-28th-JAN_1.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-lto-name\"><span class=\"browse-lto-heading\">EPIC BUCKET OF THE DAY</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/gold-edition\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/4AcPJzGNNxfXiF1rWvlydj/2a8548a717ff678fbfb0d881b7367ba8/KFC-Gold-Burger-White-Category-23MAY_4.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">GOLD EDITION</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/box-meals\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/7zQ4a4xD9BW9Qyl03WlTqR/bbcea04b544b8700ea7fe7834d85feb7/KFC-Box-Meals.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">BOX MEALS</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/variety-buckets\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/5iYMlSgO8gr09Rjbn185qs/8f330ee5eb94ba4eff4f4552e361218d/KFC-Variety-Bucket.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">VARIETY BUCKETS</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/veg\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/169o6qKazOgakFLMKkHUGY/d9d657af816a140bdaf3f5a7d64e3ef7/KFC-Veg.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">VEG</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/chicken-buckets\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/2A4wJjZ8ZvCyj7RSxI3iTk/f403b8ceb2f120bf7ef36d5a913ddf6f/KFC-White-Chicken-Bucket.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">CHICKEN BUCKETS</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/burgers\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/3NdeHBtjjYPHMAoOTpEZ0w/d6c6fadd15bcfa8f6bc969aa02207f0c/KFC-Burger.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">BURGERS</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/snacks\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/5VQAImh8fghx8cYtmjRBxu/050c6b65545546ecca314321a5dddc15/CAT89?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">SNACKS</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/rice-bowlz\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/7tEmaFwdTOKmVNf724nD21/cb386eac4c508bce817d3daa22a1d3b6/KFC-rice-bowl.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">RICE BOWLZ</span></div></a><a class=\"browse-item\" data-testid=\"category-tile\" href=\"/menu/beverage-desserts\"><img alt=\"\" class=\"browse-item-img\" loading=\"lazy\" src=\"https://images.ctfassets.net/wtodlh47qxpt/1cS5c1DDcmYuwT0g2edC3f/48712d8b753b8cb6c6abd662398fec70/KFC-Beverages.jpg?fm=webp&amp;fit=fill\"/><div class=\"browse-item-name\"><span class=\"browse-item-heading\">BEVERAGE &amp; DESSERTS</span></div></a><a class=\"browse-fingerlicking\" data-testid=\"fingerlicking-tile\" href=\"/menu\" style=\"grid-column-start: 2;\"><img alt=\"\" class=\"browse-fingerlicking-desk\" data-testid=\"fingerlicking-tile-img\" loading=\"lazy\" src=\"/static/media/Finger_lickInMob.fc23e8b1.svg\"/></a></div></div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"21e8d495caecbb8e69b717f7840c9dea\", element=\"f.38807979B373F94BD40B5756B439DF28.d.7E337DB154E0951259475378264D64FF.e.82\")>",
+      "y_position": 287,
+      "height": 1906,
+      "width": 1180,
+      "html_tag": "div",
+      "classes": [
+        "browse-menu-container",
+        "grid-container"
+      ],
+      "id": "",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(33, 37, 41)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(33, 37, 41)",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "66px 370px 40px",
+        "marginBottom": "40px",
+        "marginLeft": "370px",
+        "marginRight": "370px",
+        "marginTop": "66px",
+        "padding": "0px 20px",
+        "paddingBottom": "0px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "paddingTop": "0px",
+        "textAlign": "left",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "relative"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "marginTop": 66,
+          "marginBottom": 40
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.15,0.16,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_online_kfc_co_in_1768043028/img_1.jpg"
+    },
+    {
+      "index": 2,
+      "element": "<div class=\"promos-container\" data-testid=\"promos-container-test\" id=\"promosRewards\"><div class=\"promosCard-container grid-container false false\" data-testid=\"promosCard-container-test\"><div class=\"promos-Icon\"><div><svg class=\"injected-svg\" data-src=\"/static/media/Stripes_OffersIcon.891e24c1.svg\" fill=\"none\" height=\"33\" viewbox=\"0 0 80 42\" width=\"94\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<rect fill=\"#E4002B\" height=\"41.0256\" width=\"16.4103\"></rect>\n<rect fill=\"#E4002B\" height=\"41.0256\" width=\"16.4103\" x=\"32.8203\"></rect>\n<rect fill=\"#E4002B\" height=\"41.0256\" width=\"16.4103\" x=\"63.5898\"></rect>\n</svg></div></div><div class=\"promosContainerHeader-items false\"><h2 class=\"promosContainer-header\" data-testid=\"plp-promo-name\">Save More as you order</h2></div><div class=\"promosCard-list\"><div class=\"promosCarousal-list false\"><div class=\"slick-slider slick-initialized\" dir=\"ltr\"><div aria-label=\"previous\" class=\"slick-arrow slick-prev slick-disabled\" data-testid=\"prev-button-handler\" role=\"button\" tabindex=\"0\"></div><div class=\"slick-list\"><div class=\"slick-track\" style=\"width: 5502px; opacity: 1; transform: translate3d(-20px, 0px, 0px);\"><div aria-hidden=\"false\" class=\"slick-slide slick-active slick-current\" data-index=\"0\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/CHKZINGER.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Free Classic Zinger</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 499</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Free Classic Zinger\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"false\" class=\"slick-slide slick-active\" data-index=\"1\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/ADDCHK99.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">2 pc Hot &amp; Crispy Chicken @ Rs 99</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 499</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details 2 pc Hot &amp; Crispy Chicken @ Rs 99\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"false\" class=\"slick-slide slick-active\" data-index=\"2\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/BIGSAVE.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Upto Rs 100 off</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 699</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Upto Rs 100 off\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"3\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/PHP75.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Rs 75 Off</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 599</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Rs 75 Off\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"4\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card offersCard-fade lastOffersCard-fade false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/VEGZINGER.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Free Veg Zinger</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 499</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Free Veg Zinger\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"5\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/FREEROLL.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Free Double Chicken Roll</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 999</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Free Double Chicken Roll\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"6\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/FREESTRIPS.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Free Strips (3pc)</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 399</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Free Strips (3pc)\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"7\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/FREERPC.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Free Popcorn (Reg)</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 399</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Free Popcorn (Reg)\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"8\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/KFC50B.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">DELIVERY COUPON</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">UPTO RS 100 OFF</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details DELIVERY COUPON\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"9\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/KFC50.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">50% OFF on Delivery</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Min. Order Value 250</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details 50% OFF on Delivery\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"10\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/10OFF.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Get flat Rs.10 off</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Get flat Rs.10 off</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Get flat Rs.10 off\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"11\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/TESTGOALPRICE.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">TESTGOALPRICE</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Select products</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details TESTGOALPRICE\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"12\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div class=\"promosImageText-background\"><img alt=\"No Image\" class=\"promosImageText-background-img\" loading=\"lazy\" src=\"https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/offers/xl/B2G2.jpg?ver=76.98\"/></div><div class=\"promosCard-content\"><div class=\"promosImageTextCard-title\"><span class=\"promosCard-ellipsis-text\" data-testid=\"promos-card-text\">Buy 2 Zinger and get 2 Zinger free</span></div><div class=\"promosCard-text\"><span class=\"promosCard-ellipsis-text\">Buy 2 Zinger and get 2 Zinger free</span></div><div class=\"view-all-text\"><div class=\"offersViewAll-link\" data-testid=\"view-all-deals-handler\"><u data-testid=\"view-details-link\">View Details</u></div></div><div class=\"promosButton-item false\"><button aria-label=\"View Details Buy 2 Zinger and get 2 Zinger free\" class=\"button-contained plp-promosButton-alignment\" data-testid=\"promos-and-rewards-image-text-button\" data-type=\"secondary\" type=\"button\">Apply Offer</button></div></div></div></div></div></div></div><div aria-hidden=\"true\" class=\"slick-slide\" data-index=\"13\" style=\"outline: none;\" tabindex=\"-1\"><div><div style=\"width: 100%; display: inline-block;\" tabindex=\"-1\"><div class=\"slick-slide offers-deals-card-container false\"><div class=\"promos-card false false false\"><div alt=\"\" class=\"offers-store-image\"><svg class=\"injected-svg\" data-src=\"/static/media/SignInCard.2d16cc27.svg\" fill=\"none\" height=\"495\" viewbox=\"0 0 310 495\" width=\"310\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<g filter=\"url(#filter0_d_12101_368029-2)\">\n<rect fill=\"#E4002B\" height=\"495\" rx=\"8\" width=\"310\" x=\"0\" y=\"0\"></rect>\n</g>\n<path d=\"M95.4078 99.74C102.414 95.8024 103.993 88.0113 99.4289 79.8911C95.7841 73.4058 89.2041 70.224 86.0421 68.6943L85.5971 68.4788C84.9274 68.1508 84.4081 67.9023 83.9927 67.7045C82.735 67.102 82.541 67.0093 81.9853 66.5706C81.4938 66.1819 80.7975 65.0539 80.474 64.433C80.3409 64.1757 80.1076 63.9838 79.8286 63.9003C79.5916 63.8302 79.3391 63.8492 79.1132 63.9433L77.1444 60.4402C78.1999 58.973 78.4634 57.185 77.7972 55.7064C77.214 54.4149 76.0119 53.6417 74.6595 53.6876C73.9262 53.7119 73.3559 53.898 72.9154 54.1455C72.5148 54.3707 72.2231 54.6469 72.017 54.8973C71.5654 55.4446 71.331 56.0896 71.2142 56.6915C70.6397 56.479 69.9669 56.3439 69.2635 56.4448C68.9419 56.4911 68.5543 56.5966 68.1537 56.8218C67.7144 57.0687 67.2584 57.4594 66.857 58.0728C66.1134 59.2049 66.1493 60.6344 66.9502 61.8027C67.8657 63.1412 69.53 63.8457 71.3334 63.7062L73.3022 67.2093C73.1031 67.354 72.9562 67.5595 72.8926 67.7994C72.8192 68.0801 72.8622 68.3798 73.0131 68.6279C73.3171 69.131 73.9735 70.3806 74.0526 71.029C74.1385 71.7317 74.1175 71.9453 73.977 73.3336C73.9313 73.7906 73.8736 74.3634 73.8043 75.1066L73.7571 75.5989C73.4188 79.0949 72.7169 86.3702 76.3617 92.8554C80.9239 100.976 88.4004 103.678 95.4078 99.74ZM68.7184 60.5925C68.5366 60.3274 68.2864 59.8006 68.6482 59.248C69.0031 58.7066 69.3394 58.6004 69.5616 58.5682C70.3105 58.4564 71.2607 59.085 71.5348 59.3146C71.5468 59.3243 71.5599 59.33 71.5713 59.34C71.5958 59.3574 71.62 59.3742 71.646 59.3899C71.681 59.4128 71.7167 59.4354 71.7537 59.4531C71.774 59.463 71.7959 59.4713 71.8171 59.4798C71.8612 59.4985 71.9052 59.5156 71.9506 59.5262C71.9694 59.532 71.9871 59.5343 72.0065 59.5382C72.057 59.5492 72.1076 59.5576 72.1593 59.5606C72.1757 59.562 72.1913 59.5606 72.2079 59.5611C72.2634 59.5619 72.3192 59.5592 72.3736 59.5524C72.3803 59.5511 72.3861 59.5528 72.3912 59.5516C72.402 59.5504 72.4101 59.5459 72.42 59.5444C72.4742 59.5344 72.5277 59.5216 72.5805 59.5034C72.5963 59.4978 72.6119 59.4906 72.6277 59.4851C72.6767 59.4657 72.7235 59.4427 72.7696 59.4152C72.7845 59.4068 72.7988 59.3971 72.813 59.3875C72.8565 59.3597 72.8972 59.3286 72.9369 59.2941C72.9503 59.2816 72.9635 59.2685 72.9766 59.2554C72.9985 59.2332 73.0232 59.2144 73.0448 59.19C73.0575 59.1746 73.0666 59.1572 73.0779 59.141C73.0888 59.1267 73.0986 59.1122 73.1087 59.0966C73.138 59.0539 73.166 59.0103 73.1884 58.9641C73.196 58.9484 73.2013 58.9331 73.2089 58.9174C73.229 58.87 73.2471 58.8221 73.2604 58.7728C73.2662 58.7523 73.2693 58.7317 73.2741 58.711C73.2837 58.6654 73.2914 58.6193 73.2947 58.574C73.2969 58.5473 73.2962 58.5198 73.2955 58.4923C73.2957 58.4504 73.2953 58.4088 73.2895 58.3678C73.2889 58.355 73.2905 58.3434 73.2877 58.3311C73.2351 57.9778 73.1917 56.8386 73.676 56.2574C73.819 56.0844 74.0839 55.8526 74.7328 55.8299C75.3923 55.8085 75.7119 56.2955 75.8449 56.5889C76.1522 57.2714 76.1345 58.4669 75.0733 59.5897C74.7503 59.9311 74.6873 60.4421 74.9177 60.8521L77.2399 64.9839L76.2031 65.5666L75.1662 66.1493L72.8441 62.0175C72.614 61.6082 72.1442 61.3967 71.6849 61.4941C70.1708 61.817 69.141 61.2102 68.7184 60.5925ZM75.8907 75.805L75.9376 75.3048C76.0063 74.5692 76.0633 74.0026 76.1089 73.5498C76.2554 72.1006 76.2938 71.7109 76.1795 70.7708C76.0909 70.0441 75.7099 69.1562 75.3768 68.4891L77.2511 67.4357L79.1254 66.3823C79.5214 67.0141 80.0818 67.8011 80.6565 68.2546C81.3995 68.8414 81.753 69.0108 83.0671 69.6391C83.4776 69.8356 83.9923 70.0817 84.6547 70.4055L85.1077 70.6249C88.0727 72.0594 94.243 75.0435 97.5584 80.9424C101.544 88.0345 100.317 94.521 94.356 97.8714C88.3941 101.222 82.2145 98.8984 78.2285 91.8062C74.9145 85.9066 75.5733 79.0844 75.8907 75.805Z\" fill=\"white\" opacity=\"0.6\"></path>\n<path d=\"M250.515 404.71C248.987 410.607 252.416 415.562 259.251 417.333C264.71 418.747 269.905 416.822 272.402 415.897L272.753 415.767C273.284 415.574 273.693 415.42 274.019 415.297C275.009 414.926 275.161 414.869 275.693 414.796C276.164 414.731 277.146 414.943 277.655 415.092C277.866 415.155 278.093 415.128 278.285 415.02C278.448 414.927 278.57 414.779 278.637 414.606L281.586 415.37C281.834 416.717 282.672 417.8 283.83 418.213C284.842 418.573 285.896 418.322 286.582 417.558C286.953 417.145 287.151 416.736 287.247 416.365C287.335 416.028 287.337 415.723 287.308 415.479C287.246 414.945 287.017 414.478 286.749 414.098C287.167 413.895 287.595 413.599 287.909 413.161C288.053 412.961 288.198 412.694 288.286 412.357C288.382 411.987 288.408 411.533 288.283 410.991C288.055 409.99 287.255 409.259 286.196 409.083C284.983 408.88 283.724 409.42 282.853 410.479L279.905 409.715C279.93 409.53 279.895 409.342 279.797 409.181C279.682 408.993 279.496 408.859 279.281 408.812C278.846 408.714 277.819 408.416 277.423 408.119C276.994 407.796 276.888 407.673 276.203 406.867C275.977 406.602 275.695 406.269 275.325 405.841L275.081 405.557C273.347 403.536 269.74 399.331 264.281 397.917C257.447 396.145 252.043 398.812 250.515 404.71ZM285.928 410.685C286.169 410.725 286.588 410.865 286.7 411.353C286.81 411.831 286.691 412.071 286.592 412.209C286.26 412.677 285.417 412.866 285.147 412.895C285.136 412.897 285.126 412.901 285.114 412.902C285.092 412.906 285.07 412.911 285.048 412.917C285.017 412.924 284.986 412.931 284.957 412.942C284.941 412.948 284.925 412.956 284.909 412.963C284.876 412.977 284.843 412.992 284.814 413.011C284.8 413.019 284.79 413.027 284.778 413.036C284.745 413.057 284.714 413.081 284.685 413.107C284.676 413.116 284.668 413.125 284.659 413.134C284.63 413.164 284.602 413.196 284.577 413.229C284.574 413.233 284.57 413.235 284.568 413.239C284.563 413.245 284.561 413.252 284.557 413.258C284.534 413.293 284.513 413.329 284.495 413.368C284.49 413.379 284.486 413.392 284.48 413.403C284.465 413.44 284.453 413.478 284.444 413.517C284.441 413.53 284.439 413.543 284.436 413.556C284.429 413.594 284.424 413.633 284.422 413.672C284.422 413.686 284.422 413.7 284.423 413.714C284.423 413.738 284.421 413.761 284.423 413.786C284.424 413.801 284.429 413.815 284.432 413.83C284.434 413.843 284.437 413.856 284.44 413.87C284.448 413.908 284.457 413.947 284.471 413.983C284.475 413.996 284.481 414.006 284.485 414.019C284.501 414.055 284.517 414.09 284.537 414.123C284.545 414.137 284.555 414.149 284.564 414.163C284.584 414.192 284.605 414.221 284.628 414.246C284.641 414.261 284.657 414.275 284.672 414.289C284.695 414.312 284.718 414.333 284.743 414.352C284.751 414.358 284.756 414.365 284.764 414.37C284.985 414.527 285.63 415.101 285.694 415.671C285.713 415.84 285.701 416.107 285.372 416.473C285.038 416.845 284.604 416.764 284.373 416.682C283.839 416.492 283.195 415.854 283.139 414.685C283.122 414.329 282.876 414.026 282.53 413.937L279.053 413.036L279.279 412.163L279.505 411.29L282.983 412.191C283.327 412.28 283.69 412.135 283.878 411.833C284.496 410.835 285.369 410.591 285.928 410.685ZM273.847 406.615L274.096 406.903C274.462 407.327 274.742 407.656 274.965 407.918C275.68 408.76 275.873 408.985 276.447 409.417C276.891 409.75 277.576 410.008 278.115 410.176L277.707 411.754L277.298 413.332C276.745 413.216 276.02 413.109 275.471 413.185C274.76 413.283 274.481 413.387 273.448 413.775C273.125 413.896 272.72 414.048 272.195 414.24L271.837 414.373C269.496 415.24 264.624 417.045 259.659 415.758C253.689 414.212 250.789 410.134 252.089 405.116C253.389 400.098 257.905 397.941 263.874 399.488C268.839 400.775 272.222 404.719 273.847 406.615Z\" fill=\"white\" opacity=\"0.6\"></path>\n<circle cx=\"259.5\" cy=\"95.5\" opacity=\"0.5\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"186.5\" cy=\"411.5\" opacity=\"0.5\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"89.5\" cy=\"279.5\" opacity=\"0.5\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"119.5\" cy=\"67.5\" opacity=\"0.7\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"62\" cy=\"142\" opacity=\"0.5\" r=\"5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"284\" cy=\"249\" opacity=\"0.7\" r=\"5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"268\" cy=\"330\" opacity=\"0.5\" r=\"5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"44.5\" cy=\"375.5\" opacity=\"0.8\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"202.5\" cy=\"310.5\" opacity=\"0.8\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<circle cx=\"255.5\" cy=\"455.5\" opacity=\"0.8\" r=\"2.5\" stroke=\"white\" stroke-width=\"2\"></circle>\n<path d=\"M236.441 83.1907C242.784 88.1267 250.578 86.5669 256.299 79.2159C260.868 73.345 261.256 66.0464 261.442 62.5388L261.469 62.045C261.512 61.3006 261.54 60.7256 261.562 60.266C261.63 58.8731 261.641 58.6584 261.83 57.9762C261.998 57.3725 262.769 56.2939 263.216 55.7553C263.402 55.533 263.488 55.2436 263.457 54.9541C263.43 54.7084 263.315 54.4829 263.141 54.311L265.609 51.1398C267.37 51.5451 269.121 51.0961 270.226 49.9095C271.192 48.8719 271.439 47.4642 270.874 46.235C270.567 45.5683 270.175 45.1145 269.776 44.8041C269.414 44.5218 269.046 44.3599 268.735 44.2667C268.056 44.0621 267.37 44.0956 266.77 44.2209C266.744 43.6089 266.608 42.9362 266.243 42.3268C266.076 42.0481 265.828 41.7316 265.466 41.4493C265.068 41.1398 264.531 40.8706 263.81 40.7379C262.478 40.4904 261.174 41.0768 260.407 42.2675C259.527 43.6297 259.522 45.437 260.348 47.0458L257.88 50.217C257.67 50.0894 257.424 50.0336 257.178 50.0678C256.891 50.1087 256.631 50.2643 256.46 50.4995C256.114 50.9746 255.216 52.0635 254.649 52.3874C254.034 52.7385 253.829 52.8018 252.495 53.2096C252.056 53.3444 251.505 53.5128 250.793 53.7366L250.321 53.8836C246.966 54.9248 239.986 57.0935 235.417 62.9644C229.696 70.314 230.097 78.2538 236.441 83.1907ZM262.207 43.4295C262.381 43.1592 262.77 42.7246 263.42 42.8443C264.056 42.962 264.285 43.231 264.4 43.4234C264.793 44.0707 264.581 45.1901 264.476 45.5318C264.471 45.5466 264.471 45.5609 264.466 45.5752C264.46 45.6046 264.454 45.6333 264.449 45.6634C264.442 45.7046 264.435 45.7462 264.433 45.7872C264.431 45.8098 264.432 45.8331 264.433 45.856C264.432 45.9039 264.434 45.9511 264.442 45.997C264.443 46.0166 264.448 46.0339 264.452 46.0532C264.462 46.104 264.473 46.154 264.491 46.2028C264.496 46.2184 264.503 46.2323 264.509 46.2478C264.53 46.2993 264.554 46.3497 264.581 46.3973C264.585 46.4029 264.586 46.4089 264.589 46.4131C264.594 46.4226 264.601 46.4284 264.606 46.4369C264.637 46.483 264.669 46.5274 264.706 46.5691C264.718 46.5814 264.73 46.5931 264.742 46.6054C264.778 46.6431 264.818 46.6774 264.861 46.7092C264.874 46.7198 264.889 46.7292 264.903 46.7386C264.946 46.7679 264.99 46.7934 265.037 46.8166C265.054 46.8242 265.071 46.8312 265.088 46.8382C265.117 46.8499 265.144 46.8654 265.175 46.8758C265.194 46.8816 265.214 46.8832 265.233 46.8874C265.25 46.8919 265.268 46.8953 265.286 46.8987C265.337 46.9091 265.388 46.9181 265.439 46.9208C265.456 46.9217 265.473 46.9207 265.49 46.9216C265.541 46.9218 265.593 46.92 265.643 46.9132C265.664 46.9106 265.685 46.9055 265.705 46.9019C265.751 46.8931 265.797 46.8823 265.84 46.8678C265.865 46.8595 265.89 46.8483 265.915 46.837C265.954 46.8209 265.992 46.8045 266.028 46.7832C266.039 46.7777 266.051 46.7748 266.061 46.7674C266.366 46.5821 267.4 46.1013 268.123 46.3228C268.338 46.3876 268.654 46.5423 268.927 47.1318C269.202 47.7316 268.876 48.2148 268.657 48.4509C268.147 48.9984 267.038 49.4449 265.592 48.9009C265.152 48.7352 264.656 48.8749 264.367 49.2461L261.456 52.9865L260.518 52.256L259.579 51.5255L262.49 47.7851C262.779 47.4145 262.792 46.8995 262.524 46.5137C261.64 45.2426 261.801 44.0582 262.207 43.4295ZM250.957 55.9308L251.436 55.7803C252.141 55.559 252.685 55.3923 253.12 55.2591C254.513 54.8333 254.888 54.7178 255.71 54.2485C256.346 53.8856 257.017 53.1907 257.503 52.6253L259.2 53.9458L260.897 55.2663C260.468 55.876 259.959 56.6973 259.763 57.4027C259.51 58.3149 259.49 58.7065 259.419 60.1613C259.397 60.6159 259.369 61.1857 259.327 61.9218L259.3 62.4244C259.125 65.7136 258.762 72.5579 254.606 77.898C249.609 84.3183 243.153 85.6974 237.757 81.4976C232.36 77.2973 232.111 70.6999 237.107 64.2796C241.264 58.9404 247.81 56.9074 250.957 55.9308Z\" fill=\"white\" opacity=\"0.6\"></path>\n<path d=\"M239.501 67C238.668 68.1667 237.101 71 237.501 73\" opacity=\"0.6\" stroke=\"white\" stroke-width=\"2\"></path>\n<path d=\"M58.2235 431.526C59.9223 439.381 66.9024 443.185 76.0068 441.216C83.278 439.644 88.2572 434.293 90.6505 431.722L90.9876 431.36C91.4983 430.817 91.8888 430.394 92.2002 430.055C93.1465 429.031 93.2922 428.873 93.8752 428.471C94.3915 428.116 95.6745 427.783 96.3632 427.657C96.6482 427.605 96.9004 427.439 97.0623 427.197C97.1991 426.991 97.2554 426.744 97.232 426.5L101.16 425.651C102.251 427.092 103.882 427.871 105.491 427.67C106.897 427.493 107.99 426.572 108.345 425.266C108.537 424.558 108.528 423.958 108.421 423.464C108.324 423.015 108.146 422.655 107.967 422.384C107.577 421.791 107.03 421.377 106.489 421.088C106.861 420.602 107.189 419.999 107.3 419.297C107.35 418.976 107.363 418.575 107.266 418.125C107.16 417.633 106.921 417.082 106.453 416.518C105.59 415.474 104.213 415.087 102.861 415.508C101.312 415.988 100.149 417.371 99.7507 419.136L95.823 419.985C95.7434 419.752 95.5903 419.551 95.3798 419.42C95.1332 419.267 94.8341 419.22 94.5526 419.291C93.9822 419.433 92.5947 419.692 91.9518 419.577C91.2549 419.452 91.057 419.369 89.7717 418.826C89.3485 418.647 88.8181 418.423 88.1283 418.138L87.6718 417.948C84.4305 416.595 77.685 413.781 70.4137 415.353C61.3097 417.321 56.5244 423.669 58.2235 431.526ZM103.497 417.554C103.803 417.459 104.381 417.375 104.802 417.883C105.215 418.382 105.217 418.735 105.183 418.956C105.069 419.705 104.188 420.428 103.888 420.622C103.875 420.631 103.866 420.641 103.853 420.649C103.829 420.668 103.806 420.686 103.783 420.706C103.751 420.733 103.719 420.76 103.691 420.79C103.676 420.807 103.661 420.825 103.647 420.843C103.616 420.88 103.587 420.917 103.563 420.957C103.552 420.973 103.545 420.99 103.535 421.007C103.51 421.052 103.487 421.098 103.469 421.146C103.463 421.162 103.459 421.177 103.454 421.193C103.437 421.245 103.423 421.3 103.414 421.354C103.413 421.36 103.41 421.365 103.409 421.371C103.407 421.381 103.409 421.39 103.408 421.4C103.401 421.455 103.398 421.51 103.4 421.566C103.4 421.582 103.402 421.6 103.403 421.616C103.407 421.669 103.415 421.72 103.428 421.772C103.432 421.789 103.437 421.806 103.442 421.822C103.455 421.872 103.473 421.92 103.495 421.968C103.503 421.984 103.511 422.001 103.52 422.017C103.535 422.045 103.545 422.074 103.562 422.102C103.573 422.118 103.587 422.132 103.599 422.148C103.61 422.162 103.621 422.176 103.633 422.19C103.665 422.231 103.698 422.271 103.736 422.306C103.749 422.317 103.762 422.327 103.774 422.339C103.814 422.372 103.854 422.404 103.897 422.431C103.915 422.442 103.934 422.451 103.952 422.462C103.993 422.485 104.035 422.506 104.077 422.522C104.102 422.532 104.129 422.539 104.155 422.547C104.195 422.559 104.235 422.571 104.276 422.578C104.288 422.581 104.299 422.586 104.311 422.587C104.665 422.641 105.766 422.935 106.179 423.569C106.302 423.757 106.445 424.078 106.276 424.705C106.102 425.341 105.542 425.503 105.223 425.544C104.48 425.636 103.343 425.267 102.583 423.922C102.351 423.513 101.882 423.302 101.422 423.402L96.7896 424.404L96.5382 423.241L96.2868 422.079L100.919 421.077C101.378 420.978 101.719 420.591 101.761 420.123C101.898 418.581 102.782 417.776 103.497 417.554ZM86.8461 419.926L87.3104 420.118C87.993 420.401 88.5177 420.622 88.937 420.799C90.2787 421.366 90.6398 421.518 91.5719 421.685C92.2924 421.815 93.2531 421.712 93.9888 421.591L94.4432 423.692L94.8977 425.793C94.1773 425.986 93.2601 426.29 92.6574 426.705C91.8778 427.242 91.6117 427.53 90.6241 428.601C90.3155 428.935 89.9286 429.354 89.424 429.892L89.081 430.26C86.8366 432.671 82.1671 437.688 75.5532 439.119C67.6016 440.838 61.7644 437.755 60.319 431.071C58.8735 424.387 62.9147 419.166 70.8664 417.446C77.4805 416.017 83.8059 418.657 86.8461 419.926Z\" fill=\"white\" opacity=\"0.6\"></path>\n<path d=\"M70.9575 421.066C69.5698 421.427 66.5503 422.595 65.5741 424.386\" opacity=\"0.6\" stroke=\"white\" stroke-width=\"2\"></path>\n<path d=\"M38.1911 221.971C32.5866 227.731 33.2784 235.65 39.9546 242.146C45.2865 247.334 52.4981 248.522 55.9638 249.094L56.4517 249.175C57.1868 249.3 57.7552 249.391 58.2096 249.463C59.5865 249.685 59.7987 249.719 60.4559 249.982C61.0373 250.216 62.0245 251.101 62.5106 251.604C62.7111 251.814 62.9892 251.932 63.2804 251.933C63.5275 251.933 63.7644 251.843 63.9543 251.689L66.8345 254.491C66.2376 256.197 66.4911 257.987 67.5487 259.216C68.4737 260.29 69.8455 260.691 71.1296 260.264C71.826 260.033 72.3203 259.693 72.6727 259.331C72.9932 259.001 73.1946 258.654 73.3215 258.355C73.5996 257.703 73.6418 257.018 73.5834 256.407C74.1946 256.449 74.8781 256.388 75.5241 256.092C75.8195 255.956 76.1613 255.745 76.4818 255.416C76.8332 255.055 77.1599 254.551 77.3712 253.849C77.7639 252.553 77.3247 251.192 76.2257 250.298C74.9687 249.273 73.173 249.069 71.483 249.713L68.6029 246.911C68.7528 246.716 68.8355 246.477 68.8286 246.229C68.8195 245.939 68.6934 245.664 68.4785 245.469C68.0444 245.072 67.0611 244.06 66.8016 243.46C66.5203 242.811 66.48 242.6 66.2216 241.228C66.1361 240.777 66.0293 240.212 65.8853 239.479L65.7912 238.994C65.1258 235.545 63.739 228.369 58.4071 223.181C51.7324 216.684 43.7967 216.209 38.1911 221.971ZM74.8726 251.959C75.122 252.162 75.5111 252.597 75.3206 253.229C75.1335 253.849 74.841 254.046 74.6371 254.14C73.9505 254.459 72.8612 254.125 72.5332 253.982C72.5189 253.976 72.5048 253.975 72.491 253.968C72.4626 253.959 72.4347 253.949 72.4052 253.942C72.3651 253.93 72.3245 253.918 72.284 253.911C72.2617 253.908 72.2385 253.906 72.2157 253.904C72.1681 253.898 72.121 253.895 72.0746 253.897C72.0548 253.897 72.0372 253.9 72.0175 253.901C71.966 253.905 71.915 253.911 71.8646 253.923C71.8485 253.927 71.8339 253.932 71.8178 253.937C71.7644 253.951 71.7116 253.97 71.6614 253.992C71.6554 253.995 71.6493 253.995 71.6448 253.998C71.6347 254.002 71.6282 254.008 71.6192 254.013C71.57 254.038 71.5224 254.065 71.4768 254.097C71.4633 254.107 71.4503 254.119 71.4368 254.128C71.3953 254.161 71.3569 254.196 71.3205 254.236C71.3085 254.248 71.2976 254.261 71.2867 254.274C71.2528 254.313 71.2225 254.355 71.1943 254.399C71.185 254.415 71.1761 254.431 71.1672 254.447C71.1524 254.475 71.1341 254.5 71.1203 254.529C71.1125 254.548 71.1087 254.567 71.1024 254.586C71.096 254.603 71.0907 254.619 71.0854 254.637C71.0694 254.686 71.0549 254.736 71.0465 254.787C71.0437 254.804 71.0429 254.82 71.0401 254.837C71.0342 254.888 71.0304 254.94 71.0316 254.991C71.0319 255.012 71.0347 255.033 71.036 255.054C71.0397 255.1 71.0454 255.147 71.0551 255.191C71.0605 255.217 71.0689 255.243 71.0774 255.27C71.089 255.31 71.1012 255.35 71.1184 255.387C71.1226 255.399 71.1243 255.411 71.1305 255.422C71.281 255.746 71.6451 256.826 71.3453 257.521C71.2571 257.727 71.0686 258.024 70.4527 258.23C69.8263 258.437 69.3819 258.061 69.1713 257.817C68.6833 257.249 68.3617 256.098 69.0616 254.72C69.2748 254.301 69.1905 253.794 68.8534 253.466L65.4564 250.16L66.2858 249.308L67.1152 248.456L70.5122 251.761C70.8488 252.088 71.3593 252.158 71.7722 251.935C73.1329 251.196 74.2924 251.487 74.8726 251.959ZM63.6864 239.4L63.7832 239.893C63.9255 240.618 64.0312 241.178 64.1157 241.625C64.3855 243.056 64.459 243.441 64.8349 244.31C65.1256 244.982 65.7424 245.726 66.2508 246.271L64.7514 247.812L63.2521 249.353C62.6934 248.859 61.9331 248.263 61.2535 247.991C60.3748 247.639 59.9877 247.576 58.5496 247.346C58.1002 247.273 57.5369 247.183 56.8099 247.06L56.3134 246.978C53.0635 246.442 46.3008 245.327 41.4509 240.608C35.62 234.935 34.9603 228.366 39.729 223.465C44.4981 218.563 51.0828 219.042 56.9137 224.716C61.7626 229.435 63.0624 236.165 63.6864 239.4Z\" fill=\"white\" opacity=\"0.6\"></path>\n<path d=\"M53.9484 226.798C52.8806 225.841 50.2371 223.972 48.2052 224.149\" opacity=\"0.6\" stroke=\"white\" stroke-width=\"2\"></path>\n<defs>\n<filter color-interpolation-filters=\"sRGB\" filterunits=\"userSpaceOnUse\" height=\"495\" id=\"filter0_d_12101_368029-2\" width=\"310\" x=\"0\" y=\"0\">\n<feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood>\n<fecolormatrix in=\"SourceAlpha\" result=\"hardAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\"></fecolormatrix>\n<feoffset dy=\"4\"></feoffset>\n<fegaussianblur stddeviation=\"4.5\"></fegaussianblur>\n<fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0\"></fecolormatrix>\n<feblend in2=\"BackgroundImageFix\" mode=\"normal\" result=\"effect1_dropShadow_12101_368029\"></feblend>\n<feblend in=\"SourceGraphic\" in2=\"effect1_dropShadow_12101_368029\" mode=\"normal\" result=\"shape\"></feblend>\n</filter>\n</defs>\n</svg></div><h3 class=\"offer-login-text false\">Sign In to see exclusive offers &amp; deals</h3><div class=\"offer-store-btn-container false\"><button aria-label=\"Close\" class=\"store-btn signin-offers-btn\" data-testid=\"sign-in-btnid\">Sign in / Sign up</button></div></div></div></div></div></div></div></div><div aria-label=\"next\" class=\"slick-arrow slick-next\" data-testid=\"next-button-handler\" role=\"button\" tabindex=\"0\"></div></div></div><div class=\"promos-slideContainer false\"><input aria-hidden=\"true\" class=\"promos-slider\" data-testid=\"promo-slider-id\" id=\"myRange\" max=\"11\" min=\"0\" tabindex=\"-1\" type=\"range\" value=\"0\"/></div></div></div></div>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"21e8d495caecbb8e69b717f7840c9dea\", element=\"f.38807979B373F94BD40B5756B439DF28.d.7E337DB154E0951259475378264D64FF.e.106\")>",
+      "y_position": 2233,
+      "height": 663,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "promos-container"
+      ],
+      "id": "promosRewards",
+      "type": 3,
+      "styles": {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(33, 37, 41)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(33, 37, 41)",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "0px",
+        "textAlign": "left",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 38,
+          "weight": 700,
+          "color": "0.13,0.13,0.14,1.00"
+        },
+        "subtitle": {
+          "size": 30,
+          "weight": 700,
+          "color": "1.00,1.00,1.00,1.00"
+        },
+        "content": {
+          "size": 16,
+          "weight": 400,
+          "color": "0.2,0.2,0.2,1.0"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "0.13,0.15,0.16,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "Save More as you order",
+        "subtitle": "Sign In to see exclusive offers & deals",
+        "content": "",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    {
+      "index": 3,
+      "element": "<footer class=\"sc-dcJsrY bgHdks site-footer\" data-testid=\"footer-component\"><div class=\"grid-container\"><div class=\"row row-one row-oneaus\"><div class=\"header-logo-footer mobile-header-logo\"><a class=\"header-logo\" data-testid=\"footer-component-navigate-handler\" href=\"/\"><img alt=\"KFC LOGO\" class=\"kfc-footer-logo\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/25FSYFuEtGct8NSrtpKe6d/b602f6fe0bf294e6a6dff5d7648bf594/KFC_Logo.svg?h=120&amp;w=120&amp;fm=webp&amp;fit=fill\"/></a></div><div class=\"category-items\"><div class=\"ul-title\"><span aria-level=\"2\" class=\"header-text-footer\" data-testid=\"footer-header-text\" role=\"heading\">Legal</span><ul class=\"footer-links\"><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Terms and Conditions\" href=\"/terms-and-conditions\" tabindex=\"0\" target=\"\">Terms and Conditions<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Privacy Center\" href=\"https://privacy.kfc.co.in/policies\" tabindex=\"0\" target=\"_blank\">Privacy Center<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Disclaimer\" href=\"/about-kfc/disclaimer\" tabindex=\"0\" target=\"\">Disclaimer<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Caution Notice\" href=\"/about-kfc/caution-notice\" tabindex=\"0\" target=\"\">Caution Notice<img alt=\"img\" class=\"hideFooterIcon\"/></a></li></ul></div><div class=\"ul-title\"><span aria-level=\"2\" class=\"header-text-footer\" data-testid=\"footer-header-text\" role=\"heading\">KFC India</span><ul class=\"footer-links\"><li><a class=\"support-links-menu\" data-testid=\"listItems-component-About KFC\" href=\"/about-kfc\" tabindex=\"0\" target=\"\">About KFC<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-KFC Care\" href=\"/about-kfc/kfc-care\" tabindex=\"0\" target=\"\">KFC Care<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Careers\" href=\"/about-kfc/careers\" tabindex=\"0\" target=\"\">Careers<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Our Golden Past\" href=\"/about-kfc/our-golden-past\" tabindex=\"0\" target=\"\">Our Golden Past<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Responsible Disclosure\" href=\"https://bugcrowd.com/a19f4258-c79b-4a4f-a8bc-d924f85d5c53/external/report\" tabindex=\"0\" target=\"_blank\">Responsible Disclosure<img alt=\"img\" class=\"hideFooterIcon\"/></a></li></ul></div><div class=\"ul-title\"><span aria-level=\"2\" class=\"header-text-footer\" data-testid=\"footer-header-text\" role=\"heading\">KFC Food</span><ul class=\"footer-links\"><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Menu\" href=\"/menu\" tabindex=\"0\" target=\"\">Menu</a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Order Lookup\" href=\"/\" tabindex=\"0\" target=\"\">Order Lookup</a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Gift Card\" href=\"/giftcards\" tabindex=\"0\" target=\"\">Gift Card</a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Nutrition &amp; Allergen\" href=\"/about-kfc/nutrition\" tabindex=\"0\" target=\"\">Nutrition &amp; Allergen<img alt=\"img\" class=\"hideFooterIcon\"/></a></li></ul></div><div class=\"ul-title\"><span aria-level=\"2\" class=\"header-text-footer\" data-testid=\"footer-header-text\" role=\"heading\">Support</span><ul class=\"footer-links\"><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Get Help\" href=\"/help\" tabindex=\"0\" target=\"\">Get Help</a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Contact Us\" href=\"/contactus\" tabindex=\"0\" target=\"\">Contact Us</a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-KFC Feedback\" href=\"https://feedback.kfcIndia.co.in\" tabindex=\"0\" target=\"_blank\">KFC Feedback<img alt=\"img\" class=\"hideFooterIcon\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"listItems-component-Privacy Center\" href=\"https://privacy.kfc.co.in/policies\" tabindex=\"0\" target=\"_blank\">Privacy Center<img alt=\"img\" class=\"hideFooterIcon\"/></a></li></ul></div></div><div class=\"category-items row-mobile\"><div class=\"global-accordian-container\" data-testid=\"global-accordian\"><button aria-expanded=\"false\" class=\"global-accordian-header-container\" type=\"button\"><span class=\"global-accordian-header\" data-testid=\"\">Legal</span><img alt=\"\" class=\"global-accordian-arrow\" data-testid=\"acordian-handle-dark\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABOSURBVHgB5YzBEQAQDARTghKUoCOtpFMlKCHO+BmJ8GRn7mFkl+hTRCRiBcvHd3gkrMogb8QOz59qwBStgEtUAuwWlYBfXASYboAY6D0aqFylbGxi/YkAAAAASUVORK5CYII=\"/></button></div><div class=\"global-accordian-container\" data-testid=\"global-accordian\"><button aria-expanded=\"false\" class=\"global-accordian-header-container\" type=\"button\"><span class=\"global-accordian-header\" data-testid=\"\">KFC India</span><img alt=\"\" class=\"global-accordian-arrow\" data-testid=\"acordian-handle-dark\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABOSURBVHgB5YzBEQAQDARTghKUoCOtpFMlKCHO+BmJ8GRn7mFkl+hTRCRiBcvHd3gkrMogb8QOz59qwBStgEtUAuwWlYBfXASYboAY6D0aqFylbGxi/YkAAAAASUVORK5CYII=\"/></button></div><div class=\"global-accordian-container\" data-testid=\"global-accordian\"><button aria-expanded=\"false\" class=\"global-accordian-header-container\" type=\"button\"><span class=\"global-accordian-header\" data-testid=\"\">KFC Food</span><img alt=\"\" class=\"global-accordian-arrow\" data-testid=\"acordian-handle-dark\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABOSURBVHgB5YzBEQAQDARTghKUoCOtpFMlKCHO+BmJ8GRn7mFkl+hTRCRiBcvHd3gkrMogb8QOz59qwBStgEtUAuwWlYBfXASYboAY6D0aqFylbGxi/YkAAAAASUVORK5CYII=\"/></button></div><div class=\"global-accordian-container\" data-testid=\"global-accordian\"><button aria-expanded=\"false\" class=\"global-accordian-header-container\" type=\"button\"><span class=\"global-accordian-header\" data-testid=\"\">Support</span><img alt=\"\" class=\"global-accordian-arrow\" data-testid=\"acordian-handle-dark\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABOSURBVHgB5YzBEQAQDARTghKUoCOtpFMlKCHO+BmJ8GRn7mFkl+hTRCRiBcvHd3gkrMogb8QOz59qwBStgEtUAuwWlYBfXASYboAY6D0aqFylbGxi/YkAAAAASUVORK5CYII=\"/></button></div></div><div class=\"findstore\"><img alt=\"Find Store\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/6qgKpWUOIsrIiazhk3cdmF/d60b4c20be69bab1f939bf33348b67e9/Find_KFC.svg?h=15&amp;w=11&amp;fm=webp&amp;fit=fill\"/><a href=\"https://restaurants.kfc.co.in/\" target=\"_blank\">Find A KFC</a></div><hr class=\"mobile-horizontal\"/><div class=\"download-app-mobile\"><div class=\"download-app\">Download App</div><div class=\"social-btns-aus\" data-testid=\"social-btns\"><a class=\"link\" data-testid=\"footer-app-button\" href=\"https://play.google.com/store/apps/details?id=com.yum.kfc\" target=\"_blank\"><img alt=\"Google Play\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/6BdZsyjLn64c06uCIE73d1/fb530f5d5231533b049463f6c7e8a2b1/google_play.svg?h=90&amp;w=266&amp;fm=webp&amp;fit=fill\"/></a><a class=\"link\" data-testid=\"footer-app-button\" href=\"https://apps.apple.com/in/app/kfc-india/id915824379\" target=\"_blank\"><img alt=\"Apple Store\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/em3mcMuAdXWlgucSJiTbS/d3ae7e51ed101d829e459355e255c47f/apple.svg?h=90&amp;w=266&amp;fm=webp&amp;fit=fill\"/></a></div></div></div><div class=\"row row-two row-twoaus\"><div class=\"column lang-div\"><div class=\"language-selector-container no-border\" data-testid=\"language-selector-container\"></div></div><div class=\"column copyright-mobile non-localized\" data-testid=\"copyright-text-column\"><div class=\"footer-copyLink\"><p class=\"copyright-text\">Copyright \u00a9 KFC Corporation 2026 All rights reserved build pwa-2504-0-9_53cdc423</p></div></div><div class=\"column social-div social-div-mobile\"><ul class=\"social-icons\"><li><a class=\"support-links-menu\" data-testid=\"\" href=\"https://www.instagram.com/kfcindia_official/\" tabindex=\"0\" target=\"_blank\"><img alt=\"Instagram\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/4ZHyPA2EeaoP3aqtNDriBA/463462a9c27b0aa585e12b21ce3766e0/Social_Insta_White.svg?h=60&amp;w=60&amp;fm=webp&amp;fit=fill\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"\" href=\"https://www.facebook.com/KFCIndia\" tabindex=\"0\" target=\"_blank\"><img alt=\"Facebook\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/dKiu2meLcfz2DNwsg7nZw/7194830b1ba6f25b158a23d6b2c4752c/Social_Facebook_White.svg?h=60&amp;w=60&amp;fm=webp&amp;fit=fill\"/></a></li><li><a class=\"support-links-menu\" data-testid=\"\" href=\"https://twitter.com/KFC_India\" tabindex=\"0\" target=\"_blank\"><img alt=\"Twitter\" class=\"\" loading=\"lazy\" src=\"//images.ctfassets.net/wtodlh47qxpt/78z9x0WwdkdXwGVK726EKX/6599ca34ec88e2a6f46d7d94ed85a8ad/Social_Twitter_White.svg?h=60&amp;w=60&amp;fm=webp&amp;fit=fill\"/></a></li></ul></div></div></div></footer>",
+      "web_element": "<selenium.webdriver.remote.webelement.WebElement (session=\"21e8d495caecbb8e69b717f7840c9dea\", element=\"f.38807979B373F94BD40B5756B439DF28.d.7E337DB154E0951259475378264D64FF.e.65\")>",
+      "y_position": 2895,
+      "height": 459,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [
+        "sc-dcJsrY",
+        "bgHdks",
+        "site-footer"
+      ],
+      "id": "",
+      "type": 10,
+      "styles": {
+        "backgroundColor": "rgb(32, 33, 36)",
+        "backgroundImage": "none",
+        "backgroundPosition": "0% 0%",
+        "backgroundRepeat": "repeat",
+        "backgroundSize": "auto",
+        "borderBottomLeftRadius": "0px",
+        "borderBottomRightRadius": "0px",
+        "borderColor": "rgb(255, 255, 255)",
+        "borderRadius": "0px",
+        "borderStyle": "none",
+        "borderTopLeftRadius": "0px",
+        "borderTopRightRadius": "0px",
+        "borderWidth": "0px",
+        "boxShadow": "none",
+        "color": "rgb(255, 255, 255)",
+        "fontFamily": "-apple-system, \"system-ui\", \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "margin": "0px",
+        "marginBottom": "0px",
+        "marginLeft": "0px",
+        "marginRight": "0px",
+        "marginTop": "0px",
+        "padding": "80px 0px 0px",
+        "paddingBottom": "0px",
+        "paddingLeft": "0px",
+        "paddingRight": "0px",
+        "paddingTop": "80px",
+        "textAlign": "left",
+        "textShadow": "none"
+      },
+      "typography": {
+        "title": {
+          "size": 42,
+          "weight": 700,
+          "color": "0.1,0.1,0.1,1.0"
+        },
+        "subtitle": {
+          "size": 20,
+          "weight": 400,
+          "color": "0.3,0.3,0.3,1.0"
+        },
+        "content": {
+          "size": 12,
+          "weight": 400,
+          "color": "0.86,0.86,0.86,1.00"
+        },
+        "button": {
+          "size": 16,
+          "weight": 600,
+          "color": "1.0,1.0,1.0,1.0"
+        }
+      },
+      "layout": {
+        "alignItems": "normal",
+        "columnCount": "auto",
+        "columns": "auto",
+        "display": "block",
+        "flexDirection": "row",
+        "flexWrap": "nowrap",
+        "gap": "normal",
+        "gridAutoFlow": "row",
+        "gridGap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none",
+        "isFlexbox": false,
+        "isGrid": false,
+        "justifyContent": "normal",
+        "position": "static"
+      },
+      "animations": {
+        "animation": "none",
+        "animationDelay": "0s",
+        "animationDuration": "0s",
+        "animationIterationCount": "1",
+        "animationName": "none",
+        "animationTimingFunction": "ease",
+        "backfaceVisibility": "visible",
+        "opacity": "1",
+        "transform": "none",
+        "transition": "all",
+        "transitionDuration": "0s",
+        "transitionProperty": "all",
+        "transitionTimingFunction": "ease",
+        "willChange": "auto"
+      },
+      "design": {
+        "boxShadow": {
+          "enabled": false
+        },
+        "textShadow": {
+          "enabled": false
+        },
+        "borderRadius": 0.0,
+        "gradient": {
+          "enabled": false
+        },
+        "spacing": {
+          "paddingTop": 80,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "marginTop": 0,
+          "marginBottom": 0
+        },
+        "border": {
+          "width": 0,
+          "color": "1.00,1.00,1.00,1.00",
+          "style": "none"
+        }
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Copyright \u00a9 KFC Corporation 2026 All rights reserved build pwa-2504-0-9_53cdc423",
+        "button_text": "",
+        "button_link": ""
+      },
+      "section_image": "scraped_images/imported_online_kfc_co_in_1768043028/img_3.jpg"
+    }
+  ]
+}

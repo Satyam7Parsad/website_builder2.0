@@ -1,0 +1,1271 @@
+{
+  "template_name": "nike_v4_final",
+  "url": "https://nike.com",
+  "scraped_date": "2026-01-13T07:27:49.912173",
+  "sections": [
+    {
+      "index": 0,
+      "type": 2,
+      "y_position": -38.5,
+      "height": 257,
+      "width": 1709.78125,
+      "html_tag": "section",
+      "classes": [
+        "css-1v5wbpr"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(255, 255, 255)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px 0px 0px 12px",
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Featured",
+        "buttons": [
+          {
+            "text": "Women",
+            "href": "https://www.nike.com/in/women"
+          },
+          {
+            "text": "New Arrivals",
+            "href": "https://www.nike.com/in/w/new-womens-3n82yz5e1x6"
+          },
+          {
+            "text": "Bestsellers",
+            "href": "https://www.nike.com/in/w/womens-best-5e1x6z76m50"
+          },
+          {
+            "text": "Shop All Sale",
+            "href": "https://www.nike.com/in/w/womens-sale-3yaepz5e1x6"
+          },
+          {
+            "text": "All Conditions Gear",
+            "href": "https://www.nike.com/sg/w/womens-acg-5e1x6z93bsd"
+          },
+          {
+            "text": "Shoes",
+            "href": "https://www.nike.com/in/w/womens-shoes-5e1x6zy7ok"
+          },
+          {
+            "text": "All Shoes",
+            "href": "https://www.nike.com/in/w/womens-shoes-5e1x6zy7ok"
+          },
+          {
+            "text": "Lifestyle",
+            "href": "https://www.nike.com/in/w/womens-lifestyle-shoes-13jrmz5e1x6zy7ok"
+          },
+          {
+            "text": "Jordan",
+            "href": "https://www.nike.com/in/w/womens-jordan-shoes-37eefz5e1x6zy7ok"
+          },
+          {
+            "text": "Running",
+            "href": "https://www.nike.com/in/w/womens-running-shoes-37v7jz5e1x6zy7ok"
+          },
+          {
+            "text": "Gym & Training",
+            "href": "https://www.nike.com/in/w/womens-training-gym-shoes-58jtoz5e1x6zy7ok"
+          },
+          {
+            "text": "Tennis",
+            "href": "https://www.nike.com/in/w/womens-tennis-shoes-5e1x6zed1qzy7ok"
+          },
+          {
+            "text": "Football",
+            "href": "https://www.nike.com/in/w/womens-football-shoes-1gdj0z5e1x6zy7ok"
+          },
+          {
+            "text": "Basketball",
+            "href": "https://www.nike.com/in/w/womens-basketball-shoes-3glsmz5e1x6zy7ok"
+          },
+          {
+            "text": "Sandals & Slides",
+            "href": "https://www.nike.com/in/w/womens-sandals-slides-5e1x6zfl76"
+          },
+          {
+            "text": "Nike By You",
+            "href": "https://www.nike.com/in/w/womens-nike-by-you-shoes-5e1x6z6ealhzy7ok"
+          },
+          {
+            "text": "Clothing",
+            "href": "https://www.nike.com/in/w/womens-clothing-5e1x6z6ymx6"
+          },
+          {
+            "text": "All Clothing",
+            "href": "https://www.nike.com/in/w/womens-clothing-5e1x6z6ymx6"
+          },
+          {
+            "text": "Performance Essentials",
+            "href": "https://www.nike.com/in/w/womens-back-to-basics-5e1x6zkkjj"
+          },
+          {
+            "text": "Tops & T-Shirts",
+            "href": "https://www.nike.com/in/w/womens-tops-t-shirts-5e1x6z9om13"
+          },
+          {
+            "text": "Sports Bras",
+            "href": "https://www.nike.com/in/w/womens-sports-bras-40qgmz5e1x6"
+          },
+          {
+            "text": "Pants & Leggings",
+            "href": "https://www.nike.com/in/w/womens-trousers-tights-2kq19z5e1x6"
+          },
+          {
+            "text": "Shorts",
+            "href": "https://www.nike.com/in/w/womens-shorts-38fphz5e1x6"
+          },
+          {
+            "text": "Hoodies & Sweatshirts",
+            "href": "https://www.nike.com/in/w/womens-hoodies-sweatshirts-5e1x6z6rive"
+          },
+          {
+            "text": "Jackets & Gilets",
+            "href": "https://www.nike.com/in/w/womens-jackets-gilets-50r7yz5e1x6"
+          },
+          {
+            "text": "Skirts & Dresses",
+            "href": "https://www.nike.com/in/w/womens-skirts-dresses-5e1x6z8y3qp"
+          },
+          {
+            "text": "Modest Wear",
+            "href": "https://www.nike.com/in/w/modest-wear-22fj5"
+          },
+          {
+            "text": "Nike Maternity",
+            "href": "https://www.nike.com/in/w/maternity-fl9s"
+          },
+          {
+            "text": "Plus Size",
+            "href": "https://www.nike.com/in/w/womens-plus-size-clothing-5e1x6z6ymx6z8mjm2"
+          },
+          {
+            "text": "Yoga",
+            "href": "https://www.nike.com/in/w/womens-yoga-5e1x6zanrlj"
+          },
+          {
+            "text": "Running",
+            "href": "https://www.nike.com/in/w/womens-running-37v7jz5e1x6"
+          },
+          {
+            "text": "Gym & Training",
+            "href": "https://www.nike.com/in/w/womens-training-gym-58jtoz5e1x6"
+          },
+          {
+            "text": "Basketball",
+            "href": "https://www.nike.com/in/w/womens-basketball-3glsmz5e1x6"
+          },
+          {
+            "text": "Tennis & Pickleball",
+            "href": "https://www.nike.com/in/w/womens-tennis-5e1x6zed1q"
+          },
+          {
+            "text": "Golf",
+            "href": "https://www.nike.com/in/w/womens-golf-23q9wz5e1x6"
+          },
+          {
+            "text": "Football",
+            "href": "https://www.nike.com/in/w/womens-football-1gdj0z5e1x6"
+          },
+          {
+            "text": "Skateboarding",
+            "href": "https://www.nike.com/in/w/womens-skateboarding-5e1x6z8mfrf"
+          },
+          {
+            "text": "Trail Running",
+            "href": "https://www.nike.com/sg/w/womens-trail-running-5e1x6z75jcn"
+          },
+          {
+            "text": "All Accessories & Equipment",
+            "href": "https://www.nike.com/in/w/womens-accessories-equipment-5e1x6zawwpw"
+          },
+          {
+            "text": "Bags & Backpacks",
+            "href": "https://www.nike.com/in/w/womens-bags-backpacks-5e1x6z9xy71"
+          },
+          {
+            "text": "Socks",
+            "href": "https://www.nike.com/in/w/womens-socks-5e1x6zuwr3"
+          },
+          {
+            "text": "Hats & Headwear",
+            "href": "https://www.nike.com/in/w/womens-hats-visors-headbands-31btsz5e1x6"
+          }
+        ]
+      },
+      "section_image": "scraped_images/nike_v4_final/img_45.jpg"
+    },
+    {
+      "index": 1,
+      "type": 2,
+      "y_position": -2.5,
+      "height": 161,
+      "width": 1025.859375,
+      "html_tag": "div",
+      "classes": [
+        "search-results-link-container"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "10px 0px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Terms & Conditions",
+        "buttons": [
+          {
+            "text": "Terms & Conditions",
+            "href": "https://www.nike.com/in/help/a/import-tax-reduction-terms"
+          }
+        ]
+      },
+      "section_image": "scraped_images/nike_v4_final/img_45.jpg"
+    },
+    {
+      "index": 2,
+      "type": 1,
+      "y_position": 0,
+      "height": 80,
+      "width": 1920,
+      "html_tag": "nav",
+      "classes": [
+        "no-peekaboo",
+        "pre-l-header-container",
+        "css-gyxam0"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "10px 0px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Terms & Conditions",
+        "buttons": [
+          {
+            "text": "Terms & Conditions",
+            "href": "https://www.nike.com/in/help/a/import-tax-reduction-terms"
+          }
+        ]
+      },
+      "section_image": "scraped_images/nike_v4_final/img_45.jpg"
+    },
+    {
+      "index": 3,
+      "type": 2,
+      "y_position": 36,
+      "height": 60,
+      "width": 1920,
+      "html_tag": "header",
+      "classes": [
+        "no-animation",
+        "css-gpek3"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "10px 0px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Terms & Conditions",
+        "buttons": [
+          {
+            "text": "Terms & Conditions",
+            "href": "https://www.nike.com/in/help/a/import-tax-reduction-terms"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "type": 3,
+      "y_position": 36,
+      "height": 60,
+      "width": 1920,
+      "html_tag": "nav",
+      "classes": [
+        "css-1q2uc33"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgb(245, 245, 245)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "10px 0px 0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "Terms & Conditions",
+        "buttons": [
+          {
+            "text": "Terms & Conditions",
+            "href": "https://www.nike.com/in/help/a/import-tax-reduction-terms"
+          }
+        ]
+      },
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 5,
+      "type": 2,
+      "y_position": 96,
+      "height": 5372.234375,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "buttons": []
+      },
+      "section_image": "scraped_images/nike_v4_final/img_27.png"
+    },
+    {
+      "index": 6,
+      "type": 2,
+      "y_position": 154,
+      "height": 700,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "media-container",
+        "video-container",
+        "_1wb60pkS",
+        "o9oV_gDe",
+        "_1LwWWc1t",
+        "css-3c0ugi"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "buttons": []
+      },
+      "section_image": "scraped_images/nike_v4_final/img_27.png"
+    },
+    {
+      "index": 7,
+      "type": 2,
+      "y_position": 154,
+      "height": 700,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_12NrIYxy",
+        "_1J1k7Sv3",
+        "media-container",
+        "_3gD-bTqH",
+        "_2TUCh3j2",
+        "css-1vtctwq"
+      ],
+      "id": "",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "buttons": []
+      },
+      "section_image": "scraped_images/nike_v4_final/img_27.png"
+    },
+    {
+      "index": 8,
+      "type": 2,
+      "y_position": 154,
+      "height": 700,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "video-js",
+        "rvp-video",
+        "ambient",
+        "vjs-fluid",
+        "vjs_video_4290-dimensions",
+        "vjs-controls-disabled",
+        "vjs-workinghover",
+        "vjs-v7",
+        "vjs-has-started",
+        "vjs-poster-inactive",
+        "fullControls",
+        "vjs-user-inactive",
+        "vjs-paused"
+      ],
+      "id": "vjs_video_4290",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "buttons": []
+      },
+      "section_image": "scraped_images/nike_v4_final/img_27.png"
+    },
+    {
+      "index": 9,
+      "type": 3,
+      "y_position": 938,
+      "height": 1077.703125,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "grid",
+        "Z25uR9U5",
+        "fluid",
+        "ncss-container",
+        "css-1tcadld",
+        "css-1wf7v22"
+      ],
+      "id": "f947410a-8ed8-418d-a4c8-b9e8f2e733c4",
+      "styles": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(17, 17, 17)",
+        "padding": "0px",
+        "display": "block",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gap": "normal",
+        "gridTemplateColumns": "none",
+        "gridTemplateRows": "none"
+      },
+      "content": {
+        "title": "",
+        "subtitle": "",
+        "content": "",
+        "buttons": []
+      },
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_16.png"
+    },
+    {
+      "index": 10,
+      "type": 2,
+      "y_position": 1000.390625,
+      "height": 1015.3125,
+      "width": 966,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_12NrIYxy",
+        "_1J1k7Sv3",
+        "media-container",
+        "_3gD-bTqH",
+        "_2TUCh3j2",
+        "css-a20e20"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_16.png"
+    },
+    {
+      "index": 11,
+      "type": 2,
+      "y_position": 1000.390625,
+      "height": 1015.3125,
+      "width": 966,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_12NrIYxy",
+        "_1J1k7Sv3",
+        "media-container",
+        "_3gD-bTqH",
+        "_2TUCh3j2",
+        "css-a20e20"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_16.png"
+    },
+    {
+      "index": 12,
+      "type": 3,
+      "y_position": 2015.703125,
+      "height": 1009,
+      "width": 1920,
+      "html_tag": "div",
+      "classes": [
+        "grid",
+        "Z25uR9U5",
+        "fluid",
+        "ncss-container",
+        "css-17qcvnv",
+        "css-1vtn5w7"
+      ],
+      "id": "c478a487-0dcb-45a4-823b-f249dd18a2e5",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_37.png"
+    },
+    {
+      "index": 13,
+      "type": 2,
+      "y_position": 2015.703125,
+      "height": 1009,
+      "width": 960,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_12NrIYxy",
+        "_1J1k7Sv3",
+        "media-container",
+        "_3gD-bTqH",
+        "_2TUCh3j2",
+        "css-a20e20"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_37.png"
+    },
+    {
+      "index": 14,
+      "type": 2,
+      "y_position": 2015.703125,
+      "height": 1009,
+      "width": 960,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_12NrIYxy",
+        "_1J1k7Sv3",
+        "media-container",
+        "_3gD-bTqH",
+        "_2TUCh3j2",
+        "css-a20e20"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_37.png"
+    },
+    {
+      "index": 15,
+      "type": 3,
+      "y_position": 3108.703125,
+      "height": 766.375,
+      "width": 1872,
+      "html_tag": "section",
+      "classes": [
+        "nds-carousel",
+        "_37j5pXS8",
+        "navigation-mode-buttonAbove",
+        "css-p68jm2",
+        "e1qnw47h0"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 16,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 17,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 18,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 19,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 20,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 21,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 22,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 23,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 24,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 25,
+      "type": 2,
+      "y_position": 3183.09375,
+      "height": 599.984375,
+      "width": 599.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "product-slide-img",
+        "_1Tmlp2Sd",
+        "_1J1k7Sv3",
+        "media-container",
+        "css-1kftzx4"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_6.png"
+    },
+    {
+      "index": 26,
+      "type": 3,
+      "y_position": 3959.078125,
+      "height": 866.765625,
+      "width": 1824,
+      "html_tag": "section",
+      "classes": [
+        "nds-carousel",
+        "_37j5pXS8",
+        "card",
+        "navigation-mode-buttonAbove",
+        "grid-aligned",
+        "grid-aligned-3",
+        "css-sjc58a",
+        "e1qnw47h0"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 27,
+      "type": 3,
+      "y_position": 3959.078125,
+      "height": 866.765625,
+      "width": 1824,
+      "html_tag": "div",
+      "classes": [
+        "grid",
+        "Z25uR9U5",
+        "fixed-fluid",
+        "ncss-container",
+        "css-1tcadld",
+        "css-1wf7v22"
+      ],
+      "id": "9a803d24-74ea-4131-8b56-760a313e9665",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 28,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 29,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 30,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 31,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 32,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 33,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 34,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 35,
+      "type": 2,
+      "y_position": 4021.078125,
+      "height": 709.96875,
+      "width": 567.984375,
+      "html_tag": "div",
+      "classes": [
+        "WetubkUi",
+        "_3-GXPD9b",
+        "_1J1k7Sv3",
+        "media-container",
+        "_2-o_f_Wg",
+        "_2TUCh3j2",
+        "css-nqmkkv"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {},
+      "section_image": "scraped_images/nike_v4_final/img_24.png"
+    },
+    {
+      "index": 36,
+      "type": 3,
+      "y_position": 4909.84375,
+      "height": 118.390625,
+      "width": 1824,
+      "html_tag": "div",
+      "classes": [
+        "grid",
+        "Z25uR9U5",
+        "fixed-fluid",
+        "ncss-container",
+        "css-1tcadld",
+        "css-1wf7v22"
+      ],
+      "id": "8dbf9b64-3364-4869-a698-b80b8cacf63f",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8
+    },
+    {
+      "index": 37,
+      "type": 3,
+      "y_position": 5112.234375,
+      "height": 356,
+      "width": 1824,
+      "html_tag": "div",
+      "classes": [
+        "grid",
+        "Z25uR9U5",
+        "fixed-fluid",
+        "I6h42sZM",
+        "ncss-container",
+        "_2IK2ad9n",
+        "css-1tcadld",
+        "css-1wf7v22"
+      ],
+      "id": "8ef5ecd3-ba9c-4c40-8cae-4c10131b3765",
+      "styles": {},
+      "content": {},
+      "card_spacing": 40,
+      "card_width": 800,
+      "card_height": 1000,
+      "border_radius": 8,
+      "section_image": "scraped_images/nike_v4_final/img_34.png"
+    },
+    {
+      "index": 38,
+      "type": 10,
+      "y_position": 5524.234375,
+      "height": 577,
+      "width": 1920,
+      "html_tag": "footer",
+      "classes": [
+        "false",
+        "css-1vxx61x"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {}
+    },
+    {
+      "index": 39,
+      "type": 2,
+      "y_position": 5567.234375,
+      "height": 429,
+      "width": 200,
+      "html_tag": "div",
+      "classes": [
+        "link-container",
+        "css-w3vz3o"
+      ],
+      "id": "",
+      "styles": {},
+      "content": {}
+    }
+  ],
+  "responsive_layouts": {
+    "mobile": {
+      "width": 375,
+      "height": 812,
+      "sections": [
+        {
+          "visible": true,
+          "display": "grid"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    },
+    "tablet": {
+      "width": 768,
+      "height": 1024,
+      "sections": [
+        {
+          "visible": true,
+          "display": "grid"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    },
+    "desktop": {
+      "width": 1920,
+      "height": 1080,
+      "sections": [
+        {
+          "visible": true,
+          "display": "grid"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        },
+        {
+          "visible": true,
+          "display": "block"
+        }
+      ]
+    }
+  },
+  "typography_system": {
+    "fonts": [
+      "\"Helvetica Now Display Medium\", Helvetica, Arial, sans-serif",
+      "\"Nike Futura ND\", \"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif",
+      "\"Helvetica Now Text Medium\", Helvetica, Arial, sans-serif",
+      "\"Neue Frutiger Arabic\"",
+      "\"Helvetica Now Text\", Helvetica, Arial, sans-serif",
+      "\"Helvetica Neue\", Helvetica, Arial, sans-serif",
+      "Arial"
+    ],
+    "sizes": {
+      "h1": 32,
+      "h2": 33,
+      "h3": 32,
+      "h4": 23,
+      "h5": 16,
+      "p": 13,
+      "button": 16,
+      "a": 16
+    },
+    "weights": [
+      400,
+      500,
+      700
+    ]
+  },
+  "grid_system": {
+    "baseUnit": 16,
+    "spacingScale": [
+      16,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "commonSpacings": [
+      30
+    ],
+    "gridColumns": "0px 180px 0px"
+  }
+}
