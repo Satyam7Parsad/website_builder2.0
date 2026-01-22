@@ -1475,9 +1475,9 @@ struct FigmaProject {
         next_layer_id(1),
         scroll_x(0), scroll_y(0), zoom(0.5f),
         multi_select(false),
-        show_grid(true), grid_size(10), snap_to_grid(true),
+        show_grid(false), grid_size(10), snap_to_grid(true),
         show_guides(false),
-        show_reference(true), reference_opacity(1.0f) {}
+        show_reference(false), reference_opacity(1.0f) {}
 };
 
 // ============================================================================
@@ -1510,7 +1510,9 @@ static int g_URLImportTimeout = 300; // Timeout in seconds (default 5 minutes)
 static bool g_URLImportUseStealth = false; // Use Stealth Browser MCP for anti-bot bypass
 
 // Local Download Import state
-static int g_ImportMethod = 0; // 0 = Live Scrape, 1 = Local Download, 2 = Figma-style
+static int g_ImportMethod = 0; // 0 = Live Scrape, 1 = Local Download, 2 = Figma-style, 3 = Figma Design (API)
+static char g_FigmaAPIToken[256] = "";  // Figma API token
+static char g_FigmaFileURL[512] = "";   // Figma file URL or key
 static std::string g_DownloadedSitePath = "";
 static bool g_DownloadComplete = false;
 
@@ -2828,6 +2830,26 @@ bool LoadTemplate(const std::string& filepath) {
                         layer.font_size = PQgetisnull(result, i, 8) ? 16 : atof(PQgetvalue(result, i, 8));
                         layer.opacity = PQgetisnull(result, i, 9) ? 1.0f : atof(PQgetvalue(result, i, 9));
                         layer.image_path = PQgetisnull(result, i, 10) ? "" : PQgetvalue(result, i, 10);
+
+                        // Parse bg_color and text_color from rgba strings
+                        std::string bgColorStr = PQgetisnull(result, i, 11) ? "" : PQgetvalue(result, i, 11);
+                        std::string textColorStr = PQgetisnull(result, i, 12) ? "" : PQgetvalue(result, i, 12);
+
+                        // Parse rgba(r,g,b,a) format
+                        auto parseRGBA = [](const std::string& str) -> ImVec4 {
+                            if (str.find("rgba(") == 0) {
+                                int r = 0, g = 0, b = 0;
+                                float a = 1.0f;
+                                if (sscanf(str.c_str(), "rgba(%d,%d,%d,%f)", &r, &g, &b, &a) >= 3) {
+                                    return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, a);
+                                }
+                            }
+                            return ImVec4(0.5f, 0.5f, 0.5f, 1.0f); // Default gray
+                        };
+
+                        layer.bg_color = parseRGBA(bgColorStr);
+                        layer.text_color = parseRGBA(textColorStr);
+                        layer.visible = true;
 
                         // Load image texture if exists
                         if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
@@ -5039,8 +5061,9 @@ void RenderFigmaCanvas() {
             // Draw layer based on type
             ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
 
-            // Background
-            if (layer.bg_color.w > 0.01f) {
+            // Background - only render for DIV, BUTTON, INPUT, IMAGE (not TEXT)
+            // TEXT layers in Figma don't have visible backgrounds
+            if (layer.bg_color.w > 0.01f && layer.type != LAYER_TEXT) {
                 if (layer.border_radius > 0) {
                     drawList->AddRectFilled(p1, p2, bgCol, layer.border_radius * zoom);
                 } else {
@@ -8264,10 +8287,34 @@ void ExportFigmaToImGui() {
     cpp << "#include \"imgui/imgui_impl_opengl3.h\"\n";
     cpp << "#include <GLFW/glfw3.h>\n";
     cpp << "#include <cstdio>\n";
-    cpp << "#include <cmath>\n\n";
+    cpp << "#include <cmath>\n";
+    cpp << "#include <map>\n";
+    cpp << "#include <string>\n\n";
 
     cpp << "#define STB_IMAGE_IMPLEMENTATION\n";
     cpp << "#include \"stb_image.h\"\n\n";
+
+    // Add font management
+    cpp << "// ============================================================================\n";
+    cpp << "// FONT MANAGEMENT - Multiple sizes for accuracy\n";
+    cpp << "// ============================================================================\n";
+    cpp << "std::map<int, ImFont*> g_Fonts; // fontSize -> font pointer\n";
+    cpp << "ImFont* g_DefaultFont = nullptr;\n\n";
+
+    cpp << "ImFont* GetFontForSize(int size) {\n";
+    cpp << "    // Find closest available font size\n";
+    cpp << "    if (g_Fonts.empty()) return g_DefaultFont;\n";
+    cpp << "    int closest = 16;\n";
+    cpp << "    int minDiff = 9999;\n";
+    cpp << "    for (auto& kv : g_Fonts) {\n";
+    cpp << "        int diff = abs(kv.first - size);\n";
+    cpp << "        if (diff < minDiff) {\n";
+    cpp << "            minDiff = diff;\n";
+    cpp << "            closest = kv.first;\n";
+    cpp << "        }\n";
+    cpp << "    }\n";
+    cpp << "    return g_Fonts[closest];\n";
+    cpp << "}\n\n";
 
     cpp << "// ============================================================================\n";
     cpp << "// TEXTURE LOADING\n";
@@ -8410,18 +8457,36 @@ void ExportFigmaToImGui() {
                     pos += 2;
                 }
 
+                int fontSize = (int)layer.font_size;
+                if (fontSize < 8) fontSize = 16; // default
+
                 ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
-                cpp << "            dl->AddText(p1, IM_COL32("
-                    << (int)((textCol >> 0) & 0xFF) << ", "
-                    << (int)((textCol >> 8) & 0xFF) << ", "
-                    << (int)((textCol >> 16) & 0xFF) << ", "
-                    << (int)((textCol >> 24) & 0xFF) << "), \"" << escapedText << "\");\n";
+                int r = (int)((textCol >> 0) & 0xFF);
+                int g = (int)((textCol >> 8) & 0xFF);
+                int b = (int)((textCol >> 16) & 0xFF);
+                int a = (int)((textCol >> 24) & 0xFF);
+
+                cpp << "            // Text with font size " << fontSize << "\n";
+                cpp << "            {\n";
+                cpp << "                ImFont* font = GetFontForSize(" << fontSize << ");\n";
+                cpp << "                if (font) ImGui::PushFont(font);\n";
+                cpp << "                const char* text = \"" << escapedText << "\";\n";
+                cpp << "                ImVec2 textSize = ImGui::CalcTextSize(text);\n";
+                cpp << "                // Draw text with wrapping if needed\n";
+                cpp << "                if (textSize.x > w && w > 50) {\n";
+                cpp << "                    dl->AddText(font, " << fontSize << ".0f, p1, IM_COL32(" << r << ", " << g << ", " << b << ", " << a << "), text, nullptr, w);\n";
+                cpp << "                } else {\n";
+                cpp << "                    dl->AddText(p1, IM_COL32(" << r << ", " << g << ", " << b << ", " << a << "), text);\n";
+                cpp << "                }\n";
+                cpp << "                if (font) ImGui::PopFont();\n";
+                cpp << "            }\n";
                 break;
             }
 
             case LAYER_BUTTON: {
                 ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
                 ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
+                ImU32 borderCol = ImGui::ColorConvertFloat4ToU32(layer.border_color);
 
                 std::string escapedText = layer.text;
                 size_t pos = 0;
@@ -8430,32 +8495,113 @@ void ExportFigmaToImGui() {
                     pos += 2;
                 }
 
-                cpp << "            // Button background\n";
-                cpp << "            dl->AddRectFilled(p1, p2, IM_COL32("
-                    << (int)((bgCol >> 0) & 0xFF) << ", "
-                    << (int)((bgCol >> 8) & 0xFF) << ", "
-                    << (int)((bgCol >> 16) & 0xFF) << ", "
-                    << (int)((bgCol >> 24) & 0xFF) << "), " << layer.border_radius << ".0f);\n";
-                cpp << "            // Button text (centered)\n";
-                cpp << "            ImVec2 textSize = ImGui::CalcTextSize(\"" << escapedText << "\");\n";
-                cpp << "            ImVec2 textPos(x + (w - textSize.x) / 2, y + (h - textSize.y) / 2);\n";
-                cpp << "            dl->AddText(textPos, IM_COL32("
-                    << (int)((textCol >> 0) & 0xFF) << ", "
-                    << (int)((textCol >> 8) & 0xFF) << ", "
-                    << (int)((textCol >> 16) & 0xFF) << ", "
-                    << (int)((textCol >> 24) & 0xFF) << "), \"" << escapedText << "\");\n";
+                int fontSize = (int)layer.font_size;
+                if (fontSize < 8) fontSize = 14; // default for buttons
+
+                int bgR = (int)((bgCol >> 0) & 0xFF);
+                int bgG = (int)((bgCol >> 8) & 0xFF);
+                int bgB = (int)((bgCol >> 16) & 0xFF);
+                int bgA = (int)((bgCol >> 24) & 0xFF);
+
+                int txtR = (int)((textCol >> 0) & 0xFF);
+                int txtG = (int)((textCol >> 8) & 0xFF);
+                int txtB = (int)((textCol >> 16) & 0xFF);
+                int txtA = (int)((textCol >> 24) & 0xFF);
+
+                int brdR = (int)((borderCol >> 0) & 0xFF);
+                int brdG = (int)((borderCol >> 8) & 0xFF);
+                int brdB = (int)((borderCol >> 16) & 0xFF);
+                int brdA = (int)((borderCol >> 24) & 0xFF);
+
+                cpp << "            // Button with font size " << fontSize << "\n";
+                cpp << "            {\n";
+                cpp << "                // Background\n";
+                cpp << "                dl->AddRectFilled(p1, p2, IM_COL32(" << bgR << ", " << bgG << ", " << bgB << ", " << bgA << "), " << layer.border_radius << ".0f);\n";
+
+                // Add border if visible
+                if (layer.border_color.w > 0.01f) {
+                    cpp << "                // Border\n";
+                    cpp << "                dl->AddRect(p1, p2, IM_COL32(" << brdR << ", " << brdG << ", " << brdB << ", " << brdA << "), " << layer.border_radius << ".0f, 0, " << layer.border_width << ".0f);\n";
+                }
+
+                cpp << "                // Centered text\n";
+                cpp << "                ImFont* font = GetFontForSize(" << fontSize << ");\n";
+                cpp << "                if (font) ImGui::PushFont(font);\n";
+                cpp << "                const char* btnText = \"" << escapedText << "\";\n";
+                cpp << "                ImVec2 textSize = ImGui::CalcTextSize(btnText);\n";
+                cpp << "                ImVec2 textPos(x + (w - textSize.x) / 2.0f, y + (h - textSize.y) / 2.0f);\n";
+                cpp << "                dl->AddText(textPos, IM_COL32(" << txtR << ", " << txtG << ", " << txtB << ", " << txtA << "), btnText);\n";
+                cpp << "                if (font) ImGui::PopFont();\n";
+                cpp << "            }\n";
+                break;
+            }
+
+            case LAYER_INPUT: {
+                // Render input field
+                ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
+                ImU32 borderCol = ImGui::ColorConvertFloat4ToU32(layer.border_color);
+                ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
+
+                int bgR = (int)((bgCol >> 0) & 0xFF);
+                int bgG = (int)((bgCol >> 8) & 0xFF);
+                int bgB = (int)((bgCol >> 16) & 0xFF);
+                int bgA = (int)((bgCol >> 24) & 0xFF);
+                if (bgA < 10) { bgR = 255; bgG = 255; bgB = 255; bgA = 255; } // default white bg
+
+                int brdR = (int)((borderCol >> 0) & 0xFF);
+                int brdG = (int)((borderCol >> 8) & 0xFF);
+                int brdB = (int)((borderCol >> 16) & 0xFF);
+                int brdA = (int)((borderCol >> 24) & 0xFF);
+                if (brdA < 10) { brdR = 180; brdG = 180; brdB = 180; brdA = 255; } // default gray border
+
+                int txtR = (int)((textCol >> 0) & 0xFF);
+                int txtG = (int)((textCol >> 8) & 0xFF);
+                int txtB = (int)((textCol >> 16) & 0xFF);
+                int txtA = (int)((textCol >> 24) & 0xFF);
+
+                std::string placeholder = layer.text.empty() ? "Enter text..." : layer.text;
+                // Escape
+                size_t pos = 0;
+                while ((pos = placeholder.find("\"", pos)) != std::string::npos) {
+                    placeholder.replace(pos, 1, "\\\"");
+                    pos += 2;
+                }
+
+                cpp << "            // Input field\n";
+                cpp << "            {\n";
+                cpp << "                // Background\n";
+                cpp << "                dl->AddRectFilled(p1, p2, IM_COL32(" << bgR << ", " << bgG << ", " << bgB << ", " << bgA << "), " << layer.border_radius << ".0f);\n";
+                cpp << "                // Border\n";
+                cpp << "                dl->AddRect(p1, p2, IM_COL32(" << brdR << ", " << brdG << ", " << brdB << ", " << brdA << "), " << layer.border_radius << ".0f, 0, 1.0f);\n";
+                cpp << "                // Placeholder text\n";
+                cpp << "                ImVec2 textPos(x + 10.0f, y + (h - 16.0f) / 2.0f);\n";
+                cpp << "                dl->AddText(textPos, IM_COL32(" << txtR << ", " << txtG << ", " << txtB << ", 128), \"" << placeholder << "\");\n";
+                cpp << "            }\n";
                 break;
             }
 
             case LAYER_DIV:
             default: {
+                ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
+                ImU32 borderCol = ImGui::ColorConvertFloat4ToU32(layer.border_color);
+
+                int bgR = (int)((bgCol >> 0) & 0xFF);
+                int bgG = (int)((bgCol >> 8) & 0xFF);
+                int bgB = (int)((bgCol >> 16) & 0xFF);
+                int bgA = (int)((bgCol >> 24) & 0xFF);
+
+                int brdR = (int)((borderCol >> 0) & 0xFF);
+                int brdG = (int)((borderCol >> 8) & 0xFF);
+                int brdB = (int)((borderCol >> 16) & 0xFF);
+                int brdA = (int)((borderCol >> 24) & 0xFF);
+
                 if (layer.bg_color.w > 0.01f) {
-                    ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
-                    cpp << "            dl->AddRectFilled(p1, p2, IM_COL32("
-                        << (int)((bgCol >> 0) & 0xFF) << ", "
-                        << (int)((bgCol >> 8) & 0xFF) << ", "
-                        << (int)((bgCol >> 16) & 0xFF) << ", "
-                        << (int)((bgCol >> 24) & 0xFF) << "), " << layer.border_radius << ".0f);\n";
+                    cpp << "            // DIV background\n";
+                    cpp << "            dl->AddRectFilled(p1, p2, IM_COL32(" << bgR << ", " << bgG << ", " << bgB << ", " << bgA << "), " << layer.border_radius << ".0f);\n";
+                }
+                if (layer.border_color.w > 0.01f && layer.border_width > 0) {
+                    cpp << "            // DIV border\n";
+                    cpp << "            dl->AddRect(p1, p2, IM_COL32(" << brdR << ", " << brdG << ", " << brdB << ", " << brdA << "), " << layer.border_radius << ".0f, 0, " << layer.border_width << ".0f);\n";
                 }
                 break;
             }
@@ -8502,6 +8648,17 @@ void ExportFigmaToImGui() {
     cpp << "    ImGui::CreateContext();\n";
     cpp << "    ImGuiIO& io = ImGui::GetIO();\n";
     cpp << "    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;\n\n";
+
+    cpp << "    // Load fonts at key sizes for accuracy\n";
+    cpp << "    g_DefaultFont = io.Fonts->AddFontDefault();\n";
+    cpp << "    g_Fonts[13] = g_DefaultFont; // Default size\n";
+    cpp << "    // Add a few key font sizes\n";
+    cpp << "    ImFontConfig config;\n";
+    cpp << "    config.SizePixels = 16.0f; g_Fonts[16] = io.Fonts->AddFontDefault(&config);\n";
+    cpp << "    config.SizePixels = 20.0f; g_Fonts[20] = io.Fonts->AddFontDefault(&config);\n";
+    cpp << "    config.SizePixels = 24.0f; g_Fonts[24] = io.Fonts->AddFontDefault(&config);\n";
+    cpp << "    config.SizePixels = 32.0f; g_Fonts[32] = io.Fonts->AddFontDefault(&config);\n";
+    cpp << "    config.SizePixels = 48.0f; g_Fonts[48] = io.Fonts->AddFontDefault(&config);\n\n";
 
     cpp << "    // Setup Platform/Renderer backends\n";
     cpp << "    ImGui_ImplGlfw_InitForOpenGL(window, true);\n";
@@ -12826,11 +12983,12 @@ void RenderUI() {
         bool isLiveScrape = (g_ImportMethod == 0);
         bool isLocalDownload = (g_ImportMethod == 1);
         bool isFigmaStyle = (g_ImportMethod == 2);
+        bool isFigmaDesign = (g_ImportMethod == 3);
 
         if (isLiveScrape) {
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1.0f));
         }
-        if (ImGui::Button("Live Scrape", ImVec2(100, 28))) {
+        if (ImGui::Button("Live Scrape", ImVec2(90, 28))) {
             g_ImportMethod = 0;
         }
         if (isLiveScrape) {
@@ -12842,7 +13000,7 @@ void RenderUI() {
         if (isLocalDownload) {
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
         }
-        if (ImGui::Button("Local Download", ImVec2(100, 28))) {
+        if (ImGui::Button("Local Download", ImVec2(95, 28))) {
             g_ImportMethod = 1;
         }
         if (isLocalDownload) {
@@ -12854,10 +13012,22 @@ void RenderUI() {
         if (isFigmaStyle) {
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.3f, 0.6f, 1.0f));
         }
-        if (ImGui::Button("Figma-Style", ImVec2(100, 28))) {
+        if (ImGui::Button("Figma-Style", ImVec2(85, 28))) {
             g_ImportMethod = 2;
         }
         if (isFigmaStyle) {
+            ImGui::PopStyleColor();
+        }
+
+        ImGui::SameLine();
+
+        if (isFigmaDesign) {
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.3f, 0.9f, 1.0f));
+        }
+        if (ImGui::Button("Figma Design", ImVec2(90, 28))) {
+            g_ImportMethod = 3;
+        }
+        if (isFigmaDesign) {
             ImGui::PopStyleColor();
         }
 
@@ -12865,9 +13035,61 @@ void RenderUI() {
         ImGui::Separator();
         ImGui::Spacing();
 
-        ImGui::Text("Enter URL:");
-        ImGui::SetNextItemWidth(-1);
-        ImGui::InputText("##URLInput", g_URLImportBuffer, sizeof(g_URLImportBuffer));
+        // Different input for Figma Design vs others
+        if (g_ImportMethod == 3) {
+            // FIGMA DESIGN - Show API Token and File URL
+            ImGui::TextColored(ImVec4(0.7f, 0.4f, 1.0f, 1), "Figma Design Import (Direct API)");
+            ImGui::Indent(10);
+            ImGui::TextColored(ImVec4(0.6f, 0.6f, 0.6f, 1), "Import designs directly from your Figma account");
+            ImGui::Unindent(10);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // API Token
+            ImGui::Text("Figma API Token:");
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "(Settings > Account > Personal Access Tokens)");
+            ImGui::SetNextItemWidth(-1);
+            ImGui::InputText("##FigmaAPIToken", g_FigmaAPIToken, sizeof(g_FigmaAPIToken), ImGuiInputTextFlags_Password);
+
+            ImGui::Spacing();
+
+            // File URL
+            ImGui::Text("Figma File URL or Key:");
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "(e.g., figma.com/file/ABC123/...)");
+            ImGui::SetNextItemWidth(-1);
+            ImGui::InputText("##FigmaFileURL", g_FigmaFileURL, sizeof(g_FigmaFileURL));
+
+            ImGui::Spacing();
+
+            // Help section
+            ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.3f, 1), "How to get your API Token:");
+            ImGui::Indent(15);
+            ImGui::BulletText("Go to Figma.com > Settings > Account");
+            ImGui::BulletText("Scroll to 'Personal Access Tokens'");
+            ImGui::BulletText("Click 'Create new token'");
+            ImGui::BulletText("Copy and paste the token above");
+            ImGui::Unindent(15);
+
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.3f, 1), "What gets imported:");
+            ImGui::Indent(15);
+            ImGui::BulletText("All frames and components");
+            ImGui::BulletText("Text layers with fonts & colors");
+            ImGui::BulletText("Shapes with fills & strokes");
+            ImGui::BulletText("Images (rendered from Figma)");
+            ImGui::Unindent(15);
+
+        } else {
+            // Standard URL input for other methods
+            ImGui::Text("Enter URL:");
+            ImGui::SetNextItemWidth(-1);
+            ImGui::InputText("##URLInput", g_URLImportBuffer, sizeof(g_URLImportBuffer));
+        }
 
         ImGui::Spacing();
 
@@ -12971,7 +13193,14 @@ void RenderUI() {
         ImGui::Separator();
         ImGui::Spacing();
 
-        bool can_import = strlen(g_URLImportBuffer) > 10 && !g_URLImportInProgress && !g_FigmaImportInProgress;
+        // Different validation for Figma Design vs others
+        bool can_import = false;
+        if (g_ImportMethod == 3) {
+            // Figma Design: need API token and file URL
+            can_import = strlen(g_FigmaAPIToken) > 10 && strlen(g_FigmaFileURL) > 5 && !g_URLImportInProgress && !g_FigmaImportInProgress;
+        } else {
+            can_import = strlen(g_URLImportBuffer) > 10 && !g_URLImportInProgress && !g_FigmaImportInProgress;
+        }
 
         if (!can_import) {
             ImGui::PushStyleVar(ImGuiStyleVar_Alpha, 0.5f);
@@ -12982,6 +13211,7 @@ void RenderUI() {
         if (g_ImportMethod == 0) importBtnText = "Import (Live)";
         else if (g_ImportMethod == 1) importBtnText = "Import (Download)";
         else if (g_ImportMethod == 2) importBtnText = "Import (Figma)";
+        else if (g_ImportMethod == 3) importBtnText = "Import from Figma";
 
         if (ImGui::Button(importBtnText, ImVec2(150, 35)) && can_import) {
             if (g_ImportMethod == 0) {
@@ -12995,11 +13225,205 @@ void RenderUI() {
                 bool success = ImportFromLocalDownload(std::string(g_URLImportBuffer));
                 g_URLImportInProgress = false;
             } else if (g_ImportMethod == 2) {
-                // Figma-style
+                // Figma-style (from URL)
                 bool success = ImportFigmaLayers(std::string(g_URLImportBuffer));
                 if (success) {
                     g_ShowURLImportDialog = false;  // Close dialog on success
                 }
+            } else if (g_ImportMethod == 3) {
+                // Figma Design (from Figma API)
+                g_FigmaImportInProgress = true;
+                g_FigmaImportStatus = "Connecting to Figma API...";
+
+                // Build command to run Python script
+                std::string outputDir = "/tmp/figma_import";
+                system(("mkdir -p \"" + outputDir + "\"").c_str());
+                system(("rm -rf \"" + outputDir + "\"/*").c_str());
+
+                std::string cmd = "cd /Users/imaging/Desktop/Website-Builder-v2.0 && "
+                                  "source playwright_env/bin/activate && "
+                                  "python3 figma_api_import.py \"" + std::string(g_FigmaAPIToken) + "\" "
+                                  "\"" + std::string(g_FigmaFileURL) + "\" \"" + outputDir + "\" 2>&1";
+
+                printf("[FigmaDesign] Running: %s\n", cmd.c_str());
+
+                FILE* pipe = popen(cmd.c_str(), "r");
+                if (pipe) {
+                    char buffer[256];
+                    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+                        printf("%s", buffer);
+                        std::string line(buffer);
+                        if (line.find("Error") != std::string::npos || line.find("error") != std::string::npos) {
+                            g_FigmaImportStatus = "Error: " + line;
+                        } else if (line.find("COMPLETE") != std::string::npos) {
+                            g_FigmaImportStatus = "Import complete!";
+                        }
+                    }
+                    int result = pclose(pipe);
+
+                    // Now load the layers.json just like ImportFigmaLayers does
+                    std::string jsonPath = outputDir + "/layers.json";
+                    FILE* jsonFile = fopen(jsonPath.c_str(), "r");
+                    if (jsonFile) {
+                        // Read JSON file
+                        fseek(jsonFile, 0, SEEK_END);
+                        long fileSize = ftell(jsonFile);
+                        fseek(jsonFile, 0, SEEK_SET);
+                        std::string jsonContent(fileSize, '\0');
+                        fread(&jsonContent[0], 1, fileSize, jsonFile);
+                        fclose(jsonFile);
+
+                        // Parse and load (reuse existing parsing logic)
+                        g_FigmaProject = FigmaProject(); // Reset
+
+                        // Parse project name
+                        size_t namePos = jsonContent.find("\"name\":");
+                        if (namePos != std::string::npos) {
+                            size_t start = jsonContent.find("\"", namePos + 7) + 1;
+                            size_t end = jsonContent.find("\"", start);
+                            g_FigmaProject.name = jsonContent.substr(start, end - start);
+                        }
+
+                        // Parse canvas dimensions
+                        size_t widthPos = jsonContent.find("\"canvas_width\":");
+                        if (widthPos != std::string::npos) {
+                            g_FigmaProject.canvas_width = std::stof(jsonContent.substr(widthPos + 15, 10));
+                        }
+                        size_t heightPos = jsonContent.find("\"canvas_height\":");
+                        if (heightPos != std::string::npos) {
+                            g_FigmaProject.canvas_height = std::stof(jsonContent.substr(heightPos + 16, 10));
+                        }
+
+                        // Load screenshot if exists
+                        std::string screenshotPath = outputDir + "/images/screenshot.png";
+                        int sw, sh, sn;
+                        unsigned char* sdata = stbi_load(screenshotPath.c_str(), &sw, &sh, &sn, 4);
+                        if (sdata) {
+                            glGenTextures(1, &g_FigmaProject.screenshot_texture_id);
+                            glBindTexture(GL_TEXTURE_2D, g_FigmaProject.screenshot_texture_id);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, sw, sh, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+                            stbi_image_free(sdata);
+                            g_FigmaProject.screenshot_path = screenshotPath;
+                            printf("[FigmaDesign] Loaded screenshot: %dx%d\n", sw, sh);
+                        }
+
+                        // Parse layers (simplified - look for each layer object)
+                        size_t layersStart = jsonContent.find("\"layers\":");
+                        if (layersStart != std::string::npos) {
+                            size_t pos = layersStart;
+                            int layerCount = 0;
+
+                            while (layerCount < 500) {
+                                size_t idPos = jsonContent.find("\"id\":", pos + 1);
+                                if (idPos == std::string::npos || idPos > jsonContent.length() - 100) break;
+
+                                WebLayer layer;
+                                layer.id = layerCount + 1;
+                                layer.visible = true;
+
+                                // Helper to parse float
+                                auto parseFloat = [&](const char* key, float defaultVal = 0) -> float {
+                                    size_t keyPos = jsonContent.find(key, idPos);
+                                    if (keyPos != std::string::npos && keyPos < idPos + 2000) {
+                                        size_t valStart = keyPos + strlen(key);
+                                        while (valStart < jsonContent.length() && (jsonContent[valStart] == ' ' || jsonContent[valStart] == ':')) valStart++;
+                                        try {
+                                            return std::stof(jsonContent.substr(valStart, 20));
+                                        } catch (...) {}
+                                    }
+                                    return defaultVal;
+                                };
+
+                                // Helper to parse string
+                                auto parseString = [&](const char* key) -> std::string {
+                                    size_t keyPos = jsonContent.find(key, idPos);
+                                    if (keyPos != std::string::npos && keyPos < idPos + 2000) {
+                                        size_t start = jsonContent.find("\"", keyPos + strlen(key)) + 1;
+                                        size_t end = jsonContent.find("\"", start);
+                                        if (end > start && end - start < 1000) {
+                                            return jsonContent.substr(start, end - start);
+                                        }
+                                    }
+                                    return "";
+                                };
+
+                                layer.x = parseFloat("\"x\":");
+                                layer.y = parseFloat("\"y\":");
+                                layer.width = parseFloat("\"width\":", 100);
+                                layer.height = parseFloat("\"height\":", 100);
+                                layer.z_index = (int)parseFloat("\"z_index\":");
+                                layer.font_size = parseFloat("\"font_size\":", 16);
+                                layer.border_radius = parseFloat("\"border_radius\":");
+                                layer.opacity = parseFloat("\"opacity\":", 1.0f);
+
+                                layer.name = parseString("\"name\":");
+                                layer.text = parseString("\"text\":");
+                                layer.image_path = parseString("\"image_path\":");
+
+                                // Parse type
+                                std::string typeStr = parseString("\"type\":");
+                                if (typeStr == "LAYER_TEXT") layer.type = LAYER_TEXT;
+                                else if (typeStr == "LAYER_IMAGE") layer.type = LAYER_IMAGE;
+                                else if (typeStr == "LAYER_BUTTON") layer.type = LAYER_BUTTON;
+                                else if (typeStr == "LAYER_INPUT") layer.type = LAYER_INPUT;
+                                else layer.type = LAYER_DIV;
+
+                                // Parse colors from rgba strings
+                                auto parseRGBA = [](const std::string& rgbaStr) -> ImVec4 {
+                                    // Parse "rgba(r,g,b,a)" format
+                                    if (rgbaStr.find("rgba(") == 0) {
+                                        int r = 0, g = 0, b = 0;
+                                        float a = 1.0f;
+                                        if (sscanf(rgbaStr.c_str(), "rgba(%d,%d,%d,%f)", &r, &g, &b, &a) >= 3) {
+                                            return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, a);
+                                        }
+                                    }
+                                    return ImVec4(0, 0, 0, 0);
+                                };
+
+                                std::string bgColorStr = parseString("\"bg_color\":");
+                                std::string textColorStr = parseString("\"text_color\":");
+                                std::string borderColorStr = parseString("\"border_color\":");
+
+                                layer.bg_color = parseRGBA(bgColorStr);
+                                layer.text_color = parseRGBA(textColorStr);
+                                layer.border_color = parseRGBA(borderColorStr);
+                                layer.border_width = parseFloat("\"border_width\":", 0);
+
+                                // Load image texture if needed
+                                if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
+                                    int w, h, n;
+                                    unsigned char* data = stbi_load(layer.image_path.c_str(), &w, &h, &n, 4);
+                                    if (data) {
+                                        glGenTextures(1, &layer.texture_id);
+                                        glBindTexture(GL_TEXTURE_2D, layer.texture_id);
+                                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                        stbi_image_free(data);
+                                    }
+                                }
+
+                                g_FigmaProject.layers.push_back(layer);
+                                layerCount++;
+                                pos = idPos + 5;
+                            }
+
+                            printf("[FigmaDesign] Loaded %d layers\n", layerCount);
+                            g_FigmaImportStatus = "Success! Imported " + std::to_string(layerCount) + " layers from Figma";
+                        }
+
+                        g_FigmaMode = true;
+                        g_ShowURLImportDialog = false;
+                    } else {
+                        g_FigmaImportStatus = "Error: Could not read layers.json";
+                    }
+                } else {
+                    g_FigmaImportStatus = "Error: Could not run Figma API script";
+                }
+                g_FigmaImportInProgress = false;
             }
         }
 
@@ -13012,7 +13436,14 @@ void RenderUI() {
             g_ShowURLImportDialog = false;
         }
 
-        if (!can_import && strlen(g_URLImportBuffer) > 0 && strlen(g_URLImportBuffer) < 10) {
+        // Validation messages
+        if (g_ImportMethod == 3) {
+            if (strlen(g_FigmaAPIToken) == 0) {
+                ImGui::TextColored(ImVec4(1, 0.5f, 0, 1), "Please enter your Figma API token");
+            } else if (strlen(g_FigmaFileURL) == 0) {
+                ImGui::TextColored(ImVec4(1, 0.5f, 0, 1), "Please enter the Figma file URL or key");
+            }
+        } else if (!can_import && strlen(g_URLImportBuffer) > 0 && strlen(g_URLImportBuffer) < 10) {
             ImGui::TextColored(ImVec4(1, 0.5f, 0, 1), "Please enter a valid URL (http:// or https://)");
         }
 
