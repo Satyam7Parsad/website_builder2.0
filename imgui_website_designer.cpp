@@ -8140,6 +8140,494 @@ std::string GenerateShellHTML() {
 }
 
 // ============================================================================
+// EXPORT FIGMA DESIGN TO STANDALONE IMGUI C++ APPLICATION
+// ============================================================================
+void ExportFigmaToImGui() {
+    if (g_FigmaProject.layers.empty()) {
+        printf("[Export] No layers to export!\n");
+        return;
+    }
+
+    std::string folder = ChooseFolderDialog("Choose export folder for Figma project");
+    if (folder.empty()) return;
+    if (folder.back() == '/') folder.pop_back();
+
+    std::string projectName = g_FigmaProject.name.empty() ? "figma_export" : g_FigmaProject.name;
+    // Sanitize project name (remove spaces, special chars)
+    for (char& c : projectName) {
+        if (!isalnum(c) && c != '_') c = '_';
+    }
+
+    std::string exportFolder = folder + "/" + projectName + "_ImGui";
+    std::string imguiFolder = exportFolder + "/imgui";
+    std::string imagesFolder = exportFolder + "/images";
+
+    // Create directories
+    mkdir(exportFolder.c_str(), 0755);
+    mkdir(imguiFolder.c_str(), 0755);
+    mkdir(imagesFolder.c_str(), 0755);
+
+    printf("[Export Figma] Exporting to: %s\n", exportFolder.c_str());
+
+    // Copy ImGui core files
+    std::vector<std::string> imguiFiles = {
+        "imgui.cpp", "imgui.h", "imgui_demo.cpp", "imgui_draw.cpp",
+        "imgui_internal.h", "imgui_tables.cpp", "imgui_widgets.cpp",
+        "imconfig.h", "imstb_rectpack.h", "imstb_textedit.h", "imstb_truetype.h"
+    };
+    for (const auto& f : imguiFiles) {
+        std::ifstream src("imgui/" + f, std::ios::binary);
+        if (src.good()) {
+            std::ofstream dst(imguiFolder + "/" + f, std::ios::binary);
+            dst << src.rdbuf();
+        }
+    }
+
+    // Copy ImGui GLFW/OpenGL backend files (from imgui/backends/)
+    std::vector<std::string> backendFiles = {
+        "imgui_impl_glfw.cpp", "imgui_impl_glfw.h",
+        "imgui_impl_opengl3.cpp", "imgui_impl_opengl3.h", "imgui_impl_opengl3_loader.h"
+    };
+    for (const auto& f : backendFiles) {
+        std::ifstream src("imgui/backends/" + f, std::ios::binary);
+        if (src.good()) {
+            std::ofstream dst(imguiFolder + "/" + f, std::ios::binary);
+            dst << src.rdbuf();
+        }
+    }
+
+    // Copy stb_image.h
+    {
+        std::ifstream src("stb_image.h", std::ios::binary);
+        if (src.good()) {
+            std::ofstream dst(exportFolder + "/stb_image.h", std::ios::binary);
+            dst << src.rdbuf();
+        }
+    }
+
+    // Copy screenshot image
+    std::string screenshotDest = "";
+    if (!g_FigmaProject.screenshot_path.empty()) {
+        screenshotDest = imagesFolder + "/screenshot.png";
+        std::ifstream src(g_FigmaProject.screenshot_path, std::ios::binary);
+        if (src.good()) {
+            std::ofstream dst(screenshotDest, std::ios::binary);
+            dst << src.rdbuf();
+            printf("[Export Figma] Copied screenshot\n");
+        }
+    }
+
+    // Copy layer images and build image list
+    std::vector<std::pair<std::string, std::string>> imageMap; // original path -> new filename
+    int imgIndex = 0;
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
+            // Check if already copied
+            bool found = false;
+            for (const auto& p : imageMap) {
+                if (p.first == layer.image_path) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                // Get extension
+                std::string ext = ".png";
+                size_t dotPos = layer.image_path.rfind('.');
+                if (dotPos != std::string::npos) {
+                    ext = layer.image_path.substr(dotPos);
+                }
+                std::string newName = "img_" + std::to_string(imgIndex++) + ext;
+                std::string destPath = imagesFolder + "/" + newName;
+
+                std::ifstream src(layer.image_path, std::ios::binary);
+                if (src.good()) {
+                    std::ofstream dst(destPath, std::ios::binary);
+                    dst << src.rdbuf();
+                    imageMap.push_back({layer.image_path, newName});
+                    printf("[Export Figma] Copied image: %s\n", newName.c_str());
+                }
+            }
+        }
+    }
+
+    // Generate main.cpp
+    std::ostringstream cpp;
+
+    cpp << "// ============================================================================\n";
+    cpp << "// " << projectName << " - Exported from Website Builder Figma Import\n";
+    cpp << "// Generated ImGui Standalone Application\n";
+    cpp << "// ============================================================================\n\n";
+
+    cpp << "#include \"imgui/imgui.h\"\n";
+    cpp << "#include \"imgui/imgui_impl_glfw.h\"\n";
+    cpp << "#include \"imgui/imgui_impl_opengl3.h\"\n";
+    cpp << "#include <GLFW/glfw3.h>\n";
+    cpp << "#include <cstdio>\n";
+    cpp << "#include <cmath>\n\n";
+
+    cpp << "#define STB_IMAGE_IMPLEMENTATION\n";
+    cpp << "#include \"stb_image.h\"\n\n";
+
+    cpp << "// ============================================================================\n";
+    cpp << "// TEXTURE LOADING\n";
+    cpp << "// ============================================================================\n";
+    cpp << "GLuint LoadTexture(const char* path) {\n";
+    cpp << "    int w, h, n;\n";
+    cpp << "    unsigned char* data = stbi_load(path, &w, &h, &n, 4);\n";
+    cpp << "    if (!data) {\n";
+    cpp << "        printf(\"Failed to load: %s\\n\", path);\n";
+    cpp << "        return 0;\n";
+    cpp << "    }\n";
+    cpp << "    GLuint tex;\n";
+    cpp << "    glGenTextures(1, &tex);\n";
+    cpp << "    glBindTexture(GL_TEXTURE_2D, tex);\n";
+    cpp << "    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\n";
+    cpp << "    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n";
+    cpp << "    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);\n";
+    cpp << "    stbi_image_free(data);\n";
+    cpp << "    return tex;\n";
+    cpp << "}\n\n";
+
+    cpp << "// ============================================================================\n";
+    cpp << "// GLOBAL TEXTURES\n";
+    cpp << "// ============================================================================\n";
+    cpp << "GLuint g_ScreenshotTex = 0;\n";
+    for (size_t i = 0; i < imageMap.size(); i++) {
+        cpp << "GLuint g_ImageTex_" << i << " = 0;\n";
+    }
+    cpp << "\n";
+
+    cpp << "// Canvas dimensions\n";
+    cpp << "const float CANVAS_WIDTH = " << g_FigmaProject.canvas_width << ".0f;\n";
+    cpp << "const float CANVAS_HEIGHT = " << g_FigmaProject.canvas_height << ".0f;\n\n";
+
+    cpp << "// Scroll position\n";
+    cpp << "float g_ScrollY = 0.0f;\n\n";
+
+    cpp << "// ============================================================================\n";
+    cpp << "// LOAD ALL TEXTURES\n";
+    cpp << "// ============================================================================\n";
+    cpp << "void LoadAllTextures() {\n";
+    if (!screenshotDest.empty()) {
+        cpp << "    g_ScreenshotTex = LoadTexture(\"images/screenshot.png\");\n";
+    }
+    for (size_t i = 0; i < imageMap.size(); i++) {
+        cpp << "    g_ImageTex_" << i << " = LoadTexture(\"images/" << imageMap[i].second << "\");\n";
+    }
+    cpp << "}\n\n";
+
+    cpp << "// ============================================================================\n";
+    cpp << "// RENDER WEBSITE\n";
+    cpp << "// ============================================================================\n";
+    cpp << "void RenderWebsite() {\n";
+    cpp << "    ImGuiIO& io = ImGui::GetIO();\n";
+    cpp << "    ImDrawList* dl = ImGui::GetWindowDrawList();\n";
+    cpp << "    ImVec2 winPos = ImGui::GetWindowPos();\n";
+    cpp << "    ImVec2 winSize = ImGui::GetWindowSize();\n\n";
+
+    cpp << "    // Handle scrolling\n";
+    cpp << "    if (ImGui::IsWindowHovered()) {\n";
+    cpp << "        g_ScrollY -= io.MouseWheel * 50.0f;\n";
+    cpp << "        if (g_ScrollY < 0) g_ScrollY = 0;\n";
+    cpp << "        float maxScroll = CANVAS_HEIGHT - winSize.y;\n";
+    cpp << "        if (maxScroll < 0) maxScroll = 0;\n";
+    cpp << "        if (g_ScrollY > maxScroll) g_ScrollY = maxScroll;\n";
+    cpp << "    }\n\n";
+
+    cpp << "    // Background\n";
+    cpp << "    dl->AddRectFilled(winPos, ImVec2(winPos.x + winSize.x, winPos.y + winSize.y), IM_COL32(255, 255, 255, 255));\n\n";
+
+    // Render screenshot as background reference
+    if (!screenshotDest.empty()) {
+        cpp << "    // Screenshot background\n";
+        cpp << "    if (g_ScreenshotTex) {\n";
+        cpp << "        ImVec2 imgMin(winPos.x, winPos.y - g_ScrollY);\n";
+        cpp << "        ImVec2 imgMax(winPos.x + CANVAS_WIDTH, winPos.y + CANVAS_HEIGHT - g_ScrollY);\n";
+        cpp << "        dl->AddImage((ImTextureID)(intptr_t)g_ScreenshotTex, imgMin, imgMax);\n";
+        cpp << "    }\n\n";
+    }
+
+    cpp << "    // ==================== RENDER LAYERS ====================\n\n";
+
+    // Generate code for each layer
+    int layerNum = 0;
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (!layer.visible) continue;
+
+        cpp << "    // Layer " << layerNum << ": " << layer.name << " (" <<
+            (layer.type == LAYER_TEXT ? "TEXT" :
+             layer.type == LAYER_IMAGE ? "IMAGE" :
+             layer.type == LAYER_BUTTON ? "BUTTON" :
+             layer.type == LAYER_INPUT ? "INPUT" : "DIV") << ")\n";
+
+        cpp << "    {\n";
+        cpp << "        float x = winPos.x + " << layer.x << ".0f;\n";
+        cpp << "        float y = winPos.y + " << layer.y << ".0f - g_ScrollY;\n";
+        cpp << "        float w = " << layer.width << ".0f;\n";
+        cpp << "        float h = " << layer.height << ".0f;\n";
+        cpp << "        ImVec2 p1(x, y);\n";
+        cpp << "        ImVec2 p2(x + w, y + h);\n\n";
+
+        // Skip if outside viewport
+        cpp << "        // Skip if outside viewport\n";
+        cpp << "        if (y + h >= winPos.y && y <= winPos.y + winSize.y) {\n";
+
+        switch (layer.type) {
+            case LAYER_IMAGE: {
+                // Find the image index
+                int imgIdx = -1;
+                for (size_t i = 0; i < imageMap.size(); i++) {
+                    if (imageMap[i].first == layer.image_path) {
+                        imgIdx = i;
+                        break;
+                    }
+                }
+                if (imgIdx >= 0) {
+                    cpp << "            if (g_ImageTex_" << imgIdx << ") {\n";
+                    cpp << "                dl->AddImage((ImTextureID)(intptr_t)g_ImageTex_" << imgIdx << ", p1, p2);\n";
+                    cpp << "            }\n";
+                }
+                break;
+            }
+
+            case LAYER_TEXT: {
+                // Escape the text for C++ string
+                std::string escapedText = layer.text;
+                size_t pos = 0;
+                while ((pos = escapedText.find("\\", pos)) != std::string::npos) {
+                    escapedText.replace(pos, 1, "\\\\");
+                    pos += 2;
+                }
+                pos = 0;
+                while ((pos = escapedText.find("\"", pos)) != std::string::npos) {
+                    escapedText.replace(pos, 1, "\\\"");
+                    pos += 2;
+                }
+                pos = 0;
+                while ((pos = escapedText.find("\n", pos)) != std::string::npos) {
+                    escapedText.replace(pos, 1, "\\n");
+                    pos += 2;
+                }
+
+                ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
+                cpp << "            dl->AddText(p1, IM_COL32("
+                    << (int)((textCol >> 0) & 0xFF) << ", "
+                    << (int)((textCol >> 8) & 0xFF) << ", "
+                    << (int)((textCol >> 16) & 0xFF) << ", "
+                    << (int)((textCol >> 24) & 0xFF) << "), \"" << escapedText << "\");\n";
+                break;
+            }
+
+            case LAYER_BUTTON: {
+                ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
+                ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
+
+                std::string escapedText = layer.text;
+                size_t pos = 0;
+                while ((pos = escapedText.find("\"", pos)) != std::string::npos) {
+                    escapedText.replace(pos, 1, "\\\"");
+                    pos += 2;
+                }
+
+                cpp << "            // Button background\n";
+                cpp << "            dl->AddRectFilled(p1, p2, IM_COL32("
+                    << (int)((bgCol >> 0) & 0xFF) << ", "
+                    << (int)((bgCol >> 8) & 0xFF) << ", "
+                    << (int)((bgCol >> 16) & 0xFF) << ", "
+                    << (int)((bgCol >> 24) & 0xFF) << "), " << layer.border_radius << ".0f);\n";
+                cpp << "            // Button text (centered)\n";
+                cpp << "            ImVec2 textSize = ImGui::CalcTextSize(\"" << escapedText << "\");\n";
+                cpp << "            ImVec2 textPos(x + (w - textSize.x) / 2, y + (h - textSize.y) / 2);\n";
+                cpp << "            dl->AddText(textPos, IM_COL32("
+                    << (int)((textCol >> 0) & 0xFF) << ", "
+                    << (int)((textCol >> 8) & 0xFF) << ", "
+                    << (int)((textCol >> 16) & 0xFF) << ", "
+                    << (int)((textCol >> 24) & 0xFF) << "), \"" << escapedText << "\");\n";
+                break;
+            }
+
+            case LAYER_DIV:
+            default: {
+                if (layer.bg_color.w > 0.01f) {
+                    ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
+                    cpp << "            dl->AddRectFilled(p1, p2, IM_COL32("
+                        << (int)((bgCol >> 0) & 0xFF) << ", "
+                        << (int)((bgCol >> 8) & 0xFF) << ", "
+                        << (int)((bgCol >> 16) & 0xFF) << ", "
+                        << (int)((bgCol >> 24) & 0xFF) << "), " << layer.border_radius << ".0f);\n";
+                }
+                break;
+            }
+        }
+
+        cpp << "        }\n";
+        cpp << "    }\n\n";
+        layerNum++;
+    }
+
+    cpp << "}\n\n";
+
+    // Main function
+    cpp << "// ============================================================================\n";
+    cpp << "// MAIN FUNCTION\n";
+    cpp << "// ============================================================================\n";
+    cpp << "int main() {\n";
+    cpp << "    // Initialize GLFW\n";
+    cpp << "    if (!glfwInit()) {\n";
+    cpp << "        printf(\"Failed to initialize GLFW\\n\");\n";
+    cpp << "        return -1;\n";
+    cpp << "    }\n\n";
+
+    cpp << "    // OpenGL 3.3 Core\n";
+    cpp << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);\n";
+    cpp << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);\n";
+    cpp << "    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);\n";
+    cpp << "#ifdef __APPLE__\n";
+    cpp << "    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);\n";
+    cpp << "#endif\n\n";
+
+    cpp << "    // Create window\n";
+    cpp << "    GLFWwindow* window = glfwCreateWindow(1280, 800, \"" << projectName << "\", NULL, NULL);\n";
+    cpp << "    if (!window) {\n";
+    cpp << "        printf(\"Failed to create window\\n\");\n";
+    cpp << "        glfwTerminate();\n";
+    cpp << "        return -1;\n";
+    cpp << "    }\n";
+    cpp << "    glfwMakeContextCurrent(window);\n";
+    cpp << "    glfwSwapInterval(1);\n\n";
+
+    cpp << "    // Initialize ImGui\n";
+    cpp << "    IMGUI_CHECKVERSION();\n";
+    cpp << "    ImGui::CreateContext();\n";
+    cpp << "    ImGuiIO& io = ImGui::GetIO();\n";
+    cpp << "    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;\n\n";
+
+    cpp << "    // Setup Platform/Renderer backends\n";
+    cpp << "    ImGui_ImplGlfw_InitForOpenGL(window, true);\n";
+    cpp << "    ImGui_ImplOpenGL3_Init(\"#version 330\");\n\n";
+
+    cpp << "    // Load textures\n";
+    cpp << "    LoadAllTextures();\n\n";
+
+    cpp << "    // Main loop\n";
+    cpp << "    while (!glfwWindowShouldClose(window)) {\n";
+    cpp << "        glfwPollEvents();\n\n";
+
+    cpp << "        // Start ImGui frame\n";
+    cpp << "        ImGui_ImplOpenGL3_NewFrame();\n";
+    cpp << "        ImGui_ImplGlfw_NewFrame();\n";
+    cpp << "        ImGui::NewFrame();\n\n";
+
+    cpp << "        // Fullscreen window\n";
+    cpp << "        ImGui::SetNextWindowPos(ImVec2(0, 0));\n";
+    cpp << "        ImGui::SetNextWindowSize(io.DisplaySize);\n";
+    cpp << "        ImGui::Begin(\"##Main\", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoScrollbar);\n\n";
+
+    cpp << "        RenderWebsite();\n\n";
+
+    cpp << "        ImGui::End();\n\n";
+
+    cpp << "        // Render\n";
+    cpp << "        ImGui::Render();\n";
+    cpp << "        int display_w, display_h;\n";
+    cpp << "        glfwGetFramebufferSize(window, &display_w, &display_h);\n";
+    cpp << "        glViewport(0, 0, display_w, display_h);\n";
+    cpp << "        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);\n";
+    cpp << "        glClear(GL_COLOR_BUFFER_BIT);\n";
+    cpp << "        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());\n\n";
+
+    cpp << "        glfwSwapBuffers(window);\n";
+    cpp << "    }\n\n";
+
+    cpp << "    // Cleanup\n";
+    cpp << "    ImGui_ImplOpenGL3_Shutdown();\n";
+    cpp << "    ImGui_ImplGlfw_Shutdown();\n";
+    cpp << "    ImGui::DestroyContext();\n";
+    cpp << "    glfwDestroyWindow(window);\n";
+    cpp << "    glfwTerminate();\n\n";
+
+    cpp << "    return 0;\n";
+    cpp << "}\n";
+
+    // Write main.cpp
+    std::ofstream mainFile(exportFolder + "/main.cpp");
+    mainFile << cpp.str();
+    mainFile.close();
+
+    // Generate build script
+    std::ofstream buildScript(exportFolder + "/build.sh");
+    buildScript << "#!/bin/bash\n\n";
+    buildScript << "# Build script for " << projectName << "\n\n";
+    buildScript << "echo \"Building " << projectName << "...\"\n\n";
+    buildScript << "g++ -std=c++17 -O2 \\\n";
+    buildScript << "    main.cpp \\\n";
+    buildScript << "    imgui/imgui.cpp \\\n";
+    buildScript << "    imgui/imgui_draw.cpp \\\n";
+    buildScript << "    imgui/imgui_tables.cpp \\\n";
+    buildScript << "    imgui/imgui_widgets.cpp \\\n";
+    buildScript << "    imgui/imgui_impl_glfw.cpp \\\n";
+    buildScript << "    imgui/imgui_impl_opengl3.cpp \\\n";
+    buildScript << "    -I. -Iimgui \\\n";
+    buildScript << "    -lglfw -framework OpenGL -framework Cocoa -framework IOKit \\\n";
+    buildScript << "    -o " << projectName << "\n\n";
+    buildScript << "if [ $? -eq 0 ]; then\n";
+    buildScript << "    echo \"Build successful! Run with: ./" << projectName << "\"\n";
+    buildScript << "else\n";
+    buildScript << "    echo \"Build failed!\"\n";
+    buildScript << "fi\n";
+    buildScript.close();
+    chmod((exportFolder + "/build.sh").c_str(), 0755);
+
+    // Generate README
+    std::ofstream readme(exportFolder + "/README.md");
+    readme << "# " << projectName << "\n\n";
+    readme << "Exported from Website Builder - Figma Style Import\n\n";
+    readme << "## Build Instructions\n\n";
+    readme << "### Prerequisites\n";
+    readme << "- C++17 compiler (g++ or clang++)\n";
+    readme << "- GLFW library (`brew install glfw` on macOS)\n\n";
+    readme << "### Build\n";
+    readme << "```bash\n";
+    readme << "chmod +x build.sh\n";
+    readme << "./build.sh\n";
+    readme << "```\n\n";
+    readme << "### Run\n";
+    readme << "```bash\n";
+    readme << "./" << projectName << "\n";
+    readme << "```\n\n";
+    readme << "## Project Structure\n";
+    readme << "- `main.cpp` - Main application source\n";
+    readme << "- `imgui/` - Dear ImGui library\n";
+    readme << "- `images/` - Image assets\n";
+    readme << "- `build.sh` - Build script\n\n";
+    readme << "## Controls\n";
+    readme << "- Scroll: Navigate up/down\n";
+    readme << "- Close window to exit\n\n";
+    readme << "## Stats\n";
+    readme << "- Canvas: " << g_FigmaProject.canvas_width << " x " << g_FigmaProject.canvas_height << " pixels\n";
+    readme << "- Layers: " << g_FigmaProject.layers.size() << "\n";
+    readme << "- Images: " << imageMap.size() << "\n";
+    readme.close();
+
+    printf("\n========================================\n");
+    printf("[Export Figma] SUCCESS!\n");
+    printf("Exported to: %s\n", exportFolder.c_str());
+    printf("Layers: %zu\n", g_FigmaProject.layers.size());
+    printf("Images: %zu\n", imageMap.size());
+    printf("\nTo build:\n");
+    printf("  cd \"%s\"\n", exportFolder.c_str());
+    printf("  ./build.sh\n");
+    printf("  ./%s\n", projectName.c_str());
+    printf("========================================\n\n");
+
+    // Show success message in app
+    g_ShowExportSuccess = true;
+    g_ExportSuccessTimer = 3.0f;
+    g_ExportPath = "Figma Export: " + exportFolder;
+}
+
+// ============================================================================
 // EXPORT TO IMGUI WEBASSEMBLY PROJECT
 // ============================================================================
 void ExportImGuiWebsite() {
@@ -10569,6 +11057,18 @@ void RenderUI() {
             ImVec2 cs = ImGui::GetContentRegionAvail();
             g_FigmaProject.zoom = (cw - 100) / g_FigmaProject.canvas_width;
         }
+
+        ImGui::SameLine();
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Export to ImGui Code button
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
+        if (ImGui::Button("Export Code")) {
+            ExportFigmaToImGui();
+        }
+        ImGui::PopStyleColor(2);
 
         ImGui::EndChild();
         ImGui::PopStyleVar();
