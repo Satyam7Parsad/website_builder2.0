@@ -1387,9 +1387,11 @@ struct WebLayer {
     float font_size;
     float font_weight;
     std::string font_family;
+    std::string font_style;     // "normal", "italic"
     int text_align;             // 0=left, 1=center, 2=right
     float line_height;
     float letter_spacing;
+    std::string text_decoration; // "none", "underline", "line-through"
 
     // Box model
     float padding_top, padding_right, padding_bottom, padding_left;
@@ -1398,6 +1400,7 @@ struct WebLayer {
     // Border & shape
     float border_width;
     float border_radius;
+    float border_radius_tl, border_radius_tr, border_radius_br, border_radius_bl;  // Individual corners
     std::string border_style;   // "solid", "dashed", "none"
 
     // Effects
@@ -1426,11 +1429,13 @@ struct WebLayer {
         x(0), y(0), width(100), height(50), z_index(0),
         texture_id(0),
         bg_color(1,1,1,0), text_color(0,0,0,1), border_color(0,0,0,1),
-        font_size(16), font_weight(400), font_family("system-ui"), text_align(0),
-        line_height(1.5f), letter_spacing(0),
+        font_size(16), font_weight(400), font_family("system-ui"), font_style("normal"),
+        text_align(0), line_height(1.5f), letter_spacing(0), text_decoration("none"),
         padding_top(0), padding_right(0), padding_bottom(0), padding_left(0),
         margin_top(0), margin_right(0), margin_bottom(0), margin_left(0),
-        border_width(0), border_radius(0), border_style("none"),
+        border_width(0), border_radius(0),
+        border_radius_tl(0), border_radius_tr(0), border_radius_br(0), border_radius_bl(0),
+        border_style("none"),
         opacity(1.0f), box_shadow("none"), has_gradient(false),
         selected(false), hovered(false), dragging(false), resizing(false),
         resize_handle(-1), drag_offset_x(0), drag_offset_y(0),
@@ -1467,6 +1472,7 @@ struct FigmaProject {
     // Reference image overlay
     bool show_reference;
     float reference_opacity;
+    bool show_bounds;  // Show outlines around all layers
 
     FigmaProject() : name("Untitled"),
         canvas_width(1920), canvas_height(3000),
@@ -1477,7 +1483,7 @@ struct FigmaProject {
         multi_select(false),
         show_grid(false), grid_size(10), snap_to_grid(true),
         show_guides(false),
-        show_reference(false), reference_opacity(1.0f) {}
+        show_reference(false), reference_opacity(1.0f), show_bounds(false) {}
 };
 
 // ============================================================================
@@ -1520,10 +1526,25 @@ static bool g_DownloadComplete = false;
 static bool g_FigmaMode = false;                    // True = Figma editor, False = Section editor
 static FigmaProject g_FigmaProject;                 // Current Figma project
 static int g_SelectedLayerId = -1;                  // Currently selected layer
+static int g_HoveredLayerId = -1;                   // Layer under mouse click (for topmost selection)
 static bool g_ShowFigmaLayers = true;               // Show layers panel
 static bool g_ShowFigmaProperties = true;           // Show properties panel
 static bool g_FigmaImportInProgress = false;        // Import in progress
 static std::string g_FigmaImportStatus = "";        // Import status message
+
+// ImGui Templates Feature
+static bool g_ShowImGuiTemplatesPopup = false;      // Show ImGui templates popup
+static bool g_ShowSaveImGuiTemplatePopup = false;   // Show save ImGui template popup
+static bool g_ShowExportOptionsPopup = false;       // Show export options popup
+struct ImGuiTemplateInfo {
+    int id;
+    std::string name;
+    std::string created_at;
+    int layer_count;
+    float canvas_width;
+    float canvas_height;
+};
+static std::vector<ImGuiTemplateInfo> g_ImGuiTemplatesList;  // List of saved ImGui templates
 
 // Template Picker Modal State
 static bool g_ShowTemplatePicker = false;
@@ -2850,6 +2871,9 @@ bool LoadTemplate(const std::string& filepath) {
                         layer.bg_color = parseRGBA(bgColorStr);
                         layer.text_color = parseRGBA(textColorStr);
                         layer.visible = true;
+                        layer.locked = false;  // Make sure layers are editable
+                        layer.selected = false;
+                        layer.border_color = ImVec4(0, 0, 0, 1);
 
                         // Load image texture if exists
                         if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
@@ -4721,7 +4745,16 @@ bool ImportFigmaLayers(const std::string& url) {
             size_t keyPos = jsonContent.find(key, pos);
             if (keyPos != std::string::npos && keyPos < pos + 2000) {
                 size_t valStart = keyPos + strlen(key);
-                return std::stof(jsonContent.substr(valStart, 20));
+                try {
+                    std::string valStr = jsonContent.substr(valStart, 20);
+                    // Skip whitespace and find start of number
+                    size_t numStart = valStr.find_first_of("-0123456789.");
+                    if (numStart != std::string::npos) {
+                        return std::stof(valStr.substr(numStart));
+                    }
+                } catch (...) {
+                    // Invalid float value, return default
+                }
             }
             return 0;
         };
@@ -4754,6 +4787,27 @@ bool ImportFigmaLayers(const std::string& url) {
         layer.image_path = parseString("\"image_path\":");
         layer.href = parseString("\"href\":");
         layer.font_family = parseString("\"font_family\":");
+        layer.font_style = parseString("\"font_style\":");
+        layer.text_decoration = parseString("\"text_decoration\":");
+        layer.box_shadow = parseString("\"box_shadow\":");
+
+        // Parse text alignment (string to int)
+        std::string textAlignStr = parseString("\"text_align\":");
+        if (textAlignStr == "center") layer.text_align = 1;
+        else if (textAlignStr == "right") layer.text_align = 2;
+        else if (textAlignStr == "justify") layer.text_align = 3;
+        else layer.text_align = 0;  // left
+
+        // Parse additional numeric properties
+        layer.letter_spacing = parseFloat("\"letter_spacing\":");
+        layer.line_height = parseFloat("\"line_height\":");
+        if (layer.line_height <= 0) layer.line_height = 1.2f;
+
+        // Individual border radii
+        layer.border_radius_tl = parseFloat("\"border_radius_tl\":");
+        layer.border_radius_tr = parseFloat("\"border_radius_tr\":");
+        layer.border_radius_br = parseFloat("\"border_radius_br\":");
+        layer.border_radius_bl = parseFloat("\"border_radius_bl\":");
 
         // Parse colors
         std::string bgColor = parseString("\"bg_color\":");
@@ -4988,6 +5042,9 @@ void RenderFigmaCanvas() {
     ImGuiIO& io = ImGui::GetIO();
     ImDrawList* drawList = ImGui::GetWindowDrawList();
 
+    // Reset hovered layer for this frame
+    g_HoveredLayerId = -1;
+
     // Get canvas area
     ImVec2 canvasPos = ImGui::GetCursorScreenPos();
     ImVec2 canvasSize = ImGui::GetContentRegionAvail();
@@ -5035,9 +5092,9 @@ void RenderFigmaCanvas() {
         }
     }
 
-    // Draw layers - when reference screenshot is visible, layers are transparent overlays
-    // Only show selection/hover outlines, not the actual layer content (since screenshot shows the real design)
-    bool useOverlayMode = g_FigmaProject.show_reference && g_FigmaProject.reference_opacity > 0.5f;
+    // Draw layers - always draw layer content so edits are visible
+    // When reference is visible, layers will appear on top of the reference
+    bool useOverlayMode = false;  // Always show layer content for editing
 
     for (auto& layer : g_FigmaProject.layers) {
         if (!layer.visible) continue;
@@ -5061,9 +5118,9 @@ void RenderFigmaCanvas() {
             // Draw layer based on type
             ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
 
-            // Background - only render for DIV, BUTTON, INPUT, IMAGE (not TEXT)
-            // TEXT layers in Figma don't have visible backgrounds
-            if (layer.bg_color.w > 0.01f && layer.type != LAYER_TEXT) {
+            // Background - render for ALL layer types if they have visible alpha
+            // This includes TEXT layers that might have background colors
+            if (layer.bg_color.w > 0.01f) {
                 if (layer.border_radius > 0) {
                     drawList->AddRectFilled(p1, p2, bgCol, layer.border_radius * zoom);
                 } else {
@@ -5077,20 +5134,61 @@ void RenderFigmaCanvas() {
                     p1, p2, ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255));
             }
 
-            // Text
+            // Text - with alignment and styling support
             if (!layer.text.empty() && (layer.type == LAYER_TEXT || layer.type == LAYER_BUTTON)) {
                 ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
-                // Simple text rendering (centered for buttons)
+                ImVec2 textSize = ImGui::CalcTextSize(layer.text.c_str());
                 ImVec2 textPos = p1;
+
                 if (layer.type == LAYER_BUTTON) {
-                    ImVec2 textSize = ImGui::CalcTextSize(layer.text.c_str());
+                    // Buttons are always centered
                     textPos.x = screenX + (screenW - textSize.x) / 2;
                     textPos.y = screenY + (screenH - textSize.y) / 2;
                 } else {
-                    textPos.x += layer.padding_left * zoom;
-                    textPos.y += layer.padding_top * zoom;
+                    // Apply text alignment
+                    float paddingX = layer.padding_left * zoom;
+                    float paddingY = layer.padding_top * zoom;
+                    float availWidth = screenW - paddingX - (layer.padding_right * zoom);
+
+                    if (layer.text_align == 1) {
+                        // Center alignment
+                        textPos.x = screenX + (screenW - textSize.x) / 2;
+                    } else if (layer.text_align == 2) {
+                        // Right alignment
+                        textPos.x = screenX + screenW - textSize.x - (layer.padding_right * zoom);
+                    } else {
+                        // Left alignment (default)
+                        textPos.x = screenX + paddingX;
+                    }
+                    textPos.y = screenY + paddingY;
                 }
+
+                // Draw text (bold simulation for heavy weights by drawing twice with offset)
                 drawList->AddText(textPos, textCol, layer.text.c_str());
+
+                // Simulate bold for font_weight >= 600
+                if (layer.font_weight >= 600) {
+                    drawList->AddText(ImVec2(textPos.x + 0.5f, textPos.y), textCol, layer.text.c_str());
+                }
+                // Extra bold for font_weight >= 800
+                if (layer.font_weight >= 800) {
+                    drawList->AddText(ImVec2(textPos.x + 1.0f, textPos.y), textCol, layer.text.c_str());
+                }
+
+                // Draw underline if text_decoration is underline
+                if (layer.text_decoration == "underline") {
+                    float underlineY = textPos.y + textSize.y + 2;
+                    drawList->AddLine(ImVec2(textPos.x, underlineY),
+                                     ImVec2(textPos.x + textSize.x, underlineY),
+                                     textCol, 1.0f);
+                }
+                // Draw strikethrough if text_decoration is line-through
+                else if (layer.text_decoration == "line-through") {
+                    float strikeY = textPos.y + textSize.y / 2;
+                    drawList->AddLine(ImVec2(textPos.x, strikeY),
+                                     ImVec2(textPos.x + textSize.x, strikeY),
+                                     textCol, 1.0f);
+                }
             }
 
             // Border
@@ -5102,6 +5200,20 @@ void RenderFigmaCanvas() {
                     drawList->AddRect(p1, p2, borderCol, 0, 0, layer.border_width);
                 }
             }
+        }
+
+        // Show layer boundaries when Bounds mode is ON or when Ref mode is OFF with transparent layers
+        if (g_FigmaProject.show_bounds) {
+            // Draw outline for ALL layers when Bounds is enabled
+            ImU32 boundaryColor = (layer.type == LAYER_TEXT) ? IM_COL32(100, 200, 100, 120) :
+                                  (layer.type == LAYER_IMAGE) ? IM_COL32(200, 100, 100, 120) :
+                                  (layer.type == LAYER_BUTTON) ? IM_COL32(100, 100, 200, 120) :
+                                  IM_COL32(150, 150, 150, 100);
+            drawList->AddRect(p1, p2, boundaryColor, layer.border_radius * zoom, 0, 1.0f);
+        } else if (!g_FigmaProject.show_reference && layer.bg_color.w < 0.1f) {
+            // Draw subtle outline for transparent layers when Ref is OFF
+            ImU32 boundaryColor = IM_COL32(100, 100, 100, 60);
+            drawList->AddRect(p1, p2, boundaryColor, layer.border_radius * zoom, 0, 1.0f);
         }
 
         // Selection highlight (always show)
@@ -5152,14 +5264,16 @@ void RenderFigmaCanvas() {
             }
         }
 
-        // Handle click to select
-        if (isHovered && ImGui::IsMouseClicked(0) && !io.KeyCtrl) {
-            SelectLayer(layer.id);
+        // Handle click to select (store for later - we want topmost layer)
+        // Only process clicks when the canvas window is hovered (not dropdown panels)
+        if (isHovered && ImGui::IsMouseClicked(0) && !io.KeyCtrl && ImGui::IsWindowHovered()) {
+            // Select this layer (later layers in the list will override, giving us topmost)
+            g_HoveredLayerId = layer.id;
         }
 
         // Handle dragging
         if (layer.selected && !layer.locked) {
-            if (isHovered && ImGui::IsMouseClicked(0)) {
+            if (isHovered && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
                 layer.dragging = true;
                 layer.drag_offset_x = mousePos.x - screenX;
                 layer.drag_offset_y = mousePos.y - screenY;
@@ -5183,6 +5297,13 @@ void RenderFigmaCanvas() {
                 }
             }
         }
+    }
+
+    // Select the topmost hovered layer (after iterating all layers)
+    // Only when canvas window is hovered (not when clicking dropdown panels)
+    if (g_HoveredLayerId >= 0 && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
+        SelectLayer(g_HoveredLayerId);
+        g_HoveredLayerId = -1;
     }
 
     // Handle canvas panning and scrolling
@@ -5356,6 +5477,44 @@ void RenderFigmaPropertiesPanel() {
             }
             ImGui::DragFloat("Font Size", &layer->font_size, 1.0f, 8.0f, 200.0f);
             ImGui::DragFloat("Font Weight", &layer->font_weight, 100.0f, 100.0f, 900.0f);
+        }
+    }
+
+    // Image (if image layer)
+    if (layer->type == LAYER_IMAGE) {
+        if (ImGui::CollapsingHeader("Image", ImGuiTreeNodeFlags_DefaultOpen)) {
+            ImGui::Text("Path: %s", layer->image_path.empty() ? "(none)" : layer->image_path.c_str());
+            if (layer->texture_id) {
+                ImGui::Text("Texture ID: %d", layer->texture_id);
+                // Show small preview
+                float previewSize = 100;
+                float aspect = layer->width / layer->height;
+                ImGui::Image((ImTextureID)(intptr_t)layer->texture_id,
+                    ImVec2(previewSize * aspect, previewSize));
+            }
+
+            // Image path input for replacement
+            static char imgPathBuffer[512] = "";
+            ImGui::InputText("New Image Path", imgPathBuffer, sizeof(imgPathBuffer));
+            if (ImGui::Button("Load Image") && strlen(imgPathBuffer) > 0) {
+                int w, h, n;
+                unsigned char* data = stbi_load(imgPathBuffer, &w, &h, &n, 4);
+                if (data) {
+                    // Delete old texture if exists
+                    if (layer->texture_id) {
+                        glDeleteTextures(1, &layer->texture_id);
+                    }
+                    // Create new texture
+                    glGenTextures(1, &layer->texture_id);
+                    glBindTexture(GL_TEXTURE_2D, layer->texture_id);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                    stbi_image_free(data);
+                    layer->image_path = imgPathBuffer;
+                    imgPathBuffer[0] = '\0';
+                }
+            }
         }
     }
 
@@ -8163,6 +8322,248 @@ std::string GenerateShellHTML() {
 }
 
 // ============================================================================
+// IMGUI TEMPLATES - Save/Load ImGui templates to database
+// ============================================================================
+
+// Create imgui_templates table if it doesn't exist
+void EnsureImGuiTemplatesTable() {
+    if (!g_DBConnection) return;
+
+    std::string query = "CREATE TABLE IF NOT EXISTS imgui_templates ("
+                        "id SERIAL PRIMARY KEY, "
+                        "name VARCHAR(255) NOT NULL, "
+                        "canvas_width REAL, "
+                        "canvas_height REAL, "
+                        "layer_count INTEGER, "
+                        "imgui_code TEXT, "
+                        "screenshot_data BYTEA, "
+                        "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+                        ")";
+    PGresult* result = PQexec(g_DBConnection, query.c_str());
+    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+        printf("[ImGui Templates] Error creating table: %s\n", PQerrorMessage(g_DBConnection));
+    }
+    PQclear(result);
+
+    // Create imgui_template_layers table for storing layer data
+    query = "CREATE TABLE IF NOT EXISTS imgui_template_layers ("
+            "id SERIAL PRIMARY KEY, "
+            "template_id INTEGER REFERENCES imgui_templates(id) ON DELETE CASCADE, "
+            "layer_order INTEGER, "
+            "layer_type INTEGER, "
+            "name VARCHAR(255), "
+            "x REAL, y REAL, width REAL, height REAL, "
+            "text TEXT, "
+            "font_size REAL, "
+            "opacity REAL, "
+            "bg_color VARCHAR(64), "
+            "text_color VARCHAR(64), "
+            "border_radius REAL, "
+            "border_width REAL, "
+            "image_data BYTEA"
+            ")";
+    result = PQexec(g_DBConnection, query.c_str());
+    if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+        printf("[ImGui Templates] Error creating layers table: %s\n", PQerrorMessage(g_DBConnection));
+    }
+    PQclear(result);
+}
+
+// Get list of saved ImGui templates
+std::vector<ImGuiTemplateInfo> GetImGuiTemplates() {
+    std::vector<ImGuiTemplateInfo> templates;
+    if (!g_DBConnection) return templates;
+
+    EnsureImGuiTemplatesTable();
+
+    std::string query = "SELECT id, name, created_at, layer_count, canvas_width, canvas_height "
+                        "FROM imgui_templates ORDER BY created_at DESC";
+    PGresult* result = PQexec(g_DBConnection, query.c_str());
+
+    if (PQresultStatus(result) == PGRES_TUPLES_OK) {
+        int rows = PQntuples(result);
+        for (int i = 0; i < rows; i++) {
+            ImGuiTemplateInfo info;
+            info.id = atoi(PQgetvalue(result, i, 0));
+            info.name = PQgetvalue(result, i, 1);
+            info.created_at = PQgetvalue(result, i, 2);
+            info.layer_count = atoi(PQgetvalue(result, i, 3));
+            info.canvas_width = atof(PQgetvalue(result, i, 4));
+            info.canvas_height = atof(PQgetvalue(result, i, 5));
+            templates.push_back(info);
+        }
+    }
+    PQclear(result);
+    return templates;
+}
+
+// Save current Figma project as ImGui template
+bool SaveAsImGuiTemplate(const std::string& templateName) {
+    if (!g_DBConnection || g_FigmaProject.layers.empty()) {
+        printf("[ImGui Templates] No database or no layers to save!\n");
+        return false;
+    }
+
+    EnsureImGuiTemplatesTable();
+
+    // Insert template record
+    std::ostringstream query;
+    query << "INSERT INTO imgui_templates (name, canvas_width, canvas_height, layer_count) VALUES ("
+          << "'" << SQLEscape(templateName) << "', "
+          << g_FigmaProject.canvas_width << ", "
+          << g_FigmaProject.canvas_height << ", "
+          << g_FigmaProject.layers.size() << ") RETURNING id";
+
+    PGresult* result = PQexec(g_DBConnection, query.str().c_str());
+    if (PQresultStatus(result) != PGRES_TUPLES_OK) {
+        printf("[ImGui Templates] Error inserting template: %s\n", PQerrorMessage(g_DBConnection));
+        PQclear(result);
+        return false;
+    }
+
+    int templateId = atoi(PQgetvalue(result, 0, 0));
+    PQclear(result);
+
+    printf("[ImGui Templates] Created template ID: %d\n", templateId);
+
+    // Insert layers
+    for (size_t i = 0; i < g_FigmaProject.layers.size(); i++) {
+        const WebLayer& layer = g_FigmaProject.layers[i];
+
+        // Read image data if exists
+        std::string imageDataHex = "NULL";
+        if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
+            std::vector<unsigned char> imgData = ReadImageFile(layer.image_path);
+            if (!imgData.empty()) {
+                imageDataHex = BinaryToHex(imgData);
+            }
+        }
+
+        std::ostringstream layerQuery;
+        layerQuery << "INSERT INTO imgui_template_layers ("
+                   << "template_id, layer_order, layer_type, name, x, y, width, height, "
+                   << "text, font_size, opacity, bg_color, text_color, border_radius, border_width, image_data"
+                   << ") VALUES ("
+                   << templateId << ", " << i << ", " << (int)layer.type << ", "
+                   << "'" << SQLEscape(layer.name) << "', "
+                   << layer.x << ", " << layer.y << ", " << layer.width << ", " << layer.height << ", "
+                   << "'" << SQLEscape(layer.text) << "', "
+                   << layer.font_size << ", " << layer.opacity << ", "
+                   << "'" << ColorToSQL(layer.bg_color) << "', "
+                   << "'" << ColorToSQL(layer.text_color) << "', "
+                   << layer.border_radius << ", " << layer.border_width << ", "
+                   << imageDataHex << ")";
+
+        result = PQexec(g_DBConnection, layerQuery.str().c_str());
+        if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+            printf("[ImGui Templates] Error inserting layer %zu: %s\n", i, PQerrorMessage(g_DBConnection));
+        }
+        PQclear(result);
+    }
+
+    printf("[ImGui Templates] Saved '%s' with %zu layers!\n", templateName.c_str(), g_FigmaProject.layers.size());
+    return true;
+}
+
+// Load ImGui template from database
+bool LoadImGuiTemplate(int templateId) {
+    if (!g_DBConnection) return false;
+
+    // Get template info
+    std::string query = "SELECT name, canvas_width, canvas_height FROM imgui_templates WHERE id=" + std::to_string(templateId);
+    PGresult* result = PQexec(g_DBConnection, query.c_str());
+
+    if (PQresultStatus(result) != PGRES_TUPLES_OK || PQntuples(result) == 0) {
+        printf("[ImGui Templates] Template not found: %d\n", templateId);
+        PQclear(result);
+        return false;
+    }
+
+    // Clear current project
+    g_FigmaProject = FigmaProject();
+    g_FigmaProject.name = PQgetvalue(result, 0, 0);
+    g_FigmaProject.canvas_width = atof(PQgetvalue(result, 0, 1));
+    g_FigmaProject.canvas_height = atof(PQgetvalue(result, 0, 2));
+    PQclear(result);
+
+    // Load layers
+    query = "SELECT layer_type, name, x, y, width, height, text, font_size, opacity, "
+            "bg_color, text_color, border_radius, border_width, image_data "
+            "FROM imgui_template_layers WHERE template_id=" + std::to_string(templateId) +
+            " ORDER BY layer_order";
+    result = PQexec(g_DBConnection, query.c_str());
+
+    if (PQresultStatus(result) == PGRES_TUPLES_OK) {
+        int rows = PQntuples(result);
+        for (int i = 0; i < rows; i++) {
+            WebLayer layer;
+            layer.id = g_FigmaProject.next_layer_id++;
+            layer.type = (LayerType)atoi(PQgetvalue(result, i, 0));
+            layer.name = PQgetvalue(result, i, 1);
+            layer.x = atof(PQgetvalue(result, i, 2));
+            layer.y = atof(PQgetvalue(result, i, 3));
+            layer.width = atof(PQgetvalue(result, i, 4));
+            layer.height = atof(PQgetvalue(result, i, 5));
+            layer.text = PQgetvalue(result, i, 6);
+            layer.font_size = atof(PQgetvalue(result, i, 7));
+            layer.opacity = atof(PQgetvalue(result, i, 8));
+            layer.bg_color = SQLToColor(PQgetvalue(result, i, 9));
+            layer.text_color = SQLToColor(PQgetvalue(result, i, 10));
+            layer.border_radius = atof(PQgetvalue(result, i, 11));
+            layer.border_width = atof(PQgetvalue(result, i, 12));
+            layer.visible = true;
+            layer.locked = false;
+
+            // Load image data if present
+            if (!PQgetisnull(result, i, 13)) {
+                const char* hexData = PQgetvalue(result, i, 13);
+                size_t hexLen = PQgetlength(result, i, 13);
+                std::vector<unsigned char> imgData = DecodePostgresHexBytea(hexData, hexLen);
+
+                if (!imgData.empty()) {
+                    // Create texture from data
+                    int w, h, n;
+                    unsigned char* pixels = stbi_load_from_memory(imgData.data(), imgData.size(), &w, &h, &n, 4);
+                    if (pixels) {
+                        glGenTextures(1, &layer.texture_id);
+                        glBindTexture(GL_TEXTURE_2D, layer.texture_id);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+                        stbi_image_free(pixels);
+                    }
+                }
+            }
+
+            g_FigmaProject.layers.push_back(layer);
+        }
+    }
+    PQclear(result);
+
+    // Switch to Figma mode
+    g_FigmaMode = true;
+    g_SelectedLayerId = -1;
+
+    printf("[ImGui Templates] Loaded '%s' with %zu layers\n", g_FigmaProject.name.c_str(), g_FigmaProject.layers.size());
+    return true;
+}
+
+// Delete ImGui template from database
+bool DeleteImGuiTemplate(int templateId) {
+    if (!g_DBConnection) return false;
+
+    std::string query = "DELETE FROM imgui_templates WHERE id=" + std::to_string(templateId);
+    PGresult* result = PQexec(g_DBConnection, query.c_str());
+    bool success = (PQresultStatus(result) == PGRES_COMMAND_OK);
+    PQclear(result);
+
+    if (success) {
+        printf("[ImGui Templates] Deleted template %d\n", templateId);
+    }
+    return success;
+}
+
+// ============================================================================
 // EXPORT FIGMA DESIGN TO STANDALONE IMGUI C++ APPLICATION
 // ============================================================================
 void ExportFigmaToImGui() {
@@ -10673,6 +11074,15 @@ void RenderUI() {
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1));
     if (ImGui::Button("Export", ImVec2(65, 26))) ExportImGuiWebsite();
     ImGui::PopStyleColor();
+    ImGui::SameLine();
+    // ImGui Templates button in top bar (purple)
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.7f, 1));
+    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.7f, 0.3f, 0.8f, 1));
+    if (ImGui::Button("ImGui Templates", ImVec2(115, 26))) {
+        g_ImGuiTemplatesList = GetImGuiTemplates();
+        g_ShowImGuiTemplatesPopup = true;
+    }
+    ImGui::PopStyleColor(2);
     ImGui::End();
 
     // LEFT PANEL
@@ -10829,25 +11239,99 @@ void RenderUI() {
     }
     ImGui::End();
 
-    // CENTER CANVAS
-    float rpw = (g_SelectedSectionIndex >= 0) ? 300 : 0;
-    float cw = io.DisplaySize.x - lpw - rpw, ch = io.DisplaySize.y - 60;
-    ImGui::SetNextWindowPos(ImVec2(lpw, 60));
-    ImGui::SetNextWindowSize(ImVec2(cw, ch));
-    ImGui::Begin("##Canvas", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
-
-    // Check if in Figma mode
+    // ==================== FIGMA MODE: 3-PANEL LAYOUT ====================
     if (g_FigmaMode) {
-        // Static variables for UI state
-        static bool showLayersDropdown = false;
-        static bool showPropertiesDropdown = false;
+        float figma_lpw = 180;  // Left panel width (layers)
+        float figma_rpw = 300;  // Right panel width (properties)
+        float figma_cw = io.DisplaySize.x - figma_lpw - figma_rpw;  // Center canvas width
+        float figma_ch = io.DisplaySize.y - 60;  // Height (below top bar)
+
+        // ==================== FIGMA LEFT PANEL (LAYERS) ====================
+        ImGui::SetNextWindowPos(ImVec2(0, 60));
+        ImGui::SetNextWindowSize(ImVec2(figma_lpw, figma_ch));
+        ImGui::Begin("##FigmaLeftPanel", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "LAYERS");
+        ImGui::Separator();
+
+        // Add layer button
+        if (ImGui::Button("+ Add Layer", ImVec2(-1, 26))) {
+            WebLayer newLayer;
+            newLayer.id = g_FigmaProject.next_layer_id++;
+            newLayer.name = "New Layer";
+            newLayer.x = 100;
+            newLayer.y = 100;
+            newLayer.width = 200;
+            newLayer.height = 100;
+            newLayer.bg_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+            g_FigmaProject.layers.push_back(newLayer);
+            SelectLayer(newLayer.id);
+        }
+
+        ImGui::Spacing();
+        ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "LAYER LIST (%zu)", g_FigmaProject.layers.size());
+        ImGui::Separator();
+
+        // Layer list (reverse order - top layers first)
+        for (int i = g_FigmaProject.layers.size() - 1; i >= 0; i--) {
+            WebLayer& layer = g_FigmaProject.layers[i];
+            ImGui::PushID(layer.id);
+
+            // Visibility toggle
+            if (ImGui::Checkbox("##vis", &layer.visible)) {}
+            ImGui::SameLine();
+
+            // Type icon
+            const char* icon = "[D]";
+            switch (layer.type) {
+                case LAYER_TEXT: icon = "[T]"; break;
+                case LAYER_IMAGE: icon = "[I]"; break;
+                case LAYER_BUTTON: icon = "[B]"; break;
+                case LAYER_INPUT: icon = "[F]"; break;
+                default: break;
+            }
+
+            char label[128];
+            snprintf(label, sizeof(label), "%s %s", icon, layer.name.c_str());
+
+            if (ImGui::Selectable(label, layer.selected)) {
+                SelectLayer(layer.id);
+            }
+
+            // Right-click context menu
+            if (ImGui::BeginPopupContextItem()) {
+                if (ImGui::MenuItem("Delete")) {
+                    g_FigmaProject.layers.erase(g_FigmaProject.layers.begin() + i);
+                    if (g_SelectedLayerId == layer.id) g_SelectedLayerId = -1;
+                }
+                if (ImGui::MenuItem("Duplicate")) {
+                    WebLayer dup = layer;
+                    dup.id = g_FigmaProject.next_layer_id++;
+                    dup.name = layer.name + " copy";
+                    dup.x += 20;
+                    dup.y += 20;
+                    dup.selected = false;
+                    g_FigmaProject.layers.push_back(dup);
+                }
+                ImGui::EndPopup();
+            }
+
+            ImGui::PopID();
+        }
+
+        ImGui::End();  // End FigmaLeftPanel
+
+        // ==================== FIGMA CENTER CANVAS ====================
+        ImGui::SetNextWindowPos(ImVec2(figma_lpw, 60));
+        ImGui::SetNextWindowSize(ImVec2(figma_cw, figma_ch));
+        ImGui::Begin("##FigmaCanvas", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
 
         // ==================== TOP TOOLBAR ====================
         float toolbarHeight = 50;
         ImGui::SetCursorPos(ImVec2(0, 0));
         ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.15f, 1.0f));
         ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 0);
-        ImGui::BeginChild("##FigmaTopBar", ImVec2(cw, toolbarHeight), true);
+        ImGui::BeginChild("##FigmaTopBar", ImVec2(figma_cw, toolbarHeight), true);
 
         // Static for load popup
         static bool showLoadPopup = false;
@@ -10918,14 +11402,11 @@ void RenderUI() {
         // Load button
         if (ImGui::Button("Load")) {
             savedProjects = GetSavedFigmaProjects();
-            showLoadPopup = true;
+            ImGui::OpenPopup("Load Project Popup");
         }
 
-        // Load popup
-        if (showLoadPopup) {
-            ImGui::OpenPopup("Load Project");
-        }
-        if (ImGui::BeginPopup("Load Project")) {
+        // Load popup - using modal to prevent accidental opening
+        if (ImGui::BeginPopup("Load Project Popup")) {
             ImGui::Text("Saved Projects:");
             ImGui::Separator();
             for (const auto& proj : savedProjects) {
@@ -10937,7 +11418,7 @@ void RenderUI() {
 
                 if (ImGui::MenuItem(filename.c_str())) {
                     LoadFigmaProject(proj);
-                    showLoadPopup = false;
+                    ImGui::CloseCurrentPopup();
                 }
             }
             if (savedProjects.empty()) {
@@ -10945,11 +11426,9 @@ void RenderUI() {
             }
             ImGui::Separator();
             if (ImGui::MenuItem("Cancel")) {
-                showLoadPopup = false;
+                ImGui::CloseCurrentPopup();
             }
             ImGui::EndPopup();
-        } else {
-            showLoadPopup = false;
         }
 
         ImGui::SameLine();
@@ -11125,56 +11604,6 @@ void RenderUI() {
         ImGui::TextDisabled("|");
         ImGui::SameLine();
 
-        // Layers dropdown button
-        ImGui::PushStyleColor(ImGuiCol_Button, showLayersDropdown ? ImVec4(0.3f, 0.3f, 0.4f, 1.0f) : ImVec4(0.2f, 0.2f, 0.25f, 1.0f));
-        if (ImGui::Button("Layers")) {
-            showLayersDropdown = !showLayersDropdown;
-            if (showLayersDropdown) showPropertiesDropdown = false;
-        }
-        ImGui::PopStyleColor();
-
-        ImGui::SameLine();
-
-        // Properties dropdown button
-        ImGui::PushStyleColor(ImGuiCol_Button, showPropertiesDropdown ? ImVec4(0.3f, 0.3f, 0.4f, 1.0f) : ImVec4(0.2f, 0.2f, 0.25f, 1.0f));
-        if (ImGui::Button("Properties")) {
-            showPropertiesDropdown = !showPropertiesDropdown;
-            if (showPropertiesDropdown) showLayersDropdown = false;
-        }
-        ImGui::PopStyleColor();
-
-        ImGui::SameLine();
-        ImGui::TextDisabled("|");
-        ImGui::SameLine();
-
-        // Quick layer actions
-        if (ImGui::Button("+ Add")) {
-            WebLayer newLayer;
-            newLayer.id = g_FigmaProject.next_layer_id++;
-            newLayer.name = "New Layer";
-            newLayer.x = 100 - g_FigmaProject.scroll_x;
-            newLayer.y = 100 - g_FigmaProject.scroll_y;
-            newLayer.width = 200;
-            newLayer.height = 100;
-            newLayer.bg_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
-            g_FigmaProject.layers.push_back(newLayer);
-            SelectLayer(newLayer.id);
-        }
-        ImGui::SameLine();
-        ImGui::BeginDisabled(g_SelectedLayerId < 0);
-        if (ImGui::Button("Delete")) {
-            g_FigmaProject.layers.erase(
-                std::remove_if(g_FigmaProject.layers.begin(), g_FigmaProject.layers.end(),
-                    [](const WebLayer& l) { return l.id == g_SelectedLayerId; }),
-                g_FigmaProject.layers.end());
-            g_SelectedLayerId = -1;
-        }
-        ImGui::EndDisabled();
-
-        ImGui::SameLine();
-        ImGui::TextDisabled("|");
-        ImGui::SameLine();
-
         // View toggles
         ImGui::Checkbox("Grid", &g_FigmaProject.show_grid);
         ImGui::SameLine();
@@ -11183,6 +11612,11 @@ void RenderUI() {
             ImGui::SameLine();
             ImGui::SetNextItemWidth(60);
             ImGui::SliderFloat("##RefOp", &g_FigmaProject.reference_opacity, 0.1f, 1.0f, "%.1f");
+        }
+        ImGui::SameLine();
+        ImGui::Checkbox("Bounds", &g_FigmaProject.show_bounds);
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Show outlines around all layers");
         }
 
         ImGui::SameLine();
@@ -11211,19 +11645,41 @@ void RenderUI() {
         }
         ImGui::SameLine();
         if (ImGui::Button("Fit")) {
-            ImVec2 cs = ImGui::GetContentRegionAvail();
-            g_FigmaProject.zoom = (cw - 100) / g_FigmaProject.canvas_width;
+            g_FigmaProject.zoom = (figma_cw - 100) / g_FigmaProject.canvas_width;
         }
 
         ImGui::SameLine();
         ImGui::TextDisabled("|");
         ImGui::SameLine();
 
-        // Export to ImGui Code button
+        // Export to ImGui Code button with dropdown
         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
         if (ImGui::Button("Export Code")) {
-            ExportFigmaToImGui();
+            ImGui::OpenPopup("ExportOptionsPopup");
+        }
+        ImGui::PopStyleColor(2);
+
+        // Export options popup
+        if (ImGui::BeginPopup("ExportOptionsPopup")) {
+            if (ImGui::MenuItem("Export to Folder...")) {
+                ExportFigmaToImGui();
+            }
+            ImGui::Separator();
+            if (ImGui::MenuItem("Save as ImGui Template")) {
+                g_ShowSaveImGuiTemplatePopup = true;
+            }
+            ImGui::EndPopup();
+        }
+
+        ImGui::SameLine();
+
+        // ImGui Templates button (purple)
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.5f, 0.2f, 0.6f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.6f, 0.3f, 0.7f, 1.0f));
+        if (ImGui::Button("ImGui Templates")) {
+            g_ImGuiTemplatesList = GetImGuiTemplates();
+            g_ShowImGuiTemplatesPopup = true;
         }
         ImGui::PopStyleColor(2);
 
@@ -11231,130 +11687,177 @@ void RenderUI() {
         ImGui::PopStyleVar();
         ImGui::PopStyleColor();
 
-        // ==================== LAYERS DROPDOWN PANEL ====================
-        if (showLayersDropdown) {
-            ImGui::SetCursorPos(ImVec2(70, toolbarHeight));
-            ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.15f, 0.15f, 0.18f, 0.98f));
-            ImGui::BeginChild("##LayersPanel", ImVec2(250, std::min(400.0f, ch - toolbarHeight - 20)), true);
-
-            ImGui::Text("LAYERS (%zu)", g_FigmaProject.layers.size());
-            ImGui::Separator();
-
-            // Layer list (reverse order - top layers first)
-            for (int i = g_FigmaProject.layers.size() - 1; i >= 0; i--) {
-                WebLayer& layer = g_FigmaProject.layers[i];
-                ImGui::PushID(layer.id);
-
-                // Visibility toggle
-                if (ImGui::Checkbox("##vis", &layer.visible)) {}
-                ImGui::SameLine();
-
-                // Type icon
-                const char* icon = "[D]";
-                switch (layer.type) {
-                    case LAYER_TEXT: icon = "[T]"; break;
-                    case LAYER_IMAGE: icon = "[I]"; break;
-                    case LAYER_BUTTON: icon = "[B]"; break;
-                    case LAYER_INPUT: icon = "[F]"; break;
-                    default: break;
-                }
-
-                char label[128];
-                snprintf(label, sizeof(label), "%s %s", icon, layer.name.c_str());
-
-                if (ImGui::Selectable(label, layer.selected)) {
-                    SelectLayer(layer.id);
-                }
-
-                ImGui::PopID();
-            }
-
-            ImGui::EndChild();
-            ImGui::PopStyleColor();
-        }
-
-        // ==================== PROPERTIES DROPDOWN PANEL ====================
-        if (showPropertiesDropdown) {
-            ImGui::SetCursorPos(ImVec2(140, toolbarHeight));
-            ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.15f, 0.15f, 0.18f, 0.98f));
-            ImGui::BeginChild("##PropertiesPanel", ImVec2(300, std::min(450.0f, ch - toolbarHeight - 20)), true);
-
-            WebLayer* layer = GetLayerById(g_SelectedLayerId);
-            if (!layer) {
-                ImGui::TextDisabled("No layer selected");
-                ImGui::TextDisabled("Select a layer on canvas");
-                ImGui::TextDisabled("or from Layers panel");
-            } else {
-                ImGui::Text("PROPERTIES: %s", layer->name.c_str());
-                ImGui::Separator();
-
-                // Name
-                char nameBuffer[256];
-                strncpy(nameBuffer, layer->name.c_str(), sizeof(nameBuffer));
-                ImGui::SetNextItemWidth(-1);
-                if (ImGui::InputText("##Name", nameBuffer, sizeof(nameBuffer))) {
-                    layer->name = nameBuffer;
-                }
-
-                ImGui::Spacing();
-
-                // Transform
-                if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
-                    ImGui::SetNextItemWidth(100);
-                    ImGui::DragFloat("X", &layer->x, 1.0f);
-                    ImGui::SameLine();
-                    ImGui::SetNextItemWidth(100);
-                    ImGui::DragFloat("Y", &layer->y, 1.0f);
-                    ImGui::SetNextItemWidth(100);
-                    ImGui::DragFloat("W", &layer->width, 1.0f, 1.0f, 10000.0f);
-                    ImGui::SameLine();
-                    ImGui::SetNextItemWidth(100);
-                    ImGui::DragFloat("H", &layer->height, 1.0f, 1.0f, 10000.0f);
-                }
-
-                // Appearance
-                if (ImGui::CollapsingHeader("Appearance", ImGuiTreeNodeFlags_DefaultOpen)) {
-                    ImGui::ColorEdit4("BG Color", (float*)&layer->bg_color, ImGuiColorEditFlags_NoInputs);
-                    ImGui::ColorEdit4("Text Color", (float*)&layer->text_color, ImGuiColorEditFlags_NoInputs);
-                    ImGui::SetNextItemWidth(150);
-                    ImGui::SliderFloat("Opacity", &layer->opacity, 0.0f, 1.0f, "%.2f");
-                    ImGui::SetNextItemWidth(150);
-                    ImGui::DragFloat("Border Radius", &layer->border_radius, 1.0f, 0.0f, 100.0f);
-                }
-
-                // Text (for text/button layers)
-                if (layer->type == LAYER_TEXT || layer->type == LAYER_BUTTON) {
-                    if (ImGui::CollapsingHeader("Text", ImGuiTreeNodeFlags_DefaultOpen)) {
-                        char textBuffer[1024];
-                        strncpy(textBuffer, layer->text.c_str(), sizeof(textBuffer));
-                        if (ImGui::InputTextMultiline("##Content", textBuffer, sizeof(textBuffer), ImVec2(-1, 60))) {
-                            layer->text = textBuffer;
-                        }
-                        ImGui::SetNextItemWidth(100);
-                        ImGui::DragFloat("Font Size", &layer->font_size, 1.0f, 8.0f, 200.0f);
-                    }
-                }
-
-                ImGui::Spacing();
-                ImGui::Checkbox("Locked", &layer->locked);
-            }
-
-            ImGui::EndChild();
-            ImGui::PopStyleColor();
-        }
-
         // ==================== CANVAS (below toolbar) ====================
         ImGui::SetCursorPos(ImVec2(0, toolbarHeight));
-        ImGui::BeginChild("##FigmaCanvasArea", ImVec2(cw, ch - toolbarHeight), false, ImGuiWindowFlags_NoScrollbar);
+        ImGui::BeginChild("##FigmaCanvasArea", ImVec2(figma_cw, figma_ch - toolbarHeight), false, ImGuiWindowFlags_NoScrollbar);
 
         // Render the actual Figma canvas
         RenderFigmaCanvas();
 
         ImGui::EndChild();
 
-        ImGui::End();
+        ImGui::End();  // End FigmaCanvas
+
+        // ==================== FIGMA RIGHT PANEL (PROPERTIES) ====================
+        ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x - figma_rpw, 60));
+        ImGui::SetNextWindowSize(ImVec2(figma_rpw, figma_ch));
+        ImGui::Begin("##FigmaRightPanel", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+
+        ImGui::TextColored(ImVec4(0.4f, 0.7f, 1.0f, 1), "PROPERTIES");
+        ImGui::Separator();
+
+        WebLayer* selectedLayer = GetLayerById(g_SelectedLayerId);
+        if (!selectedLayer) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No layer selected");
+            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "Select a layer from");
+            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "the left panel or canvas");
+        } else {
+            // Layer Name
+            ImGui::Text("Name:");
+            char nameBuffer[256];
+            strncpy(nameBuffer, selectedLayer->name.c_str(), sizeof(nameBuffer));
+            ImGui::SetNextItemWidth(-1);
+            if (ImGui::InputText("##LayerName", nameBuffer, sizeof(nameBuffer))) {
+                selectedLayer->name = nameBuffer;
+            }
+
+            ImGui::Spacing();
+
+            // Transform section
+            if (ImGui::CollapsingHeader("Transform", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Text("Position:");
+                ImGui::SetNextItemWidth(130);
+                ImGui::DragFloat("X##pos", &selectedLayer->x, 1.0f);
+                ImGui::SameLine();
+                ImGui::SetNextItemWidth(130);
+                ImGui::DragFloat("Y##pos", &selectedLayer->y, 1.0f);
+
+                ImGui::Text("Size:");
+                ImGui::SetNextItemWidth(130);
+                ImGui::DragFloat("W##size", &selectedLayer->width, 1.0f, 1.0f, 10000.0f);
+                ImGui::SameLine();
+                ImGui::SetNextItemWidth(130);
+                ImGui::DragFloat("H##size", &selectedLayer->height, 1.0f, 1.0f, 10000.0f);
+            }
+
+            // Appearance section
+            if (ImGui::CollapsingHeader("Appearance", ImGuiTreeNodeFlags_DefaultOpen)) {
+                // Note about overlay mode
+                if (g_FigmaProject.show_reference && g_FigmaProject.reference_opacity > 0.5f) {
+                    ImGui::TextColored(ImVec4(1.0f, 0.7f, 0.0f, 1.0f), "Note: Ref mode hides BG colors");
+                }
+
+                ImGui::Text("BG Color:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::ColorEdit4("##BGColor", (float*)&selectedLayer->bg_color,
+                    ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_DisplayRGB);
+
+                ImGui::Text("Text Color:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::ColorEdit4("##TextColor", (float*)&selectedLayer->text_color,
+                    ImGuiColorEditFlags_AlphaBar | ImGuiColorEditFlags_DisplayRGB);
+
+                ImGui::Text("Opacity:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::SliderFloat("##Opacity", &selectedLayer->opacity, 0.0f, 1.0f, "%.2f");
+
+                ImGui::Text("Border Radius:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::DragFloat("##BorderRadius", &selectedLayer->border_radius, 1.0f, 0.0f, 100.0f);
+            }
+
+            // Typography section - show for ALL layers (so user can edit/add text to any layer)
+            if (ImGui::CollapsingHeader("Typography", ImGuiTreeNodeFlags_DefaultOpen)) {
+                ImGui::Text("Text Content:");
+                char textBuffer[4096];
+                strncpy(textBuffer, selectedLayer->text.c_str(), sizeof(textBuffer));
+                textBuffer[sizeof(textBuffer) - 1] = '\0';
+                if (ImGui::InputTextMultiline("##TextContent", textBuffer, sizeof(textBuffer), ImVec2(-1, 100))) {
+                    selectedLayer->text = textBuffer;
+                }
+
+                ImGui::Spacing();
+
+                ImGui::Text("Font Size:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::DragFloat("##FontSize", &selectedLayer->font_size, 1.0f, 8.0f, 200.0f);
+
+                ImGui::Text("Font Weight:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::DragFloat("##FontWeight", &selectedLayer->font_weight, 10.0f, 100.0f, 900.0f);
+
+                // Quick weight presets
+                if (ImGui::Button("Light", ImVec2(55, 22))) selectedLayer->font_weight = 300;
+                ImGui::SameLine();
+                if (ImGui::Button("Normal", ImVec2(55, 22))) selectedLayer->font_weight = 400;
+                ImGui::SameLine();
+                if (ImGui::Button("Bold", ImVec2(55, 22))) selectedLayer->font_weight = 700;
+                ImGui::SameLine();
+                if (ImGui::Button("Black", ImVec2(55, 22))) selectedLayer->font_weight = 900;
+
+                ImGui::Spacing();
+
+                ImGui::Text("Text Align:");
+                const char* alignItems[] = {"Left", "Center", "Right"};
+                ImGui::SetNextItemWidth(-1);
+                ImGui::Combo("##TextAlign", &selectedLayer->text_align, alignItems, 3);
+
+                // Text decoration
+                ImGui::Text("Text Style:");
+                bool isUnderline = (selectedLayer->text_decoration == "underline");
+                bool isStrikethrough = (selectedLayer->text_decoration == "line-through");
+                if (ImGui::Checkbox("Underline", &isUnderline)) {
+                    selectedLayer->text_decoration = isUnderline ? "underline" : "none";
+                }
+                ImGui::SameLine();
+                if (ImGui::Checkbox("Strikethrough", &isStrikethrough)) {
+                    selectedLayer->text_decoration = isStrikethrough ? "line-through" : "none";
+                }
+            }
+
+            // Image section (for image layers)
+            if (selectedLayer->type == LAYER_IMAGE) {
+                if (ImGui::CollapsingHeader("Image", ImGuiTreeNodeFlags_DefaultOpen)) {
+                    if (!selectedLayer->image_path.empty()) {
+                        ImGui::TextWrapped("Path: %s", selectedLayer->image_path.c_str());
+                    } else {
+                        ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.0f, 1), "No image loaded");
+                    }
+                }
+            }
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Lock checkbox
+            ImGui::Checkbox("Locked", &selectedLayer->locked);
+
+            ImGui::Spacing();
+
+            // Delete button
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1));
+            if (ImGui::Button("Delete Layer", ImVec2(-1, 28))) {
+                g_FigmaProject.layers.erase(
+                    std::remove_if(g_FigmaProject.layers.begin(), g_FigmaProject.layers.end(),
+                        [](const WebLayer& l) { return l.id == g_SelectedLayerId; }),
+                    g_FigmaProject.layers.end());
+                g_SelectedLayerId = -1;
+            }
+            ImGui::PopStyleColor();
+        }
+
+        ImGui::End();  // End FigmaRightPanel
+
         // Don't return - let popup dialogs render below
     } else {
+        // ==================== NORMAL MODE: SECTION-BASED LAYOUT ====================
+        float rpw = (g_SelectedSectionIndex >= 0) ? 300 : 0;
+        float cw = io.DisplaySize.x - lpw - rpw, ch = io.DisplaySize.y - 60;
+        ImGui::SetNextWindowPos(ImVec2(lpw, 60));
+        ImGui::SetNextWindowSize(ImVec2(cw, ch));
+        ImGui::Begin("##Canvas", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
         // Normal section-based rendering
     ImVec2 cp = ImGui::GetCursorScreenPos();
     ImVec2 cs = ImGui::GetContentRegionAvail();
@@ -12962,6 +13465,152 @@ void RenderUI() {
             ImGui::TextColored(ImVec4(0.8f, 0.3f, 0.3f, 1), "Please enter a template name");
         }
 
+        ImGui::End();
+    }
+
+    // ==================== SAVE AS IMGUI TEMPLATE POPUP (Global) ====================
+    if (g_ShowSaveImGuiTemplatePopup) {
+        static char imguiTemplateName[256] = "";
+        static bool nameInitialized = false;
+
+        // Initialize name from project name once
+        if (!nameInitialized && !g_FigmaProject.name.empty()) {
+            strncpy(imguiTemplateName, g_FigmaProject.name.c_str(), sizeof(imguiTemplateName));
+            nameInitialized = true;
+        }
+
+        ImGui::SetNextWindowSize(ImVec2(400, 180), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::Begin("Save as ImGui Template", &g_ShowSaveImGuiTemplatePopup, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "Save current design as ImGui Template");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Template Name:");
+            ImGui::SetNextItemWidth(-1);
+            ImGui::InputText("##SaveTemplateName", imguiTemplateName, sizeof(imguiTemplateName));
+
+            ImGui::Spacing();
+            ImGui::TextDisabled("Layers: %zu | Canvas: %.0fx%.0f",
+                g_FigmaProject.layers.size(),
+                g_FigmaProject.canvas_width,
+                g_FigmaProject.canvas_height);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Save button (green)
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
+            if (ImGui::Button("Save Template", ImVec2(150, 30))) {
+                if (strlen(imguiTemplateName) > 0) {
+                    if (SaveAsImGuiTemplate(imguiTemplateName)) {
+                        printf("[ImGui Templates] Saved successfully!\n");
+                        imguiTemplateName[0] = '\0';
+                        nameInitialized = false;
+                        g_ShowSaveImGuiTemplatePopup = false;
+                    }
+                }
+            }
+            ImGui::PopStyleColor(2);
+
+            ImGui::SameLine();
+
+            if (ImGui::Button("Cancel", ImVec2(100, 30))) {
+                imguiTemplateName[0] = '\0';
+                nameInitialized = false;
+                g_ShowSaveImGuiTemplatePopup = false;
+            }
+        }
+        ImGui::End();
+    }
+
+    // ==================== IMGUI TEMPLATES POPUP (Global - works from any mode) ====================
+    if (g_ShowImGuiTemplatesPopup) {
+        ImGui::SetNextWindowSize(ImVec2(550, 450), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::Begin("ImGui Templates", &g_ShowImGuiTemplatesPopup, ImGuiWindowFlags_NoCollapse)) {
+            ImGui::TextColored(ImVec4(0.6f, 0.2f, 0.7f, 1), "Saved ImGui Templates");
+            ImGui::SameLine();
+            ImGui::TextDisabled("(%zu templates)", g_ImGuiTemplatesList.size());
+            ImGui::Separator();
+
+            if (g_ImGuiTemplatesList.empty()) {
+                ImGui::Spacing();
+                ImGui::TextDisabled("No ImGui templates saved yet.");
+                ImGui::Spacing();
+                ImGui::TextWrapped("To save an ImGui template:");
+                ImGui::BulletText("Import a Figma design (URL or API)");
+                ImGui::BulletText("Click 'Export Code' > 'Save as ImGui Template'");
+                ImGui::Spacing();
+            } else {
+                // Refresh button
+                if (ImGui::Button("Refresh List")) {
+                    g_ImGuiTemplatesList = GetImGuiTemplates();
+                }
+                ImGui::Separator();
+
+                // Template list with scrolling
+                ImGui::BeginChild("ImGuiTemplateList", ImVec2(0, -35), true);
+
+                for (size_t i = 0; i < g_ImGuiTemplatesList.size(); i++) {
+                    const auto& tmpl = g_ImGuiTemplatesList[i];
+                    ImGui::PushID(tmpl.id);
+
+                    // Template row
+                    ImGui::BeginGroup();
+
+                    // Name (bold style)
+                    ImGui::TextColored(ImVec4(1, 1, 1, 1), "%s", tmpl.name.c_str());
+
+                    // Info line
+                    ImGui::TextDisabled("   %d layers  |  %.0f x %.0f px",
+                        tmpl.layer_count, tmpl.canvas_width, tmpl.canvas_height);
+
+                    ImGui::EndGroup();
+
+                    // Buttons on the right
+                    ImGui::SameLine(400);
+
+                    // Load button (green)
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
+                    if (ImGui::Button("Load", ImVec2(60, 24))) {
+                        if (LoadImGuiTemplate(tmpl.id)) {
+                            g_ShowImGuiTemplatesPopup = false;
+                            g_FigmaMode = true;
+                        }
+                    }
+                    ImGui::PopStyleColor(2);
+
+                    ImGui::SameLine();
+
+                    // Delete button (red)
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.2f, 0.2f, 1.0f));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.8f, 0.3f, 0.3f, 1.0f));
+                    if (ImGui::Button("Delete", ImVec2(60, 24))) {
+                        DeleteImGuiTemplate(tmpl.id);
+                        g_ImGuiTemplatesList = GetImGuiTemplates();
+                    }
+                    ImGui::PopStyleColor(2);
+
+                    ImGui::PopID();
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                }
+
+                ImGui::EndChild();
+            }
+
+            // Close button at bottom
+            if (ImGui::Button("Close", ImVec2(-1, 28))) {
+                g_ShowImGuiTemplatesPopup = false;
+            }
+        }
         ImGui::End();
     }
 

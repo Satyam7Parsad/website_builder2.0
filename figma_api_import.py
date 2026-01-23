@@ -206,14 +206,62 @@ class FigmaAPIImport:
                 border_color = self.rgba_to_css(stroke.get('color'))
                 break
 
-        # Text style
+        # Text style - enhanced
         font_size = 16
         font_weight = 400
+        font_family = "system-ui"
+        font_style = "normal"  # normal, italic
+        text_align = "left"  # left, center, right, justify
+        letter_spacing = 0
+        line_height = 1.2
+        text_decoration = "none"  # none, underline, line-through
 
         if node_type == 'TEXT':
             style = node.get('style', {})
             font_size = style.get('fontSize', 16)
             font_weight = style.get('fontWeight', 400)
+
+            # Font family
+            font_family = style.get('fontFamily', 'system-ui')
+
+            # Font style (italic)
+            font_style = "italic" if style.get('italic', False) else "normal"
+
+            # Text alignment
+            text_align_horizontal = style.get('textAlignHorizontal', 'LEFT')
+            if text_align_horizontal == 'CENTER':
+                text_align = "center"
+            elif text_align_horizontal == 'RIGHT':
+                text_align = "right"
+            elif text_align_horizontal == 'JUSTIFIED':
+                text_align = "justify"
+            else:
+                text_align = "left"
+
+            # Letter spacing (Figma uses pixels, can be negative)
+            letter_spacing = style.get('letterSpacing', 0)
+
+            # Line height
+            line_height_obj = style.get('lineHeightPx', 0)
+            if line_height_obj and font_size > 0:
+                line_height = line_height_obj / font_size
+            else:
+                line_height_unit = style.get('lineHeightUnit', 'AUTO')
+                if line_height_unit == 'PIXELS':
+                    line_height = style.get('lineHeightPx', font_size * 1.2) / font_size
+                elif line_height_unit == 'PERCENT':
+                    line_height = style.get('lineHeightPercent', 120) / 100
+                else:
+                    line_height = 1.2
+
+            # Text decoration
+            text_decoration_val = style.get('textDecoration', 'NONE')
+            if text_decoration_val == 'UNDERLINE':
+                text_decoration = "underline"
+            elif text_decoration_val == 'STRIKETHROUGH':
+                text_decoration = "line-through"
+            else:
+                text_decoration = "none"
 
             # Get text color from fills
             for fill in fills:
@@ -227,10 +275,44 @@ class FigmaAPIImport:
         if corner_radius:
             border_radius = corner_radius
 
+        # Individual corner radii (if different)
+        border_radius_tl = node.get('rectangleCornerRadii', [0,0,0,0])[0] if node.get('rectangleCornerRadii') else border_radius
+        border_radius_tr = node.get('rectangleCornerRadii', [0,0,0,0])[1] if node.get('rectangleCornerRadii') else border_radius
+        border_radius_br = node.get('rectangleCornerRadii', [0,0,0,0])[2] if node.get('rectangleCornerRadii') else border_radius
+        border_radius_bl = node.get('rectangleCornerRadii', [0,0,0,0])[3] if node.get('rectangleCornerRadii') else border_radius
+
         # Opacity
         opacity = node.get('opacity', 1)
 
-        # Create layer
+        # Box shadow (effects)
+        box_shadow = "none"
+        effects = node.get('effects', [])
+        for effect in effects:
+            if effect.get('visible', True) and effect.get('type') == 'DROP_SHADOW':
+                shadow_color = effect.get('color', {})
+                shadow_r = int(shadow_color.get('r', 0) * 255)
+                shadow_g = int(shadow_color.get('g', 0) * 255)
+                shadow_b = int(shadow_color.get('b', 0) * 255)
+                shadow_a = shadow_color.get('a', 0.25)
+                offset_x = effect.get('offset', {}).get('x', 0)
+                offset_y = effect.get('offset', {}).get('y', 4)
+                blur = effect.get('radius', 4)
+                spread = effect.get('spread', 0)
+                box_shadow = f"{offset_x}px {offset_y}px {blur}px {spread}px rgba({shadow_r},{shadow_g},{shadow_b},{shadow_a})"
+                break
+            elif effect.get('visible', True) and effect.get('type') == 'INNER_SHADOW':
+                shadow_color = effect.get('color', {})
+                shadow_r = int(shadow_color.get('r', 0) * 255)
+                shadow_g = int(shadow_color.get('g', 0) * 255)
+                shadow_b = int(shadow_color.get('b', 0) * 255)
+                shadow_a = shadow_color.get('a', 0.25)
+                offset_x = effect.get('offset', {}).get('x', 0)
+                offset_y = effect.get('offset', {}).get('y', 4)
+                blur = effect.get('radius', 4)
+                box_shadow = f"inset {offset_x}px {offset_y}px {blur}px rgba({shadow_r},{shadow_g},{shadow_b},{shadow_a})"
+                break
+
+        # Create layer with enhanced styling
         layer = {
             "id": len(self.layers) + 1,
             "node_id": node_id,
@@ -247,14 +329,26 @@ class FigmaAPIImport:
             "bg_color": bg_color,
             "text_color": text_color,
             "border_color": border_color,
+            # Font properties
             "font_size": font_size,
             "font_weight": font_weight,
-            "font_family": "system-ui",
-            "text_align": 0,
+            "font_family": font_family,
+            "font_style": font_style,
+            # Text properties
+            "text_align": text_align,
+            "letter_spacing": letter_spacing,
+            "line_height": line_height,
+            "text_decoration": text_decoration,
+            # Border properties
             "border_width": node.get('strokeWeight', 0),
             "border_radius": border_radius,
+            "border_radius_tl": border_radius_tl,
+            "border_radius_tr": border_radius_tr,
+            "border_radius_br": border_radius_br,
+            "border_radius_bl": border_radius_bl,
+            # Other properties
             "opacity": opacity,
-            "box_shadow": "none",
+            "box_shadow": box_shadow,
             "visible": node.get('visible', True)
         }
 
