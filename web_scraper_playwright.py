@@ -1309,10 +1309,42 @@ class PlaywrightWebsiteScraper:
                                 buttonType = 'nav';  // Short text link - likely navigation
                             }
 
+                            // Extract onclick action
+                            let onclickAction = el.getAttribute('onclick') || '';
+                            let actionType = 'none';
+
+                            // Determine action type
+                            if (el.href && el.href.startsWith('http')) {
+                                actionType = 'link';
+                            } else if (el.href && el.href.startsWith('#')) {
+                                actionType = 'scroll';
+                            } else if (el.href && el.href.startsWith('mailto:')) {
+                                actionType = 'email';
+                            } else if (el.href && el.href.startsWith('tel:')) {
+                                actionType = 'phone';
+                            } else if (onclickAction) {
+                                if (onclickAction.includes('submit') || onclickAction.includes('form')) {
+                                    actionType = 'submit';
+                                } else if (onclickAction.includes('popup') || onclickAction.includes('modal') || onclickAction.includes('open')) {
+                                    actionType = 'popup';
+                                } else {
+                                    actionType = 'script';
+                                }
+                            } else if (el.type === 'submit') {
+                                actionType = 'submit';
+                            } else if (el.tagName === 'BUTTON' || hasButtonClass) {
+                                actionType = 'button';
+                            }
+
                             buttons.push({
                                 text: el.textContent.trim(),
                                 href: el.href || '',
+                                onclick: onclickAction,
+                                actionType: actionType,
                                 buttonType: buttonType,
+                                // Position (absolute on page)
+                                x: rect.left + window.scrollX,
+                                y: rect.top + window.scrollY,
                                 // Colors
                                 bgColor: btnBgColor,
                                 textColor: style.color,

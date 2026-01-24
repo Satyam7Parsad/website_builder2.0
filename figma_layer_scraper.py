@@ -229,6 +229,11 @@ class FigmaLayerScraper:
                     }
 
                     // Button elements
+                    let isDisabled = false;
+                    let buttonType = 'button';
+                    let dataTarget = '';
+                    let formId = '';
+
                     if (tagName === 'button' || (tagName === 'a' && (
                         el.className.includes('btn') ||
                         el.className.includes('button') ||
@@ -236,6 +241,39 @@ class FigmaLayerScraper:
                     ))) {
                         layerType = 'button';
                         text = el.textContent.trim().substring(0, 100);
+
+                        // Extract button-specific attributes
+                        isDisabled = el.disabled || el.hasAttribute('disabled') || el.classList.contains('disabled');
+                        buttonType = el.type || 'button';  // submit, reset, button
+                        dataTarget = el.getAttribute('data-target') || el.getAttribute('data-bs-target') || '';
+                        formId = el.getAttribute('form') || '';
+                    }
+
+                    // Extract onclick and determine action type
+                    let onclickAction = el.getAttribute('onclick') || '';
+                    let actionType = 'none';
+                    const href = el.href || '';
+
+                    if (href && href.startsWith('http')) {
+                        actionType = 'link';
+                    } else if (href && href.startsWith('#')) {
+                        actionType = 'scroll';
+                    } else if (href && href.startsWith('mailto:')) {
+                        actionType = 'email';
+                    } else if (href && href.startsWith('tel:')) {
+                        actionType = 'phone';
+                    } else if (onclickAction) {
+                        if (onclickAction.includes('submit') || onclickAction.includes('form')) {
+                            actionType = 'submit';
+                        } else if (onclickAction.includes('popup') || onclickAction.includes('modal') || onclickAction.includes('open')) {
+                            actionType = 'popup';
+                        } else {
+                            actionType = 'script';
+                        }
+                    } else if (el.type === 'submit') {
+                        actionType = 'submit';
+                    } else if (layerType === 'button') {
+                        actionType = 'button';
                     }
 
                     // Input elements
@@ -281,7 +319,14 @@ class FigmaLayerScraper:
                                 zIndex: parseInt(style.zIndex) || 0,
                                 text: text,
                                 imageSrc: imageSrc,
-                                href: el.href || '',
+                                href: href,
+                                onclick: onclickAction,
+                                actionType: actionType,
+                                // Button-specific properties
+                                disabled: isDisabled,
+                                buttonType: buttonType,
+                                dataTarget: dataTarget,
+                                formId: formId,
                                 // Colors
                                 bgColor: style.backgroundColor,
                                 textColor: style.color,
@@ -372,6 +417,7 @@ class FigmaLayerScraper:
                 'id': self.next_layer_id,
                 'type': layer_type,
                 'name': name,
+                'element_id': raw.get('id', ''),  # HTML element ID for scroll targets
                 'x': raw['x'],
                 'y': raw['y'],
                 'width': raw['width'],
@@ -380,6 +426,13 @@ class FigmaLayerScraper:
                 'text': raw.get('text', ''),
                 'image_path': raw.get('imageSrc', ''),
                 'href': raw.get('href', ''),
+                'onclick_action': raw.get('onclick', ''),
+                'action_type': raw.get('actionType', 'none'),
+                # Button-specific properties
+                'disabled': raw.get('disabled', False),
+                'button_type': raw.get('buttonType', 'button'),
+                'data_target': raw.get('dataTarget', ''),
+                'form_id': raw.get('formId', ''),
                 'bg_color': raw.get('bgColor', 'rgba(0,0,0,0)'),
                 'text_color': raw.get('textColor', 'rgb(0,0,0)'),
                 'border_color': raw.get('borderColor', 'rgb(0,0,0)'),

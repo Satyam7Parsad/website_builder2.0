@@ -333,6 +333,7 @@ std::vector<std::string> ParsePostgresArray(const char* pg_array) {
 struct WebSection;
 static std::vector<WebSection> g_Sections;
 static std::vector<std::string> g_Pages;
+void PreviewFigmaWebsite();  // Preview Figma layers in browser
 
 // ============================================================================
 // URL IMPORT STRUCTURES
@@ -1376,6 +1377,8 @@ struct WebLayer {
     std::string text;
     std::string image_path;
     std::string href;
+    std::string onclick_action;  // JavaScript onclick or action data
+    std::string action_type;     // "link", "popup", "scroll", "submit", etc.
     GLuint texture_id;
 
     // Colors
@@ -1409,6 +1412,16 @@ struct WebLayer {
     bool has_gradient;
     std::string gradient_css;
 
+    // Button interaction states
+    ImVec4 hover_bg_color;       // Background color on hover
+    ImVec4 hover_text_color;     // Text color on hover
+    float hover_scale;           // Scale transform on hover (1.0 = no change)
+    bool disabled;               // Button is disabled
+    std::string element_id;      // HTML element ID (for scroll targets)
+    std::string button_type;     // "submit", "reset", "button"
+    std::string data_target;     // Modal/popup target
+    std::string form_id;         // Associated form ID
+
     // State
     bool selected;
     bool hovered;
@@ -1437,6 +1450,8 @@ struct WebLayer {
         border_radius_tl(0), border_radius_tr(0), border_radius_br(0), border_radius_bl(0),
         border_style("none"),
         opacity(1.0f), box_shadow("none"), has_gradient(false),
+        hover_bg_color(0.9f, 0.9f, 0.9f, 1.0f), hover_text_color(0,0,0,1),
+        hover_scale(1.02f), disabled(false), button_type("button"),
         selected(false), hovered(false), dragging(false), resizing(false),
         resize_handle(-1), drag_offset_x(0), drag_offset_y(0),
         visible(true), locked(false), parent_id(-1) {}
@@ -1473,6 +1488,7 @@ struct FigmaProject {
     bool show_reference;
     float reference_opacity;
     bool show_bounds;  // Show outlines around all layers
+    bool preview_mode; // Preview mode - clicking buttons executes their actions
 
     FigmaProject() : name("Untitled"),
         canvas_width(1920), canvas_height(3000),
@@ -1483,8 +1499,85 @@ struct FigmaProject {
         multi_select(false),
         show_grid(false), grid_size(10), snap_to_grid(true),
         show_guides(false),
-        show_reference(false), reference_opacity(1.0f), show_bounds(false) {}
+        show_reference(false), reference_opacity(1.0f), show_bounds(false), preview_mode(false) {}
 };
+
+// Forward declaration of global project (defined in GLOBAL STATE section below)
+static FigmaProject g_FigmaProject;
+
+// Execute layer action (open URL, scroll, etc.)
+void ExecuteLayerAction(const WebLayer& layer) {
+    if (layer.href.empty() && layer.onclick_action.empty()) return;
+
+    std::string action = layer.href.empty() ? layer.onclick_action : layer.href;
+    std::string type = layer.action_type;
+
+    printf("[Action] Executing: type='%s', action='%s'\n", type.c_str(), action.c_str());
+
+    if (type == "link" || type == "none") {
+        // Open URL in default browser
+        if (!layer.href.empty() && (layer.href.find("http://") == 0 || layer.href.find("https://") == 0)) {
+#ifdef __APPLE__
+            std::string cmd = "open \"" + layer.href + "\"";
+#elif defined(_WIN32)
+            std::string cmd = "start \"\" \"" + layer.href + "\"";
+#else
+            std::string cmd = "xdg-open \"" + layer.href + "\"";
+#endif
+            system(cmd.c_str());
+            printf("[Action] Opened URL: %s\n", layer.href.c_str());
+        }
+    } else if (type == "email") {
+        // Open mailto link
+#ifdef __APPLE__
+        std::string cmd = "open \"" + layer.href + "\"";
+#elif defined(_WIN32)
+        std::string cmd = "start \"\" \"" + layer.href + "\"";
+#else
+        std::string cmd = "xdg-open \"" + layer.href + "\"";
+#endif
+        system(cmd.c_str());
+        printf("[Action] Opened email: %s\n", layer.href.c_str());
+    } else if (type == "phone") {
+        // Open tel link
+#ifdef __APPLE__
+        std::string cmd = "open \"" + layer.href + "\"";
+#elif defined(_WIN32)
+        std::string cmd = "start \"\" \"" + layer.href + "\"";
+#else
+        std::string cmd = "xdg-open \"" + layer.href + "\"";
+#endif
+        system(cmd.c_str());
+        printf("[Action] Opened phone: %s\n", layer.href.c_str());
+    } else if (type == "scroll") {
+        // Scroll to anchor (extract anchor name from href like #section1)
+        if (layer.href.length() > 1) {
+            std::string anchor = layer.href.substr(1); // Remove #
+
+            // Find layer with matching element_id or name
+            bool found = false;
+            for (auto& targetLayer : g_FigmaProject.layers) {
+                if (targetLayer.element_id == anchor || targetLayer.name == anchor) {
+                    // Smooth scroll to target Y position (with 50px offset from top)
+                    g_FigmaProject.scroll_y = targetLayer.y - 50;
+                    if (g_FigmaProject.scroll_y < 0) g_FigmaProject.scroll_y = 0;
+                    printf("[Action] Scrolled to: %s (y=%.0f)\n", anchor.c_str(), targetLayer.y);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                printf("[Action] Scroll target not found: %s\n", anchor.c_str());
+            }
+        }
+    } else if (type == "popup" || type == "script") {
+        printf("[Action] JavaScript action: %s (cannot execute in editor)\n", layer.onclick_action.c_str());
+    } else if (type == "submit") {
+        printf("[Action] Form submit (cannot execute in editor)\n");
+    } else if (type == "button") {
+        printf("[Action] Button clicked (no specific action defined)\n");
+    }
+}
 
 // ============================================================================
 // GLOBAL STATE
@@ -1524,7 +1617,7 @@ static bool g_DownloadComplete = false;
 
 // Figma-style Editor State
 static bool g_FigmaMode = false;                    // True = Figma editor, False = Section editor
-static FigmaProject g_FigmaProject;                 // Current Figma project
+// g_FigmaProject is declared above ExecuteLayerAction function
 static int g_SelectedLayerId = -1;                  // Currently selected layer
 static int g_HoveredLayerId = -1;                   // Layer under mouse click (for topmost selection)
 static bool g_ShowFigmaLayers = true;               // Show layers panel
@@ -2832,7 +2925,7 @@ bool LoadTemplate(const std::string& filepath) {
                 }
 
                 // Load figma_layers
-                query = "SELECT layer_order, layer_type, name, x, y, width, height, text, font_size, opacity, image_path, bg_color, text_color FROM figma_layers WHERE template_id=" + std::to_string(template_id) + " ORDER BY layer_order";
+                query = "SELECT layer_order, layer_type, name, x, y, width, height, text, font_size, opacity, image_path, bg_color, text_color, href, onclick_action, action_type FROM figma_layers WHERE template_id=" + std::to_string(template_id) + " ORDER BY layer_order";
                 result = PQexec(g_DBConnection, query.c_str());
                 if (PQresultStatus(result) == PGRES_TUPLES_OK) {
                     int layerCount = PQntuples(result);
@@ -2856,8 +2949,17 @@ bool LoadTemplate(const std::string& filepath) {
                         std::string bgColorStr = PQgetisnull(result, i, 11) ? "" : PQgetvalue(result, i, 11);
                         std::string textColorStr = PQgetisnull(result, i, 12) ? "" : PQgetvalue(result, i, 12);
 
+                        // Load action data for interactive elements
+                        layer.href = PQgetisnull(result, i, 13) ? "" : PQgetvalue(result, i, 13);
+                        layer.onclick_action = PQgetisnull(result, i, 14) ? "" : PQgetvalue(result, i, 14);
+                        layer.action_type = PQgetisnull(result, i, 15) ? "" : PQgetvalue(result, i, 15);
+
                         // Parse rgba(r,g,b,a) format
-                        auto parseRGBA = [](const std::string& str) -> ImVec4 {
+                        auto parseRGBA = [](const std::string& str, bool isBackground = false) -> ImVec4 {
+                            if (str.empty()) {
+                                // Default: transparent for backgrounds, black for text
+                                return isBackground ? ImVec4(0, 0, 0, 0) : ImVec4(0, 0, 0, 1);
+                            }
                             if (str.find("rgba(") == 0) {
                                 int r = 0, g = 0, b = 0;
                                 float a = 1.0f;
@@ -2865,11 +2967,18 @@ bool LoadTemplate(const std::string& filepath) {
                                     return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, a);
                                 }
                             }
-                            return ImVec4(0.5f, 0.5f, 0.5f, 1.0f); // Default gray
+                            if (str.find("rgb(") == 0) {
+                                int r = 0, g = 0, b = 0;
+                                if (sscanf(str.c_str(), "rgb(%d,%d,%d)", &r, &g, &b) >= 3) {
+                                    return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, 1.0f);
+                                }
+                            }
+                            // Default: transparent for backgrounds, black for text
+                            return isBackground ? ImVec4(0, 0, 0, 0) : ImVec4(0, 0, 0, 1);
                         };
 
-                        layer.bg_color = parseRGBA(bgColorStr);
-                        layer.text_color = parseRGBA(textColorStr);
+                        layer.bg_color = parseRGBA(bgColorStr, true);  // true = is background
+                        layer.text_color = parseRGBA(textColorStr, false);  // false = is text
                         layer.visible = true;
                         layer.locked = false;  // Make sure layers are editable
                         layer.selected = false;
@@ -4791,6 +4900,27 @@ bool ImportFigmaLayers(const std::string& url) {
         layer.text_decoration = parseString("\"text_decoration\":");
         layer.box_shadow = parseString("\"box_shadow\":");
 
+        // Parse button-specific properties
+        layer.element_id = parseString("\"element_id\":");
+        layer.button_type = parseString("\"button_type\":");
+        if (layer.button_type.empty()) layer.button_type = "button";
+        layer.action_type = parseString("\"action_type\":");
+        layer.onclick_action = parseString("\"onclick_action\":");
+        layer.data_target = parseString("\"data_target\":");
+        layer.form_id = parseString("\"form_id\":");
+
+        // Parse disabled (boolean from JSON)
+        std::string disabledStr = parseString("\"disabled\":");
+        // Handle boolean values - check for "true" or presence in non-string context
+        size_t disabledPos = jsonContent.find("\"disabled\":", pos);
+        if (disabledPos != std::string::npos && disabledPos < pos + 2000) {
+            size_t valStart = disabledPos + 11; // length of "disabled":
+            while (valStart < jsonContent.size() && (jsonContent[valStart] == ' ' || jsonContent[valStart] == '\t')) valStart++;
+            if (valStart < jsonContent.size()) {
+                layer.disabled = (jsonContent[valStart] == 't'); // true starts with 't'
+            }
+        }
+
         // Parse text alignment (string to int)
         std::string textAlignStr = parseString("\"text_align\":");
         if (textAlignStr == "center") layer.text_align = 1;
@@ -5054,6 +5184,9 @@ void RenderFigmaCanvas() {
         ImVec2(canvasPos.x + canvasSize.x, canvasPos.y + canvasSize.y),
         IM_COL32(40, 40, 45, 255));
 
+    // IMPORTANT: Clip all canvas content to the canvas area
+    drawList->PushClipRect(canvasPos, ImVec2(canvasPos.x + canvasSize.x, canvasPos.y + canvasSize.y), true);
+
     // Calculate visible area based on scroll and zoom
     float zoom = g_FigmaProject.zoom;
     float scrollX = g_FigmaProject.scroll_x;
@@ -5216,8 +5349,8 @@ void RenderFigmaCanvas() {
             drawList->AddRect(p1, p2, boundaryColor, layer.border_radius * zoom, 0, 1.0f);
         }
 
-        // Selection highlight (always show)
-        if (layer.selected) {
+        // Selection highlight (always show in edit mode)
+        if (layer.selected && !g_FigmaProject.preview_mode) {
             drawList->AddRect(p1, p2, IM_COL32(0, 150, 255, 255), 0, 0, 2.0f);
 
             // Resize handles
@@ -5254,8 +5387,62 @@ void RenderFigmaCanvas() {
         bool isHovered = mousePos.x >= p1.x && mousePos.x <= p2.x &&
                         mousePos.y >= p1.y && mousePos.y <= p2.y;
 
-        // Hover highlight (subtle in overlay mode)
-        if (isHovered && !layer.selected) {
+        // Preview mode: show button states (hover, pressed, disabled)
+        if (g_FigmaProject.preview_mode) {
+            bool hasAction = (layer.type == LAYER_BUTTON || !layer.href.empty() || !layer.onclick_action.empty()) &&
+                            !layer.action_type.empty() && layer.action_type != "none";
+
+            // Disabled state - gray overlay
+            if (layer.disabled) {
+                drawList->AddRectFilled(p1, p2, IM_COL32(128, 128, 128, 100), layer.border_radius * zoom);
+            }
+            // Interactive states (only for non-disabled elements)
+            else if (hasAction && isHovered) {
+                // Check if mouse is pressed (pressed state)
+                if (ImGui::IsMouseDown(0)) {
+                    // Pressed state: darken background
+                    ImVec4 pressedBg = layer.bg_color;
+                    pressedBg.x = std::max(0.0f, pressedBg.x - 0.15f);
+                    pressedBg.y = std::max(0.0f, pressedBg.y - 0.15f);
+                    pressedBg.z = std::max(0.0f, pressedBg.z - 0.15f);
+                    drawList->AddRectFilled(p1, p2, ImGui::ColorConvertFloat4ToU32(pressedBg), layer.border_radius * zoom);
+
+                    // Pressed scale effect (slightly smaller)
+                    float pressScale = 0.98f;
+                    float scaleOffsetX = screenW * (1.0f - pressScale) / 2;
+                    float scaleOffsetY = screenH * (1.0f - pressScale) / 2;
+                    ImVec2 scaledP1(p1.x + scaleOffsetX, p1.y + scaleOffsetY);
+                    ImVec2 scaledP2(p2.x - scaleOffsetX, p2.y - scaleOffsetY);
+                    drawList->AddRect(scaledP1, scaledP2, IM_COL32(0, 150, 80, 255), layer.border_radius * zoom, 0, 2.0f);
+                } else {
+                    // Hover state: lighten background
+                    ImVec4 hoverBg = layer.hover_bg_color.w > 0 ? layer.hover_bg_color : layer.bg_color;
+                    if (layer.hover_bg_color.w <= 0) {
+                        // Auto-generate hover color by lightening
+                        hoverBg.x = std::min(1.0f, hoverBg.x + 0.1f);
+                        hoverBg.y = std::min(1.0f, hoverBg.y + 0.1f);
+                        hoverBg.z = std::min(1.0f, hoverBg.z + 0.1f);
+                    }
+                    drawList->AddRectFilled(p1, p2, ImGui::ColorConvertFloat4ToU32(hoverBg), layer.border_radius * zoom);
+
+                    // Hover scale effect (subtle enlargement)
+                    float hoverScale = layer.hover_scale > 1.0f ? layer.hover_scale : 1.02f;
+                    float scaleOffsetX = screenW * (hoverScale - 1.0f) / 2;
+                    float scaleOffsetY = screenH * (hoverScale - 1.0f) / 2;
+                    ImVec2 scaledP1(p1.x - scaleOffsetX, p1.y - scaleOffsetY);
+                    ImVec2 scaledP2(p2.x + scaleOffsetX, p2.y + scaleOffsetY);
+
+                    // Draw clickable highlight border
+                    drawList->AddRect(scaledP1, scaledP2, IM_COL32(0, 200, 100, 200), layer.border_radius * zoom, 0, 2.0f);
+                }
+
+                // Change cursor to hand pointer for interactive elements
+                ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
+            }
+        }
+
+        // Hover highlight (subtle in overlay mode) - only in edit mode
+        if (isHovered && !layer.selected && !g_FigmaProject.preview_mode) {
             if (useOverlayMode) {
                 // Subtle highlight in overlay mode
                 drawList->AddRect(p1, p2, IM_COL32(0, 150, 255, 100), 0, 0, 1.0f);
@@ -5267,8 +5454,18 @@ void RenderFigmaCanvas() {
         // Handle click to select (store for later - we want topmost layer)
         // Only process clicks when the canvas window is hovered (not dropdown panels)
         if (isHovered && ImGui::IsMouseClicked(0) && !io.KeyCtrl && ImGui::IsWindowHovered()) {
-            // Select this layer (later layers in the list will override, giving us topmost)
-            g_HoveredLayerId = layer.id;
+            // In preview mode, execute button actions instead of selecting
+            if (g_FigmaProject.preview_mode) {
+                // Check if this layer has an action (button, link, etc.) and is not disabled
+                if ((layer.type == LAYER_BUTTON || !layer.href.empty() || !layer.onclick_action.empty()) &&
+                    !layer.action_type.empty() && layer.action_type != "none" && !layer.disabled) {
+                    // Store for action execution (topmost layer wins)
+                    g_HoveredLayerId = layer.id;
+                }
+            } else {
+                // Normal edit mode - select this layer
+                g_HoveredLayerId = layer.id;
+            }
         }
 
         // Handle dragging
@@ -5302,7 +5499,16 @@ void RenderFigmaCanvas() {
     // Select the topmost hovered layer (after iterating all layers)
     // Only when canvas window is hovered (not when clicking dropdown panels)
     if (g_HoveredLayerId >= 0 && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
-        SelectLayer(g_HoveredLayerId);
+        if (g_FigmaProject.preview_mode) {
+            // In preview mode, execute the layer's action
+            WebLayer* clickedLayer = GetLayerById(g_HoveredLayerId);
+            if (clickedLayer) {
+                ExecuteLayerAction(*clickedLayer);
+            }
+        } else {
+            // Normal edit mode - select the layer
+            SelectLayer(g_HoveredLayerId);
+        }
         g_HoveredLayerId = -1;
     }
 
@@ -5363,6 +5569,9 @@ void RenderFigmaCanvas() {
             DeselectAllLayers();
         }
     }
+
+    // Pop the clip rect we pushed at the start
+    drawList->PopClipRect();
 }
 
 void RenderFigmaLayersPanel() {
@@ -8442,7 +8651,8 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
         std::ostringstream layerQuery;
         layerQuery << "INSERT INTO imgui_template_layers ("
                    << "template_id, layer_order, layer_type, name, x, y, width, height, "
-                   << "text, font_size, opacity, bg_color, text_color, border_radius, border_width, image_data"
+                   << "text, font_size, opacity, bg_color, text_color, border_radius, border_width, image_data, "
+                   << "href, onclick_action, action_type, image_path"
                    << ") VALUES ("
                    << templateId << ", " << i << ", " << (int)layer.type << ", "
                    << "'" << SQLEscape(layer.name) << "', "
@@ -8452,7 +8662,11 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
                    << "'" << ColorToSQL(layer.bg_color) << "', "
                    << "'" << ColorToSQL(layer.text_color) << "', "
                    << layer.border_radius << ", " << layer.border_width << ", "
-                   << imageDataHex << ")";
+                   << imageDataHex << ", "
+                   << "'" << SQLEscape(layer.href) << "', "
+                   << "'" << SQLEscape(layer.onclick_action) << "', "
+                   << "'" << SQLEscape(layer.action_type) << "', "
+                   << "'" << SQLEscape(layer.image_path) << "')";
 
         result = PQexec(g_DBConnection, layerQuery.str().c_str());
         if (PQresultStatus(result) != PGRES_COMMAND_OK) {
@@ -8469,8 +8683,8 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
 bool LoadImGuiTemplate(int templateId) {
     if (!g_DBConnection) return false;
 
-    // Get template info
-    std::string query = "SELECT name, canvas_width, canvas_height FROM imgui_templates WHERE id=" + std::to_string(templateId);
+    // Get template info (including screenshot_path)
+    std::string query = "SELECT name, canvas_width, canvas_height, screenshot_path FROM imgui_templates WHERE id=" + std::to_string(templateId);
     PGresult* result = PQexec(g_DBConnection, query.c_str());
 
     if (PQresultStatus(result) != PGRES_TUPLES_OK || PQntuples(result) == 0) {
@@ -8484,11 +8698,30 @@ bool LoadImGuiTemplate(int templateId) {
     g_FigmaProject.name = PQgetvalue(result, 0, 0);
     g_FigmaProject.canvas_width = atof(PQgetvalue(result, 0, 1));
     g_FigmaProject.canvas_height = atof(PQgetvalue(result, 0, 2));
+
+    // Load screenshot if available
+    std::string screenshotPath = PQgetisnull(result, 0, 3) ? "" : PQgetvalue(result, 0, 3);
+    if (!screenshotPath.empty()) {
+        g_FigmaProject.screenshot_path = screenshotPath;
+        int w, h, n;
+        unsigned char* imgData = stbi_load(screenshotPath.c_str(), &w, &h, &n, 4);
+        if (imgData) {
+            glGenTextures(1, &g_FigmaProject.screenshot_texture_id);
+            glBindTexture(GL_TEXTURE_2D, g_FigmaProject.screenshot_texture_id);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+            stbi_image_free(imgData);
+            g_FigmaProject.show_reference = true;  // Enable reference mode
+            printf("[ImGui Templates] Loaded screenshot: %dx%d\n", w, h);
+        }
+    }
     PQclear(result);
 
     // Load layers
     query = "SELECT layer_type, name, x, y, width, height, text, font_size, opacity, "
-            "bg_color, text_color, border_radius, border_width, image_data "
+            "bg_color, text_color, border_radius, border_width, image_data, "
+            "href, onclick_action, action_type, image_path "
             "FROM imgui_template_layers WHERE template_id=" + std::to_string(templateId) +
             " ORDER BY layer_order";
     result = PQexec(g_DBConnection, query.c_str());
@@ -8514,7 +8747,27 @@ bool LoadImGuiTemplate(int templateId) {
             layer.visible = true;
             layer.locked = false;
 
-            // Load image data if present
+            // Load action data for buttons/links
+            layer.href = PQgetisnull(result, i, 14) ? "" : PQgetvalue(result, i, 14);
+            layer.onclick_action = PQgetisnull(result, i, 15) ? "" : PQgetvalue(result, i, 15);
+            layer.action_type = PQgetisnull(result, i, 16) ? "" : PQgetvalue(result, i, 16);
+            layer.image_path = PQgetisnull(result, i, 17) ? "" : PQgetvalue(result, i, 17);
+
+            // Load image from path if available
+            if (!layer.image_path.empty() && layer.type == LAYER_IMAGE) {
+                int w, h, n;
+                unsigned char* pixels = stbi_load(layer.image_path.c_str(), &w, &h, &n, 4);
+                if (pixels) {
+                    glGenTextures(1, &layer.texture_id);
+                    glBindTexture(GL_TEXTURE_2D, layer.texture_id);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+                    stbi_image_free(pixels);
+                }
+            }
+
+            // Load image data if present (BYTEA)
             if (!PQgetisnull(result, i, 13)) {
                 const char* hexData = PQgetvalue(result, i, 13);
                 size_t hexLen = PQgetlength(result, i, 13);
@@ -9253,6 +9506,423 @@ void ExportImGuiWebsite() {
     g_ExportSuccessTimer = 3.0f;
 
     system(("open \"" + webFolder + "\"").c_str());
+}
+
+// Generate ImGui C++ code for Figma layers preview - uses screenshot as background
+std::string GenerateFigmaImGuiCPP() {
+    std::stringstream ss;
+
+    // Header includes
+    ss << "#include \"imgui.h\"\n";
+    ss << "#include \"imgui_impl_glfw.h\"\n";
+    ss << "#include \"imgui_impl_opengl3.h\"\n";
+    ss << "#include <GLFW/glfw3.h>\n";
+    ss << "#include <emscripten.h>\n";
+    ss << "#include <emscripten/html5.h>\n";
+    ss << "#include <cstdio>\n";
+    ss << "#include <cmath>\n";
+    ss << "#include <string>\n";
+    ss << "#include <vector>\n";
+    ss << "#include <algorithm>\n";
+    ss << "#define STB_IMAGE_IMPLEMENTATION\n";
+    ss << "#include \"stb_image.h\"\n\n";
+
+    // Global state
+    ss << "static GLFWwindow* g_Window = nullptr;\n";
+    ss << "static float g_ScrollY = 0.0f;\n";
+    ss << "static float g_TargetScrollY = 0.0f;\n";
+    ss << "static float g_ScrollDelta = 0.0f;\n";
+    ss << "static float g_CanvasWidth = " << g_FigmaProject.canvas_width << ".0f;\n";
+    ss << "static float g_CanvasHeight = " << g_FigmaProject.canvas_height << ".0f;\n";
+    ss << "static GLuint g_ScreenshotTexture = 0;\n";
+    ss << "static int g_ScreenshotWidth = 0;\n";
+    ss << "static int g_ScreenshotHeight = 0;\n\n";
+
+    // JavaScript wheel callback for Mac trackpad support
+    ss << "extern \"C\" {\n";
+    ss << "    EMSCRIPTEN_KEEPALIVE void js_scroll(float deltaY) {\n";
+    ss << "        g_ScrollDelta += deltaY;\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Button structure (only interactive elements)
+    ss << "struct Button {\n";
+    ss << "    float x, y, width, height;\n";
+    ss << "    std::string href;\n";
+    ss << "    std::string action_type;\n";
+    ss << "    std::string element_id;\n";
+    ss << "    float border_radius;\n";
+    ss << "};\n\n";
+
+    ss << "static std::vector<Button> g_Buttons;\n\n";
+
+    // Helper to escape strings
+    auto escapeStr = [](const std::string& s) -> std::string {
+        std::string result;
+        for (char c : s) {
+            if (c == '\\') result += "\\\\";
+            else if (c == '"') result += "\\\"";
+            else if (c == '\n') result += "\\n";
+            else if (c == '\r') result += "\\r";
+            else result += c;
+        }
+        return result;
+    };
+
+    // Helper to format float with decimal point
+    auto fmtFloat = [](float v) -> std::string {
+        char buf[32];
+        snprintf(buf, sizeof(buf), "%.1f", v);
+        return std::string(buf) + "f";
+    };
+
+    // Initialize buttons function - only buttons/links
+    ss << "void InitButtons() {\n";
+    ss << "    g_Buttons.clear();\n";
+
+    for (const auto& layer : g_FigmaProject.layers) {
+        // Include any element with href (link) or explicit button type
+        bool hasHref = !layer.href.empty();
+        bool isButton = layer.type == LAYER_BUTTON;
+        bool hasAction = !layer.action_type.empty() && layer.action_type != "none";
+
+        if ((hasHref || isButton || hasAction) && !layer.disabled) {
+            // Default to "link" if has href but no action_type
+            std::string actionType = layer.action_type;
+            if (actionType.empty() || actionType == "none") {
+                if (hasHref) {
+                    if (layer.href[0] == '#') actionType = "scroll";
+                    else if (layer.href.find("mailto:") == 0) actionType = "email";
+                    else if (layer.href.find("tel:") == 0) actionType = "phone";
+                    else actionType = "link";
+                } else {
+                    actionType = "button";
+                }
+            }
+
+            ss << "    g_Buttons.push_back({";
+            ss << fmtFloat(layer.x) << ", " << fmtFloat(layer.y) << ", ";
+            ss << fmtFloat(layer.width) << ", " << fmtFloat(layer.height) << ", ";
+            ss << "\"" << escapeStr(layer.href) << "\", ";
+            ss << "\"" << escapeStr(actionType) << "\", ";
+            ss << "\"" << escapeStr(layer.element_id) << "\", ";
+            ss << fmtFloat(layer.border_radius) << "});\n";
+        }
+    }
+    ss << "}\n\n";
+
+    // Load screenshot texture
+    ss << "void LoadScreenshot() {\n";
+    ss << "    int w, h, n;\n";
+    ss << "    unsigned char* data = stbi_load(\"screenshot.png\", &w, &h, &n, 4);\n";
+    ss << "    if (data) {\n";
+    ss << "        glGenTextures(1, &g_ScreenshotTexture);\n";
+    ss << "        glBindTexture(GL_TEXTURE_2D, g_ScreenshotTexture);\n";
+    ss << "        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\n";
+    ss << "        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n";
+    ss << "        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);\n";
+    ss << "        g_ScreenshotWidth = w;\n";
+    ss << "        g_ScreenshotHeight = h;\n";
+    ss << "        stbi_image_free(data);\n";
+    ss << "        printf(\"Loaded screenshot: %dx%d\\n\", w, h);\n";
+    ss << "    } else {\n";
+    ss << "        printf(\"Failed to load screenshot.png\\n\");\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Open URL function
+    ss << "void OpenURL(const std::string& url) {\n";
+    ss << "    std::string js = \"window.open('\" + url + \"', '_blank');\";\n";
+    ss << "    emscripten_run_script(js.c_str());\n";
+    ss << "}\n\n";
+
+    // Scroll to element
+    ss << "void ScrollToElement(const std::string& elementId) {\n";
+    ss << "    for (const auto& btn : g_Buttons) {\n";
+    ss << "        if (btn.element_id == elementId) {\n";
+    ss << "            g_TargetScrollY = btn.y - 100.0f;\n";
+    ss << "            if (g_TargetScrollY < 0) g_TargetScrollY = 0;\n";
+    ss << "            return;\n";
+    ss << "        }\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Main render function
+    ss << "void Render() {\n";
+    ss << "    ImGuiIO& io = ImGui::GetIO();\n";
+    ss << "    ImDrawList* drawList = ImGui::GetBackgroundDrawList();\n";
+    ss << "    \n";
+    ss << "    float windowW = io.DisplaySize.x;\n";
+    ss << "    float windowH = io.DisplaySize.y;\n";
+    ss << "    float scale = windowW / g_CanvasWidth;\n";
+    ss << "    float imgH = g_CanvasHeight * scale;\n";
+    ss << "    float maxScroll = imgH - windowH;\n";
+    ss << "    if (maxScroll < 0) maxScroll = 0;\n";
+    ss << "    \n";
+    ss << "    // Handle mouse wheel scrolling (from JS callback for Mac trackpad)\n";
+    ss << "    if (g_ScrollDelta != 0) {\n";
+    ss << "        g_TargetScrollY += g_ScrollDelta;\n";
+    ss << "        g_ScrollDelta = 0;\n";
+    ss << "    }\n";
+    ss << "    // Also check ImGui mouse wheel (for regular mouse)\n";
+    ss << "    if (io.MouseWheel != 0) {\n";
+    ss << "        g_TargetScrollY -= io.MouseWheel * 80.0f;\n";
+    ss << "    }\n";
+    ss << "    // Clamp scroll\n";
+    ss << "    if (g_TargetScrollY < 0) g_TargetScrollY = 0;\n";
+    ss << "    if (g_TargetScrollY > maxScroll) g_TargetScrollY = maxScroll;\n";
+    ss << "    // Smooth scroll\n";
+    ss << "    g_ScrollY += (g_TargetScrollY - g_ScrollY) * 0.2f;\n";
+    ss << "    \n";
+    ss << "    // Draw screenshot as background\n";
+    ss << "    if (g_ScreenshotTexture) {\n";
+    ss << "        ImVec2 p1(0, -g_ScrollY);\n";
+    ss << "        ImVec2 p2(windowW, imgH - g_ScrollY);\n";
+    ss << "        drawList->AddImage((ImTextureID)(intptr_t)g_ScreenshotTexture, p1, p2);\n";
+    ss << "    }\n";
+    ss << "    \n";
+    ss << "    // Process buttons (invisible overlays)\n";
+    ss << "    static int hoveredBtn = -1;\n";
+    ss << "    hoveredBtn = -1;\n";
+    ss << "    \n";
+    ss << "    for (size_t i = 0; i < g_Buttons.size(); i++) {\n";
+    ss << "        const Button& btn = g_Buttons[i];\n";
+    ss << "        \n";
+    ss << "        float x = btn.x * scale;\n";
+    ss << "        float y = btn.y * scale - g_ScrollY;\n";
+    ss << "        float w = btn.width * scale;\n";
+    ss << "        float h = btn.height * scale;\n";
+    ss << "        float r = btn.border_radius * scale;\n";
+    ss << "        \n";
+    ss << "        if (y + h < 0 || y > windowH) continue;\n";
+    ss << "        \n";
+    ss << "        ImVec2 p1(x, y);\n";
+    ss << "        ImVec2 p2(x + w, y + h);\n";
+    ss << "        \n";
+    ss << "        bool isHovered = io.MousePos.x >= p1.x && io.MousePos.x <= p2.x &&\n";
+    ss << "                         io.MousePos.y >= p1.y && io.MousePos.y <= p2.y;\n";
+    ss << "        \n";
+    ss << "        if (isHovered) {\n";
+    ss << "            hoveredBtn = i;\n";
+    ss << "            // Draw hover highlight\n";
+    ss << "            drawList->AddRectFilled(p1, p2, IM_COL32(0, 200, 100, 40), r);\n";
+    ss << "            drawList->AddRect(p1, p2, IM_COL32(0, 200, 100, 200), r, 0, 2.0f);\n";
+    ss << "            \n";
+    ss << "            // Handle click\n";
+    ss << "            if (ImGui::IsMouseClicked(0)) {\n";
+    ss << "                if (btn.action_type == \"link\" && !btn.href.empty()) {\n";
+    ss << "                    OpenURL(btn.href);\n";
+    ss << "                } else if (btn.action_type == \"scroll\" && btn.href.length() > 1) {\n";
+    ss << "                    std::string anchor = btn.href.substr(1);\n";
+    ss << "                    ScrollToElement(anchor);\n";
+    ss << "                } else if (btn.action_type == \"email\" || btn.action_type == \"phone\") {\n";
+    ss << "                    OpenURL(btn.href);\n";
+    ss << "                }\n";
+    ss << "            }\n";
+    ss << "        }\n";
+    ss << "    }\n";
+    ss << "    \n";
+    ss << "    if (hoveredBtn >= 0) {\n";
+    ss << "        ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Main loop
+    ss << "void main_loop() {\n";
+    ss << "    glfwPollEvents();\n";
+    ss << "    ImGui_ImplOpenGL3_NewFrame();\n";
+    ss << "    ImGui_ImplGlfw_NewFrame();\n";
+    ss << "    ImGui::NewFrame();\n";
+    ss << "    \n";
+    ss << "    glClearColor(0.2f, 0.2f, 0.2f, 1.0f);\n";
+    ss << "    glClear(GL_COLOR_BUFFER_BIT);\n";
+    ss << "    \n";
+    ss << "    Render();\n";
+    ss << "    \n";
+    ss << "    ImGui::Render();\n";
+    ss << "    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());\n";
+    ss << "    glfwSwapBuffers(g_Window);\n";
+    ss << "}\n\n";
+
+    // Main function
+    ss << "int main() {\n";
+    ss << "    if (!glfwInit()) return -1;\n";
+    ss << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);\n";
+    ss << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);\n";
+    ss << "    \n";
+    ss << "    g_Window = glfwCreateWindow(1280, 800, \"Website Preview\", nullptr, nullptr);\n";
+    ss << "    if (!g_Window) { glfwTerminate(); return -1; }\n";
+    ss << "    \n";
+    ss << "    glfwMakeContextCurrent(g_Window);\n";
+    ss << "    glfwSwapInterval(1);\n";
+    ss << "    \n";
+    ss << "    IMGUI_CHECKVERSION();\n";
+    ss << "    ImGui::CreateContext();\n";
+    ss << "    ImGuiIO& io = ImGui::GetIO();\n";
+    ss << "    \n";
+    ss << "    ImGui::StyleColorsDark();\n";
+    ss << "    ImGui_ImplGlfw_InitForOpenGL(g_Window, true);\n";
+    ss << "    ImGui_ImplOpenGL3_Init(\"#version 300 es\");\n";
+    ss << "    \n";
+    ss << "    LoadScreenshot();\n";
+    ss << "    InitButtons();\n";
+    ss << "    \n";
+    ss << "    emscripten_set_main_loop(main_loop, 0, 1);\n";
+    ss << "    return 0;\n";
+    ss << "}\n";
+
+    return ss.str();
+}
+
+// Preview Figma layers in browser using ImGui WebAssembly
+void PreviewFigmaWebsite() {
+    if (g_FigmaProject.layers.empty()) {
+        printf("[Preview] ERROR: No layers to preview!\n");
+        g_ShowExportSuccess = true;
+        g_ExportSuccessTimer = 3.0f;
+        g_ExportPath = "Error: No layers to preview! Import a website first.";
+        return;
+    }
+
+    printf("\n========================================\n");
+    printf("[FigmaPreview] Starting preview with %zu layers\n", g_FigmaProject.layers.size());
+    printf("========================================\n\n");
+
+    std::string basePath = "/Users/imaging/Desktop/Website-Builder-v2.0/";
+    std::string tmp = "/tmp/figma_website_preview";
+    std::string imguiFolder = tmp + "/imgui";
+    std::string backendsFolder = imguiFolder + "/backends";
+
+    // Create directories
+    system(("rm -rf \"" + tmp + "\"").c_str());
+    mkdir(tmp.c_str(), 0755);
+    mkdir(imguiFolder.c_str(), 0755);
+    mkdir(backendsFolder.c_str(), 0755);
+
+    // Copy ImGui files
+    std::vector<std::string> imguiFiles = {"imgui.cpp", "imgui.h", "imgui_demo.cpp",
+        "imgui_draw.cpp", "imgui_internal.h", "imgui_tables.cpp", "imgui_widgets.cpp",
+        "imconfig.h", "imstb_rectpack.h", "imstb_textedit.h", "imstb_truetype.h"};
+    for (const auto& f : imguiFiles) {
+        std::ifstream src(basePath + "imgui/" + f, std::ios::binary);
+        std::ofstream dst(imguiFolder + "/" + f, std::ios::binary);
+        dst << src.rdbuf();
+    }
+    std::vector<std::string> backendFiles = {"imgui_impl_glfw.cpp", "imgui_impl_glfw.h",
+        "imgui_impl_opengl3.cpp", "imgui_impl_opengl3.h", "imgui_impl_opengl3_loader.h"};
+    for (const auto& f : backendFiles) {
+        std::ifstream src(basePath + "imgui/backends/" + f, std::ios::binary);
+        std::ofstream dst(backendsFolder + "/" + f, std::ios::binary);
+        dst << src.rdbuf();
+    }
+
+    // Copy helper files
+    {
+        std::ifstream src(basePath + "stb_image.h", std::ios::binary);
+        std::ofstream dst(tmp + "/stb_image.h", std::ios::binary);
+        dst << src.rdbuf();
+    }
+
+    // Copy screenshot image
+    if (!g_FigmaProject.screenshot_path.empty()) {
+        std::string screenshotSrc = g_FigmaProject.screenshot_path;
+        // If relative path, prepend base path
+        if (screenshotSrc[0] != '/') {
+            screenshotSrc = basePath + screenshotSrc;
+        }
+        std::ifstream src(screenshotSrc, std::ios::binary);
+        std::ofstream dst(tmp + "/screenshot.png", std::ios::binary);
+        dst << src.rdbuf();
+        printf("[FigmaPreview] Copied screenshot from: %s\n", screenshotSrc.c_str());
+    }
+
+    // Generate main.cpp
+    std::ofstream mainFile(tmp + "/main.cpp");
+    mainFile << GenerateFigmaImGuiCPP();
+    mainFile.close();
+
+    // Generate build script
+    std::ofstream buildScript(tmp + "/build_web.sh");
+    buildScript << "#!/bin/bash\n";
+    buildScript << "source ~/emsdk/emsdk_env.sh 2>/dev/null || source /opt/emsdk/emsdk_env.sh 2>/dev/null\n";
+    buildScript << "em++ -O2 -o index.html main.cpp \\\n";
+    buildScript << "    imgui/imgui.cpp imgui/imgui_draw.cpp imgui/imgui_tables.cpp imgui/imgui_widgets.cpp \\\n";
+    buildScript << "    imgui/backends/imgui_impl_glfw.cpp imgui/backends/imgui_impl_opengl3.cpp \\\n";
+    buildScript << "    -I. -Iimgui -Iimgui/backends \\\n";
+    buildScript << "    -s USE_GLFW=3 -s USE_WEBGL2=1 -s FULL_ES3=1 \\\n";
+    buildScript << "    -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 \\\n";
+    buildScript << "    -s EXPORTED_FUNCTIONS='[\"_main\",\"_js_scroll\"]' \\\n";
+    buildScript << "    -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\"]' \\\n";
+    buildScript << "    --preload-file screenshot.png \\\n";
+    buildScript << "    --shell-file shell.html\n";
+    buildScript.close();
+    chmod((tmp + "/build_web.sh").c_str(), 0755);
+
+    // Generate shell.html with Mac trackpad scroll support
+    std::ofstream shellFile(tmp + "/shell.html");
+    shellFile << "<!DOCTYPE html>\n<html>\n<head>\n";
+    shellFile << "<meta charset=\"utf-8\">\n";
+    shellFile << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    shellFile << "<title>Website Preview</title>\n";
+    shellFile << "<style>\n";
+    shellFile << "* { margin: 0; padding: 0; box-sizing: border-box; }\n";
+    shellFile << "html, body { width: 100%; height: 100%; overflow: hidden; background: #fff; }\n";
+    shellFile << "canvas { display: block; width: 100vw !important; height: 100vh !important; }\n";
+    shellFile << "</style>\n";
+    shellFile << "</head>\n<body>\n";
+    shellFile << "<canvas id=\"canvas\" oncontextmenu=\"event.preventDefault()\"></canvas>\n";
+    shellFile << "<script>\n";
+    shellFile << "var Module = {\n";
+    shellFile << "    canvas: document.getElementById('canvas'),\n";
+    shellFile << "    onRuntimeInitialized: function() {\n";
+    shellFile << "        console.log('Ready!');\n";
+    shellFile << "        // Mac trackpad scroll support\n";
+    shellFile << "        document.getElementById('canvas').addEventListener('wheel', function(e) {\n";
+    shellFile << "            e.preventDefault();\n";
+    shellFile << "            if (Module._js_scroll) {\n";
+    shellFile << "                Module._js_scroll(e.deltaY);\n";
+    shellFile << "            }\n";
+    shellFile << "        }, { passive: false });\n";
+    shellFile << "    }\n";
+    shellFile << "};\n";
+    shellFile << "</script>\n";
+    shellFile << "{{{ SCRIPT }}}\n";
+    shellFile << "</body>\n</html>\n";
+    shellFile.close();
+
+    // Build
+    printf("[FigmaPreview] Building WebAssembly...\n");
+    std::string buildCmd = "cd \"" + tmp + "\" && ./build_web.sh 2>&1";
+    int result = system(buildCmd.c_str());
+
+    if (result == 0) {
+        printf("[FigmaPreview] Build successful! Starting server...\n");
+
+        // Kill existing server
+        system("lsof -ti:8081 | xargs kill -9 2>/dev/null");
+        sleep(1);
+
+        // Start server
+        std::string serveCmd = "cd \"" + tmp + "\" && python3 -m http.server 8081 > /dev/null 2>&1 &";
+        system(serveCmd.c_str());
+        sleep(2);
+
+        // Open in Chrome
+        system("open -na 'Google Chrome' --args --incognito 'http://localhost:8081/index.html'");
+
+        printf("\n========================================\n");
+        printf("Preview opened in Chrome!\n");
+        printf("========================================\n\n");
+
+        g_ShowExportSuccess = true;
+        g_ExportSuccessTimer = 3.0f;
+        g_ExportPath = "Preview opened in Chrome!";
+    } else {
+        printf("[FigmaPreview] ERROR: Build failed with code %d\n", result);
+        g_ShowExportSuccess = true;
+        g_ExportSuccessTimer = 3.0f;
+        g_ExportPath = "Error: Build failed! Check console.";
+    }
 }
 
 void PreviewImGuiWebsite() {
@@ -11518,8 +12188,22 @@ void RenderUI() {
                                 "image_path TEXT, "
                                 "image_data BYTEA, "
                                 "bg_color VARCHAR(64), "
-                                "text_color VARCHAR(64)"
+                                "text_color VARCHAR(64), "
+                                "href TEXT, "
+                                "onclick_action TEXT, "
+                                "action_type VARCHAR(32)"
                                 ")";
+                        result = PQexec(g_DBConnection, query.c_str());
+                        PQclear(result);
+
+                        // Add action columns if they don't exist (for existing tables)
+                        query = "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS href TEXT";
+                        result = PQexec(g_DBConnection, query.c_str());
+                        PQclear(result);
+                        query = "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS onclick_action TEXT";
+                        result = PQexec(g_DBConnection, query.c_str());
+                        PQclear(result);
+                        query = "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS action_type VARCHAR(32)";
                         result = PQexec(g_DBConnection, query.c_str());
                         PQclear(result);
 
@@ -11571,7 +12255,8 @@ void RenderUI() {
                             std::ostringstream layerQuery;
                             layerQuery << "INSERT INTO figma_layers ("
                                        << "template_id, layer_order, layer_type, name, x, y, width, height, "
-                                       << "text, font_size, opacity, image_path, image_data, bg_color, text_color"
+                                       << "text, font_size, opacity, image_path, image_data, bg_color, text_color, "
+                                       << "href, onclick_action, action_type"
                                        << ") VALUES ("
                                        << template_id << ", " << i << ", " << (int)l.type << ", "
                                        << "'" << SQLEscape(l.name) << "', "
@@ -11581,7 +12266,10 @@ void RenderUI() {
                                        << "'" << SQLEscape(l.image_path) << "', "
                                        << (imgData.empty() ? "NULL" : BinaryToHex(imgData)) << ", "
                                        << "'" << ColorToSQL(l.bg_color) << "', "
-                                       << "'" << ColorToSQL(l.text_color) << "'"
+                                       << "'" << ColorToSQL(l.text_color) << "', "
+                                       << "'" << SQLEscape(l.href) << "', "
+                                       << "'" << SQLEscape(l.onclick_action) << "', "
+                                       << "'" << SQLEscape(l.action_type) << "'"
                                        << ")";
 
                             result = PQexec(g_DBConnection, layerQuery.str().c_str());
@@ -11617,6 +12305,31 @@ void RenderUI() {
         ImGui::Checkbox("Bounds", &g_FigmaProject.show_bounds);
         if (ImGui::IsItemHovered()) {
             ImGui::SetTooltip("Show outlines around all layers");
+        }
+
+        ImGui::SameLine();
+        ImGui::Checkbox("Preview", &g_FigmaProject.preview_mode);
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Preview mode - clicking buttons executes their actions (opens URLs, etc.)");
+        }
+        if (g_FigmaProject.preview_mode) {
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.3f, 1.0f), "LIVE");
+        }
+
+        ImGui::SameLine();
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Preview in Browser button
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.8f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.6f, 0.9f, 1.0f));
+        if (ImGui::Button("Preview in Browser")) {
+            PreviewFigmaWebsite();
+        }
+        ImGui::PopStyleColor(2);
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Open preview in Chrome browser with working buttons (ImGui WebAssembly)");
         }
 
         ImGui::SameLine();
@@ -11824,6 +12537,104 @@ void RenderUI() {
                     } else {
                         ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.0f, 1), "No image loaded");
                     }
+                }
+            }
+
+            // Actions section (for buttons and links)
+            if (ImGui::CollapsingHeader("Actions")) {
+                // Action Type dropdown
+                ImGui::Text("Action Type:");
+                const char* actionTypes[] = {"none", "link", "scroll", "email", "phone", "popup", "submit", "button", "script"};
+                int currentType = 0;
+                for (int i = 0; i < 9; i++) {
+                    if (selectedLayer->action_type == actionTypes[i]) {
+                        currentType = i;
+                        break;
+                    }
+                }
+                ImGui::SetNextItemWidth(-1);
+                if (ImGui::Combo("##ActionType", &currentType, actionTypes, 9)) {
+                    selectedLayer->action_type = actionTypes[currentType];
+                }
+
+                // Href / URL
+                ImGui::Text("Link URL:");
+                char hrefBuffer[512];
+                strncpy(hrefBuffer, selectedLayer->href.c_str(), sizeof(hrefBuffer));
+                hrefBuffer[sizeof(hrefBuffer) - 1] = '\0';
+                ImGui::SetNextItemWidth(-1);
+                if (ImGui::InputText("##HrefInput", hrefBuffer, sizeof(hrefBuffer))) {
+                    selectedLayer->href = hrefBuffer;
+                    // Auto-detect action type from href
+                    if (std::string(hrefBuffer).find("http") == 0) {
+                        selectedLayer->action_type = "link";
+                    } else if (hrefBuffer[0] == '#') {
+                        selectedLayer->action_type = "scroll";
+                    } else if (std::string(hrefBuffer).find("mailto:") == 0) {
+                        selectedLayer->action_type = "email";
+                    } else if (std::string(hrefBuffer).find("tel:") == 0) {
+                        selectedLayer->action_type = "phone";
+                    }
+                }
+
+                // Onclick action (read-only display)
+                if (!selectedLayer->onclick_action.empty()) {
+                    ImGui::Text("OnClick Script:");
+                    ImGui::TextWrapped("%s", selectedLayer->onclick_action.c_str());
+                }
+
+                // Test button (only in preview mode)
+                ImGui::Spacing();
+                if ((!selectedLayer->href.empty() || !selectedLayer->onclick_action.empty()) &&
+                    selectedLayer->action_type != "none") {
+                    if (ImGui::Button("Test Action", ImVec2(-1, 26))) {
+                        ExecuteLayerAction(*selectedLayer);
+                    }
+                    if (ImGui::IsItemHovered()) {
+                        ImGui::SetTooltip("Execute this layer's action (opens URL, etc.)");
+                    }
+                }
+
+                // Button states section
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+                ImGui::Text("Button States:");
+
+                // Disabled checkbox
+                ImGui::Checkbox("Disabled", &selectedLayer->disabled);
+                if (ImGui::IsItemHovered()) {
+                    ImGui::SetTooltip("Disable this button (grayed out, not clickable)");
+                }
+
+                // Element ID (for scroll targets)
+                ImGui::Text("Element ID:");
+                char elementIdBuffer[128];
+                strncpy(elementIdBuffer, selectedLayer->element_id.c_str(), sizeof(elementIdBuffer));
+                elementIdBuffer[sizeof(elementIdBuffer) - 1] = '\0';
+                ImGui::SetNextItemWidth(-1);
+                if (ImGui::InputText("##ElementId", elementIdBuffer, sizeof(elementIdBuffer))) {
+                    selectedLayer->element_id = elementIdBuffer;
+                }
+                if (ImGui::IsItemHovered()) {
+                    ImGui::SetTooltip("ID used for scroll-to-anchor links (e.g., 'about' for #about)");
+                }
+
+                // Hover background color
+                ImGui::Text("Hover BG Color:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::ColorEdit4("##HoverBg", (float*)&selectedLayer->hover_bg_color,
+                    ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+                if (ImGui::IsItemHovered()) {
+                    ImGui::SetTooltip("Background color when hovering (leave transparent for auto)");
+                }
+
+                // Hover scale
+                ImGui::Text("Hover Scale:");
+                ImGui::SetNextItemWidth(-1);
+                ImGui::SliderFloat("##HoverScale", &selectedLayer->hover_scale, 1.0f, 1.2f, "%.2fx");
+                if (ImGui::IsItemHovered()) {
+                    ImGui::SetTooltip("Scale factor on hover (1.0 = no change)");
                 }
             }
 
