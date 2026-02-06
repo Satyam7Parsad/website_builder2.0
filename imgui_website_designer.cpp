@@ -33,6 +33,21 @@
 // CSS Layout Engine (Flexbox, Grid, Animations)
 #include "layout_engine.h"
 
+// macOS Native File Dialog using AppleScript
+std::string OpenImageFileDialog() {
+    char buffer[1024] = {0};
+    FILE* pipe = popen("osascript -e 'set theFile to choose file of type {\"public.image\"} with prompt \"Select an image file\"' -e 'POSIX path of theFile' 2>/dev/null", "r");
+    if (pipe) {
+        if (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
+            // Remove trailing newline
+            size_t len = strlen(buffer);
+            if (len > 0 && buffer[len-1] == '\n') buffer[len-1] = '\0';
+        }
+        pclose(pipe);
+    }
+    return std::string(buffer);
+}
+
 // ============================================================================
 // SECTION TYPES
 // ============================================================================
@@ -29408,13 +29423,11 @@ void RenderUI() {
                         sec.story_images[i] = "";
                     }
                 } else {
-                    static char imgPath[512] = "";
-                    ImGui::InputText("##storyImgPath", imgPath, sizeof(imgPath));
-                    ImGui::SameLine();
-                    if (ImGui::Button("Load")) {
-                        if (imgPath[0] != '\0') {
+                    if (ImGui::Button("Browse...##storyImg")) {
+                        std::string selectedPath = OpenImageFileDialog();
+                        if (!selectedPath.empty()) {
                             int w, h, c;
-                            unsigned char* data = stbi_load(imgPath, &w, &h, &c, 4);
+                            unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
                             if (data) {
                                 GLuint tex;
                                 glGenTextures(1, &tex);
@@ -29424,10 +29437,9 @@ void RenderUI() {
                                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                                 stbi_image_free(data);
                                 sec.story_image_textures[i] = tex;
-                                sec.story_images[i] = imgPath;
+                                sec.story_images[i] = selectedPath;
                                 sec.story_image_widths[i] = w;
                                 sec.story_image_heights[i] = h;
-                                imgPath[0] = '\0';
                             }
                         }
                     }
@@ -29500,13 +29512,11 @@ void RenderUI() {
                         card.imagePath = "";
                     }
                 } else {
-                    static char svcImgPath[512] = "";
-                    ImGui::InputText("##svcCardImg", svcImgPath, sizeof(svcImgPath));
-                    ImGui::SameLine();
-                    if (ImGui::Button("Load##svcImg")) {
-                        if (svcImgPath[0] != '\0') {
+                    if (ImGui::Button("Browse...##svcImg")) {
+                        std::string selectedPath = OpenImageFileDialog();
+                        if (!selectedPath.empty()) {
                             int w, h, c;
-                            unsigned char* data = stbi_load(svcImgPath, &w, &h, &c, 4);
+                            unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
                             if (data) {
                                 GLuint tex;
                                 glGenTextures(1, &tex);
@@ -29516,10 +29526,9 @@ void RenderUI() {
                                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                                 stbi_image_free(data);
                                 card.textureID = tex;
-                                card.imagePath = svcImgPath;
+                                card.imagePath = selectedPath;
                                 card.imageWidth = w;
                                 card.imageHeight = h;
-                                svcImgPath[0] = '\0';
                             }
                         }
                     }
