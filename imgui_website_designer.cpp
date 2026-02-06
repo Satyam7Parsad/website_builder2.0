@@ -78,7 +78,8 @@ enum SectionType {
     SEC_CLIENTS_GRID_CONNECTOR,    // Client/partner logo grid
     SEC_FEATURES_GRID_CONNECTOR,   // Feature cards with icons and checkmark lists
     SEC_PROCESS_TIMELINE_CONNECTOR, // Horizontal process timeline with steps
-    SEC_HERO_SECTION_CONNECTOR     // Full hero section with badge, buttons, stats
+    SEC_HERO_SECTION_CONNECTOR,    // Full hero section with badge, buttons, stats
+    SEC_FOOTER_SECTION_CONNECTOR   // Advanced footer with columns, email signup, social links
 };
 
 // ============================================================================
@@ -1107,6 +1108,51 @@ struct HeroFeatureBadge {
     }
 };
 
+// Footer link item (for column links)
+struct FooterLinkItem {
+    char text[128];
+    int actionType;
+    char actionTarget[512];
+
+    FooterLinkItem() : actionType(0) {
+        strcpy(text, "Link");
+        strcpy(actionTarget, "");
+    }
+};
+
+// Footer section column (heading + list of links) - for SEC_FOOTER_SECTION_CONNECTOR
+struct FooterSectionColumn {
+    char heading[128];
+    std::vector<FooterLinkItem> links;
+    ImVec4 headingColor;
+    ImVec4 linkColor;
+
+    FooterSectionColumn() : headingColor(1, 1, 1, 1), linkColor(0.7f, 0.7f, 0.75f, 1) {
+        strcpy(heading, "Column");
+    }
+};
+
+// Footer certification badge
+struct FooterBadge {
+    char text[64];
+    ImVec4 bgColor;
+    ImVec4 textColor;
+
+    FooterBadge() : bgColor(0.15f, 0.17f, 0.22f, 1), textColor(0.8f, 0.8f, 0.85f, 1) {
+        strcpy(text, "Badge");
+    }
+};
+
+// Footer social link
+struct FooterSocialLink {
+    int iconType;  // 0=LinkedIn, 1=Twitter, 2=Instagram, 3=YouTube, 4=Facebook
+    char url[512];
+
+    FooterSocialLink() : iconType(0) {
+        strcpy(url, "");
+    }
+};
+
 // Content block for vertical_connector (vertical text + image layout)
 struct VerticalBlock {
     int type; // 0=Heading, 1=Description, 2=Image
@@ -1763,6 +1809,8 @@ struct WebSection {
     GLuint story_image_textures[3];       // Texture IDs
     int story_image_widths[3];
     int story_image_heights[3];
+    float story_image_display_w[3];       // Display width for each image
+    float story_image_display_h[3];       // Display height for each image
 
     // ========== SERVICES SECTION CONNECTOR ==========
     char services_label[64];
@@ -1845,6 +1893,39 @@ struct WebSection {
     ImVec4 hero_btn_secondary_border;
     float hero_btn_border_radius;
     float hero_badge_border_radius;
+
+    // ========== FOOTER SECTION CONNECTOR ==========
+    char footer_brand_name[128];         // "OMNiON"
+    char footer_brand_subtitle[256];     // "PreMedia Pvt. Ltd."
+    char footer_description[1024];       // Company description
+    std::vector<FooterBadge> footer_badges;     // Certification badges (ISO, SOC)
+    std::vector<FooterSectionColumn> footer_section_columns;   // Link columns (Services, Company, Support)
+    char footer_newsletter_heading[128]; // "Stay Updated"
+    char footer_newsletter_subtitle[256]; // "Subscribe for industry insights..."
+    char footer_email_placeholder[64];   // "Enter your email"
+    int footer_email_action;             // Action type for submit
+    char footer_email_action_target[512]; // Action target
+    std::vector<FooterSocialLink> footer_social_links;  // Social media icons
+    char footer_copyright[512];          // Copyright text
+    char footer_bottom_links[4][64];     // Bottom links (Terms, Privacy, Cookies)
+    int footer_bottom_link_actions[4];   // Actions for bottom links
+    char footer_bottom_link_targets[4][512]; // Targets for bottom links
+    int footer_bottom_link_count;
+    ImVec4 footer_sec_bg_color;          // Section background (dark)
+    ImVec4 footer_brand_color;           // Brand name color
+    ImVec4 footer_subtitle_sec_color;    // Subtitle color
+    ImVec4 footer_desc_color;            // Description color
+    ImVec4 footer_newsletter_color;      // Newsletter heading color
+    ImVec4 footer_email_bg;              // Email input background
+    ImVec4 footer_email_text_color;      // Email input text color
+    ImVec4 footer_submit_bg;             // Submit button background
+    ImVec4 footer_submit_icon_color;     // Submit button icon color
+    ImVec4 footer_social_bg;             // Social icon background
+    ImVec4 footer_social_icon_color;     // Social icon color
+    ImVec4 footer_copyright_color;       // Copyright text color
+    ImVec4 footer_bottom_bg;             // Bottom bar background
+    ImVec4 footer_bottom_link_color;     // Bottom links color
+    float footer_border_radius;          // Border radius for elements
 
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
@@ -1966,6 +2047,7 @@ struct WebSection {
         story_button_bg(0.95f, 0.5f, 0.2f, 1), story_button_text_color(1, 1, 1, 1),
         story_stats_bg(0.95f, 0.5f, 0.2f, 1), story_stats_text_color(1, 1, 1, 1),
         story_image_textures{0, 0, 0}, story_image_widths{0, 0, 0}, story_image_heights{0, 0, 0},
+        story_image_display_w{150.0f, 120.0f, 120.0f}, story_image_display_h{180.0f, 120.0f, 120.0f},
         // Services section defaults
         services_cards_per_row(3), services_card_spacing(24.0f),
         services_label_color(0.95f, 0.5f, 0.2f, 1), services_heading_color(0.1f, 0.1f, 0.15f, 1),
@@ -1993,7 +2075,17 @@ struct WebSection {
         hero_btn_primary_bg(0.95f, 0.5f, 0.2f, 1.0f), hero_btn_primary_text_color(1.0f, 1.0f, 1.0f, 1.0f),
         hero_btn_secondary_bg(1.0f, 1.0f, 1.0f, 0.0f), hero_btn_secondary_text_color(0.1f, 0.1f, 0.15f, 1.0f),
         hero_btn_secondary_border(0.8f, 0.8f, 0.85f, 1.0f),
-        hero_btn_border_radius(30.0f), hero_badge_border_radius(25.0f) {
+        hero_btn_border_radius(30.0f), hero_badge_border_radius(25.0f),
+        // Footer section connector defaults
+        footer_email_action(ACTION_EMAIL), footer_bottom_link_count(3),
+        footer_sec_bg_color(0.08f, 0.1f, 0.14f, 1.0f),
+        footer_brand_color(1.0f, 1.0f, 1.0f, 1.0f), footer_subtitle_sec_color(0.6f, 0.6f, 0.65f, 1.0f),
+        footer_desc_color(0.6f, 0.6f, 0.65f, 1.0f), footer_newsletter_color(1.0f, 1.0f, 1.0f, 1.0f),
+        footer_email_bg(0.15f, 0.17f, 0.22f, 1.0f), footer_email_text_color(0.6f, 0.6f, 0.65f, 1.0f),
+        footer_submit_bg(0.95f, 0.5f, 0.2f, 1.0f), footer_submit_icon_color(1.0f, 1.0f, 1.0f, 1.0f),
+        footer_social_bg(0.15f, 0.17f, 0.22f, 1.0f), footer_social_icon_color(0.8f, 0.8f, 0.85f, 1.0f),
+        footer_copyright_color(0.5f, 0.5f, 0.55f, 1.0f), footer_bottom_bg(0.06f, 0.08f, 0.12f, 1.0f),
+        footer_bottom_link_color(0.6f, 0.6f, 0.65f, 1.0f), footer_border_radius(8.0f) {
         // Initialize char arrays
         story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
         story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
@@ -2006,6 +2098,20 @@ struct WebSection {
         hero_badge_text[0] = '\0'; hero_heading[0] = '\0'; hero_heading_accent[0] = '\0'; hero_description[0] = '\0';
         hero_btn_primary_text[0] = '\0'; hero_btn_secondary_text[0] = '\0';
         hero_btn_primary_target[0] = '\0'; hero_btn_secondary_target[0] = '\0';
+        // Footer section connector char arrays
+        strcpy(footer_brand_name, "OMNiON");
+        strcpy(footer_brand_subtitle, "PreMedia Pvt. Ltd.");
+        strcpy(footer_description, "Pioneering global premedia services since 1974. Transforming visual content for the world's most prestigious brands with precision and creativity.");
+        strcpy(footer_newsletter_heading, "Stay Updated");
+        strcpy(footer_newsletter_subtitle, "Subscribe for industry insights and company news.");
+        strcpy(footer_email_placeholder, "Enter your email");
+        strcpy(footer_email_action_target, "");
+        strcpy(footer_copyright, "© 2024 OMNiON PreMedia Pvt. Ltd. All rights reserved. Pioneering Excellence Since 1974.");
+        strcpy(footer_bottom_links[0], "Terms");
+        strcpy(footer_bottom_links[1], "Privacy");
+        strcpy(footer_bottom_links[2], "Cookies");
+        footer_bottom_links[3][0] = '\0';
+        for (int i = 0; i < 4; i++) { footer_bottom_link_actions[i] = 0; footer_bottom_link_targets[i][0] = '\0'; }
         strcpy(copyright_text, "Website under development.");
         strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
         strcpy(contact_form_title, "Contact Us");
@@ -3203,6 +3309,81 @@ struct WebSection {
                     HeroStatItem s3; s3.iconType = ICON_CAMERA; strcpy(s3.number, "10+"); strcpy(s3.label, "IMAGES PROCESSED"); s3.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s3.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s3.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s3);
                     HeroStatItem s4; s4.iconType = ICON_STAR; strcpy(s4.number, "99%"); strcpy(s4.label, "CLIENT SATISFACTION"); s4.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s4.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s4.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s4);
                 }
+                break;
+
+            case SEC_FOOTER_SECTION_CONNECTOR:
+                name = "Footer Section";
+                height = 450;
+                bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);  // Dark background
+                footer_sec_bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);
+                strcpy(footer_brand_name, "OMNiON");
+                strcpy(footer_brand_subtitle, "PreMedia Pvt. Ltd.");
+                strcpy(footer_description, "Pioneering global premedia services since 1974. Transforming visual content for the world's most prestigious brands with precision and creativity.");
+                footer_brand_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                footer_subtitle_sec_color = ImVec4(0.6f, 0.6f, 0.65f, 1.0f);
+                footer_desc_color = ImVec4(0.6f, 0.6f, 0.65f, 1.0f);
+                {
+                    // Certification badges
+                    FooterBadge b1; strcpy(b1.text, "ISO 9001:2015"); footer_badges.push_back(b1);
+                    FooterBadge b2; strcpy(b2.text, "ISO 27001"); footer_badges.push_back(b2);
+                    FooterBadge b3; strcpy(b3.text, "SOC 2"); footer_badges.push_back(b3);
+
+                    // Services column
+                    FooterSectionColumn c1; strcpy(c1.heading, "Services");
+                    FooterLinkItem l1; strcpy(l1.text, "Product Imaging"); c1.links.push_back(l1);
+                    FooterLinkItem l2; strcpy(l2.text, "Packaging Design"); c1.links.push_back(l2);
+                    FooterLinkItem l3; strcpy(l3.text, "Photo Retouching"); c1.links.push_back(l3);
+                    FooterLinkItem l4; strcpy(l4.text, "Publishing & Prepress"); c1.links.push_back(l4);
+                    FooterLinkItem l5; strcpy(l5.text, "3D & Animation"); c1.links.push_back(l5);
+                    FooterLinkItem l6; strcpy(l6.text, "Technology"); c1.links.push_back(l6);
+                    footer_section_columns.push_back(c1);
+
+                    // Company column
+                    FooterSectionColumn c2; strcpy(c2.heading, "Company");
+                    FooterLinkItem l7; strcpy(l7.text, "About Us"); c2.links.push_back(l7);
+                    FooterLinkItem l8; strcpy(l8.text, "Portfolio"); c2.links.push_back(l8);
+                    FooterLinkItem l9; strcpy(l9.text, "Clients"); c2.links.push_back(l9);
+                    FooterLinkItem l10; strcpy(l10.text, "Infrastructure"); c2.links.push_back(l10);
+                    FooterLinkItem l11; strcpy(l11.text, "Careers"); c2.links.push_back(l11);
+                    FooterLinkItem l12; strcpy(l12.text, "Blog"); c2.links.push_back(l12);
+                    footer_section_columns.push_back(c2);
+
+                    // Support column
+                    FooterSectionColumn c3; strcpy(c3.heading, "Support");
+                    FooterLinkItem l13; strcpy(l13.text, "Contact Us"); c3.links.push_back(l13);
+                    FooterLinkItem l14; strcpy(l14.text, "Help Center"); c3.links.push_back(l14);
+                    FooterLinkItem l15; strcpy(l15.text, "FAQs"); c3.links.push_back(l15);
+                    FooterLinkItem l16; strcpy(l16.text, "Terms of Service"); c3.links.push_back(l16);
+                    FooterLinkItem l17; strcpy(l17.text, "Privacy Policy"); c3.links.push_back(l17);
+                    FooterLinkItem l18; strcpy(l18.text, "Security"); c3.links.push_back(l18);
+                    footer_section_columns.push_back(c3);
+
+                    // Social links
+                    FooterSocialLink sl1; sl1.iconType = 0; footer_social_links.push_back(sl1); // LinkedIn
+                    FooterSocialLink sl2; sl2.iconType = 1; footer_social_links.push_back(sl2); // Twitter
+                    FooterSocialLink sl3; sl3.iconType = 2; footer_social_links.push_back(sl3); // Instagram
+                    FooterSocialLink sl4; sl4.iconType = 3; footer_social_links.push_back(sl4); // YouTube
+                }
+                strcpy(footer_newsletter_heading, "Stay Updated");
+                strcpy(footer_newsletter_subtitle, "Subscribe for industry insights and company news.");
+                strcpy(footer_email_placeholder, "Enter your email");
+                footer_email_action = ACTION_EMAIL;
+                footer_newsletter_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                footer_email_bg = ImVec4(0.15f, 0.17f, 0.22f, 1.0f);
+                footer_email_text_color = ImVec4(0.6f, 0.6f, 0.65f, 1.0f);
+                footer_submit_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                footer_submit_icon_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                footer_social_bg = ImVec4(0.15f, 0.17f, 0.22f, 1.0f);
+                footer_social_icon_color = ImVec4(0.8f, 0.8f, 0.85f, 1.0f);
+                strcpy(footer_copyright, "© 2024 OMNiON PreMedia Pvt. Ltd. All rights reserved. Pioneering Excellence Since 1974.");
+                strcpy(footer_bottom_links[0], "Terms");
+                strcpy(footer_bottom_links[1], "Privacy");
+                strcpy(footer_bottom_links[2], "Cookies");
+                footer_bottom_link_count = 3;
+                footer_copyright_color = ImVec4(0.5f, 0.5f, 0.55f, 1.0f);
+                footer_bottom_bg = ImVec4(0.06f, 0.08f, 0.12f, 1.0f);
+                footer_bottom_link_color = ImVec4(0.6f, 0.6f, 0.65f, 1.0f);
+                footer_border_radius = 8.0f;
                 break;
 
             default:
@@ -23144,11 +23325,11 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         dl->AddText(font, 32.0f, ImVec2(statsX + (statsSize - numSize.x)/2, statsY + (statsSize - numSize.y)/2),
                    ImGui::ColorConvertFloat4ToU32(sec.story_stats_text_color), sec.story_stats_number);
 
-        // Image collage (3 images)
+        // Image collage (3 images) - using configurable display sizes
         float imgX = x + leftW;
         float imgY = y + 30;
         // Image 1 - tall left image
-        float img1W = 150, img1H = 180;
+        float img1W = sec.story_image_display_w[0], img1H = sec.story_image_display_h[0];
         if (sec.story_image_textures[0] != 0) {
             dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[0],
                                ImVec2(imgX, imgY), ImVec2(imgX + img1W, imgY + img1H),
@@ -23158,7 +23339,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             dl->AddText(font, 11.0f, ImVec2(imgX + 40, imgY + 85), IM_COL32(150, 150, 150, 255), "Click to add\nImage 1");
         }
         // Image 2 - top right
-        float img2X = imgX + 160, img2W = 120, img2H = 120;
+        float img2X = imgX + img1W + 10;
+        float img2W = sec.story_image_display_w[1], img2H = sec.story_image_display_h[1];
         if (sec.story_image_textures[1] != 0) {
             dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[1],
                                ImVec2(img2X, imgY), ImVec2(img2X + img2W, imgY + img2H),
@@ -23168,7 +23350,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             dl->AddText(font, 11.0f, ImVec2(img2X + 25, imgY + 50), IM_COL32(150, 150, 150, 255), "Click to add\nImage 2");
         }
         // Image 3 - bottom right
-        float img3Y = imgY + 130, img3W = 120, img3H = 120;
+        float img3Y = imgY + img2H + 10;
+        float img3W = sec.story_image_display_w[2], img3H = sec.story_image_display_h[2];
         if (sec.story_image_textures[2] != 0) {
             dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[2],
                                ImVec2(img2X, img3Y), ImVec2(img2X + img3W, img3Y + img3H),
@@ -23714,6 +23897,173 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                 dl->AddText(font, 11.0f, ImVec2(sx + (statW - lblSize.x)/2, lblY),
                            ImGui::ColorConvertFloat4ToU32(stat.labelColor), stat.label);
             }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_FOOTER_SECTION_CONNECTOR - Advanced footer with columns
+    // ========================================================================
+    if (sec.type == SEC_FOOTER_SECTION_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.footer_sec_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float contentY = y + 40;
+        float leftX = x + 60;
+        float colWidth = 140;
+        float colX = x + 250;
+
+        // Brand section (left side)
+        // Logo circle with "O"
+        float logoSize = 40;
+        dl->AddCircleFilled(ImVec2(leftX + logoSize/2, contentY + logoSize/2), logoSize/2, ImGui::ColorConvertFloat4ToU32(sec.footer_submit_bg));
+        ImVec2 oSize = font->CalcTextSizeA(24.0f, FLT_MAX, 0.0f, "O");
+        dl->AddText(font, 24.0f, ImVec2(leftX + (logoSize - oSize.x)/2, contentY + (logoSize - oSize.y)/2), IM_COL32(255, 255, 255, 255), "O");
+
+        // Brand name
+        float brandX = leftX + logoSize + 10;
+        // "OMNi" in white, "ON" in orange
+        std::string brandPart1 = std::string(sec.footer_brand_name).substr(0, 4);
+        std::string brandPart2 = std::string(sec.footer_brand_name).length() > 4 ? std::string(sec.footer_brand_name).substr(4) : "";
+        if (brandPart1.length() > 0) {
+            ImVec2 p1Size = font->CalcTextSizeA(18.0f, FLT_MAX, 0.0f, brandPart1.c_str());
+            dl->AddText(font, 18.0f, ImVec2(brandX, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_brand_color), brandPart1.c_str());
+            if (brandPart2.length() > 0) {
+                dl->AddText(font, 18.0f, ImVec2(brandX + p1Size.x, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_bg), brandPart2.c_str());
+            }
+        }
+        // Subtitle
+        dl->AddText(font, 11.0f, ImVec2(brandX, contentY + 22), ImGui::ColorConvertFloat4ToU32(sec.footer_subtitle_sec_color), sec.footer_brand_subtitle);
+
+        // Description (wrapped)
+        float descY = contentY + 55;
+        float descMaxW = 180;
+        std::string descText = sec.footer_description;
+        float descLineH = 14.0f;
+        float descX = leftX;
+        size_t pos = 0;
+        int lineCount = 0;
+        while (pos < descText.length() && lineCount < 6) {
+            size_t lineEnd = pos;
+            float lineW = 0;
+            while (lineEnd < descText.length()) {
+                char ch[2] = {descText[lineEnd], 0};
+                float chW = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, ch).x;
+                if (lineW + chW > descMaxW && lineEnd > pos) break;
+                lineW += chW;
+                lineEnd++;
+            }
+            std::string line = descText.substr(pos, lineEnd - pos);
+            dl->AddText(font, 11.0f, ImVec2(descX, descY + lineCount * descLineH), ImGui::ColorConvertFloat4ToU32(sec.footer_desc_color), line.c_str());
+            pos = lineEnd;
+            lineCount++;
+        }
+
+        // Certification badges
+        float badgeY = descY + lineCount * descLineH + 20;
+        float badgeX = leftX;
+        for (size_t i = 0; i < sec.footer_badges.size() && i < 3; i++) {
+            const auto& badge = sec.footer_badges[i];
+            ImVec2 badgeSize = font->CalcTextSizeA(10.0f, FLT_MAX, 0.0f, badge.text);
+            float badgeW = badgeSize.x + 16;
+            float badgeH = 24;
+            dl->AddRectFilled(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH), ImGui::ColorConvertFloat4ToU32(badge.bgColor), sec.footer_border_radius);
+            dl->AddRect(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH), IM_COL32(60, 65, 75, 255), sec.footer_border_radius);
+            dl->AddText(font, 10.0f, ImVec2(badgeX + 8, badgeY + 7), ImGui::ColorConvertFloat4ToU32(badge.textColor), badge.text);
+            badgeX += badgeW + 8;
+        }
+
+        // Link columns
+        float colStartX = colX;
+        for (size_t c = 0; c < sec.footer_section_columns.size() && c < 3; c++) {
+            const auto& col = sec.footer_section_columns[c];
+            float colCurY = contentY;
+            // Heading
+            dl->AddText(font, 13.0f, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.headingColor), col.heading);
+            colCurY += 28;
+            // Links
+            for (size_t l = 0; l < col.links.size() && l < 6; l++) {
+                dl->AddText(font, 11.0f, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.linkColor), col.links[l].text);
+                colCurY += 22;
+            }
+            colStartX += colWidth;
+        }
+
+        // Newsletter section (right side)
+        float newsX = x + sectionW - 280;
+        float newsY = contentY;
+        dl->AddText(font, 13.0f, ImVec2(newsX, newsY), ImGui::ColorConvertFloat4ToU32(sec.footer_newsletter_color), sec.footer_newsletter_heading);
+        newsY += 24;
+        // Subtitle (wrapped)
+        std::string newsSubText = sec.footer_newsletter_subtitle;
+        float newsSubMaxW = 200;
+        float newsSubLineH = 14.0f;
+        size_t newsPos = 0;
+        int newsLineCount = 0;
+        while (newsPos < newsSubText.length() && newsLineCount < 2) {
+            size_t lineEnd = newsPos;
+            float lineW = 0;
+            while (lineEnd < newsSubText.length()) {
+                char ch[2] = {newsSubText[lineEnd], 0};
+                float chW = font->CalcTextSizeA(10.0f, FLT_MAX, 0.0f, ch).x;
+                if (lineW + chW > newsSubMaxW && lineEnd > newsPos) break;
+                lineW += chW;
+                lineEnd++;
+            }
+            std::string line = newsSubText.substr(newsPos, lineEnd - newsPos);
+            dl->AddText(font, 10.0f, ImVec2(newsX, newsY + newsLineCount * newsSubLineH), ImGui::ColorConvertFloat4ToU32(sec.footer_desc_color), line.c_str());
+            newsPos = lineEnd;
+            newsLineCount++;
+        }
+
+        // Email input box
+        float emailY = newsY + newsLineCount * newsSubLineH + 15;
+        float emailW = 180;
+        float emailH = 36;
+        dl->AddRectFilled(ImVec2(newsX, emailY), ImVec2(newsX + emailW, emailY + emailH), ImGui::ColorConvertFloat4ToU32(sec.footer_email_bg), sec.footer_border_radius);
+        dl->AddText(font, 11.0f, ImVec2(newsX + 12, emailY + 11), ImGui::ColorConvertFloat4ToU32(sec.footer_email_text_color), sec.footer_email_placeholder);
+        // Submit button
+        float submitX = newsX + emailW + 8;
+        float submitSize = 36;
+        dl->AddRectFilled(ImVec2(submitX, emailY), ImVec2(submitX + submitSize, emailY + submitSize), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_bg), sec.footer_border_radius);
+        // Arrow icon
+        float arrowX = submitX + 12;
+        float arrowY = emailY + submitSize/2;
+        dl->AddLine(ImVec2(arrowX, arrowY), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_icon_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 6, arrowY - 4), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_icon_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 6, arrowY + 4), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_icon_color), 2.0f);
+
+        // Social icons
+        float socialY = emailY + emailH + 20;
+        float socialX = newsX;
+        float socialSize = 32;
+        float socialSpacing = 8;
+        for (size_t i = 0; i < sec.footer_social_links.size() && i < 4; i++) {
+            dl->AddRectFilled(ImVec2(socialX, socialY), ImVec2(socialX + socialSize, socialY + socialSize), ImGui::ColorConvertFloat4ToU32(sec.footer_social_bg), sec.footer_border_radius);
+            // Simple icon representation
+            const char* icons[] = {"in", "X", "ig", "yt", "fb"};
+            const char* icon = icons[sec.footer_social_links[i].iconType % 5];
+            ImVec2 iconSize = font->CalcTextSizeA(10.0f, FLT_MAX, 0.0f, icon);
+            dl->AddText(font, 10.0f, ImVec2(socialX + (socialSize - iconSize.x)/2, socialY + (socialSize - iconSize.y)/2), ImGui::ColorConvertFloat4ToU32(sec.footer_social_icon_color), icon);
+            socialX += socialSize + socialSpacing;
+        }
+
+        // Bottom bar with copyright
+        float bottomH = 50;
+        float bottomY = y + h - bottomH;
+        dl->AddRectFilled(ImVec2(x, bottomY), ImVec2(x + sectionW, y + h), ImGui::ColorConvertFloat4ToU32(sec.footer_bottom_bg));
+        // Copyright text
+        dl->AddText(font, 11.0f, ImVec2(leftX, bottomY + 18), ImGui::ColorConvertFloat4ToU32(sec.footer_copyright_color), sec.footer_copyright);
+        // Bottom links (right side)
+        float bottomLinkX = x + sectionW - 200;
+        for (int i = 0; i < sec.footer_bottom_link_count && i < 4; i++) {
+            ImVec2 linkSize = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, sec.footer_bottom_links[i]);
+            dl->AddText(font, 11.0f, ImVec2(bottomLinkX, bottomY + 18), ImGui::ColorConvertFloat4ToU32(sec.footer_bottom_link_color), sec.footer_bottom_links[i]);
+            bottomLinkX += linkSize.x + 20;
         }
 
         if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
@@ -24605,6 +24955,25 @@ void RenderUI() {
 
     if (ImGui::Button("+ Hero Section", ImVec2(-1, 26))) {
         WebSection sec(g_NextSectionId++, SEC_HERO_SECTION_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Footer Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_FOOTER_SECTION_CONNECTOR);
         if (g_FreeDesignMode) {
             float nextY = 20;
             for (const auto& s : g_Sections) {
@@ -29422,8 +29791,19 @@ void RenderUI() {
                         sec.story_image_textures[i] = 0;
                         sec.story_images[i] = "";
                     }
+                    // Image size controls
+                    ImGui::PushItemWidth(100);
+                    char wLabel[32], hLabel[32];
+                    snprintf(wLabel, sizeof(wLabel), "Width##imgW%d", i);
+                    snprintf(hLabel, sizeof(hLabel), "Height##imgH%d", i);
+                    ImGui::SliderFloat(wLabel, &sec.story_image_display_w[i], 50.0f, 300.0f, "%.0f");
+                    ImGui::SameLine();
+                    ImGui::SliderFloat(hLabel, &sec.story_image_display_h[i], 50.0f, 300.0f, "%.0f");
+                    ImGui::PopItemWidth();
                 } else {
-                    if (ImGui::Button("Browse...##storyImg")) {
+                    char browseLabel[32];
+                    snprintf(browseLabel, sizeof(browseLabel), "Browse...##storyImg%d", i);
+                    if (ImGui::Button(browseLabel)) {
                         std::string selectedPath = OpenImageFileDialog();
                         if (!selectedPath.empty()) {
                             int w, h, c;
@@ -29504,15 +29884,20 @@ void RenderUI() {
                 // Card Image
                 ImGui::Spacing();
                 ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CARD IMAGE");
+                ImGui::PushID(selSvcCard + 5000); // Unique ID for this card's image controls
                 if (card.textureID != 0) {
                     ImGui::Image((ImTextureID)(intptr_t)card.textureID, ImVec2(120, 80));
-                    if (ImGui::Button("Remove Image##svc")) {
+                    if (ImGui::Button("Remove Image")) {
                         glDeleteTextures(1, &card.textureID);
                         card.textureID = 0;
                         card.imagePath = "";
                     }
+                    // Image size control
+                    ImGui::PushItemWidth(120);
+                    ImGui::SliderFloat("Image Height", &card.imageHeight_display, 80.0f, 300.0f, "%.0f");
+                    ImGui::PopItemWidth();
                 } else {
-                    if (ImGui::Button("Browse...##svcImg")) {
+                    if (ImGui::Button("Browse...")) {
                         std::string selectedPath = OpenImageFileDialog();
                         if (!selectedPath.empty()) {
                             int w, h, c;
@@ -29533,6 +29918,7 @@ void RenderUI() {
                         }
                     }
                 }
+                ImGui::PopID();
 
                 if (ImGui::Button("Delete Card##svc")) {
                     sec.services_cards.erase(sec.services_cards.begin() + selSvcCard);
@@ -29798,6 +30184,164 @@ void RenderUI() {
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND");
             ImGui::ColorEdit4("Section BG", (float*)&sec.hero_bg_color, ImGuiColorEditFlags_NoInputs);
+        }
+        // Footer Section Connector properties
+        else if (sec.type == SEC_FOOTER_SECTION_CONNECTOR) {
+            ImGui::Text("Footer Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Brand Info
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BRAND");
+            ImGui::InputText("Brand Name", sec.footer_brand_name, sizeof(sec.footer_brand_name));
+            ImGui::InputText("Subtitle", sec.footer_brand_subtitle, sizeof(sec.footer_brand_subtitle));
+            ImGui::InputTextMultiline("Description##footerDesc", sec.footer_description, sizeof(sec.footer_description), ImVec2(-1, 60));
+            ImGui::ColorEdit4("Brand Color", (float*)&sec.footer_brand_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Subtitle Color", (float*)&sec.footer_subtitle_sec_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Desc Color", (float*)&sec.footer_desc_color, ImGuiColorEditFlags_NoInputs);
+
+            // Certification Badges
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CERTIFICATION BADGES");
+            ImGui::Text("Badges: %d", (int)sec.footer_badges.size());
+            if (ImGui::Button("+ Add Badge##footer") && sec.footer_badges.size() < 6) {
+                sec.footer_badges.push_back(FooterBadge());
+            }
+            static int selFooterBadge = -1;
+            for (size_t i = 0; i < sec.footer_badges.size(); i++) {
+                ImGui::PushID((int)i + 3000);
+                char bLabel[64]; snprintf(bLabel, sizeof(bLabel), "%d: %s", (int)i+1, sec.footer_badges[i].text);
+                if (ImGui::Selectable(bLabel, selFooterBadge == (int)i)) selFooterBadge = (int)i;
+                ImGui::PopID();
+            }
+            if (selFooterBadge >= 0 && selFooterBadge < (int)sec.footer_badges.size()) {
+                auto& badge = sec.footer_badges[selFooterBadge];
+                ImGui::InputText("Text##footerBadge", badge.text, sizeof(badge.text));
+                ImGui::ColorEdit4("Badge BG", (float*)&badge.bgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Badge Text", (float*)&badge.textColor, ImGuiColorEditFlags_NoInputs);
+                if (ImGui::Button("Delete Badge##footer")) {
+                    sec.footer_badges.erase(sec.footer_badges.begin() + selFooterBadge);
+                    selFooterBadge = -1;
+                }
+            }
+
+            // Link Columns
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "LINK COLUMNS");
+            ImGui::Text("Columns: %d", (int)sec.footer_section_columns.size());
+            if (ImGui::Button("+ Add Column##footer") && sec.footer_section_columns.size() < 4) {
+                sec.footer_section_columns.push_back(FooterSectionColumn());
+            }
+            static int selFooterCol = -1;
+            for (size_t i = 0; i < sec.footer_section_columns.size(); i++) {
+                ImGui::PushID((int)i + 4000);
+                char cLabel[64]; snprintf(cLabel, sizeof(cLabel), "%d: %s", (int)i+1, sec.footer_section_columns[i].heading);
+                if (ImGui::Selectable(cLabel, selFooterCol == (int)i)) selFooterCol = (int)i;
+                ImGui::PopID();
+            }
+            if (selFooterCol >= 0 && selFooterCol < (int)sec.footer_section_columns.size()) {
+                auto& col = sec.footer_section_columns[selFooterCol];
+                ImGui::InputText("Heading##footerCol", col.heading, sizeof(col.heading));
+                ImGui::ColorEdit4("Heading Color##col", (float*)&col.headingColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Link Color##col", (float*)&col.linkColor, ImGuiColorEditFlags_NoInputs);
+
+                ImGui::Text("Links: %d", (int)col.links.size());
+                if (ImGui::Button("+ Add Link##footerCol") && col.links.size() < 8) {
+                    col.links.push_back(FooterLinkItem());
+                }
+                static int selColLink = -1;
+                for (size_t j = 0; j < col.links.size(); j++) {
+                    ImGui::PushID((int)j + 6000);
+                    char lLabel[64]; snprintf(lLabel, sizeof(lLabel), "  - %s", col.links[j].text);
+                    if (ImGui::Selectable(lLabel, selColLink == (int)j)) selColLink = (int)j;
+                    ImGui::PopID();
+                }
+                if (selColLink >= 0 && selColLink < (int)col.links.size()) {
+                    auto& link = col.links[selColLink];
+                    ImGui::InputText("Link Text##colLink", link.text, sizeof(link.text));
+                    const char* actionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
+                    ImGui::Combo("Action##colLink", &link.actionType, actionNames, IM_ARRAYSIZE(actionNames));
+                    ImGui::InputText("Target##colLink", link.actionTarget, sizeof(link.actionTarget));
+                    if (ImGui::Button("Delete Link##colLink")) {
+                        col.links.erase(col.links.begin() + selColLink);
+                        selColLink = -1;
+                    }
+                }
+
+                if (ImGui::Button("Delete Column##footer")) {
+                    sec.footer_section_columns.erase(sec.footer_section_columns.begin() + selFooterCol);
+                    selFooterCol = -1;
+                }
+            }
+
+            // Newsletter
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "NEWSLETTER");
+            ImGui::InputText("Heading##newsletter", sec.footer_newsletter_heading, sizeof(sec.footer_newsletter_heading));
+            ImGui::InputText("Subtitle##newsletter", sec.footer_newsletter_subtitle, sizeof(sec.footer_newsletter_subtitle));
+            ImGui::InputText("Placeholder##newsletter", sec.footer_email_placeholder, sizeof(sec.footer_email_placeholder));
+            const char* actionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
+            ImGui::Combo("Submit Action##newsletter", &sec.footer_email_action, actionNames, IM_ARRAYSIZE(actionNames));
+            ImGui::InputText("Submit Target##newsletter", sec.footer_email_action_target, sizeof(sec.footer_email_action_target));
+            ImGui::ColorEdit4("Newsletter Color", (float*)&sec.footer_newsletter_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Email BG", (float*)&sec.footer_email_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Email Text", (float*)&sec.footer_email_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Submit BG", (float*)&sec.footer_submit_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Submit Icon", (float*)&sec.footer_submit_icon_color, ImGuiColorEditFlags_NoInputs);
+
+            // Social Links
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SOCIAL LINKS");
+            ImGui::Text("Social Icons: %d", (int)sec.footer_social_links.size());
+            if (ImGui::Button("+ Add Social##footer") && sec.footer_social_links.size() < 6) {
+                sec.footer_social_links.push_back(FooterSocialLink());
+            }
+            static int selSocial = -1;
+            const char* socialNames[] = {"LinkedIn", "Twitter", "Instagram", "YouTube", "Facebook"};
+            for (size_t i = 0; i < sec.footer_social_links.size(); i++) {
+                ImGui::PushID((int)i + 7000);
+                char sLabel[64]; snprintf(sLabel, sizeof(sLabel), "%d: %s", (int)i+1, socialNames[sec.footer_social_links[i].iconType]);
+                if (ImGui::Selectable(sLabel, selSocial == (int)i)) selSocial = (int)i;
+                ImGui::PopID();
+            }
+            if (selSocial >= 0 && selSocial < (int)sec.footer_social_links.size()) {
+                auto& social = sec.footer_social_links[selSocial];
+                ImGui::Combo("Platform##social", &social.iconType, socialNames, IM_ARRAYSIZE(socialNames));
+                ImGui::InputText("URL##social", social.url, sizeof(social.url));
+                if (ImGui::Button("Delete Social##footer")) {
+                    sec.footer_social_links.erase(sec.footer_social_links.begin() + selSocial);
+                    selSocial = -1;
+                }
+            }
+            ImGui::ColorEdit4("Social BG", (float*)&sec.footer_social_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Social Icon", (float*)&sec.footer_social_icon_color, ImGuiColorEditFlags_NoInputs);
+
+            // Copyright & Bottom Links
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COPYRIGHT & BOTTOM");
+            ImGui::InputText("Copyright", sec.footer_copyright, sizeof(sec.footer_copyright));
+            ImGui::ColorEdit4("Copyright Color", (float*)&sec.footer_copyright_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Bottom BG", (float*)&sec.footer_bottom_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Bottom Link", (float*)&sec.footer_bottom_link_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::SliderInt("Bottom Links Count", &sec.footer_bottom_link_count, 0, 4);
+            for (int i = 0; i < sec.footer_bottom_link_count; i++) {
+                ImGui::PushID(i + 8000);
+                char linkLabel[32]; snprintf(linkLabel, sizeof(linkLabel), "Link %d##bottom", i+1);
+                ImGui::InputText(linkLabel, sec.footer_bottom_links[i], sizeof(sec.footer_bottom_links[i]));
+                ImGui::SameLine();
+                const char* actionNames2[] = {"None", "Scroll", "Page", "URL", "Popup", "Download", "Email", "Phone"};
+                ImGui::PushItemWidth(60);
+                ImGui::Combo("##bottomAction", &sec.footer_bottom_link_actions[i], actionNames2, IM_ARRAYSIZE(actionNames2));
+                ImGui::PopItemWidth();
+                ImGui::InputText("##bottomTarget", sec.footer_bottom_link_targets[i], sizeof(sec.footer_bottom_link_targets[i]));
+                ImGui::PopID();
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND");
+            ImGui::ColorEdit4("Section BG##footer", (float*)&sec.footer_sec_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SliderFloat("Border Radius##footer", &sec.footer_border_radius, 0.0f, 20.0f, "%.0f");
         }
         // Regular section content
         else {
