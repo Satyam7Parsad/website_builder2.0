@@ -39,8 +39,293 @@
 enum SectionType {
     SEC_HERO, SEC_NAVBAR, SEC_ABOUT, SEC_SERVICES, SEC_CARDS, SEC_TEAM,
     SEC_PRICING, SEC_TESTIMONIALS, SEC_GALLERY, SEC_BLOG, SEC_CONTACT,
-    SEC_FOOTER, SEC_FAQ, SEC_CTA, SEC_FEATURES, SEC_STATS, SEC_LOGIN, SEC_IMAGE, SEC_TEXTBOX, SEC_CUSTOM
+    SEC_FOOTER, SEC_FAQ, SEC_CTA, SEC_FEATURES, SEC_STATS, SEC_LOGIN, SEC_IMAGE, SEC_TEXTBOX, SEC_CUSTOM,
+    // Basic Elements (for Free Design Mode)
+    SEC_LOGO, SEC_HEADING, SEC_TEXT_ELEMENT, SEC_BUTTON_ELEMENT,
+    // Connector Elements (reusable website components)
+    SEC_TEXT_CONNECTOR,      // Rich text blocks with bold/normal segments
+    SEC_BAR_CONNECTOR,       // Colored heading bars (section dividers)
+    SEC_FOOTER_CONNECTOR,    // Multi-column footer with headings + subitems
+    SEC_CARD_CONNECTOR,      // Image thumbnail cards with heading + description
+    SEC_VERTICAL_CONNECTOR,  // Vertical layout with text + positioned images
+    SEC_NAVBAR_CONNECTOR,    // Advanced navbar with hover dropdowns
+    SEC_COPYRIGHT_CONNECTOR, // Copyright footer bar with links
+    SEC_ARTICLE_CONNECTOR,   // Article/Blog post cards with clickable heading & read more
+    SEC_CONTACT_FORM_CONNECTOR, // Contact form with input fields and submit button
+    SEC_SEARCH_CONNECTOR,      // Search bar with input and button
+    SEC_LOGO_CONNECTOR,        // Logo image with size and link controls
+    SEC_BULLET_CONNECTOR,      // Bullet point columns with heading and subheadings
+    SEC_ICON,                  // Icon element with selectable icons
+    SEC_SERVICE_CARD_CONNECTOR, // Service cards with image, badge tag, and title
+    SEC_GLASS_BAR_CONNECTOR    // Glass effect text bar
 };
+
+// ============================================================================
+// ICON TYPES
+// ============================================================================
+enum IconType {
+    ICON_AVATAR = 0,
+    ICON_CHECK,
+    ICON_INCREASE,
+    ICON_PHONE,
+    ICON_CALENDAR,
+    ICON_WIFI,
+    ICON_LOCK,
+    ICON_THUMBUP,
+    ICON_CLOCK,
+    ICON_PLAY,
+    ICON_HOURGLASS,
+    ICON_LOCATION,
+    ICON_SHOPPING,
+    ICON_UPLOAD,
+    ICON_LAPTOP,
+    ICON_PIECHART,
+    ICON_MAIL,
+    ICON_BULB,
+    ICON_CROSS,
+    ICON_LOGIN,
+    ICON_HEART,
+    ICON_STAR,
+    ICON_SEARCH,
+    ICON_HOME,
+    ICON_SETTINGS,
+    ICON_USER,
+    ICON_DOWNLOAD,
+    ICON_SHARE,
+    ICON_BOOKMARK,
+    ICON_CAMERA,
+    ICON_COUNT  // Total count of icons
+};
+
+// Icon names for display
+static const char* g_IconNames[] = {
+    "Avatar", "Check", "Increase", "Phone", "Calendar",
+    "Wifi", "Lock", "Thumb Up", "Clock", "Play",
+    "Hourglass", "Location", "Shopping", "Upload", "Laptop",
+    "Pie Chart", "Mail", "Bulb", "Cross", "Login",
+    "Heart", "Star", "Search", "Home", "Settings",
+    "User", "Download", "Share", "Bookmark", "Camera"
+};
+
+// Helper: Draw icon at specified position
+inline void DrawIcon(ImDrawList* dl, int iconType, float cx, float cy, float size, ImU32 color, float strokeWidth = 2.0f) {
+    float r = size * 0.4f;  // Radius for circular icons
+    float hw = size * 0.4f; // Half width for rectangular icons
+
+    switch (iconType) {
+        case ICON_AVATAR: {
+            dl->AddCircle(ImVec2(cx, cy - r*0.3f), r*0.4f, color, 24, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.7f, cy + r*0.8f), ImVec2(cx, cy + r*0.2f), ImVec2(cx + r*0.7f, cy + r*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_CHECK: {
+            dl->AddCircle(ImVec2(cx, cy), r, color, 32, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.4f, cy), ImVec2(cx - r*0.1f, cy + r*0.3f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.1f, cy + r*0.3f), ImVec2(cx + r*0.4f, cy - r*0.3f), color, strokeWidth);
+            break;
+        }
+        case ICON_INCREASE: {
+            dl->AddLine(ImVec2(cx - hw, cy + hw*0.5f), ImVec2(cx, cy - hw*0.2f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy - hw*0.2f), ImVec2(cx + hw, cy - hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.3f, cy - hw*0.7f), ImVec2(cx + hw, cy - hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw, cy - hw*0.7f), ImVec2(cx + hw, cy - hw*0.0f), color, strokeWidth);
+            break;
+        }
+        case ICON_PHONE: {
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.5f, cy - r*0.8f), ImVec2(cx - r*0.8f, cy), ImVec2(cx - r*0.5f, cy + r*0.8f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx + r*0.5f, cy - r*0.8f), ImVec2(cx + r*0.8f, cy), ImVec2(cx + r*0.5f, cy + r*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_CALENDAR: {
+            dl->AddRect(ImVec2(cx - hw, cy - hw*0.7f), ImVec2(cx + hw, cy + hw), color, 2.0f, 0, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw, cy - hw*0.3f), ImVec2(cx + hw, cy - hw*0.3f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy - hw*0.7f), ImVec2(cx - hw*0.5f, cy - hw), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy - hw*0.7f), ImVec2(cx + hw*0.5f, cy - hw), color, strokeWidth);
+            break;
+        }
+        case ICON_WIFI: {
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.8f, cy - r*0.2f), ImVec2(cx, cy - r), ImVec2(cx + r*0.8f, cy - r*0.2f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.5f, cy + r*0.1f), ImVec2(cx, cy - r*0.5f), ImVec2(cx + r*0.5f, cy + r*0.1f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.25f, cy + r*0.4f), ImVec2(cx, cy), ImVec2(cx + r*0.25f, cy + r*0.4f), color, strokeWidth);
+            dl->AddCircleFilled(ImVec2(cx, cy + r*0.6f), strokeWidth*1.5f, color);
+            break;
+        }
+        case ICON_LOCK: {
+            dl->AddRect(ImVec2(cx - hw*0.7f, cy - hw*0.1f), ImVec2(cx + hw*0.7f, cy + hw), color, 2.0f, 0, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - hw*0.4f, cy - hw*0.1f), ImVec2(cx - hw*0.4f, cy - hw*0.8f), ImVec2(cx, cy - hw*0.8f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx, cy - hw*0.8f), ImVec2(cx + hw*0.4f, cy - hw*0.8f), ImVec2(cx + hw*0.4f, cy - hw*0.1f), color, strokeWidth);
+            break;
+        }
+        case ICON_THUMBUP: {
+            dl->AddLine(ImVec2(cx - hw*0.8f, cy + hw*0.1f), ImVec2(cx - hw*0.8f, cy + hw*0.9f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy + hw*0.1f), ImVec2(cx - hw*0.5f, cy + hw*0.9f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - hw*0.5f, cy + hw*0.1f), ImVec2(cx, cy - hw*0.8f), ImVec2(cx + hw*0.5f, cy - hw*0.3f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy - hw*0.3f), ImVec2(cx + hw*0.8f, cy + hw*0.9f), color, strokeWidth);
+            break;
+        }
+        case ICON_CLOCK: {
+            dl->AddCircle(ImVec2(cx, cy), r, color, 32, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy), ImVec2(cx, cy - r*0.5f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy), ImVec2(cx + r*0.4f, cy + r*0.2f), color, strokeWidth);
+            break;
+        }
+        case ICON_PLAY: {
+            ImVec2 pts[3] = {ImVec2(cx - hw*0.4f, cy - hw*0.7f), ImVec2(cx + hw*0.6f, cy), ImVec2(cx - hw*0.4f, cy + hw*0.7f)};
+            dl->AddTriangle(pts[0], pts[1], pts[2], color, strokeWidth);
+            break;
+        }
+        case ICON_HOURGLASS: {
+            dl->AddLine(ImVec2(cx - hw*0.6f, cy - hw), ImVec2(cx + hw*0.6f, cy - hw), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.6f, cy + hw), ImVec2(cx + hw*0.6f, cy + hw), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy - hw), ImVec2(cx, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy - hw), ImVec2(cx, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy + hw), ImVec2(cx, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy + hw), ImVec2(cx, cy), color, strokeWidth);
+            break;
+        }
+        case ICON_LOCATION: {
+            dl->AddCircle(ImVec2(cx, cy - r*0.3f), r*0.3f, color, 24, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.6f, cy - r*0.3f), ImVec2(cx - r*0.6f, cy - r), ImVec2(cx, cy - r), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx, cy - r), ImVec2(cx + r*0.6f, cy - r), ImVec2(cx + r*0.6f, cy - r*0.3f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.6f, cy - r*0.3f), ImVec2(cx, cy + r), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + r*0.6f, cy - r*0.3f), ImVec2(cx, cy + r), color, strokeWidth);
+            break;
+        }
+        case ICON_SHOPPING: {
+            dl->AddLine(ImVec2(cx - hw*0.8f, cy - hw*0.6f), ImVec2(cx + hw*0.8f, cy - hw*0.6f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.6f, cy - hw*0.6f), ImVec2(cx - hw*0.4f, cy + hw*0.6f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.6f, cy - hw*0.6f), ImVec2(cx + hw*0.4f, cy + hw*0.6f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.4f, cy + hw*0.6f), ImVec2(cx + hw*0.4f, cy + hw*0.6f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - hw*0.5f, cy - hw*0.6f), ImVec2(cx - hw*0.5f, cy - hw), ImVec2(cx, cy - hw), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx, cy - hw), ImVec2(cx + hw*0.5f, cy - hw), ImVec2(cx + hw*0.5f, cy - hw*0.6f), color, strokeWidth);
+            break;
+        }
+        case ICON_UPLOAD: {
+            dl->AddLine(ImVec2(cx, cy - hw*0.7f), ImVec2(cx, cy + hw*0.5f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.4f, cy - hw*0.3f), ImVec2(cx, cy - hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.4f, cy - hw*0.3f), ImVec2(cx, cy - hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.7f, cy + hw*0.8f), ImVec2(cx + hw*0.7f, cy + hw*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_LAPTOP: {
+            dl->AddRect(ImVec2(cx - hw, cy - hw*0.5f), ImVec2(cx + hw, cy + hw*0.3f), color, 2.0f, 0, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*1.2f, cy + hw*0.7f), ImVec2(cx + hw*1.2f, cy + hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw, cy + hw*0.3f), ImVec2(cx - hw*1.2f, cy + hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw, cy + hw*0.3f), ImVec2(cx + hw*1.2f, cy + hw*0.7f), color, strokeWidth);
+            break;
+        }
+        case ICON_PIECHART: {
+            dl->AddCircle(ImVec2(cx, cy), r, color, 32, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy), ImVec2(cx, cy - r), color, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy), ImVec2(cx + r*0.7f, cy + r*0.7f), color, strokeWidth);
+            break;
+        }
+        case ICON_MAIL: {
+            dl->AddRect(ImVec2(cx - hw, cy - hw*0.6f), ImVec2(cx + hw, cy + hw*0.6f), color, 0, 0, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw, cy - hw*0.6f), ImVec2(cx, cy + hw*0.1f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw, cy - hw*0.6f), ImVec2(cx, cy + hw*0.1f), color, strokeWidth);
+            break;
+        }
+        case ICON_BULB: {
+            dl->AddCircle(ImVec2(cx, cy - r*0.2f), r*0.6f, color, 24, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.3f, cy + r*0.4f), ImVec2(cx - r*0.3f, cy + r*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + r*0.3f, cy + r*0.4f), ImVec2(cx + r*0.3f, cy + r*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.3f, cy + r*0.8f), ImVec2(cx + r*0.3f, cy + r*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_CROSS: {
+            dl->AddCircle(ImVec2(cx, cy), r, color, 32, strokeWidth);
+            dl->AddLine(ImVec2(cx - r*0.5f, cy - r*0.5f), ImVec2(cx + r*0.5f, cy + r*0.5f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + r*0.5f, cy - r*0.5f), ImVec2(cx - r*0.5f, cy + r*0.5f), color, strokeWidth);
+            break;
+        }
+        case ICON_LOGIN: {
+            dl->AddLine(ImVec2(cx - hw*0.2f, cy), ImVec2(cx + hw*0.8f, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.4f, cy - hw*0.4f), ImVec2(cx + hw*0.8f, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.4f, cy + hw*0.4f), ImVec2(cx + hw*0.8f, cy), color, strokeWidth);
+            dl->AddRect(ImVec2(cx - hw*0.8f, cy - hw*0.7f), ImVec2(cx - hw*0.2f, cy + hw*0.7f), color, 0, 0, strokeWidth);
+            break;
+        }
+        case ICON_HEART: {
+            dl->AddBezierQuadratic(ImVec2(cx, cy + r*0.8f), ImVec2(cx - r*1.2f, cy - r*0.2f), ImVec2(cx, cy - r*0.4f), color, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx, cy - r*0.4f), ImVec2(cx + r*1.2f, cy - r*0.2f), ImVec2(cx, cy + r*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_STAR: {
+            float outer = r;
+            float inner = r * 0.4f;
+            ImVec2 pts[10];
+            for (int i = 0; i < 10; i++) {
+                float angle = (i * 36.0f - 90.0f) * 3.14159f / 180.0f;
+                float rad = (i % 2 == 0) ? outer : inner;
+                pts[i] = ImVec2(cx + rad * cosf(angle), cy + rad * sinf(angle));
+            }
+            for (int i = 0; i < 10; i++) {
+                dl->AddLine(pts[i], pts[(i + 1) % 10], color, strokeWidth);
+            }
+            break;
+        }
+        case ICON_SEARCH: {
+            dl->AddCircle(ImVec2(cx - r*0.2f, cy - r*0.2f), r*0.6f, color, 24, strokeWidth);
+            dl->AddLine(ImVec2(cx + r*0.2f, cy + r*0.2f), ImVec2(cx + r*0.8f, cy + r*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_HOME: {
+            dl->AddLine(ImVec2(cx, cy - hw*0.8f), ImVec2(cx - hw*0.8f, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy - hw*0.8f), ImVec2(cx + hw*0.8f, cy), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.6f, cy - hw*0.1f), ImVec2(cx - hw*0.6f, cy + hw*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.6f, cy - hw*0.1f), ImVec2(cx + hw*0.6f, cy + hw*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.6f, cy + hw*0.8f), ImVec2(cx + hw*0.6f, cy + hw*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_SETTINGS: {
+            dl->AddCircle(ImVec2(cx, cy), r*0.4f, color, 24, strokeWidth);
+            for (int i = 0; i < 8; i++) {
+                float angle = i * 45.0f * 3.14159f / 180.0f;
+                dl->AddLine(ImVec2(cx + r*0.5f * cosf(angle), cy + r*0.5f * sinf(angle)),
+                           ImVec2(cx + r * cosf(angle), cy + r * sinf(angle)), color, strokeWidth);
+            }
+            break;
+        }
+        case ICON_USER: {
+            dl->AddCircle(ImVec2(cx, cy - r*0.4f), r*0.4f, color, 24, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - r*0.8f, cy + r*0.9f), ImVec2(cx, cy + r*0.2f), ImVec2(cx + r*0.8f, cy + r*0.9f), color, strokeWidth);
+            break;
+        }
+        case ICON_DOWNLOAD: {
+            dl->AddLine(ImVec2(cx, cy + hw*0.5f), ImVec2(cx, cy - hw*0.7f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.4f, cy + hw*0.1f), ImVec2(cx, cy + hw*0.5f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.4f, cy + hw*0.1f), ImVec2(cx, cy + hw*0.5f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.7f, cy + hw*0.8f), ImVec2(cx + hw*0.7f, cy + hw*0.8f), color, strokeWidth);
+            break;
+        }
+        case ICON_SHARE: {
+            dl->AddCircle(ImVec2(cx + hw*0.5f, cy - hw*0.5f), r*0.25f, color, 16, strokeWidth);
+            dl->AddCircle(ImVec2(cx - hw*0.5f, cy), r*0.25f, color, 16, strokeWidth);
+            dl->AddCircle(ImVec2(cx + hw*0.5f, cy + hw*0.5f), r*0.25f, color, 16, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.3f, cy - hw*0.1f), ImVec2(cx + hw*0.3f, cy - hw*0.4f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.3f, cy + hw*0.1f), ImVec2(cx + hw*0.3f, cy + hw*0.4f), color, strokeWidth);
+            break;
+        }
+        case ICON_BOOKMARK: {
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy - hw*0.8f), ImVec2(cx - hw*0.5f, cy + hw*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy - hw*0.8f), ImVec2(cx + hw*0.5f, cy + hw*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy - hw*0.8f), ImVec2(cx + hw*0.5f, cy - hw*0.8f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.5f, cy + hw*0.8f), ImVec2(cx, cy + hw*0.3f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx + hw*0.5f, cy + hw*0.8f), ImVec2(cx, cy + hw*0.3f), color, strokeWidth);
+            break;
+        }
+        case ICON_CAMERA: {
+            dl->AddRect(ImVec2(cx - hw, cy - hw*0.4f), ImVec2(cx + hw, cy + hw*0.7f), color, 4.0f, 0, strokeWidth);
+            dl->AddCircle(ImVec2(cx, cy + hw*0.1f), r*0.4f, color, 24, strokeWidth);
+            dl->AddRect(ImVec2(cx - hw*0.3f, cy - hw*0.7f), ImVec2(cx + hw*0.3f, cy - hw*0.4f), color, 0, 0, strokeWidth);
+            break;
+        }
+        default:
+            dl->AddRect(ImVec2(cx - hw*0.6f, cy - hw*0.6f), ImVec2(cx + hw*0.6f, cy + hw*0.6f), color, 0, 0, strokeWidth);
+            break;
+    }
+}
 
 // ============================================================================
 // ANIMATION TYPES
@@ -105,6 +390,34 @@ bool InitDatabase() {
 
     printf("PostgreSQL connected successfully!\n");
     g_UseDatabase = true;
+
+    // Ensure position/size columns exist in sections table
+    PGresult* alterRes;
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS x_position REAL DEFAULT 0");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS width REAL DEFAULT 800");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS z_index INTEGER DEFAULT 0");
+    PQclear(alterRes);
+    // Add free_design_mode to templates table
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE templates ADD COLUMN IF NOT EXISTS free_design_mode BOOLEAN DEFAULT TRUE");
+    PQclear(alterRes);
+    // Add margin columns to sections table
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS margin_top REAL DEFAULT 10");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS margin_right REAL DEFAULT 10");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS margin_bottom REAL DEFAULT 10");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS margin_left REAL DEFAULT 10");
+    PQclear(alterRes);
+    // Add page columns to sections table for multi-page support
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS page_index INTEGER DEFAULT 0");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE sections ADD COLUMN IF NOT EXISTS page_name TEXT DEFAULT 'Home'");
+    PQclear(alterRes);
+    printf("Database schema updated: position/size/margin/page columns ensured.\n");
+
     return true;
 }
 
@@ -331,9 +644,23 @@ std::vector<std::string> ParsePostgresArray(const char* pg_array) {
 
 // Forward declarations
 struct WebSection;
-static std::vector<WebSection> g_Sections;
-static std::vector<std::string> g_Pages;
-void PreviewFigmaWebsite();  // Preview Figma layers in browser
+
+// Normal Mode Page structure - each page has its own sections
+struct NormalModePage {
+    std::string name;
+    std::vector<WebSection> sections;
+    NormalModePage(const std::string& n = "Page") : name(n) {}
+};
+
+static std::vector<NormalModePage> g_NormalPages;  // All pages in Normal Mode
+static int g_NormalPageIndex = 0;                   // Currently selected page in Normal Mode
+static std::vector<WebSection> g_Sections;          // Sections of current page (for compatibility)
+static std::vector<std::string> g_Pages;            // Page names (for compatibility)
+void PreviewFigmaWebsite();           // Preview Figma layers in browser (screenshot mode)
+void PreviewFigmaWebsiteRealLayout(); // Preview using real ImGui elements
+void PreviewFigmaAsHTML();            // Simple HTML preview - no build required
+bool IsInternalUrl(const std::string& href, const std::string& sourceUrl);  // Check if URL is internal
+void ConvertLayersToSections();       // Convert Figma layers to Normal mode sections
 
 // ============================================================================
 // URL IMPORT STRUCTURES
@@ -482,6 +809,260 @@ struct InteractiveElement {
 };
 
 // ============================================================================
+// CONNECTOR DATA STRUCTURES
+// ============================================================================
+
+// Text segment for text_connector (supports bold/normal text)
+struct TextSegment {
+    std::string text;
+    bool isBold;
+    TextSegment() : isBold(false) {}
+};
+
+// Text block for text_connector (multiple segments with styling)
+struct TextBlock {
+    std::vector<TextSegment> segments;
+    float fontSize;
+    ImVec4 textColor;
+    ImVec4 boldColor;
+    float lineSpacing;
+    TextBlock() : fontSize(16), textColor(0.3f, 0.3f, 0.3f, 1), boldColor(0.1f, 0.1f, 0.1f, 1), lineSpacing(1.5f) {}
+};
+
+// Bar item for bar_connector (colored heading bars)
+struct BarItem {
+    char heading[256];
+    ImVec4 barColor;
+    float barWidth;
+    float barHeight;
+    ImVec4 headingColor;
+    float headingSize;
+    float headingBoldness;
+    float paddingLeft;
+    BarItem() : barColor(0.9f, 0.45f, 0.2f, 1), barWidth(800), barHeight(50),
+                headingColor(1, 1, 1, 1), headingSize(1.3f), headingBoldness(1.5f), paddingLeft(20) {
+        strcpy(heading, "HEADING");
+    }
+};
+
+// Column for footer_connector (multi-column footer)
+struct FooterColumn {
+    char heading[256];
+    std::vector<std::string> items;
+    FooterColumn() { strcpy(heading, "Column"); }
+};
+
+// Thumbnail card for Card_connector (image cards with text)
+struct ThumbnailCard {
+    GLuint textureID;
+    int imageWidth;
+    int imageHeight;
+    std::string imagePath;
+    char heading[256];
+    char description[1024];
+    ImVec4 headingColor;
+    ImVec4 descriptionColor;
+    ImVec4 cardColor;
+    ImVec4 borderColor;
+    float headingSize;
+    float descriptionSize;
+    float headingBoldness;
+    float descriptionBoldness;
+    float cardWidth;
+    float cardHeight;
+    float borderThickness;
+    // Action settings
+    int actionType;
+    char actionTarget[512];
+    bool showReadMore;  // Option to show/hide READ MORE button
+    float cardBorderRadius;  // 0 = rectangle, higher = more rounded
+    float imageHeightPercent;  // Image height as percentage of card height (0-100)
+    ThumbnailCard() : textureID(0), imageWidth(0), imageHeight(0),
+                      headingColor(1, 1, 1, 1), descriptionColor(0.7f, 0.7f, 0.7f, 1),
+                      cardColor(0.14f, 0.14f, 0.16f, 1), borderColor(0.3f, 0.3f, 0.3f, 1),
+                      headingSize(1.2f), descriptionSize(1.0f), headingBoldness(1.0f),
+                      descriptionBoldness(0), cardWidth(280), cardHeight(340), borderThickness(1),
+                      actionType(0), showReadMore(true), cardBorderRadius(4.0f), imageHeightPercent(45.0f) {
+        strcpy(heading, "Card Title");
+        strcpy(description, "Description text");
+        strcpy(actionTarget, "");
+    }
+};
+
+// Service card with badge tag (like IMAGING, 3D & ANIMATION, etc.)
+struct ServiceCard {
+    GLuint textureID;
+    int imageWidth;
+    int imageHeight;
+    std::string imagePath;
+    char title[256];           // Card title (e.g., "Imaging Services")
+    char badgeText[64];        // Badge tag text (e.g., "IMAGING")
+    ImVec4 titleColor;
+    ImVec4 badgeColor;         // Badge background color
+    ImVec4 badgeTextColor;
+    ImVec4 cardBgColor;        // Card background
+    float cardWidth;
+    float cardHeight;
+    float borderRadius;
+    int actionType;
+    char actionTarget[512];
+    ServiceCard() : textureID(0), imageWidth(0), imageHeight(0),
+                    titleColor(0.1f, 0.1f, 0.15f, 1),
+                    badgeColor(0.3f, 0.5f, 0.9f, 1),
+                    badgeTextColor(1, 1, 1, 1),
+                    cardBgColor(1, 1, 1, 1),
+                    cardWidth(280), cardHeight(220), borderRadius(12.0f),
+                    actionType(0) {
+        strcpy(title, "Service Title");
+        strcpy(badgeText, "CATEGORY");
+        strcpy(actionTarget, "");
+    }
+};
+
+// Content block for vertical_connector (vertical text + image layout)
+struct VerticalBlock {
+    int type; // 0=Heading, 1=Description, 2=Image
+    char text[2048];
+    std::string imagePath;
+    GLuint textureID;
+    int imageWidth;
+    int imageHeight;
+    float displayWidth;
+    float posX;
+    float posY;
+    VerticalBlock() : type(0), textureID(0), imageWidth(0), imageHeight(0),
+                      displayWidth(150), posX(400), posY(50) {
+        text[0] = '\0';
+    }
+};
+
+// Navbar menu item for navbar_connector
+// Action types for interactive elements
+enum ActionType {
+    ACTION_NONE = 0,
+    ACTION_SCROLL_TO_SECTION,  // Scroll to a section on same page
+    ACTION_LINK_TO_PAGE,       // Navigate to another page
+    ACTION_EXTERNAL_URL,       // Open external URL
+    ACTION_OPEN_POPUP,         // Open a popup/modal
+    ACTION_DOWNLOAD,           // Download a file
+    ACTION_EMAIL,              // Open email client
+    ACTION_PHONE               // Open phone dialer
+};
+
+struct NavbarMenuItem {
+    char label[256];
+    std::vector<std::string> children;  // Dropdown items
+
+    // Action settings
+    int actionType;            // ActionType enum
+    char actionTarget[512];    // Section name, page name, URL, etc.
+    std::vector<int> childActionTypes;      // Action type for each child
+    std::vector<std::string> childActionTargets;  // Target for each child
+
+    NavbarMenuItem() : actionType(ACTION_NONE) {
+        strcpy(label, "Menu");
+        strcpy(actionTarget, "");
+    }
+};
+
+// Copyright link for copyright bar connector
+struct CopyrightLink {
+    char text[256];
+    char url[512];
+    bool isBold;
+    int actionType;
+    CopyrightLink() : isBold(false), actionType(ACTION_EXTERNAL_URL) {
+        strcpy(text, "Link");
+        strcpy(url, "#");
+    }
+};
+
+// Article card for article/blog connector
+struct ArticleCard {
+    char heading[512];
+    char date[64];
+    char description[2048];
+    char readMoreText[64];
+
+    // Colors
+    ImVec4 headingColor;
+    ImVec4 dateColor;
+    ImVec4 descriptionColor;
+    ImVec4 readMoreColor;
+    ImVec4 cardBgColor;
+    ImVec4 accentColor;      // Left border accent
+
+    // Sizes
+    float headingSize;
+    float dateSize;
+    float descriptionSize;
+    float readMoreSize;
+    float cardWidth;
+    float cardHeight;
+    float accentWidth;       // Left border width
+    float cardPadding;
+
+    // Action settings
+    int headingActionType;
+    char headingActionTarget[512];
+    int readMoreActionType;
+    char readMoreActionTarget[512];
+
+    ArticleCard() :
+        headingColor(0.91f, 0.40f, 0.10f, 1.0f),  // Orange
+        dateColor(0.5f, 0.5f, 0.5f, 1.0f),         // Gray
+        descriptionColor(0.3f, 0.3f, 0.3f, 1.0f),  // Dark gray
+        readMoreColor(0.2f, 0.2f, 0.2f, 1.0f),     // Dark
+        cardBgColor(0.97f, 0.97f, 0.97f, 1.0f),    // Light gray
+        accentColor(0.91f, 0.40f, 0.10f, 1.0f),    // Orange accent
+        headingSize(1.0f), dateSize(0.8f), descriptionSize(0.85f), readMoreSize(0.8f),
+        cardWidth(500), cardHeight(180), accentWidth(4), cardPadding(20),
+        headingActionType(ACTION_EXTERNAL_URL), readMoreActionType(ACTION_EXTERNAL_URL)
+    {
+        strcpy(heading, "Article Heading");
+        strcpy(date, "1 Jan 2025");
+        strcpy(description, "Article description text goes here...");
+        strcpy(readMoreText, "READ MORE");
+        strcpy(headingActionTarget, "#");
+        strcpy(readMoreActionTarget, "#");
+    }
+};
+
+// Bullet column for bullet_connector
+struct BulletColumn {
+    char subheading[256];
+    std::vector<std::string> bullet_items;
+    ImVec4 subheadingColor;
+    float subheadingSize;
+    float subheadingBoldness;
+
+    BulletColumn() :
+        subheadingColor(0.1f, 0.1f, 0.1f, 1.0f),
+        subheadingSize(1.0f),
+        subheadingBoldness(1.5f)
+    {
+        strcpy(subheading, "Column Heading");
+        bullet_items.push_back("Bullet point 1");
+        bullet_items.push_back("Bullet point 2");
+        bullet_items.push_back("Bullet point 3");
+    }
+};
+
+// Contact form field for contact_form_connector
+struct ContactFormField {
+    char label[128];
+    char placeholder[256];
+    int fieldType;  // 0=text, 1=email, 2=phone, 3=textarea
+    float width;    // Width percentage (0.5 = 50% for 2-column, 1.0 = full width)
+    bool required;
+
+    ContactFormField() : fieldType(0), width(0.5f), required(false) {
+        strcpy(label, "Field");
+        strcpy(placeholder, "Enter value...");
+    }
+};
+
+// ============================================================================
 // WEBSITE SECTION
 // ============================================================================
 struct WebSection {
@@ -489,9 +1070,12 @@ struct WebSection {
     SectionType type;
     std::string name;
     std::string section_id;
+    float x_position;       // X position for free design mode
     float y_position;
+    float width;            // Width for free design mode
     float height;
     bool selected;
+    int z_index;            // Z-order for layering
 
     // Content
     std::string title;
@@ -537,6 +1121,12 @@ struct WebSection {
     float button_font_weight;
     float padding;
     int text_align;
+
+    // Margins (for text elements)
+    float margin_top;
+    float margin_right;
+    float margin_bottom;
+    float margin_left;
 
     // Glass effect for buttons
     bool button_glass_effect;
@@ -812,8 +1402,156 @@ struct WebSection {
     std::vector<ImVec4> gradient_colors;
     bool gradient_is_radial;
 
+    // ==================== CONNECTOR PROPERTIES ====================
+
+    // TEXT CONNECTOR properties
+    std::vector<TextBlock> text_blocks;
+    float text_content_width;
+    float text_padding;
+
+    // BAR CONNECTOR properties
+    std::vector<BarItem> bar_items;
+
+    // FOOTER CONNECTOR properties
+    std::vector<FooterColumn> footer_columns;
+    ImVec4 footer_heading_color;
+    ImVec4 footer_subheading_color;
+    float footer_heading_size;
+    float footer_subheading_size;
+    float footer_heading_boldness;
+    float footer_subheading_boldness;
+    float footer_column_width;
+    float footer_item_spacing;
+
+    // CARD CONNECTOR properties
+    std::vector<ThumbnailCard> connector_cards;
+    int connector_cards_per_row;
+    float connector_card_spacing;
+    float connector_card_padding;  // Padding from section edges
+
+    // VERTICAL CONNECTOR properties
+    std::vector<VerticalBlock> vertical_blocks;
+    ImVec4 vertical_heading_color;
+    ImVec4 vertical_desc_color;
+    float vertical_heading_size;
+    float vertical_desc_size;
+    float vertical_heading_boldness;
+    float vertical_desc_boldness;
+    float vertical_content_width;
+    float vertical_spacing;
+
+    // NAVBAR CONNECTOR properties
+    std::vector<NavbarMenuItem> navbar_items;
+    ImVec4 navbar_bg_color;
+    ImVec4 navbar_hover_color;
+    ImVec4 navbar_dropdown_color;
+    ImVec4 navbar_text_color;
+    float navbar_height;
+    float navbar_padding_x;
+    float navbar_padding_y;
+    float navbar_spacing;
+    float navbar_rounding;
+    float navbar_font_scale;
+    float navbar_font_boldness;  // 0-3 for text boldness
+    bool navbar_rounded;
+
+    // COPYRIGHT CONNECTOR properties
+    char copyright_text[512];
+    char copyright_subtext[256];
+    std::vector<CopyrightLink> copyright_links;
+    ImVec4 copyright_bg_color;
+    ImVec4 copyright_text_color;
+    ImVec4 copyright_link_color;
+    float copyright_font_size;
+    float copyright_subtext_size;
+    float copyright_padding;
+    float copyright_bg_opacity;  // 0.0 = fully transparent, 1.0 = fully opaque
+
+    // ARTICLE CONNECTOR properties
+    std::vector<ArticleCard> article_cards;
+    int article_cards_per_row;
+    float article_card_spacing;
+
+    // BULLET CONNECTOR properties
+    std::vector<BulletColumn> bullet_columns;
+    char bullet_main_heading[512];
+    char bullet_footer_text[512];
+    ImVec4 bullet_heading_color;
+    ImVec4 bullet_item_color;
+    float bullet_heading_size;
+    float bullet_heading_boldness;
+    float bullet_item_size;
+    float bullet_column_spacing;
+
+    // CONTACT FORM CONNECTOR properties
+    std::vector<ContactFormField> contact_form_fields;
+    char contact_form_title[256];
+    char contact_form_submit_text[64];
+    ImVec4 contact_form_title_color;
+    ImVec4 contact_form_input_bg;
+    ImVec4 contact_form_input_text;
+    ImVec4 contact_form_button_bg;
+    ImVec4 contact_form_button_text;
+    ImVec4 contact_form_button_border;
+    float contact_form_title_size;
+    float contact_form_input_height;
+    float contact_form_textarea_height;
+    float contact_form_button_width;
+    float contact_form_button_height;
+    float contact_form_spacing;
+    int contact_form_submit_action;
+    char contact_form_submit_target[512];
+
+    // SEARCH CONNECTOR properties
+    char search_placeholder[128];
+    char search_button_text[64];
+    ImVec4 search_input_bg;
+    ImVec4 search_input_border;
+    ImVec4 search_input_text;
+    ImVec4 search_button_bg;
+    ImVec4 search_button_text_color;
+    float search_input_width;
+    float search_input_height;
+    float search_button_width;
+    float search_border_radius;
+
+    // Logo Connector properties
+    std::string logo_image_path;
+    std::vector<unsigned char> logo_image_data;
+    GLuint logo_connector_texture;
+    int logo_image_width;
+    int logo_image_height;
+    float logo_width;
+    float logo_height;
+    bool logo_maintain_aspect;
+    int logo_alignment;  // 0=left, 1=center, 2=right
+    char logo_link[512];
+    ImVec4 logo_bg_color;
+    float logo_padding;
+
+    // Icon properties
+    int icon_type;           // Which icon from IconType enum
+    float icon_size;         // Size of the icon
+    ImVec4 icon_color;       // Icon color
+    float icon_stroke_width; // Line thickness
+
+    // Service card connector properties
+    std::vector<ServiceCard> service_cards;
+    int service_cards_per_row;
+    float service_card_spacing;
+
+    // Glass bar connector properties
+    char glass_bar_text[512];
+    char glass_bar_highlight[128];  // Highlighted text portion
+    ImVec4 glass_bar_text_color;
+    ImVec4 glass_bar_highlight_color;
+    ImVec4 glass_bar_bg_color;
+    float glass_bar_opacity;
+    float glass_bar_border_radius;
+    float glass_bar_padding;
+
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
-        y_position(0), height(300), selected(false),
+        x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
         title_font_size(48), subtitle_font_size(20), content_font_size(16),
         title_font_weight(700), subtitle_font_weight(400), content_font_weight(400),
         title_color(0.1f,0.1f,0.1f,1), subtitle_color(0.3f,0.3f,0.3f,1), content_color(0.2f,0.2f,0.2f,1),
@@ -828,6 +1566,7 @@ struct WebSection {
         nav_font_size(15), nav_font_weight(500),
         card_width(300), card_height(250), card_spacing(20), card_padding(25), cards_per_row(3), heading_to_cards_spacing(40),
         padding(60), text_align(1),
+        margin_top(10), margin_right(10), margin_bottom(10), margin_left(10),
         // Login card defaults
         login_card_width(400), login_card_height(450), login_card_border_radius(20),
         login_card_glass_opacity(0.25f), login_card_glass_blur(20),
@@ -872,14 +1611,84 @@ struct WebSection {
         gap(0.0f), grid_template_columns("none"), grid_template_rows("none"),
         background_position("0% 0%"), background_repeat("repeat"), background_size("auto"), background_image_css("none"),
         css_position("static"), css_top("auto"), css_left("auto"), css_right("auto"), css_bottom("auto"), css_z_index(0),
-        font_family("system-ui"), has_gradient(false), gradient_is_radial(false) {
+        font_family("system-ui"), has_gradient(false), gradient_is_radial(false),
+        // Connector defaults
+        text_content_width(700), text_padding(30),
+        footer_heading_color(1, 1, 1, 1), footer_subheading_color(1, 1, 1, 0.9f),
+        footer_heading_size(1.3f), footer_subheading_size(1.0f),
+        footer_heading_boldness(1.5f), footer_subheading_boldness(0),
+        footer_column_width(280), footer_item_spacing(8),
+        connector_cards_per_row(3), connector_card_spacing(20), connector_card_padding(20),
+        vertical_heading_color(0.1f, 0.1f, 0.1f, 1), vertical_desc_color(0.3f, 0.3f, 0.3f, 1),
+        vertical_heading_size(1.2f), vertical_desc_size(1.0f),
+        vertical_heading_boldness(1.5f), vertical_desc_boldness(0),
+        vertical_content_width(500), vertical_spacing(15),
+        // Navbar connector defaults
+        navbar_bg_color(0.12f, 0.12f, 0.12f, 1), navbar_hover_color(0.26f, 0.26f, 0.26f, 1),
+        navbar_dropdown_color(0.18f, 0.18f, 0.18f, 1), navbar_text_color(1, 1, 1, 1),
+        navbar_height(42), navbar_padding_x(10), navbar_padding_y(8),
+        navbar_spacing(18), navbar_rounding(4), navbar_font_scale(1.0f), navbar_font_boldness(1.0f), navbar_rounded(true),
+        copyright_bg_color(0.18f, 0.18f, 0.18f, 1), copyright_text_color(0.7f, 0.7f, 0.7f, 1),
+        copyright_link_color(0.9f, 0.9f, 0.9f, 1), copyright_font_size(11.0f), copyright_subtext_size(10.0f),
+        copyright_padding(15.0f), copyright_bg_opacity(1.0f),
+        // Article connector defaults
+        article_cards_per_row(2), article_card_spacing(20.0f),
+        // Bullet connector defaults
+        bullet_heading_color(0.1f, 0.1f, 0.1f, 1.0f),
+        bullet_item_color(0.3f, 0.3f, 0.3f, 1.0f),
+        bullet_heading_size(1.2f), bullet_heading_boldness(2.0f),
+        bullet_item_size(1.0f), bullet_column_spacing(40.0f),
+        // Contact form defaults
+        contact_form_title_color(0.1f, 0.1f, 0.1f, 1.0f),
+        contact_form_input_bg(0.95f, 0.95f, 0.95f, 1.0f),
+        contact_form_input_text(0.4f, 0.4f, 0.4f, 1.0f),
+        contact_form_button_bg(1.0f, 1.0f, 1.0f, 1.0f),
+        contact_form_button_text(0.2f, 0.6f, 0.9f, 1.0f),
+        contact_form_button_border(0.2f, 0.6f, 0.9f, 1.0f),
+        contact_form_title_size(1.3f), contact_form_input_height(45.0f),
+        contact_form_textarea_height(150.0f), contact_form_button_width(100.0f),
+        contact_form_button_height(40.0f), contact_form_spacing(20.0f),
+        contact_form_submit_action(ACTION_EMAIL),
+        // Search connector defaults
+        search_input_bg(1.0f, 1.0f, 1.0f, 1.0f), search_input_border(0.8f, 0.8f, 0.8f, 1.0f),
+        search_input_text(0.3f, 0.3f, 0.3f, 1.0f), search_button_bg(0.91f, 0.40f, 0.10f, 1.0f),
+        search_button_text_color(1.0f, 1.0f, 1.0f, 1.0f), search_input_width(400.0f),
+        search_input_height(42.0f), search_button_width(90.0f), search_border_radius(0.0f),
+        // Logo connector defaults
+        logo_connector_texture(0), logo_image_width(0), logo_image_height(0),
+        logo_width(200.0f), logo_height(80.0f), logo_maintain_aspect(true),
+        logo_alignment(1), logo_bg_color(1.0f, 1.0f, 1.0f, 0.0f), logo_padding(20.0f),
+        icon_type(ICON_STAR), icon_size(48.0f), icon_color(0.2f, 0.2f, 0.4f, 1.0f), icon_stroke_width(2.0f),
+        service_cards_per_row(3), service_card_spacing(20.0f),
+        glass_bar_text_color(0.2f, 0.2f, 0.25f, 1.0f), glass_bar_highlight_color(0.3f, 0.5f, 0.9f, 1.0f),
+        glass_bar_bg_color(0.95f, 0.95f, 0.98f, 0.9f), glass_bar_opacity(0.9f),
+        glass_bar_border_radius(30.0f), glass_bar_padding(20.0f) {
+        strcpy(copyright_text, "Website under development.");
+        strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
+        strcpy(contact_form_title, "Contact Us");
+        strcpy(contact_form_submit_text, "Submit");
+        strcpy(contact_form_submit_target, "info@example.com");
+        strcpy(search_placeholder, "Search...");
+        strcpy(search_button_text, "Search");
+        strcpy(bullet_main_heading, "Main Heading");
+        strcpy(bullet_footer_text, "");
+        strcpy(glass_bar_text, "Your text here");
+        strcpy(glass_bar_highlight, "highlight");
+        logo_link[0] = '\0';
         SetDefaults();
     }
 
     void SetDefaults() {
         const char* ids[] = {"hero","nav","about","services","cards","team","pricing",
-                            "testimonials","gallery","blog","contact","footer","faq","cta","features","stats","login","image","textbox","custom"};
-        section_id = ids[type];
+                            "testimonials","gallery","blog","contact","footer","faq","cta","features","stats","login","image","textbox","custom",
+                            "logo","heading","text-element","button-element",
+                            "text-connector","bar-connector","footer-connector","card-connector","vertical-connector","navbar-connector","copyright-connector","article-connector","contact-form-connector","search-connector","logo-connector"};
+        // Bounds check to prevent crash
+        if (type >= 0 && type < (int)(sizeof(ids)/sizeof(ids[0]))) {
+            section_id = ids[type];
+        } else {
+            section_id = "section";
+        }
 
         switch(type) {
             case SEC_HERO:
@@ -1340,6 +2149,438 @@ struct WebSection {
                 padding = 40;
                 break;
 
+            // ==================== CONNECTOR SECTIONS ====================
+
+            case SEC_TEXT_CONNECTOR:
+                name = "Text Block";
+                height = 250;
+                bg_color = ImVec4(1, 1, 1, 1);  // White background
+                text_content_width = 700.0f;
+                text_padding = 30.0f;
+                {
+                    // Sample block 1 - exact from original text_connector
+                    TextBlock block1;
+                    block1.fontSize = 16;
+                    block1.textColor = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+                    block1.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+                    block1.lineSpacing = 1.5f;
+                    TextSegment s1; s1.text = "At OMNiON, we work with clients and partners around the world and across diverse markets to provide "; s1.isBold = false; block1.segments.push_back(s1);
+                    TextSegment s2; s2.text = "premedia services"; s2.isBold = true; block1.segments.push_back(s2);
+                    TextSegment s3; s3.text = ", "; s3.isBold = false; block1.segments.push_back(s3);
+                    TextSegment s4; s4.text = "mobile publishing services"; s4.isBold = true; block1.segments.push_back(s4);
+                    TextSegment s5; s5.text = " & "; s5.isBold = false; block1.segments.push_back(s5);
+                    TextSegment s6; s6.text = "creative production solutions"; s6.isBold = true; block1.segments.push_back(s6);
+                    TextSegment s7; s7.text = " ranging from imaging, packaging artwork, prepress, design, animation & programming services to more complex projects."; s7.isBold = false; block1.segments.push_back(s7);
+                    text_blocks.push_back(block1);
+
+                    // Sample block 2 - exact from original text_connector
+                    TextBlock block2;
+                    block2.fontSize = 16;
+                    block2.textColor = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+                    block2.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+                    block2.lineSpacing = 1.5f;
+                    TextSegment b1; b1.text = "OMNiON Founders - "; b1.isBold = false; block2.segments.push_back(b1);
+                    TextSegment b2; b2.text = "M. C. ABRAHAM"; b2.isBold = true; block2.segments.push_back(b2);
+                    TextSegment b3; b3.text = ", based in Bangalore, India is considered India's pioneer of global media solutions, having started doing this in 1974 and his son - "; b3.isBold = false; block2.segments.push_back(b3);
+                    TextSegment b4; b4.text = "MAT ABRAHAM"; b4.isBold = true; block2.segments.push_back(b4);
+                    TextSegment b5; b5.text = ", based in New Jersey, USA has led premedia technology at Quad/Graphics, Inc., USA for almost 20 years."; b5.isBold = false; block2.segments.push_back(b5);
+                    text_blocks.push_back(block2);
+                }
+                break;
+
+            case SEC_BAR_CONNECTOR:
+                name = "Heading Bar";
+                height = 50;
+                bg_color = ImVec4(0.9f, 0.45f, 0.2f, 1);  // Orange
+                {
+                    BarItem bar;
+                    strcpy(bar.heading, "WHO ARE WE?");
+                    bar_items.push_back(bar);
+                }
+                break;
+
+            case SEC_FOOTER_CONNECTOR:
+                name = "Footer Columns";
+                height = 400;
+                bg_color = ImVec4(0.85f, 0.45f, 0.2f, 1);  // Orange - exact from original
+                footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White
+                footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.9f);  // White slightly transparent
+                footer_heading_size = 1.3f;
+                footer_subheading_size = 1.0f;
+                footer_heading_boldness = 1.5f;
+                footer_subheading_boldness = 0.0f;
+                footer_column_width = 280.0f;
+                footer_item_spacing = 8.0f;
+                {
+                    // Column 1: Imaging Services - exact from original footer_connector
+                    FooterColumn col1;
+                    strcpy(col1.heading, "IMAGING SERVICES");
+                    col1.items.push_back("SILO");
+                    col1.items.push_back("MASKING");
+                    col1.items.push_back("RETOUCHING");
+                    col1.items.push_back("CLIPPING PATH");
+                    col1.items.push_back("COLOR CORRECTION");
+                    col1.items.push_back("SIZING");
+                    col1.items.push_back("VECTORIZING");
+                    col1.items.push_back("COLORIZING");
+                    col1.items.push_back("PHOTOGRAPHY");
+                    col1.items.push_back("SWATCH MATCHING");
+                    col1.items.push_back("CGI & MODELLING");
+                    footer_columns.push_back(col1);
+
+                    // Column 2: Packaging Services
+                    FooterColumn col2;
+                    strcpy(col2.heading, "PACKAGING SERVICES");
+                    col2.items.push_back("ARTWORK");
+                    col2.items.push_back("ADAPTATION");
+                    col2.items.push_back("LOCALIZATION");
+                    col2.items.push_back("TRAPPING");
+                    col2.items.push_back("COLOR SEPARATION");
+                    col2.items.push_back("ARTWORK MANAGEMENT");
+                    col2.items.push_back("");
+                    col2.items.push_back("3D & CGI SERVICES");
+                    col2.items.push_back("3D MODELLING");
+                    footer_columns.push_back(col2);
+
+                    // Column 3: Advertising Services
+                    FooterColumn col3;
+                    strcpy(col3.heading, "ADVERTISING SERVICES");
+                    col3.items.push_back("BANNER ADS");
+                    col3.items.push_back("WEB, MOBILE & TABLET AD PROGRAMMING");
+                    col3.items.push_back("PRINT, RICH & MOBILE, MEDIA ADS");
+                    col3.items.push_back("AD DESIGN, IMAGING, LAYOUT, ILLUSTRATION");
+                    col3.items.push_back("BRANDING & CREATIVE");
+                    col3.items.push_back("");
+                    col3.items.push_back("TECHNOLOGY SERVICES");
+                    col3.items.push_back("CMS WEBSITE");
+                    col3.items.push_back("SEO");
+                    col3.items.push_back("YAHOO RTML");
+                    col3.items.push_back("ECOMMERCE WEBSITE");
+                    col3.items.push_back("APPLE DEVELOPMENT");
+                    col3.items.push_back("APPLICATION DEV");
+                    footer_columns.push_back(col3);
+
+                    // Column 4: Publishing Services
+                    FooterColumn col4;
+                    strcpy(col4.heading, "PUBLISHING SERVICES");
+                    col4.items.push_back("TABLET PUBLISHING");
+                    col4.items.push_back("IPAD PUBLISHING");
+                    col4.items.push_back("DESIGN & LAYOUT");
+                    col4.items.push_back("PROOF READING & COPY EDITING");
+                    col4.items.push_back("HTML, XML & TAGGING");
+                    col4.items.push_back("EPUB, EBOOK, DIGITIZATION");
+                    col4.items.push_back("");
+                    col4.items.push_back("NEW MEDIA SERVICES");
+                    col4.items.push_back("PACKAGING");
+                    col4.items.push_back("MAGAZINES");
+                    col4.items.push_back("CATALOGS");
+                    col4.items.push_back("BOOKS");
+                    col4.items.push_back("NEWSPAPERS");
+                    col4.items.push_back("DIGITAL ASSET MANAGEMENT (DAM)");
+                    col4.items.push_back("DATA MANAGEMENT");
+                    footer_columns.push_back(col4);
+                }
+                break;
+
+            case SEC_CARD_CONNECTOR:
+                name = "Thumbnail Cards";
+                height = 400;
+                bg_color = ImVec4(0.1f, 0.1f, 0.12f, 1);  // Dark background - exact from original
+                connector_cards_per_row = 3;
+                connector_card_spacing = 20.0f;
+                {
+                    // Create 1 empty card with default values from original Card_connector
+                    ThumbnailCard card;
+                    // Default values exactly from original struct
+                    card.headingBoldness = 1.0f;
+                    card.headingSize = 1.2f;
+                    card.descriptionBoldness = 0.0f;
+                    card.descriptionSize = 1.0f;
+                    card.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);      // White
+                    card.descriptionColor = ImVec4(0.7f, 0.7f, 0.7f, 1.0f);  // Gray
+                    card.cardColor = ImVec4(0.14f, 0.14f, 0.16f, 1.0f);      // Dark gray
+                    card.cardWidth = 280.0f;
+                    card.cardHeight = 340.0f;
+                    card.borderThickness = 1.0f;
+                    card.borderColor = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);       // Gray border
+                    connector_cards.push_back(card);
+                }
+                break;
+
+            case SEC_VERTICAL_CONNECTOR:
+                name = "Vertical Layout";
+                height = 350;
+                bg_color = ImVec4(1, 1, 1, 1);  // White background - exact from original
+                // Global style values from original vertical_connector
+                vertical_heading_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);  // Dark
+                vertical_heading_size = 1.2f;
+                vertical_heading_boldness = 1.5f;
+                vertical_desc_color = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);  // Gray
+                vertical_desc_size = 1.0f;
+                vertical_desc_boldness = 0.0f;
+                vertical_content_width = 500.0f;
+                vertical_spacing = 15.0f;
+                {
+                    // Sample heading 1 - exact from original vertical_connector
+                    VerticalBlock h1;
+                    h1.type = 0;  // Heading
+                    strcpy(h1.text, "Reduce Time to Market / Save Time");
+                    vertical_blocks.push_back(h1);
+
+                    // Sample description 1
+                    VerticalBlock d1;
+                    d1.type = 1;  // Description
+                    strcpy(d1.text, "We are Staffed for 24/7 Production and Enjoy A 10+ Hour Time Zone Advantage");
+                    vertical_blocks.push_back(d1);
+
+                    // Sample heading 2
+                    VerticalBlock h2;
+                    h2.type = 0;  // Heading
+                    strcpy(h2.text, "Expand Range of Services");
+                    vertical_blocks.push_back(h2);
+
+                    // Sample description 2
+                    VerticalBlock d2;
+                    d2.type = 1;  // Description
+                    strcpy(d2.text, "OMNiON blends a wide range of professional services under one roof and this increases your ability to deal with the multi-dimensional challenges of today's markets.");
+                    vertical_blocks.push_back(d2);
+                }
+                break;
+
+            case SEC_NAVBAR_CONNECTOR:
+                name = "Navbar Menu";
+                height = 42;
+                // Navbar style - matching original main.txt
+                navbar_bg_color = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
+                navbar_hover_color = ImVec4(0.26f, 0.26f, 0.26f, 1.0f);
+                navbar_dropdown_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
+                navbar_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                navbar_height = 42.0f;
+                navbar_padding_x = 10.0f;
+                navbar_padding_y = 8.0f;
+                navbar_spacing = 18.0f;
+                navbar_rounding = 4.0f;
+                navbar_font_scale = 1.0f;
+                navbar_font_boldness = 1.0f;
+                navbar_rounded = true;
+                {
+                    // Sample menu items - exact from original main.txt
+                    NavbarMenuItem home;
+                    strcpy(home.label, "Home");
+                    navbar_items.push_back(home);
+
+                    NavbarMenuItem premedia;
+                    strcpy(premedia.label, "Premedia");
+                    premedia.children.push_back("About");
+                    premedia.children.push_back("Values");
+                    premedia.children.push_back("Outsourcing");
+                    premedia.children.push_back("How We Work");
+                    navbar_items.push_back(premedia);
+
+                    NavbarMenuItem services;
+                    strcpy(services.label, "Services");
+                    services.children.push_back("Creative");
+                    services.children.push_back("Catalog");
+                    services.children.push_back("Technology");
+                    navbar_items.push_back(services);
+
+                    NavbarMenuItem contact;
+                    strcpy(contact.label, "Contact");
+                    navbar_items.push_back(contact);
+                }
+                break;
+
+            case SEC_COPYRIGHT_CONNECTOR:
+                name = "Copyright Bar";
+                height = 60;
+                strcpy(copyright_text, "Website under development.");
+                strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
+                copyright_bg_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
+                copyright_text_color = ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
+                copyright_link_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+                copyright_font_size = 11.0f;
+                copyright_subtext_size = 10.0f;
+                copyright_padding = 15.0f;
+                copyright_bg_opacity = 1.0f;
+                {
+                    CopyrightLink link1;
+                    strcpy(link1.text, "Privacy Policy");
+                    strcpy(link1.url, "#privacy");
+                    link1.isBold = true;
+                    copyright_links.push_back(link1);
+
+                    CopyrightLink link2;
+                    strcpy(link2.text, "Terms of Service");
+                    strcpy(link2.url, "#terms");
+                    link2.isBold = true;
+                    copyright_links.push_back(link2);
+                }
+                break;
+
+            case SEC_ARTICLE_CONNECTOR:
+                name = "Article Cards";
+                height = 200;
+                article_cards_per_row = 2;
+                article_card_spacing = 20;
+                {
+                    // Initialize with 2 sample article cards
+                    ArticleCard card1;
+                    strcpy(card1.heading, "Article Heading 1");
+                    strcpy(card1.date, "1 Jan 2025");
+                    strcpy(card1.description, "Article description text goes here. This provides a brief summary of the article content.");
+                    article_cards.push_back(card1);
+
+                    ArticleCard card2;
+                    strcpy(card2.heading, "Article Heading 2");
+                    strcpy(card2.date, "15 Jan 2025");
+                    strcpy(card2.description, "Another article description. Click READ MORE to view the full article.");
+                    article_cards.push_back(card2);
+                }
+                break;
+
+            case SEC_CONTACT_FORM_CONNECTOR:
+                name = "Contact Form";
+                height = 450;
+                strcpy(contact_form_title, "Contact Us");
+                strcpy(contact_form_submit_text, "Submit");
+                strcpy(contact_form_submit_target, "info@example.com");
+                contact_form_submit_action = ACTION_EMAIL;
+                contact_form_title_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+                contact_form_input_bg = ImVec4(0.95f, 0.95f, 0.95f, 1.0f);
+                contact_form_input_text = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+                contact_form_button_bg = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                contact_form_button_text = ImVec4(0.2f, 0.6f, 0.9f, 1.0f);
+                contact_form_button_border = ImVec4(0.2f, 0.6f, 0.9f, 1.0f);
+                contact_form_title_size = 1.3f;
+                contact_form_input_height = 45.0f;
+                contact_form_textarea_height = 150.0f;
+                contact_form_button_width = 100.0f;
+                contact_form_button_height = 40.0f;
+                contact_form_spacing = 20.0f;
+                {
+                    // Initialize with default fields
+                    ContactFormField nameField;
+                    strcpy(nameField.label, "Name");
+                    strcpy(nameField.placeholder, "Name");
+                    nameField.fieldType = 0; nameField.width = 0.5f;
+                    contact_form_fields.push_back(nameField);
+
+                    ContactFormField emailField;
+                    strcpy(emailField.label, "Email");
+                    strcpy(emailField.placeholder, "Email Address");
+                    emailField.fieldType = 1; emailField.width = 0.5f;
+                    contact_form_fields.push_back(emailField);
+
+                    ContactFormField phoneField;
+                    strcpy(phoneField.label, "Phone");
+                    strcpy(phoneField.placeholder, "Phone No.");
+                    phoneField.fieldType = 2; phoneField.width = 0.5f;
+                    contact_form_fields.push_back(phoneField);
+
+                    ContactFormField firmField;
+                    strcpy(firmField.label, "Firm");
+                    strcpy(firmField.placeholder, "Firm Name");
+                    firmField.fieldType = 0; firmField.width = 0.5f;
+                    contact_form_fields.push_back(firmField);
+
+                    ContactFormField messageField;
+                    strcpy(messageField.label, "Message");
+                    strcpy(messageField.placeholder, "Message");
+                    messageField.fieldType = 3; messageField.width = 1.0f;
+                    contact_form_fields.push_back(messageField);
+                }
+                break;
+
+            case SEC_BULLET_CONNECTOR:
+                name = "Bullet Points";
+                height = 300;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White background
+                strcpy(bullet_main_heading, "OMNiON's consistently delivered benefits are guaranteed to satisfy you:");
+                strcpy(bullet_footer_text, "");
+                bullet_heading_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+                bullet_item_color = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+                bullet_heading_size = 1.2f;
+                bullet_heading_boldness = 2.0f;
+                bullet_item_size = 1.0f;
+                bullet_column_spacing = 40.0f;
+                {
+                    // Initialize with 2 default columns
+                    BulletColumn col1;
+                    strcpy(col1.subheading, "Core Value");
+                    col1.bullet_items.clear();
+                    col1.bullet_items.push_back("Prompt and Accurate Turnaround");
+                    col1.bullet_items.push_back("Open Lines of Communication");
+                    col1.bullet_items.push_back("Single Point of Contact");
+                    col1.bullet_items.push_back("Comprehensive Security");
+                    col1.bullet_items.push_back("Competitive Pricing");
+                    col1.bullet_items.push_back("No Surprises");
+                    bullet_columns.push_back(col1);
+
+                    BulletColumn col2;
+                    strcpy(col2.subheading, "End-to-End Services");
+                    col2.bullet_items.clear();
+                    col2.bullet_items.push_back("Print and Digital Publishing");
+                    col2.bullet_items.push_back("Packaging");
+                    col2.bullet_items.push_back("Catalog");
+                    col2.bullet_items.push_back("Advertising");
+                    col2.bullet_items.push_back("Technology");
+                    col2.bullet_items.push_back("All Prepress Functions");
+                    bullet_columns.push_back(col2);
+                }
+                break;
+
+            case SEC_ICON:
+                name = "Icon";
+                height = 100;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 0.0f);  // Transparent background
+                icon_type = ICON_STAR;
+                icon_size = 48.0f;
+                icon_color = ImVec4(0.2f, 0.2f, 0.4f, 1.0f);
+                icon_stroke_width = 2.0f;
+                break;
+
+            case SEC_SERVICE_CARD_CONNECTOR:
+                name = "Service Cards";
+                height = 350;
+                bg_color = ImVec4(0.97f, 0.97f, 0.98f, 1.0f);
+                service_cards_per_row = 3;
+                service_card_spacing = 20.0f;
+                {
+                    // Initialize with 3 default service cards
+                    ServiceCard card1;
+                    strcpy(card1.title, "Imaging Services");
+                    strcpy(card1.badgeText, "IMAGING");
+                    card1.badgeColor = ImVec4(0.3f, 0.5f, 0.9f, 1.0f);
+                    service_cards.push_back(card1);
+
+                    ServiceCard card2;
+                    strcpy(card2.title, "3D & Animation");
+                    strcpy(card2.badgeText, "3D & ANIMATION");
+                    card2.badgeColor = ImVec4(0.9f, 0.4f, 0.3f, 1.0f);
+                    service_cards.push_back(card2);
+
+                    ServiceCard card3;
+                    strcpy(card3.title, "Technology Services");
+                    strcpy(card3.badgeText, "TECHNOLOGY");
+                    card3.badgeColor = ImVec4(0.3f, 0.7f, 0.5f, 1.0f);
+                    service_cards.push_back(card3);
+                }
+                break;
+
+            case SEC_GLASS_BAR_CONNECTOR:
+                name = "Glass Bar";
+                height = 60;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 0.0f);  // Transparent
+                strcpy(glass_bar_text, "Leading PreMedia");
+                strcpy(glass_bar_highlight, "since 1974");
+                glass_bar_text_color = ImVec4(0.2f, 0.2f, 0.25f, 1.0f);
+                glass_bar_highlight_color = ImVec4(0.9f, 0.5f, 0.3f, 1.0f);
+                glass_bar_bg_color = ImVec4(0.95f, 0.95f, 0.98f, 0.95f);
+                glass_bar_opacity = 0.95f;
+                glass_bar_border_radius = 30.0f;
+                glass_bar_padding = 20.0f;
+                break;
+
             default:
                 name = "Custom Section";
                 title = "Section Title";
@@ -1363,6 +2604,63 @@ enum LayerType {
     LAYER_SHAPE         // Decorative shape
 };
 
+// ============================================================================
+// FIGMA-LIKE TOOL SYSTEM
+// ============================================================================
+enum ToolType {
+    // Basic Tools
+    TOOL_SELECT = 0,    // V - Select/Move tool (default)
+    TOOL_RECTANGLE,     // R - Rectangle/Container
+    TOOL_TEXT,          // T - Text element (paragraph)
+    TOOL_IMAGE,         // I - Image element
+    TOOL_BUTTON,        // B - Button element
+    TOOL_LINE,          // L - Line/Arrow
+    TOOL_CIRCLE,        // O - Circle/Ellipse
+    TOOL_FRAME,         // F - Frame/Group container
+
+    // Typography Tools
+    TOOL_HEADING,       // H - Heading (large text)
+    TOOL_SUBHEADING,    // - Subheading (medium text)
+    TOOL_PARAGRAPH,     // P - Paragraph text
+
+    // Basic Elements
+    TOOL_LOGO,          // Logo placeholder
+    TOOL_INPUT,         // Input field
+    TOOL_ICON,          // Icon placeholder
+    TOOL_DIVIDER,       // Horizontal divider line
+
+    // ==================== WEBSITE SECTIONS (Same as Normal Mode) ====================
+    TOOL_SEC_HERO,          // Hero section
+    TOOL_SEC_NAVBAR,        // Navigation bar
+    TOOL_SEC_ABOUT,         // About section
+    TOOL_SEC_SERVICES,      // Services section
+    TOOL_SEC_CARDS,         // Cards section
+    TOOL_SEC_TEAM,          // Team section
+    TOOL_SEC_PRICING,       // Pricing section
+    TOOL_SEC_TESTIMONIALS,  // Testimonials section
+    TOOL_SEC_GALLERY,       // Gallery section
+    TOOL_SEC_BLOG,          // Blog section
+    TOOL_SEC_CONTACT,       // Contact section
+    TOOL_SEC_FOOTER,        // Footer section
+    TOOL_SEC_FAQ,           // FAQ section
+    TOOL_SEC_CTA,           // Call to Action section
+    TOOL_SEC_FEATURES,      // Features section
+    TOOL_SEC_STATS,         // Stats section
+    TOOL_SEC_LOGIN,         // Login section
+    TOOL_SEC_IMAGE,         // Full-width Image section
+    TOOL_SEC_TEXTBOX,       // Text box section
+    TOOL_SEC_CUSTOM         // Custom section
+};
+
+enum AlignType {
+    ALIGN_LEFT,
+    ALIGN_CENTER_H,
+    ALIGN_RIGHT,
+    ALIGN_TOP,
+    ALIGN_CENTER_V,
+    ALIGN_BOTTOM
+};
+
 struct WebLayer {
     int id;
     LayerType type;
@@ -1376,6 +2674,7 @@ struct WebLayer {
     // Content
     std::string text;
     std::string image_path;
+    std::string video_path;     // Video file path for hero/banner layers
     std::string href;
     std::string onclick_action;  // JavaScript onclick or action data
     std::string action_type;     // "link", "popup", "scroll", "submit", etc.
@@ -1395,6 +2694,9 @@ struct WebLayer {
     float line_height;
     float letter_spacing;
     std::string text_decoration; // "none", "underline", "line-through"
+    std::string text_transform;  // "none", "uppercase", "lowercase", "capitalize"
+    std::string text_shadow;     // CSS text-shadow value
+    std::string word_spacing;    // CSS word-spacing value
 
     // Box model
     float padding_top, padding_right, padding_bottom, padding_left;
@@ -1402,15 +2704,37 @@ struct WebLayer {
 
     // Border & shape
     float border_width;
+    float border_top_width, border_right_width, border_bottom_width, border_left_width;
     float border_radius;
     float border_radius_tl, border_radius_tr, border_radius_br, border_radius_bl;  // Individual corners
     std::string border_style;   // "solid", "dashed", "none"
+    ImVec4 border_top_color, border_right_color, border_bottom_color, border_left_color;
 
     // Effects
     float opacity;
     std::string box_shadow;
     bool has_gradient;
     std::string gradient_css;
+    std::string backdrop_filter;  // CSS backdrop-filter (blur, etc.)
+    std::string filter;           // CSS filter (blur, brightness, etc.)
+    std::string mix_blend_mode;   // CSS mix-blend-mode
+
+    // Transform
+    std::string transform;        // CSS transform value
+    std::string transform_origin; // CSS transform-origin
+
+    // Background
+    std::string background_size;
+    std::string background_position;
+    std::string background_repeat;
+
+    // Layout
+    std::string overflow;
+    std::string cursor;
+    std::string flex_direction;
+    std::string justify_content;
+    std::string align_items;
+    std::string gap;
 
     // Button interaction states
     ImVec4 hover_bg_color;       // Background color on hover
@@ -1421,6 +2745,14 @@ struct WebLayer {
     std::string button_type;     // "submit", "reset", "button"
     std::string data_target;     // Modal/popup target
     std::string form_id;         // Associated form ID
+
+    // Hero Animation (slideshow)
+    std::vector<std::string> animation_images;      // Multiple images for slideshow
+    std::vector<GLuint> animation_texture_ids;      // Texture IDs for animation images
+    bool enable_animation;                          // Enable slideshow animation
+    float animation_speed;                          // Seconds per image
+    int current_frame;                              // Current animation frame
+    float animation_timer;                          // Timer for animation
 
     // State
     bool selected;
@@ -1444,20 +2776,53 @@ struct WebLayer {
         bg_color(1,1,1,0), text_color(0,0,0,1), border_color(0,0,0,1),
         font_size(16), font_weight(400), font_family("system-ui"), font_style("normal"),
         text_align(0), line_height(1.5f), letter_spacing(0), text_decoration("none"),
+        text_transform("none"), text_shadow(""), word_spacing("normal"),
         padding_top(0), padding_right(0), padding_bottom(0), padding_left(0),
         margin_top(0), margin_right(0), margin_bottom(0), margin_left(0),
-        border_width(0), border_radius(0),
+        border_width(0), border_top_width(0), border_right_width(0), border_bottom_width(0), border_left_width(0),
+        border_radius(0),
         border_radius_tl(0), border_radius_tr(0), border_radius_br(0), border_radius_bl(0),
         border_style("none"),
-        opacity(1.0f), box_shadow("none"), has_gradient(false),
+        border_top_color(0,0,0,1), border_right_color(0,0,0,1), border_bottom_color(0,0,0,1), border_left_color(0,0,0,1),
+        opacity(1.0f), box_shadow("none"), has_gradient(false), gradient_css(""),
+        backdrop_filter(""), filter(""), mix_blend_mode("normal"),
+        transform(""), transform_origin(""),
+        background_size(""), background_position(""), background_repeat(""),
+        overflow("visible"), cursor("default"), flex_direction(""), justify_content(""), align_items(""), gap(""),
         hover_bg_color(0.9f, 0.9f, 0.9f, 1.0f), hover_text_color(0,0,0,1),
         hover_scale(1.02f), disabled(false), button_type("button"),
+        enable_animation(false), animation_speed(3.0f), current_frame(0), animation_timer(0.0f),
         selected(false), hovered(false), dragging(false), resizing(false),
         resize_handle(-1), drag_offset_x(0), drag_offset_y(0),
         visible(true), locked(false), parent_id(-1) {}
 };
 
+// Page data for multi-page websites
+struct WebPage {
+    std::string url;                    // Page URL (e.g., "/about", "/contact")
+    std::string title;                  // Page title
+    std::string screenshot_path;        // Screenshot for this page
+    GLuint screenshot_texture_id;
+    std::vector<WebLayer> layers;       // Layers for this page
+    float canvas_height;                // Page-specific height
+
+    WebPage() : screenshot_texture_id(0), canvas_height(3000) {}
+};
+
 // Figma-style project data
+// Section structure for grouping layers (Figma mode)
+struct FigmaSection {
+    int id;
+    std::string name;
+    float y_start;
+    float y_end;
+    std::vector<int> layer_ids;
+    ImVec4 bg_color;
+    bool expanded;  // For collapsible tree view
+
+    FigmaSection() : id(0), y_start(0), y_end(0), expanded(true), bg_color(1,1,1,1) {}
+};
+
 struct FigmaProject {
     std::string name;
     float canvas_width;
@@ -1466,7 +2831,14 @@ struct FigmaProject {
     std::string screenshot_path;    // Original website screenshot for reference
     GLuint screenshot_texture_id;
     std::vector<WebLayer> layers;
+    std::vector<FigmaSection> sections;  // Section grouping for Figma mode
     int next_layer_id;
+
+    // Multi-page support
+    std::string source_url;                          // Original website URL (e.g., "https://example.com")
+    std::string current_page;                        // Current page path (e.g., "/", "/about")
+    std::map<std::string, WebPage> pages;            // All imported pages
+    std::vector<std::string> page_order;             // Order of pages for UI
 
     // Viewport state
     float scroll_x, scroll_y;
@@ -1490,86 +2862,351 @@ struct FigmaProject {
     bool show_bounds;  // Show outlines around all layers
     bool preview_mode; // Preview mode - clicking buttons executes their actions
 
+    // Section view mode
+    bool show_sections;  // Toggle between section view and flat layer list
+
     FigmaProject() : name("Untitled"),
         canvas_width(1920), canvas_height(3000),
         canvas_bg_color(1,1,1,1),
         screenshot_texture_id(0),
         next_layer_id(1),
+        current_page("/"),
         scroll_x(0), scroll_y(0), zoom(0.5f),
         multi_select(false),
         show_grid(false), grid_size(10), snap_to_grid(true),
         show_guides(false),
-        show_reference(false), reference_opacity(1.0f), show_bounds(false), preview_mode(false) {}
+        show_reference(false), reference_opacity(1.0f), show_bounds(false), preview_mode(false),
+        show_sections(true) {}
 };
 
 // Forward declaration of global project (defined in GLOBAL STATE section below)
 static FigmaProject g_FigmaProject;
 
-// Execute layer action (open URL, scroll, etc.)
-void ExecuteLayerAction(const WebLayer& layer) {
-    if (layer.href.empty() && layer.onclick_action.empty()) return;
+// Helper: Extract domain from URL
+std::string ExtractDomain(const std::string& url) {
+    size_t start = url.find("://");
+    if (start == std::string::npos) return "";
+    start += 3;
+    size_t end = url.find("/", start);
+    if (end == std::string::npos) end = url.length();
+    return url.substr(start, end - start);
+}
 
-    std::string action = layer.href.empty() ? layer.onclick_action : layer.href;
-    std::string type = layer.action_type;
+// Helper: Extract path from URL
+std::string ExtractPath(const std::string& url) {
+    size_t start = url.find("://");
+    if (start == std::string::npos) {
+        // No protocol, might be relative path
+        if (url.empty() || url[0] == '/') return url;
+        return "/" + url;
+    }
+    start += 3;
+    size_t pathStart = url.find("/", start);
+    if (pathStart == std::string::npos) return "/";
+    return url.substr(pathStart);
+}
 
-    printf("[Action] Executing: type='%s', action='%s'\n", type.c_str(), action.c_str());
+// Helper: Lowercase ASCII string
+std::string ToLowerAscii(const std::string& s) {
+    std::string out = s;
+    for (char& c : out) {
+        if (c >= 'A' && c <= 'Z') c = (char)(c - 'A' + 'a');
+    }
+    return out;
+}
 
-    if (type == "link" || type == "none") {
-        // Open URL in default browser
-        if (!layer.href.empty() && (layer.href.find("http://") == 0 || layer.href.find("https://") == 0)) {
-#ifdef __APPLE__
-            std::string cmd = "open \"" + layer.href + "\"";
-#elif defined(_WIN32)
-            std::string cmd = "start \"\" \"" + layer.href + "\"";
-#else
-            std::string cmd = "xdg-open \"" + layer.href + "\"";
-#endif
-            system(cmd.c_str());
-            printf("[Action] Opened URL: %s\n", layer.href.c_str());
+// Helper: Sanitize name to anchor id (lowercase, alnum + dashes)
+std::string SanitizeAnchor(const std::string& name) {
+    std::string lower = ToLowerAscii(name);
+    std::string out;
+    out.reserve(lower.size());
+    bool last_dash = false;
+    for (char c : lower) {
+        bool is_alnum = (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+        if (is_alnum) {
+            out.push_back(c);
+            last_dash = false;
+        } else {
+            if (!last_dash && !out.empty()) {
+                out.push_back('-');
+                last_dash = true;
+            }
         }
-    } else if (type == "email") {
-        // Open mailto link
-#ifdef __APPLE__
-        std::string cmd = "open \"" + layer.href + "\"";
-#elif defined(_WIN32)
-        std::string cmd = "start \"\" \"" + layer.href + "\"";
-#else
-        std::string cmd = "xdg-open \"" + layer.href + "\"";
-#endif
-        system(cmd.c_str());
-        printf("[Action] Opened email: %s\n", layer.href.c_str());
-    } else if (type == "phone") {
-        // Open tel link
-#ifdef __APPLE__
-        std::string cmd = "open \"" + layer.href + "\"";
-#elif defined(_WIN32)
-        std::string cmd = "start \"\" \"" + layer.href + "\"";
-#else
-        std::string cmd = "xdg-open \"" + layer.href + "\"";
-#endif
-        system(cmd.c_str());
-        printf("[Action] Opened phone: %s\n", layer.href.c_str());
-    } else if (type == "scroll") {
-        // Scroll to anchor (extract anchor name from href like #section1)
-        if (layer.href.length() > 1) {
-            std::string anchor = layer.href.substr(1); // Remove #
+    }
+    if (!out.empty() && out.back() == '-') out.pop_back();
+    return out;
+}
 
-            // Find layer with matching element_id or name
-            bool found = false;
-            for (auto& targetLayer : g_FigmaProject.layers) {
-                if (targetLayer.element_id == anchor || targetLayer.name == anchor) {
-                    // Smooth scroll to target Y position (with 50px offset from top)
-                    g_FigmaProject.scroll_y = targetLayer.y - 50;
-                    if (g_FigmaProject.scroll_y < 0) g_FigmaProject.scroll_y = 0;
-                    printf("[Action] Scrolled to: %s (y=%.0f)\n", anchor.c_str(), targetLayer.y);
-                    found = true;
+// Helper: Find best section anchor based on button text or href path
+std::string FindBestSectionAnchor(const std::string& hint,
+                                  const std::vector<FigmaSection>& sections,
+                                  const std::vector<std::string>& anchors) {
+    if (sections.empty() || anchors.empty()) return "";
+    std::string h = ToLowerAscii(hint);
+    struct KeywordMap { const char* key; const char* name; };
+    const KeywordMap keys[] = {
+        {"contact", "contact"},
+        {"get in touch", "contact"},
+        {"support", "contact"},
+        {"about", "about"},
+        {"service", "service"},
+        {"feature", "feature"},
+        {"pricing", "pricing"},
+        {"price", "pricing"},
+        {"team", "team"},
+        {"gallery", "gallery"},
+        {"portfolio", "portfolio"},
+        {"testimonial", "testimonial"},
+        {"faq", "faq"},
+        {"blog", "blog"},
+        {"cta", "cta"},
+        {"footer", "footer"},
+        {"hero", "hero"}
+    };
+
+    for (const auto& km : keys) {
+        if (h.find(km.key) != std::string::npos) {
+            for (size_t i = 0; i < sections.size(); i++) {
+                std::string sec_name = ToLowerAscii(sections[i].name);
+                if (sec_name.find(km.name) != std::string::npos) {
+                    return anchors[i];
+                }
+            }
+        }
+    }
+
+    // Fallback: first section anchor
+    return anchors[0];
+}
+
+// Rewrite button actions to internal anchors (no external redirects)
+void RewriteFigmaActionsToInternal() {
+    if (g_FigmaProject.layers.empty()) return;
+
+    // Build anchors for sections (if available)
+    std::vector<std::string> anchors;
+    anchors.reserve(g_FigmaProject.sections.size());
+    for (const auto& sec : g_FigmaProject.sections) {
+        std::string anchor = SanitizeAnchor(sec.name);
+        if (anchor.empty()) {
+            anchor = "section-" + std::to_string(sec.id);
+        }
+        anchors.push_back(anchor);
+    }
+
+    // If no sections, create a single top anchor
+    if (anchors.empty()) {
+        anchors.push_back("top");
+    }
+
+    // Assign element_id to first layer in each section so scroll targets exist
+    if (!g_FigmaProject.sections.empty()) {
+        for (size_t i = 0; i < g_FigmaProject.sections.size(); i++) {
+            const auto& sec = g_FigmaProject.sections[i];
+            if (sec.layer_ids.empty()) continue;
+            int first_id = sec.layer_ids[0];
+            for (auto& layer : g_FigmaProject.layers) {
+                if (layer.id == first_id) {
+                    if (layer.element_id.empty()) {
+                        layer.element_id = anchors[i];
+                    }
                     break;
                 }
             }
-            if (!found) {
-                printf("[Action] Scroll target not found: %s\n", anchor.c_str());
+        }
+    } else {
+        // No sections: tag first layer as top anchor
+        if (!g_FigmaProject.layers.empty() && g_FigmaProject.layers[0].element_id.empty()) {
+            g_FigmaProject.layers[0].element_id = anchors[0];
+        }
+    }
+
+    // Rewrite actions for buttons and clickable layers
+    for (auto& layer : g_FigmaProject.layers) {
+        bool is_button = (layer.type == LAYER_BUTTON);
+        bool has_action = !layer.action_type.empty() && layer.action_type != "none";
+        bool has_href = !layer.href.empty();
+
+        if (!is_button && !has_action && !has_href) continue;
+
+        // If href is anchor already, keep it (ensure action type)
+        if (has_href && layer.href[0] == '#') {
+            if (layer.action_type.empty() || layer.action_type == "none") {
+                layer.action_type = "scroll";
+            }
+            continue;
+        }
+
+        // If external or empty, rewrite to internal anchor
+        bool external = has_href && !IsInternalUrl(layer.href, g_FigmaProject.source_url) && layer.href[0] != '#';
+        if (external || !has_href) {
+            std::string hint = layer.text;
+            if (!layer.href.empty()) hint += " " + layer.href;
+            std::string anchor = FindBestSectionAnchor(hint, g_FigmaProject.sections, anchors);
+            if (!anchor.empty()) {
+                layer.href = "#" + anchor;
+                layer.action_type = "scroll";
+            }
+        } else {
+            // Internal URL but not anchor: convert to anchor based on path
+            std::string path = ExtractPath(layer.href);
+            std::string anchor = FindBestSectionAnchor(path, g_FigmaProject.sections, anchors);
+            if (!anchor.empty()) {
+                layer.href = "#" + anchor;
+                layer.action_type = "scroll";
             }
         }
+    }
+}
+
+// Helper: Check if URL is internal (same domain as source)
+bool IsInternalUrl(const std::string& href, const std::string& sourceUrl) {
+    if (href.empty()) return false;
+
+    // Anchor links are internal
+    if (href[0] == '#') return true;
+
+    // Relative paths are internal
+    if (href[0] == '/') return true;
+
+    // Check if same domain
+    if (href.find("http://") == 0 || href.find("https://") == 0) {
+        std::string hrefDomain = ExtractDomain(href);
+        std::string sourceDomain = ExtractDomain(sourceUrl);
+        return hrefDomain == sourceDomain;
+    }
+
+    // Relative path without leading slash
+    if (href.find("://") == std::string::npos) return true;
+
+    return false;
+}
+
+// Navigate to internal page
+void NavigateToPage(const std::string& pagePath) {
+    std::string path = pagePath;
+
+    // Normalize path
+    if (path.empty() || path == "/") path = "/";
+    else if (path[0] != '/') path = "/" + path;
+
+    // Remove query string and hash for page lookup
+    size_t queryPos = path.find("?");
+    if (queryPos != std::string::npos) path = path.substr(0, queryPos);
+    size_t hashPos = path.find("#");
+    std::string anchor = "";
+    if (hashPos != std::string::npos) {
+        anchor = path.substr(hashPos + 1);
+        path = path.substr(0, hashPos);
+    }
+    if (path.empty()) path = "/";
+
+    printf("[Navigate] Attempting to navigate to page: %s\n", path.c_str());
+
+    // Check if page exists
+    if (g_FigmaProject.pages.find(path) != g_FigmaProject.pages.end()) {
+        // Switch to the page
+        g_FigmaProject.current_page = path;
+        WebPage& page = g_FigmaProject.pages[path];
+        g_FigmaProject.layers = page.layers;
+        g_FigmaProject.canvas_height = page.canvas_height;
+        g_FigmaProject.screenshot_path = page.screenshot_path;
+        g_FigmaProject.screenshot_texture_id = page.screenshot_texture_id;
+        g_FigmaProject.scroll_y = 0;
+        g_FigmaProject.selected_layer_ids.clear();
+
+        printf("[Navigate] Switched to page: %s (%zu layers)\n", path.c_str(), page.layers.size());
+
+        // If there's an anchor, scroll to it after page switch
+        if (!anchor.empty()) {
+            for (auto& targetLayer : g_FigmaProject.layers) {
+                if (targetLayer.element_id == anchor || targetLayer.name == anchor) {
+                    g_FigmaProject.scroll_y = targetLayer.y - 50;
+                    if (g_FigmaProject.scroll_y < 0) g_FigmaProject.scroll_y = 0;
+                    printf("[Navigate] Scrolled to anchor: #%s\n", anchor.c_str());
+                    break;
+                }
+            }
+        }
+    } else {
+        printf("[Navigate] Page not imported: %s (available pages: %zu)\n", path.c_str(), g_FigmaProject.pages.size());
+        for (auto& p : g_FigmaProject.pages) {
+            printf("  - %s\n", p.first.c_str());
+        }
+    }
+}
+
+// Execute layer action (open URL, scroll, navigate)
+void ExecuteLayerAction(const WebLayer& layer) {
+    if (layer.href.empty() && layer.onclick_action.empty()) return;
+
+    std::string href = layer.href.empty() ? layer.onclick_action : layer.href;
+    std::string type = layer.action_type;
+
+    printf("[Action] Executing: type='%s', href='%s'\n", type.c_str(), href.c_str());
+
+    // Handle anchor links (scroll to section)
+    if (!href.empty() && href[0] == '#') {
+        std::string anchor = href.substr(1);
+        bool found = false;
+        for (auto& targetLayer : g_FigmaProject.layers) {
+            if (targetLayer.element_id == anchor || targetLayer.name == anchor) {
+                g_FigmaProject.scroll_y = targetLayer.y - 50;
+                if (g_FigmaProject.scroll_y < 0) g_FigmaProject.scroll_y = 0;
+                printf("[Action] Scrolled to: #%s (y=%.0f)\n", anchor.c_str(), targetLayer.y);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            printf("[Action] Anchor not found: #%s\n", anchor.c_str());
+        }
+        return;
+    }
+
+    // Check if it's an internal link
+    if (IsInternalUrl(href, g_FigmaProject.source_url)) {
+        std::string path = ExtractPath(href);
+        NavigateToPage(path);
+        return;
+    }
+
+    // External links - handle by type
+    if (type == "link" || type == "none" || type.empty()) {
+        if (!href.empty() && (href.find("http://") == 0 || href.find("https://") == 0)) {
+#ifdef __APPLE__
+            std::string cmd = "open \"" + href + "\"";
+#elif defined(_WIN32)
+            std::string cmd = "start \"\" \"" + href + "\"";
+#else
+            std::string cmd = "xdg-open \"" + href + "\"";
+#endif
+            system(cmd.c_str());
+            printf("[Action] Opened external URL: %s\n", href.c_str());
+        }
+    } else if (type == "email") {
+#ifdef __APPLE__
+        std::string cmd = "open \"" + href + "\"";
+#elif defined(_WIN32)
+        std::string cmd = "start \"\" \"" + href + "\"";
+#else
+        std::string cmd = "xdg-open \"" + href + "\"";
+#endif
+        system(cmd.c_str());
+        printf("[Action] Opened email: %s\n", href.c_str());
+    } else if (type == "phone") {
+#ifdef __APPLE__
+        std::string cmd = "open \"" + href + "\"";
+#elif defined(_WIN32)
+        std::string cmd = "start \"\" \"" + href + "\"";
+#else
+        std::string cmd = "xdg-open \"" + href + "\"";
+#endif
+        system(cmd.c_str());
+        printf("[Action] Opened phone: %s\n", href.c_str());
+    } else if (type == "scroll") {
+        // Already handled above for # links
+        printf("[Action] Scroll type but no anchor in href\n");
     } else if (type == "popup" || type == "script") {
         printf("[Action] JavaScript action: %s (cannot execute in editor)\n", layer.onclick_action.c_str());
     } else if (type == "submit") {
@@ -1585,8 +3222,17 @@ void ExecuteLayerAction(const WebLayer& layer) {
 static GLFWwindow* g_Window = nullptr;
 static int g_NextSectionId = 1;
 static int g_SelectedSectionIndex = -1;
+static int g_SelectedCardIndex = 0;      // Selected card index for Card Connector
+static int g_SelectedVertBlockIndex = 0; // Selected block index for Vertical Connector
+
+// Copy-Paste System
+static bool g_HasCopiedSection = false;
+static WebSection g_CopiedSection(0, SEC_CUSTOM);  // Holds copied section data
 static float g_CanvasScrollY = 0;
 static float g_Zoom = 1.0f;
+static bool g_FreeDesignMode = true;           // Free design mode enabled - Figma-like free positioning
+static float g_CanvasScrollX = 0;              // Horizontal scroll for free design mode
+static ImVec4 g_NormalCanvasBgColor = ImVec4(1, 1, 1, 1);  // Canvas background color for Normal mode
 static std::string g_ProjectName = "My Website";
 static std::string g_CurrentPage = "Home";
 static int g_CurrentPageIndex = 0;
@@ -1625,10 +3271,40 @@ static bool g_ShowFigmaProperties = true;           // Show properties panel
 static bool g_FigmaImportInProgress = false;        // Import in progress
 static std::string g_FigmaImportStatus = "";        // Import status message
 
+// Tool System State
+static ToolType g_CurrentTool = TOOL_SELECT;        // Currently active tool
+static bool g_IsDrawing = false;                    // Currently drawing/creating element
+static float g_DrawStartX = 0, g_DrawStartY = 0;    // Drawing start position (canvas coords)
+static float g_DrawCurrentX = 0, g_DrawCurrentY = 0; // Current draw position for preview
+
+// Resize System State
+static bool g_IsResizing = false;                    // Currently resizing an element
+static int g_ResizeHandle = -1;                      // Which handle is being dragged (0-7)
+static int g_ResizeLayerId = -1;                     // ID of layer being resized
+static float g_ResizeStartX = 0, g_ResizeStartY = 0; // Mouse position at resize start
+static float g_ResizeOrigX = 0, g_ResizeOrigY = 0;   // Original layer position
+static float g_ResizeOrigW = 0, g_ResizeOrigH = 0;   // Original layer size
+
+// Undo/Redo System
+struct UndoState {
+    std::vector<WebLayer> layers;
+    std::string description;
+};
+static std::vector<UndoState> g_UndoStack;
+static std::vector<UndoState> g_RedoStack;
+static const int MAX_UNDO_LEVELS = 50;
+
+// Clipboard for Copy/Paste
+static std::vector<WebLayer> g_Clipboard;
+
 // ImGui Templates Feature
 static bool g_ShowImGuiTemplatesPopup = false;      // Show ImGui templates popup
 static bool g_ShowSaveImGuiTemplatePopup = false;   // Show save ImGui template popup
+static bool g_ShowCopyTemplatePopup = false;        // Show copy template popup
 static bool g_ShowExportOptionsPopup = false;       // Show export options popup
+static bool g_ShowIconPickerPopup = false;          // Show icon picker popup
+static int* g_IconPickerTarget = nullptr;           // Pointer to icon_type to update
+static bool g_AddingNewIcon = false;                // True when adding new icon from + Icon button
 struct ImGuiTemplateInfo {
     int id;
     std::string name;
@@ -1845,15 +3521,673 @@ ImVec4 JsonToColor(const std::string& json) {
     return color;
 }
 
+// ============================================================================
+// CONNECTOR SERIALIZATION FUNCTIONS
+// ============================================================================
+
+// Serialize TextBlocks to JSON
+std::string TextBlocksToJson(const std::vector<TextBlock>& blocks) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < blocks.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& block = blocks[i];
+        oss << "{\"fontSize\":" << block.fontSize
+            << ",\"textColor\":" << ColorToJson(block.textColor)
+            << ",\"boldColor\":" << ColorToJson(block.boldColor)
+            << ",\"lineSpacing\":" << block.lineSpacing
+            << ",\"segments\":[";
+        for (size_t j = 0; j < block.segments.size(); j++) {
+            if (j > 0) oss << ",";
+            oss << "{\"text\":\"" << JsonEscape(block.segments[j].text)
+                << "\",\"isBold\":" << (block.segments[j].isBold ? "true" : "false") << "}";
+        }
+        oss << "]}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize BarItems to JSON
+std::string BarItemsToJson(const std::vector<BarItem>& items) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < items.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& item = items[i];
+        oss << "{\"heading\":\"" << JsonEscape(item.heading) << "\""
+            << ",\"barColor\":" << ColorToJson(item.barColor)
+            << ",\"barWidth\":" << item.barWidth
+            << ",\"barHeight\":" << item.barHeight
+            << ",\"headingColor\":" << ColorToJson(item.headingColor)
+            << ",\"headingSize\":" << item.headingSize
+            << ",\"headingBoldness\":" << item.headingBoldness
+            << ",\"paddingLeft\":" << item.paddingLeft << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize FooterColumns to JSON
+std::string FooterColumnsToJson(const std::vector<FooterColumn>& columns) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < columns.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& col = columns[i];
+        oss << "{\"heading\":\"" << JsonEscape(col.heading) << "\",\"items\":[";
+        for (size_t j = 0; j < col.items.size(); j++) {
+            if (j > 0) oss << ",";
+            oss << "\"" << JsonEscape(col.items[j]) << "\"";
+        }
+        oss << "]}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize ThumbnailCards to JSON (without image data - images saved separately)
+std::string ConnectorCardsToJson(const std::vector<ThumbnailCard>& cards) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < cards.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& card = cards[i];
+        oss << "{\"heading\":\"" << JsonEscape(card.heading) << "\""
+            << ",\"description\":\"" << JsonEscape(card.description) << "\""
+            << ",\"imagePath\":\"" << JsonEscape(card.imagePath) << "\""
+            << ",\"headingBoldness\":" << card.headingBoldness
+            << ",\"headingSize\":" << card.headingSize
+            << ",\"descriptionBoldness\":" << card.descriptionBoldness
+            << ",\"descriptionSize\":" << card.descriptionSize
+            << ",\"headingColor\":" << ColorToJson(card.headingColor)
+            << ",\"descriptionColor\":" << ColorToJson(card.descriptionColor)
+            << ",\"cardColor\":" << ColorToJson(card.cardColor)
+            << ",\"cardWidth\":" << card.cardWidth
+            << ",\"cardHeight\":" << card.cardHeight
+            << ",\"borderThickness\":" << card.borderThickness
+            << ",\"borderColor\":" << ColorToJson(card.borderColor) << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize VerticalBlocks to JSON
+std::string VerticalBlocksToJson(const std::vector<VerticalBlock>& blocks) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < blocks.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& block = blocks[i];
+        oss << "{\"type\":" << block.type
+            << ",\"text\":\"" << JsonEscape(block.text) << "\""
+            << ",\"imagePath\":\"" << JsonEscape(block.imagePath) << "\""
+            << ",\"displayWidth\":" << block.displayWidth
+            << ",\"posX\":" << block.posX
+            << ",\"posY\":" << block.posY << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+std::string NavbarItemsToJson(const std::vector<NavbarMenuItem>& items) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < items.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& item = items[i];
+        oss << "{\"label\":\"" << JsonEscape(item.label) << "\",\"children\":[";
+        for (size_t j = 0; j < item.children.size(); j++) {
+            if (j > 0) oss << ",";
+            oss << "\"" << JsonEscape(item.children[j]) << "\"";
+        }
+        oss << "]}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize CopyrightLinks to JSON
+std::string CopyrightLinksToJson(const std::vector<CopyrightLink>& links) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < links.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& link = links[i];
+        oss << "{\"text\":\"" << JsonEscape(link.text) << "\""
+            << ",\"url\":\"" << JsonEscape(link.url) << "\""
+            << ",\"isBold\":" << (link.isBold ? "true" : "false")
+            << ",\"actionType\":" << link.actionType << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize ArticleCards to JSON
+std::string ArticleCardsToJson(const std::vector<ArticleCard>& cards) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < cards.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& card = cards[i];
+        oss << "{\"heading\":\"" << JsonEscape(card.heading) << "\""
+            << ",\"date\":\"" << JsonEscape(card.date) << "\""
+            << ",\"description\":\"" << JsonEscape(card.description) << "\""
+            << ",\"readMoreText\":\"" << JsonEscape(card.readMoreText) << "\""
+            << ",\"headingColor\":" << ColorToJson(card.headingColor)
+            << ",\"dateColor\":" << ColorToJson(card.dateColor)
+            << ",\"descriptionColor\":" << ColorToJson(card.descriptionColor)
+            << ",\"readMoreColor\":" << ColorToJson(card.readMoreColor)
+            << ",\"cardBgColor\":" << ColorToJson(card.cardBgColor)
+            << ",\"accentColor\":" << ColorToJson(card.accentColor)
+            << ",\"headingSize\":" << card.headingSize
+            << ",\"dateSize\":" << card.dateSize
+            << ",\"descriptionSize\":" << card.descriptionSize
+            << ",\"readMoreSize\":" << card.readMoreSize
+            << ",\"cardWidth\":" << card.cardWidth
+            << ",\"cardHeight\":" << card.cardHeight
+            << ",\"accentWidth\":" << card.accentWidth
+            << ",\"cardPadding\":" << card.cardPadding
+            << ",\"headingActionType\":" << card.headingActionType
+            << ",\"headingActionTarget\":\"" << JsonEscape(card.headingActionTarget) << "\""
+            << ",\"readMoreActionType\":" << card.readMoreActionType
+            << ",\"readMoreActionTarget\":\"" << JsonEscape(card.readMoreActionTarget) << "\"}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize ContactFormFields to JSON
+std::string ContactFormFieldsToJson(const std::vector<ContactFormField>& fields) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < fields.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& field = fields[i];
+        oss << "{\"label\":\"" << JsonEscape(field.label) << "\""
+            << ",\"placeholder\":\"" << JsonEscape(field.placeholder) << "\""
+            << ",\"fieldType\":" << field.fieldType
+            << ",\"width\":" << field.width
+            << ",\"required\":" << (field.required ? "true" : "false") << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize ServiceCards to JSON
+std::string ServiceCardsToJson(const std::vector<ServiceCard>& cards) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < cards.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& card = cards[i];
+        oss << "{\"title\":\"" << JsonEscape(card.title) << "\""
+            << ",\"badgeText\":\"" << JsonEscape(card.badgeText) << "\""
+            << ",\"imagePath\":\"" << JsonEscape(card.imagePath) << "\""
+            << ",\"titleColor\":" << ColorToJson(card.titleColor)
+            << ",\"badgeColor\":" << ColorToJson(card.badgeColor)
+            << ",\"badgeTextColor\":" << ColorToJson(card.badgeTextColor)
+            << ",\"cardBgColor\":" << ColorToJson(card.cardBgColor)
+            << ",\"cardWidth\":" << card.cardWidth
+            << ",\"cardHeight\":" << card.cardHeight
+            << ",\"borderRadius\":" << card.borderRadius
+            << ",\"actionType\":" << card.actionType
+            << ",\"actionTarget\":\"" << JsonEscape(card.actionTarget) << "\"}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Parse JSON string helper - simple extraction
+std::string ExtractJsonString(const std::string& json, const std::string& key) {
+    std::string searchKey = "\"" + key + "\":\"";
+    size_t start = json.find(searchKey);
+    if (start == std::string::npos) return "";
+    start += searchKey.length();
+    size_t end = json.find("\"", start);
+    while (end != std::string::npos && end > 0 && json[end-1] == '\\') {
+        end = json.find("\"", end + 1);
+    }
+    if (end == std::string::npos) return "";
+    std::string result = json.substr(start, end - start);
+    // Unescape
+    size_t pos = 0;
+    while ((pos = result.find("\\\"", pos)) != std::string::npos) {
+        result.replace(pos, 2, "\"");
+        pos++;
+    }
+    pos = 0;
+    while ((pos = result.find("\\n", pos)) != std::string::npos) {
+        result.replace(pos, 2, "\n");
+        pos++;
+    }
+    return result;
+}
+
+float ExtractJsonFloat(const std::string& json, const std::string& key, float defaultVal = 0) {
+    std::string searchKey = "\"" + key + "\":";
+    size_t start = json.find(searchKey);
+    if (start == std::string::npos) return defaultVal;
+    start += searchKey.length();
+    return std::stof(json.substr(start));
+}
+
+bool ExtractJsonBool(const std::string& json, const std::string& key, bool defaultVal = false) {
+    std::string searchKey = "\"" + key + "\":";
+    size_t start = json.find(searchKey);
+    if (start == std::string::npos) return defaultVal;
+    start += searchKey.length();
+    return json.substr(start, 4) == "true";
+}
+
+ImVec4 ExtractJsonColor(const std::string& json, const std::string& key) {
+    std::string searchKey = "\"" + key + "\":{";
+    size_t start = json.find(searchKey);
+    if (start == std::string::npos) return ImVec4(1,1,1,1);
+    start += searchKey.length() - 1;
+    size_t end = json.find("}", start);
+    if (end == std::string::npos) return ImVec4(1,1,1,1);
+    return JsonToColor(json.substr(start, end - start + 1));
+}
+
+int ExtractJsonInt(const std::string& json, const std::string& key, int defaultVal = 0) {
+    std::string searchKey = "\"" + key + "\":";
+    size_t start = json.find(searchKey);
+    if (start == std::string::npos) return defaultVal;
+    start += searchKey.length();
+    return std::stoi(json.substr(start));
+}
+
+// Parse ServiceCards from JSON
+std::vector<ServiceCard> ServiceCardsFromJson(const std::string& json) {
+    std::vector<ServiceCard> cards;
+    if (json.empty() || json == "[]") return cards;
+
+    size_t pos = 0;
+    while ((pos = json.find("{", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+        std::string cardJson = json.substr(pos, end - pos + 1);
+
+        ServiceCard card;
+        std::string title = ExtractJsonString(cardJson, "title");
+        strncpy(card.title, title.c_str(), sizeof(card.title) - 1);
+        std::string badge = ExtractJsonString(cardJson, "badgeText");
+        strncpy(card.badgeText, badge.c_str(), sizeof(card.badgeText) - 1);
+        card.imagePath = ExtractJsonString(cardJson, "imagePath");
+        card.titleColor = ExtractJsonColor(cardJson, "titleColor");
+        card.badgeColor = ExtractJsonColor(cardJson, "badgeColor");
+        card.badgeTextColor = ExtractJsonColor(cardJson, "badgeTextColor");
+        card.cardBgColor = ExtractJsonColor(cardJson, "cardBgColor");
+        card.cardWidth = ExtractJsonFloat(cardJson, "cardWidth");
+        card.cardHeight = ExtractJsonFloat(cardJson, "cardHeight");
+        card.borderRadius = ExtractJsonFloat(cardJson, "borderRadius");
+        card.actionType = ExtractJsonInt(cardJson, "actionType");
+        std::string target = ExtractJsonString(cardJson, "actionTarget");
+        strncpy(card.actionTarget, target.c_str(), sizeof(card.actionTarget) - 1);
+
+        cards.push_back(card);
+        pos = end + 1;
+    }
+    return cards;
+}
+
+// Deserialize JSON to TextBlocks
+void JsonToTextBlocks(const std::string& json, std::vector<TextBlock>& blocks) {
+    blocks.clear();
+    if (json.empty() || json == "[]") return;
+
+    // Simple parser - find each block object
+    size_t pos = 0;
+    while ((pos = json.find("{\"fontSize\":", pos)) != std::string::npos) {
+        size_t end = json.find("}]}", pos);
+        if (end == std::string::npos) end = json.find("}}", pos);
+        if (end == std::string::npos) break;
+        end += 2;
+
+        std::string blockJson = json.substr(pos, end - pos);
+        TextBlock block;
+        block.fontSize = ExtractJsonFloat(blockJson, "fontSize", 16);
+        block.textColor = ExtractJsonColor(blockJson, "textColor");
+        block.boldColor = ExtractJsonColor(blockJson, "boldColor");
+        block.lineSpacing = ExtractJsonFloat(blockJson, "lineSpacing", 1.5f);
+
+        // Parse segments
+        size_t segStart = blockJson.find("\"segments\":[");
+        if (segStart != std::string::npos) {
+            size_t segPos = segStart;
+            while ((segPos = blockJson.find("{\"text\":", segPos)) != std::string::npos) {
+                size_t segEnd = blockJson.find("}", segPos);
+                if (segEnd == std::string::npos) break;
+                std::string segJson = blockJson.substr(segPos, segEnd - segPos + 1);
+                TextSegment seg;
+                seg.text = ExtractJsonString(segJson, "text");
+                seg.isBold = ExtractJsonBool(segJson, "isBold");
+                block.segments.push_back(seg);
+                segPos = segEnd + 1;
+            }
+        }
+        blocks.push_back(block);
+        pos = end;
+    }
+}
+
+// Deserialize JSON to BarItems
+void JsonToBarItems(const std::string& json, std::vector<BarItem>& items) {
+    items.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"heading\":", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+
+        std::string itemJson = json.substr(pos, end - pos + 1);
+        BarItem item;
+        std::string heading = ExtractJsonString(itemJson, "heading");
+        strncpy(item.heading, heading.c_str(), sizeof(item.heading) - 1);
+        item.barColor = ExtractJsonColor(itemJson, "barColor");
+        item.barWidth = ExtractJsonFloat(itemJson, "barWidth", 800);
+        item.barHeight = ExtractJsonFloat(itemJson, "barHeight", 50);
+        item.headingColor = ExtractJsonColor(itemJson, "headingColor");
+        item.headingSize = ExtractJsonFloat(itemJson, "headingSize", 1.3f);
+        item.headingBoldness = ExtractJsonFloat(itemJson, "headingBoldness", 1.5f);
+        item.paddingLeft = ExtractJsonFloat(itemJson, "paddingLeft", 20);
+        items.push_back(item);
+        pos = end + 1;
+    }
+}
+
+// Deserialize JSON to FooterColumns
+void JsonToFooterColumns(const std::string& json, std::vector<FooterColumn>& columns) {
+    columns.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"heading\":", pos)) != std::string::npos) {
+        size_t end = json.find("]}", pos);
+        if (end == std::string::npos) break;
+        end += 2;
+
+        std::string colJson = json.substr(pos, end - pos);
+        FooterColumn col;
+        std::string heading = ExtractJsonString(colJson, "heading");
+        strncpy(col.heading, heading.c_str(), sizeof(col.heading) - 1);
+
+        // Parse items array
+        size_t itemsStart = colJson.find("\"items\":[");
+        if (itemsStart != std::string::npos) {
+            size_t itemsEnd = colJson.find("]", itemsStart);
+            std::string itemsJson = colJson.substr(itemsStart + 9, itemsEnd - itemsStart - 9);
+            size_t itemPos = 0;
+            while ((itemPos = itemsJson.find("\"", itemPos)) != std::string::npos) {
+                size_t itemEnd = itemsJson.find("\"", itemPos + 1);
+                if (itemEnd == std::string::npos) break;
+                col.items.push_back(itemsJson.substr(itemPos + 1, itemEnd - itemPos - 1));
+                itemPos = itemEnd + 1;
+            }
+        }
+        columns.push_back(col);
+        pos = end;
+    }
+}
+
+// Deserialize JSON to ThumbnailCards
+void JsonToConnectorCards(const std::string& json, std::vector<ThumbnailCard>& cards) {
+    cards.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"heading\":", pos)) != std::string::npos) {
+        size_t end = pos + 1;
+        int braceCount = 1;
+        while (braceCount > 0 && end < json.length()) {
+            if (json[end] == '{') braceCount++;
+            else if (json[end] == '}') braceCount--;
+            end++;
+        }
+
+        std::string cardJson = json.substr(pos, end - pos);
+        ThumbnailCard card;
+        std::string heading = ExtractJsonString(cardJson, "heading");
+        strncpy(card.heading, heading.c_str(), sizeof(card.heading) - 1);
+        std::string desc = ExtractJsonString(cardJson, "description");
+        strncpy(card.description, desc.c_str(), sizeof(card.description) - 1);
+        card.imagePath = ExtractJsonString(cardJson, "imagePath");
+        card.headingBoldness = ExtractJsonFloat(cardJson, "headingBoldness", 1.0f);
+        card.headingSize = ExtractJsonFloat(cardJson, "headingSize", 1.2f);
+        card.descriptionBoldness = ExtractJsonFloat(cardJson, "descriptionBoldness", 0);
+        card.descriptionSize = ExtractJsonFloat(cardJson, "descriptionSize", 1.0f);
+        card.headingColor = ExtractJsonColor(cardJson, "headingColor");
+        card.descriptionColor = ExtractJsonColor(cardJson, "descriptionColor");
+        card.cardColor = ExtractJsonColor(cardJson, "cardColor");
+        card.cardWidth = ExtractJsonFloat(cardJson, "cardWidth", 280);
+        card.cardHeight = ExtractJsonFloat(cardJson, "cardHeight", 340);
+        card.borderThickness = ExtractJsonFloat(cardJson, "borderThickness", 1);
+        card.borderColor = ExtractJsonColor(cardJson, "borderColor");
+
+        // Load image if path exists
+        if (!card.imagePath.empty()) {
+            int w, h, n;
+            unsigned char* data = stbi_load(card.imagePath.c_str(), &w, &h, &n, 4);
+            if (data) {
+                glGenTextures(1, &card.textureID);
+                glBindTexture(GL_TEXTURE_2D, card.textureID);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                stbi_image_free(data);
+                card.imageWidth = w;
+                card.imageHeight = h;
+            }
+        }
+        cards.push_back(card);
+        pos = end;
+    }
+}
+
+// Deserialize JSON to VerticalBlocks
+void JsonToVerticalBlocks(const std::string& json, std::vector<VerticalBlock>& blocks) {
+    blocks.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"type\":", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+
+        std::string blockJson = json.substr(pos, end - pos + 1);
+        VerticalBlock block;
+        block.type = (int)ExtractJsonFloat(blockJson, "type", 0);
+        std::string text = ExtractJsonString(blockJson, "text");
+        strncpy(block.text, text.c_str(), sizeof(block.text) - 1);
+        block.imagePath = ExtractJsonString(blockJson, "imagePath");
+        block.displayWidth = ExtractJsonFloat(blockJson, "displayWidth", 150);
+        block.posX = ExtractJsonFloat(blockJson, "posX", 400);
+        block.posY = ExtractJsonFloat(blockJson, "posY", 50);
+
+        // Load image if path exists and type is image
+        if (block.type == 2 && !block.imagePath.empty()) {
+            int w, h, n;
+            unsigned char* data = stbi_load(block.imagePath.c_str(), &w, &h, &n, 4);
+            if (data) {
+                glGenTextures(1, &block.textureID);
+                glBindTexture(GL_TEXTURE_2D, block.textureID);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                stbi_image_free(data);
+                block.imageWidth = w;
+                block.imageHeight = h;
+            }
+        }
+        blocks.push_back(block);
+        pos = end + 1;
+    }
+}
+
+void JsonToNavbarItems(const std::string& json, std::vector<NavbarMenuItem>& items) {
+    items.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"label\":", pos)) != std::string::npos) {
+        // Find the end of this item object (look for },{ or }])
+        size_t end = json.find("}", pos);
+        // Look ahead to find the full object including children array
+        size_t childrenEnd = json.find("]}", pos);
+        if (childrenEnd != std::string::npos && childrenEnd < json.length()) {
+            end = childrenEnd + 1;
+        }
+        if (end == std::string::npos) break;
+
+        std::string itemJson = json.substr(pos, end - pos + 1);
+        NavbarMenuItem item;
+
+        // Extract label
+        std::string label = ExtractJsonString(itemJson, "label");
+        strncpy(item.label, label.c_str(), sizeof(item.label) - 1);
+
+        // Extract children array
+        size_t childStart = itemJson.find("\"children\":[");
+        if (childStart != std::string::npos) {
+            childStart += 12; // Length of "\"children\":["
+            size_t childEnd = itemJson.find("]", childStart);
+            if (childEnd != std::string::npos) {
+                std::string childrenStr = itemJson.substr(childStart, childEnd - childStart);
+                // Parse children strings
+                size_t childPos = 0;
+                while ((childPos = childrenStr.find("\"", childPos)) != std::string::npos) {
+                    childPos++; // Skip opening quote
+                    size_t childEndQuote = childrenStr.find("\"", childPos);
+                    if (childEndQuote == std::string::npos) break;
+                    std::string childText = childrenStr.substr(childPos, childEndQuote - childPos);
+                    if (!childText.empty()) {
+                        item.children.push_back(childText);
+                    }
+                    childPos = childEndQuote + 1;
+                }
+            }
+        }
+
+        items.push_back(item);
+        pos = end + 1;
+    }
+}
+
+// Parse CopyrightLinks from JSON
+void JsonToCopyrightLinks(const std::string& json, std::vector<CopyrightLink>& links) {
+    links.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"text\":", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+
+        std::string linkJson = json.substr(pos, end - pos + 1);
+        CopyrightLink link;
+        std::string text = ExtractJsonString(linkJson, "text");
+        strncpy(link.text, text.c_str(), sizeof(link.text) - 1);
+        std::string url = ExtractJsonString(linkJson, "url");
+        strncpy(link.url, url.c_str(), sizeof(link.url) - 1);
+        link.isBold = ExtractJsonBool(linkJson, "isBold", false);
+        link.actionType = (int)ExtractJsonFloat(linkJson, "actionType", 0);
+
+        links.push_back(link);
+        pos = end + 1;
+    }
+}
+
+// Parse ArticleCards from JSON
+void JsonToArticleCards(const std::string& json, std::vector<ArticleCard>& cards) {
+    cards.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"heading\":", pos)) != std::string::npos) {
+        size_t end = pos + 1;
+        int braceCount = 1;
+        while (braceCount > 0 && end < json.length()) {
+            if (json[end] == '{') braceCount++;
+            else if (json[end] == '}') braceCount--;
+            end++;
+        }
+
+        std::string cardJson = json.substr(pos, end - pos);
+        ArticleCard card;
+        std::string heading = ExtractJsonString(cardJson, "heading");
+        strncpy(card.heading, heading.c_str(), sizeof(card.heading) - 1);
+        std::string date = ExtractJsonString(cardJson, "date");
+        strncpy(card.date, date.c_str(), sizeof(card.date) - 1);
+        std::string desc = ExtractJsonString(cardJson, "description");
+        strncpy(card.description, desc.c_str(), sizeof(card.description) - 1);
+        std::string readMore = ExtractJsonString(cardJson, "readMoreText");
+        strncpy(card.readMoreText, readMore.c_str(), sizeof(card.readMoreText) - 1);
+
+        card.headingColor = ExtractJsonColor(cardJson, "headingColor");
+        card.dateColor = ExtractJsonColor(cardJson, "dateColor");
+        card.descriptionColor = ExtractJsonColor(cardJson, "descriptionColor");
+        card.readMoreColor = ExtractJsonColor(cardJson, "readMoreColor");
+        card.cardBgColor = ExtractJsonColor(cardJson, "cardBgColor");
+        card.accentColor = ExtractJsonColor(cardJson, "accentColor");
+
+        card.headingSize = ExtractJsonFloat(cardJson, "headingSize", 1.0f);
+        card.dateSize = ExtractJsonFloat(cardJson, "dateSize", 0.8f);
+        card.descriptionSize = ExtractJsonFloat(cardJson, "descriptionSize", 0.85f);
+        card.readMoreSize = ExtractJsonFloat(cardJson, "readMoreSize", 0.8f);
+        card.cardWidth = ExtractJsonFloat(cardJson, "cardWidth", 500);
+        card.cardHeight = ExtractJsonFloat(cardJson, "cardHeight", 180);
+        card.accentWidth = ExtractJsonFloat(cardJson, "accentWidth", 4);
+        card.cardPadding = ExtractJsonFloat(cardJson, "cardPadding", 20);
+
+        card.headingActionType = (int)ExtractJsonFloat(cardJson, "headingActionType", 0);
+        std::string headingTarget = ExtractJsonString(cardJson, "headingActionTarget");
+        strncpy(card.headingActionTarget, headingTarget.c_str(), sizeof(card.headingActionTarget) - 1);
+        card.readMoreActionType = (int)ExtractJsonFloat(cardJson, "readMoreActionType", 0);
+        std::string readMoreTarget = ExtractJsonString(cardJson, "readMoreActionTarget");
+        strncpy(card.readMoreActionTarget, readMoreTarget.c_str(), sizeof(card.readMoreActionTarget) - 1);
+
+        cards.push_back(card);
+        pos = end;
+    }
+}
+
+// Parse ContactFormFields from JSON
+void JsonToContactFormFields(const std::string& json, std::vector<ContactFormField>& fields) {
+    fields.clear();
+    if (json.empty() || json == "[]") return;
+
+    size_t pos = 0;
+    while ((pos = json.find("{\"label\":", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+
+        std::string fieldJson = json.substr(pos, end - pos + 1);
+        ContactFormField field;
+        std::string label = ExtractJsonString(fieldJson, "label");
+        strncpy(field.label, label.c_str(), sizeof(field.label) - 1);
+        std::string placeholder = ExtractJsonString(fieldJson, "placeholder");
+        strncpy(field.placeholder, placeholder.c_str(), sizeof(field.placeholder) - 1);
+        field.fieldType = (int)ExtractJsonFloat(fieldJson, "fieldType", 0);
+        field.width = ExtractJsonFloat(fieldJson, "width", 0.5f);
+        field.required = ExtractJsonBool(fieldJson, "required", false);
+
+        fields.push_back(field);
+        pos = end + 1;
+    }
+}
+
 // Save current website as a template
 bool SaveTemplate(const std::string& name, const std::string& description) {
     // If using database, save to PostgreSQL
     if (g_UseDatabase && g_DBConnection) {
         // Insert or update template (PostgreSQL uses ON CONFLICT instead of ON DUPLICATE KEY)
-        std::string query = "INSERT INTO templates (template_name, description, project_name) VALUES ('" +
-            SQLEscape(name) + "', '" + SQLEscape(description) + "', '" + SQLEscape(g_ProjectName) + "') " +
+        std::string query = "INSERT INTO templates (template_name, description, project_name, free_design_mode) VALUES ('" +
+            SQLEscape(name) + "', '" + SQLEscape(description) + "', '" + SQLEscape(g_ProjectName) + "', " +
+            (g_FreeDesignMode ? "TRUE" : "FALSE") + ") " +
             "ON CONFLICT (template_name) DO UPDATE SET description='" + SQLEscape(description) + "', " +
-            "project_name='" + SQLEscape(g_ProjectName) + "', updated_date=NOW()";
+            "project_name='" + SQLEscape(g_ProjectName) + "', free_design_mode=" + (g_FreeDesignMode ? "TRUE" : "FALSE") + ", updated_date=NOW()";
 
         PGresult* result = PQexec(g_DBConnection, query.c_str());
         if (PQresultStatus(result) != PGRES_COMMAND_OK) {
@@ -1885,9 +4219,19 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
         result = PQexec(g_DBConnection, query.c_str());
         PQclear(result);
 
-        // Insert each section
-        for (size_t i = 0; i < g_Sections.size(); i++) {
-            const auto& sec = g_Sections[i];
+        // Sync current g_Sections back to g_NormalPages before saving
+        if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+            g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+        }
+
+        // Save ALL pages from g_NormalPages
+        int globalSectionOrder = 0;
+        for (size_t pageIdx = 0; pageIdx < g_NormalPages.size(); pageIdx++) {
+            const auto& currentPage = g_NormalPages[pageIdx];
+            printf("[SaveTemplate] Saving page %zu: %s (%zu sections)\n", pageIdx, currentPage.name.c_str(), currentPage.sections.size());
+
+        for (size_t i = 0; i < currentPage.sections.size(); i++) {
+            const auto& sec = currentPage.sections[i];
 
             // Read image files as binary data
             std::vector<unsigned char> bg_image_data;
@@ -1915,7 +4259,7 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
 
             std::ostringstream oss;
             oss << "INSERT INTO sections ("
-                << "template_id, section_order, type, name, section_id, height, y_position, "
+                << "template_id, section_order, type, name, section_id, height, y_position, x_position, width, z_index, "
                 << "title, subtitle, content, button_text, button_link, "
                 << "title_font_size, title_font_weight, subtitle_font_size, subtitle_font_weight, "
                 << "content_font_size, content_font_weight, button_font_size, button_font_weight, "
@@ -1930,12 +4274,54 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
                 << "hero_animation_images, hero_animation_images_data, enable_hero_animation, hero_animation_speed, "
                 << "gallery_images, gallery_images_data, gallery_columns, gallery_spacing, "
                 << "logo_path, logo_data, logo_size, brand_text_position, "
-                << "animation_type, animation_duration, animation_delay, card_stagger_delay"
+                << "animation_type, animation_duration, animation_delay, card_stagger_delay, "
+                // CONNECTOR COLUMNS
+                << "text_blocks_json, text_content_width, text_padding, "
+                << "bar_items_json, "
+                << "footer_columns_json, footer_heading_color, footer_subheading_color, "
+                << "footer_heading_size, footer_subheading_size, footer_heading_boldness, footer_subheading_boldness, "
+                << "footer_column_width, footer_item_spacing, "
+                << "connector_cards_json, connector_cards_per_row, connector_card_spacing, "
+                << "vertical_blocks_json, vertical_heading_color, vertical_desc_color, "
+                << "vertical_heading_size, vertical_desc_size, vertical_heading_boldness, vertical_desc_boldness, "
+                << "vertical_content_width, vertical_spacing, "
+                // NAVBAR CONNECTOR COLUMNS
+                << "navbar_items_json, navbar_bg_color, navbar_hover_color, navbar_dropdown_color, navbar_text_color, "
+                << "navbar_height, navbar_padding_x, navbar_padding_y, navbar_spacing, navbar_rounding, "
+                << "navbar_font_scale, navbar_rounded, "
+                // COPYRIGHT BAR CONNECTOR COLUMNS
+                << "copyright_text, copyright_subtext, copyright_links_json, "
+                << "copyright_bg_color, copyright_text_color, copyright_link_color, "
+                << "copyright_font_size, copyright_subtext_size, copyright_padding, copyright_bg_opacity, "
+                // ARTICLE CARDS CONNECTOR COLUMNS
+                << "article_cards_json, article_cards_per_row, article_card_spacing, "
+                // CONTACT FORM CONNECTOR COLUMNS
+                << "contact_form_fields_json, contact_form_title, contact_form_submit_text, "
+                << "contact_form_title_color, contact_form_input_bg, contact_form_input_text, "
+                << "contact_form_button_bg, contact_form_button_text, contact_form_button_border, "
+                << "contact_form_title_size, contact_form_input_height, contact_form_textarea_height, "
+                << "contact_form_button_width, contact_form_button_height, contact_form_spacing, "
+                << "contact_form_submit_action, contact_form_submit_target, "
+                // SEARCH BAR CONNECTOR COLUMNS
+                << "search_placeholder, search_button_text, search_input_bg, search_input_border, "
+                << "search_input_text, search_button_bg, search_button_text_color, "
+                << "search_input_width, search_input_height, search_button_width, search_border_radius, "
+                // MARGIN COLUMNS
+                << "margin_top, margin_right, margin_bottom, margin_left, "
+                // ICON COLUMNS
+                << "icon_type, icon_size, icon_color, icon_stroke_width, "
+                // SERVICE CARD COLUMNS
+                << "service_cards_json, service_cards_per_row, service_card_spacing, "
+                // GLASS BAR COLUMNS
+                << "glass_bar_text, glass_bar_highlight, glass_bar_text_color, glass_bar_highlight_color, "
+                << "glass_bar_bg_color, glass_bar_opacity, glass_bar_border_radius, glass_bar_padding, "
+                // PAGE COLUMNS
+                << "page_index, page_name"
                 << ") VALUES ("
-                << template_id << ", " << i << ", " << (int)sec.type << ", "
+                << template_id << ", " << globalSectionOrder++ << ", " << (int)sec.type << ", "
                 << "'" << SQLEscape(sec.name) << "', "
                 << "'" << SQLEscape(sec.section_id) << "', "
-                << sec.height << ", " << sec.y_position << ", "
+                << sec.height << ", " << sec.y_position << ", " << sec.x_position << ", " << sec.width << ", " << sec.z_index << ", "
                 << "'" << SQLEscape(sec.title) << "', "
                 << "'" << SQLEscape(sec.subtitle) << "', "
                 << "'" << SQLEscape(sec.content) << "', "
@@ -1981,7 +4367,89 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
                 << (int)sec.animation_type << ", "
                 << sec.animation_duration << ", "
                 << sec.animation_delay << ", "
-                << sec.card_stagger_delay
+                << sec.card_stagger_delay << ", "
+                // CONNECTOR VALUES
+                << "'" << SQLEscape(TextBlocksToJson(sec.text_blocks)) << "', "
+                << sec.text_content_width << ", " << sec.text_padding << ", "
+                << "'" << SQLEscape(BarItemsToJson(sec.bar_items)) << "', "
+                << "'" << SQLEscape(FooterColumnsToJson(sec.footer_columns)) << "', "
+                << "'" << ColorToSQL(sec.footer_heading_color) << "', "
+                << "'" << ColorToSQL(sec.footer_subheading_color) << "', "
+                << sec.footer_heading_size << ", " << sec.footer_subheading_size << ", "
+                << sec.footer_heading_boldness << ", " << sec.footer_subheading_boldness << ", "
+                << sec.footer_column_width << ", " << sec.footer_item_spacing << ", "
+                << "'" << SQLEscape(ConnectorCardsToJson(sec.connector_cards)) << "', "
+                << sec.connector_cards_per_row << ", " << sec.connector_card_spacing << ", "
+                << "'" << SQLEscape(VerticalBlocksToJson(sec.vertical_blocks)) << "', "
+                << "'" << ColorToSQL(sec.vertical_heading_color) << "', "
+                << "'" << ColorToSQL(sec.vertical_desc_color) << "', "
+                << sec.vertical_heading_size << ", " << sec.vertical_desc_size << ", "
+                << sec.vertical_heading_boldness << ", " << sec.vertical_desc_boldness << ", "
+                << sec.vertical_content_width << ", " << sec.vertical_spacing << ", "
+                // NAVBAR CONNECTOR VALUES
+                << "'" << SQLEscape(NavbarItemsToJson(sec.navbar_items)) << "', "
+                << "'" << ColorToSQL(sec.navbar_bg_color) << "', "
+                << "'" << ColorToSQL(sec.navbar_hover_color) << "', "
+                << "'" << ColorToSQL(sec.navbar_dropdown_color) << "', "
+                << "'" << ColorToSQL(sec.navbar_text_color) << "', "
+                << sec.navbar_height << ", " << sec.navbar_padding_x << ", "
+                << sec.navbar_padding_y << ", " << sec.navbar_spacing << ", "
+                << sec.navbar_rounding << ", " << sec.navbar_font_scale << ", "
+                << (sec.navbar_rounded ? "TRUE" : "FALSE") << ", "
+                // COPYRIGHT BAR CONNECTOR VALUES
+                << "'" << SQLEscape(sec.copyright_text) << "', "
+                << "'" << SQLEscape(sec.copyright_subtext) << "', "
+                << "'" << SQLEscape(CopyrightLinksToJson(sec.copyright_links)) << "', "
+                << "'" << ColorToSQL(sec.copyright_bg_color) << "', "
+                << "'" << ColorToSQL(sec.copyright_text_color) << "', "
+                << "'" << ColorToSQL(sec.copyright_link_color) << "', "
+                << sec.copyright_font_size << ", " << sec.copyright_subtext_size << ", "
+                << sec.copyright_padding << ", " << sec.copyright_bg_opacity << ", "
+                // ARTICLE CARDS CONNECTOR VALUES
+                << "'" << SQLEscape(ArticleCardsToJson(sec.article_cards)) << "', "
+                << sec.article_cards_per_row << ", " << sec.article_card_spacing << ", "
+                // CONTACT FORM CONNECTOR VALUES
+                << "'" << SQLEscape(ContactFormFieldsToJson(sec.contact_form_fields)) << "', "
+                << "'" << SQLEscape(sec.contact_form_title) << "', "
+                << "'" << SQLEscape(sec.contact_form_submit_text) << "', "
+                << "'" << ColorToSQL(sec.contact_form_title_color) << "', "
+                << "'" << ColorToSQL(sec.contact_form_input_bg) << "', "
+                << "'" << ColorToSQL(sec.contact_form_input_text) << "', "
+                << "'" << ColorToSQL(sec.contact_form_button_bg) << "', "
+                << "'" << ColorToSQL(sec.contact_form_button_text) << "', "
+                << "'" << ColorToSQL(sec.contact_form_button_border) << "', "
+                << sec.contact_form_title_size << ", " << sec.contact_form_input_height << ", "
+                << sec.contact_form_textarea_height << ", " << sec.contact_form_button_width << ", "
+                << sec.contact_form_button_height << ", " << sec.contact_form_spacing << ", "
+                << sec.contact_form_submit_action << ", "
+                << "'" << SQLEscape(sec.contact_form_submit_target) << "', "
+                // SEARCH BAR CONNECTOR VALUES
+                << "'" << SQLEscape(sec.search_placeholder) << "', "
+                << "'" << SQLEscape(sec.search_button_text) << "', "
+                << "'" << ColorToSQL(sec.search_input_bg) << "', "
+                << "'" << ColorToSQL(sec.search_input_border) << "', "
+                << "'" << ColorToSQL(sec.search_input_text) << "', "
+                << "'" << ColorToSQL(sec.search_button_bg) << "', "
+                << "'" << ColorToSQL(sec.search_button_text_color) << "', "
+                << sec.search_input_width << ", " << sec.search_input_height << ", "
+                << sec.search_button_width << ", " << sec.search_border_radius << ", "
+                // MARGIN VALUES
+                << sec.margin_top << ", " << sec.margin_right << ", " << sec.margin_bottom << ", " << sec.margin_left << ", "
+                // ICON VALUES
+                << sec.icon_type << ", " << sec.icon_size << ", "
+                << "'" << ColorToSQL(sec.icon_color) << "', " << sec.icon_stroke_width << ", "
+                // SERVICE CARD VALUES
+                << "'" << SQLEscape(ServiceCardsToJson(sec.service_cards)) << "', "
+                << sec.service_cards_per_row << ", " << sec.service_card_spacing << ", "
+                // GLASS BAR VALUES
+                << "'" << SQLEscape(sec.glass_bar_text) << "', "
+                << "'" << SQLEscape(sec.glass_bar_highlight) << "', "
+                << "'" << ColorToSQL(sec.glass_bar_text_color) << "', "
+                << "'" << ColorToSQL(sec.glass_bar_highlight_color) << "', "
+                << "'" << ColorToSQL(sec.glass_bar_bg_color) << "', "
+                << sec.glass_bar_opacity << ", " << sec.glass_bar_border_radius << ", " << sec.glass_bar_padding << ", "
+                // PAGE COLUMNS
+                << pageIdx << ", '" << SQLEscape(currentPage.name) << "'"
                 << ")";
 
             PGresult* sec_result = PQexec(g_DBConnection, oss.str().c_str());
@@ -1992,8 +4460,9 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
             }
             PQclear(sec_result);
         }
+        } // End page loop
 
-        printf("Template saved to database: %s\n", name.c_str());
+        printf("Template saved to database: %s (%zu pages)\n", name.c_str(), g_NormalPages.size());
         return true;
     }
 
@@ -2833,11 +5302,2951 @@ ImVec4 ExtractJsonColor(const std::string& line) {
     return color;
 }
 
-// Load template from file
-bool LoadTemplate(const std::string& filepath) {
-    // Clear current sections
+// ============================================================================
+// CREATE OMNION WEBSITE FROM SCREENSHOT
+// ============================================================================
+void CreateOMNiONWebsite() {
     g_Sections.clear();
     g_SelectedSectionIndex = -1;
+    g_NextSectionId = 1;
+
+    // Enable Free Design Mode for proper positioning
+    g_FreeDesignMode = true;
+
+    // Layout constants - matching original omnion.us (max-width: 1080px, 80% container)
+    const float PAGE_WIDTH = 1050.0f;
+    const float CONTENT_PADDING = 20.0f;
+    const float LEFT_COLUMN_WIDTH = 700.0f;   // ~67% for main content
+    const float RIGHT_COLUMN_WIDTH = 300.0f;  // ~28% for sidebar
+    const float COLUMN_GAP = 50.0f;           // Clear gap between columns
+    const float RIGHT_COLUMN_X = LEFT_COLUMN_WIDTH + COLUMN_GAP;
+    float currentY = 0.0f;
+
+    // ========== 1. NAVBAR CONNECTOR (Full Width) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_NAVBAR_CONNECTOR);
+        sec.name = "OMNiON Navbar";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 60;
+        sec.z_index = 0;
+
+        sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White
+        sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);  // Light orange hover
+        sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);  // #666 gray
+        sec.navbar_height = 60.0f;
+        sec.navbar_padding_x = 15.0f;
+        sec.navbar_padding_y = 15.0f;
+        sec.navbar_spacing = 20.0f;
+        sec.navbar_font_scale = 0.85f;
+        sec.navbar_items.clear();
+
+        // HOME with children
+        NavbarMenuItem home;
+        strcpy(home.label, "HOME");
+        home.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(home.actionTarget, "Home");
+        home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+        sec.navbar_items.push_back(home);
+
+        // PREMEDIA with children
+        NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA");
+        premedia.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(premedia.actionTarget, "Premedia");
+        premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+        sec.navbar_items.push_back(premedia);
+
+        // SERVICES with children
+        NavbarMenuItem services; strcpy(services.label, "SERVICES");
+        services.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(services.actionTarget, "Services");
+        services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+        sec.navbar_items.push_back(services);
+
+        // PACKAGING with children
+        NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING");
+        packaging.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(packaging.actionTarget, "Packaging");
+        packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+        sec.navbar_items.push_back(packaging);
+
+        // IMAGING with children
+        NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING");
+        imaging.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(imaging.actionTarget, "Imaging");
+        imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+        sec.navbar_items.push_back(imaging);
+
+        // MOBILE-APPS with children
+        NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS");
+        mobileApps.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(mobileApps.actionTarget, "Mobile-Apps");
+        mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+        sec.navbar_items.push_back(mobileApps);
+
+        // NEWS with children
+        NavbarMenuItem news; strcpy(news.label, "NEWS");
+        news.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(news.actionTarget, "News");
+        news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+        sec.navbar_items.push_back(news);
+
+        // CONTACT US with children
+        NavbarMenuItem contact; strcpy(contact.label, "CONTACT US");
+        contact.actionType = ACTION_LINK_TO_PAGE;
+        strcpy(contact.actionTarget, "Contact-Us");
+        contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+        sec.navbar_items.push_back(contact);
+
+        g_Sections.push_back(sec);
+        currentY += 65;
+    }
+
+    // ========== 2. SERVICES CARDS ROW (Full Width) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_CARD_CONNECTOR);
+        sec.name = "Services Cards";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 90;
+        sec.z_index = 1;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.connector_cards_per_row = 10;
+        sec.connector_card_spacing = 5.0f;
+        sec.connector_cards.clear();
+
+        const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING",
+            "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+
+        for (int i = 0; i < 10; i++) {
+            ThumbnailCard card;
+            strcpy(card.heading, serviceNames[i]);
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);  // #e8651a orange
+            card.headingSize = 0.65f;
+            card.headingBoldness = 0.5f;
+            card.cardWidth = 90;
+            card.cardHeight = 55;
+            card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+            card.borderThickness = 0;
+            strcpy(card.description, "");
+            sec.connector_cards.push_back(card);
+        }
+        g_Sections.push_back(sec);
+        currentY += 95;
+    }
+
+    float twoColumnStartY = currentY;
+
+    // ========== 3. "WHO ARE WE?" BAR (Left Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_BAR_CONNECTOR);
+        sec.name = "Who Are We Bar";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = LEFT_COLUMN_WIDTH;
+        sec.height = 38;
+        sec.z_index = 2;
+        sec.bar_items.clear();
+
+        BarItem bar;
+        strcpy(bar.heading, "WHO ARE WE?");
+        bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);  // #e8651a orange
+        bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        bar.barWidth = LEFT_COLUMN_WIDTH;
+        bar.barHeight = 35.0f;
+        bar.headingSize = 1.0f;
+        bar.headingBoldness = 1.0f;
+        bar.paddingLeft = 12.0f;
+        sec.bar_items.push_back(bar);
+        g_Sections.push_back(sec);
+        currentY += 45;
+    }
+
+    // ========== 4. MAIN TEXT CONTENT (Left Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "About Text";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = LEFT_COLUMN_WIDTH;
+        sec.height = 80;
+        sec.z_index = 3;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = LEFT_COLUMN_WIDTH - 40;  // More margin
+        sec.text_padding = 5.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block1;
+        block1.fontSize = 13.0f;
+        block1.textColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);  // #666
+        block1.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);  // #333
+        block1.lineSpacing = 1.6f;
+
+        TextSegment s1; s1.text = "At OMNiON, we work with clients and partners around the world and across diverse markets to provide "; s1.isBold = false;
+        block1.segments.push_back(s1);
+        TextSegment s2; s2.text = "premedia services"; s2.isBold = true;
+        block1.segments.push_back(s2);
+        TextSegment s3; s3.text = ", "; s3.isBold = false;
+        block1.segments.push_back(s3);
+        TextSegment s4; s4.text = "mobile publishing services"; s4.isBold = true;
+        block1.segments.push_back(s4);
+        TextSegment s5; s5.text = " & "; s5.isBold = false;
+        block1.segments.push_back(s5);
+        TextSegment s6; s6.text = "creative production solutions"; s6.isBold = true;
+        block1.segments.push_back(s6);
+        TextSegment s7; s7.text = " ranging from imaging, packaging artwork, prepress, design, animation & programming services to more complex projects."; s7.isBold = false;
+        block1.segments.push_back(s7);
+        sec.text_blocks.push_back(block1);
+
+        TextBlock block2;
+        block2.fontSize = 13.0f;
+        block2.textColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        block2.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block2.lineSpacing = 1.6f;
+
+        TextSegment f1; f1.text = "OMNiON Founders - "; f1.isBold = false;
+        block2.segments.push_back(f1);
+        TextSegment f2; f2.text = "M. C. ABRAHAM"; f2.isBold = true;
+        block2.segments.push_back(f2);
+        TextSegment f3; f3.text = ", based in Bangalore, India and his son - "; f3.isBold = false;
+        block2.segments.push_back(f3);
+        TextSegment f4; f4.text = "MAT ABRAHAM"; f4.isBold = true;
+        block2.segments.push_back(f4);
+        TextSegment f5; f5.text = ", based in New Jersey, USA has led premedia technology at Quad/Graphics, Inc."; f5.isBold = false;
+        block2.segments.push_back(f5);
+        sec.text_blocks.push_back(block2);
+
+        g_Sections.push_back(sec);
+        currentY += 90;
+    }
+
+    // ========== 5. LARGE IMAGE SECTION (Left Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_IMAGE);
+        sec.name = "Design Tools Image";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = LEFT_COLUMN_WIDTH;
+        sec.height = 300;
+        sec.z_index = 4;
+        sec.bg_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+        sec.title = "";
+        sec.subtitle = "";
+        g_Sections.push_back(sec);
+        currentY += 310;
+    }
+
+    // ========== 6. BOTTOM TEXT CONTENT (Left Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Premedia Description";
+        sec.x_position = 0;
+        sec.y_position = currentY;
+        sec.width = LEFT_COLUMN_WIDTH;
+        sec.height = 60;
+        sec.z_index = 5;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = LEFT_COLUMN_WIDTH - 40;
+        sec.text_padding = 5.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 13.0f;
+        block.textColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        block.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.lineSpacing = 1.6f;
+
+        TextSegment p1; p1.text = "Our top-quality "; p1.isBold = false;
+        block.segments.push_back(p1);
+        TextSegment p2; p2.text = "premedia"; p2.isBold = true;
+        block.segments.push_back(p2);
+        TextSegment p3; p3.text = " services help you publish your content across all channels, print, web or alternate media in the best possible way. It goes without saying that we will save you money, but more importantly we will help you do your job better."; p3.isBold = false;
+        block.segments.push_back(p3);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+    }
+
+    // ========== 7. SIDEBAR - RIGHT COLUMN ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_VERTICAL_CONNECTOR);
+        sec.name = "Sidebar Content";
+        sec.x_position = RIGHT_COLUMN_X;
+        sec.y_position = twoColumnStartY;  // Start at same Y as "WHO ARE WE?"
+        sec.width = RIGHT_COLUMN_WIDTH;
+        sec.height = 520;
+        sec.z_index = 10;  // Higher z-index to be on top
+
+        sec.bg_color = ImVec4(0.98f, 0.98f, 0.98f, 1.0f);  // Slight gray background
+        sec.vertical_content_width = RIGHT_COLUMN_WIDTH - 30;  // More padding
+        sec.vertical_heading_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);  // #333
+        sec.vertical_desc_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);     // #666
+        sec.vertical_heading_size = 0.95f;
+        sec.vertical_desc_size = 0.8f;
+        sec.vertical_heading_boldness = 1.2f;
+        sec.vertical_spacing = 8.0f;
+        sec.vertical_blocks.clear();
+
+        // Search box info text
+        VerticalBlock search; search.type = 1; strcpy(search.text, "Our unique innovations & turn-key solutions based on our experience will help you succeed.");
+        sec.vertical_blocks.push_back(search);
+
+        VerticalBlock h1; h1.type = 0; strcpy(h1.text, "Reduce Time to Market / Save Time");
+        sec.vertical_blocks.push_back(h1);
+        VerticalBlock d1; d1.type = 1; strcpy(d1.text, "We are Staffed for 24/7 Production and Enjoy A 10+ Hour Time Zone Advantage");
+        sec.vertical_blocks.push_back(d1);
+
+        VerticalBlock h2; h2.type = 0; strcpy(h2.text, "Expand Range of Services");
+        sec.vertical_blocks.push_back(h2);
+        VerticalBlock d2; d2.type = 1; strcpy(d2.text, "OMNiON blends a wide range of professional services under one roof and this increases your ability to deal with the multi-dimensional challenges of today's markets.");
+        sec.vertical_blocks.push_back(d2);
+
+        VerticalBlock h3; h3.type = 0; strcpy(h3.text, "Complement Resources");
+        sec.vertical_blocks.push_back(h3);
+        VerticalBlock d3; d3.type = 1; strcpy(d3.text, "Our staff becomes an extension of yours - we aim to become the perfect complement to your internal resources.");
+        sec.vertical_blocks.push_back(d3);
+
+        g_Sections.push_back(sec);
+    }
+
+    // Calculate Y position after two-column section ends
+    float fullWidthY = twoColumnStartY + 530;  // After sidebar ends
+
+    // ========== 8. "WHAT WE'VE DONE..." BAR (Full Width) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_BAR_CONNECTOR);
+        sec.name = "What We've Done Bar";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 38;
+        sec.z_index = 11;
+        sec.bar_items.clear();
+
+        BarItem bar;
+        strcpy(bar.heading, "WHAT WE'VE DONE...");
+        bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);  // Orange
+        bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        bar.barWidth = PAGE_WIDTH;
+        bar.barHeight = 35.0f;
+        bar.headingSize = 1.0f;
+        bar.headingBoldness = 1.0f;
+        bar.paddingLeft = 12.0f;
+        sec.bar_items.push_back(bar);
+        g_Sections.push_back(sec);
+        fullWidthY += 45;
+    }
+
+    // ========== 9. WHAT WE'VE DONE TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Portfolio Description";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 60;
+        sec.z_index = 12;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 12.0f;
+        block.textColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        block.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.lineSpacing = 1.5f;
+
+        TextSegment t1; t1.text = "OMNiON provides a wide range of digital premedia services, some of which are showcased below:\nNOTE: All trademarks and copyrights are the property of their respective owners and used for demonstration of the ability of our artists to perform such work."; t1.isBold = false;
+        block.segments.push_back(t1);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 70;
+    }
+
+    // ========== 10. PORTFOLIO IMAGE SECTION ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_IMAGE);
+        sec.name = "Portfolio Gallery";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 350;
+        sec.z_index = 13;
+        sec.bg_color = ImVec4(0.95f, 0.95f, 0.95f, 1.0f);
+        sec.title = "";
+        sec.subtitle = "";
+        g_Sections.push_back(sec);
+        fullWidthY += 360;
+    }
+
+    // ========== 11. "OMNION BENEFITS" BAR ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_BAR_CONNECTOR);
+        sec.name = "Benefits Bar";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 38;
+        sec.z_index = 14;
+        sec.bar_items.clear();
+
+        BarItem bar;
+        strcpy(bar.heading, "OMNION BENEFITS");
+        bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+        bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        bar.barWidth = PAGE_WIDTH;
+        bar.barHeight = 35.0f;
+        bar.headingSize = 1.0f;
+        bar.headingBoldness = 1.0f;
+        bar.paddingLeft = 12.0f;
+        sec.bar_items.push_back(bar);
+        g_Sections.push_back(sec);
+        fullWidthY += 45;
+    }
+
+    // ========== 12. BENEFITS INTRO TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Benefits Intro";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 35;
+        sec.z_index = 15;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 14.0f;
+        block.textColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+        block.lineSpacing = 1.4f;
+
+        TextSegment t1; t1.text = "OMNiON's consistently delivered benefits are guaranteed to satisfy you:"; t1.isBold = true;
+        block.segments.push_back(t1);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 40;
+    }
+
+    // ========== 13. CORE VALUE (Left Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_VERTICAL_CONNECTOR);
+        sec.name = "Core Value";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH / 2 - 20;
+        sec.height = 200;
+        sec.z_index = 16;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.vertical_content_width = PAGE_WIDTH / 2 - 50;
+        sec.vertical_heading_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        sec.vertical_desc_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        sec.vertical_heading_size = 1.0f;
+        sec.vertical_desc_size = 0.85f;
+        sec.vertical_heading_boldness = 1.2f;
+        sec.vertical_spacing = 6.0f;
+        sec.vertical_blocks.clear();
+
+        VerticalBlock h; h.type = 0; strcpy(h.text, "Core Value");
+        sec.vertical_blocks.push_back(h);
+
+        VerticalBlock d1; d1.type = 1; strcpy(d1.text, "• Proven 40-Yr Track Record\n• Best Talent in India\n• Consistently High Quality\n• World-Class Scaleable Resources\n• Industry Best Practices\n• Offshore Cost Savings");
+        sec.vertical_blocks.push_back(d1);
+
+        g_Sections.push_back(sec);
+    }
+
+    // ========== 14. END-TO-END SERVICES (Right Column) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_VERTICAL_CONNECTOR);
+        sec.name = "End-to-End Services";
+        sec.x_position = PAGE_WIDTH / 2 + 20;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH / 2 - 20;
+        sec.height = 200;
+        sec.z_index = 17;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.vertical_content_width = PAGE_WIDTH / 2 - 50;
+        sec.vertical_heading_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        sec.vertical_desc_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        sec.vertical_heading_size = 1.0f;
+        sec.vertical_desc_size = 0.85f;
+        sec.vertical_heading_boldness = 1.2f;
+        sec.vertical_spacing = 6.0f;
+        sec.vertical_blocks.clear();
+
+        VerticalBlock h; h.type = 0; strcpy(h.text, "End-to-End Services");
+        sec.vertical_blocks.push_back(h);
+
+        VerticalBlock d1; d1.type = 1; strcpy(d1.text, "• Digital, Imaging, Retouching\n• Design, Publishing, ePublishing, XML\n• Mobile, Tablet, iPad, iPhone\n• Visualization, CGI, Interactive, Website\n• Technology & Programming\n• Video, 3D, 2D & Animation");
+        sec.vertical_blocks.push_back(d1);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 210;
+    }
+
+    // ========== 15. FOOTER GUARANTEE TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Guarantee Footer";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 50;
+        sec.z_index = 18;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 12.0f;
+        block.textColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        block.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.lineSpacing = 1.5f;
+
+        TextSegment t1; t1.text = "We back all our services with an unconditional satisfaction guarantee. If you are not satisfied, neither are we and you do not pay us if that is the case. Yes, its unconditional. Try us: "; t1.isBold = false;
+        block.segments.push_back(t1);
+        TextSegment t2; t2.text = "Sales@OMNiON.biz"; t2.isBold = true;
+        block.segments.push_back(t2);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 60;
+    }
+
+    // ========== 16. "COMPREHENSIVE TECHNOLOGY SOLUTIONS" BAR ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_BAR_CONNECTOR);
+        sec.name = "Technology Solutions Bar";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 38;
+        sec.z_index = 19;
+        sec.bar_items.clear();
+
+        BarItem bar;
+        strcpy(bar.heading, "COMPREHENSIVE TECHNOLOGY SOLUTIONS");
+        bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+        bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        bar.barWidth = PAGE_WIDTH;
+        bar.barHeight = 35.0f;
+        bar.headingSize = 1.0f;
+        bar.headingBoldness = 1.0f;
+        bar.paddingLeft = 12.0f;
+        sec.bar_items.push_back(bar);
+        g_Sections.push_back(sec);
+        fullWidthY += 45;
+    }
+
+    // ========== 17. END-TO-END SOLUTIONS INTRO TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Technology Intro";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 40;
+        sec.z_index = 20;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 14.0f;
+        block.textColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+        block.lineSpacing = 1.4f;
+
+        TextSegment t1; t1.text = "We provide end-to-end solutions in a wide range of Operating Systems, Content Management Systems, Technologies and Platforms:"; t1.isBold = true;
+        block.segments.push_back(t1);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 50;
+    }
+
+    // ========== 18. TECHNOLOGY 5-COLUMN FOOTER ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_FOOTER_CONNECTOR);
+        sec.name = "Technology Columns";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 220;
+        sec.z_index = 21;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.footer_heading_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+        sec.footer_subheading_color = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+        sec.footer_heading_size = 0.95f;
+        sec.footer_subheading_size = 0.8f;
+        sec.footer_heading_boldness = 1.2f;
+        sec.footer_subheading_boldness = 0.0f;
+        sec.footer_column_width = 180;
+        sec.footer_item_spacing = 4.0f;
+        sec.footer_columns.clear();
+
+        // Mobile column
+        FooterColumn col1;
+        strcpy(col1.heading, "Mobile:");
+        col1.items.push_back("• iPhone & iPad Apps");
+        col1.items.push_back("• Android Apps");
+        col1.items.push_back("• Tablet Apps");
+        col1.items.push_back("• Mobile Web Apps");
+        col1.items.push_back("• Adobe Flash & Flex");
+        col1.items.push_back("• Microsoft Silverlight");
+        col1.items.push_back("• Maya, StudioMax");
+        sec.footer_columns.push_back(col1);
+
+        // CMS Websites column
+        FooterColumn col2;
+        strcpy(col2.heading, "CMS Websites:");
+        col2.items.push_back("• WordPress");
+        col2.items.push_back("• Joomla");
+        col2.items.push_back("• Drupal");
+        col2.items.push_back("• Yahoo ECommerce");
+        col2.items.push_back("• Sharepoint");
+        col2.items.push_back("• BlogEngine");
+        sec.footer_columns.push_back(col2);
+
+        // Platforms column
+        FooterColumn col3;
+        strcpy(col3.heading, "Platforms:");
+        col3.items.push_back("• Apple Macintosh");
+        col3.items.push_back("• Microsoft");
+        col3.items.push_back("• Linux");
+        col3.items.push_back("• FreeBSD");
+        col3.items.push_back("• LAMP/WAMP/XAMPP");
+        col3.items.push_back("• Yahoo Business");
+        sec.footer_columns.push_back(col3);
+
+        // Databases column
+        FooterColumn col4;
+        strcpy(col4.heading, "Databases:");
+        col4.items.push_back("• MariaDB");
+        col4.items.push_back("• MySQL");
+        col4.items.push_back("• SQL Server");
+        col4.items.push_back("• Oracle");
+        col4.items.push_back("• MS Access");
+        col4.items.push_back("• XML");
+        sec.footer_columns.push_back(col4);
+
+        // Languages column
+        FooterColumn col5;
+        strcpy(col5.heading, "Languages:");
+        col5.items.push_back("• Cocoa, Objective C");
+        col5.items.push_back("• PHP, HTML5, CSS3, JavaScript, jQuery, AJAX");
+        col5.items.push_back("• ASP.NET, C, C#, C++");
+        col5.items.push_back("• RTML, Yahoo Templates");
+        col5.items.push_back("• Web Services, RESTful, SOAP");
+        sec.footer_columns.push_back(col5);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 230;
+    }
+
+    // ========== 19. TECHNOLOGY OUTSOURCING TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Outsourcing Text";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 40;
+        sec.z_index = 22;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 12.0f;
+        block.textColor = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+        block.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.lineSpacing = 1.5f;
+
+        TextSegment t1; t1.text = "Talk to us if you would like a reliable technology outsourcing partner that will give you the attention you need."; t1.isBold = false;
+        block.segments.push_back(t1);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 50;
+    }
+
+    // ========== 20. OMNION CLEVER SOLUTIONS TEXT ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Clever Solutions Text";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 80;
+        sec.z_index = 23;
+
+        sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 10.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block;
+        block.fontSize = 12.0f;
+        block.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+        block.boldColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        block.lineSpacing = 1.6f;
+
+        TextSegment t1; t1.text = "OMNiON's clever solutions makes technology fit with customers' business goals and not vice versa. Be it professional website design, logo creation, photography, Search Engine Optimisation (SEO), ecommerce, online marketing, website development, content management systems (CMS) or flash animations, we have the flexibility to work with clients in the way that best meets their objectives. Any website that is to become successful as a sales and marketing tool needs to be intuitive and easy to use for first-time and repeat visitors. We don't employ repetitive template solutions or formulaic approaches here. We specialize in Web 2.0 development, best-in-class website design, cutting-edge Interactive development, Rich Internet Application (RIA) development, Internet marketing, search engine optimization (SEO) and interactive programmers."; t1.isBold = false;
+        block.segments.push_back(t1);
+        sec.text_blocks.push_back(block);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 90;
+    }
+
+    // ========== 21. ARTICLE CARDS - USING ARTICLE CONNECTOR ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_ARTICLE_CONNECTOR);
+        sec.name = "Article Cards";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 200;
+        sec.z_index = 24;
+        sec.padding_left = 20;
+        sec.padding_top = 15;
+
+        sec.bg_color = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+        sec.article_cards_per_row = 2;
+        sec.article_card_spacing = 30;
+        sec.article_cards.clear();
+
+        // Article Card 1 - Tablet Publishing
+        ArticleCard card1;
+        strcpy(card1.heading, "WHY TABLET PUBLISHING IS POISED TO REVOLUTIONIZE HIGHER EDUCATION");
+        strcpy(card1.date, "6 Jan 2012");
+        strcpy(card1.description, "Today, only 57% of students who attend college in the U.S. actually graduate. The country ranks 12th among 36 developed countries. President Obama's administration has a stated goal...");
+        strcpy(card1.readMoreText, "READ MORE");
+        card1.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);  // Orange clickable heading
+        card1.dateColor = ImVec4(0.5f, 0.5f, 0.5f, 1.0f);
+        card1.descriptionColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        card1.readMoreColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        card1.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+        card1.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);  // Orange left accent
+        card1.cardWidth = 480;
+        card1.cardHeight = 170;
+        card1.accentWidth = 4;
+        card1.cardPadding = 15;
+        card1.headingSize = 0.95f;
+        card1.dateSize = 0.75f;
+        card1.descriptionSize = 0.8f;
+        card1.readMoreSize = 0.75f;
+        card1.headingActionType = ACTION_EXTERNAL_URL;
+        strcpy(card1.headingActionTarget, "#tablet-publishing");
+        card1.readMoreActionType = ACTION_EXTERNAL_URL;
+        strcpy(card1.readMoreActionTarget, "#tablet-publishing");
+        sec.article_cards.push_back(card1);
+
+        // Article Card 2 - Apple Publishing
+        ArticleCard card2;
+        strcpy(card2.heading, "DID APPLE HELP SAVE PUBLISHING?");
+        strcpy(card2.date, "5 Jan 2012");
+        strcpy(card2.description, "Despite the ongoing Justice Department antitrust probe, Apple's (NASDAQ:AAPL) myriad syndication partnerships may have actually helped maintain the competitiveness of online publishing...");
+        strcpy(card2.readMoreText, "READ MORE");
+        card2.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+        card2.dateColor = ImVec4(0.5f, 0.5f, 0.5f, 1.0f);
+        card2.descriptionColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        card2.readMoreColor = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        card2.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+        card2.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+        card2.cardWidth = 480;
+        card2.cardHeight = 170;
+        card2.accentWidth = 4;
+        card2.cardPadding = 15;
+        card2.headingSize = 0.95f;
+        card2.dateSize = 0.75f;
+        card2.descriptionSize = 0.8f;
+        card2.readMoreSize = 0.75f;
+        card2.headingActionType = ACTION_EXTERNAL_URL;
+        strcpy(card2.headingActionTarget, "#apple-publishing");
+        card2.readMoreActionType = ACTION_EXTERNAL_URL;
+        strcpy(card2.readMoreActionTarget, "#apple-publishing");
+        sec.article_cards.push_back(card2);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 210;
+    }
+
+    // ========== 23. ORANGE SERVICES FOOTER (4 columns) ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_FOOTER_CONNECTOR);
+        sec.name = "Services Footer";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 450;
+        sec.z_index = 25;
+
+        sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);  // Orange background
+        sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White headings
+        sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);  // White subheadings
+        sec.footer_heading_size = 1.1f;
+        sec.footer_subheading_size = 0.85f;
+        sec.footer_heading_boldness = 1.5f;
+        sec.footer_subheading_boldness = 0.0f;
+        sec.footer_column_width = 240;
+        sec.footer_item_spacing = 6.0f;
+        sec.footer_columns.clear();
+
+        // IMAGING SERVICES column
+        FooterColumn col1;
+        strcpy(col1.heading, "IMAGING SERVICES");
+        col1.items.push_back("SILO");
+        col1.items.push_back("MASKING");
+        col1.items.push_back("RETOUCHING");
+        col1.items.push_back("CLIPPING PATH");
+        col1.items.push_back("COLOR CORRECTION");
+        col1.items.push_back("SIZING");
+        col1.items.push_back("VECTORIZING");
+        col1.items.push_back("COLORIZING");
+        col1.items.push_back("PHOTOGRAPHY");
+        col1.items.push_back("SWATCH MATCHING");
+        col1.items.push_back("CGI & MODELLING");
+        sec.footer_columns.push_back(col1);
+
+        // PACKAGING SERVICES + 3D & CGI column
+        FooterColumn col2;
+        strcpy(col2.heading, "PACKAGING SERVICES");
+        col2.items.push_back("ARTWORK");
+        col2.items.push_back("ADAPTATION");
+        col2.items.push_back("LOCALIZATION");
+        col2.items.push_back("TRAPPING");
+        col2.items.push_back("COLOR SEPARATION");
+        col2.items.push_back("ARTWORK MANAGEMENT");
+        col2.items.push_back("");
+        col2.items.push_back("3D & CGI SERVICES");
+        col2.items.push_back("3D MODELLING");
+        sec.footer_columns.push_back(col2);
+
+        // ADVERTISING SERVICES + TECHNOLOGY column
+        FooterColumn col3;
+        strcpy(col3.heading, "ADVERTISING SERVICES");
+        col3.items.push_back("BANNER ADS");
+        col3.items.push_back("WEB, MOBILE & TABLET AD PROGRAMMING");
+        col3.items.push_back("PRINT, RICH & MOBILE, MEDIA ADS");
+        col3.items.push_back("AD DESIGN, IMAGING, LAYOUT, ILLUSTRATION");
+        col3.items.push_back("BRANDING & CREATIVE");
+        col3.items.push_back("");
+        col3.items.push_back("TECHNOLOGY SERVICES");
+        col3.items.push_back("CMS WEBSITE");
+        col3.items.push_back("SEO");
+        col3.items.push_back("YAHOO RTML");
+        col3.items.push_back("ECOMMERCE WEBSITE");
+        col3.items.push_back("APPLE DEVELOPMENT");
+        col3.items.push_back("APPLICATION DEV");
+        sec.footer_columns.push_back(col3);
+
+        // PUBLISHING SERVICES + NEW MEDIA column
+        FooterColumn col4;
+        strcpy(col4.heading, "PUBLISHING SERVICES");
+        col4.items.push_back("TABLET PUBLISHING");
+        col4.items.push_back("IPAD PUBLISHING");
+        col4.items.push_back("DESIGN & LAYOUT");
+        col4.items.push_back("PROOF READING & COPY EDITING");
+        col4.items.push_back("HTML, XML & TAGGING");
+        col4.items.push_back("EPUB, EBOOK, DIGITIZATION");
+        col4.items.push_back("");
+        col4.items.push_back("NEW MEDIA SERVICES");
+        col4.items.push_back("PACKAGING");
+        col4.items.push_back("MAGAZINES");
+        col4.items.push_back("CATALOGS");
+        col4.items.push_back("BOOKS");
+        col4.items.push_back("NEWSPAPERS");
+        col4.items.push_back("DIGITAL ASSET MANAGEMENT (DAM)");
+        col4.items.push_back("DATA MANAGEMENT");
+        sec.footer_columns.push_back(col4);
+
+        g_Sections.push_back(sec);
+        fullWidthY += 460;
+    }
+
+    // ========== 24. DARK BOTTOM FOOTER ==========
+    {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        sec.name = "Copyright Footer";
+        sec.x_position = 0;
+        sec.y_position = fullWidthY;
+        sec.width = PAGE_WIDTH;
+        sec.height = 60;
+        sec.z_index = 27;
+
+        sec.bg_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);  // Dark gray
+        sec.text_content_width = PAGE_WIDTH - 40;
+        sec.text_padding = 15.0f;
+        sec.text_blocks.clear();
+
+        TextBlock block1;
+        block1.fontSize = 11.0f;
+        block1.textColor = ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
+        block1.boldColor = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+        block1.lineSpacing = 1.8f;
+
+        TextSegment t1; t1.text = "Website under development."; t1.isBold = false;
+        block1.segments.push_back(t1);
+        sec.text_blocks.push_back(block1);
+
+        TextBlock block2;
+        block2.fontSize = 10.0f;
+        block2.textColor = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+        block2.boldColor = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+        block2.lineSpacing = 1.5f;
+
+        TextSegment t2; t2.text = "2025 OMNION PREMEDIA PVT. LTD., BANGALORE, INDIA. ALL RIGHTS RESERVED. | "; t2.isBold = false;
+        block2.segments.push_back(t2);
+        TextSegment t3; t3.text = "Privacy Policy"; t3.isBold = true;
+        block2.segments.push_back(t3);
+        TextSegment t4; t4.text = " | "; t4.isBold = false;
+        block2.segments.push_back(t4);
+        TextSegment t5; t5.text = "Terms of service"; t5.isBold = true;
+        block2.segments.push_back(t5);
+        sec.text_blocks.push_back(block2);
+
+        g_Sections.push_back(sec);
+    }
+
+    // ========================================================================
+    // SAVE PAGE 1 (HOME) AND CREATE PAGE 2 (PREMEDIA)
+    // ========================================================================
+
+    // Clear existing pages and add Home page
+    g_NormalPages.clear();
+    NormalModePage homePage("Home");
+    homePage.sections = g_Sections;
+    g_NormalPages.push_back(homePage);
+
+    // ========== CREATE PAGE 2: PREMEDIA ==========
+    {
+        NormalModePage premediaPage("Premedia");
+        std::vector<WebSection> premediaSections;
+        int premediaSectionId = 1000;  // Start ID for Premedia page
+        float premediaY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            // HOME with children
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            // PREMEDIA with children
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            // SERVICES with children
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            // PACKAGING with children
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            // IMAGING with children
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            // MOBILE-APPS with children
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            // NEWS with children
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            // CONTACT US with children
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            premediaSections.push_back(sec);
+            premediaY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            premediaSections.push_back(sec);
+            premediaY += 95;
+        }
+
+        // ========== PREMEDIA ORANGE BAR ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Premedia Bar";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH;
+            sec.height = 45;
+            sec.z_index = 1;
+            sec.bar_items.clear();
+
+            BarItem bar;
+            strcpy(bar.heading, "PREMEDIA");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH;
+            bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f;
+            bar.headingBoldness = 1.5f;
+            bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            premediaSections.push_back(sec);
+            premediaY += 50;
+        }
+
+        // ========== PACKAGING ARTICLE CARD ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Packaging Article";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH / 2 - 10;
+            sec.height = 420;
+            sec.z_index = 2;
+            sec.padding_left = 20;
+            sec.padding_top = 15;
+
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1;
+            sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+
+            ArticleCard card;
+            strcpy(card.heading, "PACKAGING");
+            strcpy(card.date, "");
+            strcpy(card.description, "With the average supermarket stocking over 40,000 separate lines, and an estimated 75% of all purchases more likely to be made on impulse within a 10 second time-frame rather than [...] ");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.dateColor = ImVec4(0.5f, 0.5f, 0.5f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480;
+            card.cardHeight = 380;
+            card.accentWidth = 0;
+            card.cardPadding = 15;
+            card.headingSize = 1.0f;
+            card.descriptionSize = 0.85f;
+            card.readMoreSize = 0.75f;
+            sec.article_cards.push_back(card);
+            premediaSections.push_back(sec);
+        }
+
+        // ========== MAGAZINES ARTICLE CARD ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Magazines Article";
+            sec.x_position = PAGE_WIDTH / 2 + 10;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH / 2 - 10;
+            sec.height = 420;
+            sec.z_index = 3;
+            sec.padding_left = 20;
+            sec.padding_top = 15;
+
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1;
+            sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+
+            ArticleCard card;
+            strcpy(card.heading, "MAGAZINES");
+            strcpy(card.date, "");
+            strcpy(card.description, "OMNiON can serve your magazines premedia needs to your precise requirements using the latest creative, imaging techniques & design treatments. We produce the highest quality [...] ");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.dateColor = ImVec4(0.5f, 0.5f, 0.5f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480;
+            card.cardHeight = 380;
+            card.accentWidth = 0;
+            card.cardPadding = 15;
+            card.headingSize = 1.0f;
+            card.descriptionSize = 0.85f;
+            card.readMoreSize = 0.75f;
+            sec.article_cards.push_back(card);
+            premediaSections.push_back(sec);
+        }
+
+        premediaY += 430;
+
+        // ========== WHY OMNION SECTION ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Why OMNiON";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH;
+            sec.height = 400;
+            sec.z_index = 4;
+
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60;
+            sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            // Title
+            TextBlock titleBlock;
+            titleBlock.fontSize = 20.0f;
+            titleBlock.textColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment titleSeg; titleSeg.text = "WHY OMNION?"; titleSeg.isBold = true;
+            titleBlock.segments.push_back(titleSeg);
+            sec.text_blocks.push_back(titleBlock);
+
+            // Content
+            TextBlock contentBlock;
+            contentBlock.fontSize = 13.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+
+            TextSegment s1; s1.text = "Our "; s1.isBold = false;
+            contentBlock.segments.push_back(s1);
+            TextSegment s2; s2.text = "unique innovations"; s2.isBold = true;
+            contentBlock.segments.push_back(s2);
+            TextSegment s3; s3.text = " & "; s3.isBold = false;
+            contentBlock.segments.push_back(s3);
+            TextSegment s4; s4.text = "turn-key solutions"; s4.isBold = true;
+            contentBlock.segments.push_back(s4);
+            TextSegment s5; s5.text = " based on our extensive experience & depth of knowledge will help you succeed. Our founder, "; s5.isBold = false;
+            contentBlock.segments.push_back(s5);
+            TextSegment s6; s6.text = "M. C. Abraham"; s6.isBold = true;
+            contentBlock.segments.push_back(s6);
+            TextSegment s7; s7.text = ", is India's most experienced, successful & widely regarded publishing & media services outsourcing expert having pioneered the industry back in 1974 & our co-founder, "; s7.isBold = false;
+            contentBlock.segments.push_back(s7);
+            TextSegment s8; s8.text = "Mat Abraham"; s8.isBold = true;
+            contentBlock.segments.push_back(s8);
+            TextSegment s9; s9.text = ", managed media solutions technology for Quad/Graphics, USA with over 20 years experience serving all the top media & brand customers in the world."; s9.isBold = false;
+            contentBlock.segments.push_back(s9);
+            sec.text_blocks.push_back(contentBlock);
+
+            // Question block
+            TextBlock questionBlock;
+            questionBlock.fontSize = 12.0f;
+            questionBlock.textColor = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+            questionBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            questionBlock.lineSpacing = 1.5f;
+            TextSegment q1; q1.text = "WHAT DO QUAD/GRAPHICS-USA, SPRINGER VERLAG-GERMANY & REED ELSEVIER-HOLLAND HAVE IN COMMON WITH M. C. ABRAHAM?"; q1.isBold = false;
+            questionBlock.segments.push_back(q1);
+            sec.text_blocks.push_back(questionBlock);
+
+            // Answer block
+            TextBlock answerBlock;
+            answerBlock.fontSize = 13.0f;
+            answerBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            answerBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            answerBlock.lineSpacing = 1.6f;
+            TextSegment a1; a1.text = "Over the last 20 yrs, they have "; a1.isBold = false;
+            answerBlock.segments.push_back(a1);
+            TextSegment a2; a2.text = "ALL"; a2.isBold = true;
+            answerBlock.segments.push_back(a2);
+            TextSegment a3; a3.text = " acquired premedia startups in India founded, managed & co-owned by OMNiON Chairman & Managing Director - M. C. Abraham, the latest one being in 2012!"; a3.isBold = false;
+            answerBlock.segments.push_back(a3);
+            sec.text_blocks.push_back(answerBlock);
+
+            premediaSections.push_back(sec);
+            premediaY += 410;
+        }
+
+        // ========== REDUCE TIME / EXPAND SERVICES ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_VERTICAL_CONNECTOR);
+            sec.name = "Benefits";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH;
+            sec.height = 200;
+            sec.z_index = 5;
+
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_heading_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.vertical_desc_color = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            sec.vertical_heading_size = 1.1f;
+            sec.vertical_desc_size = 0.9f;
+            sec.vertical_heading_boldness = 1.2f;
+            sec.vertical_content_width = PAGE_WIDTH - 60;
+            sec.vertical_spacing = 12;
+            sec.vertical_blocks.clear();
+
+            VerticalBlock h1; h1.type = 0; strcpy(h1.text, "Reduce Time to Market / Save Time");
+            sec.vertical_blocks.push_back(h1);
+            VerticalBlock d1; d1.type = 1; strcpy(d1.text, "We are Staffed for 24/7 Production and Enjoy A 10+ Hour Time Zone Advantage");
+            sec.vertical_blocks.push_back(d1);
+
+            VerticalBlock h2; h2.type = 0; strcpy(h2.text, "Expand Range of Services");
+            sec.vertical_blocks.push_back(h2);
+            VerticalBlock d2; d2.type = 1; strcpy(d2.text, "OMNiON blends a wide range of professional services under one roof and this increases your ability to deal with the multi-dimensional challenges of today's markets.");
+            sec.vertical_blocks.push_back(d2);
+
+            premediaSections.push_back(sec);
+            premediaY += 210;
+        }
+
+        // ========== ORANGE FOOTER ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Services Footer";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH;
+            sec.height = 400;
+            sec.z_index = 6;
+
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f;
+            sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f;
+            sec.footer_column_width = 240;
+            sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+
+            FooterColumn col1;
+            strcpy(col1.heading, "PREMEDIA SERVICES");
+            col1.items.push_back("Packaging");
+            col1.items.push_back("Magazines");
+            col1.items.push_back("Catalogs");
+            col1.items.push_back("Newspapers");
+            col1.items.push_back("Prepress");
+            sec.footer_columns.push_back(col1);
+
+            FooterColumn col2;
+            strcpy(col2.heading, "CREATIVE SERVICES");
+            col2.items.push_back("Web Design");
+            col2.items.push_back("Graphic Design");
+            col2.items.push_back("Logo Design");
+            col2.items.push_back("Branding");
+            col2.items.push_back("Print Design");
+            sec.footer_columns.push_back(col2);
+
+            FooterColumn col3;
+            strcpy(col3.heading, "TECHNOLOGY");
+            col3.items.push_back("Mobile Apps");
+            col3.items.push_back("Web Development");
+            col3.items.push_back("CMS Solutions");
+            col3.items.push_back("E-commerce");
+            col3.items.push_back("SEO/SEM");
+            sec.footer_columns.push_back(col3);
+
+            FooterColumn col4;
+            strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("New Jersey, USA");
+            col4.items.push_back("Bangalore, India");
+            col4.items.push_back("info@omnion.us");
+            col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+
+            premediaSections.push_back(sec);
+            premediaY += 410;
+        }
+
+        // ========== COPYRIGHT BAR ==========
+        {
+            WebSection sec(premediaSectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0;
+            sec.y_position = premediaY;
+            sec.width = PAGE_WIDTH;
+            sec.height = 60;
+            sec.z_index = 7;
+
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_font_size = 11.0f;
+            sec.copyright_subtext_size = 10.0f;
+            sec.copyright_padding = 15.0f;
+            sec.copyright_bg_opacity = 1.0f;
+
+            CopyrightLink link1;
+            strcpy(link1.text, "Privacy Policy");
+            strcpy(link1.url, "#privacy");
+            link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+
+            CopyrightLink link2;
+            strcpy(link2.text, "Terms of Service");
+            strcpy(link2.url, "#terms");
+            link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+
+            premediaSections.push_back(sec);
+        }
+
+        premediaPage.sections = premediaSections;
+        g_NormalPages.push_back(premediaPage);
+    }
+
+    // ========== CREATE PAGE 3: SERVICES ==========
+    {
+        NormalModePage servicesPage("Services");
+        std::vector<WebSection> serviceSections;
+        int sectionId = 2000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            serviceSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            serviceSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // SERVICES ORANGE BAR
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Services Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 1;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "SERVICES");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            serviceSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // CREATIVE ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Creative Article";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 2;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "CREATIVE");
+            strcpy(card.date, "");
+            strcpy(card.description, "Our creative team delivers innovative design solutions that capture your brand essence. From concept to completion, we transform ideas into compelling visual experiences that engage and inspire your audience.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            serviceSections.push_back(sec);
+        }
+
+        // CATALOG ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Catalog Article";
+            sec.x_position = PAGE_WIDTH / 2 + 10; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 3;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "CATALOG");
+            strcpy(card.date, "");
+            strcpy(card.description, "Professional catalog production with attention to detail. We handle everything from photography and retouching to layout and printing, ensuring your products are presented in the best possible light.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            serviceSections.push_back(sec);
+        }
+        pageY += 430;
+
+        // WHY OMNION SECTION
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Why OMNiON";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 300; sec.z_index = 4;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+            TextBlock titleBlock;
+            titleBlock.fontSize = 20.0f;
+            titleBlock.textColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment titleSeg; titleSeg.text = "OUR SERVICES"; titleSeg.isBold = true;
+            titleBlock.segments.push_back(titleSeg);
+            sec.text_blocks.push_back(titleBlock);
+            TextBlock contentBlock;
+            contentBlock.fontSize = 13.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment s1; s1.text = "OMNiON provides comprehensive "; s1.isBold = false;
+            contentBlock.segments.push_back(s1);
+            TextSegment s2; s2.text = "creative, catalog, and technology services"; s2.isBold = true;
+            contentBlock.segments.push_back(s2);
+            TextSegment s3; s3.text = " to help businesses grow and succeed in today's competitive market. Our experienced team delivers high-quality solutions tailored to your specific needs."; s3.isBold = false;
+            contentBlock.segments.push_back(s3);
+            sec.text_blocks.push_back(contentBlock);
+            serviceSections.push_back(sec);
+            pageY += 310;
+        }
+
+        // ORANGE FOOTER
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Services Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 5;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f; sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 240; sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+            FooterColumn col1; strcpy(col1.heading, "CREATIVE SERVICES");
+            col1.items.push_back("Web Design"); col1.items.push_back("Graphic Design");
+            col1.items.push_back("Logo Design"); col1.items.push_back("Branding");
+            sec.footer_columns.push_back(col1);
+            FooterColumn col2; strcpy(col2.heading, "CATALOG SERVICES");
+            col2.items.push_back("Product Photography"); col2.items.push_back("Retouching");
+            col2.items.push_back("Layout Design"); col2.items.push_back("Print Production");
+            sec.footer_columns.push_back(col2);
+            FooterColumn col3; strcpy(col3.heading, "TECHNOLOGY");
+            col3.items.push_back("Mobile Apps"); col3.items.push_back("Web Development");
+            col3.items.push_back("CMS Solutions"); col3.items.push_back("E-commerce");
+            sec.footer_columns.push_back(col3);
+            FooterColumn col4; strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("info@omnion.us"); col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+            serviceSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // COPYRIGHT BAR
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 6;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            serviceSections.push_back(sec);
+        }
+
+        servicesPage.sections = serviceSections;
+        g_NormalPages.push_back(servicesPage);
+    }
+
+    // ========== CREATE PAGE 4: PACKAGING ==========
+    {
+        NormalModePage packagingPage("Packaging");
+        std::vector<WebSection> packagingSections;
+        int sectionId = 3000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            packagingSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            packagingSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // PACKAGING ORANGE BAR
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Packaging Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 1;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "PACKAGING");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            packagingSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // RETAIL PACKAGING ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Retail Packaging Article";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 2;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "RETAIL PACKAGING");
+            strcpy(card.date, "");
+            strcpy(card.description, "With the average supermarket stocking over 40,000 separate lines, and an estimated 75% of all purchases more likely to be made on impulse within a 10 second time-frame, your packaging needs to stand out.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            packagingSections.push_back(sec);
+        }
+
+        // LUXURY PACKAGING ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Luxury Packaging Article";
+            sec.x_position = PAGE_WIDTH / 2 + 10; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 3;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "LUXURY PACKAGING");
+            strcpy(card.date, "");
+            strcpy(card.description, "Premium packaging solutions for luxury brands. We create sophisticated, high-end packaging that reflects the quality and exclusivity of your products, from concept design to final production.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            packagingSections.push_back(sec);
+        }
+        pageY += 430;
+
+        // WHY OMNION SECTION
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Why OMNiON";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 300; sec.z_index = 4;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+            TextBlock titleBlock;
+            titleBlock.fontSize = 20.0f;
+            titleBlock.textColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment titleSeg; titleSeg.text = "PACKAGING EXPERTISE"; titleSeg.isBold = true;
+            titleBlock.segments.push_back(titleSeg);
+            sec.text_blocks.push_back(titleBlock);
+            TextBlock contentBlock;
+            contentBlock.fontSize = 13.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment s1; s1.text = "Our "; s1.isBold = false;
+            contentBlock.segments.push_back(s1);
+            TextSegment s2; s2.text = "packaging design and production team"; s2.isBold = true;
+            contentBlock.segments.push_back(s2);
+            TextSegment s3; s3.text = " brings decades of experience in creating impactful packaging solutions. From food & beverage to cosmetics and electronics, we deliver packaging that sells."; s3.isBold = false;
+            contentBlock.segments.push_back(s3);
+            sec.text_blocks.push_back(contentBlock);
+            packagingSections.push_back(sec);
+            pageY += 310;
+        }
+
+        // ORANGE FOOTER
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Packaging Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 5;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f; sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 240; sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+            FooterColumn col1; strcpy(col1.heading, "PACKAGING TYPES");
+            col1.items.push_back("Retail Packaging"); col1.items.push_back("Luxury Packaging");
+            col1.items.push_back("Food Packaging"); col1.items.push_back("Cosmetic Packaging");
+            sec.footer_columns.push_back(col1);
+            FooterColumn col2; strcpy(col2.heading, "SERVICES");
+            col2.items.push_back("Design & Concept"); col2.items.push_back("3D Mockups");
+            col2.items.push_back("Print Production"); col2.items.push_back("Quality Control");
+            sec.footer_columns.push_back(col2);
+            FooterColumn col3; strcpy(col3.heading, "INDUSTRIES");
+            col3.items.push_back("Food & Beverage"); col3.items.push_back("Cosmetics");
+            col3.items.push_back("Electronics"); col3.items.push_back("Pharmaceuticals");
+            sec.footer_columns.push_back(col3);
+            FooterColumn col4; strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("info@omnion.us"); col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+            packagingSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // COPYRIGHT BAR
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 6;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            packagingSections.push_back(sec);
+        }
+
+        packagingPage.sections = packagingSections;
+        g_NormalPages.push_back(packagingPage);
+    }
+
+    // ========== CREATE PAGE 5: IMAGING ==========
+    {
+        NormalModePage imagingPage("Imaging");
+        std::vector<WebSection> imagingSections;
+        int sectionId = 4000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            imagingSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            imagingSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // IMAGING ORANGE BAR
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Imaging Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 1;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "IMAGING");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            imagingSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // PHOTO RETOUCHING ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Photo Retouching Article";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 2;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "PHOTO RETOUCHING");
+            strcpy(card.date, "");
+            strcpy(card.description, "Professional photo retouching services that enhance your images while maintaining natural appearance. From basic color correction to complex compositing, we deliver flawless results every time.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            imagingSections.push_back(sec);
+        }
+
+        // COLOR MANAGEMENT ARTICLE CARD
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "Color Management Article";
+            sec.x_position = PAGE_WIDTH / 2 + 10; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH / 2 - 10; sec.height = 420; sec.z_index = 3;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 1; sec.article_card_spacing = 20;
+            sec.article_cards.clear();
+            ArticleCard card;
+            strcpy(card.heading, "COLOR MANAGEMENT");
+            strcpy(card.date, "");
+            strcpy(card.description, "Accurate color reproduction across all media. Our color management expertise ensures consistency from screen to print, maintaining brand integrity across all your marketing materials.");
+            strcpy(card.readMoreText, "READ MORE");
+            card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.descriptionColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            card.readMoreColor = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            card.cardBgColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            card.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card.cardWidth = 480; card.cardHeight = 380; card.accentWidth = 0; card.cardPadding = 15;
+            sec.article_cards.push_back(card);
+            imagingSections.push_back(sec);
+        }
+        pageY += 430;
+
+        // WHY OMNION SECTION
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Why OMNiON";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 300; sec.z_index = 4;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+            TextBlock titleBlock;
+            titleBlock.fontSize = 20.0f;
+            titleBlock.textColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment titleSeg; titleSeg.text = "IMAGING EXCELLENCE"; titleSeg.isBold = true;
+            titleBlock.segments.push_back(titleSeg);
+            sec.text_blocks.push_back(titleBlock);
+            TextBlock contentBlock;
+            contentBlock.fontSize = 13.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment s1; s1.text = "With over "; s1.isBold = false;
+            contentBlock.segments.push_back(s1);
+            TextSegment s2; s2.text = "40 years of imaging expertise"; s2.isBold = true;
+            contentBlock.segments.push_back(s2);
+            TextSegment s3; s3.text = ", OMNiON delivers world-class image processing, retouching, and color management services. Our skilled team handles millions of images annually for leading brands worldwide."; s3.isBold = false;
+            contentBlock.segments.push_back(s3);
+            sec.text_blocks.push_back(contentBlock);
+            imagingSections.push_back(sec);
+            pageY += 310;
+        }
+
+        // ORANGE FOOTER
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Imaging Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 5;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f; sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 240; sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+            FooterColumn col1; strcpy(col1.heading, "IMAGING SERVICES");
+            col1.items.push_back("Photo Retouching"); col1.items.push_back("Color Correction");
+            col1.items.push_back("Compositing"); col1.items.push_back("Clipping Paths");
+            sec.footer_columns.push_back(col1);
+            FooterColumn col2; strcpy(col2.heading, "SPECIALTIES");
+            col2.items.push_back("Product Photography"); col2.items.push_back("Fashion Retouching");
+            col2.items.push_back("Beauty Retouching"); col2.items.push_back("3D Rendering");
+            sec.footer_columns.push_back(col2);
+            FooterColumn col3; strcpy(col3.heading, "TECHNOLOGY");
+            col3.items.push_back("Adobe Creative Suite"); col3.items.push_back("Color Management");
+            col3.items.push_back("Automated Workflows"); col3.items.push_back("DAM Systems");
+            sec.footer_columns.push_back(col3);
+            FooterColumn col4; strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("info@omnion.us"); col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+            imagingSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // COPYRIGHT BAR
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 6;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            imagingSections.push_back(sec);
+        }
+
+        imagingPage.sections = imagingSections;
+        g_NormalPages.push_back(imagingPage);
+    }
+
+    // ========== CREATE PAGE 6: MOBILE-APPS ==========
+    {
+        NormalModePage mobileAppsPage("Mobile-Apps");
+        std::vector<WebSection> mobileAppsSections;
+        int sectionId = 5000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            mobileAppsSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            mobileAppsSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // ========== MOBILE-APPS ORANGE BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Mobile-Apps Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 2;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "MOBILE-APPS");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            mobileAppsSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // ========== INTRO TEXT ==========
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Mobile Apps Intro";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 120; sec.z_index = 3;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            TextBlock block1;
+            block1.fontSize = 13.0f;
+            block1.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            block1.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            block1.lineSpacing = 1.6f;
+            TextSegment s1; s1.text = "Our Mobile Tablet App Development services are comprehensive & cutting-edge."; s1.isBold = false;
+            block1.segments.push_back(s1);
+            sec.text_blocks.push_back(block1);
+
+            TextBlock block2;
+            block2.fontSize = 13.0f;
+            block2.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            block2.lineSpacing = 1.6f;
+            TextSegment s2; s2.text = "OMNiON is committed to making your mobile/tablet apps the most technologically advanced apps made. We use cutting-edge technologies in a cost-effective way to make your mobile solution most competitive. Our savvy use of a wide range of today's mobile technologies can also save you time, so that you can put more emphasis on profitability."; s2.isBold = false;
+            block2.segments.push_back(s2);
+            sec.text_blocks.push_back(block2);
+
+            TextBlock block3;
+            block3.fontSize = 13.0f;
+            block3.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            block3.lineSpacing = 1.6f;
+            TextSegment s3; s3.text = "OMNiON can develop your tablet app in any of the following mobile platforms:"; s3.isBold = false;
+            block3.segments.push_back(s3);
+            sec.text_blocks.push_back(block3);
+
+            mobileAppsSections.push_back(sec);
+            pageY += 130;
+        }
+
+        // ========== IOS APPS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_VERTICAL_CONNECTOR);
+            sec.name = "iOS Apps";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 80; sec.z_index = 4;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_heading_color = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            sec.vertical_desc_color = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            sec.vertical_heading_size = 1.1f; sec.vertical_desc_size = 0.9f;
+            sec.vertical_heading_boldness = 1.2f; sec.vertical_content_width = PAGE_WIDTH - 60;
+            sec.vertical_spacing = 8; sec.vertical_blocks.clear();
+            VerticalBlock h1; h1.type = 0; strcpy(h1.text, "IOS APPS");
+            sec.vertical_blocks.push_back(h1);
+            VerticalBlock d1; d1.type = 1; strcpy(d1.text, "OMNiON's iOS team creates Mobile Apps for iPad & iPhone on the iOS mobile operating system from Apple.");
+            sec.vertical_blocks.push_back(d1);
+            mobileAppsSections.push_back(sec);
+            pageY += 90;
+        }
+
+        // ========== ANDROID APPS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_VERTICAL_CONNECTOR);
+            sec.name = "Android Apps";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 80; sec.z_index = 5;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_heading_color = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            sec.vertical_desc_color = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            sec.vertical_heading_size = 1.1f; sec.vertical_desc_size = 0.9f;
+            sec.vertical_heading_boldness = 1.2f; sec.vertical_content_width = PAGE_WIDTH - 60;
+            sec.vertical_spacing = 8; sec.vertical_blocks.clear();
+            VerticalBlock h1; h1.type = 0; strcpy(h1.text, "ANDROID APPS");
+            sec.vertical_blocks.push_back(h1);
+            VerticalBlock d1; d1.type = 1; strcpy(d1.text, "OMNiON's Android team creates Mobile/Tablet Apps for Nexus, Samsung Tabs, etc. on the Android mobile OS.");
+            sec.vertical_blocks.push_back(d1);
+            mobileAppsSections.push_back(sec);
+            pageY += 90;
+        }
+
+        // ========== MOBILE WEB APPS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_VERTICAL_CONNECTOR);
+            sec.name = "Mobile Web Apps";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 80; sec.z_index = 6;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_heading_color = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            sec.vertical_desc_color = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            sec.vertical_heading_size = 1.1f; sec.vertical_desc_size = 0.9f;
+            sec.vertical_heading_boldness = 1.2f; sec.vertical_content_width = PAGE_WIDTH - 60;
+            sec.vertical_spacing = 8; sec.vertical_blocks.clear();
+            VerticalBlock h1; h1.type = 0; strcpy(h1.text, "MOBILE WEB APPS");
+            sec.vertical_blocks.push_back(h1);
+            VerticalBlock d1; d1.type = 1; strcpy(d1.text, "OMNiON's Mobile Web team uses PHP, HTML5, CSS3 & JavaScript Mobile Frameworks such as Sencha & Phonegap to develop Mobile Web Apps.");
+            sec.vertical_blocks.push_back(d1);
+            mobileAppsSections.push_back(sec);
+            pageY += 90;
+        }
+
+        // ========== HOW WE CREATE APPS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "How We Create Apps";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 180; sec.z_index = 7;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            TextBlock titleBlock;
+            titleBlock.fontSize = 16.0f;
+            titleBlock.textColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment t1; t1.text = "HOW WE CREATE APPS AT OMNION..."; t1.isBold = true;
+            titleBlock.segments.push_back(t1);
+            sec.text_blocks.push_back(titleBlock);
+
+            TextBlock contentBlock;
+            contentBlock.fontSize = 13.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment c1; c1.text = "Each platform has its own strengths & quirks, so in order to maximize the potential for any given app on any one platform, we've created dedicated teams that develop applications for all three platforms. Our mobile app team never fails to provide the most creative and engaging mobile applications."; c1.isBold = false;
+            contentBlock.segments.push_back(c1);
+            sec.text_blocks.push_back(contentBlock);
+
+            TextBlock contactBlock;
+            contactBlock.fontSize = 13.0f;
+            contactBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contactBlock.lineSpacing = 1.6f;
+            TextSegment ct1; ct1.text = "Talk to us... we will give you a free estimate for your mobile app project! Email us at MobileApps@OMNiON.biz"; ct1.isBold = false;
+            contactBlock.segments.push_back(ct1);
+            sec.text_blocks.push_back(contactBlock);
+
+            mobileAppsSections.push_back(sec);
+            pageY += 190;
+        }
+
+        // ========== ORANGE FOOTER ==========
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Mobile Apps Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 8;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f; sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 240; sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+            FooterColumn col1; strcpy(col1.heading, "MOBILE PLATFORMS");
+            col1.items.push_back("iOS Apps"); col1.items.push_back("Android Apps");
+            col1.items.push_back("Mobile Web Apps"); col1.items.push_back("Cross-Platform");
+            sec.footer_columns.push_back(col1);
+            FooterColumn col2; strcpy(col2.heading, "SERVICES");
+            col2.items.push_back("App Development"); col2.items.push_back("UI/UX Design");
+            col2.items.push_back("App Testing"); col2.items.push_back("App Maintenance");
+            sec.footer_columns.push_back(col2);
+            FooterColumn col3; strcpy(col3.heading, "TECHNOLOGIES");
+            col3.items.push_back("Swift / Objective-C"); col3.items.push_back("Kotlin / Java");
+            col3.items.push_back("React Native"); col3.items.push_back("Flutter");
+            sec.footer_columns.push_back(col3);
+            FooterColumn col4; strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("MobileApps@OMNiON.biz"); col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+            mobileAppsSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // ========== COPYRIGHT BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 9;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            mobileAppsSections.push_back(sec);
+        }
+
+        mobileAppsPage.sections = mobileAppsSections;
+        g_NormalPages.push_back(mobileAppsPage);
+    }
+
+    // ========== CREATE PAGE 7: NEWS ==========
+    {
+        NormalModePage newsPage("News");
+        std::vector<WebSection> newsSections;
+        int sectionId = 6000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            newsSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            newsSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // ========== NEWS ORANGE BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "News Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 2;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "NEWS");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            newsSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // ========== NEWS ARTICLE CARDS - ROW 1 ==========
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "News Articles Row 1";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 200; sec.z_index = 3;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 2; sec.article_card_spacing = 30;
+            sec.article_cards.clear();
+
+            ArticleCard card1;
+            strcpy(card1.heading, "WHY TABLET PUBLISHING IS POISED TO REVOLUTIONIZE HIGHER EDUCATION");
+            strcpy(card1.date, "6 Jan 2012");
+            strcpy(card1.description, "Today, only 57% of students who attend college in the U.S. actually graduate. The country ranks 12th among 36 developed countries. President Obama's administration has a stated [...]");
+            strcpy(card1.readMoreText, "READ MORE");
+            card1.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+            card1.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardWidth = 480; card1.cardHeight = 170; card1.accentWidth = 4;
+            sec.article_cards.push_back(card1);
+
+            ArticleCard card2;
+            strcpy(card2.heading, "DID APPLE HELP SAVE PUBLISHING?");
+            strcpy(card2.date, "5 Jan 2012");
+            strcpy(card2.description, "Despite the ongoing Justice Department antitrust probe, Apple's (NASDAQ:AAPL) myriad syndication partnerships may have actually helped maintain the competitiveness of online publishing [...]");
+            strcpy(card2.readMoreText, "READ MORE");
+            card2.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card2.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+            card2.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card2.cardWidth = 480; card2.cardHeight = 170; card2.accentWidth = 4;
+            sec.article_cards.push_back(card2);
+
+            newsSections.push_back(sec);
+            pageY += 210;
+        }
+
+        // ========== NEWS ARTICLE CARDS - ROW 2 ==========
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "News Articles Row 2";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 200; sec.z_index = 4;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 2; sec.article_card_spacing = 30;
+            sec.article_cards.clear();
+
+            ArticleCard card1;
+            strcpy(card1.heading, "THE BUSINESS IMPACT OF CUSTOMER EXPERIENCE");
+            strcpy(card1.date, "4 Jan 2012");
+            strcpy(card1.description, "THE BUSINESS IMPACT OF CUSTOMER EXPERIENCE I just published Forrester's fourth annual report \"The Business Impact of Customer Experience\" using updated data from the 2012 Customer Experience Index. Once again [...]");
+            strcpy(card1.readMoreText, "READ MORE");
+            card1.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+            card1.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardWidth = 480; card1.cardHeight = 170; card1.accentWidth = 4;
+            sec.article_cards.push_back(card1);
+
+            ArticleCard card2;
+            strcpy(card2.heading, "CATALOGUE MIXES CATALOG SHOPPING AND TABLETS WITH SUCCESS");
+            strcpy(card2.date, "3 Jan 2012");
+            strcpy(card2.description, "CATALOGUE MIXES CATALOG SHOPPING AND TABLETS WITH SUCCESS Best Buy, Crate & Barrel and Williams-Sonoma are letting consumers check the real-time availability of [...]");
+            strcpy(card2.readMoreText, "READ MORE");
+            card2.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card2.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+            card2.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card2.cardWidth = 480; card2.cardHeight = 170; card2.accentWidth = 4;
+            sec.article_cards.push_back(card2);
+
+            newsSections.push_back(sec);
+            pageY += 210;
+        }
+
+        // ========== NEWS ARTICLE CARDS - ROW 3 ==========
+        {
+            WebSection sec(sectionId++, SEC_ARTICLE_CONNECTOR);
+            sec.name = "News Articles Row 3";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 200; sec.z_index = 5;
+            sec.padding_left = 20; sec.padding_top = 15;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.article_cards_per_row = 2; sec.article_card_spacing = 30;
+            sec.article_cards.clear();
+
+            ArticleCard card1;
+            strcpy(card1.heading, "BRANDS SEE TABLET PUBLISHING THROUGH APPS AS ANOTHER WAY TO REACH COSUMERS");
+            strcpy(card1.date, "2 Jan 2012");
+            strcpy(card1.description, "BRANDS SEE TABLET PUBLISHING THROUGH APPS AS ANOTHER WAY TO REACH COSUMERS Here is another example of a brand launching an iPad app as part of [...]");
+            strcpy(card1.readMoreText, "READ MORE");
+            card1.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardBgColor = ImVec4(0.97f, 0.97f, 0.97f, 1.0f);
+            card1.accentColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            card1.cardWidth = 480; card1.cardHeight = 170; card1.accentWidth = 4;
+            sec.article_cards.push_back(card1);
+
+            newsSections.push_back(sec);
+            pageY += 210;
+        }
+
+        // ========== ORANGE FOOTER ==========
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "News Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 6;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.1f; sec.footer_subheading_size = 0.85f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 240; sec.footer_item_spacing = 6.0f;
+            sec.footer_columns.clear();
+            FooterColumn col1; strcpy(col1.heading, "PREMEDIA SERVICES");
+            col1.items.push_back("Packaging"); col1.items.push_back("Magazines");
+            col1.items.push_back("Catalogs"); col1.items.push_back("Newspapers");
+            sec.footer_columns.push_back(col1);
+            FooterColumn col2; strcpy(col2.heading, "CREATIVE SERVICES");
+            col2.items.push_back("Web Design"); col2.items.push_back("Graphic Design");
+            col2.items.push_back("Logo Design"); col2.items.push_back("Branding");
+            sec.footer_columns.push_back(col2);
+            FooterColumn col3; strcpy(col3.heading, "TECHNOLOGY");
+            col3.items.push_back("Mobile Apps"); col3.items.push_back("Web Development");
+            col3.items.push_back("CMS Solutions"); col3.items.push_back("E-commerce");
+            sec.footer_columns.push_back(col3);
+            FooterColumn col4; strcpy(col4.heading, "CONTACT");
+            col4.items.push_back("info@omnion.us"); col4.items.push_back("+1 555 123 4567");
+            sec.footer_columns.push_back(col4);
+            newsSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // ========== COPYRIGHT BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 7;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            newsSections.push_back(sec);
+        }
+
+        newsPage.sections = newsSections;
+        g_NormalPages.push_back(newsPage);
+    }
+
+    // ========== CREATE PAGE 8: CONTACT US ==========
+    {
+        NormalModePage contactPage("Contact-Us");
+        std::vector<WebSection> contactSections;
+        int sectionId = 7000;
+        float pageY = 0;
+
+        // ========== NAVBAR CONNECTOR ==========
+        {
+            WebSection sec(sectionId++, SEC_NAVBAR_CONNECTOR);
+            sec.name = "OMNiON Navbar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 0;
+            sec.navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_hover_color = ImVec4(0.9f, 0.4f, 0.1f, 0.1f);
+            sec.navbar_dropdown_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.navbar_text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.navbar_height = 60.0f; sec.navbar_padding_x = 15.0f;
+            sec.navbar_padding_y = 15.0f; sec.navbar_spacing = 20.0f; sec.navbar_font_scale = 0.85f;
+            sec.navbar_items.clear();
+            NavbarMenuItem home; strcpy(home.label, "HOME"); home.actionType = ACTION_LINK_TO_PAGE; strcpy(home.actionTarget, "Home");
+            home.children = {"ABOUT", "VALUES", "OUTSOURCING", "HOW WE WORK", "OUR FOUNDER", "PRIVACY POLICY", "TERMS OF SERVICES"};
+            sec.navbar_items.push_back(home);
+            NavbarMenuItem premedia; strcpy(premedia.label, "PREMEDIA"); premedia.actionType = ACTION_LINK_TO_PAGE; strcpy(premedia.actionTarget, "Premedia");
+            premedia.children = {"PACKAGING", "MAGAZINES", "CATALOGS", "BOOKS", "NEWSPAPERS", "DIGITAL ASSET MANAGEMENT (DAM)", "DATA MANAGEMENT"};
+            sec.navbar_items.push_back(premedia);
+            NavbarMenuItem services; strcpy(services.label, "SERVICES"); services.actionType = ACTION_LINK_TO_PAGE; strcpy(services.actionTarget, "Services");
+            services.children = {"PACKAGING", "CREATIVE", "PUBLISHING", "ADVERTISING", "PREPRESS", "NEW MEDIA", "INTERNET", "NEWSPAPERS", "PHOTOGRAPHY", "ANIMATION", "CATALOG"};
+            sec.navbar_items.push_back(services);
+            NavbarMenuItem packaging; strcpy(packaging.label, "PACKAGING"); packaging.actionType = ACTION_LINK_TO_PAGE; strcpy(packaging.actionTarget, "Packaging");
+            packaging.children = {"ARTWORK", "ADAPTATION", "LOCALIZATION", "TRAPPING", "COLOR SEPARATION", "DIGITAL ASSET MANAGEMENT (DAM)", "3D PROTOTYPING"};
+            sec.navbar_items.push_back(packaging);
+            NavbarMenuItem imaging; strcpy(imaging.label, "IMAGING"); imaging.actionType = ACTION_LINK_TO_PAGE; strcpy(imaging.actionTarget, "Imaging");
+            imaging.children = {"SILO", "MASKING", "CLIPPING PATH", "SIZING", "COLOR CORRECTION", "SWATCH MATCHING", "VECTORISING", "COLORIZING", "CGI"};
+            sec.navbar_items.push_back(imaging);
+            NavbarMenuItem mobileApps; strcpy(mobileApps.label, "MOBILE-APPS"); mobileApps.actionType = ACTION_LINK_TO_PAGE; strcpy(mobileApps.actionTarget, "Mobile-Apps");
+            mobileApps.children = {"IOS APPS", "ANDROID APPS", "MOBILE WEB APPS", "TABLET PUBLISHING APPS"};
+            sec.navbar_items.push_back(mobileApps);
+            NavbarMenuItem news; strcpy(news.label, "NEWS"); news.actionType = ACTION_LINK_TO_PAGE; strcpy(news.actionTarget, "News");
+            news.children = {"BOOKS", "MAGAZINES", "CATALOGS", "ADVERTISING", "PACKAGING", "INTERACTIVE", "VIDEO", "PREPRESS", "TECHNOLOGY"};
+            sec.navbar_items.push_back(news);
+            NavbarMenuItem contact; strcpy(contact.label, "CONTACT US"); contact.actionType = ACTION_LINK_TO_PAGE; strcpy(contact.actionTarget, "Contact-Us");
+            contact.children = {"OUTSOURCING", "JOB OPENINGS"};
+            sec.navbar_items.push_back(contact);
+            contactSections.push_back(sec);
+            pageY += 65;
+        }
+
+        // ========== 10 SERVICE CARDS STRIP ==========
+        {
+            WebSection sec(sectionId++, SEC_CARD_CONNECTOR);
+            sec.name = "Services Cards";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 90; sec.z_index = 1;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.connector_cards_per_row = 10; sec.connector_card_spacing = 5.0f;
+            sec.connector_cards.clear();
+            const char* serviceNames[] = {"PACKAGING", "IMAGING", "PREPRESS", "PUBLISHING", "NEW MEDIA", "CREATIVE", "CATALOG", "TECHNOLOGY", "ADVERTISING", "ANIMATION"};
+            for (int i = 0; i < 10; i++) {
+                ThumbnailCard card;
+                strcpy(card.heading, serviceNames[i]);
+                card.headingColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+                card.headingSize = 0.65f; card.headingBoldness = 0.5f;
+                card.cardWidth = 90; card.cardHeight = 55;
+                card.cardColor = ImVec4(0.88f, 0.88f, 0.88f, 1.0f);
+                card.borderThickness = 0; strcpy(card.description, "");
+                sec.connector_cards.push_back(card);
+            }
+            contactSections.push_back(sec);
+            pageY += 95;
+        }
+
+        // ========== CONTACT US ORANGE BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_BAR_CONNECTOR);
+            sec.name = "Contact Us Bar";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 45; sec.z_index = 2;
+            sec.bar_items.clear();
+            BarItem bar;
+            strcpy(bar.heading, "CONTACT US");
+            bar.barColor = ImVec4(0.91f, 0.40f, 0.10f, 1.0f);
+            bar.headingColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            bar.barWidth = PAGE_WIDTH; bar.barHeight = 42.0f;
+            bar.headingSize = 1.2f; bar.headingBoldness = 1.5f; bar.paddingLeft = 15.0f;
+            sec.bar_items.push_back(bar);
+            contactSections.push_back(sec);
+            pageY += 50;
+        }
+
+        // ========== CONTACT INFO SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_VERTICAL_CONNECTOR);
+            sec.name = "Contact Info";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 180; sec.z_index = 3;
+            sec.bg_color = ImVec4(0.95f, 0.95f, 0.95f, 1.0f);
+            sec.vertical_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_desc_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.vertical_heading_size = 1.3f; sec.vertical_desc_size = 1.1f;
+            sec.vertical_heading_boldness = 1.5f; sec.vertical_content_width = PAGE_WIDTH - 60;
+            sec.vertical_spacing = 8; sec.vertical_blocks.clear();
+
+            VerticalBlock h1; h1.type = 0; strcpy(h1.text, "S : OMNiONbiz");
+            sec.vertical_blocks.push_back(h1);
+            VerticalBlock h2; h2.type = 0; strcpy(h2.text, "E-MAIL : SALES@OMNION.BIZ");
+            sec.vertical_blocks.push_back(h2);
+            VerticalBlock h3; h3.type = 0; strcpy(h3.text, "PHONE: +1-212-537-6356");
+            sec.vertical_blocks.push_back(h3);
+            VerticalBlock h4; h4.type = 0; strcpy(h4.text, "WE ARE OPEN 24 / 7 * 365 CALL US ANY TIME");
+            sec.vertical_blocks.push_back(h4);
+
+            contactSections.push_back(sec);
+            pageY += 190;
+        }
+
+        // ========== TALK TO THE BEST SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Talk to the Best";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 200; sec.z_index = 4;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            TextBlock titleBlock;
+            titleBlock.fontSize = 18.0f;
+            titleBlock.textColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment t1; t1.text = "Talk to the Best! Get in touch..."; t1.isBold = true;
+            titleBlock.segments.push_back(t1);
+            sec.text_blocks.push_back(titleBlock);
+
+            TextBlock contentBlock;
+            contentBlock.fontSize = 12.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment c1; c1.text = "If you would like to experience the best in outsourced services, talk to us. We would love to hear from you, whether it is an inquiry about working with us on project, outsource or partner basis - or - if you just have a question - one of our local representatives will be sure to get in touch with you."; c1.isBold = false;
+            contentBlock.segments.push_back(c1);
+            sec.text_blocks.push_back(contentBlock);
+
+            TextBlock contactBlock;
+            contactBlock.fontSize = 12.0f;
+            contactBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contactBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contactBlock.lineSpacing = 1.5f;
+            TextSegment e1; e1.text = "E-Mail : "; e1.isBold = false; contactBlock.segments.push_back(e1);
+            TextSegment e2; e2.text = "Sales@OMNiON.biz"; e2.isBold = true; contactBlock.segments.push_back(e2);
+            sec.text_blocks.push_back(contactBlock);
+
+            TextBlock phoneBlock;
+            phoneBlock.fontSize = 12.0f;
+            phoneBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            phoneBlock.lineSpacing = 1.3f;
+            TextSegment p1; p1.text = "Skype ID : omnionbiz"; p1.isBold = false; phoneBlock.segments.push_back(p1);
+            sec.text_blocks.push_back(phoneBlock);
+
+            TextBlock usaBlock;
+            usaBlock.fontSize = 12.0f;
+            usaBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            usaBlock.lineSpacing = 1.3f;
+            TextSegment u1; u1.text = "USA Phone: +1-212-380-1654 or +1-212-537-6356"; u1.isBold = false; usaBlock.segments.push_back(u1);
+            sec.text_blocks.push_back(usaBlock);
+
+            TextBlock euBlock;
+            euBlock.fontSize = 12.0f;
+            euBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            euBlock.lineSpacing = 1.3f;
+            TextSegment eu1; eu1.text = "EU Phone: +44-207-993-5830"; eu1.isBold = false; euBlock.segments.push_back(eu1);
+            sec.text_blocks.push_back(euBlock);
+
+            TextBlock indiaBlock;
+            indiaBlock.fontSize = 12.0f;
+            indiaBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            indiaBlock.lineSpacing = 1.3f;
+            TextSegment in1; in1.text = "India Phone: +91-80-41202794"; in1.isBold = false; indiaBlock.segments.push_back(in1);
+            sec.text_blocks.push_back(indiaBlock);
+
+            contactSections.push_back(sec);
+            pageY += 210;
+        }
+
+        // ========== JOB OPENINGS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Job Openings";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 120; sec.z_index = 5;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            TextBlock titleBlock;
+            titleBlock.fontSize = 18.0f;
+            titleBlock.textColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment t1; t1.text = "JOB OPENINGS"; t1.isBold = true;
+            titleBlock.segments.push_back(t1);
+            sec.text_blocks.push_back(titleBlock);
+
+            TextBlock contentBlock;
+            contentBlock.fontSize = 12.0f;
+            contentBlock.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            contentBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            contentBlock.lineSpacing = 1.6f;
+            TextSegment c1; c1.text = "We are always hiring the best talent anywhere in the world at our Global Operations HQ in Bangalore, India. If you are the best at what you do, and feel you can be a valuable member of the best media solutions and services team in the world, please send us your resume at: "; c1.isBold = false;
+            contentBlock.segments.push_back(c1);
+            TextSegment c2; c2.text = "Talent@OMNiON.in"; c2.isBold = true;
+            contentBlock.segments.push_back(c2);
+            sec.text_blocks.push_back(contentBlock);
+
+            contactSections.push_back(sec);
+            pageY += 130;
+        }
+
+        // ========== ADDRESS SECTION ==========
+        {
+            WebSection sec(sectionId++, SEC_TEXT_CONNECTOR);
+            sec.name = "Address";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 100; sec.z_index = 6;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.text_content_width = PAGE_WIDTH - 60; sec.text_padding = 20.0f;
+            sec.text_blocks.clear();
+
+            TextBlock titleBlock;
+            titleBlock.fontSize = 16.0f;
+            titleBlock.textColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.boldColor = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            titleBlock.lineSpacing = 1.8f;
+            TextSegment t1; t1.text = "Address"; t1.isBold = true;
+            titleBlock.segments.push_back(t1);
+            sec.text_blocks.push_back(titleBlock);
+
+            TextBlock addr1Block;
+            addr1Block.fontSize = 11.0f;
+            addr1Block.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            addr1Block.lineSpacing = 1.5f;
+            TextSegment a1; a1.text = "OMNiON PreMedia Private Limited Regal Entry, 2nd Floor Ambalpadi PO, Karavali Junction Udupi - 576103, Karnataka. 0820 - 2520200"; a1.isBold = false;
+            addr1Block.segments.push_back(a1);
+            sec.text_blocks.push_back(addr1Block);
+
+            TextBlock addr2Block;
+            addr2Block.fontSize = 11.0f;
+            addr2Block.textColor = ImVec4(0.35f, 0.35f, 0.35f, 1.0f);
+            addr2Block.lineSpacing = 1.5f;
+            TextSegment a2; a2.text = "OMNiON PreMedia Pvt. Ltd. #516, 3rd floor, Krishvi Aspire, C.M.H. road, Indiranagar 1st stage, Bangalore - 560038 080 - 25210200"; a2.isBold = false;
+            addr2Block.segments.push_back(a2);
+            sec.text_blocks.push_back(addr2Block);
+
+            contactSections.push_back(sec);
+            pageY += 110;
+        }
+
+        // ========== CONTACT FORM ==========
+        {
+            WebSection sec(sectionId++, SEC_CONTACT_FORM_CONNECTOR);
+            sec.name = "Contact Form";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 400; sec.z_index = 7;
+            sec.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.padding_left = 30; sec.padding_top = 20;
+
+            strcpy(sec.contact_form_title, "Contact Us");
+            strcpy(sec.contact_form_submit_text, "Submit");
+            strcpy(sec.contact_form_submit_target, "Sales@OMNiON.biz");
+            sec.contact_form_submit_action = ACTION_EMAIL;
+            sec.contact_form_title_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            sec.contact_form_input_bg = ImVec4(0.95f, 0.95f, 0.95f, 1.0f);
+            sec.contact_form_input_text = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+            sec.contact_form_button_bg = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.contact_form_button_text = ImVec4(0.2f, 0.6f, 0.9f, 1.0f);
+            sec.contact_form_button_border = ImVec4(0.2f, 0.6f, 0.9f, 1.0f);
+            sec.contact_form_title_size = 1.0f;
+            sec.contact_form_input_height = 45.0f;
+            sec.contact_form_textarea_height = 150.0f;
+            sec.contact_form_button_width = 100.0f;
+            sec.contact_form_button_height = 40.0f;
+            sec.contact_form_spacing = 20.0f;
+            sec.contact_form_fields.clear();
+
+            ContactFormField nameField; strcpy(nameField.placeholder, "Name"); nameField.fieldType = 0; nameField.width = 0.5f;
+            sec.contact_form_fields.push_back(nameField);
+            ContactFormField emailField; strcpy(emailField.placeholder, "Email Address"); emailField.fieldType = 1; emailField.width = 0.5f;
+            sec.contact_form_fields.push_back(emailField);
+            ContactFormField phoneField; strcpy(phoneField.placeholder, "Phone No."); phoneField.fieldType = 2; phoneField.width = 0.5f;
+            sec.contact_form_fields.push_back(phoneField);
+            ContactFormField firmField; strcpy(firmField.placeholder, "Firm Name"); firmField.fieldType = 0; firmField.width = 0.5f;
+            sec.contact_form_fields.push_back(firmField);
+            ContactFormField messageField; strcpy(messageField.placeholder, "Message"); messageField.fieldType = 3; messageField.width = 1.0f;
+            sec.contact_form_fields.push_back(messageField);
+
+            contactSections.push_back(sec);
+            pageY += 410;
+        }
+
+        // ========== ORANGE FOOTER (6 columns) ==========
+        {
+            WebSection sec(sectionId++, SEC_FOOTER_CONNECTOR);
+            sec.name = "Services Footer";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 550; sec.z_index = 8;
+            sec.bg_color = ImVec4(0.85f, 0.42f, 0.15f, 1.0f);
+            sec.footer_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            sec.footer_subheading_color = ImVec4(1.0f, 1.0f, 1.0f, 0.85f);
+            sec.footer_heading_size = 1.0f; sec.footer_subheading_size = 0.75f;
+            sec.footer_heading_boldness = 1.5f; sec.footer_column_width = 160; sec.footer_item_spacing = 4.0f;
+            sec.footer_columns.clear();
+
+            FooterColumn col1; strcpy(col1.heading, "IMAGING SERVICES");
+            col1.items.push_back("SILO"); col1.items.push_back("MASKING");
+            col1.items.push_back("RETOUCHING"); col1.items.push_back("CLIPPING PATH");
+            col1.items.push_back("COLOR CORRECTION"); col1.items.push_back("SIZING");
+            col1.items.push_back("VECTORIZING"); col1.items.push_back("COLORIZING");
+            col1.items.push_back("PHOTOGRAPHY"); col1.items.push_back("SWATCH MATCHING");
+            col1.items.push_back("CGI & MODELLING");
+            sec.footer_columns.push_back(col1);
+
+            FooterColumn col2; strcpy(col2.heading, "PACKAGING SERVICES");
+            col2.items.push_back("ARTWORK"); col2.items.push_back("ADAPTATION");
+            col2.items.push_back("LOCALIZATION"); col2.items.push_back("TRAPPING");
+            col2.items.push_back("COLOR SEPARATION"); col2.items.push_back("ARTWORK MANAGEMENT");
+            sec.footer_columns.push_back(col2);
+
+            FooterColumn col3; strcpy(col3.heading, "3D & CGI SERVICES");
+            col3.items.push_back("3D MODELLING");
+            sec.footer_columns.push_back(col3);
+
+            FooterColumn col4; strcpy(col4.heading, "ADVERTISING SERVICES");
+            col4.items.push_back("BANNER ADS"); col4.items.push_back("WEB, MOBILE & TABLET AD");
+            col4.items.push_back("PRINT, RICH & MOBILE ADS"); col4.items.push_back("AD DESIGN, IMAGING");
+            col4.items.push_back("BRANDING & CREATIVE");
+            sec.footer_columns.push_back(col4);
+
+            FooterColumn col5; strcpy(col5.heading, "TECHNOLOGY SERVICES");
+            col5.items.push_back("CMS WEBSITE"); col5.items.push_back("SEO");
+            col5.items.push_back("YAHOO RTML"); col5.items.push_back("ECOMMERCE WEBSITE");
+            sec.footer_columns.push_back(col5);
+
+            FooterColumn col6; strcpy(col6.heading, "PUBLISHING SERVICES");
+            col6.items.push_back("TABLET PUBLISHING"); col6.items.push_back("IPAD PUBLISHING");
+            col6.items.push_back("DESIGN & LAYOUT"); col6.items.push_back("PROOF READING");
+            col6.items.push_back("HTML, XML & TAGGING"); col6.items.push_back("EPUB, EBOOK");
+            sec.footer_columns.push_back(col6);
+
+            contactSections.push_back(sec);
+            pageY += 560;
+        }
+
+        // ========== COPYRIGHT BAR ==========
+        {
+            WebSection sec(sectionId++, SEC_COPYRIGHT_CONNECTOR);
+            sec.name = "Copyright";
+            sec.x_position = 0; sec.y_position = pageY;
+            sec.width = PAGE_WIDTH; sec.height = 60; sec.z_index = 9;
+            strcpy(sec.copyright_text, "Website under development.");
+            strcpy(sec.copyright_subtext, "2025 OMNION. ALL RIGHTS RESERVED.");
+            sec.copyright_bg_color = ImVec4(0.15f, 0.15f, 0.15f, 1.0f);
+            sec.copyright_text_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+            sec.copyright_link_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            sec.copyright_bg_opacity = 1.0f;
+            CopyrightLink link1; strcpy(link1.text, "Privacy Policy"); strcpy(link1.url, "#privacy"); link1.isBold = true;
+            sec.copyright_links.push_back(link1);
+            CopyrightLink link2; strcpy(link2.text, "Terms of Service"); strcpy(link2.url, "#terms"); link2.isBold = true;
+            sec.copyright_links.push_back(link2);
+            contactSections.push_back(sec);
+        }
+
+        contactPage.sections = contactSections;
+        g_NormalPages.push_back(contactPage);
+    }
+
+    // Set current page to Home (Page 1)
+    g_CurrentPageIndex = 0;
+    g_NormalPageIndex = 0;
+
+    g_SelectedSectionIndex = 0;
+    if (!g_Sections.empty()) {
+        g_Sections[0].selected = true;
+    }
+
+    printf("OMNiON Website created with %zu sections in Free Design Mode!\n", g_Sections.size());
+    printf("Created %zu pages: Home, Premedia, Services, Packaging, Imaging\n", g_NormalPages.size());
+}
+
+// Load template from file
+bool LoadTemplate(const std::string& filepath) {
+    // Clear current sections and pages
+    g_Sections.clear();
+    g_NormalPages.clear();
+    g_SelectedSectionIndex = -1;
+    g_CurrentPageIndex = 0;
 
     // If using database, load from PostgreSQL
     if (g_UseDatabase && g_DBConnection) {
@@ -2890,16 +8299,29 @@ bool LoadTemplate(const std::string& filepath) {
         g_ProjectName = PQgetisnull(result, 0, 1) ? "" : PQgetvalue(result, 0, 1);
         PQclear(result);
 
-        // Check if this is a Figma template
-        query = "SELECT is_figma_template, figma_screenshot_path, figma_canvas_width, figma_canvas_height FROM templates WHERE id=" + std::to_string(template_id);
+        // Check if this is a Figma template and if it's a Normal mode template
+        query = "SELECT is_figma_template, figma_screenshot_path, figma_canvas_width, figma_canvas_height, is_normal_mode, free_design_mode FROM templates WHERE id=" + std::to_string(template_id);
         result = PQexec(g_DBConnection, query.c_str());
         bool isFigmaTemplate = false;
+        bool isNormalModeTemplate = false;
         if (PQresultStatus(result) == PGRES_TUPLES_OK && PQntuples(result) > 0) {
             const char* figmaVal = PQgetvalue(result, 0, 0);
             isFigmaTemplate = (figmaVal && (figmaVal[0] == 't' || figmaVal[0] == 'T' || figmaVal[0] == '1'));
 
+            // Check is_normal_mode column (index 4)
+            if (!PQgetisnull(result, 0, 4)) {
+                const char* normalVal = PQgetvalue(result, 0, 4);
+                isNormalModeTemplate = (normalVal && (normalVal[0] == 't' || normalVal[0] == 'T' || normalVal[0] == '1'));
+            }
+
+            // Load free_design_mode (index 5)
+            if (!PQgetisnull(result, 0, 5)) {
+                const char* freeVal = PQgetvalue(result, 0, 5);
+                g_FreeDesignMode = (freeVal && (freeVal[0] == 't' || freeVal[0] == 'T' || freeVal[0] == '1'));
+            }
+
             if (isFigmaTemplate) {
-                printf("[LoadTemplate] This is a Figma template, loading in Figma mode...\n");
+                printf("[LoadTemplate] This is a %s template, loading...\n", isNormalModeTemplate ? "Normal mode" : "Figma");
 
                 // Clear and setup Figma project
                 g_FigmaProject = FigmaProject();
@@ -2925,7 +8347,7 @@ bool LoadTemplate(const std::string& filepath) {
                 }
 
                 // Load figma_layers
-                query = "SELECT layer_order, layer_type, name, x, y, width, height, text, font_size, opacity, image_path, bg_color, text_color, href, onclick_action, action_type FROM figma_layers WHERE template_id=" + std::to_string(template_id) + " ORDER BY layer_order";
+                query = "SELECT layer_order, layer_type, name, x, y, width, height, text, font_size, opacity, image_path, bg_color, text_color, href, onclick_action, action_type, z_index, border_color, border_radius, border_width FROM figma_layers WHERE template_id=" + std::to_string(template_id) + " ORDER BY layer_order";
                 result = PQexec(g_DBConnection, query.c_str());
                 if (PQresultStatus(result) == PGRES_TUPLES_OK) {
                     int layerCount = PQntuples(result);
@@ -2982,7 +8404,13 @@ bool LoadTemplate(const std::string& filepath) {
                         layer.visible = true;
                         layer.locked = false;  // Make sure layers are editable
                         layer.selected = false;
-                        layer.border_color = ImVec4(0, 0, 0, 1);
+
+                        // Load z_index, border_color, border_radius, border_width
+                        layer.z_index = PQgetisnull(result, i, 16) ? 0 : atoi(PQgetvalue(result, i, 16));
+                        std::string borderColorStr = PQgetisnull(result, i, 17) ? "" : PQgetvalue(result, i, 17);
+                        layer.border_color = borderColorStr.empty() ? ImVec4(0, 0, 0, 1) : parseRGBA(borderColorStr, false);
+                        layer.border_radius = PQgetisnull(result, i, 18) ? 0.0f : atof(PQgetvalue(result, i, 18));
+                        layer.border_width = PQgetisnull(result, i, 19) ? 0.0f : atof(PQgetvalue(result, i, 19));
 
                         // Load image texture if exists
                         if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
@@ -3005,19 +8433,54 @@ bool LoadTemplate(const std::string& filepath) {
                 }
                 PQclear(result);
 
-                // Switch to Figma mode
-                g_FigmaMode = true;
-                g_SelectedLayerId = -1;
+                // Check if this is a Normal mode template
+                if (isNormalModeTemplate) {
+                    // Check if sections exist in the sections table
+                    std::string checkQuery = "SELECT COUNT(*) FROM sections WHERE template_id=" + std::to_string(template_id);
+                    PGresult* checkResult = PQexec(g_DBConnection, checkQuery.c_str());
+                    int sectionCount = 0;
+                    if (PQresultStatus(checkResult) == PGRES_TUPLES_OK && PQntuples(checkResult) > 0) {
+                        sectionCount = atoi(PQgetvalue(checkResult, 0, 0));
+                    }
+                    PQclear(checkResult);
 
-                printf("\n========================================\n");
-                printf("[LoadTemplate] SUCCESS: Figma template '%s' loaded!\n", template_name.c_str());
-                printf("[LoadTemplate] Canvas: %.0fx%.0f, Layers: %zu\n", g_FigmaProject.canvas_width, g_FigmaProject.canvas_height, g_FigmaProject.layers.size());
-                printf("========================================\n\n");
+                    if (sectionCount > 0) {
+                        // Has sections - load from sections table
+                        printf("[LoadTemplate] Normal mode template with %d sections, loading from sections table...\n", sectionCount);
+                        // Don't return - fall through to sections loading below
+                    } else if (!g_FigmaProject.layers.empty()) {
+                        // No sections but has layers - convert layers to sections
+                        printf("[LoadTemplate] Normal mode template with no sections but %zu layers, converting...\n", g_FigmaProject.layers.size());
+                        ConvertLayersToSections();
+                        g_FigmaMode = false;
+                        g_SelectedLayerId = -1;
 
-                return true;
+                        printf("\n========================================\n");
+                        printf("[LoadTemplate] SUCCESS: Normal mode template '%s' loaded!\n", template_name.c_str());
+                        printf("[LoadTemplate] Converted %zu layers to %zu sections\n", g_FigmaProject.layers.size(), g_Sections.size());
+                        printf("========================================\n\n");
+                        return true;
+                    } else {
+                        printf("[LoadTemplate] Normal mode template with no data!\n");
+                        return false;
+                    }
+                } else {
+                    // Switch to Figma mode
+                    g_FigmaMode = true;
+                    g_SelectedLayerId = -1;
+
+                    printf("\n========================================\n");
+                    printf("[LoadTemplate] SUCCESS: Figma template '%s' loaded!\n", template_name.c_str());
+                    printf("[LoadTemplate] Canvas: %.0fx%.0f, Layers: %zu\n", g_FigmaProject.canvas_width, g_FigmaProject.canvas_height, g_FigmaProject.layers.size());
+                    printf("========================================\n\n");
+
+                    // Ensure imported buttons point to internal anchors
+                    RewriteFigmaActionsToInternal();
+                    return true;  // Return only for Figma templates
+                }
             }
         }
-        PQclear(result);
+        // Note: result was already cleared at line 3443 for figma_layers query
 
         // Load sections - MUST match column order in code below (for non-Figma templates)
         query = "SELECT "
@@ -3037,8 +8500,52 @@ bool LoadTemplate(const std::string& filepath) {
                 "gallery_images, gallery_images_data, gallery_columns, gallery_spacing, "
                 "logo_path, logo_data, logo_size, brand_text_position, "
                 "animation_type, animation_duration, animation_delay, card_stagger_delay, "
-                "interactive_data, layout_data, css_data "
-                "FROM sections WHERE template_id=" + std::to_string(template_id) + " ORDER BY section_order";
+                "interactive_data, layout_data, css_data, "
+                // CONNECTOR COLUMNS (starting at column 69)
+                "text_blocks_json, text_content_width, text_padding, "
+                "bar_items_json, "
+                "footer_columns_json, footer_heading_color, footer_subheading_color, "
+                "footer_heading_size, footer_subheading_size, footer_heading_boldness, footer_subheading_boldness, "
+                "footer_column_width, footer_item_spacing, "
+                "connector_cards_json, connector_cards_per_row, connector_card_spacing, "
+                "vertical_blocks_json, vertical_heading_color, vertical_desc_color, "
+                "vertical_heading_size, vertical_desc_size, vertical_heading_boldness, vertical_desc_boldness, "
+                "vertical_content_width, vertical_spacing, "
+                // NAVBAR CONNECTOR COLUMNS (starting at column 94)
+                "navbar_items_json, navbar_bg_color, navbar_hover_color, navbar_dropdown_color, navbar_text_color, "
+                "navbar_height, navbar_padding_x, navbar_padding_y, navbar_spacing, navbar_rounding, "
+                "navbar_font_scale, navbar_rounded, "
+                // POSITION/SIZE COLUMNS (starting at column 106)
+                "x_position, width, z_index, "
+                // COPYRIGHT BAR CONNECTOR COLUMNS (starting at column 109)
+                "copyright_text, copyright_subtext, copyright_links_json, "
+                "copyright_bg_color, copyright_text_color, copyright_link_color, "
+                "copyright_font_size, copyright_subtext_size, copyright_padding, copyright_bg_opacity, "
+                // ARTICLE CARDS CONNECTOR COLUMNS (starting at column 119)
+                "article_cards_json, article_cards_per_row, article_card_spacing, "
+                // CONTACT FORM CONNECTOR COLUMNS (starting at column 122)
+                "contact_form_fields_json, contact_form_title, contact_form_submit_text, "
+                "contact_form_title_color, contact_form_input_bg, contact_form_input_text, "
+                "contact_form_button_bg, contact_form_button_text, contact_form_button_border, "
+                "contact_form_title_size, contact_form_input_height, contact_form_textarea_height, "
+                "contact_form_button_width, contact_form_button_height, contact_form_spacing, "
+                "contact_form_submit_action, contact_form_submit_target, "
+                // SEARCH BAR CONNECTOR COLUMNS (starting at column 139)
+                "search_placeholder, search_button_text, search_input_bg, search_input_border, "
+                "search_input_text, search_button_bg, search_button_text_color, "
+                "search_input_width, search_input_height, search_button_width, search_border_radius, "
+                // MARGIN COLUMNS (starting at column 150)
+                "margin_top, margin_right, margin_bottom, margin_left, "
+                // ICON COLUMNS (starting at column 154)
+                "icon_type, icon_size, icon_color, icon_stroke_width, "
+                // SERVICE CARD COLUMNS (starting at column 158)
+                "service_cards_json, service_cards_per_row, service_card_spacing, "
+                // GLASS BAR COLUMNS (starting at column 161)
+                "glass_bar_text, glass_bar_highlight, glass_bar_text_color, glass_bar_highlight_color, "
+                "glass_bar_bg_color, glass_bar_opacity, glass_bar_border_radius, glass_bar_padding, "
+                // PAGE COLUMNS (starting at column 169)
+                "page_index, page_name "
+                "FROM sections WHERE template_id=" + std::to_string(template_id) + " ORDER BY page_index, section_order";
         result = PQexec(g_DBConnection, query.c_str());
         if (PQresultStatus(result) != PGRES_TUPLES_OK) {
             printf("Error loading sections: %s\n", PQerrorMessage(g_DBConnection));
@@ -3201,9 +8708,237 @@ bool LoadTemplate(const std::string& filepath) {
                 }
             }
 
-            g_Sections.push_back(sec);
+            // ==================== LOAD CONNECTOR DATA (columns 69+) ====================
+
+            // TEXT CONNECTOR: columns 69, 70, 71
+            if (!PQgetisnull(result, row_num, 69)) {
+                std::string json = PQgetvalue(result, row_num, 69);
+                if (!json.empty()) {
+                    JsonToTextBlocks(json, sec.text_blocks);
+                }
+            }
+            sec.text_content_width = PQgetisnull(result, row_num, 70) ? 700.0f : atof(PQgetvalue(result, row_num, 70));
+            sec.text_padding = PQgetisnull(result, row_num, 71) ? 30.0f : atof(PQgetvalue(result, row_num, 71));
+
+            // BAR CONNECTOR: column 72
+            if (!PQgetisnull(result, row_num, 72)) {
+                std::string json = PQgetvalue(result, row_num, 72);
+                if (!json.empty()) {
+                    JsonToBarItems(json, sec.bar_items);
+                }
+            }
+
+            // FOOTER CONNECTOR: columns 73-80
+            if (!PQgetisnull(result, row_num, 73)) {
+                std::string json = PQgetvalue(result, row_num, 73);
+                if (!json.empty()) {
+                    JsonToFooterColumns(json, sec.footer_columns);
+                }
+            }
+            sec.footer_heading_color = PQgetisnull(result, row_num, 74) ? ImVec4(1,1,1,1) : SQLToColor(PQgetvalue(result, row_num, 74));
+            sec.footer_subheading_color = PQgetisnull(result, row_num, 75) ? ImVec4(1,1,1,0.9f) : SQLToColor(PQgetvalue(result, row_num, 75));
+            sec.footer_heading_size = PQgetisnull(result, row_num, 76) ? 1.3f : atof(PQgetvalue(result, row_num, 76));
+            sec.footer_subheading_size = PQgetisnull(result, row_num, 77) ? 1.0f : atof(PQgetvalue(result, row_num, 77));
+            sec.footer_heading_boldness = PQgetisnull(result, row_num, 78) ? 1.5f : atof(PQgetvalue(result, row_num, 78));
+            sec.footer_subheading_boldness = PQgetisnull(result, row_num, 79) ? 0.0f : atof(PQgetvalue(result, row_num, 79));
+            sec.footer_column_width = PQgetisnull(result, row_num, 80) ? 280.0f : atof(PQgetvalue(result, row_num, 80));
+            sec.footer_item_spacing = PQgetisnull(result, row_num, 81) ? 8.0f : atof(PQgetvalue(result, row_num, 81));
+
+            // CARD CONNECTOR: columns 82-84
+            if (!PQgetisnull(result, row_num, 82)) {
+                std::string json = PQgetvalue(result, row_num, 82);
+                if (!json.empty()) {
+                    JsonToConnectorCards(json, sec.connector_cards);
+                    // Load textures for cards
+                    for (auto& card : sec.connector_cards) {
+                        if (!card.imagePath.empty()) {
+                            ImageTexture tex = LoadTexture(card.imagePath);
+                            card.textureID = tex.id;
+                        }
+                    }
+                }
+            }
+            sec.connector_cards_per_row = PQgetisnull(result, row_num, 83) ? 3 : atoi(PQgetvalue(result, row_num, 83));
+            sec.connector_card_spacing = PQgetisnull(result, row_num, 84) ? 20.0f : atof(PQgetvalue(result, row_num, 84));
+
+            // VERTICAL CONNECTOR: columns 85-93
+            if (!PQgetisnull(result, row_num, 85)) {
+                std::string json = PQgetvalue(result, row_num, 85);
+                if (!json.empty()) {
+                    JsonToVerticalBlocks(json, sec.vertical_blocks);
+                    // Load textures for image blocks
+                    for (auto& block : sec.vertical_blocks) {
+                        if (block.type == 2 && !block.imagePath.empty()) {
+                            ImageTexture tex = LoadTexture(block.imagePath);
+                            block.textureID = tex.id;
+                        }
+                    }
+                }
+            }
+            sec.vertical_heading_color = PQgetisnull(result, row_num, 86) ? ImVec4(0.1f,0.1f,0.1f,1) : SQLToColor(PQgetvalue(result, row_num, 86));
+            sec.vertical_desc_color = PQgetisnull(result, row_num, 87) ? ImVec4(0.3f,0.3f,0.3f,1) : SQLToColor(PQgetvalue(result, row_num, 87));
+            sec.vertical_heading_size = PQgetisnull(result, row_num, 88) ? 1.2f : atof(PQgetvalue(result, row_num, 88));
+            sec.vertical_desc_size = PQgetisnull(result, row_num, 89) ? 1.0f : atof(PQgetvalue(result, row_num, 89));
+            sec.vertical_heading_boldness = PQgetisnull(result, row_num, 90) ? 1.5f : atof(PQgetvalue(result, row_num, 90));
+            sec.vertical_desc_boldness = PQgetisnull(result, row_num, 91) ? 0.0f : atof(PQgetvalue(result, row_num, 91));
+            sec.vertical_content_width = PQgetisnull(result, row_num, 92) ? 500.0f : atof(PQgetvalue(result, row_num, 92));
+            sec.vertical_spacing = PQgetisnull(result, row_num, 93) ? 15.0f : atof(PQgetvalue(result, row_num, 93));
+
+            // NAVBAR CONNECTOR: columns 94-105
+            if (!PQgetisnull(result, row_num, 94)) {
+                std::string json = PQgetvalue(result, row_num, 94);
+                if (!json.empty()) {
+                    JsonToNavbarItems(json, sec.navbar_items);
+                }
+            }
+            sec.navbar_bg_color = PQgetisnull(result, row_num, 95) ? ImVec4(0.12f,0.12f,0.12f,1) : SQLToColor(PQgetvalue(result, row_num, 95));
+            sec.navbar_hover_color = PQgetisnull(result, row_num, 96) ? ImVec4(0.26f,0.26f,0.26f,1) : SQLToColor(PQgetvalue(result, row_num, 96));
+            sec.navbar_dropdown_color = PQgetisnull(result, row_num, 97) ? ImVec4(0.18f,0.18f,0.18f,1) : SQLToColor(PQgetvalue(result, row_num, 97));
+            sec.navbar_text_color = PQgetisnull(result, row_num, 98) ? ImVec4(1,1,1,1) : SQLToColor(PQgetvalue(result, row_num, 98));
+            sec.navbar_height = PQgetisnull(result, row_num, 99) ? 42.0f : atof(PQgetvalue(result, row_num, 99));
+            sec.navbar_padding_x = PQgetisnull(result, row_num, 100) ? 10.0f : atof(PQgetvalue(result, row_num, 100));
+            sec.navbar_padding_y = PQgetisnull(result, row_num, 101) ? 8.0f : atof(PQgetvalue(result, row_num, 101));
+            sec.navbar_spacing = PQgetisnull(result, row_num, 102) ? 18.0f : atof(PQgetvalue(result, row_num, 102));
+            sec.navbar_rounding = PQgetisnull(result, row_num, 103) ? 4.0f : atof(PQgetvalue(result, row_num, 103));
+            sec.navbar_font_scale = PQgetisnull(result, row_num, 104) ? 1.0f : atof(PQgetvalue(result, row_num, 104));
+            sec.navbar_rounded = PQgetisnull(result, row_num, 105) ? true : (PQgetvalue(result, row_num, 105)[0] == 't');
+
+            // POSITION/SIZE COLUMNS (columns 106-108)
+            sec.x_position = PQgetisnull(result, row_num, 106) ? 0.0f : atof(PQgetvalue(result, row_num, 106));
+            sec.width = PQgetisnull(result, row_num, 107) ? 800.0f : atof(PQgetvalue(result, row_num, 107));
+            sec.z_index = PQgetisnull(result, row_num, 108) ? 0 : atoi(PQgetvalue(result, row_num, 108));
+
+            // COPYRIGHT BAR CONNECTOR: columns 109-118
+            if (!PQgetisnull(result, row_num, 109)) {
+                strncpy(sec.copyright_text, PQgetvalue(result, row_num, 109), sizeof(sec.copyright_text)-1);
+            }
+            if (!PQgetisnull(result, row_num, 110)) {
+                strncpy(sec.copyright_subtext, PQgetvalue(result, row_num, 110), sizeof(sec.copyright_subtext)-1);
+            }
+            if (!PQgetisnull(result, row_num, 111)) {
+                std::string json = PQgetvalue(result, row_num, 111);
+                if (!json.empty()) {
+                    JsonToCopyrightLinks(json, sec.copyright_links);
+                }
+            }
+            sec.copyright_bg_color = PQgetisnull(result, row_num, 112) ? ImVec4(0.18f,0.18f,0.18f,1) : SQLToColor(PQgetvalue(result, row_num, 112));
+            sec.copyright_text_color = PQgetisnull(result, row_num, 113) ? ImVec4(0.7f,0.7f,0.7f,1) : SQLToColor(PQgetvalue(result, row_num, 113));
+            sec.copyright_link_color = PQgetisnull(result, row_num, 114) ? ImVec4(0.9f,0.9f,0.9f,1) : SQLToColor(PQgetvalue(result, row_num, 114));
+            sec.copyright_font_size = PQgetisnull(result, row_num, 115) ? 11.0f : atof(PQgetvalue(result, row_num, 115));
+            sec.copyright_subtext_size = PQgetisnull(result, row_num, 116) ? 10.0f : atof(PQgetvalue(result, row_num, 116));
+            sec.copyright_padding = PQgetisnull(result, row_num, 117) ? 15.0f : atof(PQgetvalue(result, row_num, 117));
+            sec.copyright_bg_opacity = PQgetisnull(result, row_num, 118) ? 1.0f : atof(PQgetvalue(result, row_num, 118));
+
+            // ARTICLE CARDS CONNECTOR: columns 119-121
+            if (!PQgetisnull(result, row_num, 119)) {
+                std::string json = PQgetvalue(result, row_num, 119);
+                if (!json.empty()) {
+                    JsonToArticleCards(json, sec.article_cards);
+                }
+            }
+            sec.article_cards_per_row = PQgetisnull(result, row_num, 120) ? 2 : atoi(PQgetvalue(result, row_num, 120));
+            sec.article_card_spacing = PQgetisnull(result, row_num, 121) ? 20.0f : atof(PQgetvalue(result, row_num, 121));
+
+            // CONTACT FORM CONNECTOR: columns 122-138
+            if (!PQgetisnull(result, row_num, 122)) {
+                std::string json = PQgetvalue(result, row_num, 122);
+                if (!json.empty()) {
+                    JsonToContactFormFields(json, sec.contact_form_fields);
+                }
+            }
+            if (!PQgetisnull(result, row_num, 123)) {
+                strncpy(sec.contact_form_title, PQgetvalue(result, row_num, 123), sizeof(sec.contact_form_title)-1);
+            }
+            if (!PQgetisnull(result, row_num, 124)) {
+                strncpy(sec.contact_form_submit_text, PQgetvalue(result, row_num, 124), sizeof(sec.contact_form_submit_text)-1);
+            }
+            sec.contact_form_title_color = PQgetisnull(result, row_num, 125) ? ImVec4(0.1f,0.1f,0.1f,1) : SQLToColor(PQgetvalue(result, row_num, 125));
+            sec.contact_form_input_bg = PQgetisnull(result, row_num, 126) ? ImVec4(0.95f,0.95f,0.95f,1) : SQLToColor(PQgetvalue(result, row_num, 126));
+            sec.contact_form_input_text = PQgetisnull(result, row_num, 127) ? ImVec4(0.4f,0.4f,0.4f,1) : SQLToColor(PQgetvalue(result, row_num, 127));
+            sec.contact_form_button_bg = PQgetisnull(result, row_num, 128) ? ImVec4(1,1,1,1) : SQLToColor(PQgetvalue(result, row_num, 128));
+            sec.contact_form_button_text = PQgetisnull(result, row_num, 129) ? ImVec4(0.2f,0.6f,0.9f,1) : SQLToColor(PQgetvalue(result, row_num, 129));
+            sec.contact_form_button_border = PQgetisnull(result, row_num, 130) ? ImVec4(0.2f,0.6f,0.9f,1) : SQLToColor(PQgetvalue(result, row_num, 130));
+            sec.contact_form_title_size = PQgetisnull(result, row_num, 131) ? 1.3f : atof(PQgetvalue(result, row_num, 131));
+            sec.contact_form_input_height = PQgetisnull(result, row_num, 132) ? 45.0f : atof(PQgetvalue(result, row_num, 132));
+            sec.contact_form_textarea_height = PQgetisnull(result, row_num, 133) ? 150.0f : atof(PQgetvalue(result, row_num, 133));
+            sec.contact_form_button_width = PQgetisnull(result, row_num, 134) ? 100.0f : atof(PQgetvalue(result, row_num, 134));
+            sec.contact_form_button_height = PQgetisnull(result, row_num, 135) ? 40.0f : atof(PQgetvalue(result, row_num, 135));
+            sec.contact_form_spacing = PQgetisnull(result, row_num, 136) ? 20.0f : atof(PQgetvalue(result, row_num, 136));
+            sec.contact_form_submit_action = PQgetisnull(result, row_num, 137) ? 0 : atoi(PQgetvalue(result, row_num, 137));
+            if (!PQgetisnull(result, row_num, 138)) {
+                strncpy(sec.contact_form_submit_target, PQgetvalue(result, row_num, 138), sizeof(sec.contact_form_submit_target)-1);
+            }
+
+            // SEARCH BAR CONNECTOR: columns 139-149
+            if (!PQgetisnull(result, row_num, 139)) {
+                strncpy(sec.search_placeholder, PQgetvalue(result, row_num, 139), sizeof(sec.search_placeholder)-1);
+            }
+            if (!PQgetisnull(result, row_num, 140)) {
+                strncpy(sec.search_button_text, PQgetvalue(result, row_num, 140), sizeof(sec.search_button_text)-1);
+            }
+            sec.search_input_bg = PQgetisnull(result, row_num, 141) ? ImVec4(1,1,1,1) : SQLToColor(PQgetvalue(result, row_num, 141));
+            sec.search_input_border = PQgetisnull(result, row_num, 142) ? ImVec4(0.8f,0.8f,0.8f,1) : SQLToColor(PQgetvalue(result, row_num, 142));
+            sec.search_input_text = PQgetisnull(result, row_num, 143) ? ImVec4(0.3f,0.3f,0.3f,1) : SQLToColor(PQgetvalue(result, row_num, 143));
+            sec.search_button_bg = PQgetisnull(result, row_num, 144) ? ImVec4(0.91f,0.4f,0.1f,1) : SQLToColor(PQgetvalue(result, row_num, 144));
+            sec.search_button_text_color = PQgetisnull(result, row_num, 145) ? ImVec4(1,1,1,1) : SQLToColor(PQgetvalue(result, row_num, 145));
+            sec.search_input_width = PQgetisnull(result, row_num, 146) ? 400.0f : atof(PQgetvalue(result, row_num, 146));
+            sec.search_input_height = PQgetisnull(result, row_num, 147) ? 42.0f : atof(PQgetvalue(result, row_num, 147));
+            sec.search_button_width = PQgetisnull(result, row_num, 148) ? 90.0f : atof(PQgetvalue(result, row_num, 148));
+            sec.search_border_radius = PQgetisnull(result, row_num, 149) ? 0.0f : atof(PQgetvalue(result, row_num, 149));
+
+            // MARGIN COLUMNS (columns 150-153)
+            sec.margin_top = PQgetisnull(result, row_num, 150) ? 10.0f : atof(PQgetvalue(result, row_num, 150));
+            sec.margin_right = PQgetisnull(result, row_num, 151) ? 10.0f : atof(PQgetvalue(result, row_num, 151));
+            sec.margin_bottom = PQgetisnull(result, row_num, 152) ? 10.0f : atof(PQgetvalue(result, row_num, 152));
+            sec.margin_left = PQgetisnull(result, row_num, 153) ? 10.0f : atof(PQgetvalue(result, row_num, 153));
+
+            // ICON COLUMNS (columns 154-157)
+            sec.icon_type = PQgetisnull(result, row_num, 154) ? ICON_STAR : atoi(PQgetvalue(result, row_num, 154));
+            sec.icon_size = PQgetisnull(result, row_num, 155) ? 48.0f : atof(PQgetvalue(result, row_num, 155));
+            sec.icon_color = PQgetisnull(result, row_num, 156) ? ImVec4(0.2f, 0.2f, 0.4f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 156));
+            sec.icon_stroke_width = PQgetisnull(result, row_num, 157) ? 2.0f : atof(PQgetvalue(result, row_num, 157));
+
+            // SERVICE CARD COLUMNS (columns 158-160)
+            if (!PQgetisnull(result, row_num, 158)) {
+                sec.service_cards = ServiceCardsFromJson(PQgetvalue(result, row_num, 158));
+            }
+            sec.service_cards_per_row = PQgetisnull(result, row_num, 159) ? 3 : atoi(PQgetvalue(result, row_num, 159));
+            sec.service_card_spacing = PQgetisnull(result, row_num, 160) ? 20.0f : atof(PQgetvalue(result, row_num, 160));
+
+            // GLASS BAR COLUMNS (columns 161-168)
+            if (!PQgetisnull(result, row_num, 161)) {
+                strncpy(sec.glass_bar_text, PQgetvalue(result, row_num, 161), sizeof(sec.glass_bar_text) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 162)) {
+                strncpy(sec.glass_bar_highlight, PQgetvalue(result, row_num, 162), sizeof(sec.glass_bar_highlight) - 1);
+            }
+            sec.glass_bar_text_color = PQgetisnull(result, row_num, 163) ? ImVec4(0.2f, 0.2f, 0.25f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 163));
+            sec.glass_bar_highlight_color = PQgetisnull(result, row_num, 164) ? ImVec4(0.3f, 0.5f, 0.9f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 164));
+            sec.glass_bar_bg_color = PQgetisnull(result, row_num, 165) ? ImVec4(0.95f, 0.95f, 0.98f, 0.9f) : SQLToColor(PQgetvalue(result, row_num, 165));
+            sec.glass_bar_opacity = PQgetisnull(result, row_num, 166) ? 0.9f : atof(PQgetvalue(result, row_num, 166));
+            sec.glass_bar_border_radius = PQgetisnull(result, row_num, 167) ? 30.0f : atof(PQgetvalue(result, row_num, 167));
+            sec.glass_bar_padding = PQgetisnull(result, row_num, 168) ? 20.0f : atof(PQgetvalue(result, row_num, 168));
+
+            // PAGE COLUMNS (columns 169-170)
+            int pageIdx = PQgetisnull(result, row_num, 169) ? 0 : atoi(PQgetvalue(result, row_num, 169));
+            std::string pageName = PQgetisnull(result, row_num, 170) ? "Home" : PQgetvalue(result, row_num, 170);
+
+            // Ensure g_NormalPages has enough pages
+            while ((int)g_NormalPages.size() <= pageIdx) {
+                g_NormalPages.push_back(NormalModePage("Page " + std::to_string(g_NormalPages.size() + 1)));
+            }
+            // Set the correct page name
+            g_NormalPages[pageIdx].name = pageName;
+            // Add section to the correct page
+            g_NormalPages[pageIdx].sections.push_back(sec);
         }
         PQclear(result);
+
+        // Set g_Sections to the first page's sections
+        if (!g_NormalPages.empty()) {
+            g_Sections = g_NormalPages[0].sections;
+            g_CurrentPageIndex = 0;
+        }
 
         // Select first section if any
         if (!g_Sections.empty()) {
@@ -3211,11 +8946,14 @@ bool LoadTemplate(const std::string& filepath) {
             g_Sections[0].selected = true;
         }
 
+        // Ensure we're in Normal mode (not Figma mode) for section-based templates
+        g_FigmaMode = false;
+
         printf("\n========================================\n");
         printf("[LoadTemplate] SUCCESS: Template '%s' loaded from database\n", template_name.c_str());
-        printf("[LoadTemplate] Loaded %zu sections:\n", g_Sections.size());
-        for (size_t i = 0; i < g_Sections.size(); i++) {
-            printf("  %zu. %s - '%s'\n", i+1, g_Sections[i].name.c_str(), g_Sections[i].title.c_str());
+        printf("[LoadTemplate] Loaded %zu pages:\n", g_NormalPages.size());
+        for (size_t p = 0; p < g_NormalPages.size(); p++) {
+            printf("  Page %zu: %s (%zu sections)\n", p+1, g_NormalPages[p].name.c_str(), g_NormalPages[p].sections.size());
         }
         printf("========================================\n\n");
         return true;
@@ -3425,6 +9163,8 @@ bool ImportFigmaLayers(const std::string& url);
 void RenderFigmaCanvas();
 void RenderFigmaLayersPanel();
 void RenderFigmaPropertiesPanel();
+bool SaveAsImGuiTemplate(const std::string& templateName);  // Forward declaration
+void ConvertLayersToSections();  // Forward declaration
 WebLayer* GetLayerById(int id);
 void SelectLayer(int id);
 void DeselectAllLayers();
@@ -3955,18 +9695,6 @@ bool ImportFromURL(const std::string& url, int timeout_seconds, bool use_stealth
 // ============================================================================
 // LOCAL DOWNLOAD IMPORT IMPLEMENTATION
 // ============================================================================
-
-// Helper: Extract domain from URL
-std::string ExtractDomain(const std::string& url) {
-    size_t start = url.find("://");
-    if (start == std::string::npos) start = 0;
-    else start += 3;
-
-    size_t end = url.find("/", start);
-    if (end == std::string::npos) end = url.length();
-
-    return url.substr(start, end - start);
-}
 
 // Helper: Parse RGB color string to ImVec4
 ImVec4 ParseCSSColor(const std::string& color) {
@@ -4722,6 +10450,693 @@ void DeselectAllLayers() {
     g_SelectedLayerId = -1;
 }
 
+// ============================================================================
+// UNDO/REDO SYSTEM
+// ============================================================================
+void SaveUndoState(const std::string& description) {
+    UndoState state;
+    state.layers = g_FigmaProject.layers;  // Deep copy
+    state.description = description;
+
+    g_UndoStack.push_back(state);
+    if ((int)g_UndoStack.size() > MAX_UNDO_LEVELS) {
+        g_UndoStack.erase(g_UndoStack.begin());
+    }
+
+    // Clear redo stack when new action is performed
+    g_RedoStack.clear();
+}
+
+void Undo() {
+    if (g_UndoStack.empty()) return;
+
+    // Save current state to redo stack
+    UndoState redoState;
+    redoState.layers = g_FigmaProject.layers;
+    redoState.description = "Redo";
+    g_RedoStack.push_back(redoState);
+
+    // Restore previous state
+    UndoState& undoState = g_UndoStack.back();
+    g_FigmaProject.layers = undoState.layers;
+    g_UndoStack.pop_back();
+
+    // Update next_layer_id to avoid conflicts
+    int maxId = 0;
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (layer.id > maxId) maxId = layer.id;
+    }
+    g_FigmaProject.next_layer_id = maxId + 1;
+
+    g_SelectedLayerId = -1;
+}
+
+void Redo() {
+    if (g_RedoStack.empty()) return;
+
+    // Save current state to undo stack
+    UndoState undoState;
+    undoState.layers = g_FigmaProject.layers;
+    undoState.description = "Undo";
+    g_UndoStack.push_back(undoState);
+
+    // Restore redo state
+    UndoState& redoState = g_RedoStack.back();
+    g_FigmaProject.layers = redoState.layers;
+    g_RedoStack.pop_back();
+
+    // Update next_layer_id
+    int maxId = 0;
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (layer.id > maxId) maxId = layer.id;
+    }
+    g_FigmaProject.next_layer_id = maxId + 1;
+
+    g_SelectedLayerId = -1;
+}
+
+// ============================================================================
+// CLIPBOARD - COPY/PASTE/DELETE
+// ============================================================================
+std::vector<WebLayer*> GetSelectedLayers() {
+    std::vector<WebLayer*> selected;
+    for (auto& layer : g_FigmaProject.layers) {
+        if (layer.selected) {
+            selected.push_back(&layer);
+        }
+    }
+    return selected;
+}
+
+void CopySelectedLayers() {
+    g_Clipboard.clear();
+    for (auto& layer : g_FigmaProject.layers) {
+        if (layer.selected) {
+            g_Clipboard.push_back(layer);
+        }
+    }
+}
+
+void PasteClipboard() {
+    if (g_Clipboard.empty()) return;
+
+    SaveUndoState("Paste");
+    DeselectAllLayers();
+
+    for (auto& layer : g_Clipboard) {
+        WebLayer newLayer = layer;
+        newLayer.id = g_FigmaProject.next_layer_id++;
+        newLayer.x += 20;  // Offset pasted elements
+        newLayer.y += 20;
+        newLayer.selected = true;
+        g_FigmaProject.layers.push_back(newLayer);
+        g_SelectedLayerId = newLayer.id;
+    }
+}
+
+void DeleteSelectedLayers() {
+    bool anyDeleted = false;
+    for (auto& layer : g_FigmaProject.layers) {
+        if (layer.selected) {
+            anyDeleted = true;
+            break;
+        }
+    }
+
+    if (!anyDeleted) return;
+
+    SaveUndoState("Delete");
+
+    g_FigmaProject.layers.erase(
+        std::remove_if(g_FigmaProject.layers.begin(), g_FigmaProject.layers.end(),
+            [](const WebLayer& l) { return l.selected; }),
+        g_FigmaProject.layers.end());
+
+    g_SelectedLayerId = -1;
+}
+
+// ============================================================================
+// ALIGNMENT TOOLS
+// ============================================================================
+void AlignSelectedLayers(AlignType align) {
+    auto selected = GetSelectedLayers();
+    if (selected.empty()) return;
+
+    // For single selection, align to canvas
+    // For multiple selection, align to selection bounds
+    float minX = FLT_MAX, minY = FLT_MAX;
+    float maxX = -FLT_MAX, maxY = -FLT_MAX;
+
+    if (selected.size() == 1) {
+        // Align to canvas
+        minX = 0; minY = 0;
+        maxX = g_FigmaProject.canvas_width;
+        maxY = g_FigmaProject.canvas_height;
+    } else {
+        // Calculate bounds of selection
+        for (auto* layer : selected) {
+            minX = std::min(minX, layer->x);
+            minY = std::min(minY, layer->y);
+            maxX = std::max(maxX, layer->x + layer->width);
+            maxY = std::max(maxY, layer->y + layer->height);
+        }
+    }
+
+    SaveUndoState("Align");
+
+    for (auto* layer : selected) {
+        switch (align) {
+            case ALIGN_LEFT:
+                layer->x = minX;
+                break;
+            case ALIGN_CENTER_H:
+                layer->x = minX + (maxX - minX - layer->width) / 2;
+                break;
+            case ALIGN_RIGHT:
+                layer->x = maxX - layer->width;
+                break;
+            case ALIGN_TOP:
+                layer->y = minY;
+                break;
+            case ALIGN_CENTER_V:
+                layer->y = minY + (maxY - minY - layer->height) / 2;
+                break;
+            case ALIGN_BOTTOM:
+                layer->y = maxY - layer->height;
+                break;
+        }
+    }
+}
+
+// ============================================================================
+// Z-ORDER CONTROLS
+// ============================================================================
+void BringToFront(int layerId) {
+    WebLayer* layer = GetLayerById(layerId);
+    if (!layer) return;
+
+    SaveUndoState("Bring to Front");
+
+    // Find max z_index
+    int maxZ = 0;
+    for (const auto& l : g_FigmaProject.layers) {
+        if (l.z_index > maxZ) maxZ = l.z_index;
+    }
+    layer->z_index = maxZ + 1;
+}
+
+void SendToBack(int layerId) {
+    WebLayer* layer = GetLayerById(layerId);
+    if (!layer) return;
+
+    SaveUndoState("Send to Back");
+
+    // Find min z_index
+    int minZ = 0;
+    for (const auto& l : g_FigmaProject.layers) {
+        if (l.z_index < minZ) minZ = l.z_index;
+    }
+    layer->z_index = minZ - 1;
+}
+
+void MoveLayerUp(int layerId) {
+    WebLayer* layer = GetLayerById(layerId);
+    if (!layer) return;
+
+    SaveUndoState("Move Up");
+    layer->z_index += 1;
+}
+
+void MoveLayerDown(int layerId) {
+    WebLayer* layer = GetLayerById(layerId);
+    if (!layer) return;
+
+    SaveUndoState("Move Down");
+    layer->z_index -= 1;
+}
+
+// ============================================================================
+// TOOL - CREATE ELEMENT FROM DRAWING
+// ============================================================================
+void CreateElementFromTool(ToolType tool, float x1, float y1, float x2, float y2) {
+    WebLayer layer;
+    layer.id = g_FigmaProject.next_layer_id++;
+    layer.x = std::min(x1, x2);
+    layer.y = std::min(y1, y2);
+    layer.width = std::max(50.0f, std::abs(x2 - x1));
+    layer.height = std::max(30.0f, std::abs(y2 - y1));
+    layer.visible = true;
+    layer.opacity = 1.0f;
+
+    switch (tool) {
+        case TOOL_RECTANGLE:
+            layer.type = LAYER_DIV;
+            layer.name = "Rectangle";
+            layer.bg_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+            layer.border_radius = 0;
+            break;
+
+        case TOOL_TEXT:
+            layer.type = LAYER_TEXT;
+            layer.name = "Text";
+            layer.text = "Text";
+            layer.font_size = 18;
+            layer.text_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            layer.bg_color = ImVec4(0, 0, 0, 0);  // Transparent
+            layer.width = std::max(100.0f, layer.width);
+            layer.height = std::max(30.0f, layer.height);
+            break;
+
+        case TOOL_BUTTON:
+            layer.type = LAYER_BUTTON;
+            layer.name = "Button";
+            layer.text = "Button";
+            layer.font_size = 16;
+            layer.bg_color = ImVec4(0.2f, 0.5f, 0.8f, 1.0f);
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.border_radius = 6;
+            layer.width = std::max(100.0f, layer.width);
+            layer.height = std::max(40.0f, layer.height);
+            break;
+
+        case TOOL_IMAGE:
+            layer.type = LAYER_IMAGE;
+            layer.name = "Image";
+            layer.bg_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            layer.width = std::max(100.0f, layer.width);
+            layer.height = std::max(100.0f, layer.height);
+            break;
+
+        case TOOL_LINE:
+            layer.type = LAYER_SHAPE;
+            layer.name = "Line";
+            layer.bg_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+            layer.height = 2;  // Thin line
+            layer.border_radius = 0;
+            break;
+
+        case TOOL_CIRCLE:
+            layer.type = LAYER_SHAPE;
+            layer.name = "Circle";
+            layer.bg_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+            // Make it a perfect circle if dragged roughly square
+            if (std::abs(layer.width - layer.height) < 50) {
+                float size = std::max(layer.width, layer.height);
+                layer.width = size;
+                layer.height = size;
+            }
+            layer.border_radius = 9999;  // Full round
+            break;
+
+        case TOOL_FRAME:
+            layer.type = LAYER_DIV;
+            layer.name = "Frame";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.border_width = 1;
+            layer.border_color = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+            layer.border_radius = 0;
+            break;
+
+        // ==================== TYPOGRAPHY TOOLS ====================
+        case TOOL_HEADING:
+            layer.type = LAYER_TEXT;
+            layer.name = "Heading";
+            layer.text = "Heading";
+            layer.font_size = 48;
+            layer.font_weight = 700;
+            layer.text_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            layer.bg_color = ImVec4(0, 0, 0, 0);
+            layer.width = std::max(300.0f, layer.width);
+            layer.height = std::max(60.0f, layer.height);
+            break;
+
+        case TOOL_SUBHEADING:
+            layer.type = LAYER_TEXT;
+            layer.name = "Subheading";
+            layer.text = "Subheading";
+            layer.font_size = 24;
+            layer.font_weight = 500;
+            layer.text_color = ImVec4(0.3f, 0.3f, 0.3f, 1.0f);
+            layer.bg_color = ImVec4(0, 0, 0, 0);
+            layer.width = std::max(250.0f, layer.width);
+            layer.height = std::max(36.0f, layer.height);
+            break;
+
+        case TOOL_PARAGRAPH:
+            layer.type = LAYER_TEXT;
+            layer.name = "Paragraph";
+            layer.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+            layer.font_size = 16;
+            layer.font_weight = 400;
+            layer.text_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+            layer.bg_color = ImVec4(0, 0, 0, 0);
+            layer.width = std::max(400.0f, layer.width);
+            layer.height = std::max(80.0f, layer.height);
+            break;
+
+        // ==================== BASIC ELEMENTS ====================
+        case TOOL_LOGO:
+            layer.type = LAYER_IMAGE;
+            layer.name = "Logo";
+            layer.text = "LOGO";  // Placeholder text
+            layer.bg_color = ImVec4(0.2f, 0.5f, 0.8f, 1.0f);
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.font_size = 24;
+            layer.font_weight = 700;
+            layer.width = std::max(120.0f, layer.width);
+            layer.height = std::max(50.0f, layer.height);
+            layer.border_radius = 4;
+            break;
+
+        case TOOL_INPUT:
+            layer.type = LAYER_INPUT;
+            layer.name = "Input";
+            layer.text = "Enter text...";
+            layer.font_size = 16;
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.text_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);  // Placeholder color
+            layer.border_width = 1;
+            layer.border_color = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+            layer.border_radius = 6;
+            layer.width = std::max(250.0f, layer.width);
+            layer.height = std::max(44.0f, layer.height);
+            break;
+
+        case TOOL_ICON:
+            layer.type = LAYER_ICON;
+            layer.name = "Icon";
+            layer.text = "★";  // Default star icon
+            layer.font_size = 32;
+            layer.text_color = ImVec4(0.3f, 0.5f, 0.8f, 1.0f);
+            layer.bg_color = ImVec4(0, 0, 0, 0);
+            layer.width = std::max(48.0f, layer.width);
+            layer.height = std::max(48.0f, layer.height);
+            break;
+
+        case TOOL_DIVIDER:
+            layer.type = LAYER_SHAPE;
+            layer.name = "Divider";
+            layer.bg_color = ImVec4(0.85f, 0.85f, 0.85f, 1.0f);
+            layer.width = std::max(g_FigmaProject.canvas_width * 0.8f, layer.width);
+            layer.height = 1;
+            break;
+
+        // ==================== WEBSITE SECTIONS ====================
+        case TOOL_SEC_HERO:
+            layer.type = LAYER_DIV;
+            layer.name = "Hero Section";
+            layer.bg_color = ImVec4(0.08f, 0.08f, 0.12f, 1.0f);  // Dark blue-black
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(600.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Hero Title|Subtitle text goes here|Get Started";  // Title|Subtitle|Button
+            layer.font_size = 56;
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            break;
+
+        case TOOL_SEC_NAVBAR:
+            layer.type = LAYER_DIV;
+            layer.name = "Navbar";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = 70;
+            layer.x = 0;
+            layer.y = 0;
+            layer.text = "LOGO|Home|About|Services|Contact";  // Brand + nav items
+            layer.border_width = 1;
+            layer.border_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+            break;
+
+        case TOOL_SEC_ABOUT:
+            layer.type = LAYER_DIV;
+            layer.name = "About Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "About Us|We are a team of professionals dedicated to excellence.";
+            layer.font_size = 42;
+            layer.text_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            break;
+
+        case TOOL_SEC_SERVICES:
+            layer.type = LAYER_DIV;
+            layer.name = "Services Section";
+            layer.bg_color = ImVec4(0.97f, 0.97f, 0.98f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Our Services|Web Design|App Development|SEO Optimization";
+            layer.font_size = 42;
+            layer.text_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            break;
+
+        case TOOL_SEC_CARDS:
+            layer.type = LAYER_DIV;
+            layer.name = "Cards Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(450.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Featured|Card 1|Card 2|Card 3";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_TEAM:
+            layer.type = LAYER_DIV;
+            layer.name = "Team Section";
+            layer.bg_color = ImVec4(0.97f, 0.97f, 0.98f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(550.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Meet Our Team|John Doe - CEO|Jane Smith - CTO|Mike Johnson - Designer";
+            layer.font_size = 42;
+            layer.text_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+            break;
+
+        case TOOL_SEC_PRICING:
+            layer.type = LAYER_DIV;
+            layer.name = "Pricing Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(600.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Pricing Plans|Basic $9/mo|Pro $29/mo|Enterprise $99/mo";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_TESTIMONIALS:
+            layer.type = LAYER_DIV;
+            layer.name = "Testimonials Section";
+            layer.bg_color = ImVec4(0.95f, 0.97f, 1.0f, 1.0f);  // Light blue tint
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(450.0f, layer.height);
+            layer.x = 0;
+            layer.text = "What Our Clients Say|\"Amazing service!\" - Client 1|\"Highly recommend!\" - Client 2";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_GALLERY:
+            layer.type = LAYER_DIV;
+            layer.name = "Gallery Section";
+            layer.bg_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);  // Dark
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Our Gallery|Image 1|Image 2|Image 3|Image 4";
+            layer.font_size = 42;
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            break;
+
+        case TOOL_SEC_BLOG:
+            layer.type = LAYER_DIV;
+            layer.name = "Blog Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Latest Blog Posts|Post Title 1|Post Title 2|Post Title 3";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_CONTACT:
+            layer.type = LAYER_DIV;
+            layer.name = "Contact Section";
+            layer.bg_color = ImVec4(0.97f, 0.97f, 0.98f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Contact Us|Email: info@example.com|Phone: +1 234 567 890|Address: 123 Main St";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_FOOTER:
+            layer.type = LAYER_DIV;
+            layer.name = "Footer Section";
+            layer.bg_color = ImVec4(0.12f, 0.12f, 0.15f, 1.0f);  // Dark
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(250.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Company Name|About|Services|Contact|© 2024 All Rights Reserved";
+            layer.font_size = 16;
+            layer.text_color = ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
+            break;
+
+        case TOOL_SEC_FAQ:
+            layer.type = LAYER_DIV;
+            layer.name = "FAQ Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Frequently Asked Questions|Q: How does it work?|A: Simple and easy!|Q: What's the price?|A: Check our pricing page.";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_CTA:
+            layer.type = LAYER_DIV;
+            layer.name = "CTA Section";
+            layer.bg_color = ImVec4(0.2f, 0.4f, 0.8f, 1.0f);  // Blue
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(300.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Ready to Get Started?|Join thousands of satisfied customers|Sign Up Now";
+            layer.font_size = 48;
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            break;
+
+        case TOOL_SEC_FEATURES:
+            layer.type = LAYER_DIV;
+            layer.name = "Features Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(500.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Why Choose Us|Feature 1 - Fast|Feature 2 - Reliable|Feature 3 - Secure";
+            layer.font_size = 42;
+            break;
+
+        case TOOL_SEC_STATS:
+            layer.type = LAYER_DIV;
+            layer.name = "Stats Section";
+            layer.bg_color = ImVec4(0.08f, 0.08f, 0.12f, 1.0f);  // Dark
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(250.0f, layer.height);
+            layer.x = 0;
+            layer.text = "1000+|Clients|500+|Projects|50+|Awards|24/7|Support";
+            layer.font_size = 48;
+            layer.text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            break;
+
+        case TOOL_SEC_LOGIN:
+            layer.type = LAYER_DIV;
+            layer.name = "Login Section";
+            layer.bg_color = ImVec4(0.97f, 0.97f, 0.98f, 1.0f);
+            layer.width = std::max(400.0f, layer.width);
+            layer.height = std::max(450.0f, layer.height);
+            layer.text = "Sign In|Email|Password|Login|Forgot Password?";
+            layer.font_size = 32;
+            layer.border_radius = 12;
+            break;
+
+        case TOOL_SEC_IMAGE:
+            layer.type = LAYER_IMAGE;
+            layer.name = "Image Section";
+            layer.bg_color = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(400.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Full Width Image";
+            break;
+
+        case TOOL_SEC_TEXTBOX:
+            layer.type = LAYER_DIV;
+            layer.name = "Text Box Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(300.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Your content goes here. This is a text box section where you can add any content you want.";
+            layer.font_size = 18;
+            layer.text_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+            break;
+
+        case TOOL_SEC_CUSTOM:
+            layer.type = LAYER_DIV;
+            layer.name = "Custom Section";
+            layer.bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+            layer.width = g_FigmaProject.canvas_width;
+            layer.height = std::max(400.0f, layer.height);
+            layer.x = 0;
+            layer.text = "Custom Section";
+            layer.font_size = 42;
+            break;
+
+        default:
+            return;  // TOOL_SELECT shouldn't create anything
+    }
+
+    // Set z_index to be on top of all existing layers (Figma-like stacking)
+    int maxZ = 0;
+    for (const auto& l : g_FigmaProject.layers) {
+        if (l.z_index > maxZ) maxZ = l.z_index;
+    }
+    layer.z_index = maxZ + 1;
+
+    SaveUndoState("Create " + layer.name);
+    g_FigmaProject.layers.push_back(layer);
+    SelectLayer(layer.id);
+
+    // Return to select tool after creating
+    g_CurrentTool = TOOL_SELECT;
+}
+
+// Get tool name for display
+const char* GetToolName(ToolType tool) {
+    switch (tool) {
+        // Basic Tools
+        case TOOL_SELECT: return "Select (V)";
+        case TOOL_RECTANGLE: return "Rectangle (R)";
+        case TOOL_TEXT: return "Text (T)";
+        case TOOL_IMAGE: return "Image (I)";
+        case TOOL_BUTTON: return "Button (B)";
+        case TOOL_LINE: return "Line (L)";
+        case TOOL_CIRCLE: return "Circle (O)";
+        case TOOL_FRAME: return "Frame (F)";
+        // Typography
+        case TOOL_HEADING: return "Heading (H)";
+        case TOOL_SUBHEADING: return "Subheading";
+        case TOOL_PARAGRAPH: return "Paragraph (P)";
+        // Elements
+        case TOOL_LOGO: return "Logo";
+        case TOOL_INPUT: return "Input (U)";
+        case TOOL_ICON: return "Icon";
+        case TOOL_DIVIDER: return "Divider";
+        // Website Sections
+        case TOOL_SEC_HERO: return "Hero Section";
+        case TOOL_SEC_NAVBAR: return "Navbar";
+        case TOOL_SEC_ABOUT: return "About Section";
+        case TOOL_SEC_SERVICES: return "Services Section";
+        case TOOL_SEC_CARDS: return "Cards Section";
+        case TOOL_SEC_TEAM: return "Team Section";
+        case TOOL_SEC_PRICING: return "Pricing Section";
+        case TOOL_SEC_TESTIMONIALS: return "Testimonials";
+        case TOOL_SEC_GALLERY: return "Gallery Section";
+        case TOOL_SEC_BLOG: return "Blog Section";
+        case TOOL_SEC_CONTACT: return "Contact Section";
+        case TOOL_SEC_FOOTER: return "Footer Section";
+        case TOOL_SEC_FAQ: return "FAQ Section";
+        case TOOL_SEC_CTA: return "CTA Section";
+        case TOOL_SEC_FEATURES: return "Features Section";
+        case TOOL_SEC_STATS: return "Stats Section";
+        case TOOL_SEC_LOGIN: return "Login Section";
+        case TOOL_SEC_IMAGE: return "Image Section";
+        case TOOL_SEC_TEXTBOX: return "TextBox Section";
+        case TOOL_SEC_CUSTOM: return "Custom Section";
+        default: return "Unknown";
+    }
+}
+
 bool ImportFigmaLayers(const std::string& url) {
     printf("[FigmaImport] Starting Figma-style import from: %s\n", url.c_str());
     g_FigmaImportInProgress = true;
@@ -4790,6 +11205,15 @@ bool ImportFigmaLayers(const std::string& url) {
     }
     if (heightPos != std::string::npos) {
         g_FigmaProject.canvas_height = std::stof(jsonContent.substr(heightPos + 16, 10));
+    }
+
+    // Parse source_url for internal navigation
+    size_t srcUrlPos = jsonContent.find("\"source_url\":");
+    if (srcUrlPos != std::string::npos) {
+        size_t start = jsonContent.find("\"", srcUrlPos + 13) + 1;
+        size_t end = jsonContent.find("\"", start);
+        g_FigmaProject.source_url = jsonContent.substr(start, end - start);
+        printf("[FigmaImport] Source URL: %s\n", g_FigmaProject.source_url.c_str());
     }
 
     // Parse screenshot path
@@ -4939,14 +11363,63 @@ bool ImportFigmaLayers(const std::string& url) {
         layer.border_radius_br = parseFloat("\"border_radius_br\":");
         layer.border_radius_bl = parseFloat("\"border_radius_bl\":");
 
+        // Individual border widths
+        layer.border_top_width = parseFloat("\"border_top_width\":");
+        layer.border_right_width = parseFloat("\"border_right_width\":");
+        layer.border_bottom_width = parseFloat("\"border_bottom_width\":");
+        layer.border_left_width = parseFloat("\"border_left_width\":");
+
+        // Typography enhancements
+        layer.text_transform = parseString("\"text_transform\":");
+        if (layer.text_transform.empty()) layer.text_transform = "none";
+        layer.text_shadow = parseString("\"text_shadow\":");
+        layer.word_spacing = parseString("\"word_spacing\":");
+
+        // Effects
+        layer.backdrop_filter = parseString("\"backdrop_filter\":");
+        layer.filter = parseString("\"filter\":");
+        layer.mix_blend_mode = parseString("\"mix_blend_mode\":");
+        if (layer.mix_blend_mode.empty()) layer.mix_blend_mode = "normal";
+
+        // Gradient
+        layer.gradient_css = parseString("\"gradient\":");
+        layer.has_gradient = !layer.gradient_css.empty();
+
+        // Transform
+        layer.transform = parseString("\"transform\":");
+        layer.transform_origin = parseString("\"transform_origin\":");
+
+        // Background
+        layer.background_size = parseString("\"background_size\":");
+        layer.background_position = parseString("\"background_position\":");
+        layer.background_repeat = parseString("\"background_repeat\":");
+
+        // Layout
+        layer.overflow = parseString("\"overflow\":");
+        layer.cursor = parseString("\"cursor\":");
+        layer.flex_direction = parseString("\"flex_direction\":");
+        layer.justify_content = parseString("\"justify_content\":");
+        layer.align_items = parseString("\"align_items\":");
+        layer.gap = parseString("\"gap\":");
+
         // Parse colors
         std::string bgColor = parseString("\"bg_color\":");
         std::string textColor = parseString("\"text_color\":");
         layer.bg_color = ParseColorString(bgColor);
         layer.text_color = ParseColorString(textColor);
 
-        // Load image texture if needed
-        if (!layer.image_path.empty() && layer.type == LAYER_IMAGE) {
+        // Parse individual border colors
+        std::string borderTopColor = parseString("\"border_top_color\":");
+        std::string borderRightColor = parseString("\"border_right_color\":");
+        std::string borderBottomColor = parseString("\"border_bottom_color\":");
+        std::string borderLeftColor = parseString("\"border_left_color\":");
+        layer.border_top_color = ParseColorString(borderTopColor);
+        layer.border_right_color = ParseColorString(borderRightColor);
+        layer.border_bottom_color = ParseColorString(borderBottomColor);
+        layer.border_left_color = ParseColorString(borderLeftColor);
+
+        // Load image texture if needed (for images, buttons with bg, divs with bg)
+        if (!layer.image_path.empty()) {
             int w, h, n;
             unsigned char* data = stbi_load(layer.image_path.c_str(), &w, &h, &n, 4);
             if (data) {
@@ -4956,6 +11429,9 @@ bool ImportFigmaLayers(const std::string& url) {
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                 stbi_image_free(data);
+                printf("[FigmaImport] Loaded texture: %s (%dx%d)\n", layer.image_path.c_str(), w, h);
+            } else {
+                printf("[FigmaImport] Failed to load: %s\n", layer.image_path.c_str());
             }
         }
 
@@ -4970,9 +11446,310 @@ bool ImportFigmaLayers(const std::string& url) {
 
     printf("[FigmaImport] Parsed %d layers\n", layerCount);
 
+    // Parse multi-page data (if available)
+    size_t pagesPos = jsonContent.find("\"pages\":");
+    if (pagesPos != std::string::npos) {
+        printf("[FigmaImport] Found multi-page data, parsing pages...\n");
+
+        // Store home page layers in pages map
+        std::string homePath = "/";
+        g_FigmaProject.pages[homePath] = WebPage();
+        g_FigmaProject.pages[homePath].url = g_FigmaProject.source_url;
+        g_FigmaProject.pages[homePath].layers = g_FigmaProject.layers;
+        g_FigmaProject.pages[homePath].canvas_height = g_FigmaProject.canvas_height;
+        g_FigmaProject.pages[homePath].screenshot_path = g_FigmaProject.screenshot_path;
+        g_FigmaProject.pages[homePath].screenshot_texture_id = g_FigmaProject.screenshot_texture_id;
+        g_FigmaProject.page_order.push_back(homePath);
+        g_FigmaProject.current_page = homePath;
+
+        // Find page paths by looking for pattern: "/<path>": { or "/": {
+        size_t pageSearchPos = pagesPos;
+        while (true) {
+            // Look for page path pattern (starts with "/" in quotes followed by colon and brace)
+            size_t pathQuoteStart = jsonContent.find("\"/", pageSearchPos);
+            if (pathQuoteStart == std::string::npos || pathQuoteStart > jsonContent.find("]", pagesPos)) break;
+
+            size_t pathQuoteEnd = jsonContent.find("\":", pathQuoteStart + 1);
+            if (pathQuoteEnd == std::string::npos) break;
+
+            std::string pagePath = jsonContent.substr(pathQuoteStart + 1, pathQuoteEnd - pathQuoteStart - 1);
+            if (pagePath.empty() || pagePath[0] != '/') {
+                pageSearchPos = pathQuoteEnd + 1;
+                continue;
+            }
+
+            // Skip home page (already added)
+            if (pagePath == "/") {
+                pageSearchPos = pathQuoteEnd + 1;
+                continue;
+            }
+
+            // Find the page object boundaries
+            size_t pageObjStart = jsonContent.find("{", pathQuoteEnd);
+            if (pageObjStart == std::string::npos) break;
+
+            // Look for "layers": within this page object
+            size_t pageLayersPos = jsonContent.find("\"layers\":", pageObjStart);
+            if (pageLayersPos == std::string::npos) {
+                pageSearchPos = pageObjStart + 1;
+                continue;
+            }
+
+            // Parse this page's URL
+            std::string pageUrl = "";
+            size_t urlPos = jsonContent.find("\"url\":", pageObjStart);
+            if (urlPos != std::string::npos && urlPos < pageLayersPos) {
+                size_t urlStart = jsonContent.find("\"", urlPos + 6) + 1;
+                size_t urlEnd = jsonContent.find("\"", urlStart);
+                pageUrl = jsonContent.substr(urlStart, urlEnd - urlStart);
+            }
+
+            // Parse canvas_height for this page
+            float pageHeight = g_FigmaProject.canvas_height;
+            size_t chPos = jsonContent.find("\"canvas_height\":", pageObjStart);
+            if (chPos != std::string::npos && chPos < pageLayersPos) {
+                pageHeight = std::stof(jsonContent.substr(chPos + 16, 10));
+            }
+
+            // Parse screenshot_path for this page
+            std::string pageScreenshot = "";
+            size_t pssPos = jsonContent.find("\"screenshot_path\":", pageObjStart);
+            if (pssPos != std::string::npos && pssPos < pageLayersPos) {
+                size_t ssStart = jsonContent.find("\"", pssPos + 18) + 1;
+                size_t ssEnd = jsonContent.find("\"", ssStart);
+                pageScreenshot = jsonContent.substr(ssStart, ssEnd - ssStart);
+            }
+
+            // Create page entry
+            WebPage newPage;
+            newPage.url = pageUrl;
+            newPage.canvas_height = pageHeight;
+            newPage.screenshot_path = pageScreenshot;
+
+            // Load screenshot texture for this page
+            if (!pageScreenshot.empty()) {
+                int w, h, n;
+                unsigned char* data = stbi_load(pageScreenshot.c_str(), &w, &h, &n, 4);
+                if (data) {
+                    glGenTextures(1, &newPage.screenshot_texture_id);
+                    glBindTexture(GL_TEXTURE_2D, newPage.screenshot_texture_id);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                    stbi_image_free(data);
+                }
+            }
+
+            // Parse layers for this page (using similar logic as main layers)
+            size_t pageLayerPos = pageLayersPos;
+            while (true) {
+                size_t idPos = jsonContent.find("\"id\":", pageLayerPos);
+                // Check if we've gone past this page's layers array
+                size_t nextPageStart = jsonContent.find("\"/", pageLayersPos + 10);
+                if (idPos == std::string::npos || (nextPageStart != std::string::npos && idPos > nextPageStart)) break;
+
+                // Check if this id is inside another "layers" array (next page)
+                size_t nextLayersArray = jsonContent.find("\"layers\":", pageLayerPos + 10);
+                if (nextLayersArray != std::string::npos && idPos > nextLayersArray) break;
+
+                WebLayer layer;
+                size_t idStart = idPos + 5;
+                while (idStart < jsonContent.size() && (jsonContent[idStart] == ' ' || jsonContent[idStart] == '\t')) idStart++;
+
+                try {
+                    layer.id = std::stoi(jsonContent.substr(idStart, 10));
+                } catch (...) {
+                    pageLayerPos = idPos + 5;
+                    continue;
+                }
+
+                // Parse type
+                size_t typePos = jsonContent.find("\"type\":", idPos);
+                if (typePos != std::string::npos && typePos < idPos + 2000) {
+                    size_t typeStart = jsonContent.find("\"", typePos + 7) + 1;
+                    size_t typeEnd = jsonContent.find("\"", typeStart);
+                    std::string typeStr = jsonContent.substr(typeStart, typeEnd - typeStart);
+                    if (typeStr == "LAYER_TEXT") layer.type = LAYER_TEXT;
+                    else if (typeStr == "LAYER_IMAGE") layer.type = LAYER_IMAGE;
+                    else if (typeStr == "LAYER_BUTTON") layer.type = LAYER_BUTTON;
+                    else if (typeStr == "LAYER_INPUT") layer.type = LAYER_INPUT;
+                    else layer.type = LAYER_DIV;
+                }
+
+                // Parse basic properties
+                auto parseFloatPage = [&](const char* key) -> float {
+                    size_t keyPos = jsonContent.find(key, idPos);
+                    if (keyPos != std::string::npos && keyPos < idPos + 2000) {
+                        size_t valStart = keyPos + strlen(key);
+                        try {
+                            std::string valStr = jsonContent.substr(valStart, 20);
+                            size_t numStart = valStr.find_first_of("-0123456789.");
+                            if (numStart != std::string::npos) {
+                                return std::stof(valStr.substr(numStart));
+                            }
+                        } catch (...) {}
+                    }
+                    return 0;
+                };
+
+                auto parseStringPage = [&](const char* key) -> std::string {
+                    size_t keyPos = jsonContent.find(key, idPos);
+                    if (keyPos != std::string::npos && keyPos < idPos + 3000) {
+                        size_t start = jsonContent.find("\"", keyPos + strlen(key)) + 1;
+                        size_t end = jsonContent.find("\"", start);
+                        if (end > start && end - start < 1000) {
+                            return jsonContent.substr(start, end - start);
+                        }
+                    }
+                    return "";
+                };
+
+                layer.x = parseFloatPage("\"x\":");
+                layer.y = parseFloatPage("\"y\":");
+                layer.width = parseFloatPage("\"width\":");
+                layer.height = parseFloatPage("\"height\":");
+                layer.name = parseStringPage("\"name\":");
+                layer.text = parseStringPage("\"text\":");
+                layer.href = parseStringPage("\"href\":");
+                layer.element_id = parseStringPage("\"element_id\":");
+                layer.action_type = parseStringPage("\"action_type\":");
+
+                std::string bgColor = parseStringPage("\"bg_color\":");
+                std::string textColor = parseStringPage("\"text_color\":");
+                layer.bg_color = ParseColorString(bgColor);
+                layer.text_color = ParseColorString(textColor);
+                layer.font_size = parseFloatPage("\"font_size\":");
+                layer.border_radius = parseFloatPage("\"border_radius\":");
+                layer.opacity = parseFloatPage("\"opacity\":");
+
+                newPage.layers.push_back(layer);
+                pageLayerPos = idPos + 10;
+
+                if (newPage.layers.size() > 500) break;
+            }
+
+            g_FigmaProject.pages[pagePath] = newPage;
+            g_FigmaProject.page_order.push_back(pagePath);
+            printf("[FigmaImport] Loaded page: %s (%zu layers)\n", pagePath.c_str(), newPage.layers.size());
+
+            pageSearchPos = pageLayersPos + 10;
+        }
+
+        printf("[FigmaImport] Total pages loaded: %zu\n", g_FigmaProject.pages.size());
+    }
+
+    // Parse sections array (if available)
+    g_FigmaProject.sections.clear();
+    size_t sectionsPos = jsonContent.find("\"sections\":");
+    if (sectionsPos != std::string::npos) {
+        printf("[FigmaImport] Found sections data, parsing...\n");
+
+        size_t sectionsStart = jsonContent.find("[", sectionsPos);
+        size_t sectionsEnd = jsonContent.find("]", sectionsStart);
+
+        if (sectionsStart != std::string::npos && sectionsEnd != std::string::npos) {
+            std::string sectionsContent = jsonContent.substr(sectionsStart, sectionsEnd - sectionsStart + 1);
+
+            // Parse each section object
+            size_t secPos = 0;
+            while (true) {
+                size_t secIdPos = sectionsContent.find("\"id\":", secPos);
+                if (secIdPos == std::string::npos) break;
+
+                FigmaSection section;
+
+                // Parse section id
+                size_t idStart = secIdPos + 5;
+                while (idStart < sectionsContent.size() && (sectionsContent[idStart] == ' ' || sectionsContent[idStart] == '\t')) idStart++;
+                section.id = std::stoi(sectionsContent.substr(idStart, 10));
+
+                // Parse section name
+                size_t namePos = sectionsContent.find("\"name\":", secIdPos);
+                if (namePos != std::string::npos && namePos < secIdPos + 500) {
+                    size_t nameStart = sectionsContent.find("\"", namePos + 7) + 1;
+                    size_t nameEnd = sectionsContent.find("\"", nameStart);
+                    section.name = sectionsContent.substr(nameStart, nameEnd - nameStart);
+                }
+
+                // Parse y_start and y_end
+                size_t yStartPos = sectionsContent.find("\"y_start\":", secIdPos);
+                if (yStartPos != std::string::npos && yStartPos < secIdPos + 500) {
+                    size_t valStart = yStartPos + 10;
+                    while (valStart < sectionsContent.size() && (sectionsContent[valStart] == ' ' || sectionsContent[valStart] == '\t')) valStart++;
+                    section.y_start = std::stof(sectionsContent.substr(valStart, 15));
+                }
+
+                size_t yEndPos = sectionsContent.find("\"y_end\":", secIdPos);
+                if (yEndPos != std::string::npos && yEndPos < secIdPos + 500) {
+                    size_t valStart = yEndPos + 8;
+                    while (valStart < sectionsContent.size() && (sectionsContent[valStart] == ' ' || sectionsContent[valStart] == '\t')) valStart++;
+                    section.y_end = std::stof(sectionsContent.substr(valStart, 15));
+                }
+
+                // Parse layer_ids array
+                size_t layerIdsPos = sectionsContent.find("\"layer_ids\":", secIdPos);
+                if (layerIdsPos != std::string::npos && layerIdsPos < secIdPos + 1000) {
+                    size_t arrStart = sectionsContent.find("[", layerIdsPos);
+                    size_t arrEnd = sectionsContent.find("]", arrStart);
+                    if (arrStart != std::string::npos && arrEnd != std::string::npos) {
+                        std::string idsStr = sectionsContent.substr(arrStart + 1, arrEnd - arrStart - 1);
+                        // Parse comma-separated integers
+                        size_t idPos = 0;
+                        while (idPos < idsStr.size()) {
+                            // Skip whitespace and commas
+                            while (idPos < idsStr.size() && (idsStr[idPos] == ' ' || idsStr[idPos] == ',' || idsStr[idPos] == '\n' || idsStr[idPos] == '\t')) idPos++;
+                            if (idPos >= idsStr.size()) break;
+
+                            // Read integer
+                            size_t idEnd = idPos;
+                            while (idEnd < idsStr.size() && isdigit(idsStr[idEnd])) idEnd++;
+                            if (idEnd > idPos) {
+                                int layerId = std::stoi(idsStr.substr(idPos, idEnd - idPos));
+                                section.layer_ids.push_back(layerId);
+                            }
+                            idPos = idEnd;
+                        }
+                    }
+                }
+
+                section.expanded = true;
+                g_FigmaProject.sections.push_back(section);
+                printf("[FigmaImport] Section: %s (%zu layers, y: %.0f-%.0f)\n",
+                       section.name.c_str(), section.layer_ids.size(), section.y_start, section.y_end);
+
+                secPos = secIdPos + 10;
+            }
+        }
+        printf("[FigmaImport] Total sections loaded: %zu\n", g_FigmaProject.sections.size());
+    }
+
     g_FigmaMode = true;
     g_FigmaImportInProgress = false;
     g_FigmaImportStatus = "Success! Imported " + std::to_string(layerCount) + " layers";
+    if (!g_FigmaProject.sections.empty()) {
+        g_FigmaImportStatus += " (" + std::to_string(g_FigmaProject.sections.size()) + " sections)";
+    }
+
+    // Ensure imported buttons point to internal anchors
+    RewriteFigmaActionsToInternal();
+
+    // Auto-save to database
+    if (g_DBConnection && !g_FigmaProject.layers.empty()) {
+        // Generate template name from source URL
+        std::string templateName = g_FigmaProject.name;
+        if (templateName.empty()) {
+            templateName = "Imported_" + std::to_string(time(nullptr));
+        }
+        // Remove invalid characters
+        for (char& c : templateName) {
+            if (c == '.' || c == '/' || c == ':' || c == '?') c = '_';
+        }
+
+        if (SaveAsImGuiTemplate(templateName)) {
+            printf("[FigmaImport] Auto-saved to database as: %s\n", templateName.c_str());
+            g_FigmaImportStatus += " (Saved to DB)";
+        }
+    }
 
     return true;
 }
@@ -5114,6 +11891,51 @@ bool LoadFigmaProject(const std::string& filepath) {
             layer.opacity = atof(content.c_str() + opPos + 10);
         }
 
+        // Parse colors using the global ParseColorString function
+        // Set defaults first (visible colors for old projects without color data)
+        layer.bg_color = ImVec4(0.95f, 0.95f, 0.95f, 1.0f);  // Light gray default
+        layer.text_color = ImVec4(0, 0, 0, 1);  // Black text
+        layer.border_color = ImVec4(0, 0, 0, 1);  // Black border
+
+        size_t bgColorPos = content.find("\"bg_color\":", pos);
+        if (bgColorPos != std::string::npos && bgColorPos < pos + 500) {
+            size_t start = content.find("\"", bgColorPos + 11) + 1;
+            size_t end = content.find("\"", start);
+            std::string colorStr = content.substr(start, end - start);
+            ImVec4 parsed = ParseColorString(colorStr);
+            // Only use parsed color if it has valid alpha
+            if (parsed.w > 0.01f || colorStr.find("rgba") != std::string::npos) {
+                layer.bg_color = parsed;
+            }
+        }
+
+        size_t textColorPos = content.find("\"text_color\":", pos);
+        if (textColorPos != std::string::npos && textColorPos < pos + 500) {
+            size_t start = content.find("\"", textColorPos + 13) + 1;
+            size_t end = content.find("\"", start);
+            std::string colorStr = content.substr(start, end - start);
+            layer.text_color = ParseColorString(colorStr);
+        }
+
+        size_t borderColorPos = content.find("\"border_color\":", pos);
+        if (borderColorPos != std::string::npos && borderColorPos < pos + 500) {
+            size_t start = content.find("\"", borderColorPos + 15) + 1;
+            size_t end = content.find("\"", start);
+            std::string colorStr = content.substr(start, end - start);
+            layer.border_color = ParseColorString(colorStr);
+        }
+
+        // Parse border_width and border_radius
+        size_t bwPos = content.find("\"border_width\":", pos);
+        if (bwPos != std::string::npos && bwPos < pos + 500) {
+            layer.border_width = atof(content.c_str() + bwPos + 15);
+        }
+
+        size_t brPos = content.find("\"border_radius\":", pos);
+        if (brPos != std::string::npos && brPos < pos + 500) {
+            layer.border_radius = atof(content.c_str() + brPos + 16);
+        }
+
         // Parse image_path (if present)
         size_t imgPos = content.find("\"image_path\":", pos);
         if (imgPos != std::string::npos && imgPos < pos + 500) {
@@ -5134,6 +11956,14 @@ bool LoadFigmaProject(const std::string& filepath) {
                     stbi_image_free(data);
                 }
             }
+        }
+
+        // Debug: print parsed colors for first 5 layers
+        if (layerCount < 5) {
+            printf("[Figma] Layer %d '%s': bg_color=(%.2f,%.2f,%.2f,%.2f) text_color=(%.2f,%.2f,%.2f,%.2f)\n",
+                layer.id, layer.name.c_str(),
+                layer.bg_color.x, layer.bg_color.y, layer.bg_color.z, layer.bg_color.w,
+                layer.text_color.x, layer.text_color.y, layer.text_color.z, layer.text_color.w);
         }
 
         g_FigmaProject.layers.push_back(layer);
@@ -5206,6 +12036,23 @@ void RenderFigmaCanvas() {
             ImVec2(0, 0), ImVec2(1, 1), tintCol);
     }
 
+    // Draw the design page background (the white page area)
+    if (!g_FigmaProject.show_reference || g_FigmaProject.reference_opacity < 0.9f) {
+        float pageW = g_FigmaProject.canvas_width * zoom;
+        float pageH = g_FigmaProject.canvas_height * zoom;
+        ImVec2 pagePos(canvasPos.x - scrollX, canvasPos.y - scrollY);
+
+        // Draw page background with user-selected color
+        drawList->AddRectFilled(
+            pagePos,
+            ImVec2(pagePos.x + pageW, pagePos.y + pageH),
+            ImGui::ColorConvertFloat4ToU32(g_FigmaProject.canvas_bg_color));
+
+        // Draw page border/shadow
+        drawList->AddRect(pagePos, ImVec2(pagePos.x + pageW, pagePos.y + pageH),
+            IM_COL32(0, 0, 0, 50), 0, 0, 2.0f);
+    }
+
     // Draw grid if enabled
     if (g_FigmaProject.show_grid) {
         float gridSize = g_FigmaProject.grid_size * zoom;
@@ -5229,7 +12076,22 @@ void RenderFigmaCanvas() {
     // When reference is visible, layers will appear on top of the reference
     bool useOverlayMode = false;  // Always show layer content for editing
 
+    // Sort layers for correct rendering: lower z_index first (background), then by layer ID
+    // This ensures parent containers (like body) render behind child elements
+    std::vector<WebLayer*> sortedLayers;
     for (auto& layer : g_FigmaProject.layers) {
+        sortedLayers.push_back(&layer);
+    }
+    std::sort(sortedLayers.begin(), sortedLayers.end(), [](WebLayer* a, WebLayer* b) {
+        if (a->z_index != b->z_index) return a->z_index < b->z_index;
+        // Same z_index: larger layers (containers) render first, smaller layers on top
+        float areaA = a->width * a->height;
+        float areaB = b->width * b->height;
+        return areaA > areaB;  // Larger area first (background)
+    });
+
+    for (auto* layerPtr : sortedLayers) {
+        WebLayer& layer = *layerPtr;
         if (!layer.visible) continue;
 
         // Calculate screen position
@@ -5248,27 +12110,94 @@ void RenderFigmaCanvas() {
         // In overlay mode (reference visible), don't draw layer fills - let screenshot show through
         // Only draw content when reference is hidden or very transparent
         if (!useOverlayMode) {
+            // Calculate effective border radius (use individual corners if available)
+            float radiusTL = (layer.border_radius_tl > 0 ? layer.border_radius_tl : layer.border_radius) * zoom;
+            float radiusTR = (layer.border_radius_tr > 0 ? layer.border_radius_tr : layer.border_radius) * zoom;
+            float radiusBR = (layer.border_radius_br > 0 ? layer.border_radius_br : layer.border_radius) * zoom;
+            float radiusBL = (layer.border_radius_bl > 0 ? layer.border_radius_bl : layer.border_radius) * zoom;
+            float avgRadius = (radiusTL + radiusTR + radiusBR + radiusBL) / 4.0f;
+
+            // Box Shadow - draw before background
+            if (!layer.box_shadow.empty() && layer.box_shadow != "none") {
+                // Parse simple box shadow (approximate rendering)
+                // Format: "Xpx Ypx Rpx COLOR" e.g. "0px 4px 8px rgba(0,0,0,0.2)"
+                float shadowOffsetX = 0, shadowOffsetY = 4, shadowBlur = 8;
+                ImU32 shadowColor = IM_COL32(0, 0, 0, 50);
+
+                // Simple parsing - extract numbers
+                std::string shadow = layer.box_shadow;
+                size_t pos = 0;
+                int numCount = 0;
+                float nums[3] = {0, 0, 0};
+                while (pos < shadow.length() && numCount < 3) {
+                    if (shadow[pos] == '-' || isdigit(shadow[pos])) {
+                        nums[numCount++] = std::stof(shadow.substr(pos));
+                        while (pos < shadow.length() && (shadow[pos] == '-' || shadow[pos] == '.' || isdigit(shadow[pos]))) pos++;
+                    }
+                    pos++;
+                }
+                if (numCount >= 2) {
+                    shadowOffsetX = nums[0] * zoom;
+                    shadowOffsetY = nums[1] * zoom;
+                    if (numCount >= 3) shadowBlur = nums[2] * zoom;
+                }
+
+                // Draw shadow layers (simple blur approximation)
+                for (int i = 3; i >= 0; i--) {
+                    float expand = (shadowBlur / 4) * i;
+                    ImVec2 sp1(p1.x + shadowOffsetX - expand, p1.y + shadowOffsetY - expand);
+                    ImVec2 sp2(p2.x + shadowOffsetX + expand, p2.y + shadowOffsetY + expand);
+                    ImU32 sc = IM_COL32(0, 0, 0, 15 - i * 3);
+                    drawList->AddRectFilled(sp1, sp2, sc, avgRadius + expand);
+                }
+            }
+
             // Draw layer based on type
             ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(layer.bg_color);
 
             // Background - render for ALL layer types if they have visible alpha
-            // This includes TEXT layers that might have background colors
-            if (layer.bg_color.w > 0.01f) {
-                if (layer.border_radius > 0) {
-                    drawList->AddRectFilled(p1, p2, bgCol, layer.border_radius * zoom);
-                } else {
-                    drawList->AddRectFilled(p1, p2, bgCol);
-                }
+            // Skip body/container layers that cover the entire canvas (they're just page background)
+            bool isFullPageContainer = (layer.name.find("body") != std::string::npos ||
+                                        layer.name == "html" || layer.name == "root") &&
+                                       layer.width >= g_FigmaProject.canvas_width * 0.95f &&
+                                       layer.height >= g_FigmaProject.canvas_height * 0.5f;
+
+            if (layer.bg_color.w > 0.01f && !isFullPageContainer) {
+                drawList->AddRectFilled(p1, p2, bgCol, avgRadius);
             }
 
-            // Image - use drawList to avoid SetCursorScreenPos issues
-            if (layer.type == LAYER_IMAGE && layer.texture_id) {
+            // Gradient overlay (simple visual indicator - ImGui can't do true gradients)
+            if (layer.has_gradient && !layer.gradient_css.empty()) {
+                // Draw a subtle gradient indicator
+                ImU32 gradTop = IM_COL32(255, 255, 255, 30);
+                ImU32 gradBot = IM_COL32(0, 0, 0, 30);
+                drawList->AddRectFilledMultiColor(p1, p2, gradTop, gradTop, gradBot, gradBot);
+            }
+
+            // Image - render for any layer with a texture (images, buttons with bg, etc.)
+            // Handle slideshow animation
+            if (layer.enable_animation && !layer.animation_texture_ids.empty()) {
+                // Update animation timer
+                layer.animation_timer += io.DeltaTime;
+                if (layer.animation_timer >= layer.animation_speed) {
+                    layer.animation_timer = 0.0f;
+                    layer.current_frame = (layer.current_frame + 1) % (int)layer.animation_texture_ids.size();
+                }
+                // Display current animation frame
+                GLuint currentTexture = layer.animation_texture_ids[layer.current_frame];
+                if (currentTexture) {
+                    drawList->AddImage((ImTextureID)(intptr_t)currentTexture,
+                        p1, p2, ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255));
+                }
+            } else if (layer.texture_id) {
+                // Static image
                 drawList->AddImage((ImTextureID)(intptr_t)layer.texture_id,
                     p1, p2, ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255));
             }
 
             // Text - with alignment and styling support
-            if (!layer.text.empty() && (layer.type == LAYER_TEXT || layer.type == LAYER_BUTTON)) {
+            // Show text for TEXT, BUTTON, and DIV layers (sections have titles in text field)
+            if (!layer.text.empty() && (layer.type == LAYER_TEXT || layer.type == LAYER_BUTTON || layer.type == LAYER_DIV || layer.type == LAYER_INPUT || layer.type == LAYER_ICON)) {
                 ImU32 textCol = ImGui::ColorConvertFloat4ToU32(layer.text_color);
                 ImVec2 textSize = ImGui::CalcTextSize(layer.text.c_str());
                 ImVec2 textPos = p1;
@@ -5324,13 +12253,31 @@ void RenderFigmaCanvas() {
                 }
             }
 
-            // Border
-            if (layer.border_width > 0) {
+            // Border - support individual border widths and colors
+            bool hasIndividualBorders = (layer.border_top_width > 0 || layer.border_right_width > 0 ||
+                                        layer.border_bottom_width > 0 || layer.border_left_width > 0);
+
+            if (layer.border_width > 0 && !hasIndividualBorders) {
+                // Uniform border
                 ImU32 borderCol = ImGui::ColorConvertFloat4ToU32(layer.border_color);
-                if (layer.border_radius > 0) {
-                    drawList->AddRect(p1, p2, borderCol, layer.border_radius * zoom, 0, layer.border_width);
-                } else {
-                    drawList->AddRect(p1, p2, borderCol, 0, 0, layer.border_width);
+                drawList->AddRect(p1, p2, borderCol, avgRadius, 0, layer.border_width * zoom);
+            } else if (hasIndividualBorders) {
+                // Individual borders - draw each side separately
+                if (layer.border_top_width > 0) {
+                    ImU32 col = ImGui::ColorConvertFloat4ToU32(layer.border_top_color);
+                    drawList->AddLine(p1, ImVec2(p2.x, p1.y), col, layer.border_top_width * zoom);
+                }
+                if (layer.border_right_width > 0) {
+                    ImU32 col = ImGui::ColorConvertFloat4ToU32(layer.border_right_color);
+                    drawList->AddLine(ImVec2(p2.x, p1.y), p2, col, layer.border_right_width * zoom);
+                }
+                if (layer.border_bottom_width > 0) {
+                    ImU32 col = ImGui::ColorConvertFloat4ToU32(layer.border_bottom_color);
+                    drawList->AddLine(p2, ImVec2(p1.x, p2.y), col, layer.border_bottom_width * zoom);
+                }
+                if (layer.border_left_width > 0) {
+                    ImU32 col = ImGui::ColorConvertFloat4ToU32(layer.border_left_color);
+                    drawList->AddLine(ImVec2(p1.x, p2.y), p1, col, layer.border_left_width * zoom);
                 }
             }
         }
@@ -5347,6 +12294,17 @@ void RenderFigmaCanvas() {
             // Draw subtle outline for transparent layers when Ref is OFF
             ImU32 boundaryColor = IM_COL32(100, 100, 100, 60);
             drawList->AddRect(p1, p2, boundaryColor, layer.border_radius * zoom, 0, 1.0f);
+        }
+
+        // Show section/layer name label for DIV sections (helps identify sections)
+        if (layer.type == LAYER_DIV && layer.name.find("Section") != std::string::npos) {
+            // Draw a small label at top-left showing the section name
+            ImVec2 labelPos(p1.x + 5, p1.y + 5);
+            drawList->AddRectFilled(
+                labelPos,
+                ImVec2(labelPos.x + ImGui::CalcTextSize(layer.name.c_str()).x + 10, labelPos.y + 20),
+                IM_COL32(0, 0, 0, 180), 4.0f);
+            drawList->AddText(ImVec2(labelPos.x + 5, labelPos.y + 3), IM_COL32(255, 255, 255, 255), layer.name.c_str());
         }
 
         // Selection highlight (always show in edit mode)
@@ -5453,6 +12411,7 @@ void RenderFigmaCanvas() {
 
         // Handle click to select (store for later - we want topmost layer)
         // Only process clicks when the canvas window is hovered (not dropdown panels)
+        // IMPORTANT: Only select when using SELECT tool - drawing tools should create new elements on top
         if (isHovered && ImGui::IsMouseClicked(0) && !io.KeyCtrl && ImGui::IsWindowHovered()) {
             // In preview mode, execute button actions instead of selecting
             if (g_FigmaProject.preview_mode) {
@@ -5462,35 +12421,165 @@ void RenderFigmaCanvas() {
                     // Store for action execution (topmost layer wins)
                     g_HoveredLayerId = layer.id;
                 }
-            } else {
-                // Normal edit mode - select this layer
+            } else if (g_CurrentTool == TOOL_SELECT) {
+                // Normal edit mode - select this layer (ONLY when SELECT tool is active)
                 g_HoveredLayerId = layer.id;
             }
+            // When using drawing tools (not SELECT), don't set g_HoveredLayerId -
+            // this allows click-to-draw to work on top of existing elements
         }
 
-        // Handle dragging
-        if (layer.selected && !layer.locked) {
-            if (isHovered && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
-                layer.dragging = true;
-                layer.drag_offset_x = mousePos.x - screenX;
-                layer.drag_offset_y = mousePos.y - screenY;
+        // Handle resize and dragging (only in SELECT tool mode)
+        if (layer.selected && !layer.locked && g_CurrentTool == TOOL_SELECT && !g_FigmaProject.preview_mode) {
+            float handleSize = 8;
+
+            // Calculate handle positions (screen coordinates)
+            ImVec2 handles[8] = {
+                ImVec2(p1.x, p1.y),                              // 0: Top-left
+                ImVec2(p1.x + screenW/2, p1.y),                 // 1: Top-center
+                ImVec2(p2.x, p1.y),                              // 2: Top-right
+                ImVec2(p2.x, p1.y + screenH/2),                 // 3: Right-center
+                ImVec2(p2.x, p2.y),                              // 4: Bottom-right
+                ImVec2(p1.x + screenW/2, p2.y),                 // 5: Bottom-center
+                ImVec2(p1.x, p2.y),                              // 6: Bottom-left
+                ImVec2(p1.x, p1.y + screenH/2)                  // 7: Left-center
+            };
+
+            // Check if mouse is over any resize handle
+            int hoveredHandle = -1;
+            for (int h = 0; h < 8; h++) {
+                float hx = handles[h].x;
+                float hy = handles[h].y;
+                if (mousePos.x >= hx - handleSize && mousePos.x <= hx + handleSize &&
+                    mousePos.y >= hy - handleSize && mousePos.y <= hy + handleSize) {
+                    hoveredHandle = h;
+                    break;
+                }
             }
 
-            if (layer.dragging) {
+            // Set cursor based on hovered handle
+            if (hoveredHandle >= 0) {
+                switch (hoveredHandle) {
+                    case 0: case 4: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNWSE); break; // TL, BR
+                    case 2: case 6: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNESW); break; // TR, BL
+                    case 1: case 5: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNS); break;   // T, B
+                    case 3: case 7: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW); break;   // R, L
+                }
+            }
+
+            // Start resizing when clicking on a handle
+            if (hoveredHandle >= 0 && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered() && !g_IsResizing) {
+                SaveUndoState("Resize layer");
+                g_IsResizing = true;
+                g_ResizeHandle = hoveredHandle;
+                g_ResizeLayerId = layer.id;
+                g_ResizeStartX = mousePos.x;
+                g_ResizeStartY = mousePos.y;
+                g_ResizeOrigX = layer.x;
+                g_ResizeOrigY = layer.y;
+                g_ResizeOrigW = layer.width;
+                g_ResizeOrigH = layer.height;
+            }
+
+            // Continue resizing
+            if (g_IsResizing && g_ResizeLayerId == layer.id) {
                 if (ImGui::IsMouseDown(0)) {
-                    float newX = (mousePos.x - layer.drag_offset_x - canvasPos.x + scrollX) / zoom;
-                    float newY = (mousePos.y - layer.drag_offset_y - canvasPos.y + scrollY) / zoom;
+                    float deltaX = (mousePos.x - g_ResizeStartX) / zoom;
+                    float deltaY = (mousePos.y - g_ResizeStartY) / zoom;
+
+                    float newX = g_ResizeOrigX;
+                    float newY = g_ResizeOrigY;
+                    float newW = g_ResizeOrigW;
+                    float newH = g_ResizeOrigH;
+
+                    // Apply resize based on handle
+                    switch (g_ResizeHandle) {
+                        case 0: // Top-left
+                            newX = g_ResizeOrigX + deltaX;
+                            newY = g_ResizeOrigY + deltaY;
+                            newW = g_ResizeOrigW - deltaX;
+                            newH = g_ResizeOrigH - deltaY;
+                            break;
+                        case 1: // Top-center
+                            newY = g_ResizeOrigY + deltaY;
+                            newH = g_ResizeOrigH - deltaY;
+                            break;
+                        case 2: // Top-right
+                            newY = g_ResizeOrigY + deltaY;
+                            newW = g_ResizeOrigW + deltaX;
+                            newH = g_ResizeOrigH - deltaY;
+                            break;
+                        case 3: // Right-center
+                            newW = g_ResizeOrigW + deltaX;
+                            break;
+                        case 4: // Bottom-right
+                            newW = g_ResizeOrigW + deltaX;
+                            newH = g_ResizeOrigH + deltaY;
+                            break;
+                        case 5: // Bottom-center
+                            newH = g_ResizeOrigH + deltaY;
+                            break;
+                        case 6: // Bottom-left
+                            newX = g_ResizeOrigX + deltaX;
+                            newW = g_ResizeOrigW - deltaX;
+                            newH = g_ResizeOrigH + deltaY;
+                            break;
+                        case 7: // Left-center
+                            newX = g_ResizeOrigX + deltaX;
+                            newW = g_ResizeOrigW - deltaX;
+                            break;
+                    }
+
+                    // Enforce minimum size
+                    if (newW < 20) { newW = 20; newX = g_ResizeOrigX + g_ResizeOrigW - 20; }
+                    if (newH < 20) { newH = 20; newY = g_ResizeOrigY + g_ResizeOrigH - 20; }
 
                     // Snap to grid if enabled
                     if (g_FigmaProject.snap_to_grid) {
                         newX = round(newX / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
                         newY = round(newY / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                        newW = round(newW / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                        newH = round(newH / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
                     }
 
                     layer.x = newX;
                     layer.y = newY;
+                    layer.width = newW;
+                    layer.height = newH;
                 } else {
-                    layer.dragging = false;
+                    // Stop resizing
+                    g_IsResizing = false;
+                    g_ResizeHandle = -1;
+                    g_ResizeLayerId = -1;
+                }
+            }
+
+            // Handle dragging (only if not resizing and not clicking on a handle)
+            if (!g_IsResizing && hoveredHandle < 0) {
+                if (isHovered && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
+                    // Save undo state before starting drag
+                    SaveUndoState("Move layer");
+                    layer.dragging = true;
+                    layer.drag_offset_x = mousePos.x - screenX;
+                    layer.drag_offset_y = mousePos.y - screenY;
+                }
+
+                if (layer.dragging) {
+                    if (ImGui::IsMouseDown(0)) {
+                        float newX = (mousePos.x - layer.drag_offset_x - canvasPos.x + scrollX) / zoom;
+                        float newY = (mousePos.y - layer.drag_offset_y - canvasPos.y + scrollY) / zoom;
+
+                        // Snap to grid if enabled
+                        if (g_FigmaProject.snap_to_grid) {
+                            newX = round(newX / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                            newY = round(newY / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                        }
+
+                        layer.x = newX;
+                        layer.y = newY;
+                    } else {
+                        layer.dragging = false;
+                    }
                 }
             }
         }
@@ -5498,7 +12587,9 @@ void RenderFigmaCanvas() {
 
     // Select the topmost hovered layer (after iterating all layers)
     // Only when canvas window is hovered (not when clicking dropdown panels)
-    if (g_HoveredLayerId >= 0 && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
+    // Only in SELECT tool mode (other tools are for drawing)
+    if (g_HoveredLayerId >= 0 && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered() &&
+        (g_CurrentTool == TOOL_SELECT || g_FigmaProject.preview_mode)) {
         if (g_FigmaProject.preview_mode) {
             // In preview mode, execute the layer's action
             WebLayer* clickedLayer = GetLayerById(g_HoveredLayerId);
@@ -5507,7 +12598,28 @@ void RenderFigmaCanvas() {
             }
         } else {
             // Normal edit mode - select the layer
-            SelectLayer(g_HoveredLayerId);
+            // Shift+Click = add to selection (multi-select)
+            if (io.KeyShift) {
+                WebLayer* layer = GetLayerById(g_HoveredLayerId);
+                if (layer) {
+                    layer->selected = !layer->selected;  // Toggle selection
+                    if (layer->selected) {
+                        g_SelectedLayerId = layer->id;
+                    } else if (g_SelectedLayerId == layer->id) {
+                        // Find another selected layer
+                        g_SelectedLayerId = -1;
+                        for (auto& l : g_FigmaProject.layers) {
+                            if (l.selected) {
+                                g_SelectedLayerId = l.id;
+                                break;
+                            }
+                        }
+                    }
+                }
+            } else {
+                // Normal click = single select
+                SelectLayer(g_HoveredLayerId);
+            }
         }
         g_HoveredLayerId = -1;
     }
@@ -5548,10 +12660,146 @@ void RenderFigmaCanvas() {
         if (ImGui::IsKeyDown(ImGuiKey_DownArrow)) g_FigmaProject.scroll_y += 10.0f;
         if (ImGui::IsKeyDown(ImGuiKey_LeftArrow)) g_FigmaProject.scroll_x -= 10.0f;
         if (ImGui::IsKeyDown(ImGuiKey_RightArrow)) g_FigmaProject.scroll_x += 10.0f;
+
+        // ==================== KEYBOARD SHORTCUTS ====================
+        // Only when not typing in a text field
+        if (!io.WantTextInput) {
+            // Basic Tool shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_V)) g_CurrentTool = TOOL_SELECT;
+            if (ImGui::IsKeyPressed(ImGuiKey_R)) g_CurrentTool = TOOL_RECTANGLE;
+            if (ImGui::IsKeyPressed(ImGuiKey_F)) g_CurrentTool = TOOL_FRAME;
+
+            // Typography shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_H)) g_CurrentTool = TOOL_HEADING;
+            if (ImGui::IsKeyPressed(ImGuiKey_T)) g_CurrentTool = TOOL_TEXT;
+            if (ImGui::IsKeyPressed(ImGuiKey_P)) g_CurrentTool = TOOL_PARAGRAPH;
+
+            // Media/Interactive shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_I)) g_CurrentTool = TOOL_IMAGE;
+            if (ImGui::IsKeyPressed(ImGuiKey_B)) g_CurrentTool = TOOL_BUTTON;
+
+            // Form & Elements shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_U)) g_CurrentTool = TOOL_INPUT;  // U for input/user input
+
+            // Website Section shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_S)) g_CurrentTool = TOOL_SEC_SERVICES;
+            if (ImGui::IsKeyPressed(ImGuiKey_N)) g_CurrentTool = TOOL_SEC_NAVBAR;
+            if (ImGui::IsKeyPressed(ImGuiKey_C)) g_CurrentTool = TOOL_SEC_CONTACT;
+
+            // Shape shortcuts
+            if (ImGui::IsKeyPressed(ImGuiKey_L)) g_CurrentTool = TOOL_LINE;
+            if (ImGui::IsKeyPressed(ImGuiKey_O)) g_CurrentTool = TOOL_CIRCLE;
+
+            // Undo/Redo: Ctrl+Z / Ctrl+Shift+Z
+            if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_Z)) {
+                if (io.KeyShift) {
+                    Redo();
+                } else {
+                    Undo();
+                }
+            }
+
+            // Copy/Paste/Delete: Ctrl+C, Ctrl+V, Delete/Backspace
+            if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_C)) {
+                CopySelectedLayers();
+            }
+            if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_V)) {
+                PasteClipboard();
+            }
+            if (ImGui::IsKeyPressed(ImGuiKey_Delete) || ImGui::IsKeyPressed(ImGuiKey_Backspace)) {
+                DeleteSelectedLayers();
+            }
+
+            // Escape to deselect or cancel drawing
+            if (ImGui::IsKeyPressed(ImGuiKey_Escape)) {
+                if (g_IsDrawing) {
+                    g_IsDrawing = false;
+                } else {
+                    DeselectAllLayers();
+                    g_CurrentTool = TOOL_SELECT;
+                }
+            }
+        }
+
+        // ==================== CLICK-TO-DRAW ====================
+        // Drawing new elements with tools (only when not Select tool)
+        if (g_CurrentTool != TOOL_SELECT && !g_FigmaProject.preview_mode) {
+            // Start drawing on mouse click
+            if (ImGui::IsMouseClicked(0) && !g_IsDrawing) {
+                g_IsDrawing = true;
+                g_DrawStartX = (io.MousePos.x - canvasPos.x + scrollX) / zoom;
+                g_DrawStartY = (io.MousePos.y - canvasPos.y + scrollY) / zoom;
+                g_DrawCurrentX = g_DrawStartX;
+                g_DrawCurrentY = g_DrawStartY;
+            }
+
+            // Update current draw position while dragging
+            if (g_IsDrawing && ImGui::IsMouseDown(0)) {
+                g_DrawCurrentX = (io.MousePos.x - canvasPos.x + scrollX) / zoom;
+                g_DrawCurrentY = (io.MousePos.y - canvasPos.y + scrollY) / zoom;
+
+                // Snap to grid if enabled
+                if (g_FigmaProject.snap_to_grid) {
+                    g_DrawCurrentX = round(g_DrawCurrentX / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                    g_DrawCurrentY = round(g_DrawCurrentY / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                }
+            }
+
+            // Finish drawing on mouse release
+            if (g_IsDrawing && ImGui::IsMouseReleased(0)) {
+                g_IsDrawing = false;
+                float endX = (io.MousePos.x - canvasPos.x + scrollX) / zoom;
+                float endY = (io.MousePos.y - canvasPos.y + scrollY) / zoom;
+
+                // Snap to grid if enabled
+                if (g_FigmaProject.snap_to_grid) {
+                    endX = round(endX / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                    endY = round(endY / g_FigmaProject.grid_size) * g_FigmaProject.grid_size;
+                }
+
+                // Create element from tool
+                CreateElementFromTool(g_CurrentTool, g_DrawStartX, g_DrawStartY, endX, endY);
+            }
+
+            // Draw preview rectangle while drawing
+            if (g_IsDrawing) {
+                float previewX1 = canvasPos.x + (std::min(g_DrawStartX, g_DrawCurrentX) * zoom) - scrollX;
+                float previewY1 = canvasPos.y + (std::min(g_DrawStartY, g_DrawCurrentY) * zoom) - scrollY;
+                float previewX2 = canvasPos.x + (std::max(g_DrawStartX, g_DrawCurrentX) * zoom) - scrollX;
+                float previewY2 = canvasPos.y + (std::max(g_DrawStartY, g_DrawCurrentY) * zoom) - scrollY;
+
+                // Draw dashed preview rectangle
+                ImU32 previewColor = IM_COL32(100, 150, 255, 200);
+                if (g_CurrentTool == TOOL_CIRCLE) {
+                    // For circle, draw ellipse preview
+                    float cx = (previewX1 + previewX2) / 2;
+                    float cy = (previewY1 + previewY2) / 2;
+                    float rx = (previewX2 - previewX1) / 2;
+                    float ry = (previewY2 - previewY1) / 2;
+                    drawList->AddEllipse(ImVec2(cx, cy), ImVec2(rx, ry), previewColor, 0.0f, 32, 2.0f);
+                } else if (g_CurrentTool == TOOL_LINE) {
+                    // For line, draw line preview
+                    drawList->AddLine(ImVec2(previewX1, previewY1), ImVec2(previewX2, previewY2), previewColor, 2.0f);
+                } else {
+                    // For other tools, draw rectangle preview
+                    drawList->AddRect(ImVec2(previewX1, previewY1), ImVec2(previewX2, previewY2), previewColor, 0, 0, 2.0f);
+                }
+
+                // Show dimensions
+                float w = std::abs(g_DrawCurrentX - g_DrawStartX);
+                float h = std::abs(g_DrawCurrentY - g_DrawStartY);
+                char dimText[64];
+                snprintf(dimText, sizeof(dimText), "%.0f x %.0f", w, h);
+                drawList->AddText(ImVec2(previewX2 + 5, previewY2 + 5), IM_COL32(255, 255, 255, 200), dimText);
+            }
+
+            // Change cursor to crosshair when tool is active
+            ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeAll);
+        }
     }
 
-    // Click on empty area to deselect
-    if (ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
+    // Click on empty area to deselect (only in Select tool mode)
+    if (g_CurrentTool == TOOL_SELECT && ImGui::IsMouseClicked(0) && ImGui::IsWindowHovered()) {
         bool clickedOnLayer = false;
         for (auto& layer : g_FigmaProject.layers) {
             float screenX = canvasPos.x + (layer.x * zoom) - scrollX;
@@ -6829,26 +14077,33 @@ float DrawWrappedText(ImDrawList* dl, const std::string& text, float x, float y,
 std::string GenerateImGuiCPP() {
     std::stringstream cpp;
 
-    // Collect all unique image paths from sections FIRST (needed for rendering code)
+    // MULTI-PAGE SUPPORT: First sync current page and use all pages
+    if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+        g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+    }
+
+    // Collect all unique image paths from ALL PAGES (needed for rendering code)
     std::set<std::string> imagePaths;
     std::map<std::string, std::string> imageVarNames;
     int imgIdx = 0;
 
-    for (const auto& sec : g_Sections) {
-        if (!sec.background_image.empty() && sec.background_image != "none") {
-            imagePaths.insert(sec.background_image);
-        }
-        for (const auto& img : sec.hero_animation_images) {
-            if (!img.empty()) imagePaths.insert(img);
-        }
-        for (const auto& img : sec.gallery_images) {
-            if (!img.empty()) imagePaths.insert(img);
-        }
-        if (!sec.section_image.empty() && sec.section_image != "none") {
-            imagePaths.insert(sec.section_image);
-        }
-        if (!sec.logo_path.empty() && sec.logo_path != "none") {
-            imagePaths.insert(sec.logo_path);
+    for (const auto& page : g_NormalPages) {
+        for (const auto& sec : page.sections) {
+            if (!sec.background_image.empty() && sec.background_image != "none") {
+                imagePaths.insert(sec.background_image);
+            }
+            for (const auto& img : sec.hero_animation_images) {
+                if (!img.empty()) imagePaths.insert(img);
+            }
+            for (const auto& img : sec.gallery_images) {
+                if (!img.empty()) imagePaths.insert(img);
+            }
+            if (!sec.section_image.empty() && sec.section_image != "none") {
+                imagePaths.insert(sec.section_image);
+            }
+            if (!sec.logo_path.empty() && sec.logo_path != "none") {
+                imagePaths.insert(sec.logo_path);
+            }
         }
     }
 
@@ -6891,17 +14146,54 @@ std::string GenerateImGuiCPP() {
 GLFWwindow* g_Window = nullptr;
 ImVec4 g_ClearColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White background for visibility
 
-// Page state
+// Scroll state (declared first for NavigateToPage)
+static float g_ScrollY = 0.0f;
+static float g_ScrollTarget = 0.0f;
+static float g_TotalHeight = 0.0f;
+
+// Page state - Multi-page navigation
 static int g_CurrentPage = 0;
+static int g_NumPages = )" << g_NormalPages.size() << R"(;
+static const char* g_PageNames[] = {)";
+
+    // Generate page names array
+    for (size_t i = 0; i < g_NormalPages.size(); i++) {
+        cpp << "\"" << g_NormalPages[i].name << "\"";
+        if (i < g_NormalPages.size() - 1) cpp << ", ";
+    }
+    cpp << R"(};
+
+// Helper: Navigate to page by name
+void NavigateToPage(const char* pageName) {
+    for (int i = 0; i < g_NumPages; i++) {
+        if (strcmp(g_PageNames[i], pageName) == 0) {
+            g_CurrentPage = i;
+            g_ScrollY = 0.0f;
+            g_ScrollTarget = 0.0f;
+            printf("Navigated to page: %s (index %d)\n", pageName, i);
+            return;
+        }
+    }
+    printf("Page not found: %s\n", pageName);
+}
+
 static char g_ContactName[128] = "";
 static char g_ContactEmail[128] = "";
 static char g_ContactMessage[512] = "";
 static bool g_MessageSent = false;
 
-// Scroll state
-static float g_ScrollY = 0.0f;
-static float g_ScrollTarget = 0.0f;
-static float g_TotalHeight = 0.0f;
+// Contact Form Connector fields (up to 10 fields)
+static char g_FormField0[256] = "";
+static char g_FormField1[256] = "";
+static char g_FormField2[256] = "";
+static char g_FormField3[256] = "";
+static char g_FormField4[256] = "";
+static char g_FormField5[256] = "";
+static char g_FormField6[1024] = "";  // Textarea
+static char g_FormField7[1024] = "";  // Textarea
+static char g_FormField8[256] = "";
+static char g_FormField9[256] = "";
+static bool g_FormSubmitted = false;
 
 // Animation state for cards
 static float g_AnimTime = 0.0f;  // Global time counter in seconds
@@ -7226,6 +14518,8 @@ void DrawGlassButton(ImDrawList* dl, const char* label, float x, float y, float 
     if (g_FontButton) ImGui::PopFont();
 }
 
+// NOTE: DrawIcon function moved to top of file after forward declaration
+
 // Helper: Draw glass panel (for drag-drop glass elements)
 void DrawGlassPanel(ImDrawList* dl, float x, float y, float w, float h, const char* text, float textSize, ImU32 textColor, float opacity, ImU32 tintColor, float rounding = 16.0f) {
     // Draw the glass effect
@@ -7516,32 +14810,52 @@ void RenderWebsite() {
 
 )";
 
-    // Generate rendering code for each section
-    for (size_t secIdx = 0; secIdx < g_Sections.size(); secIdx++) {
-        const auto& sec = g_Sections[secIdx];
+    // MULTI-PAGE: Generate rendering code for ALL pages
+    size_t globalSecIdx = 0;
+    for (size_t pageIdx = 0; pageIdx < g_NormalPages.size(); pageIdx++) {
+        const auto& currentPage = g_NormalPages[pageIdx];
+
+        // Open page block
+        cpp << "\n    // ==================== PAGE " << pageIdx << ": " << currentPage.name << " ====================\n";
+        cpp << "    if (g_CurrentPage == " << pageIdx << ") {\n";
+        cpp << "        yPos = -g_ScrollY;  // Reset yPos for this page\n";
+
+        for (size_t secIdx = 0; secIdx < currentPage.sections.size(); secIdx++) {
+            const auto& sec = currentPage.sections[secIdx];
 
         cpp << "    // ===== " << sec.name << " =====\n";
         cpp << "    {\n";
         cpp << "        float secY = yPos;\n";
         cpp << "        float secH = " << sec.height << ";\n";
-        cpp << "        ImVec2 secMin(0, secY);\n";
-        cpp << "        ImVec2 secMax(winW, secY + secH);\n\n";
+        // Use ACTUAL section width and x_position from designer (respect user-defined sizes)
+        float actualWidth = sec.width > 0 ? sec.width : 800.0f;
+        float actualX = sec.x_position;
+        cpp << "        float secW = " << actualWidth << ";\n";
+        cpp << "        float secX = " << actualX << ";\n";
+        // Apply horizontal alignment if section is not full width
+        if (sec.horizontal_align == 1) { // Center
+            cpp << "        secX = (winW - secW) / 2;\n";
+        } else if (sec.horizontal_align == 2) { // Right
+            cpp << "        secX = winW - secW;\n";
+        }
+        cpp << "        ImVec2 secMin(secX, secY);\n";
+        cpp << "        ImVec2 secMax(secX + secW, secY + secH);\n\n";
 
         // Animation code generation
         if (sec.animation_type != ANIM_NONE) {
             cpp << "        // Animation: " << g_AnimationNames[sec.animation_type] << "\n";
-            cpp << "        static float animTime" << secIdx << " = 0.0f;\n";
-            cpp << "        static bool animStarted" << secIdx << " = false;\n";
-            cpp << "        if (!animStarted" << secIdx << ") {\n";
-            cpp << "            animTime" << secIdx << " = 0.0f;\n";
-            cpp << "            animStarted" << secIdx << " = true;\n";
+            cpp << "        static float animTime" << globalSecIdx << " = 0.0f;\n";
+            cpp << "        static bool animStarted" << globalSecIdx << " = false;\n";
+            cpp << "        if (!animStarted" << globalSecIdx << ") {\n";
+            cpp << "            animTime" << globalSecIdx << " = 0.0f;\n";
+            cpp << "            animStarted" << globalSecIdx << " = true;\n";
             cpp << "        }\n";
-            cpp << "        animTime" << secIdx << " += io.DeltaTime;\n";
+            cpp << "        animTime" << globalSecIdx << " += io.DeltaTime;\n";
             // Format animation duration properly for C++ code
             char durationStr[32];
             snprintf(durationStr, sizeof(durationStr), "%.1ff", sec.animation_duration);
             // Use inline clamp instead of ImClamp (which may not be available in generated code)
-            cpp << "        float animProgress = (animTime" << secIdx << " / " << durationStr << ");\n";
+            cpp << "        float animProgress = (animTime" << globalSecIdx << " / " << durationStr << ");\n";
             cpp << "        animProgress = (animProgress < 0.0f) ? 0.0f : (animProgress > 1.0f) ? 1.0f : animProgress;\n";
 
             switch (sec.animation_type) {
@@ -7592,7 +14906,7 @@ void RenderWebsite() {
             }
 
             if (sec.animation_repeat) {
-                cpp << "        if (animProgress >= 1.0f) { animTime" << secIdx << " = 0.0f; animStarted" << secIdx << " = false; }\n";
+                cpp << "        if (animProgress >= 1.0f) { animTime" << globalSecIdx << " = 0.0f; animStarted" << globalSecIdx << " = false; }\n";
             }
             cpp << "\n";
         }
@@ -7607,18 +14921,18 @@ void RenderWebsite() {
         if (hasHeroAnimation) {
             // Generate hero animation code
             cpp << "        // Hero animation (slideshow)\n";
-            cpp << "        static float animTimer" << secIdx << " = 0.0f;\n";
-            cpp << "        static int animFrame" << secIdx << " = 0;\n";
-            cpp << "        animTimer" << secIdx << " += io.DeltaTime;\n";
-            cpp << "        if (animTimer" << secIdx << " >= " << std::fixed << std::setprecision(1) << sec.hero_animation_speed << "f) {\n";
-            cpp << "            animTimer" << secIdx << " = 0.0f;\n";
-            cpp << "            animFrame" << secIdx << "++;\n";
-            cpp << "            if (animFrame" << secIdx << " >= " << sec.hero_animation_images.size() << ") animFrame" << secIdx << " = 0;\n";
+            cpp << "        static float animTimer" << globalSecIdx << " = 0.0f;\n";
+            cpp << "        static int animFrame" << globalSecIdx << " = 0;\n";
+            cpp << "        animTimer" << globalSecIdx << " += io.DeltaTime;\n";
+            cpp << "        if (animTimer" << globalSecIdx << " >= " << std::fixed << std::setprecision(1) << sec.hero_animation_speed << "f) {\n";
+            cpp << "            animTimer" << globalSecIdx << " = 0.0f;\n";
+            cpp << "            animFrame" << globalSecIdx << "++;\n";
+            cpp << "            if (animFrame" << globalSecIdx << " >= " << sec.hero_animation_images.size() << ") animFrame" << globalSecIdx << " = 0;\n";
             cpp << "        }\n";
             cpp << "        GLuint animTex = 0;\n";
-            cpp << "        if (animFrame" << secIdx << " == 0) animTex = " << imageVarNames[sec.hero_animation_images[0]] << ";\n";
+            cpp << "        if (animFrame" << globalSecIdx << " == 0) animTex = " << imageVarNames[sec.hero_animation_images[0]] << ";\n";
             for (size_t i = 1; i < sec.hero_animation_images.size(); i++) {
-                cpp << "        else if (animFrame" << secIdx << " == " << i << ") animTex = " << imageVarNames[sec.hero_animation_images[i]] << ";\n";
+                cpp << "        else if (animFrame" << globalSecIdx << " == " << i << ") animTex = " << imageVarNames[sec.hero_animation_images[i]] << ";\n";
             }
             cpp << "        DrawBackgroundImageCover(dl, animTex, 0, secY, winW, secH);\n";
         } else if (hasBackgroundImage) {
@@ -8041,7 +15355,7 @@ void RenderWebsite() {
             case SEC_CONTACT: {
                 // Add clipping to prevent contact form overlap during scrolling
                 cpp << "        // Clip contact section to prevent overlap\n";
-                cpp << "        dl->PushClipRect(ImVec2(0, secY), ImVec2(winW, secY + secH), true);\n";
+                cpp << "        dl->PushClipRect(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), true);\n";
 
                 // Check if using split layout with image
                 bool hasSplitImage = (sec.layout_style == 1 && !sec.section_image.empty());
@@ -8075,9 +15389,9 @@ void RenderWebsite() {
                     // DEFAULT CENTERED LAYOUT
                     cpp << "        // Modern Contact form with card styling\n";
                     cpp << "        float formW = 420;\n";
-                    cpp << "        float formX = (winW - formW) / 2;\n";
+                    cpp << "        float formX = (secX + secW - formW) / 2;\n";
                     cpp << "        float formY = secY + 100;\n";
-                    cpp << "        float maxTextWidth = winW * 0.7f;\n";
+                    cpp << "        float maxTextWidth = secW * 0.7f;\n";
                     cpp << "        if (maxTextWidth > 600) maxTextWidth = 600;\n";
                     if (!sec.title.empty()) {
                         cpp << "        {\n";
@@ -8154,7 +15468,7 @@ void RenderWebsite() {
                 cpp << "        float maxTextWidth = winW * 0.85f;\n";
                 cpp << "        if (maxTextWidth > 1000) maxTextWidth = 1000;\n";
                 cpp << "        // Top border separator\n";
-                cpp << "        dl->AddRectFilled(ImVec2(0, secY), ImVec2(winW, secY + 1), IM_COL32(200, 200, 205, 80));\n";
+                cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + 1), IM_COL32(200, 200, 205, 80));\n";
                 if (!sec.title.empty()) {
                     cpp << "        {\n";
                     cpp << "            // Footer brand/title\n";
@@ -8192,25 +15506,554 @@ void RenderWebsite() {
                     if (it != imageVarNames.end()) {
                         cpp << "        if (" << it->second << " != 0) {\n";
                         cpp << "            // Render image filling the section\n";
-                        cpp << "            dl->AddImage((ImTextureID)(intptr_t)" << it->second << ", ImVec2(0, secY), ImVec2(winW, secY + secH));\n";
+                        cpp << "            dl->AddImage((ImTextureID)(intptr_t)" << it->second << ", ImVec2(secX, secY), ImVec2(secX + secW, secY + secH));\n";
                         cpp << "        } else {\n";
                         cpp << "            // Placeholder if image failed to load\n";
-                        cpp << "            dl->AddRectFilled(ImVec2(0, secY), ImVec2(winW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
+                        cpp << "            dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
                         cpp << "            const char* text = \"Image Loading...\";\n";
                         cpp << "            ImVec2 sz = ImGui::CalcTextSize(text);\n";
-                        cpp << "            dl->AddText(ImVec2(winW/2 - sz.x/2, secY + secH/2), IM_COL32(150, 150, 150, 255), text);\n";
+                        cpp << "            dl->AddText(ImVec2(secX + secW/2 - sz.x/2, secY + secH/2), IM_COL32(150, 150, 150, 255), text);\n";
                         cpp << "        }\n";
                     } else {
                         cpp << "        // No image in cache\n";
-                        cpp << "        dl->AddRectFilled(ImVec2(0, secY), ImVec2(winW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
+                        cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
                     }
                 } else {
                     cpp << "        // No image uploaded\n";
-                    cpp << "        dl->AddRectFilled(ImVec2(0, secY), ImVec2(winW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
+                    cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), IM_COL32(30, 30, 30, 255));\n";
                     cpp << "        const char* text = \"Upload Image\";\n";
                     cpp << "        ImVec2 sz = ImGui::CalcTextSize(text);\n";
-                    cpp << "        dl->AddText(ImVec2(winW/2 - sz.x/2, secY + secH/2), IM_COL32(150, 150, 150, 255), text);\n";
+                    cpp << "        dl->AddText(ImVec2(secX + secW/2 - sz.x/2, secY + secH/2), IM_COL32(150, 150, 150, 255), text);\n";
                 }
+                break;
+            }
+
+            // ==================== BASIC ELEMENTS (Free Design Mode) ====================
+            case SEC_LOGO: {
+                cpp << "        // Logo Element\n";
+                cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), " << ColorToU32(sec.bg_color) << ", 6.0f);\n";
+                cpp << "        {\n";
+                cpp << "            const char* logoText = \"" << EscapeString(sec.title) << "\";\n";
+                cpp << "            ImFont* logoFont = GetFont(24);\n";
+                cpp << "            if (logoFont) ImGui::PushFont(logoFont);\n";
+                cpp << "            ImVec2 sz = ImGui::CalcTextSize(logoText);\n";
+                cpp << "            dl->AddText(ImVec2(secX + secW/2 - sz.x/2, secY + secH/2 - sz.y/2), " << ColorToU32(sec.text_color) << ", logoText);\n";
+                cpp << "            if (logoFont) ImGui::PopFont();\n";
+                cpp << "        }\n";
+                break;
+            }
+
+            case SEC_HEADING: {
+                cpp << "        // Heading Element\n";
+                if (sec.bg_color.w > 0.01f) {
+                    cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), " << ColorToU32(sec.bg_color) << ");\n";
+                }
+                cpp << "        {\n";
+                cpp << "            const char* headingText = \"" << EscapeString(sec.title) << "\";\n";
+                cpp << "            ImFont* headingFont = GetFont(" << (int)sec.title_font_size << ");\n";
+                cpp << "            if (headingFont) ImGui::PushFont(headingFont);\n";
+                cpp << "            ImVec2 sz = ImGui::CalcTextSize(headingText);\n";
+                cpp << "            dl->AddText(ImVec2(20, secY + secH/2 - sz.y/2), " << ColorToU32(sec.title_color) << ", headingText);\n";
+                cpp << "            if (headingFont) ImGui::PopFont();\n";
+                cpp << "        }\n";
+                break;
+            }
+
+            case SEC_TEXT_ELEMENT: {
+                cpp << "        // Text Element\n";
+                if (sec.bg_color.w > 0.01f) {
+                    cpp << "        dl->AddRectFilled(ImVec2(secX, secY), ImVec2(secX + secW, secY + secH), " << ColorToU32(sec.bg_color) << ");\n";
+                }
+                cpp << "        {\n";
+                cpp << "            const char* textContent = \"" << EscapeString(sec.content) << "\";\n";
+                cpp << "            ImFont* textFont = GetFont(" << (int)sec.content_font_size << ");\n";
+                cpp << "            if (textFont) ImGui::PushFont(textFont);\n";
+                cpp << "            ImVec2 sz = ImGui::CalcTextSize(textContent);\n";
+                cpp << "            dl->AddText(ImVec2(20, secY + secH/2 - sz.y/2), " << ColorToU32(sec.content_color) << ", textContent);\n";
+                cpp << "            if (textFont) ImGui::PopFont();\n";
+                cpp << "        }\n";
+                break;
+            }
+
+            case SEC_BUTTON_ELEMENT: {
+                cpp << "        // Button Element (Clickable)\n";
+                float radius = sec.button_border_radius > 0 ? sec.button_border_radius : 6.0f;
+                cpp << "        {\n";
+                cpp << "            const char* btnText = \"" << EscapeString(sec.button_text) << "\";\n";
+                cpp << "            ImFont* btnFont = GetFont(" << (int)sec.button_font_size << ");\n";
+                cpp << "            if (btnFont) ImGui::PushFont(btnFont);\n";
+                cpp << "            ImVec2 sz = ImGui::CalcTextSize(btnText);\n";
+                cpp << "            float btnX = 0, btnY = secY, btnW = winW, btnH = secH;\n";
+                cpp << "            // Check hover\n";
+                cpp << "            bool hovered = (io.MousePos.x >= btnX && io.MousePos.x <= btnX + btnW && io.MousePos.y >= btnY && io.MousePos.y <= btnY + btnH);\n";
+                cpp << "            ImU32 bgCol = hovered ? " << ColorToU32(ImVec4(sec.button_bg_color.x * 1.1f, sec.button_bg_color.y * 1.1f, sec.button_bg_color.z * 1.1f, sec.button_bg_color.w)) << " : " << ColorToU32(sec.button_bg_color) << ";\n";
+                cpp << "            dl->AddRectFilled(ImVec2(btnX, btnY), ImVec2(btnX + btnW, btnY + btnH), bgCol, " << radius << "f);\n";
+                cpp << "            dl->AddText(ImVec2(btnX + btnW/2 - sz.x/2, btnY + btnH/2 - sz.y/2), " << ColorToU32(sec.button_text_color) << ", btnText);\n";
+                if (!sec.button_link.empty()) {
+                    cpp << "            // Handle click\n";
+                    cpp << "            if (hovered && ImGui::IsMouseClicked(0)) {\n";
+                    cpp << "                #ifdef __EMSCRIPTEN__\n";
+                    cpp << "                EM_ASM({ window.open(UTF8ToString($0), '_blank'); }, \"" << EscapeString(sec.button_link) << "\");\n";
+                    cpp << "                #endif\n";
+                    cpp << "            }\n";
+                }
+                cpp << "            if (btnFont) ImGui::PopFont();\n";
+                cpp << "        }\n";
+                break;
+            }
+
+            case SEC_NAVBAR_CONNECTOR: {
+                cpp << "        // Advanced Navbar Connector with dropdowns and navigation\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.navbar_bg_color) << ");\n";
+                cpp << "        // Bottom border/shadow for navbar\n";
+                cpp << "        dl->AddLine(ImVec2(0, secY + secH - 1), ImVec2(winW, secY + secH - 1), IM_COL32(200, 200, 200, 100), 1.0f);\n";
+                cpp << "        static int navActiveMenu = -1;\n";
+                cpp << "        static float menuRects[16][4]; // x, y, w, h for up to 16 menu items\n";
+                cpp << "        float menuX = " << std::fixed << std::setprecision(1) << sec.navbar_padding_x << "f;\n";
+                cpp << "        float menuY = secY + " << std::fixed << std::setprecision(1) << sec.navbar_padding_y << "f;\n";
+                cpp << "        float fontSize = 18.0f * " << std::fixed << std::setprecision(2) << sec.navbar_font_scale << "f;\n";
+                cpp << "        bool parentHovered = false;\n";
+                cpp << "        int hoveredParent = -1;\n";
+                cpp << "        ImFont* nf = GetFont((int)fontSize);\n";
+                cpp << "        if (nf) ImGui::PushFont(nf);\n";
+
+                // Generate menu items with rect tracking
+                for (int i = 0; i < (int)sec.navbar_items.size(); i++) {
+                    const NavbarMenuItem& item = sec.navbar_items[i];
+                    cpp << "        {\n";
+                    cpp << "            const char* label = \"" << EscapeString(item.label) << "\";\n";
+                    cpp << "            ImVec2 sz = ImGui::CalcTextSize(label);\n";
+                    cpp << "            float btnW = sz.x + 20.0f;\n";
+                    cpp << "            float btnH = sz.y + 10.0f;\n";
+                    cpp << "            menuRects[" << i << "][0] = menuX; menuRects[" << i << "][1] = menuY;\n";
+                    cpp << "            menuRects[" << i << "][2] = btnW; menuRects[" << i << "][3] = btnH;\n";
+                    cpp << "            ImVec2 btnMin(menuX, menuY);\n";
+                    cpp << "            ImVec2 btnMax(menuX + btnW, menuY + btnH);\n";
+                    cpp << "            bool hovered = (io.MousePos.x >= btnMin.x && io.MousePos.x <= btnMax.x && io.MousePos.y >= btnMin.y && io.MousePos.y <= btnMax.y);\n";
+                    cpp << "            if (hovered) { parentHovered = true; hoveredParent = " << i << "; }\n";
+                    float rounding = sec.navbar_rounded ? sec.navbar_rounding : 0.0f;
+                    cpp << "            if (hovered || navActiveMenu == " << i << ") {\n";
+                    cpp << "                dl->AddRectFilled(btnMin, btnMax, " << ColorToU32(sec.navbar_hover_color) << ", " << std::fixed << std::setprecision(1) << rounding << "f);\n";
+                    cpp << "            }\n";
+                    cpp << "            dl->AddText(ImVec2(menuX + 10.0f, menuY + 5.0f), " << ColorToU32(sec.navbar_text_color) << ", label);\n";
+
+                    // Handle click for page navigation (only if no children or clicking main item)
+                    if (item.actionType == ACTION_LINK_TO_PAGE && strlen(item.actionTarget) > 0) {
+                        cpp << "            if (hovered && ImGui::IsMouseClicked(0)) {\n";
+                        cpp << "                NavigateToPage(\"" << EscapeString(item.actionTarget) << "\");\n";
+                        cpp << "            }\n";
+                    }
+
+                    cpp << "            menuX += btnW + " << std::fixed << std::setprecision(1) << sec.navbar_spacing << "f;\n";
+                    cpp << "        }\n";
+                }
+
+                // Open dropdown on hover if item has children
+                cpp << "        if (parentHovered && hoveredParent >= 0) {\n";
+                for (int i = 0; i < (int)sec.navbar_items.size(); i++) {
+                    if (!sec.navbar_items[i].children.empty()) {
+                        cpp << "            if (hoveredParent == " << i << ") navActiveMenu = " << i << ";\n";
+                    }
+                }
+                cpp << "        }\n";
+
+                // Render dropdowns using foreground draw list so they appear on top of everything
+                cpp << "        bool dropdownHovered = false;\n";
+                cpp << "        ImDrawList* fgDl = ImGui::GetForegroundDrawList();\n";
+                for (int i = 0; i < (int)sec.navbar_items.size(); i++) {
+                    const NavbarMenuItem& item = sec.navbar_items[i];
+                    if (!item.children.empty()) {
+                        cpp << "        if (navActiveMenu == " << i << ") {\n";
+                        cpp << "            float dropX = menuRects[" << i << "][0];\n";
+                        cpp << "            float dropY = menuRects[" << i << "][1] + menuRects[" << i << "][3] + 2.0f;\n";
+                        cpp << "            float dropW = 200.0f;\n";
+                        cpp << "            float dropH = " << (item.children.size() * 28 + 16) << ".0f;\n";
+                        cpp << "            fgDl->AddRectFilled(ImVec2(dropX, dropY), ImVec2(dropX + dropW, dropY + dropH), " << ColorToU32(sec.navbar_dropdown_color) << ", 4.0f);\n";
+                        cpp << "            fgDl->AddRect(ImVec2(dropX, dropY), ImVec2(dropX + dropW, dropY + dropH), IM_COL32(200,200,200,100), 4.0f);\n";
+                        cpp << "            float itemY = dropY + 8.0f;\n";
+                        for (size_t ci = 0; ci < item.children.size(); ci++) {
+                            cpp << "            {\n";
+                            cpp << "                const char* childLabel = \"" << EscapeString(item.children[ci]) << "\";\n";
+                            cpp << "                ImVec2 itemMin(dropX + 4, itemY);\n";
+                            cpp << "                ImVec2 itemMax(dropX + dropW - 4, itemY + 24.0f);\n";
+                            cpp << "                bool itemHov = (io.MousePos.x >= itemMin.x && io.MousePos.x <= itemMax.x && io.MousePos.y >= itemMin.y && io.MousePos.y <= itemMax.y);\n";
+                            cpp << "                if (itemHov) { dropdownHovered = true; fgDl->AddRectFilled(itemMin, itemMax, " << ColorToU32(sec.navbar_hover_color) << ", 3.0f); }\n";
+                            cpp << "                fgDl->AddText(ImVec2(dropX + 12.0f, itemY + 4.0f), " << ColorToU32(sec.navbar_text_color) << ", childLabel);\n";
+                            cpp << "                itemY += 28.0f;\n";
+                            cpp << "            }\n";
+                        }
+                        cpp << "            if (io.MousePos.x >= dropX && io.MousePos.x <= dropX + dropW && io.MousePos.y >= dropY && io.MousePos.y <= dropY + dropH) dropdownHovered = true;\n";
+                        cpp << "        }\n";
+                    }
+                }
+
+                cpp << "        if (!parentHovered && !dropdownHovered) navActiveMenu = -1;\n";
+                cpp << "        if (nf) ImGui::PopFont();\n";
+                cpp << "        if (parentHovered || dropdownHovered) ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);\n";
+                break;
+            }
+
+            case SEC_COPYRIGHT_CONNECTOR: {
+                cpp << "        // Copyright Connector\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(ImVec4(sec.copyright_bg_color.x, sec.copyright_bg_color.y, sec.copyright_bg_color.z, sec.copyright_bg_opacity)) << ");\n";
+                if (strlen(sec.copyright_text) > 0) {
+                    cpp << "        {\n";
+                    cpp << "            ImFont* cf = GetFont(" << (int)sec.copyright_font_size << ");\n";
+                    cpp << "            if (cf) ImGui::PushFont(cf);\n";
+                    cpp << "            const char* txt = \"" << EscapeString(sec.copyright_text) << "\";\n";
+                    cpp << "            ImVec2 sz = ImGui::CalcTextSize(txt);\n";
+                    cpp << "            dl->AddText(ImVec2(" << std::fixed << std::setprecision(1) << sec.copyright_padding << "f, secY + " << sec.copyright_padding << "f), " << ColorToU32(sec.copyright_text_color) << ", txt);\n";
+                    cpp << "            if (cf) ImGui::PopFont();\n";
+                    cpp << "        }\n";
+                }
+                break;
+            }
+
+            case SEC_BAR_CONNECTOR: {
+                cpp << "        // Bar Connector (heading bar)\n";
+                if (!sec.bar_items.empty()) {
+                    const BarItem& bar = sec.bar_items[0];
+                    cpp << "        {\n";
+                    cpp << "            float barW = " << std::fixed << std::setprecision(1) << bar.barWidth << "f;\n";
+                    cpp << "            float barH = " << std::fixed << std::setprecision(1) << bar.barHeight << "f;\n";
+                    cpp << "            float barX = (winW - barW) / 2;\n";
+                    cpp << "            dl->AddRectFilled(ImVec2(barX, secY), ImVec2(barX + barW, secY + barH), " << ColorToU32(bar.barColor) << ");\n";
+                    cpp << "            ImFont* bf = GetFont(" << (int)(bar.headingSize * 18.0f) << ");\n";
+                    cpp << "            if (bf) ImGui::PushFont(bf);\n";
+                    cpp << "            const char* heading = \"" << EscapeString(bar.heading) << "\";\n";
+                    cpp << "            ImVec2 sz = ImGui::CalcTextSize(heading);\n";
+                    cpp << "            dl->AddText(ImVec2(barX + " << std::fixed << std::setprecision(1) << bar.paddingLeft << "f, secY + (barH - sz.y) / 2), " << ColorToU32(bar.headingColor) << ", heading);\n";
+                    cpp << "            if (bf) ImGui::PopFont();\n";
+                    cpp << "        }\n";
+                }
+                break;
+            }
+
+            case SEC_FOOTER_CONNECTOR: {
+                cpp << "        // Footer Connector with columns\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                if (!sec.footer_columns.empty()) {
+                    float colW = sec.footer_column_width;
+                    float totalW = colW * sec.footer_columns.size();
+                    cpp << "        float startX = (winW - " << std::fixed << std::setprecision(1) << totalW << "f) / 2;\n";
+                    cpp << "        float colY = secY + 30.0f;\n";
+                    for (size_t ci = 0; ci < sec.footer_columns.size(); ci++) {
+                        const FooterColumn& col = sec.footer_columns[ci];
+                        cpp << "        {\n";
+                        cpp << "            float colX" << ci << " = startX + " << std::fixed << std::setprecision(1) << (ci * colW) << "f;\n";
+                        cpp << "            ImFont* hf" << ci << " = GetFont(" << (int)(sec.footer_heading_size * 18.0f) << ");\n";
+                        cpp << "            if (hf" << ci << ") ImGui::PushFont(hf" << ci << ");\n";
+                        cpp << "            dl->AddText(ImVec2(colX" << ci << ", colY), " << ColorToU32(sec.footer_heading_color) << ", \"" << EscapeString(col.heading) << "\");\n";
+                        cpp << "            if (hf" << ci << ") ImGui::PopFont();\n";
+                        cpp << "            ImFont* sf" << ci << " = GetFont(" << (int)(sec.footer_subheading_size * 18.0f) << ");\n";
+                        cpp << "            if (sf" << ci << ") ImGui::PushFont(sf" << ci << ");\n";
+                        cpp << "            float itemY" << ci << " = colY + 30.0f;\n";
+                        for (const auto& item : col.items) {
+                            cpp << "            dl->AddText(ImVec2(colX" << ci << ", itemY" << ci << "), " << ColorToU32(sec.footer_subheading_color) << ", \"" << EscapeString(item) << "\");\n";
+                            cpp << "            itemY" << ci << " += " << std::fixed << std::setprecision(1) << sec.footer_item_spacing << "f + 18.0f;\n";
+                        }
+                        cpp << "            if (sf" << ci << ") ImGui::PopFont();\n";
+                        cpp << "        }\n";
+                    }
+                }
+                break;
+            }
+
+            case SEC_CARD_CONNECTOR: {
+                cpp << "        // Thumbnail Cards (Service Cards)\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                if (!sec.connector_cards.empty()) {
+                    int cardsPerRow = sec.connector_cards_per_row > 0 ? sec.connector_cards_per_row : 3;
+                    float spacing = sec.connector_card_spacing;
+                    cpp << "        {\n";
+                    cpp << "            int cardsPerRow = " << cardsPerRow << ";\n";
+                    cpp << "            float spacing = " << std::fixed << std::setprecision(1) << spacing << "f;\n";
+
+                    for (size_t ci = 0; ci < sec.connector_cards.size(); ci++) {
+                        const ThumbnailCard& card = sec.connector_cards[ci];
+                        cpp << "            {\n";
+                        cpp << "                float cardW = " << std::fixed << std::setprecision(1) << card.cardWidth << "f;\n";
+                        cpp << "                float cardH = " << std::fixed << std::setprecision(1) << card.cardHeight << "f;\n";
+                        cpp << "                int col = " << ci << " % cardsPerRow;\n";
+                        cpp << "                int row = " << ci << " / cardsPerRow;\n";
+                        cpp << "                float totalRowW = cardsPerRow * cardW + (cardsPerRow - 1) * spacing;\n";
+                        cpp << "                float startX = (winW - totalRowW) / 2;\n";
+                        cpp << "                float cardX = startX + col * (cardW + spacing);\n";
+                        cpp << "                float cardY = secY + 10.0f + row * (cardH + spacing);\n";
+                        cpp << "                dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH), " << ColorToU32(card.cardColor) << ", 4.0f);\n";
+                        if (card.borderThickness > 0) {
+                            cpp << "                dl->AddRect(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH), " << ColorToU32(card.borderColor) << ", 4.0f, 0, " << std::fixed << std::setprecision(1) << card.borderThickness << "f);\n";
+                        }
+                        cpp << "                ImFont* hf" << ci << " = GetFont(" << (int)(card.headingSize * 16.0f) << ");\n";
+                        cpp << "                if (hf" << ci << ") ImGui::PushFont(hf" << ci << ");\n";
+                        cpp << "                const char* heading" << ci << " = \"" << EscapeString(card.heading) << "\";\n";
+                        cpp << "                ImVec2 hsz" << ci << " = ImGui::CalcTextSize(heading" << ci << ");\n";
+                        cpp << "                dl->AddText(ImVec2(cardX + (cardW - hsz" << ci << ".x) / 2, cardY + cardH / 2 - hsz" << ci << ".y / 2), " << ColorToU32(card.headingColor) << ", heading" << ci << ");\n";
+                        cpp << "                if (hf" << ci << ") ImGui::PopFont();\n";
+                        cpp << "            }\n";
+                    }
+                    cpp << "        }\n";
+                }
+                break;
+            }
+
+            case SEC_TEXT_CONNECTOR: {
+                cpp << "        // Text Connector with rich text blocks\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                if (!sec.text_blocks.empty()) {
+                    cpp << "        {\n";
+                    cpp << "            float textY_tc = secY + " << std::fixed << std::setprecision(1) << sec.text_padding << "f;\n";
+                    cpp << "            float contentW_tc = " << std::fixed << std::setprecision(1) << sec.text_content_width << "f;\n";
+                    cpp << "            float startX_tc = (winW - contentW_tc) / 2;\n";
+
+                    for (size_t bi = 0; bi < sec.text_blocks.size(); bi++) {
+                        const TextBlock& block = sec.text_blocks[bi];
+                        cpp << "            {\n";
+                        cpp << "                ImFont* tf" << bi << " = GetFont(" << (int)block.fontSize << ");\n";
+                        cpp << "                if (tf" << bi << ") ImGui::PushFont(tf" << bi << ");\n";
+                        // Render all segments as one wrapped text for simplicity
+                        std::string fullText;
+                        for (const auto& seg : block.segments) {
+                            fullText += seg.text;
+                        }
+                        cpp << "                DrawWrappedTextEx(dl, tf" << bi << ", \"" << EscapeString(fullText) << "\", startX_tc, textY_tc, contentW_tc, " << ColorToU32(block.textColor) << ", false);\n";
+                        cpp << "                textY_tc += " << std::fixed << std::setprecision(1) << (block.lineSpacing * 20.0f) << "f;\n";
+                        cpp << "                if (tf" << bi << ") ImGui::PopFont();\n";
+                        cpp << "            }\n";
+                    }
+                    cpp << "        }\n";
+                }
+                break;
+            }
+
+            case SEC_ARTICLE_CONNECTOR: {
+                cpp << "        // Article Cards\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                if (!sec.article_cards.empty()) {
+                    int cardsPerRow = sec.article_cards_per_row > 0 ? sec.article_cards_per_row : 3;
+                    float spacing = sec.article_card_spacing;
+                    cpp << "        {\n";
+                    for (size_t ci = 0; ci < sec.article_cards.size(); ci++) {
+                        const ArticleCard& card = sec.article_cards[ci];
+                        cpp << "            {\n";
+                        cpp << "                float cardW = " << std::fixed << std::setprecision(1) << card.cardWidth << "f;\n";
+                        cpp << "                float cardH = " << std::fixed << std::setprecision(1) << card.cardHeight << "f;\n";
+                        cpp << "                int col = " << ci << " % " << cardsPerRow << ";\n";
+                        cpp << "                int row = " << ci << " / " << cardsPerRow << ";\n";
+                        cpp << "                float totalRowW = " << cardsPerRow << " * cardW + (" << cardsPerRow << " - 1) * " << std::fixed << std::setprecision(1) << spacing << "f;\n";
+                        cpp << "                float startX = (winW - totalRowW) / 2;\n";
+                        cpp << "                float cardX = startX + col * (cardW + " << std::fixed << std::setprecision(1) << spacing << "f);\n";
+                        cpp << "                float cardY = secY + 20.0f + row * (cardH + " << std::fixed << std::setprecision(1) << spacing << "f);\n";
+                        cpp << "                dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH), " << ColorToU32(card.cardBgColor) << ", 4.0f);\n";
+                        // Orange accent bar on left
+                        cpp << "                dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + " << std::fixed << std::setprecision(1) << card.accentWidth << "f, cardY + cardH), " << ColorToU32(card.accentColor) << ");\n";
+                        // Heading
+                        cpp << "                ImFont* hf" << ci << " = GetFont(" << (int)(card.headingSize * 16.0f) << ");\n";
+                        cpp << "                if (hf" << ci << ") ImGui::PushFont(hf" << ci << ");\n";
+                        cpp << "                dl->AddText(ImVec2(cardX + " << std::fixed << std::setprecision(1) << card.cardPadding << "f, cardY + 10.0f), " << ColorToU32(card.headingColor) << ", \"" << EscapeString(card.heading) << "\");\n";
+                        cpp << "                if (hf" << ci << ") ImGui::PopFont();\n";
+                        // Date
+                        cpp << "                ImFont* df" << ci << " = GetFont(" << (int)(card.dateSize * 14.0f) << ");\n";
+                        cpp << "                if (df" << ci << ") ImGui::PushFont(df" << ci << ");\n";
+                        cpp << "                dl->AddText(ImVec2(cardX + " << std::fixed << std::setprecision(1) << card.cardPadding << "f, cardY + 35.0f), " << ColorToU32(card.dateColor) << ", \"" << EscapeString(card.date) << "\");\n";
+                        cpp << "                if (df" << ci << ") ImGui::PopFont();\n";
+                        cpp << "            }\n";
+                    }
+                    cpp << "        }\n";
+                }
+                break;
+            }
+
+            case SEC_VERTICAL_CONNECTOR: {
+                cpp << "        // Vertical Layout Connector\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                cpp << "        {\n";
+                cpp << "            float contentW = " << std::fixed << std::setprecision(1) << sec.vertical_content_width << "f;\n";
+                cpp << "            float startX = (winW - contentW) / 2;\n";
+                cpp << "            float itemY = secY + 20.0f;\n";
+                for (size_t vi = 0; vi < sec.vertical_blocks.size(); vi++) {
+                    const VerticalBlock& vb = sec.vertical_blocks[vi];
+                    if (vb.type == 0) { // Heading
+                        cpp << "            {\n";
+                        cpp << "            ImFont* hf" << vi << " = GetFont(" << (int)(sec.vertical_heading_size * 18.0f) << ");\n";
+                        cpp << "            if (hf" << vi << ") ImGui::PushFont(hf" << vi << ");\n";
+                        cpp << "            dl->AddText(ImVec2(startX, itemY), " << ColorToU32(sec.vertical_heading_color) << ", \"" << EscapeString(vb.text) << "\");\n";
+                        cpp << "            itemY += 30.0f;\n";
+                        cpp << "            if (hf" << vi << ") ImGui::PopFont();\n";
+                        cpp << "            }\n";
+                    } else if (vb.type == 1) { // Description
+                        cpp << "            {\n";
+                        cpp << "            ImFont* df" << vi << " = GetFont(" << (int)(sec.vertical_desc_size * 16.0f) << ");\n";
+                        cpp << "            if (df" << vi << ") ImGui::PushFont(df" << vi << ");\n";
+                        cpp << "            DrawWrappedTextEx(dl, df" << vi << ", \"" << EscapeString(vb.text) << "\", startX, itemY, contentW, " << ColorToU32(sec.vertical_desc_color) << ", false);\n";
+                        cpp << "            itemY += " << std::fixed << std::setprecision(1) << sec.vertical_spacing << "f + 20.0f;\n";
+                        cpp << "            if (df" << vi << ") ImGui::PopFont();\n";
+                        cpp << "            }\n";
+                    }
+                }
+                cpp << "        }\n";
+                break;
+            }
+
+            case SEC_CONTACT_FORM_CONNECTOR: {
+                cpp << "        // Contact Form Connector - Interactive using Child Window\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+
+                float padding = sec.padding_left > 0 ? sec.padding_left : 30.0f;
+                float paddingTop = sec.padding_top > 0 ? sec.padding_top : 30.0f;
+
+                // Use a child window for proper input handling
+                cpp << "        ImGui::SetCursorPos(ImVec2(0, secY));\n";
+                cpp << "        ImGui::BeginChild(\"ContactFormChild\", ImVec2(winW, secH), false, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoBackground);\n";
+                cpp << "        {\n";
+                cpp << "            ImDrawList* cdl = ImGui::GetWindowDrawList();\n";
+                cpp << "            ImVec2 cpos = ImGui::GetCursorScreenPos();\n";
+                cpp << "            float formPadding = " << std::fixed << std::setprecision(1) << padding << "f;\n";
+                cpp << "            float formWidth = winW - formPadding * 2;\n";
+                cpp << "            if (formWidth > 600) formWidth = 600;\n";
+                cpp << "            float formStartX = (winW - formWidth) / 2;\n";
+                cpp << "            float localY = " << std::fixed << std::setprecision(1) << paddingTop << "f;\n";
+
+                cpp << "            if (!g_FormSubmitted) {\n";
+                // Title
+                cpp << "                // Title\n";
+                cpp << "                ImFont* titleFont = GetFont(" << (int)(24.0f * sec.contact_form_title_size) << ");\n";
+                cpp << "                if (titleFont) ImGui::PushFont(titleFont);\n";
+                cpp << "                ImGui::SetCursorPos(ImVec2(formStartX, localY));\n";
+                cpp << "                ImGui::TextColored(" << ColorToImVec4(sec.contact_form_title_color) << ", \"" << EscapeString(sec.contact_form_title) << "\");\n";
+                cpp << "                localY += ImGui::GetItemRectSize().y + " << std::fixed << std::setprecision(1) << sec.contact_form_spacing << "f;\n";
+                cpp << "                if (titleFont) ImGui::PopFont();\n";
+
+                // Style for input fields
+                cpp << "                // Style input fields\n";
+                cpp << "                ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 6.0f);\n";
+                cpp << "                ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(12, 10));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.96f, 0.97f, 0.98f, 1.0f));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, ImVec4(0.92f, 0.93f, 0.95f, 1.0f));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_FrameBgActive, ImVec4(0.90f, 0.91f, 0.93f, 1.0f));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.1f, 0.1f, 0.1f, 1.0f));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.7f, 0.7f, 0.7f, 1.0f));\n";
+
+                // Form fields
+                cpp << "                float fieldX = formStartX;\n";
+                cpp << "                float halfWidth = (formWidth - " << std::fixed << std::setprecision(1) << sec.contact_form_spacing << "f) / 2;\n";
+                cpp << "                int fieldInRow = 0;\n";
+                cpp << "                float rowStartY = localY;\n";
+
+                for (size_t fi = 0; fi < sec.contact_form_fields.size() && fi < 10; fi++) {
+                    const ContactFormField& field = sec.contact_form_fields[fi];
+                    bool isFullWidth = field.width >= 1.0f;
+                    bool isTextarea = field.fieldType == 3;
+                    float fieldHeight = isTextarea ? sec.contact_form_textarea_height : sec.contact_form_input_height;
+
+                    cpp << "                {\n";
+                    if (isFullWidth) {
+                        cpp << "                    if (fieldInRow > 0) { localY = rowStartY + " << std::fixed << std::setprecision(1) << sec.contact_form_input_height << "f + " << sec.contact_form_spacing << "f; }\n";
+                        cpp << "                    fieldX = formStartX; fieldInRow = 0; rowStartY = localY;\n";
+                        cpp << "                    float fieldW = formWidth;\n";
+                    } else {
+                        cpp << "                    if (fieldInRow >= 2) { localY = rowStartY + " << std::fixed << std::setprecision(1) << sec.contact_form_input_height << "f + " << sec.contact_form_spacing << "f; fieldX = formStartX; fieldInRow = 0; rowStartY = localY; }\n";
+                        cpp << "                    float fieldW = halfWidth;\n";
+                    }
+                    cpp << "                    float fieldH = " << std::fixed << std::setprecision(1) << fieldHeight << "f;\n";
+
+                    cpp << "                    ImGui::SetCursorPos(ImVec2(fieldX, localY));\n";
+                    cpp << "                    ImGui::SetNextItemWidth(fieldW);\n";
+
+                    if (isTextarea) {
+                        cpp << "                    ImGui::InputTextMultiline(\"##formfield" << fi << "\", g_FormField" << fi << ", sizeof(g_FormField" << fi << "), ImVec2(fieldW, fieldH));\n";
+                    } else {
+                        cpp << "                    ImGui::InputTextWithHint(\"##formfield" << fi << "\", \"" << EscapeString(field.placeholder) << "\", g_FormField" << fi << ", sizeof(g_FormField" << fi << "));\n";
+                    }
+
+                    if (isFullWidth) {
+                        cpp << "                    localY += fieldH + " << std::fixed << std::setprecision(1) << sec.contact_form_spacing << "f;\n";
+                    } else {
+                        cpp << "                    fieldX += fieldW + " << std::fixed << std::setprecision(1) << sec.contact_form_spacing << "f;\n";
+                        cpp << "                    fieldInRow++;\n";
+                    }
+                    cpp << "                }\n";
+                }
+
+                // Finalize row position
+                cpp << "                if (fieldInRow > 0) { localY = rowStartY + " << std::fixed << std::setprecision(1) << sec.contact_form_input_height << "f + " << sec.contact_form_spacing << "f; }\n";
+
+                // Pop input styles
+                cpp << "                ImGui::PopStyleColor(5);\n";
+                cpp << "                ImGui::PopStyleVar(2);\n";
+
+                // Submit button
+                cpp << "                // Submit button\n";
+                cpp << "                float btnW = " << std::fixed << std::setprecision(1) << sec.contact_form_button_width << "f;\n";
+                cpp << "                float btnH = " << std::fixed << std::setprecision(1) << sec.contact_form_button_height << "f;\n";
+                cpp << "                float btnX = formStartX + formWidth - btnW;\n";
+                cpp << "                float btnY = localY + 10.0f;\n";
+                cpp << "                ImGui::SetCursorPos(ImVec2(btnX, btnY));\n";
+                cpp << "                ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 4.0f);\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_Button, " << ColorToImVec4(sec.contact_form_button_bg) << ");\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(" << (sec.contact_form_button_bg.x + 0.1f) << "f, " << (sec.contact_form_button_bg.y + 0.1f) << "f, " << (sec.contact_form_button_bg.z + 0.1f) << "f, 1.0f));\n";
+                cpp << "                ImGui::PushStyleColor(ImGuiCol_Text, " << ColorToImVec4(sec.contact_form_button_text) << ");\n";
+                cpp << "                if (ImGui::Button(\"" << EscapeString(sec.contact_form_submit_text) << "\", ImVec2(btnW, btnH))) {\n";
+                cpp << "                    g_FormSubmitted = true;\n";
+                cpp << "                }\n";
+                cpp << "                ImGui::PopStyleColor(3);\n";
+                cpp << "                ImGui::PopStyleVar();\n";
+                cpp << "            } else {\n";
+                // Show success message
+                cpp << "                // Success message\n";
+                cpp << "                ImGui::SetCursorPos(ImVec2(0, secH / 2 - 20));\n";
+                cpp << "                ImFont* msgFont = GetFont(24);\n";
+                cpp << "                if (msgFont) ImGui::PushFont(msgFont);\n";
+                cpp << "                float textW = ImGui::CalcTextSize(\"Thank you! Your message has been sent.\").x;\n";
+                cpp << "                ImGui::SetCursorPosX((winW - textW) / 2);\n";
+                cpp << "                ImGui::TextColored(ImVec4(0.2f, 0.7f, 0.4f, 1.0f), \"Thank you! Your message has been sent.\");\n";
+                cpp << "                if (msgFont) ImGui::PopFont();\n";
+                cpp << "            }\n";
+                cpp << "        }\n";
+                cpp << "        ImGui::EndChild();\n";
+                break;
+            }
+
+            case SEC_SEARCH_CONNECTOR: {
+                cpp << "        // Search Bar Connector - Interactive\n";
+                cpp << "        dl->AddRectFilled(secMin, secMax, " << ColorToU32(sec.bg_color) << ");\n";
+                cpp << "        {\n";
+                cpp << "            float totalW = " << std::fixed << std::setprecision(1) << (sec.search_input_width + sec.search_button_width) << "f;\n";
+                cpp << "            float startX = (winW - totalW) / 2;\n";
+                cpp << "            float centerY = secY + (secH - " << std::fixed << std::setprecision(1) << sec.search_input_height << "f) / 2;\n";
+                cpp << "            float inputW = " << std::fixed << std::setprecision(1) << sec.search_input_width << "f;\n";
+                cpp << "            float inputH = " << std::fixed << std::setprecision(1) << sec.search_input_height << "f;\n";
+                cpp << "            float btnW = " << std::fixed << std::setprecision(1) << sec.search_button_width << "f;\n";
+                cpp << "            float radius = " << std::fixed << std::setprecision(1) << sec.search_border_radius << "f;\n";
+                cpp << "            // Input field\n";
+                cpp << "            dl->AddRectFilled(ImVec2(startX, centerY), ImVec2(startX + inputW, centerY + inputH), " << ColorToU32(sec.search_input_bg) << ", radius);\n";
+                cpp << "            dl->AddRect(ImVec2(startX, centerY), ImVec2(startX + inputW, centerY + inputH), " << ColorToU32(sec.search_input_border) << ", radius, 0, 1.0f);\n";
+                cpp << "            // Use ImGui input for interactivity\n";
+                cpp << "            static char searchQuery[256] = \"\";\n";
+                cpp << "            ImGui::SetCursorPos(ImVec2(startX, centerY));\n";
+                cpp << "            ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, radius);\n";
+                cpp << "            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(15, (inputH - 16) / 2));\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_FrameBg, " << ColorToImVec4(sec.search_input_bg) << ");\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, " << ColorToImVec4(sec.search_input_bg) << ");\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_FrameBgActive, " << ColorToImVec4(sec.search_input_bg) << ");\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_Text, " << ColorToImVec4(sec.search_input_text) << ");\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_Border, " << ColorToImVec4(sec.search_input_border) << ");\n";
+                cpp << "            ImGui::SetNextItemWidth(inputW);\n";
+                cpp << "            ImGui::InputTextWithHint(\"##search\", \"" << EscapeString(sec.search_placeholder) << "\", searchQuery, sizeof(searchQuery));\n";
+                cpp << "            ImGui::PopStyleColor(5);\n";
+                cpp << "            ImGui::PopStyleVar(2);\n";
+                cpp << "            // Search button\n";
+                cpp << "            ImGui::SetCursorPos(ImVec2(startX + inputW, centerY));\n";
+                cpp << "            ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, radius);\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_Button, " << ColorToImVec4(sec.search_button_bg) << ");\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(" << (sec.search_button_bg.x * 0.9f) << "f, " << (sec.search_button_bg.y * 0.9f) << "f, " << (sec.search_button_bg.z * 0.9f) << "f, 1.0f));\n";
+                cpp << "            ImGui::PushStyleColor(ImGuiCol_Text, " << ColorToImVec4(sec.search_button_text_color) << ");\n";
+                cpp << "            if (ImGui::Button(\"" << EscapeString(sec.search_button_text) << "\", ImVec2(btnW, inputH))) {\n";
+                cpp << "                printf(\"Search: %s\\n\", searchQuery);\n";
+                cpp << "            }\n";
+                cpp << "            ImGui::PopStyleColor(3);\n";
+                cpp << "            ImGui::PopStyleVar();\n";
+                cpp << "        }\n";
                 break;
             }
 
@@ -8220,15 +16063,20 @@ void RenderWebsite() {
                     cpp << "        {\n";
                     cpp << "            const char* title = \"" << EscapeString(sec.title) << "\";\n";
                     cpp << "            ImVec2 sz = ImGui::CalcTextSize(title);\n";
-                    cpp << "            dl->AddText(ImVec2(winW/2 - sz.x/2, secY + secH/2), " << ColorToU32(sec.title_color) << ", title);\n";
+                    cpp << "            dl->AddText(ImVec2(secX + secW/2 - sz.x/2, secY + secH/2), " << ColorToU32(sec.title_color) << ", title);\n";
                     cpp << "        }\n";
                 }
                 break;
         }
 
-        cpp << "        yPos += secH;\n";
-        cpp << "    }\n\n";
-    }
+            cpp << "        yPos += secH;\n";
+            cpp << "    }\n\n";
+            globalSecIdx++;
+        } // End section loop for this page
+
+        // Close the page block
+        cpp << "    } // End page " << pageIdx << ": " << currentPage.name << "\n\n";
+    } // End page loop
 
     cpp << R"(
     // Update total height for scrolling
@@ -8314,6 +16162,8 @@ int main(int, char**) {
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigInputTextCursorBlink = true;  // Enable cursor blink
+    io.ConfigInputTextEnterKeepActive = true;  // Keep input active after Enter
 
     // Load Inter font from embedded data at multiple sizes
     ImFontConfig fontConfig;
@@ -8546,8 +16396,20 @@ void EnsureImGuiTemplatesTable() {
                         "layer_count INTEGER, "
                         "imgui_code TEXT, "
                         "screenshot_data BYTEA, "
+                        "screenshot_path TEXT, "
                         "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
                         ")";
+
+    // Also add screenshot_path, canvas_bg_color, and is_normal_mode columns if table exists but they don't
+    PGresult* alterResult = PQexec(g_DBConnection,
+        "ALTER TABLE imgui_templates ADD COLUMN IF NOT EXISTS screenshot_path TEXT");
+    PQclear(alterResult);
+    alterResult = PQexec(g_DBConnection,
+        "ALTER TABLE imgui_templates ADD COLUMN IF NOT EXISTS canvas_bg_color VARCHAR(64)");
+    PQclear(alterResult);
+    alterResult = PQexec(g_DBConnection,
+        "ALTER TABLE imgui_templates ADD COLUMN IF NOT EXISTS is_normal_mode BOOLEAN DEFAULT FALSE");
+    PQclear(alterResult);
     PGresult* result = PQexec(g_DBConnection, query.c_str());
     if (PQresultStatus(result) != PGRES_COMMAND_OK) {
         printf("[ImGui Templates] Error creating table: %s\n", PQerrorMessage(g_DBConnection));
@@ -8576,6 +16438,21 @@ void EnsureImGuiTemplatesTable() {
         printf("[ImGui Templates] Error creating layers table: %s\n", PQerrorMessage(g_DBConnection));
     }
     PQclear(result);
+
+    // Add new columns for z_index and border_color if they don't exist
+    PGresult* alterRes;
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS z_index INTEGER DEFAULT 0");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS border_color VARCHAR(64)");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS href TEXT");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS onclick_action TEXT");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS action_type VARCHAR(32)");
+    PQclear(alterRes);
+    alterRes = PQexec(g_DBConnection, "ALTER TABLE imgui_template_layers ADD COLUMN IF NOT EXISTS image_path TEXT");
+    PQclear(alterRes);
 }
 
 // Get list of saved ImGui templates
@@ -8606,22 +16483,205 @@ std::vector<ImGuiTemplateInfo> GetImGuiTemplates() {
     return templates;
 }
 
+// Convert Normal mode sections to Figma layers for saving
+void ConvertSectionsToLayers() {
+    if (g_FigmaMode) return;  // Already in Figma mode, no conversion needed
+
+    g_FigmaProject.layers.clear();
+    g_FigmaProject.canvas_width = 1400;
+    g_FigmaProject.canvas_height = 3000;
+    g_FigmaProject.canvas_bg_color = g_NormalCanvasBgColor;
+
+    for (const auto& sec : g_Sections) {
+        WebLayer layer;
+        layer.id = g_FigmaProject.next_layer_id++;
+        layer.name = sec.name;
+        layer.x = sec.x_position;
+        layer.y = sec.y_position;
+        layer.width = sec.width;
+        layer.height = sec.height;
+        layer.z_index = sec.z_index;
+        layer.bg_color = sec.bg_color;
+        layer.text_color = sec.text_color;
+        layer.opacity = 1.0f;
+        layer.visible = true;
+        layer.locked = false;
+
+        // Set layer type based on section type
+        switch (sec.type) {
+            case SEC_LOGO:
+                layer.type = LAYER_IMAGE;
+                layer.name = "Logo";
+                layer.text = sec.title;
+                layer.image_path = sec.logo_path;
+                layer.texture_id = sec.logo_texture_id;
+                break;
+            case SEC_HEADING:
+                layer.type = LAYER_TEXT;
+                layer.name = "Heading";
+                layer.text = sec.title;
+                layer.font_size = sec.title_font_size;
+                layer.text_color = sec.title_color;
+                break;
+            case SEC_TEXT_ELEMENT:
+                layer.type = LAYER_TEXT;
+                layer.name = "Text";
+                layer.text = sec.content;
+                layer.font_size = sec.content_font_size;
+                layer.text_color = sec.content_color;
+                break;
+            case SEC_BUTTON_ELEMENT:
+                layer.type = LAYER_BUTTON;
+                layer.name = "Button";
+                layer.text = sec.button_text;
+                layer.href = sec.button_link;
+                layer.onclick_action = sec.button_link;
+                layer.action_type = "link";
+                layer.bg_color = sec.button_bg_color;
+                layer.text_color = sec.button_text_color;
+                layer.border_radius = 6;
+                break;
+            default:
+                layer.type = LAYER_DIV;
+                layer.name = sec.name;
+                layer.text = sec.title;
+                break;
+        }
+
+        g_FigmaProject.layers.push_back(layer);
+    }
+
+    printf("[Convert] Converted %zu sections to %zu layers\n", g_Sections.size(), g_FigmaProject.layers.size());
+}
+
+// Convert Figma layers back to Normal mode sections for loading
+void ConvertLayersToSections() {
+    g_Sections.clear();
+    g_NormalCanvasBgColor = g_FigmaProject.canvas_bg_color;
+
+    for (const auto& layer : g_FigmaProject.layers) {
+        SectionType secType = SEC_CUSTOM;
+
+        // Determine section type from layer type and name
+        if (layer.type == LAYER_IMAGE || layer.name == "Logo" || layer.name.find("Logo") != std::string::npos) {
+            secType = SEC_LOGO;
+        } else if (layer.type == LAYER_BUTTON || layer.name == "Button" || layer.name.find("Button") != std::string::npos) {
+            secType = SEC_BUTTON_ELEMENT;
+        } else if (layer.type == LAYER_TEXT) {
+            if (layer.name == "Heading" || layer.name.find("Heading") != std::string::npos || layer.font_size >= 24) {
+                secType = SEC_HEADING;
+            } else {
+                secType = SEC_TEXT_ELEMENT;
+            }
+        }
+
+        WebSection sec(g_NextSectionId++, secType);
+        sec.name = layer.name;
+        sec.x_position = layer.x;
+        sec.y_position = layer.y;
+        sec.width = layer.width;
+        sec.height = layer.height;
+        sec.z_index = layer.z_index;
+        sec.bg_color = layer.bg_color;
+        sec.text_color = layer.text_color;
+
+        switch (secType) {
+            case SEC_LOGO:
+                sec.title = layer.text;
+                sec.logo_path = layer.image_path;
+                // Load logo texture if path exists
+                if (!sec.logo_path.empty()) {
+                    int w, h, n;
+                    unsigned char* imgData = stbi_load(sec.logo_path.c_str(), &w, &h, &n, 4);
+                    if (imgData) {
+                        glGenTextures(1, &sec.logo_texture_id);
+                        glBindTexture(GL_TEXTURE_2D, sec.logo_texture_id);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+                        stbi_image_free(imgData);
+                    }
+                }
+                break;
+            case SEC_HEADING:
+                sec.title = layer.text;
+                sec.title_font_size = layer.font_size > 0 ? layer.font_size : 32;
+                sec.title_color = layer.text_color;
+                break;
+            case SEC_TEXT_ELEMENT:
+                sec.content = layer.text;
+                sec.content_font_size = layer.font_size > 0 ? layer.font_size : 16;
+                sec.content_color = layer.text_color;
+                break;
+            case SEC_BUTTON_ELEMENT:
+                sec.button_text = layer.text;
+                sec.button_link = layer.href.empty() ? layer.onclick_action : layer.href;
+                sec.button_bg_color = layer.bg_color;
+                sec.button_text_color = layer.text_color;
+                break;
+            default:
+                sec.title = layer.text;
+                break;
+        }
+
+        g_Sections.push_back(sec);
+    }
+
+    // Select first section if any
+    if (!g_Sections.empty()) {
+        g_SelectedSectionIndex = 0;
+        g_Sections[0].selected = true;
+    }
+
+    printf("[Convert] Converted %zu layers to %zu sections\n", g_FigmaProject.layers.size(), g_Sections.size());
+}
+
 // Save current Figma project as ImGui template
 bool SaveAsImGuiTemplate(const std::string& templateName) {
-    if (!g_DBConnection || g_FigmaProject.layers.empty()) {
-        printf("[ImGui Templates] No database or no layers to save!\n");
+    // Check if saving from Normal mode BEFORE any conversion
+    bool isNormalMode = !g_FigmaMode;
+
+    // If in Normal mode, FIRST save sections using SaveTemplate to preserve all images
+    if (isNormalMode && !g_Sections.empty()) {
+        printf("[Save] Saving Normal mode template with %zu sections...\n", g_Sections.size());
+        SaveTemplate(templateName, "User designed template");  // This saves all section images
+        ConvertSectionsToLayers();  // Also convert to layers for layer-based loading
+    }
+    // If in Figma mode, convert layers to sections first, then save both ways
+    else if (g_FigmaMode && !g_FigmaProject.layers.empty()) {
+        printf("[Save] Saving Figma template with %zu layers...\n", g_FigmaProject.layers.size());
+        // Convert Figma layers to Normal mode sections for unified saving
+        ConvertLayersToSections();
+        // Save sections to templates/sections tables
+        if (!g_Sections.empty()) {
+            SaveTemplate(templateName, "Figma imported template");
+            printf("[Save] Converted and saved %zu sections to database\n", g_Sections.size());
+        }
+    }
+
+    if (!g_DBConnection) {
+        printf("[Save] No database connection!\n");
+        return false;
+    }
+
+    // For Figma mode with no layers but has sections, still continue
+    if (g_FigmaProject.layers.empty() && g_Sections.empty()) {
+        printf("[Save] No layers or sections to save!\n");
         return false;
     }
 
     EnsureImGuiTemplatesTable();
 
-    // Insert template record
+    // Insert template record with screenshot path
     std::ostringstream query;
-    query << "INSERT INTO imgui_templates (name, canvas_width, canvas_height, layer_count) VALUES ("
+    query << "INSERT INTO imgui_templates (name, canvas_width, canvas_height, layer_count, screenshot_path, canvas_bg_color, is_normal_mode) VALUES ("
           << "'" << SQLEscape(templateName) << "', "
           << g_FigmaProject.canvas_width << ", "
           << g_FigmaProject.canvas_height << ", "
-          << g_FigmaProject.layers.size() << ") RETURNING id";
+          << g_FigmaProject.layers.size() << ", "
+          << "'" << SQLEscape(g_FigmaProject.screenshot_path) << "', "
+          << "'" << ColorToSQL(g_FigmaProject.canvas_bg_color) << "', "
+          << (isNormalMode ? "TRUE" : "FALSE") << ") RETURNING id";
 
     PGresult* result = PQexec(g_DBConnection, query.str().c_str());
     if (PQresultStatus(result) != PGRES_TUPLES_OK) {
@@ -8652,7 +16712,7 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
         layerQuery << "INSERT INTO imgui_template_layers ("
                    << "template_id, layer_order, layer_type, name, x, y, width, height, "
                    << "text, font_size, opacity, bg_color, text_color, border_radius, border_width, image_data, "
-                   << "href, onclick_action, action_type, image_path"
+                   << "href, onclick_action, action_type, image_path, z_index, border_color"
                    << ") VALUES ("
                    << templateId << ", " << i << ", " << (int)layer.type << ", "
                    << "'" << SQLEscape(layer.name) << "', "
@@ -8666,7 +16726,9 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
                    << "'" << SQLEscape(layer.href) << "', "
                    << "'" << SQLEscape(layer.onclick_action) << "', "
                    << "'" << SQLEscape(layer.action_type) << "', "
-                   << "'" << SQLEscape(layer.image_path) << "')";
+                   << "'" << SQLEscape(layer.image_path) << "', "
+                   << layer.z_index << ", "
+                   << "'" << ColorToSQL(layer.border_color) << "')";
 
         result = PQexec(g_DBConnection, layerQuery.str().c_str());
         if (PQresultStatus(result) != PGRES_COMMAND_OK) {
@@ -8676,6 +16738,161 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
     }
 
     printf("[ImGui Templates] Saved '%s' with %zu layers!\n", templateName.c_str(), g_FigmaProject.layers.size());
+
+    // ALSO save to templates + figma_layers tables for Template Gallery compatibility
+    {
+        // Read screenshot data
+        std::vector<unsigned char> screenshotData;
+        if (!g_FigmaProject.screenshot_path.empty()) {
+            screenshotData = ReadImageFile(g_FigmaProject.screenshot_path);
+        }
+
+        // Ensure columns exist
+        std::string alterQuery = "ALTER TABLE templates ADD COLUMN IF NOT EXISTS is_figma_template BOOLEAN DEFAULT FALSE";
+        PGresult* alterResult = PQexec(g_DBConnection, alterQuery.c_str());
+        PQclear(alterResult);
+
+        alterQuery = "ALTER TABLE templates ADD COLUMN IF NOT EXISTS figma_screenshot_path TEXT";
+        alterResult = PQexec(g_DBConnection, alterQuery.c_str());
+        PQclear(alterResult);
+
+        alterQuery = "ALTER TABLE templates ADD COLUMN IF NOT EXISTS figma_screenshot_data BYTEA";
+        alterResult = PQexec(g_DBConnection, alterQuery.c_str());
+        PQclear(alterResult);
+
+        alterQuery = "ALTER TABLE templates ADD COLUMN IF NOT EXISTS figma_canvas_width REAL";
+        alterResult = PQexec(g_DBConnection, alterQuery.c_str());
+        PQclear(alterResult);
+
+        alterQuery = "ALTER TABLE templates ADD COLUMN IF NOT EXISTS figma_canvas_height REAL";
+        alterResult = PQexec(g_DBConnection, alterQuery.c_str());
+        PQclear(alterResult);
+
+        // Create template in templates table
+        std::string tQuery = "INSERT INTO templates (template_name, description, project_name) VALUES ('" +
+            SQLEscape(templateName) + "', 'Figma-style imported template', '" +
+            SQLEscape(templateName) + "') " +
+            "ON CONFLICT (template_name) DO UPDATE SET description='Figma-style imported template', " +
+            "project_name='" + SQLEscape(templateName) + "', updated_date=NOW()";
+
+        result = PQexec(g_DBConnection, tQuery.c_str());
+        if (PQresultStatus(result) != PGRES_COMMAND_OK) {
+            printf("[Template Gallery] Error creating template: %s\n", PQerrorMessage(g_DBConnection));
+        }
+        PQclear(result);
+
+        // Get template ID
+        tQuery = "SELECT id FROM templates WHERE template_name='" + SQLEscape(templateName) + "'";
+        result = PQexec(g_DBConnection, tQuery.c_str());
+        int galleryTemplateId = 0;
+        if (PQresultStatus(result) == PGRES_TUPLES_OK && PQntuples(result) > 0) {
+            galleryTemplateId = atoi(PQgetvalue(result, 0, 0));
+        }
+        PQclear(result);
+
+        if (galleryTemplateId > 0) {
+            // Delete old figma_layers
+            tQuery = "DELETE FROM figma_layers WHERE template_id=" + std::to_string(galleryTemplateId);
+            result = PQexec(g_DBConnection, tQuery.c_str());
+            PQclear(result);
+
+            // Create figma_layers table if not exists
+            tQuery = "CREATE TABLE IF NOT EXISTS figma_layers ("
+                    "id SERIAL PRIMARY KEY, "
+                    "template_id INTEGER REFERENCES templates(id), "
+                    "layer_order INTEGER, "
+                    "layer_type INTEGER, "
+                    "name VARCHAR(255), "
+                    "x REAL, y REAL, width REAL, height REAL, "
+                    "text TEXT, "
+                    "font_size REAL, "
+                    "opacity REAL, "
+                    "image_path TEXT, "
+                    "image_data BYTEA, "
+                    "bg_color VARCHAR(64), "
+                    "text_color VARCHAR(64), "
+                    "href TEXT, "
+                    "onclick_action TEXT, "
+                    "action_type VARCHAR(32), "
+                    "z_index INTEGER DEFAULT 0, "
+                    "border_color VARCHAR(64), "
+                    "border_radius REAL, "
+                    "border_width REAL"
+                    ")";
+            result = PQexec(g_DBConnection, tQuery.c_str());
+            PQclear(result);
+
+            // Add new columns if they don't exist
+            result = PQexec(g_DBConnection, "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS z_index INTEGER DEFAULT 0");
+            PQclear(result);
+            result = PQexec(g_DBConnection, "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS border_color VARCHAR(64)");
+            PQclear(result);
+            result = PQexec(g_DBConnection, "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS border_radius REAL");
+            PQclear(result);
+            result = PQexec(g_DBConnection, "ALTER TABLE figma_layers ADD COLUMN IF NOT EXISTS border_width REAL");
+            result = PQexec(g_DBConnection, tQuery.c_str());
+            PQclear(result);
+
+            // Add is_normal_mode column if not exists
+            result = PQexec(g_DBConnection, "ALTER TABLE templates ADD COLUMN IF NOT EXISTS is_normal_mode BOOLEAN DEFAULT FALSE");
+            PQclear(result);
+
+            // Update template with Figma info
+            std::ostringstream updateQuery;
+            updateQuery << "UPDATE templates SET "
+                        << "figma_screenshot_path='" << SQLEscape(g_FigmaProject.screenshot_path) << "', "
+                        << "figma_canvas_width=" << g_FigmaProject.canvas_width << ", "
+                        << "figma_canvas_height=" << g_FigmaProject.canvas_height << ", "
+                        << "is_figma_template=TRUE, "
+                        << "is_normal_mode=" << (isNormalMode ? "TRUE" : "FALSE");
+            if (!screenshotData.empty()) {
+                updateQuery << ", figma_screenshot_data=" << BinaryToHex(screenshotData);
+            }
+            updateQuery << " WHERE id=" << galleryTemplateId;
+            result = PQexec(g_DBConnection, updateQuery.str().c_str());
+            PQclear(result);
+
+            // Insert each layer into figma_layers
+            for (size_t i = 0; i < g_FigmaProject.layers.size(); i++) {
+                const auto& l = g_FigmaProject.layers[i];
+
+                std::vector<unsigned char> imgData;
+                if (!l.image_path.empty()) {
+                    imgData = ReadImageFile(l.image_path);
+                }
+
+                std::ostringstream lq;
+                lq << "INSERT INTO figma_layers ("
+                   << "template_id, layer_order, layer_type, name, x, y, width, height, "
+                   << "text, font_size, opacity, image_path, image_data, bg_color, text_color, "
+                   << "href, onclick_action, action_type, z_index, border_color, border_radius, border_width"
+                   << ") VALUES ("
+                   << galleryTemplateId << ", " << i << ", " << (int)l.type << ", "
+                   << "'" << SQLEscape(l.name) << "', "
+                   << l.x << ", " << l.y << ", " << l.width << ", " << l.height << ", "
+                   << "'" << SQLEscape(l.text) << "', "
+                   << l.font_size << ", " << l.opacity << ", "
+                   << "'" << SQLEscape(l.image_path) << "', "
+                   << (imgData.empty() ? "NULL" : BinaryToHex(imgData)) << ", "
+                   << "'" << ColorToSQL(l.bg_color) << "', "
+                   << "'" << ColorToSQL(l.text_color) << "', "
+                   << "'" << SQLEscape(l.href) << "', "
+                   << "'" << SQLEscape(l.onclick_action) << "', "
+                   << "'" << SQLEscape(l.action_type) << "', "
+                   << l.z_index << ", "
+                   << "'" << ColorToSQL(l.border_color) << "', "
+                   << l.border_radius << ", "
+                   << l.border_width
+                   << ")";
+
+                result = PQexec(g_DBConnection, lq.str().c_str());
+                PQclear(result);
+            }
+
+            printf("[Template Gallery] Also saved to templates table with ID: %d\n", galleryTemplateId);
+        }
+    }
+
     return true;
 }
 
@@ -8683,8 +16900,8 @@ bool SaveAsImGuiTemplate(const std::string& templateName) {
 bool LoadImGuiTemplate(int templateId) {
     if (!g_DBConnection) return false;
 
-    // Get template info (including screenshot_path)
-    std::string query = "SELECT name, canvas_width, canvas_height, screenshot_path FROM imgui_templates WHERE id=" + std::to_string(templateId);
+    // Get template info (including screenshot_path, canvas_bg_color, and is_normal_mode)
+    std::string query = "SELECT name, canvas_width, canvas_height, screenshot_path, canvas_bg_color, is_normal_mode FROM imgui_templates WHERE id=" + std::to_string(templateId);
     PGresult* result = PQexec(g_DBConnection, query.c_str());
 
     if (PQresultStatus(result) != PGRES_TUPLES_OK || PQntuples(result) == 0) {
@@ -8698,6 +16915,19 @@ bool LoadImGuiTemplate(int templateId) {
     g_FigmaProject.name = PQgetvalue(result, 0, 0);
     g_FigmaProject.canvas_width = atof(PQgetvalue(result, 0, 1));
     g_FigmaProject.canvas_height = atof(PQgetvalue(result, 0, 2));
+
+    // Load canvas background color if available
+    std::string canvasBgColorStr = PQgetisnull(result, 0, 4) ? "" : PQgetvalue(result, 0, 4);
+    if (!canvasBgColorStr.empty()) {
+        g_FigmaProject.canvas_bg_color = SQLToColor(canvasBgColorStr);
+    }
+
+    // Check if this is a Normal mode template
+    bool isNormalModeTemplate = false;
+    if (!PQgetisnull(result, 0, 5)) {
+        std::string isNormalStr = PQgetvalue(result, 0, 5);
+        isNormalModeTemplate = (isNormalStr == "t" || isNormalStr == "true" || isNormalStr == "1");
+    }
 
     // Load screenshot if available
     std::string screenshotPath = PQgetisnull(result, 0, 3) ? "" : PQgetvalue(result, 0, 3);
@@ -8721,7 +16951,7 @@ bool LoadImGuiTemplate(int templateId) {
     // Load layers
     query = "SELECT layer_type, name, x, y, width, height, text, font_size, opacity, "
             "bg_color, text_color, border_radius, border_width, image_data, "
-            "href, onclick_action, action_type, image_path "
+            "href, onclick_action, action_type, image_path, z_index, border_color "
             "FROM imgui_template_layers WHERE template_id=" + std::to_string(templateId) +
             " ORDER BY layer_order";
     result = PQexec(g_DBConnection, query.c_str());
@@ -8752,6 +16982,10 @@ bool LoadImGuiTemplate(int templateId) {
             layer.onclick_action = PQgetisnull(result, i, 15) ? "" : PQgetvalue(result, i, 15);
             layer.action_type = PQgetisnull(result, i, 16) ? "" : PQgetvalue(result, i, 16);
             layer.image_path = PQgetisnull(result, i, 17) ? "" : PQgetvalue(result, i, 17);
+
+            // Load z_index and border_color
+            layer.z_index = PQgetisnull(result, i, 18) ? 0 : atoi(PQgetvalue(result, i, 18));
+            layer.border_color = PQgetisnull(result, i, 19) ? ImVec4(0,0,0,1) : SQLToColor(PQgetvalue(result, i, 19));
 
             // Load image from path if available
             if (!layer.image_path.empty() && layer.type == LAYER_IMAGE) {
@@ -8793,11 +17027,19 @@ bool LoadImGuiTemplate(int templateId) {
     }
     PQclear(result);
 
-    // Switch to Figma mode
-    g_FigmaMode = true;
-    g_SelectedLayerId = -1;
+    // Check if this is a Normal mode template - if so, convert layers to sections
+    if (isNormalModeTemplate) {
+        ConvertLayersToSections();
+        g_FigmaMode = false;
+        g_SelectedLayerId = -1;
+        printf("[ImGui Templates] Loaded Normal mode template '%s' with %zu sections\n", g_FigmaProject.name.c_str(), g_Sections.size());
+    } else {
+        // Switch to Figma mode
+        g_FigmaMode = true;
+        g_SelectedLayerId = -1;
+        printf("[ImGui Templates] Loaded Figma template '%s' with %zu layers\n", g_FigmaProject.name.c_str(), g_FigmaProject.layers.size());
+    }
 
-    printf("[ImGui Templates] Loaded '%s' with %zu layers\n", g_FigmaProject.name.c_str(), g_FigmaProject.layers.size());
     return true;
 }
 
@@ -8896,10 +17138,13 @@ void ExportFigmaToImGui() {
 
     // Copy layer images and build image list
     std::vector<std::pair<std::string, std::string>> imageMap; // original path -> new filename
+    // Also track animation images per layer: layerId -> vector of animation image filenames
+    std::map<int, std::vector<std::string>> animationImageMap;
     int imgIndex = 0;
+
     for (const auto& layer : g_FigmaProject.layers) {
-        if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
-            // Check if already copied
+        // Copy main image
+        if (!layer.image_path.empty()) {
             bool found = false;
             for (const auto& p : imageMap) {
                 if (p.first == layer.image_path) {
@@ -8908,7 +17153,6 @@ void ExportFigmaToImGui() {
                 }
             }
             if (!found) {
-                // Get extension
                 std::string ext = ".png";
                 size_t dotPos = layer.image_path.rfind('.');
                 if (dotPos != std::string::npos) {
@@ -8924,6 +17168,31 @@ void ExportFigmaToImGui() {
                     imageMap.push_back({layer.image_path, newName});
                     printf("[Export Figma] Copied image: %s\n", newName.c_str());
                 }
+            }
+        }
+
+        // Copy animation/slideshow images
+        if (layer.enable_animation && !layer.animation_images.empty()) {
+            std::vector<std::string> animFiles;
+            for (const auto& animImg : layer.animation_images) {
+                std::string ext = ".png";
+                size_t dotPos = animImg.rfind('.');
+                if (dotPos != std::string::npos) {
+                    ext = animImg.substr(dotPos);
+                }
+                std::string newName = "anim_" + std::to_string(layer.id) + "_" + std::to_string(animFiles.size()) + ext;
+                std::string destPath = imagesFolder + "/" + newName;
+
+                std::ifstream src(animImg, std::ios::binary);
+                if (src.good()) {
+                    std::ofstream dst(destPath, std::ios::binary);
+                    dst << src.rdbuf();
+                    animFiles.push_back(newName);
+                    printf("[Export Figma] Copied animation image: %s\n", newName.c_str());
+                }
+            }
+            if (!animFiles.empty()) {
+                animationImageMap[layer.id] = animFiles;
             }
         }
     }
@@ -8999,6 +17268,19 @@ void ExportFigmaToImGui() {
     }
     cpp << "\n";
 
+    // Animation textures for each layer with animation
+    cpp << "// Animation textures (slideshow)\n";
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (layer.enable_animation && animationImageMap.find(layer.id) != animationImageMap.end()) {
+            const auto& animFiles = animationImageMap.at(layer.id);
+            cpp << "GLuint g_AnimTex_" << layer.id << "[" << animFiles.size() << "] = {0};\n";
+            cpp << "int g_AnimFrame_" << layer.id << " = 0;\n";
+            cpp << "float g_AnimTimer_" << layer.id << " = 0.0f;\n";
+            cpp << "float g_AnimSpeed_" << layer.id << " = " << layer.animation_speed << "f;\n";
+        }
+    }
+    cpp << "\n";
+
     cpp << "// Canvas dimensions\n";
     cpp << "const float CANVAS_WIDTH = " << g_FigmaProject.canvas_width << ".0f;\n";
     cpp << "const float CANVAS_HEIGHT = " << g_FigmaProject.canvas_height << ".0f;\n\n";
@@ -9015,6 +17297,15 @@ void ExportFigmaToImGui() {
     }
     for (size_t i = 0; i < imageMap.size(); i++) {
         cpp << "    g_ImageTex_" << i << " = LoadTexture(\"images/" << imageMap[i].second << "\");\n";
+    }
+    // Load animation textures
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (layer.enable_animation && animationImageMap.find(layer.id) != animationImageMap.end()) {
+            const auto& animFiles = animationImageMap.at(layer.id);
+            for (size_t i = 0; i < animFiles.size(); i++) {
+                cpp << "    g_AnimTex_" << layer.id << "[" << i << "] = LoadTexture(\"images/" << animFiles[i] << "\");\n";
+            }
+        }
     }
     cpp << "}\n\n";
 
@@ -9076,18 +17367,36 @@ void ExportFigmaToImGui() {
 
         switch (layer.type) {
             case LAYER_IMAGE: {
-                // Find the image index
-                int imgIdx = -1;
-                for (size_t i = 0; i < imageMap.size(); i++) {
-                    if (imageMap[i].first == layer.image_path) {
-                        imgIdx = i;
-                        break;
-                    }
-                }
-                if (imgIdx >= 0) {
-                    cpp << "            if (g_ImageTex_" << imgIdx << ") {\n";
-                    cpp << "                dl->AddImage((ImTextureID)(intptr_t)g_ImageTex_" << imgIdx << ", p1, p2);\n";
+                // Check if this layer has animation
+                if (layer.enable_animation && animationImageMap.find(layer.id) != animationImageMap.end()) {
+                    const auto& animFiles = animationImageMap.at(layer.id);
+                    int numFrames = (int)animFiles.size();
+                    cpp << "            // Slideshow animation - " << numFrames << " images, " << layer.animation_speed << "s per frame\n";
+                    cpp << "            {\n";
+                    cpp << "                g_AnimTimer_" << layer.id << " += io.DeltaTime;\n";
+                    cpp << "                if (g_AnimTimer_" << layer.id << " >= g_AnimSpeed_" << layer.id << ") {\n";
+                    cpp << "                    g_AnimTimer_" << layer.id << " = 0.0f;\n";
+                    cpp << "                    g_AnimFrame_" << layer.id << " = (g_AnimFrame_" << layer.id << " + 1) % " << numFrames << ";\n";
+                    cpp << "                }\n";
+                    cpp << "                GLuint tex = g_AnimTex_" << layer.id << "[g_AnimFrame_" << layer.id << "];\n";
+                    cpp << "                if (tex) {\n";
+                    cpp << "                    dl->AddImage((ImTextureID)(intptr_t)tex, p1, p2);\n";
+                    cpp << "                }\n";
                     cpp << "            }\n";
+                } else {
+                    // Static image
+                    int imgIdx = -1;
+                    for (size_t i = 0; i < imageMap.size(); i++) {
+                        if (imageMap[i].first == layer.image_path) {
+                            imgIdx = i;
+                            break;
+                        }
+                    }
+                    if (imgIdx >= 0) {
+                        cpp << "            if (g_ImageTex_" << imgIdx << ") {\n";
+                        cpp << "                dl->AddImage((ImTextureID)(intptr_t)g_ImageTex_" << imgIdx << ", p1, p2);\n";
+                        cpp << "            }\n";
+                    }
                 }
                 break;
             }
@@ -9253,6 +17562,41 @@ void ExportFigmaToImGui() {
                     cpp << "            // DIV background\n";
                     cpp << "            dl->AddRectFilled(p1, p2, IM_COL32(" << bgR << ", " << bgG << ", " << bgB << ", " << bgA << "), " << layer.border_radius << ".0f);\n";
                 }
+
+                // DIV with animation (slideshow)
+                if (layer.enable_animation && animationImageMap.find(layer.id) != animationImageMap.end()) {
+                    const auto& animFiles = animationImageMap.at(layer.id);
+                    int numFrames = (int)animFiles.size();
+                    cpp << "            // DIV slideshow animation - " << numFrames << " images\n";
+                    cpp << "            {\n";
+                    cpp << "                g_AnimTimer_" << layer.id << " += io.DeltaTime;\n";
+                    cpp << "                if (g_AnimTimer_" << layer.id << " >= g_AnimSpeed_" << layer.id << ") {\n";
+                    cpp << "                    g_AnimTimer_" << layer.id << " = 0.0f;\n";
+                    cpp << "                    g_AnimFrame_" << layer.id << " = (g_AnimFrame_" << layer.id << " + 1) % " << numFrames << ";\n";
+                    cpp << "                }\n";
+                    cpp << "                GLuint tex = g_AnimTex_" << layer.id << "[g_AnimFrame_" << layer.id << "];\n";
+                    cpp << "                if (tex) {\n";
+                    cpp << "                    dl->AddImage((ImTextureID)(intptr_t)tex, p1, p2);\n";
+                    cpp << "                }\n";
+                    cpp << "            }\n";
+                }
+                // DIV with static image
+                else if (!layer.image_path.empty()) {
+                    int imgIdx = -1;
+                    for (size_t i = 0; i < imageMap.size(); i++) {
+                        if (imageMap[i].first == layer.image_path) {
+                            imgIdx = i;
+                            break;
+                        }
+                    }
+                    if (imgIdx >= 0) {
+                        cpp << "            // DIV image\n";
+                        cpp << "            if (g_ImageTex_" << imgIdx << ") {\n";
+                        cpp << "                dl->AddImage((ImTextureID)(intptr_t)g_ImageTex_" << imgIdx << ", p1, p2);\n";
+                        cpp << "            }\n";
+                    }
+                }
+
                 if (layer.border_color.w > 0.01f && layer.border_width > 0) {
                     cpp << "            // DIV border\n";
                     cpp << "            dl->AddRect(p1, p2, IM_COL32(" << brdR << ", " << brdG << ", " << brdB << ", " << brdA << "), " << layer.border_radius << ".0f, 0, " << layer.border_width << ".0f);\n";
@@ -9774,6 +18118,687 @@ std::string GenerateFigmaImGuiCPP() {
     return ss.str();
 }
 
+// Helper to convert LayerType to string
+std::string layerTypeToString(LayerType type) {
+    switch (type) {
+        case LAYER_DIV: return "LAYER_DIV";
+        case LAYER_TEXT: return "LAYER_TEXT";
+        case LAYER_IMAGE: return "LAYER_IMAGE";
+        case LAYER_BUTTON: return "LAYER_BUTTON";
+        case LAYER_INPUT: return "LAYER_INPUT";
+        case LAYER_VIDEO: return "LAYER_VIDEO";
+        case LAYER_ICON: return "LAYER_ICON";
+        case LAYER_SHAPE: return "LAYER_SHAPE";
+        default: return "LAYER_DIV";
+    }
+}
+
+// Generate ImGui C++ code for REAL layout rendering (not screenshot)
+std::string GenerateFigmaImGuiCPP_RealLayout() {
+    std::stringstream ss;
+
+    // Helper to format float
+    auto fmtFloat = [](float v) -> std::string {
+        char buf[32];
+        snprintf(buf, sizeof(buf), "%.1f", v);
+        return std::string(buf) + "f";
+    };
+
+    // Helper to escape strings
+    auto escapeStr = [](const std::string& s) -> std::string {
+        std::string result;
+        for (char c : s) {
+            if (c == '\\') result += "\\\\";
+            else if (c == '"') result += "\\\"";
+            else if (c == '\n') result += "\\n";
+            else if (c == '\r') result += "\\r";
+            else result += c;
+        }
+        return result;
+    };
+
+    // Helper to convert ImVec4 to string
+    auto imvec4ToString = [](const ImVec4& c) -> std::string {
+        char buf[128];
+        snprintf(buf, sizeof(buf), "ImVec4(%.3ff, %.3ff, %.3ff, %.3ff)", c.x, c.y, c.z, c.w);
+        return std::string(buf);
+    };
+
+    // Header includes
+    ss << "#include \"imgui.h\"\n";
+    ss << "#include \"imgui_impl_glfw.h\"\n";
+    ss << "#include \"imgui_impl_opengl3.h\"\n";
+    ss << "#include <GLFW/glfw3.h>\n";
+    ss << "#include <emscripten.h>\n";
+    ss << "#include <cstdio>\n";
+    ss << "#include <cmath>\n";
+    ss << "#include <string>\n";
+    ss << "#include <vector>\n";
+    ss << "#define STB_IMAGE_IMPLEMENTATION\n";
+    ss << "#include \"stb_image.h\"\n\n";
+
+    // Global state
+    ss << "static GLFWwindow* g_Window = nullptr;\n";
+    ss << "static float g_ScrollY = 0.0f;\n";
+    ss << "static float g_TargetScrollY = 0.0f;\n";
+    ss << "static float g_ScrollDelta = 0.0f;\n";
+    ss << "static float g_CanvasWidth = " << fmtFloat(g_FigmaProject.canvas_width) << ";\n";
+    ss << "static float g_CanvasHeight = " << fmtFloat(g_FigmaProject.canvas_height) << ";\n\n";
+
+    // JavaScript scroll callback
+    ss << "extern \"C\" {\n";
+    ss << "    EMSCRIPTEN_KEEPALIVE void js_scroll(float deltaY) {\n";
+    ss << "        g_ScrollDelta += deltaY;\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Layer structure
+    ss << "struct Layer {\n";
+    ss << "    int id;\n";
+    ss << "    std::string type;\n";
+    ss << "    std::string name;\n";
+    ss << "    float x, y, width, height;\n";
+    ss << "    std::string text;\n";
+    ss << "    std::string href;\n";
+    ss << "    std::string action_type;\n";
+    ss << "    ImVec4 bg_color;\n";
+    ss << "    ImVec4 text_color;\n";
+    ss << "    float font_size;\n";
+    ss << "    float border_radius;\n";
+    ss << "    float opacity;\n";
+    ss << "    std::string image_path;\n";
+    ss << "    GLuint texture_id;\n";
+    ss << "    int img_w, img_h;\n";
+    ss << "};\n\n";
+
+    ss << "static std::vector<Layer> g_Layers;\n\n";
+
+    // Open URL function
+    ss << "void OpenURL(const std::string& url) {\n";
+    ss << "    std::string js = \"window.open('\" + url + \"', '_blank');\";\n";
+    ss << "    emscripten_run_script(js.c_str());\n";
+    ss << "}\n\n";
+
+    // Scroll to section
+    ss << "void ScrollToSection(const std::string& sectionId) {\n";
+    ss << "    for (const auto& layer : g_Layers) {\n";
+    ss << "        if (layer.name == sectionId) {\n";
+    ss << "            g_TargetScrollY = layer.y - 50.0f;\n";
+    ss << "            if (g_TargetScrollY < 0) g_TargetScrollY = 0;\n";
+    ss << "            return;\n";
+    ss << "        }\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Load image texture
+    ss << "GLuint LoadTexture(const char* path, int* w, int* h) {\n";
+    ss << "    int n;\n";
+    ss << "    unsigned char* data = stbi_load(path, w, h, &n, 4);\n";
+    ss << "    if (!data) return 0;\n";
+    ss << "    GLuint tex;\n";
+    ss << "    glGenTextures(1, &tex);\n";
+    ss << "    glBindTexture(GL_TEXTURE_2D, tex);\n";
+    ss << "    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\n";
+    ss << "    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n";
+    ss << "    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, *w, *h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);\n";
+    ss << "    stbi_image_free(data);\n";
+    ss << "    return tex;\n";
+    ss << "}\n\n";
+
+    // Initialize layers
+    ss << "void InitLayers() {\n";
+    ss << "    g_Layers.clear();\n";
+
+    for (const auto& layer : g_FigmaProject.layers) {
+        ss << "    g_Layers.push_back({";
+        ss << layer.id << ", ";
+        ss << "\"" << escapeStr(layerTypeToString(layer.type)) << "\", ";
+        ss << "\"" << escapeStr(layer.name) << "\", ";
+        ss << fmtFloat(layer.x) << ", " << fmtFloat(layer.y) << ", ";
+        ss << fmtFloat(layer.width) << ", " << fmtFloat(layer.height) << ", ";
+        ss << "\"" << escapeStr(layer.text) << "\", ";
+        ss << "\"" << escapeStr(layer.href) << "\", ";
+        ss << "\"" << escapeStr(layer.action_type) << "\", ";
+        ss << imvec4ToString(layer.bg_color) << ", ";
+        ss << imvec4ToString(layer.text_color) << ", ";
+        ss << fmtFloat(layer.font_size) << ", ";
+        ss << fmtFloat(layer.border_radius) << ", ";
+        ss << fmtFloat(layer.opacity) << ", ";
+        ss << "\"" << escapeStr(layer.image_path) << "\", ";
+        ss << "0, 0, 0});\n";
+    }
+    ss << "}\n\n";
+
+    // Load textures for images
+    ss << "void LoadTextures() {\n";
+    ss << "    for (auto& layer : g_Layers) {\n";
+    ss << "        if (!layer.image_path.empty()) {\n";
+    ss << "            layer.texture_id = LoadTexture(layer.image_path.c_str(), &layer.img_w, &layer.img_h);\n";
+    ss << "        }\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Render function
+    ss << "void Render() {\n";
+    ss << "    ImGuiIO& io = ImGui::GetIO();\n";
+    ss << "    ImDrawList* dl = ImGui::GetBackgroundDrawList();\n";
+    ss << "    \n";
+    ss << "    float winW = io.DisplaySize.x;\n";
+    ss << "    float winH = io.DisplaySize.y;\n";
+    ss << "    float scale = winW / g_CanvasWidth;\n";
+    ss << "    float contentH = g_CanvasHeight * scale;\n";
+    ss << "    float maxScroll = contentH - winH;\n";
+    ss << "    if (maxScroll < 0) maxScroll = 0;\n";
+    ss << "    \n";
+    ss << "    // Handle scrolling\n";
+    ss << "    if (g_ScrollDelta != 0) {\n";
+    ss << "        g_TargetScrollY += g_ScrollDelta;\n";
+    ss << "        g_ScrollDelta = 0;\n";
+    ss << "    }\n";
+    ss << "    if (io.MouseWheel != 0) {\n";
+    ss << "        g_TargetScrollY -= io.MouseWheel * 60.0f;\n";
+    ss << "    }\n";
+    ss << "    if (g_TargetScrollY < 0) g_TargetScrollY = 0;\n";
+    ss << "    if (g_TargetScrollY > maxScroll) g_TargetScrollY = maxScroll;\n";
+    ss << "    g_ScrollY += (g_TargetScrollY - g_ScrollY) * 0.15f;\n";
+    ss << "    \n";
+    ss << "    static int hoveredLayer = -1;\n";
+    ss << "    hoveredLayer = -1;\n";
+    ss << "    \n";
+    ss << "    // Render layers\n";
+    ss << "    for (size_t i = 0; i < g_Layers.size(); i++) {\n";
+    ss << "        const Layer& L = g_Layers[i];\n";
+    ss << "        \n";
+    ss << "        float x = L.x * scale;\n";
+    ss << "        float y = L.y * scale - g_ScrollY;\n";
+    ss << "        float w = L.width * scale;\n";
+    ss << "        float h = L.height * scale;\n";
+    ss << "        float r = L.border_radius * scale;\n";
+    ss << "        \n";
+    ss << "        // Skip if off-screen\n";
+    ss << "        if (y + h < 0 || y > winH) continue;\n";
+    ss << "        \n";
+    ss << "        ImVec2 p1(x, y);\n";
+    ss << "        ImVec2 p2(x + w, y + h);\n";
+    ss << "        \n";
+    ss << "        // Draw background\n";
+    ss << "        if (L.bg_color.w > 0.01f) {\n";
+    ss << "            ImU32 bgCol = ImGui::ColorConvertFloat4ToU32(ImVec4(L.bg_color.x, L.bg_color.y, L.bg_color.z, L.bg_color.w * L.opacity));\n";
+    ss << "            dl->AddRectFilled(p1, p2, bgCol, r);\n";
+    ss << "        }\n";
+    ss << "        \n";
+    ss << "        // Draw image if present\n";
+    ss << "        if (L.texture_id > 0) {\n";
+    ss << "            dl->AddImage((ImTextureID)(intptr_t)L.texture_id, p1, p2);\n";
+    ss << "        }\n";
+    ss << "        \n";
+    ss << "        // Draw text\n";
+    ss << "        if (!L.text.empty() && L.type != \"LAYER_IMAGE\") {\n";
+    ss << "            float fontSize = L.font_size * scale;\n";
+    ss << "            if (fontSize < 8) fontSize = 8;\n";
+    ss << "            if (fontSize > 48) fontSize = 48;\n";
+    ss << "            ImU32 textCol = ImGui::ColorConvertFloat4ToU32(L.text_color);\n";
+    ss << "            ImVec2 textPos(x + 4, y + (h - fontSize) * 0.5f);\n";
+    ss << "            dl->AddText(NULL, fontSize, textPos, textCol, L.text.c_str());\n";
+    ss << "        }\n";
+    ss << "        \n";
+    ss << "        // Check hover for clickable elements\n";
+    ss << "        bool isClickable = !L.href.empty() || L.type == \"LAYER_BUTTON\";\n";
+    ss << "        if (isClickable) {\n";
+    ss << "            bool isHovered = io.MousePos.x >= p1.x && io.MousePos.x <= p2.x &&\n";
+    ss << "                             io.MousePos.y >= p1.y && io.MousePos.y <= p2.y;\n";
+    ss << "            if (isHovered) {\n";
+    ss << "                hoveredLayer = i;\n";
+    ss << "                // Hover effect\n";
+    ss << "                dl->AddRectFilled(p1, p2, IM_COL32(255, 255, 255, 30), r);\n";
+    ss << "                dl->AddRect(p1, p2, IM_COL32(0, 150, 255, 200), r, 0, 2.0f);\n";
+    ss << "                \n";
+    ss << "                // Handle click\n";
+    ss << "                if (ImGui::IsMouseClicked(0)) {\n";
+    ss << "                    if (L.action_type == \"scroll\" && L.href.length() > 1) {\n";
+    ss << "                        ScrollToSection(L.href.substr(1));\n";
+    ss << "                    } else if (!L.href.empty()) {\n";
+    ss << "                        OpenURL(L.href);\n";
+    ss << "                    }\n";
+    ss << "                }\n";
+    ss << "            }\n";
+    ss << "        }\n";
+    ss << "    }\n";
+    ss << "    \n";
+    ss << "    if (hoveredLayer >= 0) {\n";
+    ss << "        ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);\n";
+    ss << "    }\n";
+    ss << "}\n\n";
+
+    // Main loop
+    ss << "void main_loop() {\n";
+    ss << "    glfwPollEvents();\n";
+    ss << "    ImGui_ImplOpenGL3_NewFrame();\n";
+    ss << "    ImGui_ImplGlfw_NewFrame();\n";
+    ss << "    ImGui::NewFrame();\n";
+    ss << "    \n";
+    ss << "    glClearColor(0.95f, 0.95f, 0.95f, 1.0f);\n";
+    ss << "    glClear(GL_COLOR_BUFFER_BIT);\n";
+    ss << "    \n";
+    ss << "    Render();\n";
+    ss << "    \n";
+    ss << "    ImGui::Render();\n";
+    ss << "    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());\n";
+    ss << "    glfwSwapBuffers(g_Window);\n";
+    ss << "}\n\n";
+
+    // Main function
+    ss << "int main() {\n";
+    ss << "    if (!glfwInit()) return -1;\n";
+    ss << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);\n";
+    ss << "    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);\n";
+    ss << "    \n";
+    ss << "    g_Window = glfwCreateWindow(1280, 800, \"Website Preview\", nullptr, nullptr);\n";
+    ss << "    if (!g_Window) { glfwTerminate(); return -1; }\n";
+    ss << "    \n";
+    ss << "    glfwMakeContextCurrent(g_Window);\n";
+    ss << "    glfwSwapInterval(1);\n";
+    ss << "    \n";
+    ss << "    IMGUI_CHECKVERSION();\n";
+    ss << "    ImGui::CreateContext();\n";
+    ss << "    ImGui::StyleColorsDark();\n";
+    ss << "    ImGui_ImplGlfw_InitForOpenGL(g_Window, true);\n";
+    ss << "    ImGui_ImplOpenGL3_Init(\"#version 300 es\");\n";
+    ss << "    \n";
+    ss << "    InitLayers();\n";
+    ss << "    LoadTextures();\n";
+    ss << "    \n";
+    ss << "    emscripten_set_main_loop(main_loop, 0, 1);\n";
+    ss << "    return 0;\n";
+    ss << "}\n";
+
+    return ss.str();
+}
+
+// Preview Figma layers in browser using REAL ImGui layout
+void PreviewFigmaWebsiteRealLayout() {
+    if (g_FigmaProject.layers.empty()) {
+        printf("[Preview] ERROR: No layers to preview!\n");
+        return;
+    }
+
+    printf("\n========================================\n");
+    printf("[RealLayout] Starting preview with %zu layers\n", g_FigmaProject.layers.size());
+    printf("========================================\n\n");
+
+    std::string basePath = "/Users/imaging/Desktop/Website-Builder-v2.0/";
+    std::string tmp = "/tmp/figma_real_preview";
+    std::string imguiFolder = tmp + "/imgui";
+    std::string backendsFolder = imguiFolder + "/backends";
+    std::string imagesFolder = tmp + "/images";
+
+    // Create directories
+    system(("rm -rf \"" + tmp + "\"").c_str());
+    mkdir(tmp.c_str(), 0755);
+    mkdir(imguiFolder.c_str(), 0755);
+    mkdir(backendsFolder.c_str(), 0755);
+    mkdir(imagesFolder.c_str(), 0755);
+
+    // Copy ImGui files
+    std::vector<std::string> imguiFiles = {"imgui.cpp", "imgui.h", "imgui_demo.cpp",
+        "imgui_draw.cpp", "imgui_internal.h", "imgui_tables.cpp", "imgui_widgets.cpp",
+        "imconfig.h", "imstb_rectpack.h", "imstb_textedit.h", "imstb_truetype.h"};
+    for (const auto& f : imguiFiles) {
+        std::ifstream src(basePath + "imgui/" + f, std::ios::binary);
+        std::ofstream dst(imguiFolder + "/" + f, std::ios::binary);
+        dst << src.rdbuf();
+    }
+    std::vector<std::string> backendFiles = {"imgui_impl_glfw.cpp", "imgui_impl_glfw.h",
+        "imgui_impl_opengl3.cpp", "imgui_impl_opengl3.h", "imgui_impl_opengl3_loader.h"};
+    for (const auto& f : backendFiles) {
+        std::ifstream src(basePath + "imgui/backends/" + f, std::ios::binary);
+        std::ofstream dst(backendsFolder + "/" + f, std::ios::binary);
+        dst << src.rdbuf();
+    }
+
+    // Copy stb_image.h
+    {
+        std::ifstream src(basePath + "stb_image.h", std::ios::binary);
+        std::ofstream dst(tmp + "/stb_image.h", std::ios::binary);
+        dst << src.rdbuf();
+    }
+
+    // Copy images
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (!layer.image_path.empty()) {
+            std::string srcPath = basePath + layer.image_path;
+            std::string dstPath = tmp + "/" + layer.image_path;
+            // Create subdirs if needed
+            size_t pos = dstPath.rfind('/');
+            if (pos != std::string::npos) {
+                std::string dir = dstPath.substr(0, pos);
+                system(("mkdir -p \"" + dir + "\"").c_str());
+            }
+            std::ifstream src(srcPath, std::ios::binary);
+            std::ofstream dst(dstPath, std::ios::binary);
+            dst << src.rdbuf();
+        }
+    }
+
+    // Generate main.cpp
+    std::ofstream mainFile(tmp + "/main.cpp");
+    mainFile << GenerateFigmaImGuiCPP_RealLayout();
+    mainFile.close();
+
+    // Generate build script
+    std::ofstream buildScript(tmp + "/build_web.sh");
+    buildScript << "#!/bin/bash\n";
+    buildScript << "source ~/emsdk/emsdk_env.sh 2>/dev/null || source /opt/emsdk/emsdk_env.sh 2>/dev/null\n";
+    buildScript << "em++ -O2 -o index.html main.cpp \\\n";
+    buildScript << "    imgui/imgui.cpp imgui/imgui_draw.cpp imgui/imgui_tables.cpp imgui/imgui_widgets.cpp \\\n";
+    buildScript << "    imgui/backends/imgui_impl_glfw.cpp imgui/backends/imgui_impl_opengl3.cpp \\\n";
+    buildScript << "    -I. -Iimgui -Iimgui/backends \\\n";
+    buildScript << "    -s USE_GLFW=3 -s USE_WEBGL2=1 -s FULL_ES3=1 \\\n";
+    buildScript << "    -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 \\\n";
+    buildScript << "    -s EXPORTED_FUNCTIONS='[\"_main\",\"_js_scroll\"]' \\\n";
+    buildScript << "    -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\"]' \\\n";
+    buildScript << "    --preload-file images \\\n";
+    buildScript << "    --shell-file shell.html\n";
+    buildScript.close();
+    chmod((tmp + "/build_web.sh").c_str(), 0755);
+
+    // Generate shell.html
+    std::ofstream shellFile(tmp + "/shell.html");
+    shellFile << "<!DOCTYPE html>\n<html>\n<head>\n";
+    shellFile << "<meta charset=\"utf-8\">\n";
+    shellFile << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    shellFile << "<title>Website Preview - Real Layout</title>\n";
+    shellFile << "<style>\n";
+    shellFile << "* { margin: 0; padding: 0; box-sizing: border-box; }\n";
+    shellFile << "html, body { width: 100%; height: 100%; overflow: hidden; background: #f5f5f5; }\n";
+    shellFile << "canvas { display: block; width: 100vw !important; height: 100vh !important; }\n";
+    shellFile << "</style>\n";
+    shellFile << "</head>\n<body>\n";
+    shellFile << "<canvas id=\"canvas\" oncontextmenu=\"event.preventDefault()\"></canvas>\n";
+    shellFile << "<script>\n";
+    shellFile << "var Module = {\n";
+    shellFile << "    canvas: document.getElementById('canvas'),\n";
+    shellFile << "    onRuntimeInitialized: function() {\n";
+    shellFile << "        console.log('Real Layout Preview Ready!');\n";
+    shellFile << "        document.getElementById('canvas').addEventListener('wheel', function(e) {\n";
+    shellFile << "            e.preventDefault();\n";
+    shellFile << "            if (Module._js_scroll) Module._js_scroll(e.deltaY);\n";
+    shellFile << "        }, { passive: false });\n";
+    shellFile << "    }\n";
+    shellFile << "};\n";
+    shellFile << "</script>\n";
+    shellFile << "{{{ SCRIPT }}}\n";
+    shellFile << "</body>\n</html>\n";
+    shellFile.close();
+
+    // Build
+    printf("[RealLayout] Building WebAssembly...\n");
+    std::string buildCmd = "cd \"" + tmp + "\" && ./build_web.sh 2>&1";
+    int result = system(buildCmd.c_str());
+
+    if (result == 0) {
+        printf("[RealLayout] Build successful! Starting server...\n");
+        system("lsof -ti:8082 | xargs kill -9 2>/dev/null");
+        sleep(1);
+        std::string serveCmd = "cd \"" + tmp + "\" && python3 -m http.server 8082 > /dev/null 2>&1 &";
+        system(serveCmd.c_str());
+        sleep(2);
+        system("open -na 'Google Chrome' --args 'http://localhost:8082/index.html'");
+        printf("[RealLayout] Preview opened in Chrome!\n");
+    } else {
+        printf("[RealLayout] ERROR: Build failed!\n");
+    }
+}
+
+// Simple HTML preview - generates static HTML and opens in Chrome (no build required)
+void PreviewFigmaAsHTML() {
+    if (g_FigmaProject.layers.empty()) {
+        printf("[HTMLPreview] ERROR: No layers to preview!\n");
+        return;
+    }
+
+    printf("\n========================================\n");
+    printf("[HTMLPreview] Generating HTML preview with %zu layers\n", g_FigmaProject.layers.size());
+    printf("========================================\n\n");
+
+    std::string tmp = "/private/tmp/figma_website_preview";
+    std::string imagesFolder = tmp + "/images";
+
+    // Create directories
+    system(("mkdir -p \"" + imagesFolder + "\"").c_str());
+
+    // Copy images
+    std::string basePath = "/Users/imaging/Desktop/Website-Builder-v2.0/";
+    for (const auto& layer : g_FigmaProject.layers) {
+        if (!layer.image_path.empty() && layer.type == LAYER_IMAGE) {
+            std::string srcPath = layer.image_path;
+            // Handle relative paths
+            if (!srcPath.empty() && srcPath[0] != '/') {
+                srcPath = basePath + srcPath;
+            }
+
+            // Get just the filename
+            size_t lastSlash = layer.image_path.rfind('/');
+            std::string filename = (lastSlash != std::string::npos) ?
+                layer.image_path.substr(lastSlash + 1) : layer.image_path;
+
+            std::string dstPath = imagesFolder + "/" + filename;
+
+            // Copy file
+            std::ifstream src(srcPath, std::ios::binary);
+            if (src.good()) {
+                std::ofstream dst(dstPath, std::ios::binary);
+                dst << src.rdbuf();
+            }
+        }
+    }
+
+    // Generate HTML
+    std::ofstream html(tmp + "/index.html");
+    html << "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n";
+    html << "<meta charset=\"UTF-8\">\n";
+    html << "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n";
+    html << "<title>" << g_FigmaProject.name << " - Preview</title>\n";
+    html << "<style>\n";
+    html << "* { margin: 0; padding: 0; box-sizing: border-box; }\n";
+    html << "body { background: #f5f5f5; min-height: 100vh; }\n";
+    html << ".canvas { position: relative; width: " << (int)g_FigmaProject.canvas_width << "px; ";
+    html << "min-height: " << (int)g_FigmaProject.canvas_height << "px; ";
+    html << "background: #ffffff; margin: 0 auto; overflow: hidden; }\n";
+    html << ".layer { box-sizing: border-box; position: absolute; }\n";
+    html << ".button-layer { display: flex; align-items: center; justify-content: center; ";
+    html << "text-decoration: none; cursor: pointer; transition: opacity 0.2s; }\n";
+    html << ".button-layer:hover { opacity: 0.85; }\n";
+    html << ".image-layer { object-fit: cover; }\n";
+    html << ".text-layer { overflow: hidden; white-space: pre-wrap; }\n";
+    html << ".div-layer { overflow: hidden; }\n";
+    html << "</style>\n</head>\n<body>\n<div class=\"canvas\">\n";
+
+    // Sort layers by z-index for proper rendering order
+    // For same z-index, larger layers (containers) render first, smaller on top
+    std::vector<WebLayer> sortedLayers = g_FigmaProject.layers;
+    std::sort(sortedLayers.begin(), sortedLayers.end(), [](const WebLayer& a, const WebLayer& b) {
+        if (a.z_index != b.z_index) return a.z_index < b.z_index;
+        // Same z_index: larger area first (background)
+        float areaA = a.width * a.height;
+        float areaB = b.width * b.height;
+        return areaA > areaB;
+    });
+
+    // Track rendered text to avoid duplicates
+    std::set<std::string> renderedTexts;
+
+    // Generate layer HTML
+    for (const auto& layer : sortedLayers) {
+        if (!layer.visible) continue;
+
+        // Skip full-page container layers (body, html, root)
+        bool isFullPageContainer = (layer.name.find("body") != std::string::npos ||
+                                    layer.name == "html" || layer.name == "root") &&
+                                   layer.width >= g_FigmaProject.canvas_width * 0.95f &&
+                                   layer.height >= g_FigmaProject.canvas_height * 0.5f;
+        if (isFullPageContainer && layer.type == LAYER_DIV) continue;
+
+        // Skip duplicate text content
+        if (layer.type == LAYER_TEXT && !layer.text.empty()) {
+            std::string textKey = layer.text + "_" + std::to_string((int)layer.y);
+            if (renderedTexts.count(textKey) > 0) continue;
+            renderedTexts.insert(textKey);
+        }
+
+        std::ostringstream style;
+        style << "left:" << (int)layer.x << "px;";
+        style << "top:" << (int)layer.y << "px;";
+        style << "width:" << (int)layer.width << "px;";
+        style << "height:" << (int)layer.height << "px;";
+        style << "z-index:" << (layer.z_index > 0 ? layer.z_index : layer.id) << ";";
+
+        if (layer.bg_color.w > 0.01f) {
+            style << "background-color:rgba("
+                  << (int)(layer.bg_color.x * 255) << ","
+                  << (int)(layer.bg_color.y * 255) << ","
+                  << (int)(layer.bg_color.z * 255) << ","
+                  << layer.bg_color.w << ");";
+        }
+
+        if (layer.text_color.w > 0) {
+            style << "color:rgba("
+                  << (int)(layer.text_color.x * 255) << ","
+                  << (int)(layer.text_color.y * 255) << ","
+                  << (int)(layer.text_color.z * 255) << ","
+                  << layer.text_color.w << ");";
+        }
+
+        style << "font-size:" << (int)layer.font_size << "px;";
+        if (layer.font_weight > 400) style << "font-weight:" << (int)layer.font_weight << ";";
+        if (!layer.font_family.empty()) style << "font-family:" << layer.font_family << ";";
+        if (layer.border_radius > 0) style << "border-radius:" << (int)layer.border_radius << "px;";
+        if (layer.border_width > 0) {
+            style << "border:" << (int)layer.border_width << "px solid rgba("
+                  << (int)(layer.border_color.x * 255) << ","
+                  << (int)(layer.border_color.y * 255) << ","
+                  << (int)(layer.border_color.z * 255) << ","
+                  << layer.border_color.w << ");";
+        }
+        if (layer.opacity < 1.0f) style << "opacity:" << layer.opacity << ";";
+        if (!layer.box_shadow.empty() && layer.box_shadow != "none") {
+            style << "box-shadow:" << layer.box_shadow << ";";
+        }
+
+        std::string id = layer.element_id.empty() ? ("layer_" + std::to_string(layer.id)) : layer.element_id;
+
+        // Clean text - decode unicode escapes and HTML entities
+        auto cleanText = [](const std::string& text) -> std::string {
+            std::string result = text;
+            // Replace common unicode escapes
+            size_t pos;
+            while ((pos = result.find("\\u00a0")) != std::string::npos) {
+                result.replace(pos, 6, " ");  // Non-breaking space to regular space
+            }
+            while ((pos = result.find("\\u0024")) != std::string::npos) {
+                result.replace(pos, 6, "$");  // Dollar sign
+            }
+            // Escape HTML special characters
+            std::string escaped;
+            for (char c : result) {
+                switch (c) {
+                    case '<': escaped += "&lt;"; break;
+                    case '>': escaped += "&gt;"; break;
+                    case '&': escaped += "&amp;"; break;
+                    case '"': escaped += "&quot;"; break;
+                    default: escaped += c;
+                }
+            }
+            return escaped;
+        };
+
+        std::string displayText = cleanText(layer.text);
+
+        if (layer.type == LAYER_IMAGE && !layer.image_path.empty()) {
+            size_t lastSlash = layer.image_path.rfind('/');
+            std::string filename = (lastSlash != std::string::npos) ?
+                layer.image_path.substr(lastSlash + 1) : layer.image_path;
+
+            html << "<img id=\"" << id << "\" class=\"layer image-layer\" src=\"images/" << filename
+                 << "\" style=\"" << style.str() << "\" alt=\"\"/>\n";
+        }
+        else if (layer.type == LAYER_TEXT) {
+            html << "<div id=\"" << id << "\" class=\"layer text-layer\" style=\"" << style.str() << "\">"
+                 << displayText << "</div>\n";
+        }
+        else if (layer.type == LAYER_BUTTON) {
+            if (!layer.href.empty() && layer.href.find("http") == 0) {
+                html << "<a id=\"" << id << "\" class=\"layer button-layer\" href=\"" << layer.href
+                     << "\" target=\"_blank\" style=\"" << style.str() << "\">" << displayText << "</a>\n";
+            } else {
+                html << "<button id=\"" << id << "\" class=\"layer button-layer\" style=\"" << style.str()
+                     << "\">" << displayText << "</button>\n";
+            }
+        }
+        else if (layer.type == LAYER_INPUT) {
+            html << "<input id=\"" << id << "\" class=\"layer input-layer\" placeholder=\"" << displayText
+                 << "\" style=\"" << style.str() << "\"/>\n";
+        }
+        else {
+            // DIV
+            html << "<div id=\"" << id << "\" class=\"layer div-layer\" style=\"" << style.str() << "\"></div>\n";
+        }
+    }
+
+    html << "</div>\n";
+    html << "<script>\n";
+    html << "document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {\n";
+    html << "  anchor.addEventListener('click', function(e) {\n";
+    html << "    const target = document.getElementById(this.getAttribute('href').substring(1));\n";
+    html << "    if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }\n";
+    html << "  });\n";
+    html << "});\n";
+    html << "// Block external links - stay in template\n";
+    html << "document.querySelectorAll('a[href^=\"http\"]').forEach(link => {\n";
+    html << "  link.addEventListener('click', function(e) {\n";
+    html << "    e.preventDefault();\n";
+    html << "    const href = this.getAttribute('href');\n";
+    html << "    if (href.includes('#')) {\n";
+    html << "      const hash = href.split('#')[1];\n";
+    html << "      const target = document.getElementById(hash);\n";
+    html << "      if (target) { target.scrollIntoView({behavior:'smooth'}); return; }\n";
+    html << "    }\n";
+    html << "    const linkText = this.textContent.trim().toLowerCase();\n";
+    html << "    const sections = ['home','about','services','contact','portfolio','features','pricing','team','blog','faq'];\n";
+    html << "    for (const sec of sections) {\n";
+    html << "      if (linkText.includes(sec)) {\n";
+    html << "        let target = document.getElementById(sec) || document.querySelector('.'+sec);\n";
+    html << "        if (target) { target.scrollIntoView({behavior:'smooth'}); return; }\n";
+    html << "      }\n";
+    html << "    }\n";
+    html << "    this.style.outline = '2px solid #4CAF50';\n";
+    html << "    setTimeout(() => { this.style.outline = ''; }, 500);\n";
+    html << "  });\n";
+    html << "});\n";
+    html << "document.querySelectorAll('button').forEach(btn => {\n";
+    html << "  btn.addEventListener('click', function(e) {\n";
+    html << "    e.preventDefault();\n";
+    html << "    this.style.transform = 'scale(0.95)';\n";
+    html << "    setTimeout(() => { this.style.transform = ''; }, 150);\n";
+    html << "  });\n";
+    html << "});\n";
+    html << "</script>\n</body>\n</html>\n";
+    html.close();
+
+    printf("[HTMLPreview] HTML file generated: %s/index.html\n", tmp.c_str());
+
+    // Kill existing server and start new one
+    system("lsof -ti:8083 | xargs kill -9 2>/dev/null");
+    sleep(1);
+    std::string serveCmd = "cd \"" + tmp + "\" && python3 -m http.server 8083 > /dev/null 2>&1 &";
+    system(serveCmd.c_str());
+    sleep(1);
+
+    // Open in Chrome
+    system("open -na 'Google Chrome' --args 'http://localhost:8083/index.html'");
+    printf("[HTMLPreview] Preview opened in Chrome at http://localhost:8083/\n");
+}
+
 // Preview Figma layers in browser using ImGui WebAssembly
 void PreviewFigmaWebsite() {
     if (g_FigmaProject.layers.empty()) {
@@ -9926,8 +18951,13 @@ void PreviewFigmaWebsite() {
 }
 
 void PreviewImGuiWebsite() {
-    // Check if we have sections to preview
-    if (g_Sections.empty()) {
+    // First, save current page sections back to g_NormalPages
+    if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+        g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+    }
+
+    // Check if we have any pages to preview
+    if (g_NormalPages.empty() || (g_NormalPages.size() == 1 && g_Sections.empty())) {
         printf("[Preview] ERROR: No sections to preview!\n");
         g_ShowExportSuccess = true;
         g_ExportSuccessTimer = 3.0f;
@@ -9936,10 +18966,9 @@ void PreviewImGuiWebsite() {
     }
 
     printf("\n========================================\n");
-    printf("[Preview] Starting preview with %zu sections\n", g_Sections.size());
-    printf("[Preview] Sections being previewed:\n");
-    for (size_t i = 0; i < g_Sections.size(); i++) {
-        printf("  %zu. %s - '%s'\n", i+1, g_Sections[i].name.c_str(), g_Sections[i].title.c_str());
+    printf("[Preview] Starting MULTI-PAGE preview with %zu pages\n", g_NormalPages.size());
+    for (size_t p = 0; p < g_NormalPages.size(); p++) {
+        printf("  Page %zu: %s (%zu sections)\n", p+1, g_NormalPages[p].name.c_str(), g_NormalPages[p].sections.size());
     }
     printf("========================================\n\n");
 
@@ -9987,41 +19016,44 @@ void PreviewImGuiWebsite() {
         dst << src.rdbuf();
     }
 
-    // Create images directory and copy all section images
+    // Create images directory and copy all section images from ALL PAGES
     std::string imagesFolder = tmp + "/images";
     mkdir(imagesFolder.c_str(), 0755);
 
     std::set<std::string> imagesToCopy;
-    printf("[Preview] Collecting images from %zu sections...\n", g_Sections.size());
+    printf("[Preview] Collecting images from ALL %zu pages...\n", g_NormalPages.size());
 
-    for (const auto& sec : g_Sections) {
-        // Collect background image
-        if (!sec.background_image.empty() && sec.background_image != "none") {
-            imagesToCopy.insert(sec.background_image);
-        }
-
-        // Collect hero animation images
-        for (const auto& img : sec.hero_animation_images) {
-            if (!img.empty()) {
-                imagesToCopy.insert(img);
+    // Collect images from ALL pages
+    for (const auto& page : g_NormalPages) {
+        for (const auto& sec : page.sections) {
+            // Collect background image
+            if (!sec.background_image.empty() && sec.background_image != "none") {
+                imagesToCopy.insert(sec.background_image);
             }
-        }
 
-        // Collect gallery images
-        for (const auto& img : sec.gallery_images) {
-            if (!img.empty()) {
-                imagesToCopy.insert(img);
+            // Collect hero animation images
+            for (const auto& img : sec.hero_animation_images) {
+                if (!img.empty()) {
+                    imagesToCopy.insert(img);
+                }
             }
-        }
 
-        // Collect section image
-        if (!sec.section_image.empty() && sec.section_image != "none") {
-            imagesToCopy.insert(sec.section_image);
-        }
+            // Collect gallery images
+            for (const auto& img : sec.gallery_images) {
+                if (!img.empty()) {
+                    imagesToCopy.insert(img);
+                }
+            }
 
-        // Collect logo image
-        if (!sec.logo_path.empty() && sec.logo_path != "none") {
-            imagesToCopy.insert(sec.logo_path);
+            // Collect section image
+            if (!sec.section_image.empty() && sec.section_image != "none") {
+                imagesToCopy.insert(sec.section_image);
+            }
+
+            // Collect logo image
+            if (!sec.logo_path.empty() && sec.logo_path != "none") {
+                imagesToCopy.insert(sec.logo_path);
+            }
         }
     }
 
@@ -10168,6 +19200,121 @@ void DrawModernPortfolioCard(ImDrawList* dl, float x, float y, float w, float h,
                              const std::string& title, const std::string& subtitle,
                              const std::vector<std::string>& tech_tags, const std::string& badge_text,
                              GLuint thumbnail_id, ImVec4 text_color, float anim_progress);
+
+// ============================================================================
+// ACTION SETTINGS HELPER - Renders action type combo and target input
+// ============================================================================
+const char* g_ActionTypeNames[] = {
+    "None",
+    "Scroll to Section",
+    "Link to Page",
+    "External URL",
+    "Open Popup",
+    "Download File",
+    "Send Email",
+    "Call Phone"
+};
+
+// Helper to render action settings UI - returns true if changed
+bool RenderActionSettings(const char* label, int* actionType, char* actionTarget, size_t targetSize, const std::vector<WebSection>& sections) {
+    bool changed = false;
+    ImGui::PushID(label);
+
+    ImGui::Text("Action:");
+    ImGui::PushItemWidth(150);
+    if (ImGui::Combo("##actionType", actionType, g_ActionTypeNames, IM_ARRAYSIZE(g_ActionTypeNames))) {
+        changed = true;
+    }
+    ImGui::PopItemWidth();
+
+    // Show appropriate target input based on action type
+    if (*actionType == ACTION_SCROLL_TO_SECTION) {
+        ImGui::Text("Target Section:");
+        // Show dropdown of available sections
+        ImGui::PushItemWidth(150);
+        if (ImGui::BeginCombo("##targetSection", actionTarget[0] ? actionTarget : "Select...")) {
+            for (size_t i = 0; i < sections.size(); i++) {
+                bool isSelected = (strcmp(actionTarget, sections[i].name.c_str()) == 0);
+                if (ImGui::Selectable(sections[i].name.c_str(), isSelected)) {
+                    strncpy(actionTarget, sections[i].name.c_str(), targetSize - 1);
+                    actionTarget[targetSize - 1] = '\0';
+                    changed = true;
+                }
+            }
+            ImGui::EndCombo();
+        }
+        ImGui::PopItemWidth();
+    }
+    else if (*actionType == ACTION_LINK_TO_PAGE) {
+        ImGui::Text("Select Page:");
+        ImGui::PushItemWidth(150);
+        // Show dropdown of available pages
+        if (ImGui::BeginCombo("##targetPage", actionTarget[0] ? actionTarget : "Select Page...")) {
+            for (size_t i = 0; i < g_NormalPages.size(); i++) {
+                bool isSelected = (strcmp(actionTarget, g_NormalPages[i].name.c_str()) == 0);
+                if (ImGui::Selectable(g_NormalPages[i].name.c_str(), isSelected)) {
+                    strncpy(actionTarget, g_NormalPages[i].name.c_str(), targetSize - 1);
+                    actionTarget[targetSize - 1] = '\0';
+                    changed = true;
+                }
+            }
+            ImGui::EndCombo();
+        }
+        ImGui::PopItemWidth();
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "Or enter custom: about.html");
+        ImGui::PushItemWidth(150);
+        if (ImGui::InputText("##customPage", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+    }
+    else if (*actionType == ACTION_EXTERNAL_URL) {
+        ImGui::Text("URL:");
+        ImGui::PushItemWidth(200);
+        if (ImGui::InputText("##url", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "e.g., https://example.com");
+    }
+    else if (*actionType == ACTION_OPEN_POPUP) {
+        ImGui::Text("Popup ID:");
+        ImGui::PushItemWidth(150);
+        if (ImGui::InputText("##popupId", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+    }
+    else if (*actionType == ACTION_DOWNLOAD) {
+        ImGui::Text("File Path:");
+        ImGui::PushItemWidth(200);
+        if (ImGui::InputText("##filePath", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+    }
+    else if (*actionType == ACTION_EMAIL) {
+        ImGui::Text("Email:");
+        ImGui::PushItemWidth(200);
+        if (ImGui::InputText("##email", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "e.g., info@company.com");
+    }
+    else if (*actionType == ACTION_PHONE) {
+        ImGui::Text("Phone:");
+        ImGui::PushItemWidth(150);
+        if (ImGui::InputText("##phone", actionTarget, targetSize)) {
+            changed = true;
+        }
+        ImGui::PopItemWidth();
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "e.g., +1-234-567-8900");
+    }
+
+    ImGui::PopID();
+    return changed;
+}
 
 // ============================================================================
 // RENDER SECTION PREVIEW (Same as Website Builder V1)
@@ -11461,6 +20608,9 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // Background color
         dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
 
+        // Clip content to section bounds
+        dl->PushClipRect(section_min, section_max, true);
+
         ImFont* font = ImGui::GetFont();
         // Use 4-sided padding for proper spacing
         float padLeft = sec.padding_left;
@@ -11589,6 +20739,9 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             }
         }
 
+        // Pop clip rect before drawing UI elements
+        dl->PopClipRect();
+
         // Show "TEXT BOX" label
         dl->AddRectFilled(ImVec2(x + 5, y + 5), ImVec2(x + 80, y + 22),
                         ImGui::ColorConvertFloat4ToU32(ImVec4(0.9f, 0.6f, 0.2f, 0.8f)), 3.0f);
@@ -11597,6 +20750,1504 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // Show width indicator border
         dl->AddRect(section_min, section_max, IM_COL32(255, 180, 80, 150), 0, 0, 1.0f);
 
+        return;
+    }
+
+    // ==================== BASIC ELEMENTS (Free Design Mode) ====================
+
+    // Logo Element
+    if (sec.type == SEC_LOGO) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        if (sec.bg_color.w > 0.01f) {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color), 6.0f);
+        }
+
+        // If logo image is loaded, show image
+        if (sec.logo_texture_id > 0) {
+            // Calculate image size to fit within bounds while maintaining aspect ratio
+            float padding = 4.0f;
+            float availW = sectionW - padding * 2;
+            float availH = h - padding * 2;
+            float imgX = x + padding;
+            float imgY = y + padding;
+
+            // Draw the logo image
+            dl->AddImage((ImTextureID)(intptr_t)sec.logo_texture_id,
+                        ImVec2(imgX, imgY),
+                        ImVec2(imgX + availW, imgY + availH),
+                        ImVec2(0, 0), ImVec2(1, 1),
+                        IM_COL32(255, 255, 255, 255));
+        } else {
+            // Show placeholder text if no image
+            ImFont* font = ImGui::GetFont();
+            float logoFS = 24.0f;
+            const char* displayText = sec.title.empty() ? "[Logo Image]" : sec.title.c_str();
+            ImVec2 logoSize = font->CalcTextSizeA(logoFS, FLT_MAX, 0.0f, displayText);
+            float logoX = x + (sectionW - logoSize.x) / 2;
+            float logoY = y + (h - logoSize.y) / 2;
+            dl->AddText(font, logoFS, ImVec2(logoX, logoY), ImGui::ColorConvertFloat4ToU32(sec.text_color), displayText);
+        }
+
+        // Border
+        dl->AddRect(section_min, section_max, IM_COL32(100, 200, 255, 150), 6.0f, 0, 1.0f);
+        return;
+    }
+
+    // Heading Element
+    if (sec.type == SEC_HEADING) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background (transparent by default)
+        if (sec.bg_color.w > 0.01f) {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+        }
+
+        // Heading text
+        ImFont* font = ImGui::GetFont();
+        float headingFS = ValidFontSize(sec.title_font_size);
+        ImVec2 headingSize = font->CalcTextSizeA(headingFS, FLT_MAX, 0.0f, sec.title.c_str());
+        float headingX = x + 10;
+        float headingY = y + (h - headingSize.y) / 2;
+
+        // Bold rendering for heavy weights
+        int layers = (sec.title_font_weight >= 700.0f) ? 4 : 1;
+        for (int layer = 0; layer < layers; layer++) {
+            float offsetX = (layer % 2) * 0.5f;
+            float offsetY = (layer / 2) * 0.5f;
+            dl->AddText(font, headingFS, ImVec2(headingX + offsetX, headingY + offsetY),
+                       ImGui::ColorConvertFloat4ToU32(sec.title_color), sec.title.c_str());
+        }
+
+        // Selection border
+        dl->AddRect(section_min, section_max, IM_COL32(100, 200, 100, 100), 0, 0, 1.0f);
+        return;
+    }
+
+    // Text Element with word wrap
+    if (sec.type == SEC_TEXT_ELEMENT) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Clip content to section bounds
+        dl->PushClipRect(section_min, section_max, true);
+
+        // Background (transparent by default)
+        if (sec.bg_color.w > 0.01f) {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+        }
+
+        // Text content with word wrap (using margins)
+        ImFont* font = ImGui::GetFont();
+        float textFS = ValidFontSize(sec.content_font_size);
+        float maxWidth = sectionW - sec.margin_left - sec.margin_right;
+        float textX = x + sec.margin_left;
+        float textY = y + sec.margin_top;
+
+        // Word wrap the text
+        std::string text = sec.content;
+        std::string line;
+        std::string word;
+        float lineHeight = textFS * 1.2f;
+
+        for (size_t i = 0; i <= text.length(); i++) {
+            char c = (i < text.length()) ? text[i] : ' ';
+
+            if (c == ' ' || c == '\n' || i == text.length()) {
+                if (!word.empty()) {
+                    std::string testLine = line.empty() ? word : line + " " + word;
+                    ImVec2 testSize = font->CalcTextSizeA(textFS, FLT_MAX, 0.0f, testLine.c_str());
+
+                    if (testSize.x > maxWidth && !line.empty()) {
+                        // Draw current line and start new one
+                        dl->AddText(font, textFS, ImVec2(textX, textY),
+                                   ImGui::ColorConvertFloat4ToU32(sec.content_color), line.c_str());
+                        textY += lineHeight;
+                        line = word;
+                    } else {
+                        line = testLine;
+                    }
+                    word.clear();
+                }
+
+                if (c == '\n') {
+                    // Draw line and force new line
+                    if (!line.empty()) {
+                        dl->AddText(font, textFS, ImVec2(textX, textY),
+                                   ImGui::ColorConvertFloat4ToU32(sec.content_color), line.c_str());
+                        textY += lineHeight;
+                        line.clear();
+                    }
+                }
+            } else {
+                word += c;
+            }
+        }
+
+        // Draw remaining line
+        if (!line.empty()) {
+            dl->AddText(font, textFS, ImVec2(textX, textY),
+                       ImGui::ColorConvertFloat4ToU32(sec.content_color), line.c_str());
+        }
+
+        dl->PopClipRect();
+
+        // Selection border
+        dl->AddRect(section_min, section_max, IM_COL32(150, 150, 150, 100), 0, 0, 1.0f);
+        return;
+    }
+
+    // Button Element (with action)
+    if (sec.type == SEC_BUTTON_ELEMENT) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Button background with rounded corners
+        float radius = sec.button_border_radius > 0 ? sec.button_border_radius : 6.0f;
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.button_bg_color), radius);
+
+        // Button text centered
+        ImFont* font = ImGui::GetFont();
+        float btnFS = ValidFontSize(sec.button_font_size);
+        ImVec2 btnTextSize = font->CalcTextSizeA(btnFS, FLT_MAX, 0.0f, sec.button_text.c_str());
+        float btnTextX = x + (sectionW - btnTextSize.x) / 2;
+        float btnTextY = y + (h - btnTextSize.y) / 2;
+        dl->AddText(font, btnFS, ImVec2(btnTextX, btnTextY),
+                   ImGui::ColorConvertFloat4ToU32(sec.button_text_color), sec.button_text.c_str());
+
+        // Border
+        if (sec.button_border_width > 0) {
+            dl->AddRect(section_min, section_max,
+                       ImGui::ColorConvertFloat4ToU32(sec.button_border_color), radius, 0, sec.button_border_width);
+        }
+
+        // Hover indicator (shown in edit mode)
+        dl->AddRect(section_min, section_max, IM_COL32(100, 200, 255, 100), radius, 0, 1.0f);
+        return;
+    }
+
+    // ==================== CONNECTOR SECTIONS ====================
+
+    // Text Block Connector with word wrap
+    if (sec.type == SEC_TEXT_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Clip content to section bounds
+        dl->PushClipRect(section_min, section_max, true);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Render text blocks with word wrap (using margins)
+        float textY = y + sec.margin_top + sec.text_padding;
+        // Use section width minus margins and padding if content width exceeds it
+        float availableWidth = sectionW - sec.margin_left - sec.margin_right - (sec.text_padding * 2);
+        float maxWidth = (sec.text_content_width < availableWidth) ? sec.text_content_width : availableWidth;
+        float textX = x + sec.margin_left + (sectionW - sec.margin_left - sec.margin_right - maxWidth) / 2;
+
+        for (const auto& block : sec.text_blocks) {
+            ImFont* font = ImGui::GetFont();
+            float fs = block.fontSize;
+            float lineHeight = fs * block.lineSpacing;
+
+            // Combine all segments into one string for word wrapping
+            std::string fullText;
+            std::vector<std::pair<size_t, size_t>> boldRanges;  // start, end positions of bold text
+
+            for (const auto& seg : block.segments) {
+                if (seg.isBold) {
+                    boldRanges.push_back({fullText.length(), fullText.length() + seg.text.length()});
+                }
+                fullText += seg.text;
+            }
+
+            // Word wrap the combined text
+            std::string line;
+            std::string word;
+            float lineX = textX;
+            size_t charPos = 0;
+            size_t lineStartPos = 0;
+
+            auto isBoldAt = [&](size_t pos) -> bool {
+                for (const auto& range : boldRanges) {
+                    if (pos >= range.first && pos < range.second) return true;
+                }
+                return false;
+            };
+
+            auto drawLine = [&](const std::string& lineText, size_t startPos) {
+                float drawX = textX;
+                for (size_t i = 0; i < lineText.length(); i++) {
+                    // Find run of same style
+                    bool bold = isBoldAt(startPos + i);
+                    size_t runStart = i;
+                    while (i < lineText.length() && isBoldAt(startPos + i) == bold) {
+                        i++;
+                    }
+                    i--;  // Back up one since loop will increment
+
+                    std::string run = lineText.substr(runStart, i - runStart + 1);
+                    ImVec4 color = bold ? block.boldColor : block.textColor;
+                    ImVec2 runSize = font->CalcTextSizeA(fs, FLT_MAX, 0.0f, run.c_str());
+
+                    if (bold) {
+                        for (int pass = 0; pass < 3; pass++) {
+                            dl->AddText(font, fs, ImVec2(drawX + pass * 0.4f, textY),
+                                       ImGui::ColorConvertFloat4ToU32(color), run.c_str());
+                        }
+                    } else {
+                        dl->AddText(font, fs, ImVec2(drawX, textY),
+                                   ImGui::ColorConvertFloat4ToU32(color), run.c_str());
+                    }
+                    drawX += runSize.x;
+                }
+                textY += lineHeight;
+            };
+
+            for (size_t i = 0; i <= fullText.length(); i++) {
+                char c = (i < fullText.length()) ? fullText[i] : ' ';
+
+                if (c == ' ' || c == '\n' || i == fullText.length()) {
+                    if (!word.empty()) {
+                        std::string testLine = line.empty() ? word : line + " " + word;
+                        ImVec2 testSize = font->CalcTextSizeA(fs, FLT_MAX, 0.0f, testLine.c_str());
+
+                        if (testSize.x > maxWidth && !line.empty()) {
+                            // Draw current line and start new one
+                            drawLine(line, lineStartPos);
+                            lineStartPos = charPos - word.length();
+                            line = word;
+                        } else {
+                            line = testLine;
+                        }
+                        word.clear();
+                    }
+
+                    if (c == '\n') {
+                        if (!line.empty()) {
+                            drawLine(line, lineStartPos);
+                            line.clear();
+                        } else {
+                            textY += lineHeight;  // Empty line
+                        }
+                        lineStartPos = i + 1;
+                    }
+
+                    charPos = i + 1;
+                } else {
+                    word += c;
+                    charPos = i + 1;
+                }
+            }
+
+            // Draw remaining line
+            if (!line.empty()) {
+                drawLine(line, lineStartPos);
+            }
+        }
+
+        dl->PopClipRect();
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // Bar Heading Connector
+    if (sec.type == SEC_BAR_CONNECTOR) {
+        // Draw section background
+        dl->AddRectFilled(ImVec2(x, y), ImVec2(x + sectionW, y + h),
+                         ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        for (size_t i = 0; i < sec.bar_items.size(); i++) {
+            const BarItem& bar = sec.bar_items[i];
+            float barY = y + i * (bar.barHeight + 10);
+            float barX = x + (sectionW - bar.barWidth) / 2;
+
+            // Draw bar background
+            dl->AddRectFilled(ImVec2(barX, barY),
+                             ImVec2(barX + bar.barWidth, barY + bar.barHeight),
+                             ImGui::ColorConvertFloat4ToU32(bar.barColor));
+
+            // Draw heading text with boldness
+            ImFont* font = ImGui::GetFont();
+            float fs = 18.0f * bar.headingSize;
+            ImVec2 textSize = font->CalcTextSizeA(fs, FLT_MAX, 0.0f, bar.heading);
+            float textY = barY + (bar.barHeight - textSize.y) / 2;
+
+            // Bold effect with multiple passes
+            int passes = (int)(bar.headingBoldness * 2) + 1;
+            for (int p = 0; p < passes; p++) {
+                dl->AddText(font, fs, ImVec2(barX + bar.paddingLeft + p * 0.4f, textY),
+                           ImGui::ColorConvertFloat4ToU32(bar.headingColor), bar.heading);
+            }
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(ImVec2(x, y), ImVec2(x + sectionW, y + h), IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // Footer Columns Connector
+    if (sec.type == SEC_FOOTER_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Calculate column layout
+        int numCols = (int)sec.footer_columns.size();
+        if (numCols == 0) numCols = 1;
+        float colWidth = sec.footer_column_width;
+        float totalWidth = numCols * colWidth;
+        float startX = x + (sectionW - totalWidth) / 2;
+        float startY = y + 30;
+
+        ImFont* font = ImGui::GetFont();
+
+        for (int i = 0; i < (int)sec.footer_columns.size(); i++) {
+            const FooterColumn& col = sec.footer_columns[i];
+            float colX = startX + i * colWidth;
+            float colY = startY;
+
+            // Draw column heading with boldness
+            float headingFS = 18.0f * sec.footer_heading_size;
+            int headingPasses = (int)(sec.footer_heading_boldness * 2) + 1;
+            for (int p = 0; p < headingPasses; p++) {
+                dl->AddText(font, headingFS, ImVec2(colX + p * 0.4f, colY),
+                           ImGui::ColorConvertFloat4ToU32(sec.footer_heading_color), col.heading);
+            }
+            colY += headingFS + 15;
+
+            // Draw subitems
+            float subFS = 16.0f * sec.footer_subheading_size;
+            for (const auto& item : col.items) {
+                dl->AddText(font, subFS, ImVec2(colX, colY),
+                           ImGui::ColorConvertFloat4ToU32(sec.footer_subheading_color), item.c_str());
+                colY += subFS + sec.footer_item_spacing;
+            }
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // Thumbnail Cards Connector
+    if (sec.type == SEC_CARD_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Clip content to section bounds (but not resize handles)
+        dl->PushClipRect(section_min, section_max, true);
+
+        // Calculate card layout
+        int numCards = (int)sec.connector_cards.size();
+        int cardsPerRow = sec.connector_cards_per_row > 0 ? sec.connector_cards_per_row : 3;
+        float spacing = sec.connector_card_spacing;
+        float padding = sec.connector_card_padding;  // Use section's padding setting
+
+        ImFont* font = ImGui::GetFont();
+
+        // Simple layout: use card's own dimensions, start from padding
+        float startX = x + padding;
+        float startY = y + padding;
+        float currentY = startY;
+
+        for (int i = 0; i < numCards; i++) {
+            const ThumbnailCard& card = sec.connector_cards[i];
+            int col = i % cardsPerRow;
+            int row = i / cardsPerRow;
+
+            // Use card's actual dimensions from sliders
+            float cardW = card.cardWidth;
+            float cardH = card.cardHeight;
+
+            // Calculate X position - sum widths of previous cards in this row
+            float cardX = startX;
+            for (int c = 0; c < col; c++) {
+                int prevIdx = row * cardsPerRow + c;
+                if (prevIdx < numCards) {
+                    cardX += sec.connector_cards[prevIdx].cardWidth + spacing;
+                }
+            }
+
+            // Calculate Y position - sum heights of previous rows
+            float cardY = startY;
+            for (int r = 0; r < row; r++) {
+                // Find max height in that row
+                float rowMaxH = 0;
+                for (int c = 0; c < cardsPerRow; c++) {
+                    int idx = r * cardsPerRow + c;
+                    if (idx < numCards) {
+                        rowMaxH = std::max(rowMaxH, sec.connector_cards[idx].cardHeight);
+                    }
+                }
+                cardY += rowMaxH + spacing;
+            }
+
+            // Move to next row tracking (for currentY compatibility)
+            if (col == cardsPerRow - 1 && i < numCards - 1) {
+                float rowMaxH = 0;
+                for (int c = 0; c < cardsPerRow; c++) {
+                    int idx = row * cardsPerRow + c;
+                    if (idx < numCards) {
+                        rowMaxH = std::max(rowMaxH, sec.connector_cards[idx].cardHeight);
+                    }
+                }
+                currentY = cardY + rowMaxH + spacing;
+            }
+
+            // Calculate scale for this specific card (relative to default 280x320)
+            float scaleW = cardW / 280.0f;
+            float scaleH = cardH / 320.0f;
+            float scale = (scaleW < scaleH) ? scaleW : scaleH;
+            if (scale > 1.5f) scale = 1.5f;  // Cap max scale
+            if (scale < 0.3f) scale = 0.3f;  // Cap min scale (allow smaller for many cards per row)
+
+            // Article-style card rendering
+            float accentWidth = 4.0f;  // Left accent border width
+            float cardPadding = 10.0f * scale;
+            ImVec4 orangeAccent(0.91f, 0.40f, 0.10f, 1.0f);  // Orange accent color
+
+            // Check if this is a simple card (no description, no READ MORE)
+            bool hasDescription = strlen(card.description) > 0;
+            bool isSimpleCard = !hasDescription && !card.showReadMore;
+
+            // Draw shadow (slightly offset dark rectangle)
+            dl->AddRectFilled(ImVec2(cardX + 3, cardY + 3), ImVec2(cardX + cardW + 3, cardY + cardH + 3),
+                             IM_COL32(0, 0, 0, 40), card.cardBorderRadius);
+
+            // Draw card background (with border radius)
+            dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH),
+                             ImGui::ColorConvertFloat4ToU32(card.cardColor), card.cardBorderRadius);
+
+            // Draw left accent border (orange line)
+            dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + accentWidth, cardY + cardH),
+                             ImGui::ColorConvertFloat4ToU32(orangeAccent));
+
+            // Calculate heading size first to determine image height
+            float headingFS = 16.0f * card.headingSize * scale;
+            if (headingFS < 8) headingFS = 8;
+            float headingSpace = headingFS + cardPadding * 2;
+
+            // Use image height percentage from card settings
+            float imgH = cardH * (card.imageHeightPercent / 100.0f);
+            // Ensure minimum image height
+            if (imgH < 10) imgH = 10;
+            // Ensure image doesn't take entire card (leave room for heading)
+            if (imgH > cardH - headingSpace) imgH = cardH - headingSpace;
+
+            float contentX = cardX + accentWidth + cardPadding;
+            float contentWidth = cardW - accentWidth - cardPadding * 2;
+
+            // Draw image or placeholder
+            if (card.textureID != 0) {
+                dl->AddImageRounded((ImTextureID)(intptr_t)card.textureID,
+                                   ImVec2(cardX + accentWidth, cardY), ImVec2(cardX + cardW, cardY + imgH),
+                                   ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), card.cardBorderRadius);
+            } else {
+                // Placeholder
+                dl->AddRectFilled(ImVec2(cardX + accentWidth + 5, cardY + 5), ImVec2(cardX + cardW - 5, cardY + imgH - 5),
+                                 IM_COL32(220, 220, 225, 255), card.cardBorderRadius);
+                if (cardW > 80 && imgH > 30) {
+                    dl->AddText(ImVec2(cardX + cardW/2 - 20 * scale, cardY + imgH/2 - 6), IM_COL32(150, 150, 160, 255), "Image");
+                }
+            }
+
+            // Draw heading with boldness (use card.headingColor)
+            float headingY = cardY + imgH + cardPadding;
+            int passes = (int)(card.headingBoldness * 2) + 1;
+            for (int p = 0; p < passes; p++) {
+                dl->AddText(font, headingFS, ImVec2(contentX + p * 0.4f, headingY),
+                           ImGui::ColorConvertFloat4ToU32(card.headingColor), card.heading);
+            }
+
+            // Only draw description if it has content
+            if (hasDescription) {
+                float descY = headingY + headingFS + 8 * scale;
+                float descFS = 12.0f * card.descriptionSize * scale;
+                if (descFS < 6) descFS = 6;
+
+                // Simple word wrap for description
+                std::string descText = card.description;
+                float descMaxWidth = contentWidth;
+                float currentLineX = contentX;
+                float lineY = descY;
+                std::string word;
+                std::istringstream stream(descText);
+
+                float bottomLimit = card.showReadMore ? (cardY + cardH - 25 * scale) : (cardY + cardH - cardPadding);
+
+                while (stream >> word && lineY < bottomLimit) {
+                    ImVec2 wordSize = font->CalcTextSizeA(descFS, FLT_MAX, 0.0f, word.c_str());
+                    if (currentLineX + wordSize.x > contentX + descMaxWidth && currentLineX > contentX) {
+                        currentLineX = contentX;
+                        lineY += descFS + 2;
+                    }
+                    if (lineY < bottomLimit) {
+                        dl->AddText(font, descFS, ImVec2(currentLineX, lineY),
+                                   ImGui::ColorConvertFloat4ToU32(card.descriptionColor), word.c_str());
+                        currentLineX += wordSize.x + font->CalcTextSizeA(descFS, FLT_MAX, 0.0f, " ").x;
+                    }
+                }
+            }
+
+            // Draw READ MORE link at bottom (if enabled)
+            if (card.showReadMore) {
+                float readMoreFS = 11.0f * scale;
+                if (readMoreFS < 6) readMoreFS = 6;
+                float readMoreY = cardY + cardH - cardPadding - readMoreFS;
+                // Bold READ MORE
+                for (int b = 0; b < 3; b++) {
+                    dl->AddText(font, readMoreFS, ImVec2(contentX + b * 0.3f, readMoreY),
+                               IM_COL32(50, 50, 50, 255), "READ MORE");
+                }
+            }
+        }
+
+        // Pop clip rect
+        dl->PopClipRect();
+
+        // Selection border (outside clip rect so it's always visible)
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // Vertical Layout Connector
+    if (sec.type == SEC_VERTICAL_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Use margins for content positioning
+        float availableWidth = sectionW - sec.margin_left - sec.margin_right;
+        float contentWidth = (sec.vertical_content_width < availableWidth) ? sec.vertical_content_width : availableWidth;
+        float contentX = x + sec.margin_left + (availableWidth - contentWidth) / 2;
+        float contentY = y + sec.margin_top + sec.vertical_spacing;
+        float maxContentY = y + h - sec.margin_bottom;
+        ImFont* font = ImGui::GetFont();
+
+        for (const auto& block : sec.vertical_blocks) {
+            if (contentY >= maxContentY) break;  // Stop if we've exceeded content area
+
+            if (block.type == 0) {  // Heading
+                float fs = 24.0f * sec.vertical_heading_size;
+                int passes = (int)(sec.vertical_heading_boldness * 2) + 1;
+                for (int p = 0; p < passes; p++) {
+                    dl->AddText(font, fs, ImVec2(contentX + p * 0.4f, contentY),
+                               ImGui::ColorConvertFloat4ToU32(sec.vertical_heading_color), block.text);
+                }
+                contentY += fs + sec.vertical_spacing;
+            } else if (block.type == 1) {  // Description
+                float fs = 16.0f * sec.vertical_desc_size;
+                // Wrap text manually using content width with margins
+                float maxWidth = contentWidth;
+                // Convert boldness (0-3) to fontWeight (400-1000)
+                float descWeight = 400.0f + sec.vertical_desc_boldness * 200.0f;
+                DrawWrappedText(dl, block.text, contentX, contentY, maxWidth,
+                               ImGui::ColorConvertFloat4ToU32(sec.vertical_desc_color), false, fs, descWeight, 1.5f, 0);
+                ImVec2 textSize = font->CalcTextSizeA(fs, FLT_MAX, maxWidth, block.text);
+                contentY += textSize.y + sec.vertical_spacing;
+            }
+        }
+
+        // Render images separately with drag interaction (like original vertical_connector)
+        ImGuiIO& io = ImGui::GetIO();
+        for (int i = 0; i < (int)sec.vertical_blocks.size(); i++) {
+            VerticalBlock& block = sec.vertical_blocks[i];
+            if (block.type == 2) {  // Image
+                float imgW = block.displayWidth;
+                float imgH = (block.imageWidth > 0 && block.imageHeight > 0)
+                    ? imgW * ((float)block.imageHeight / (float)block.imageWidth)
+                    : imgW * 0.75f;
+                float imgX = x + block.posX;
+                float imgY = y + block.posY;
+
+                if (block.textureID != 0) {
+                    dl->AddImage((ImTextureID)(intptr_t)block.textureID,
+                                ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH));
+                } else {
+                    // Placeholder
+                    dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                                     IM_COL32(200, 200, 210, 255), 4.0f);
+                    dl->AddText(ImVec2(imgX + imgW/2 - 25, imgY + imgH/2 - 8), IM_COL32(100, 100, 110, 255), "Image");
+                }
+
+                // Check if mouse is over this image for dragging
+                ImVec2 mousePos = io.MousePos;
+                bool isHovered = (mousePos.x >= imgX && mousePos.x <= imgX + imgW &&
+                                 mousePos.y >= imgY && mousePos.y <= imgY + imgH);
+
+                if (isHovered) {
+                    ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeAll);
+                    // Draw highlight border
+                    dl->AddRect(ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                               IM_COL32(0, 150, 255, 255), 0, 0, 2.0f);
+
+                    // Handle dragging
+                    if (ImGui::IsMouseDragging(ImGuiMouseButton_Left, 0.0f)) {
+                        block.posX += io.MouseDelta.x;
+                        block.posY += io.MouseDelta.y;
+
+                        // Clamp to section bounds
+                        if (block.posX < 0) block.posX = 0;
+                        if (block.posY < 0) block.posY = 0;
+                        if (block.posX > sectionW - imgW) block.posX = sectionW - imgW;
+                        if (block.posY > h - imgH) block.posY = h - imgH;
+
+                        // Select this block
+                        g_SelectedVertBlockIndex = i;
+                    }
+
+                    // Click to select
+                    if (ImGui::IsMouseClicked(ImGuiMouseButton_Left)) {
+                        g_SelectedVertBlockIndex = i;
+                    }
+                }
+
+                // Draw selection border if this is the selected block
+                if (g_SelectedVertBlockIndex == i) {
+                    dl->AddRect(ImVec2(imgX - 2, imgY - 2), ImVec2(imgX + imgW + 2, imgY + imgH + 2),
+                               IM_COL32(0, 120, 255, 255), 0, 0, 3.0f);
+                }
+            }
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ==================== NAVBAR CONNECTOR ====================
+    if (sec.type == SEC_NAVBAR_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + sec.navbar_height);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.navbar_bg_color));
+
+        float menuX = x + sec.navbar_padding_x;
+        float menuY = y + sec.navbar_padding_y;
+        ImFont* font = ImGui::GetFont();
+        float fontSize = 18.0f * sec.navbar_font_scale;
+
+        // Track active menu for dropdown
+        static int navbar_active_menu = -1;
+        static int navbar_hovered_parent = -1;
+        bool parent_hovered = false;
+
+        // Store menu button rects for dropdown positioning
+        std::vector<ImVec4> menuRects;  // x, y, w, h
+
+        // Draw menu items
+        for (int i = 0; i < (int)sec.navbar_items.size(); i++) {
+            const NavbarMenuItem& item = sec.navbar_items[i];
+            ImVec2 textSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, item.label);
+            float btnW = textSize.x + 20.0f;
+            float btnH = textSize.y + 10.0f;
+
+            ImVec2 btnMin(menuX, menuY);
+            ImVec2 btnMax(menuX + btnW, menuY + btnH);
+            menuRects.push_back(ImVec4(menuX, menuY, btnW, btnH));
+
+            // Check hover
+            ImGuiIO& io = ImGui::GetIO();
+            bool isHovered = (io.MousePos.x >= btnMin.x && io.MousePos.x <= btnMax.x &&
+                             io.MousePos.y >= btnMin.y && io.MousePos.y <= btnMax.y);
+
+            if (isHovered) {
+                parent_hovered = true;
+                navbar_hovered_parent = i;
+            }
+
+            // Draw hover background
+            if (isHovered || navbar_active_menu == i) {
+                dl->AddRectFilled(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.navbar_hover_color),
+                                 sec.navbar_rounded ? sec.navbar_rounding : 0.0f);
+            }
+
+            // Draw text with boldness
+            int textPasses = (int)(sec.navbar_font_boldness * 2) + 1;
+            for (int p = 0; p < textPasses; p++) {
+                dl->AddText(font, fontSize, ImVec2(menuX + 10.0f + p * 0.4f, menuY + 5.0f),
+                           ImGui::ColorConvertFloat4ToU32(sec.navbar_text_color), item.label);
+            }
+
+            menuX += btnW + sec.navbar_spacing;
+        }
+
+        // Open dropdown on parent hover
+        if (parent_hovered && navbar_hovered_parent >= 0 && navbar_hovered_parent < (int)sec.navbar_items.size()) {
+            if (!sec.navbar_items[navbar_hovered_parent].children.empty()) {
+                navbar_active_menu = navbar_hovered_parent;
+            }
+        }
+
+        // Draw dropdown if active
+        bool dropdown_hovered = false;
+        if (navbar_active_menu >= 0 && navbar_active_menu < (int)sec.navbar_items.size() &&
+            !sec.navbar_items[navbar_active_menu].children.empty()) {
+
+            ImVec4 parentRect = menuRects[navbar_active_menu];
+            float dropX = parentRect.x;
+            float dropY = parentRect.y + parentRect.w + 2;  // Below the button
+
+            const auto& children = sec.navbar_items[navbar_active_menu].children;
+            float dropW = 150.0f;
+            float dropH = children.size() * 30.0f + 16.0f;
+
+            // Find max width
+            for (const auto& child : children) {
+                ImVec2 sz = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, child.c_str());
+                if (sz.x + 20.0f > dropW) dropW = sz.x + 20.0f;
+            }
+
+            ImVec2 dropMin(dropX, dropY);
+            ImVec2 dropMax(dropX + dropW, dropY + dropH);
+
+            // Check dropdown hover
+            ImGuiIO& io = ImGui::GetIO();
+            dropdown_hovered = (io.MousePos.x >= dropMin.x && io.MousePos.x <= dropMax.x &&
+                               io.MousePos.y >= dropMin.y && io.MousePos.y <= dropMax.y);
+
+            // Draw dropdown background
+            dl->AddRectFilled(dropMin, dropMax, ImGui::ColorConvertFloat4ToU32(sec.navbar_dropdown_color),
+                             sec.navbar_rounded ? sec.navbar_rounding : 0.0f);
+
+            // Draw dropdown items
+            float itemY = dropY + 8.0f;
+            for (const auto& child : children) {
+                ImVec2 itemMin(dropX, itemY);
+                ImVec2 itemMax(dropX + dropW, itemY + 26.0f);
+
+                bool itemHovered = (io.MousePos.x >= itemMin.x && io.MousePos.x <= itemMax.x &&
+                                   io.MousePos.y >= itemMin.y && io.MousePos.y <= itemMax.y);
+
+                if (itemHovered) {
+                    dl->AddRectFilled(ImVec2(dropX + 4, itemY), ImVec2(dropX + dropW - 4, itemY + 26.0f),
+                                     ImGui::ColorConvertFloat4ToU32(sec.navbar_hover_color), 3.0f);
+                }
+
+                // Draw dropdown text with boldness
+                int dropTextPasses = (int)(sec.navbar_font_boldness * 2) + 1;
+                for (int p = 0; p < dropTextPasses; p++) {
+                    dl->AddText(font, fontSize, ImVec2(dropX + 10.0f + p * 0.4f, itemY + 4.0f),
+                               ImGui::ColorConvertFloat4ToU32(sec.navbar_text_color), child.c_str());
+                }
+                itemY += 30.0f;
+            }
+        }
+
+        // Close menu when not hovering parent or dropdown
+        if (!parent_hovered && !dropdown_hovered) {
+            navbar_active_menu = -1;
+        }
+
+        // Hand cursor when hovering
+        if (parent_hovered || dropdown_hovered) {
+            ImGui::SetMouseCursor(ImGuiMouseCursor_Hand);
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ==================== COPYRIGHT CONNECTOR ====================
+    if (sec.type == SEC_COPYRIGHT_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background with controllable opacity
+        if (sec.copyright_bg_opacity > 0.0f) {
+            ImVec4 bgWithOpacity = sec.copyright_bg_color;
+            bgWithOpacity.w = sec.copyright_bg_opacity;
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(bgWithOpacity));
+        }
+
+        ImFont* font = ImGui::GetFont();
+        float padding = sec.copyright_padding;
+        float textY = y + padding;
+
+        // Main copyright text line
+        if (strlen(sec.copyright_text) > 0) {
+            ImVec2 textSize = font->CalcTextSizeA(sec.copyright_font_size, FLT_MAX, 0.0f, sec.copyright_text);
+            float textX = x + padding;
+            dl->AddText(font, sec.copyright_font_size, ImVec2(textX, textY),
+                       ImGui::ColorConvertFloat4ToU32(sec.copyright_text_color), sec.copyright_text);
+            textY += textSize.y + 6.0f;
+        }
+
+        // Subtext with links
+        float linkX = x + padding;
+        if (strlen(sec.copyright_subtext) > 0) {
+            ImVec2 subtextSize = font->CalcTextSizeA(sec.copyright_subtext_size, FLT_MAX, 0.0f, sec.copyright_subtext);
+            dl->AddText(font, sec.copyright_subtext_size, ImVec2(linkX, textY),
+                       ImGui::ColorConvertFloat4ToU32(sec.copyright_text_color), sec.copyright_subtext);
+            linkX += subtextSize.x;
+        }
+
+        // Add links
+        for (int i = 0; i < (int)sec.copyright_links.size(); i++) {
+            const CopyrightLink& link = sec.copyright_links[i];
+
+            // Add separator
+            if (i == 0 && strlen(sec.copyright_subtext) > 0) {
+                ImVec2 sepSize = font->CalcTextSizeA(sec.copyright_subtext_size, FLT_MAX, 0.0f, " | ");
+                dl->AddText(font, sec.copyright_subtext_size, ImVec2(linkX, textY),
+                           ImGui::ColorConvertFloat4ToU32(sec.copyright_text_color), " | ");
+                linkX += sepSize.x;
+            } else if (i > 0) {
+                ImVec2 sepSize = font->CalcTextSizeA(sec.copyright_subtext_size, FLT_MAX, 0.0f, " | ");
+                dl->AddText(font, sec.copyright_subtext_size, ImVec2(linkX, textY),
+                           ImGui::ColorConvertFloat4ToU32(sec.copyright_text_color), " | ");
+                linkX += sepSize.x;
+            }
+
+            // Draw link text
+            ImVec2 linkSize = font->CalcTextSizeA(sec.copyright_subtext_size, FLT_MAX, 0.0f, link.text);
+
+            // Bold effect for links
+            if (link.isBold) {
+                for (int b = 0; b < 3; b++) {
+                    dl->AddText(font, sec.copyright_subtext_size, ImVec2(linkX + b * 0.4f, textY),
+                               ImGui::ColorConvertFloat4ToU32(sec.copyright_link_color), link.text);
+                }
+            } else {
+                dl->AddText(font, sec.copyright_subtext_size, ImVec2(linkX, textY),
+                           ImGui::ColorConvertFloat4ToU32(sec.copyright_link_color), link.text);
+            }
+            linkX += linkSize.x;
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_ARTICLE_CONNECTOR - Blog/News style article cards
+    // ========================================================================
+    if (sec.type == SEC_ARTICLE_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Clip content to section bounds
+        dl->PushClipRect(section_min, section_max, true);
+
+        ImFont* font = ImGui::GetFont();
+        float padding = 20.0f;
+        int cardsPerRow = sec.article_cards_per_row > 0 ? sec.article_cards_per_row : 2;
+        float spacing = sec.article_card_spacing;
+        int numCards = (int)sec.article_cards.size();
+
+        // Calculate available space
+        float availableWidth = sectionW - padding * 2;
+        float availableHeight = h - padding * 2;
+
+        // Calculate card width to fit within section
+        float totalSpacing = (cardsPerRow - 1) * spacing;
+        float defaultCardW = numCards > 0 ? sec.article_cards[0].cardWidth : 500;
+        float fittedCardW = (availableWidth - totalSpacing) / cardsPerRow;
+        float actualCardW = (fittedCardW < defaultCardW) ? fittedCardW : defaultCardW;
+        if (actualCardW < 150) actualCardW = 150;
+
+        // Calculate card height to fit within section
+        int numRows = (numCards + cardsPerRow - 1) / cardsPerRow;
+        float totalRowSpacing = (numRows - 1) * spacing;
+        float defaultCardH = numCards > 0 ? sec.article_cards[0].cardHeight : 180;
+        float fittedCardH = numRows > 0 ? (availableHeight - totalRowSpacing) / numRows : defaultCardH;
+        float actualCardH = (fittedCardH < defaultCardH) ? fittedCardH : defaultCardH;
+        if (actualCardH < 100) actualCardH = 100;
+
+        // Scale factor for text
+        float scaleW = actualCardW / defaultCardW;
+        float scaleH = actualCardH / defaultCardH;
+        float scale = (scaleW < scaleH) ? scaleW : scaleH;
+        if (scale > 1.0f) scale = 1.0f;
+
+        // Calculate starting position (centered)
+        float totalRowWidth = cardsPerRow * actualCardW + totalSpacing;
+        float startX = x + (sectionW - totalRowWidth) / 2;
+        if (startX < x + padding) startX = x + padding;
+        float startY = y + padding;
+
+        for (int i = 0; i < numCards; i++) {
+            const ArticleCard& card = sec.article_cards[i];
+            int row = i / cardsPerRow;
+            int col = i % cardsPerRow;
+
+            float cardX = startX + col * (actualCardW + spacing);
+            float cardY = startY + row * (actualCardH + spacing);
+
+            // Skip if card would be outside section bounds
+            if (cardY + actualCardH > y + h - 5) continue;
+
+            // Card background
+            ImVec2 cardMin(cardX, cardY);
+            ImVec2 cardMax(cardX + actualCardW, cardY + actualCardH);
+            dl->AddRectFilled(cardMin, cardMax, ImGui::ColorConvertFloat4ToU32(card.cardBgColor));
+
+            // Orange left accent border
+            float accentW = card.accentWidth * scale;
+            if (accentW < 3) accentW = 3;
+            dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + accentW, cardY + actualCardH),
+                             ImGui::ColorConvertFloat4ToU32(card.accentColor));
+
+            // Content area (after accent)
+            float cardPad = card.cardPadding * scale;
+            if (cardPad < 10) cardPad = 10;
+            float contentX = cardX + accentW + cardPad;
+            float contentY = cardY + cardPad;
+            float contentWidth = actualCardW - accentW - cardPad * 2;
+
+            // Heading (clickable, orange)
+            float headingFontSize = ValidFontSize(18.0f * card.headingSize * scale);
+            if (headingFontSize < 10) headingFontSize = 10;
+            ImVec2 headingSize = font->CalcTextSizeA(headingFontSize, FLT_MAX, 0.0f, card.heading);
+            dl->AddText(font, headingFontSize, ImVec2(contentX, contentY),
+                       ImGui::ColorConvertFloat4ToU32(card.headingColor), card.heading);
+            contentY += headingSize.y + 6 * scale;
+
+            // Date (smaller, gray)
+            float dateFontSize = ValidFontSize(14.0f * card.dateSize * scale);
+            if (dateFontSize < 8) dateFontSize = 8;
+            ImVec2 dateSize = font->CalcTextSizeA(dateFontSize, FLT_MAX, 0.0f, card.date);
+            dl->AddText(font, dateFontSize, ImVec2(contentX, contentY),
+                       ImGui::ColorConvertFloat4ToU32(card.dateColor), card.date);
+            contentY += dateSize.y + 8 * scale;
+
+            // Description (wrapped text)
+            float descFontSize = ValidFontSize(14.0f * card.descriptionSize * scale);
+            if (descFontSize < 8) descFontSize = 8;
+            float descY = contentY;
+            std::string descText = card.description;
+            float maxDescY = cardY + actualCardH - cardPad - 20 * scale;
+
+            // Simple word wrap for description
+            float currentX = contentX;
+            std::string word;
+            std::istringstream stream(descText);
+            while (stream >> word && descY < maxDescY) {
+                ImVec2 wordSize = font->CalcTextSizeA(descFontSize, FLT_MAX, 0.0f, word.c_str());
+                if (currentX + wordSize.x > contentX + contentWidth && currentX > contentX) {
+                    currentX = contentX;
+                    descY += descFontSize + 2;
+                }
+                if (descY < maxDescY) {
+                    dl->AddText(font, descFontSize, ImVec2(currentX, descY),
+                               ImGui::ColorConvertFloat4ToU32(card.descriptionColor), word.c_str());
+                    currentX += wordSize.x + font->CalcTextSizeA(descFontSize, FLT_MAX, 0.0f, " ").x;
+                }
+            }
+
+            // READ MORE button (clickable)
+            float rmFontSize = ValidFontSize(12.0f * card.readMoreSize * scale);
+            if (rmFontSize < 8) rmFontSize = 8;
+            ImVec2 rmSize = font->CalcTextSizeA(rmFontSize, FLT_MAX, 0.0f, card.readMoreText);
+            float rmY = cardY + actualCardH - cardPad - rmSize.y;
+
+            // Bold effect for READ MORE
+            for (int b = 0; b < 3; b++) {
+                dl->AddText(font, rmFontSize, ImVec2(contentX + b * 0.4f, rmY),
+                           ImGui::ColorConvertFloat4ToU32(card.readMoreColor), card.readMoreText);
+            }
+        }
+
+        // Pop clip rect
+        dl->PopClipRect();
+
+        // Selection border (outside clip rect)
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_CONTACT_FORM_CONNECTOR - Contact form with input fields
+    // ========================================================================
+    if (sec.type == SEC_CONTACT_FORM_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float padding = sec.padding_left > 0 ? sec.padding_left : 30.0f;
+        float currentY = y + (sec.padding_top > 0 ? sec.padding_top : 30.0f);
+        float formWidth = sectionW - padding * 2;
+
+        // Title "Contact Us"
+        float titleFontSize = ValidFontSize(24.0f * sec.contact_form_title_size);
+        ImVec2 titleSize = font->CalcTextSizeA(titleFontSize, FLT_MAX, 0.0f, sec.contact_form_title);
+        // Bold effect for title
+        for (int b = 0; b < 4; b++) {
+            dl->AddText(font, titleFontSize, ImVec2(x + padding + b * 0.5f, currentY),
+                       ImGui::ColorConvertFloat4ToU32(sec.contact_form_title_color), sec.contact_form_title);
+        }
+        currentY += titleSize.y + sec.contact_form_spacing;
+
+        // Render form fields
+        float fieldX = x + padding;
+        float halfWidth = (formWidth - sec.contact_form_spacing) / 2;
+        int fieldInRow = 0;
+        float rowStartY = currentY;
+
+        for (int i = 0; i < (int)sec.contact_form_fields.size(); i++) {
+            const ContactFormField& field = sec.contact_form_fields[i];
+            float fieldWidth = (field.width >= 1.0f) ? formWidth : halfWidth;
+            float fieldHeight = (field.fieldType == 3) ? sec.contact_form_textarea_height : sec.contact_form_input_height;
+
+            // If full width or we need to start new row
+            if (field.width >= 1.0f || fieldInRow >= 2) {
+                if (fieldInRow > 0) {
+                    currentY = rowStartY + sec.contact_form_input_height + sec.contact_form_spacing;
+                }
+                fieldX = x + padding;
+                fieldInRow = 0;
+                rowStartY = currentY;
+            }
+
+            // Draw input field background
+            ImVec2 fieldMin(fieldX, currentY);
+            ImVec2 fieldMax(fieldX + fieldWidth, currentY + fieldHeight);
+            dl->AddRectFilled(fieldMin, fieldMax, ImGui::ColorConvertFloat4ToU32(sec.contact_form_input_bg), 4.0f);
+
+            // Draw placeholder text
+            float placeholderFontSize = ValidFontSize(14.0f);
+            float textY = currentY + (field.fieldType == 3 ? 12 : (fieldHeight - placeholderFontSize) / 2);
+            dl->AddText(font, placeholderFontSize, ImVec2(fieldX + 15, textY),
+                       ImGui::ColorConvertFloat4ToU32(sec.contact_form_input_text), field.placeholder);
+
+            // Move to next position
+            if (field.width < 1.0f) {
+                fieldX += fieldWidth + sec.contact_form_spacing;
+                fieldInRow++;
+            } else {
+                currentY += fieldHeight + sec.contact_form_spacing;
+                fieldInRow = 0;
+            }
+        }
+
+        // Update currentY after last row if needed
+        if (fieldInRow > 0) {
+            currentY = rowStartY + sec.contact_form_input_height + sec.contact_form_spacing;
+        }
+
+        // Submit button (right-aligned)
+        float btnWidth = sec.contact_form_button_width;
+        float btnHeight = sec.contact_form_button_height;
+        float btnX = x + padding + formWidth - btnWidth;
+        float btnY = currentY + 10;
+
+        // Button background with border
+        ImVec2 btnMin(btnX, btnY);
+        ImVec2 btnMax(btnX + btnWidth, btnY + btnHeight);
+        dl->AddRectFilled(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.contact_form_button_bg), 4.0f);
+        dl->AddRect(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.contact_form_button_border), 4.0f, 0, 1.5f);
+
+        // Button text
+        float btnFontSize = ValidFontSize(14.0f);
+        ImVec2 btnTextSize = font->CalcTextSizeA(btnFontSize, FLT_MAX, 0.0f, sec.contact_form_submit_text);
+        float btnTextX = btnX + (btnWidth - btnTextSize.x) / 2;
+        float btnTextY = btnY + (btnHeight - btnTextSize.y) / 2;
+        dl->AddText(font, btnFontSize, ImVec2(btnTextX, btnTextY),
+                   ImGui::ColorConvertFloat4ToU32(sec.contact_form_button_text), sec.contact_form_submit_text);
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_SEARCH_CONNECTOR - Search bar with input and button
+    // ========================================================================
+    if (sec.type == SEC_SEARCH_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+
+        // Center the search bar
+        float totalWidth = sec.search_input_width + sec.search_button_width;
+        float startX = x + (sectionW - totalWidth) / 2;
+        float centerY = y + (h - sec.search_input_height) / 2;
+
+        // Input field background with border
+        ImVec2 inputMin(startX, centerY);
+        ImVec2 inputMax(startX + sec.search_input_width, centerY + sec.search_input_height);
+        dl->AddRectFilled(inputMin, inputMax, ImGui::ColorConvertFloat4ToU32(sec.search_input_bg), sec.search_border_radius);
+        dl->AddRect(inputMin, inputMax, ImGui::ColorConvertFloat4ToU32(sec.search_input_border), sec.search_border_radius, 0, 1.0f);
+
+        // Placeholder text
+        float placeholderFontSize = ValidFontSize(14.0f);
+        dl->AddText(font, placeholderFontSize, ImVec2(startX + 15, centerY + (sec.search_input_height - placeholderFontSize) / 2),
+                   ImGui::ColorConvertFloat4ToU32(ImVec4(0.6f, 0.6f, 0.6f, 1.0f)), sec.search_placeholder);
+
+        // Search button
+        ImVec2 btnMin(startX + sec.search_input_width, centerY);
+        ImVec2 btnMax(startX + sec.search_input_width + sec.search_button_width, centerY + sec.search_input_height);
+        dl->AddRectFilled(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.search_button_bg), sec.search_border_radius);
+
+        // Button text
+        float btnFontSize = ValidFontSize(14.0f);
+        ImVec2 btnTextSize = font->CalcTextSizeA(btnFontSize, FLT_MAX, 0.0f, sec.search_button_text);
+        float btnTextX = btnMin.x + (sec.search_button_width - btnTextSize.x) / 2;
+        float btnTextY = centerY + (sec.search_input_height - btnTextSize.y) / 2;
+        dl->AddText(font, btnFontSize, ImVec2(btnTextX, btnTextY),
+                   ImGui::ColorConvertFloat4ToU32(sec.search_button_text_color), sec.search_button_text);
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_LOGO_CONNECTOR - Logo image with size and alignment controls
+    // ========================================================================
+    if (sec.type == SEC_LOGO_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background (if set)
+        if (sec.logo_bg_color.w > 0.01f) {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.logo_bg_color));
+        }
+
+        // Calculate logo dimensions maintaining aspect ratio if needed
+        float logoW = sec.logo_width;
+        float logoH = sec.logo_height;
+
+        if (sec.logo_connector_texture != 0 && sec.logo_maintain_aspect && sec.logo_image_width > 0 && sec.logo_image_height > 0) {
+            float aspect = (float)sec.logo_image_width / (float)sec.logo_image_height;
+            // Fit within the specified size while maintaining aspect
+            if (logoW / logoH > aspect) {
+                logoW = logoH * aspect;
+            } else {
+                logoH = logoW / aspect;
+            }
+        }
+
+        // Calculate position based on alignment
+        float logoX;
+        if (sec.logo_alignment == 0) {  // Left
+            logoX = x + sec.logo_padding;
+        } else if (sec.logo_alignment == 2) {  // Right
+            logoX = x + sectionW - logoW - sec.logo_padding;
+        } else {  // Center
+            logoX = x + (sectionW - logoW) / 2;
+        }
+        float logoY = y + (h - logoH) / 2;
+
+        // Draw logo image or placeholder
+        if (sec.logo_connector_texture != 0) {
+            // Draw the actual logo image
+            ImVec2 imgMin(logoX, logoY);
+            ImVec2 imgMax(logoX + logoW, logoY + logoH);
+            dl->AddImage((ImTextureID)(intptr_t)sec.logo_connector_texture, imgMin, imgMax);
+        } else {
+            // Draw placeholder
+            ImVec2 placeholderMin(logoX, logoY);
+            ImVec2 placeholderMax(logoX + logoW, logoY + logoH);
+            dl->AddRectFilled(placeholderMin, placeholderMax, IM_COL32(80, 80, 80, 255), 8.0f);
+            dl->AddRect(placeholderMin, placeholderMax, IM_COL32(120, 120, 120, 255), 8.0f, 0, 2.0f);
+
+            // Placeholder text
+            ImFont* font = ImGui::GetFont();
+            const char* text = "LOGO";
+            float fontSize = ValidFontSize(18.0f);
+            ImVec2 textSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, text);
+            float textX = logoX + (logoW - textSize.x) / 2;
+            float textY = logoY + (logoH - textSize.y) / 2;
+            dl->AddText(font, fontSize, ImVec2(textX, textY), IM_COL32(180, 180, 180, 255), text);
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_BULLET_CONNECTOR - Bullet point columns with heading and subheadings
+    // ========================================================================
+    if (sec.type == SEC_BULLET_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float padding = 40.0f;
+        float contentStartY = y + sec.margin_top + padding;
+
+        // Draw main heading
+        float mainHeadingFS = ValidFontSize(20.0f * sec.bullet_heading_size);
+        int headingPasses = (int)(sec.bullet_heading_boldness * 2) + 1;
+        ImVec2 headingSize = font->CalcTextSizeA(mainHeadingFS, FLT_MAX, 0.0f, sec.bullet_main_heading);
+        float headingX = x + (sectionW - headingSize.x) / 2;
+
+        for (int p = 0; p < headingPasses; p++) {
+            dl->AddText(font, mainHeadingFS, ImVec2(headingX + p * 0.4f, contentStartY),
+                       ImGui::ColorConvertFloat4ToU32(sec.bullet_heading_color), sec.bullet_main_heading);
+        }
+        contentStartY += headingSize.y + 30;
+
+        // Draw columns
+        int numCols = (int)sec.bullet_columns.size();
+        if (numCols > 0) {
+            float totalColumnsWidth = sectionW - padding * 2 - sec.bullet_column_spacing * (numCols - 1);
+            float colWidth = totalColumnsWidth / numCols;
+            float colStartX = x + padding;
+
+            for (int ci = 0; ci < numCols; ci++) {
+                const BulletColumn& col = sec.bullet_columns[ci];
+                float colX = colStartX + ci * (colWidth + sec.bullet_column_spacing);
+                float colY = contentStartY;
+
+                // Draw column subheading
+                float subheadingFS = ValidFontSize(18.0f * col.subheadingSize);
+                int subPasses = (int)(col.subheadingBoldness * 2) + 1;
+                for (int p = 0; p < subPasses; p++) {
+                    dl->AddText(font, subheadingFS, ImVec2(colX + p * 0.4f, colY),
+                               ImGui::ColorConvertFloat4ToU32(col.subheadingColor), col.subheading);
+                }
+                colY += subheadingFS + 15;
+
+                // Draw bullet items
+                float itemFS = ValidFontSize(14.0f * sec.bullet_item_size);
+                for (const auto& item : col.bullet_items) {
+                    // Draw bullet point (circle)
+                    float bulletRadius = 3.0f;
+                    dl->AddCircleFilled(ImVec2(colX + bulletRadius, colY + itemFS / 2),
+                                       bulletRadius, ImGui::ColorConvertFloat4ToU32(sec.bullet_item_color));
+
+                    // Draw item text
+                    dl->AddText(font, itemFS, ImVec2(colX + bulletRadius * 2 + 8, colY),
+                               ImGui::ColorConvertFloat4ToU32(sec.bullet_item_color), item.c_str());
+                    colY += itemFS + 8;
+                }
+            }
+        }
+
+        // Draw footer text if present
+        if (strlen(sec.bullet_footer_text) > 0) {
+            float footerFS = ValidFontSize(14.0f * sec.bullet_item_size);
+            ImVec2 footerSize = font->CalcTextSizeA(footerFS, FLT_MAX, 0.0f, sec.bullet_footer_text);
+            float footerX = x + (sectionW - footerSize.x) / 2;
+            float footerY = y + h - padding - footerSize.y;
+            dl->AddText(font, footerFS, ImVec2(footerX, footerY),
+                       ImGui::ColorConvertFloat4ToU32(sec.bullet_item_color), sec.bullet_footer_text);
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_ICON - Icon element with selectable icons
+    // ========================================================================
+    if (sec.type == SEC_ICON) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        // Draw the icon centered in the section
+        float centerX = x + sectionW / 2;
+        float centerY = y + h / 2;
+        ImU32 iconCol = ImGui::ColorConvertFloat4ToU32(sec.icon_color);
+        DrawIcon(dl, sec.icon_type, centerX, centerY, sec.icon_size, iconCol, sec.icon_stroke_width);
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_SERVICE_CARD_CONNECTOR - Service cards with badge tags
+    // ========================================================================
+    if (sec.type == SEC_SERVICE_CARD_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        int cardsPerRow = sec.service_cards_per_row;
+        float spacing = sec.service_card_spacing;
+        float padding = 30.0f;
+
+        if (!sec.service_cards.empty()) {
+            float totalSpacing = spacing * (cardsPerRow - 1);
+            float availWidth = sectionW - padding * 2 - totalSpacing;
+            float cardW = availWidth / cardsPerRow;
+            float cardH = 220.0f;
+
+            for (size_t i = 0; i < sec.service_cards.size(); i++) {
+                const ServiceCard& card = sec.service_cards[i];
+                int row = (int)i / cardsPerRow;
+                int col = (int)i % cardsPerRow;
+
+                float cardX = x + padding + col * (cardW + spacing);
+                float cardY = y + padding + row * (cardH + spacing);
+
+                // Card background with shadow
+                dl->AddRectFilled(ImVec2(cardX + 2, cardY + 4), ImVec2(cardX + cardW + 2, cardY + cardH + 4),
+                                 IM_COL32(0, 0, 0, 20), card.borderRadius);
+                dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH),
+                                 ImGui::ColorConvertFloat4ToU32(card.cardBgColor), card.borderRadius);
+
+                // Image area (top 65% of card)
+                float imageH = cardH * 0.65f;
+                if (card.textureID > 0) {
+                    dl->AddImageRounded((ImTextureID)(uintptr_t)card.textureID,
+                                       ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + imageH),
+                                       ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255),
+                                       card.borderRadius, ImDrawFlags_RoundCornersTop);
+                } else {
+                    // Placeholder gradient
+                    dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + imageH),
+                                     IM_COL32(200, 200, 210, 255), card.borderRadius, ImDrawFlags_RoundCornersTop);
+                }
+
+                // Badge tag
+                float badgeFontSize = ValidFontSize(11.0f);
+                ImVec2 badgeTextSize = font->CalcTextSizeA(badgeFontSize, FLT_MAX, 0.0f, card.badgeText);
+                float badgePadX = 10.0f, badgePadY = 5.0f;
+                float badgeW = badgeTextSize.x + badgePadX * 2;
+                float badgeH = badgeTextSize.y + badgePadY * 2;
+                float badgeX = cardX + 12;
+                float badgeY = cardY + 12;
+
+                dl->AddRectFilled(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH),
+                                 ImGui::ColorConvertFloat4ToU32(card.badgeColor), 4.0f);
+                dl->AddText(font, badgeFontSize, ImVec2(badgeX + badgePadX, badgeY + badgePadY),
+                           ImGui::ColorConvertFloat4ToU32(card.badgeTextColor), card.badgeText);
+
+                // Title below image
+                float titleFontSize = ValidFontSize(15.0f);
+                ImVec2 titleSize = font->CalcTextSizeA(titleFontSize, FLT_MAX, 0.0f, card.title);
+                float titleX = cardX + (cardW - titleSize.x) / 2;
+                float titleY = cardY + imageH + (cardH - imageH - titleSize.y) / 2;
+                dl->AddText(font, titleFontSize, ImVec2(titleX, titleY),
+                           ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
+            }
+        }
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
+        return;
+    }
+
+    // ========================================================================
+    // SEC_GLASS_BAR_CONNECTOR - Glass effect text bar
+    // ========================================================================
+    if (sec.type == SEC_GLASS_BAR_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Transparent section background
+        if (sec.bg_color.w > 0.01f) {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+        }
+
+        ImFont* font = ImGui::GetFont();
+        float padding = sec.glass_bar_padding;
+        float fontSize = ValidFontSize(16.0f);
+
+        // Calculate text sizes
+        ImVec2 textSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, sec.glass_bar_text);
+        ImVec2 highlightSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, sec.glass_bar_highlight);
+        float totalTextW = textSize.x + 10 + highlightSize.x;
+
+        // Glass bar dimensions - use section width when manually positioned (resize handles)
+        float minBarW = totalTextW + padding * 2;  // Minimum to fit text
+        float barW = sec.use_manual_position ? (sectionW - 10) : minBarW;  // Use section width in free design
+        if (barW < minBarW) barW = minBarW;  // Ensure text fits
+        float barH = h - 10;
+        float barX = x + (sectionW - barW) / 2;
+        float barY = y + 5;
+
+        // Glass effect background
+        int alpha = (int)(sec.glass_bar_opacity * 255);
+        ImU32 bgColor = IM_COL32(
+            (int)(sec.glass_bar_bg_color.x * 255),
+            (int)(sec.glass_bar_bg_color.y * 255),
+            (int)(sec.glass_bar_bg_color.z * 255),
+            alpha
+        );
+        dl->AddRectFilled(ImVec2(barX, barY), ImVec2(barX + barW, barY + barH),
+                         bgColor, sec.glass_bar_border_radius);
+
+        // Subtle border
+        dl->AddRect(ImVec2(barX, barY), ImVec2(barX + barW, barY + barH),
+                   IM_COL32(255, 255, 255, 100), sec.glass_bar_border_radius, 0, 1.0f);
+
+        // Text
+        float textX = barX + padding;
+        float textY = barY + (barH - textSize.y) / 2;
+
+        // Main text
+        dl->AddText(font, fontSize, ImVec2(textX, textY),
+                   ImGui::ColorConvertFloat4ToU32(sec.glass_bar_text_color), sec.glass_bar_text);
+
+        // Highlighted text
+        dl->AddText(font, fontSize, ImVec2(textX + textSize.x + 10, textY),
+                   ImGui::ColorConvertFloat4ToU32(sec.glass_bar_highlight_color), sec.glass_bar_highlight);
+
+        // Selection border
+        if (sec.selected) {
+            dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        }
         return;
     }
 
@@ -11730,29 +22381,32 @@ void RenderUI() {
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.5f, 0.3f, 0.8f, 1));
     if (ImGui::Button("Save Template", ImVec2(105, 26))) {
-        g_ShowSaveTemplate = true;
-        strncpy(g_TemplateNameBuffer, g_ProjectName.c_str(), sizeof(g_TemplateNameBuffer) - 1);
-        g_TemplateNameBuffer[sizeof(g_TemplateNameBuffer) - 1] = '\0';
-        g_TemplateDescBuffer[0] = '\0';
+        // Always save as ImGui template
+        g_ShowSaveImGuiTemplatePopup = true;
+    }
+    ImGui::PopStyleColor();
+    ImGui::SameLine();
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.5f, 0.2f, 1));
+    if (ImGui::Button("Copy Template", ImVec2(105, 26))) {
+        g_ShowCopyTemplatePopup = true;
     }
     ImGui::PopStyleColor();
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.3f, 1));
-    if (ImGui::Button("Preview", ImVec2(65, 26))) PreviewImGuiWebsite();
+    if (ImGui::Button("Preview", ImVec2(65, 26))) {
+        // Check if in Figma mode with layers
+        if (g_FigmaMode && !g_FigmaProject.layers.empty()) {
+            PreviewFigmaAsHTML();
+        } else {
+            PreviewImGuiWebsite();
+        }
+    }
     ImGui::PopStyleColor();
     ImGui::SameLine();
     ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1));
     if (ImGui::Button("Export", ImVec2(65, 26))) ExportImGuiWebsite();
     ImGui::PopStyleColor();
-    ImGui::SameLine();
-    // ImGui Templates button in top bar (purple)
-    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.7f, 1));
-    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.7f, 0.3f, 0.8f, 1));
-    if (ImGui::Button("ImGui Templates", ImVec2(115, 26))) {
-        g_ImGuiTemplatesList = GetImGuiTemplates();
-        g_ShowImGuiTemplatesPopup = true;
-    }
-    ImGui::PopStyleColor(2);
+
     ImGui::End();
 
     // LEFT PANEL
@@ -11760,6 +22414,241 @@ void RenderUI() {
     ImGui::SetNextWindowPos(ImVec2(0, 60));
     ImGui::SetNextWindowSize(ImVec2(lpw, io.DisplaySize.y - 60));
     ImGui::Begin("##Left", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
+    // ==================== PAGE BACKGROUND ====================
+    ImGui::TextColored(ImVec4(0.4f, 0.7f, 0.9f, 1), "PAGE BACKGROUND");
+    ImGui::Separator();
+    ImGui::ColorEdit4("##NormalPageBg", (float*)&g_NormalCanvasBgColor, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+    ImGui::SameLine();
+    ImGui::Text("Color");
+    if (ImGui::Button("W##NBg", ImVec2(22, 20))) g_NormalCanvasBgColor = ImVec4(1, 1, 1, 1);
+    if (ImGui::IsItemHovered()) ImGui::SetTooltip("White");
+    ImGui::SameLine();
+    if (ImGui::Button("L##NBg", ImVec2(22, 20))) g_NormalCanvasBgColor = ImVec4(0.96f, 0.96f, 0.96f, 1);
+    if (ImGui::IsItemHovered()) ImGui::SetTooltip("Light Gray");
+    ImGui::SameLine();
+    if (ImGui::Button("D##NBg", ImVec2(22, 20))) g_NormalCanvasBgColor = ImVec4(0.12f, 0.12f, 0.15f, 1);
+    if (ImGui::IsItemHovered()) ImGui::SetTooltip("Dark");
+    ImGui::Spacing();
+
+    // ==================== DESIGN MODE TOGGLE ====================
+    ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.3f, 1), "DESIGN MODE");
+    ImGui::Separator();
+    if (ImGui::Checkbox("Free Design", &g_FreeDesignMode)) {
+        // Mode changed
+    }
+    if (ImGui::IsItemHovered()) {
+        ImGui::SetTooltip("Enable to move/resize elements freely like Figma.\nDisable for vertical stacked layout.");
+    }
+    ImGui::Spacing();
+
+    // ==================== BASIC ELEMENTS (Free Design Mode) ====================
+    if (g_FreeDesignMode) {
+        ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.5f, 1), "ELEMENTS");
+        ImGui::Separator();
+
+        // Logo Button
+        if (ImGui::Button("+ Logo", ImVec2(-1, 26))) {
+            WebSection sec(g_NextSectionId++, SEC_LOGO);
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 150;
+            sec.height = 50;
+            sec.title = "LOGO";
+            sec.bg_color = ImVec4(0.2f, 0.5f, 0.8f, 1.0f);
+            sec.text_color = ImVec4(1, 1, 1, 1);
+            sec.z_index = (int)g_Sections.size();
+            g_Sections.push_back(sec);
+            g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+            for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+        }
+
+        // Heading Button
+        if (ImGui::Button("+ Heading", ImVec2(-1, 26))) {
+            WebSection sec(g_NextSectionId++, SEC_HEADING);
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 400;
+            sec.height = 60;
+            sec.title = "Heading Text";
+            sec.title_font_size = 48;
+            sec.title_font_weight = 700;
+            sec.title_color = ImVec4(0.1f, 0.1f, 0.1f, 1);
+            sec.bg_color = ImVec4(0, 0, 0, 0);  // Transparent
+            sec.z_index = (int)g_Sections.size();
+            g_Sections.push_back(sec);
+            g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+            for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+        }
+
+        // Text Button
+        if (ImGui::Button("+ Text", ImVec2(-1, 26))) {
+            WebSection sec(g_NextSectionId++, SEC_TEXT_ELEMENT);
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 300;
+            sec.height = 40;
+            sec.content = "Your text here";
+            sec.content_font_size = 18;
+            sec.content_color = ImVec4(0.2f, 0.2f, 0.2f, 1);
+            sec.bg_color = ImVec4(0, 0, 0, 0);  // Transparent
+            sec.z_index = (int)g_Sections.size();
+            g_Sections.push_back(sec);
+            g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+            for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+        }
+
+        // Button with Action
+        if (ImGui::Button("+ Button", ImVec2(-1, 26))) {
+            WebSection sec(g_NextSectionId++, SEC_BUTTON_ELEMENT);
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 150;
+            sec.height = 45;
+            sec.button_text = "Click Me";
+            sec.button_link = "#";
+            sec.button_bg_color = ImVec4(0.2f, 0.5f, 0.8f, 1.0f);
+            sec.button_text_color = ImVec4(1, 1, 1, 1);
+            sec.button_font_size = 16;
+            sec.button_border_radius = 8;
+            sec.z_index = (int)g_Sections.size();
+            g_Sections.push_back(sec);
+            g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+            for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+        }
+
+        ImGui::Spacing();
+    }
+
+    // ==================== PAGES MANAGEMENT ====================
+    ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.9f, 1), "PAGES");
+    ImGui::Separator();
+
+    // Initialize pages if empty
+    if (g_NormalPages.empty()) {
+        g_NormalPages.push_back(NormalModePage("Home"));
+        g_CurrentPageIndex = 0;
+    }
+
+    // Page tabs
+    ImGui::BeginChild("PageTabs", ImVec2(-1, 35), false, ImGuiWindowFlags_HorizontalScrollbar);
+    for (int i = 0; i < (int)g_NormalPages.size(); i++) {
+        ImGui::PushID(i);
+        bool isSelected = (i == g_CurrentPageIndex);
+
+        if (isSelected) {
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.6f, 0.9f, 1.0f));
+        } else {
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.25f, 0.25f, 0.3f, 1.0f));
+        }
+
+        char pageLabel[64];
+        snprintf(pageLabel, sizeof(pageLabel), "%s##page%d", g_NormalPages[i].name.c_str(), i);
+        if (ImGui::Button(pageLabel, ImVec2(0, 25))) {
+            // Save current page sections before switching
+            if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+                g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+            }
+            // Switch to selected page
+            g_CurrentPageIndex = i;
+            g_Sections = g_NormalPages[i].sections;
+            g_SelectedSectionIndex = g_Sections.empty() ? -1 : 0;
+        }
+        ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+        ImGui::PopID();
+    }
+    ImGui::EndChild();
+
+    // Page management buttons
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+    if (ImGui::Button("+ Add Page", ImVec2(80, 22))) {
+        // Save current page first
+        if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+            g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+        }
+        // Create new page
+        char newPageName[32];
+        snprintf(newPageName, sizeof(newPageName), "Page %d", (int)g_NormalPages.size() + 1);
+        g_NormalPages.push_back(NormalModePage(newPageName));
+        g_CurrentPageIndex = (int)g_NormalPages.size() - 1;
+        g_Sections.clear();
+        g_SelectedSectionIndex = -1;
+    }
+    ImGui::PopStyleColor();
+
+    ImGui::SameLine();
+
+    // Delete page button (only if more than 1 page)
+    if (g_NormalPages.size() > 1) {
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+        if (ImGui::Button("Delete", ImVec2(55, 22))) {
+            g_NormalPages.erase(g_NormalPages.begin() + g_CurrentPageIndex);
+            if (g_CurrentPageIndex >= (int)g_NormalPages.size()) {
+                g_CurrentPageIndex = (int)g_NormalPages.size() - 1;
+            }
+            g_Sections = g_NormalPages[g_CurrentPageIndex].sections;
+            g_SelectedSectionIndex = g_Sections.empty() ? -1 : 0;
+        }
+        ImGui::PopStyleColor();
+    }
+
+    ImGui::SameLine();
+
+    // Rename current page
+    if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+        static char renameBuffer[64] = "";
+        static bool renaming = false;
+
+        if (!renaming) {
+            if (ImGui::Button("Rename", ImVec2(55, 22))) {
+                strncpy(renameBuffer, g_NormalPages[g_CurrentPageIndex].name.c_str(), sizeof(renameBuffer) - 1);
+                renaming = true;
+            }
+        } else {
+            ImGui::SetNextItemWidth(80);
+            if (ImGui::InputText("##renamePage", renameBuffer, sizeof(renameBuffer), ImGuiInputTextFlags_EnterReturnsTrue)) {
+                g_NormalPages[g_CurrentPageIndex].name = renameBuffer;
+                renaming = false;
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("OK", ImVec2(25, 22))) {
+                g_NormalPages[g_CurrentPageIndex].name = renameBuffer;
+                renaming = false;
+            }
+        }
+    }
+
+    // Update g_Pages for compatibility (action settings dropdown)
+    g_Pages.clear();
+    for (const auto& page : g_NormalPages) {
+        g_Pages.push_back(page.name);
+    }
+
+    ImGui::Spacing();
+    ImGui::Separator();
+    ImGui::Spacing();
+
     ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "SECTIONS");
     ImGui::Separator();
 
@@ -11772,8 +22661,33 @@ void RenderUI() {
             if (b.t == SEC_IMAGE || b.t == SEC_TEXTBOX || b.t == SEC_HERO || b.t == SEC_NAVBAR || b.t == SEC_TEAM || b.t == SEC_FOOTER || b.t == SEC_CARDS || b.t == SEC_PRICING || b.t == SEC_STATS || b.t == SEC_CTA) {
                 WebSection sec(g_NextSectionId++, b.t);
 
-                // SMART AUTO-POSITIONING: Fill remaining space
-                if (!g_Sections.empty()) {
+                // FREE DESIGN MODE: Set initial position and size
+                if (g_FreeDesignMode) {
+                    // Calculate Y position based on existing sections
+                    float nextY = 20;  // Start offset
+                    for (const auto& s : g_Sections) {
+                        float sBottom = s.y_position + s.height;
+                        if (sBottom > nextY) nextY = sBottom + 20;  // Add gap
+                    }
+                    sec.x_position = 20;  // Left margin
+                    sec.y_position = nextY;
+                    sec.width = 760;      // Default width (leaving margins)
+                    sec.z_index = (int)g_Sections.size();  // Stack on top
+                    sec.use_manual_position = true;  // Enable free positioning
+
+                    // Set specific sizes based on section type
+                    switch (b.t) {
+                        case SEC_HERO: sec.height = 400; break;
+                        case SEC_NAVBAR: sec.height = 60; sec.y_position = 0; break;
+                        case SEC_FOOTER: sec.height = 200; break;
+                        case SEC_CARDS: sec.height = 350; break;
+                        case SEC_CTA: sec.height = 200; break;
+                        case SEC_TEXTBOX: sec.height = 400; break;
+                        default: sec.height = 300; break;
+                    }
+                }
+                // STACKED MODE: Smart auto-positioning
+                else if (!g_Sections.empty()) {
                     // Get the last added section
                     WebSection& lastSec = g_Sections.back();
 
@@ -11835,6 +22749,305 @@ void RenderUI() {
             }
         }
     }
+
+    // ==================== CONNECTORS SECTION ====================
+    ImGui::Spacing();
+    ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CONNECTORS");
+    ImGui::Separator();
+
+    // Text Block Connector
+    if (ImGui::Button("+ Text Block", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_TEXT_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    // Bar Heading Connector
+    if (ImGui::Button("+ Bar Heading", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_BAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    // Footer Columns Connector
+    if (ImGui::Button("+ Footer Columns", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_FOOTER_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    // Thumbnail Cards Connector
+    if (ImGui::Button("+ Thumbnail Cards", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_CARD_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    // Vertical Layout Connector
+    if (ImGui::Button("+ Vertical Layout", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_VERTICAL_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Navbar Menu", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_NAVBAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Copyright Bar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_COPYRIGHT_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 760;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Article Cards", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_ARTICLE_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1040;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Contact Form", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_CONTACT_FORM_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 800;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Search Bar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_SEARCH_CONNECTOR);
+        sec.height = 80;
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 800;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Logo", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_LOGO_CONNECTOR);
+        sec.height = 100;
+        sec.logo_width = 200;
+        sec.logo_height = 80;
+        sec.logo_alignment = 1;  // Center
+        sec.logo_maintain_aspect = true;
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 300;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Bullet Points", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_BULLET_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 800;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Icon", ImVec2(-1, 26))) {
+        // Show icon picker popup to select which icon to add
+        g_ShowIconPickerPopup = true;
+        g_AddingNewIcon = true;
+        g_IconPickerTarget = nullptr;  // Not modifying existing icon
+    }
+
+    if (ImGui::Button("+ Service Cards", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_SERVICE_CARD_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 900;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Glass Bar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_GLASS_BAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 600;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    ImGui::Spacing();
+    ImGui::TextColored(ImVec4(0.2f, 0.7f, 0.9f, 1), "QUICK TEMPLATES");
+    ImGui::Separator();
+
+    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.9f, 0.4f, 0.1f, 1.0f));  // Orange like OMNiON
+    if (ImGui::Button("Create OMNiON Website", ImVec2(-1, 30))) {
+        CreateOMNiONWebsite();
+    }
+    ImGui::PopStyleColor();
 
     ImGui::Spacing();
     ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "LAYERS");
@@ -11939,12 +23152,20 @@ void RenderUI() {
         }
 
         ImGui::Spacing();
-        ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "LAYER LIST (%zu)", g_FigmaProject.layers.size());
+
+        // Toggle between section view and flat layer list
+        if (!g_FigmaProject.sections.empty()) {
+            ImGui::Checkbox("Section View", &g_FigmaProject.show_sections);
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "(%zu sections, %zu layers)",
+                g_FigmaProject.sections.size(), g_FigmaProject.layers.size());
+        } else {
+            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "LAYER LIST (%zu)", g_FigmaProject.layers.size());
+        }
         ImGui::Separator();
 
-        // Layer list (reverse order - top layers first)
-        for (int i = g_FigmaProject.layers.size() - 1; i >= 0; i--) {
-            WebLayer& layer = g_FigmaProject.layers[i];
+        // Helper lambda to render a layer item
+        auto renderLayerItem = [&](WebLayer& layer, int index) {
             ImGui::PushID(layer.id);
 
             // Visibility toggle
@@ -11971,7 +23192,7 @@ void RenderUI() {
             // Right-click context menu
             if (ImGui::BeginPopupContextItem()) {
                 if (ImGui::MenuItem("Delete")) {
-                    g_FigmaProject.layers.erase(g_FigmaProject.layers.begin() + i);
+                    g_FigmaProject.layers.erase(g_FigmaProject.layers.begin() + index);
                     if (g_SelectedLayerId == layer.id) g_SelectedLayerId = -1;
                 }
                 if (ImGui::MenuItem("Duplicate")) {
@@ -11987,6 +23208,85 @@ void RenderUI() {
             }
 
             ImGui::PopID();
+        };
+
+        // Section view mode
+        if (g_FigmaProject.show_sections && !g_FigmaProject.sections.empty()) {
+            for (auto& section : g_FigmaProject.sections) {
+                ImGui::PushID(section.id);
+
+                // Section header with expand/collapse
+                char sectionLabel[256];
+                snprintf(sectionLabel, sizeof(sectionLabel), "%s %s (%zu)",
+                    section.expanded ? "v" : ">",
+                    section.name.c_str(),
+                    section.layer_ids.size());
+
+                // Section header - clickable
+                ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.2f, 0.4f, 0.6f, 0.5f));
+                ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.3f, 0.5f, 0.7f, 0.6f));
+
+                if (ImGui::Selectable(sectionLabel, false, ImGuiSelectableFlags_None)) {
+                    section.expanded = !section.expanded;
+                }
+
+                // Right-click menu for section
+                if (ImGui::BeginPopupContextItem()) {
+                    if (ImGui::MenuItem("Select All Layers")) {
+                        // Select all layers in this section
+                        for (int layerId : section.layer_ids) {
+                            for (auto& layer : g_FigmaProject.layers) {
+                                if (layer.id == layerId) {
+                                    layer.selected = true;
+                                    g_SelectedLayerId = layerId;
+                                }
+                            }
+                        }
+                    }
+                    if (ImGui::MenuItem("Hide Section")) {
+                        for (int layerId : section.layer_ids) {
+                            for (auto& layer : g_FigmaProject.layers) {
+                                if (layer.id == layerId) layer.visible = false;
+                            }
+                        }
+                    }
+                    if (ImGui::MenuItem("Show Section")) {
+                        for (int layerId : section.layer_ids) {
+                            for (auto& layer : g_FigmaProject.layers) {
+                                if (layer.id == layerId) layer.visible = true;
+                            }
+                        }
+                    }
+                    if (ImGui::MenuItem("Scroll to Section")) {
+                        g_FigmaProject.scroll_y = section.y_start;
+                    }
+                    ImGui::EndPopup();
+                }
+
+                ImGui::PopStyleColor(2);
+
+                // Show layers in this section if expanded
+                if (section.expanded) {
+                    ImGui::Indent(15.0f);
+                    for (int layerId : section.layer_ids) {
+                        // Find layer by id
+                        for (int i = 0; i < (int)g_FigmaProject.layers.size(); i++) {
+                            if (g_FigmaProject.layers[i].id == layerId) {
+                                renderLayerItem(g_FigmaProject.layers[i], i);
+                                break;
+                            }
+                        }
+                    }
+                    ImGui::Unindent(15.0f);
+                }
+
+                ImGui::PopID();
+            }
+        } else {
+            // Flat layer list (reverse order - top layers first)
+            for (int i = g_FigmaProject.layers.size() - 1; i >= 0; i--) {
+                renderLayerItem(g_FigmaProject.layers[i], i);
+            }
         }
 
         ImGui::End();  // End FigmaLeftPanel
@@ -12052,7 +23352,16 @@ void RenderUI() {
                     fprintf(f, "      \"text\": \"%s\",\n", l.text.c_str());
                     fprintf(f, "      \"font_size\": %.0f,\n", l.font_size);
                     fprintf(f, "      \"opacity\": %.2f,\n", l.opacity);
-                    fprintf(f, "      \"image_path\": \"%s\"\n", l.image_path.c_str());
+                    fprintf(f, "      \"image_path\": \"%s\",\n", l.image_path.c_str());
+                    // Save colors as rgb/rgba strings
+                    fprintf(f, "      \"bg_color\": \"rgba(%.0f, %.0f, %.0f, %.2f)\",\n",
+                        l.bg_color.x * 255, l.bg_color.y * 255, l.bg_color.z * 255, l.bg_color.w);
+                    fprintf(f, "      \"text_color\": \"rgba(%.0f, %.0f, %.0f, %.2f)\",\n",
+                        l.text_color.x * 255, l.text_color.y * 255, l.text_color.z * 255, l.text_color.w);
+                    fprintf(f, "      \"border_color\": \"rgba(%.0f, %.0f, %.0f, %.2f)\",\n",
+                        l.border_color.x * 255, l.border_color.y * 255, l.border_color.z * 255, l.border_color.w);
+                    fprintf(f, "      \"border_width\": %.0f,\n", l.border_width);
+                    fprintf(f, "      \"border_radius\": %.1f\n", l.border_radius);
                     fprintf(f, "    }%s\n", (i < g_FigmaProject.layers.size() - 1) ? "," : "");
                 }
                 fprintf(f, "  ]\n}\n");
@@ -12292,6 +23601,142 @@ void RenderUI() {
         ImGui::TextDisabled("|");
         ImGui::SameLine();
 
+        // ==================== TOOLS TOOLBAR ====================
+        // Tool buttons with visual selection state
+        auto ToolButton = [](const char* label, ToolType tool, const char* tooltip) {
+            bool isActive = (g_CurrentTool == tool);
+            if (isActive) {
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1.0f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.4f, 0.6f, 0.9f, 1.0f));
+            }
+            if (ImGui::Button(label, ImVec2(26, 26))) {
+                g_CurrentTool = tool;
+            }
+            if (isActive) {
+                ImGui::PopStyleColor(2);
+            }
+            if (ImGui::IsItemHovered()) {
+                ImGui::SetTooltip("%s", tooltip);
+            }
+            ImGui::SameLine();
+        };
+
+        // Basic Tools
+        ToolButton("V", TOOL_SELECT, "Select Tool (V) - Select and move elements");
+        ToolButton("R", TOOL_RECTANGLE, "Rectangle (R) - Draw rectangle/container");
+        ToolButton("F", TOOL_FRAME, "Frame (F) - Create frame/container");
+
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Typography Tools
+        ToolButton("H", TOOL_HEADING, "Heading (H) - Large title text");
+        ToolButton("T", TOOL_TEXT, "Text (T) - Body text");
+        ToolButton("P", TOOL_PARAGRAPH, "Paragraph (P) - Paragraph text block");
+
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Media & Interactive
+        ToolButton("I", TOOL_IMAGE, "Image (I) - Add image placeholder");
+        ToolButton("B", TOOL_BUTTON, "Button (B) - Add button element");
+
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Branding & Form
+        if (ImGui::Button("Logo", ImVec2(36, 26))) {
+            g_CurrentTool = TOOL_LOGO;
+        }
+        if (ImGui::IsItemHovered()) ImGui::SetTooltip("Logo - Add logo placeholder");
+        ImGui::SameLine();
+
+        ToolButton("[]", TOOL_INPUT, "Input (U) - Add form input field");
+
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Website Sections dropdown
+        if (ImGui::Button("Sections", ImVec2(65, 26))) {
+            ImGui::OpenPopup("SectionsPopup");
+        }
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("All website sections (same as Normal mode)");
+        }
+        if (ImGui::BeginPopup("SectionsPopup")) {
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Header & Navigation");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Hero Section", "")) g_CurrentTool = TOOL_SEC_HERO;
+            if (ImGui::MenuItem("Navbar", "")) g_CurrentTool = TOOL_SEC_NAVBAR;
+            if (ImGui::MenuItem("CTA (Call to Action)", "")) g_CurrentTool = TOOL_SEC_CTA;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Content Sections");
+            ImGui::Separator();
+            if (ImGui::MenuItem("About", "")) g_CurrentTool = TOOL_SEC_ABOUT;
+            if (ImGui::MenuItem("Services", "")) g_CurrentTool = TOOL_SEC_SERVICES;
+            if (ImGui::MenuItem("Features", "")) g_CurrentTool = TOOL_SEC_FEATURES;
+            if (ImGui::MenuItem("Cards", "")) g_CurrentTool = TOOL_SEC_CARDS;
+            if (ImGui::MenuItem("Team", "")) g_CurrentTool = TOOL_SEC_TEAM;
+            if (ImGui::MenuItem("Testimonials", "")) g_CurrentTool = TOOL_SEC_TESTIMONIALS;
+            if (ImGui::MenuItem("Stats", "")) g_CurrentTool = TOOL_SEC_STATS;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Media & Blog");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Gallery", "")) g_CurrentTool = TOOL_SEC_GALLERY;
+            if (ImGui::MenuItem("Blog", "")) g_CurrentTool = TOOL_SEC_BLOG;
+            if (ImGui::MenuItem("Image (Full Width)", "")) g_CurrentTool = TOOL_SEC_IMAGE;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Forms & Contact");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Contact", "")) g_CurrentTool = TOOL_SEC_CONTACT;
+            if (ImGui::MenuItem("Login", "")) g_CurrentTool = TOOL_SEC_LOGIN;
+            if (ImGui::MenuItem("FAQ", "")) g_CurrentTool = TOOL_SEC_FAQ;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Pricing & Footer");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Pricing", "")) g_CurrentTool = TOOL_SEC_PRICING;
+            if (ImGui::MenuItem("Footer", "")) g_CurrentTool = TOOL_SEC_FOOTER;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "Other");
+            ImGui::Separator();
+            if (ImGui::MenuItem("Text Box", "")) g_CurrentTool = TOOL_SEC_TEXTBOX;
+            if (ImGui::MenuItem("Custom Section", "")) g_CurrentTool = TOOL_SEC_CUSTOM;
+
+            ImGui::EndPopup();
+        }
+        ImGui::SameLine();
+
+        // Show current tool name
+        ImGui::TextColored(ImVec4(0.5f, 0.7f, 1.0f, 1.0f), "[%s]", GetToolName(g_CurrentTool));
+        ImGui::SameLine();
+
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
+        // Undo/Redo buttons
+        if (ImGui::Button("Undo", ImVec2(40, 26))) {
+            Undo();
+        }
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Undo (Ctrl+Z) - %zu states", g_UndoStack.size());
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("Redo", ImVec2(40, 26))) {
+            Redo();
+        }
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Redo (Ctrl+Shift+Z) - %zu states", g_RedoStack.size());
+        }
+
+        ImGui::SameLine();
+        ImGui::TextDisabled("|");
+        ImGui::SameLine();
+
         // View toggles
         ImGui::Checkbox("Grid", &g_FigmaProject.show_grid);
         ImGui::SameLine();
@@ -12317,19 +23762,35 @@ void RenderUI() {
             ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.3f, 1.0f), "LIVE");
         }
 
-        ImGui::SameLine();
-        ImGui::TextDisabled("|");
-        ImGui::SameLine();
-
-        // Preview in Browser button
-        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.8f, 1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.6f, 0.9f, 1.0f));
-        if (ImGui::Button("Preview in Browser")) {
-            PreviewFigmaWebsite();
-        }
-        ImGui::PopStyleColor(2);
-        if (ImGui::IsItemHovered()) {
-            ImGui::SetTooltip("Open preview in Chrome browser with working buttons (ImGui WebAssembly)");
+        // Page selector (if multi-page)
+        if (g_FigmaProject.pages.size() > 1) {
+            ImGui::SameLine();
+            ImGui::TextDisabled("|");
+            ImGui::SameLine();
+            ImGui::Text("Page:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(150);
+            if (ImGui::BeginCombo("##PageSelector", g_FigmaProject.current_page.c_str())) {
+                for (const auto& path : g_FigmaProject.page_order) {
+                    bool isSelected = (g_FigmaProject.current_page == path);
+                    std::string label = path;
+                    if (g_FigmaProject.pages.find(path) != g_FigmaProject.pages.end()) {
+                        const WebPage& pg = g_FigmaProject.pages.at(path);
+                        if (!pg.title.empty()) {
+                            label = pg.title + " (" + path + ")";
+                        }
+                    }
+                    if (ImGui::Selectable(label.c_str(), isSelected)) {
+                        NavigateToPage(path);
+                    }
+                    if (isSelected) {
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+                ImGui::EndCombo();
+            }
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1.0f), "(%zu pages)", g_FigmaProject.pages.size());
         }
 
         ImGui::SameLine();
@@ -12364,37 +23825,26 @@ void RenderUI() {
         ImGui::SameLine();
         ImGui::TextDisabled("|");
         ImGui::SameLine();
-
-        // Export to ImGui Code button with dropdown
-        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
-        if (ImGui::Button("Export Code")) {
-            ImGui::OpenPopup("ExportOptionsPopup");
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.7f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.6f, 0.8f, 1.0f));
+        if (ImGui::Button("Browser")) {
+            PreviewFigmaAsHTML();
         }
         ImGui::PopStyleColor(2);
-
-        // Export options popup
-        if (ImGui::BeginPopup("ExportOptionsPopup")) {
-            if (ImGui::MenuItem("Export to Folder...")) {
-                ExportFigmaToImGui();
-            }
-            ImGui::Separator();
-            if (ImGui::MenuItem("Save as ImGui Template")) {
-                g_ShowSaveImGuiTemplatePopup = true;
-            }
-            ImGui::EndPopup();
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Open preview in Chrome browser");
         }
 
         ImGui::SameLine();
-
-        // ImGui Templates button (purple)
-        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.5f, 0.2f, 0.6f, 1.0f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.6f, 0.3f, 0.7f, 1.0f));
-        if (ImGui::Button("ImGui Templates")) {
-            g_ImGuiTemplatesList = GetImGuiTemplates();
-            g_ShowImGuiTemplatesPopup = true;
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.7f, 0.3f, 1.0f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.8f, 0.4f, 1.0f));
+        if (ImGui::Button("Export ImGui")) {
+            ExportFigmaToImGui();
         }
         ImGui::PopStyleColor(2);
+        if (ImGui::IsItemHovered()) {
+            ImGui::SetTooltip("Export as standalone ImGui C++ application");
+        }
 
         ImGui::EndChild();
         ImGui::PopStyleVar();
@@ -12422,9 +23872,38 @@ void RenderUI() {
         WebLayer* selectedLayer = GetLayerById(g_SelectedLayerId);
         if (!selectedLayer) {
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No layer selected");
-            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "Select a layer from");
-            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "the left panel or canvas");
+            ImGui::TextColored(ImVec4(0.3f, 0.7f, 0.5f, 1), "PAGE SETTINGS");
+            ImGui::Separator();
+
+            // Page Background Color
+            ImGui::Text("Page Background:");
+            ImGui::ColorEdit4("##PageBgColor", (float*)&g_FigmaProject.canvas_bg_color, ImGuiColorEditFlags_NoInputs);
+
+            // Quick color presets
+            ImGui::Text("Presets:");
+            if (ImGui::Button("White##PageBg")) g_FigmaProject.canvas_bg_color = ImVec4(1, 1, 1, 1);
+            ImGui::SameLine();
+            if (ImGui::Button("Light##PageBg")) g_FigmaProject.canvas_bg_color = ImVec4(0.96f, 0.96f, 0.96f, 1);
+            ImGui::SameLine();
+            if (ImGui::Button("Dark##PageBg")) g_FigmaProject.canvas_bg_color = ImVec4(0.12f, 0.12f, 0.15f, 1);
+            if (ImGui::Button("Blue##PageBg")) g_FigmaProject.canvas_bg_color = ImVec4(0.1f, 0.15f, 0.25f, 1);
+            ImGui::SameLine();
+            if (ImGui::Button("Cream##PageBg")) g_FigmaProject.canvas_bg_color = ImVec4(1.0f, 0.98f, 0.94f, 1);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+
+            // Page Size
+            ImGui::Text("Page Size:");
+            ImGui::SetNextItemWidth(120);
+            ImGui::DragFloat("Width##Page", &g_FigmaProject.canvas_width, 10.0f, 320.0f, 3840.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(120);
+            ImGui::DragFloat("Height##Page", &g_FigmaProject.canvas_height, 10.0f, 480.0f, 10000.0f, "%.0fpx");
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "Select a layer to edit");
+            ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "its properties");
         } else {
             // Layer Name
             ImGui::Text("Name:");
@@ -12452,6 +23931,46 @@ void RenderUI() {
                 ImGui::SameLine();
                 ImGui::SetNextItemWidth(130);
                 ImGui::DragFloat("H##size", &selectedLayer->height, 1.0f, 1.0f, 10000.0f);
+
+                ImGui::Spacing();
+
+                // Alignment tools
+                ImGui::Text("Align:");
+                if (ImGui::Button("L##AlignL", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_LEFT);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Left");
+                ImGui::SameLine();
+                if (ImGui::Button("C##AlignCH", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_CENTER_H);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Center Horizontal");
+                ImGui::SameLine();
+                if (ImGui::Button("R##AlignR", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_RIGHT);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Right");
+                ImGui::SameLine();
+                ImGui::TextDisabled("|");
+                ImGui::SameLine();
+                if (ImGui::Button("T##AlignT", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_TOP);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Top");
+                ImGui::SameLine();
+                if (ImGui::Button("M##AlignCV", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_CENTER_V);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Center Vertical");
+                ImGui::SameLine();
+                if (ImGui::Button("B##AlignB", ImVec2(30, 22))) AlignSelectedLayers(ALIGN_BOTTOM);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Align Bottom");
+
+                ImGui::Spacing();
+
+                // Z-Order controls
+                ImGui::Text("Order (Z):");
+                if (ImGui::Button("Front", ImVec2(55, 22))) BringToFront(g_SelectedLayerId);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Bring to Front");
+                ImGui::SameLine();
+                if (ImGui::Button("Back", ImVec2(55, 22))) SendToBack(g_SelectedLayerId);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Send to Back");
+                ImGui::SameLine();
+                if (ImGui::Button("+1##zup", ImVec2(30, 22))) MoveLayerUp(g_SelectedLayerId);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Move Up");
+                ImGui::SameLine();
+                if (ImGui::Button("-1##zdn", ImVec2(30, 22))) MoveLayerDown(g_SelectedLayerId);
+                if (ImGui::IsItemHovered()) ImGui::SetTooltip("Move Down");
             }
 
             // Appearance section
@@ -12529,13 +24048,162 @@ void RenderUI() {
                 }
             }
 
-            // Image section (for image layers)
-            if (selectedLayer->type == LAYER_IMAGE) {
-                if (ImGui::CollapsingHeader("Image", ImGuiTreeNodeFlags_DefaultOpen)) {
+            // Image section (for image layers and any layer that can have background image)
+            if (selectedLayer->type == LAYER_IMAGE || selectedLayer->type == LAYER_DIV ||
+                selectedLayer->type == LAYER_BUTTON) {
+                if (ImGui::CollapsingHeader("Image / Media", ImGuiTreeNodeFlags_DefaultOpen)) {
+                    // Show current image path
                     if (!selectedLayer->image_path.empty()) {
-                        ImGui::TextWrapped("Path: %s", selectedLayer->image_path.c_str());
+                        ImGui::TextWrapped("Current: %s", selectedLayer->image_path.c_str());
+
+                        // Preview thumbnail if texture loaded
+                        if (selectedLayer->texture_id) {
+                            ImGui::Image((ImTextureID)(intptr_t)selectedLayer->texture_id,
+                                ImVec2(100, 60), ImVec2(0,0), ImVec2(1,1));
+                        }
+
+                        // Remove image button
+                        if (ImGui::Button("Remove Image", ImVec2(-1, 25))) {
+                            selectedLayer->image_path = "";
+                            if (selectedLayer->texture_id) {
+                                glDeleteTextures(1, &selectedLayer->texture_id);
+                                selectedLayer->texture_id = 0;
+                            }
+                        }
                     } else {
                         ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.0f, 1), "No image loaded");
+                    }
+
+                    // Upload Image button
+                    ImGui::Spacing();
+                    if (ImGui::Button("Upload Image", ImVec2(-1, 30))) {
+                        std::string path = OpenFileDialog("Select image (PNG, JPG, WebP)");
+                        if (!path.empty()) {
+                            // Load the image texture
+                            int w, h, n;
+                            unsigned char* data = stbi_load(path.c_str(), &w, &h, &n, 4);
+                            if (data) {
+                                // Delete old texture if exists
+                                if (selectedLayer->texture_id) {
+                                    glDeleteTextures(1, &selectedLayer->texture_id);
+                                }
+                                // Create new texture
+                                glGenTextures(1, &selectedLayer->texture_id);
+                                glBindTexture(GL_TEXTURE_2D, selectedLayer->texture_id);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                stbi_image_free(data);
+
+                                selectedLayer->image_path = path;
+                                // Change type to IMAGE if it was DIV
+                                if (selectedLayer->type == LAYER_DIV) {
+                                    selectedLayer->type = LAYER_IMAGE;
+                                }
+                                printf("[Upload] Loaded image: %s (%dx%d)\n", path.c_str(), w, h);
+                            } else {
+                                printf("[Upload] Failed to load: %s\n", path.c_str());
+                            }
+                        }
+                    }
+
+                    // Video upload (for hero/banner type layers)
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::Text("Video (Hero/Banner):");
+
+                    if (!selectedLayer->video_path.empty()) {
+                        ImGui::TextWrapped("Video: %s", selectedLayer->video_path.c_str());
+                        if (ImGui::Button("Remove Video", ImVec2(-1, 25))) {
+                            selectedLayer->video_path = "";
+                        }
+                    }
+
+                    if (ImGui::Button("Upload Video", ImVec2(-1, 30))) {
+                        std::string path = OpenFileDialog("Select video (MP4, WebM)");
+                        if (!path.empty()) {
+                            selectedLayer->video_path = path;
+                            printf("[Upload] Video set: %s\n", path.c_str());
+                        }
+                    }
+                    ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "Note: Video plays in browser preview");
+
+                    // Hero Animation (Multiple Images Slideshow)
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::TextColored(ImVec4(0.5f, 0.8f, 0.5f, 1), "SLIDESHOW ANIMATION");
+
+                    ImGui::Checkbox("Enable Slideshow", &selectedLayer->enable_animation);
+
+                    if (selectedLayer->enable_animation) {
+                        ImGui::Text("Speed (seconds per image):");
+                        ImGui::SliderFloat("##AnimSpeed", &selectedLayer->animation_speed, 1.0f, 10.0f, "%.1fs");
+
+                        ImGui::Text("Images (%d):", (int)selectedLayer->animation_images.size());
+
+                        // Add image button
+                        if (ImGui::Button("+ Add Slideshow Image", ImVec2(-1, 28))) {
+                            std::string path = OpenFileDialog("Select slideshow image");
+                            if (!path.empty()) {
+                                // Load texture
+                                int w, h, n;
+                                unsigned char* data = stbi_load(path.c_str(), &w, &h, &n, 4);
+                                if (data) {
+                                    GLuint texId;
+                                    glGenTextures(1, &texId);
+                                    glBindTexture(GL_TEXTURE_2D, texId);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                    stbi_image_free(data);
+
+                                    selectedLayer->animation_images.push_back(path);
+                                    selectedLayer->animation_texture_ids.push_back(texId);
+                                    printf("[Animation] Added image: %s\n", path.c_str());
+                                }
+                            }
+                        }
+
+                        // List current images with remove buttons
+                        if (!selectedLayer->animation_images.empty()) {
+                            ImGui::Spacing();
+                            for (int i = 0; i < (int)selectedLayer->animation_images.size(); i++) {
+                                ImGui::PushID(i);
+
+                                // Show thumbnail
+                                if (i < (int)selectedLayer->animation_texture_ids.size() &&
+                                    selectedLayer->animation_texture_ids[i]) {
+                                    ImGui::Image((ImTextureID)(intptr_t)selectedLayer->animation_texture_ids[i],
+                                        ImVec2(40, 25));
+                                    ImGui::SameLine();
+                                }
+
+                                // Filename
+                                size_t lastSlash = selectedLayer->animation_images[i].rfind('/');
+                                std::string filename = (lastSlash != std::string::npos) ?
+                                    selectedLayer->animation_images[i].substr(lastSlash + 1) : selectedLayer->animation_images[i];
+                                ImGui::Text("%d. %s", i + 1, filename.substr(0, 15).c_str());
+
+                                ImGui::SameLine();
+                                if (ImGui::SmallButton("X")) {
+                                    // Delete texture
+                                    if (i < (int)selectedLayer->animation_texture_ids.size()) {
+                                        glDeleteTextures(1, &selectedLayer->animation_texture_ids[i]);
+                                        selectedLayer->animation_texture_ids.erase(
+                                            selectedLayer->animation_texture_ids.begin() + i);
+                                    }
+                                    selectedLayer->animation_images.erase(
+                                        selectedLayer->animation_images.begin() + i);
+                                    // Reset frame if needed
+                                    if (selectedLayer->current_frame >= (int)selectedLayer->animation_images.size()) {
+                                        selectedLayer->current_frame = 0;
+                                    }
+                                    ImGui::PopID();
+                                    break;
+                                }
+                                ImGui::PopID();
+                            }
+                        }
                     }
                 }
             }
@@ -12674,14 +24342,494 @@ void RenderUI() {
     ImVec2 cs = ImGui::GetContentRegionAvail();
     ImDrawList* dl = ImGui::GetWindowDrawList();
 
-    float ww = std::min(cs.x - 40, 900.0f) * g_Zoom;
+    float ww = std::min(cs.x - 40, 1400.0f) * g_Zoom;  // Wider canvas (1400px max)
     float wx = cp.x + (cs.x - ww) / 2;
-    dl->AddRectFilled(ImVec2(wx, cp.y), ImVec2(wx + ww, cp.y + cs.y), ImGui::ColorConvertFloat4ToU32(ImVec4(1, 1, 1, 1)));
+    dl->AddRectFilled(ImVec2(wx, cp.y), ImVec2(wx + ww, cp.y + cs.y), ImGui::ColorConvertFloat4ToU32(g_NormalCanvasBgColor));
 
     float yOff = -g_CanvasScrollY;
     ImVec2 mouse_pos = ImGui::GetMousePos();
     bool mouse_down = ImGui::IsMouseDown(0);
     bool mouse_released = ImGui::IsMouseReleased(0);
+
+    // ==================== COPY-PASTE KEYBOARD SHORTCUTS ====================
+    ImGuiIO& io = ImGui::GetIO();
+    if (ImGui::IsWindowFocused() || ImGui::IsWindowHovered()) {
+        // Ctrl+C - Copy selected section
+        if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_C) && g_SelectedSectionIndex >= 0 && g_SelectedSectionIndex < (int)g_Sections.size()) {
+            g_CopiedSection = g_Sections[g_SelectedSectionIndex];  // Deep copy
+            g_HasCopiedSection = true;
+        }
+
+        // Ctrl+V - Paste copied section
+        if (io.KeyCtrl && ImGui::IsKeyPressed(ImGuiKey_V) && g_HasCopiedSection) {
+            WebSection newSection = g_CopiedSection;  // Deep copy from clipboard
+            newSection.id = g_NextSectionId++;  // Assign new ID
+
+            // Offset position to avoid exact overlap
+            newSection.x_position += 30;
+            newSection.y_position += 30;
+            newSection.z_index = (int)g_Sections.size();  // Put on top
+
+            // Clear selection and select new section
+            for (auto& s : g_Sections) s.selected = false;
+            newSection.selected = true;
+
+            g_Sections.push_back(newSection);
+            g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        }
+
+        // Delete key - Delete selected section
+        if ((ImGui::IsKeyPressed(ImGuiKey_Delete) || ImGui::IsKeyPressed(ImGuiKey_Backspace)) &&
+            g_SelectedSectionIndex >= 0 && g_SelectedSectionIndex < (int)g_Sections.size() &&
+            !ImGui::GetIO().WantTextInput) {  // Don't delete when typing in input fields
+            g_Sections.erase(g_Sections.begin() + g_SelectedSectionIndex);
+            g_SelectedSectionIndex = std::min(g_SelectedSectionIndex, (int)g_Sections.size() - 1);
+            if (g_SelectedSectionIndex >= 0 && g_SelectedSectionIndex < (int)g_Sections.size()) {
+                g_Sections[g_SelectedSectionIndex].selected = true;
+            }
+        }
+    }
+
+    // Static variables for resize
+    static bool s_ResizingSection = false;
+    static int s_ResizeSectionIndex = -1;
+    static int s_ResizeHandle = -1;
+    static float s_ResizeStartX = 0, s_ResizeStartY = 0;
+    static float s_ResizeOrigX = 0, s_ResizeOrigY = 0;
+    static float s_ResizeOrigW = 0, s_ResizeOrigH = 0;
+    static float s_DragOffsetX = 0;
+
+    // ==================== FREE DESIGN MODE ====================
+    if (g_FreeDesignMode) {
+        // Sort sections by z_index for proper layering
+        std::vector<int> renderOrder(g_Sections.size());
+        for (int i = 0; i < (int)g_Sections.size(); i++) renderOrder[i] = i;
+        std::sort(renderOrder.begin(), renderOrder.end(), [](int a, int b) {
+            return g_Sections[a].z_index < g_Sections[b].z_index;
+        });
+
+        // Render all sections in z-order
+        for (int idx : renderOrder) {
+            auto& sec = g_Sections[idx];
+
+            // Calculate screen position
+            float screenX = wx + (sec.x_position * g_Zoom) - g_CanvasScrollX;
+            float screenY = cp.y + (sec.y_position * g_Zoom) - g_CanvasScrollY;
+            float screenW = sec.width * g_Zoom;
+            float screenH = sec.height * g_Zoom;
+
+            // Skip if completely outside canvas
+            if (screenX + screenW < wx || screenX > wx + ww ||
+                screenY + screenH < cp.y || screenY > cp.y + cs.y) {
+                continue;
+            }
+
+            // Render section preview at free position
+            // RenderSectionPreview renders at: pos.x to pos.x+w, pos.y+yOff to pos.y+yOff+height
+            float renderYOff = screenY - cp.y;  // Y offset from canvas top
+            RenderSectionPreview(dl, sec, ImVec2(screenX, cp.y), sec.width, renderYOff);
+
+            ImVec2 p1(screenX, screenY);
+            ImVec2 p2(screenX + screenW, screenY + screenH);
+
+            // Selection highlight (handles drawn later to be on top)
+            if (sec.selected) {
+                dl->AddRect(p1, p2, IM_COL32(0, 150, 255, 255), 0, 0, 2.0f);
+            }
+
+            // Check mouse hover for selection
+            bool isHovered = mouse_pos.x >= p1.x && mouse_pos.x <= p2.x &&
+                            mouse_pos.y >= p1.y && mouse_pos.y <= p2.y;
+
+            if (isHovered && !sec.selected) {
+                dl->AddRect(p1, p2, IM_COL32(100, 150, 255, 150), 0, 0, 1.0f);
+            }
+
+            // Click to select (but not if clicking on resize handle of already selected section)
+            // Check if click is on a resize handle area
+            bool clickOnResizeHandle = false;
+            if (sec.selected) {
+                float clickArea = 16;
+                ImVec2 handles[8] = {
+                    ImVec2(p1.x, p1.y), ImVec2(p1.x + screenW/2, p1.y), ImVec2(p2.x, p1.y),
+                    ImVec2(p2.x, p1.y + screenH/2), ImVec2(p2.x, p2.y),
+                    ImVec2(p1.x + screenW/2, p2.y), ImVec2(p1.x, p2.y), ImVec2(p1.x, p1.y + screenH/2)
+                };
+                for (int h = 0; h < 8; h++) {
+                    if (mouse_pos.x >= handles[h].x - clickArea && mouse_pos.x <= handles[h].x + clickArea &&
+                        mouse_pos.y >= handles[h].y - clickArea && mouse_pos.y <= handles[h].y + clickArea) {
+                        clickOnResizeHandle = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isHovered && ImGui::IsMouseClicked(0) && !s_ResizingSection && !clickOnResizeHandle) {
+                for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = false;
+                sec.selected = true;
+                g_SelectedSectionIndex = idx;
+
+                // Start dragging (only if not clicking resize handle)
+                g_DraggingSection = true;
+                g_DraggedSectionIndex = idx;
+                g_DragOffsetY = mouse_pos.y - screenY;
+                s_DragOffsetX = mouse_pos.x - screenX;
+            }
+        }
+
+        // Draw resize handles ON TOP of all sections (after all sections rendered)
+        // This ensures handles are always visible and clickable
+        static int s_HoveredResizeHandle = -1;
+        s_HoveredResizeHandle = -1;
+
+        if (g_SelectedSectionIndex >= 0 && g_SelectedSectionIndex < (int)g_Sections.size()) {
+            auto& selectedSec = g_Sections[g_SelectedSectionIndex];
+
+            // Calculate screen position for selected section
+            float selScreenX = wx + (selectedSec.x_position * g_Zoom) - g_CanvasScrollX;
+            float selScreenY = cp.y + (selectedSec.y_position * g_Zoom) - g_CanvasScrollY;
+            float selScreenW = selectedSec.width * g_Zoom;
+            float selScreenH = selectedSec.height * g_Zoom;
+
+            ImVec2 sp1(selScreenX, selScreenY);
+            ImVec2 sp2(selScreenX + selScreenW, selScreenY + selScreenH);
+
+            // Draw 8 resize handles - LARGER size for easier clicking
+            float hs = 12;  // Handle size (increased from 8)
+            float clickArea = 16;  // Click detection area (larger than visual)
+
+            ImVec2 handles[8] = {
+                ImVec2(sp1.x, sp1.y),                    // 0: top-left
+                ImVec2(sp1.x + selScreenW/2, sp1.y),     // 1: top-center
+                ImVec2(sp2.x, sp1.y),                    // 2: top-right
+                ImVec2(sp2.x, sp1.y + selScreenH/2),     // 3: right-center
+                ImVec2(sp2.x, sp2.y),                    // 4: bottom-right
+                ImVec2(sp1.x + selScreenW/2, sp2.y),     // 5: bottom-center
+                ImVec2(sp1.x, sp2.y),                    // 6: bottom-left
+                ImVec2(sp1.x, sp1.y + selScreenH/2)      // 7: left-center
+            };
+
+            // Check hover on resize handles FIRST
+            for (int h = 0; h < 8; h++) {
+                if (mouse_pos.x >= handles[h].x - clickArea && mouse_pos.x <= handles[h].x + clickArea &&
+                    mouse_pos.y >= handles[h].y - clickArea && mouse_pos.y <= handles[h].y + clickArea) {
+                    s_HoveredResizeHandle = h;
+                    break;
+                }
+            }
+
+            // Draw handles with hover highlighting
+            for (int h = 0; h < 8; h++) {
+                bool isHovered = (s_HoveredResizeHandle == h);
+                ImU32 fillColor = isHovered ? IM_COL32(0, 200, 255, 255) : IM_COL32(255, 255, 255, 255);
+                ImU32 borderColor = isHovered ? IM_COL32(0, 100, 200, 255) : IM_COL32(0, 150, 255, 255);
+                float drawSize = isHovered ? hs + 2 : hs;
+
+                dl->AddRectFilled(ImVec2(handles[h].x - drawSize/2, handles[h].y - drawSize/2),
+                                 ImVec2(handles[h].x + drawSize/2, handles[h].y + drawSize/2), fillColor);
+                dl->AddRect(ImVec2(handles[h].x - drawSize/2, handles[h].y - drawSize/2),
+                           ImVec2(handles[h].x + drawSize/2, handles[h].y + drawSize/2), borderColor, 0, 0, 2.0f);
+            }
+
+            // Set cursor for resize handles
+            if (s_HoveredResizeHandle >= 0) {
+                switch (s_HoveredResizeHandle) {
+                    case 0: case 4: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNWSE); break;
+                    case 2: case 6: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNESW); break;
+                    case 1: case 5: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNS); break;
+                    case 3: case 7: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW); break;
+                }
+
+                // Start resize when clicking on handle
+                if (ImGui::IsMouseClicked(0) && !s_ResizingSection) {
+                    s_ResizingSection = true;
+                    s_ResizeSectionIndex = g_SelectedSectionIndex;
+                    s_ResizeHandle = s_HoveredResizeHandle;
+                    s_ResizeStartX = mouse_pos.x;
+                    s_ResizeStartY = mouse_pos.y;
+                    s_ResizeOrigX = selectedSec.x_position;
+                    s_ResizeOrigY = selectedSec.y_position;
+                    s_ResizeOrigW = selectedSec.width;
+                    s_ResizeOrigH = selectedSec.height;
+
+                    // Cancel any drag that might have started
+                    g_DraggingSection = false;
+                    g_DraggedSectionIndex = -1;
+                }
+            }
+        }
+
+        // Alignment guide lines (used by both resize and drag)
+        static std::vector<std::pair<float, float>> s_AlignLinesV;  // Vertical lines
+        static std::vector<std::pair<float, float>> s_AlignLinesH;  // Horizontal lines
+        s_AlignLinesV.clear();
+        s_AlignLinesH.clear();
+
+        // Handle resize with alignment guides
+        if (s_ResizingSection && s_ResizeSectionIndex >= 0) {
+            auto& sec = g_Sections[s_ResizeSectionIndex];
+            if (mouse_down) {
+                float deltaX = (mouse_pos.x - s_ResizeStartX) / g_Zoom;
+                float deltaY = (mouse_pos.y - s_ResizeStartY) / g_Zoom;
+
+                float newX = s_ResizeOrigX, newY = s_ResizeOrigY;
+                float newW = s_ResizeOrigW, newH = s_ResizeOrigH;
+
+                switch (s_ResizeHandle) {
+                    case 0: newX += deltaX; newY += deltaY; newW -= deltaX; newH -= deltaY; break;
+                    case 1: newY += deltaY; newH -= deltaY; break;
+                    case 2: newY += deltaY; newW += deltaX; newH -= deltaY; break;
+                    case 3: newW += deltaX; break;
+                    case 4: newW += deltaX; newH += deltaY; break;
+                    case 5: newH += deltaY; break;
+                    case 6: newX += deltaX; newW -= deltaX; newH += deltaY; break;
+                    case 7: newX += deltaX; newW -= deltaX; break;
+                }
+
+                if (newW < 50) { newW = 50; }
+                if (newH < 30) { newH = 30; }
+
+                // Alignment snapping during resize
+                float snapThreshold = 8.0f;
+                float canvasWidth = ww / g_Zoom;
+
+                // Calculate edges being resized
+                float resizeRight = newX + newW;
+                float resizeBottom = newY + newH;
+
+                // Snap resize edges to other sections
+                for (int i = 0; i < (int)g_Sections.size(); i++) {
+                    if (i == s_ResizeSectionIndex) continue;
+                    auto& other = g_Sections[i];
+
+                    float otherLeft = other.x_position;
+                    float otherRight = other.x_position + other.width;
+                    float otherTop = other.y_position;
+                    float otherBottom = other.y_position + other.height;
+
+                    // Snap right edge (handles 2, 3, 4)
+                    if (s_ResizeHandle == 2 || s_ResizeHandle == 3 || s_ResizeHandle == 4) {
+                        if (std::abs(resizeRight - otherRight) < snapThreshold) {
+                            newW = otherRight - newX;
+                            s_AlignLinesV.push_back({otherRight, otherRight});
+                        } else if (std::abs(resizeRight - otherLeft) < snapThreshold) {
+                            newW = otherLeft - newX;
+                            s_AlignLinesV.push_back({otherLeft, otherLeft});
+                        }
+                    }
+
+                    // Snap left edge (handles 0, 6, 7)
+                    if (s_ResizeHandle == 0 || s_ResizeHandle == 6 || s_ResizeHandle == 7) {
+                        if (std::abs(newX - otherLeft) < snapThreshold) {
+                            float oldRight = newX + newW;
+                            newX = otherLeft;
+                            newW = oldRight - newX;
+                            s_AlignLinesV.push_back({otherLeft, otherLeft});
+                        } else if (std::abs(newX - otherRight) < snapThreshold) {
+                            float oldRight = newX + newW;
+                            newX = otherRight;
+                            newW = oldRight - newX;
+                            s_AlignLinesV.push_back({otherRight, otherRight});
+                        }
+                    }
+
+                    // Snap bottom edge (handles 4, 5, 6)
+                    if (s_ResizeHandle == 4 || s_ResizeHandle == 5 || s_ResizeHandle == 6) {
+                        if (std::abs(resizeBottom - otherBottom) < snapThreshold) {
+                            newH = otherBottom - newY;
+                            s_AlignLinesH.push_back({otherBottom, otherBottom});
+                        } else if (std::abs(resizeBottom - otherTop) < snapThreshold) {
+                            newH = otherTop - newY;
+                            s_AlignLinesH.push_back({otherTop, otherTop});
+                        }
+                    }
+
+                    // Snap top edge (handles 0, 1, 2)
+                    if (s_ResizeHandle == 0 || s_ResizeHandle == 1 || s_ResizeHandle == 2) {
+                        if (std::abs(newY - otherTop) < snapThreshold) {
+                            float oldBottom = newY + newH;
+                            newY = otherTop;
+                            newH = oldBottom - newY;
+                            s_AlignLinesH.push_back({otherTop, otherTop});
+                        } else if (std::abs(newY - otherBottom) < snapThreshold) {
+                            float oldBottom = newY + newH;
+                            newY = otherBottom;
+                            newH = oldBottom - newY;
+                            s_AlignLinesH.push_back({otherBottom, otherBottom});
+                        }
+                    }
+                }
+
+                // Re-check minimum sizes after snapping
+                if (newW < 50) { newW = 50; }
+                if (newH < 30) { newH = 30; }
+
+                sec.x_position = newX;
+                sec.y_position = newY;
+                sec.width = newW;
+                sec.height = newH;
+            } else {
+                s_ResizingSection = false;
+                s_ResizeSectionIndex = -1;
+            }
+        }
+
+        // Handle free dragging with alignment guides (like Figma)
+        if (g_DraggingSection && g_DraggedSectionIndex >= 0 && !s_ResizingSection) {
+            auto& sec = g_Sections[g_DraggedSectionIndex];
+            if (mouse_down) {
+                // Calculate new position based on mouse movement
+                float newX = (mouse_pos.x - s_DragOffsetX - wx + g_CanvasScrollX) / g_Zoom;
+                float newY = (mouse_pos.y - g_DragOffsetY - cp.y + g_CanvasScrollY) / g_Zoom;
+
+                // Alignment snap threshold (in canvas coordinates)
+                float snapThreshold = 8.0f;
+                float canvasWidth = ww / g_Zoom;
+                float canvasHeight = cs.y / g_Zoom;
+
+                // Get dragged section bounds
+                float dragLeft = newX;
+                float dragRight = newX + sec.width;
+                float dragTop = newY;
+                float dragBottom = newY + sec.height;
+                float dragCenterX = newX + sec.width / 2;
+                float dragCenterY = newY + sec.height / 2;
+
+                // Check alignment with canvas center
+                float canvasCenterX = canvasWidth / 2;
+                float canvasCenterY = canvasHeight / 2;
+
+                // Snap to canvas center X
+                if (std::abs(dragCenterX - canvasCenterX) < snapThreshold) {
+                    newX = canvasCenterX - sec.width / 2;
+                    s_AlignLinesV.push_back({canvasCenterX, canvasCenterX});
+                }
+                // Snap to canvas left edge
+                if (std::abs(dragLeft) < snapThreshold) {
+                    newX = 0;
+                    s_AlignLinesV.push_back({0, 0});
+                }
+                // Snap to canvas center Y
+                if (std::abs(dragCenterY - canvasCenterY) < snapThreshold) {
+                    newY = canvasCenterY - sec.height / 2;
+                    s_AlignLinesH.push_back({canvasCenterY, canvasCenterY});
+                }
+                // Snap to canvas top edge
+                if (std::abs(dragTop) < snapThreshold) {
+                    newY = 0;
+                    s_AlignLinesH.push_back({0, 0});
+                }
+
+                // Check alignment with other sections
+                for (int i = 0; i < (int)g_Sections.size(); i++) {
+                    if (i == g_DraggedSectionIndex) continue;
+                    auto& other = g_Sections[i];
+
+                    float otherLeft = other.x_position;
+                    float otherRight = other.x_position + other.width;
+                    float otherTop = other.y_position;
+                    float otherBottom = other.y_position + other.height;
+                    float otherCenterX = other.x_position + other.width / 2;
+                    float otherCenterY = other.y_position + other.height / 2;
+
+                    // Update dragged bounds for current newX/newY
+                    dragLeft = newX;
+                    dragRight = newX + sec.width;
+                    dragTop = newY;
+                    dragBottom = newY + sec.height;
+                    dragCenterX = newX + sec.width / 2;
+                    dragCenterY = newY + sec.height / 2;
+
+                    // Vertical alignment (X axis)
+                    // Left edge to left edge
+                    if (std::abs(dragLeft - otherLeft) < snapThreshold) {
+                        newX = otherLeft;
+                        s_AlignLinesV.push_back({otherLeft, otherLeft});
+                    }
+                    // Right edge to right edge
+                    else if (std::abs(dragRight - otherRight) < snapThreshold) {
+                        newX = otherRight - sec.width;
+                        s_AlignLinesV.push_back({otherRight, otherRight});
+                    }
+                    // Left edge to right edge
+                    else if (std::abs(dragLeft - otherRight) < snapThreshold) {
+                        newX = otherRight;
+                        s_AlignLinesV.push_back({otherRight, otherRight});
+                    }
+                    // Right edge to left edge
+                    else if (std::abs(dragRight - otherLeft) < snapThreshold) {
+                        newX = otherLeft - sec.width;
+                        s_AlignLinesV.push_back({otherLeft, otherLeft});
+                    }
+                    // Center to center X
+                    else if (std::abs(dragCenterX - otherCenterX) < snapThreshold) {
+                        newX = otherCenterX - sec.width / 2;
+                        s_AlignLinesV.push_back({otherCenterX, otherCenterX});
+                    }
+
+                    // Horizontal alignment (Y axis)
+                    // Top edge to top edge
+                    if (std::abs(dragTop - otherTop) < snapThreshold) {
+                        newY = otherTop;
+                        s_AlignLinesH.push_back({otherTop, otherTop});
+                    }
+                    // Bottom edge to bottom edge
+                    else if (std::abs(dragBottom - otherBottom) < snapThreshold) {
+                        newY = otherBottom - sec.height;
+                        s_AlignLinesH.push_back({otherBottom, otherBottom});
+                    }
+                    // Top edge to bottom edge
+                    else if (std::abs(dragTop - otherBottom) < snapThreshold) {
+                        newY = otherBottom;
+                        s_AlignLinesH.push_back({otherBottom, otherBottom});
+                    }
+                    // Bottom edge to top edge
+                    else if (std::abs(dragBottom - otherTop) < snapThreshold) {
+                        newY = otherTop - sec.height;
+                        s_AlignLinesH.push_back({otherTop, otherTop});
+                    }
+                    // Center to center Y
+                    else if (std::abs(dragCenterY - otherCenterY) < snapThreshold) {
+                        newY = otherCenterY - sec.height / 2;
+                        s_AlignLinesH.push_back({otherCenterY, otherCenterY});
+                    }
+                }
+
+                // Clamp to reasonable bounds
+                sec.x_position = std::max(-500.0f, newX);
+                sec.y_position = std::max(-500.0f, newY);
+            } else {
+                g_DraggingSection = false;
+                g_DraggedSectionIndex = -1;
+            }
+        }
+
+        // Draw alignment guide lines
+        if (!s_AlignLinesV.empty() || !s_AlignLinesH.empty()) {
+            ImU32 guideColor = IM_COL32(255, 0, 128, 200);  // Magenta/pink like Figma
+
+            // Draw vertical guide lines
+            for (auto& line : s_AlignLinesV) {
+                float screenLineX = wx + (line.first * g_Zoom) - g_CanvasScrollX;
+                dl->AddLine(ImVec2(screenLineX, cp.y), ImVec2(screenLineX, cp.y + cs.y), guideColor, 1.0f);
+            }
+
+            // Draw horizontal guide lines
+            for (auto& line : s_AlignLinesH) {
+                float screenLineY = cp.y + (line.first * g_Zoom) - g_CanvasScrollY;
+                dl->AddLine(ImVec2(wx, screenLineY), ImVec2(wx + ww, screenLineY), guideColor, 1.0f);
+            }
+        }
+
+        // Show empty canvas message
+        if (g_Sections.empty()) {
+            const char* t = "Click a section to add (Free Design Mode)";
+            ImVec2 ts = ImGui::CalcTextSize(t);
+            dl->AddText(ImVec2(wx + ww/2 - ts.x/2, cp.y + cs.y/2), IM_COL32(128, 128, 128, 255), t);
+        }
+    }
+    // ==================== STACKED MODE (Original) ====================
+    else {
 
     // Calculate drop target index based on mouse position
     if (g_DraggingSection) {
@@ -12766,8 +24914,38 @@ void RenderUI() {
         RenderSectionPreview(dl, sec, ImVec2(wx, cp.y), ww, renderY);
         ImVec2 sm(wx, cp.y + renderY), sx(wx + ww, cp.y + renderY + sec.height * g_Zoom);
 
-        // Mouse interaction
-        if (ImGui::IsMouseHoveringRect(sm, sx)) {
+        // Selection highlight (resize handles drawn after all sections)
+        if (sec.selected) {
+            dl->AddRect(sm, sx, IM_COL32(0, 150, 255, 255), 0, 0, 2.0f);
+        }
+
+        // Mouse interaction for selection (only if not resizing)
+        // Check if clicking on any of the 8 resize handles
+        bool clickOnResizeHandle = false;
+        if (sec.selected) {
+            float clickArea = 14;
+            float screenW = sx.x - sm.x;
+            float screenH = sx.y - sm.y;
+            ImVec2 handles[8] = {
+                ImVec2(sm.x, sm.y),                    // 0: top-left
+                ImVec2(sm.x + screenW/2, sm.y),       // 1: top-center
+                ImVec2(sx.x, sm.y),                    // 2: top-right
+                ImVec2(sx.x, sm.y + screenH/2),       // 3: right-center
+                ImVec2(sx.x, sx.y),                    // 4: bottom-right
+                ImVec2(sm.x + screenW/2, sx.y),       // 5: bottom-center
+                ImVec2(sm.x, sx.y),                    // 6: bottom-left
+                ImVec2(sm.x, sm.y + screenH/2)        // 7: left-center
+            };
+            for (int h = 0; h < 8; h++) {
+                if (mouse_pos.x >= handles[h].x - clickArea && mouse_pos.x <= handles[h].x + clickArea &&
+                    mouse_pos.y >= handles[h].y - clickArea && mouse_pos.y <= handles[h].y + clickArea) {
+                    clickOnResizeHandle = true;
+                    break;
+                }
+            }
+        }
+
+        if (!s_ResizingSection && !clickOnResizeHandle && ImGui::IsMouseHoveringRect(sm, sx)) {
             if (ImGui::IsMouseClicked(0)) {
                 g_SelectedSectionIndex = i;
                 for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == i);
@@ -12783,6 +24961,204 @@ void RenderUI() {
         if (!sec.use_manual_position) {
             yOff += sec.height * g_Zoom;
         }
+    }
+
+    // Alignment guide lines for Normal Mode
+    static std::vector<float> s_AlignLinesH;
+    s_AlignLinesH.clear();
+
+    // Draw resize handles ON TOP of all sections (after all sections rendered)
+    // Figma-style 8 handles: 4 corners + 4 mid-points for full width/height control
+    static int s_HoveredResizeHandle = -1;
+    s_HoveredResizeHandle = -1;
+
+    if (g_SelectedSectionIndex >= 0 && g_SelectedSectionIndex < (int)g_Sections.size() && !g_DraggingSection) {
+        auto& selectedSec = g_Sections[g_SelectedSectionIndex];
+
+        // Calculate screen position for selected section
+        float selRenderY;
+        float tempYOff = -g_CanvasScrollY;
+        for (int si = 0; si < g_SelectedSectionIndex; si++) {
+            if (!g_Sections[si].use_manual_position) {
+                tempYOff += g_Sections[si].height * g_Zoom;
+            }
+        }
+        if (selectedSec.use_manual_position) {
+            selRenderY = (selectedSec.y_position * g_Zoom) - g_CanvasScrollY;
+        } else {
+            selRenderY = tempYOff;
+        }
+
+        // Use section's actual width and position for free design mode
+        float selScreenX, selScreenW;
+        if (g_FreeDesignMode || selectedSec.use_manual_position) {
+            selScreenX = wx + (selectedSec.x_position * g_Zoom);
+            selScreenW = selectedSec.width * g_Zoom;
+        } else {
+            selScreenX = wx;
+            selScreenW = ww;
+        }
+        float selScreenY = cp.y + selRenderY;
+        float selScreenH = selectedSec.height * g_Zoom;
+
+        // Figma-style 8 resize handles
+        float hs = 10;  // Handle size
+        float clickArea = 14;  // Click detection area (larger than visual)
+
+        ImVec2 handles[8] = {
+            ImVec2(selScreenX, selScreenY),                          // 0: top-left
+            ImVec2(selScreenX + selScreenW/2, selScreenY),           // 1: top-center
+            ImVec2(selScreenX + selScreenW, selScreenY),             // 2: top-right
+            ImVec2(selScreenX + selScreenW, selScreenY + selScreenH/2), // 3: right-center
+            ImVec2(selScreenX + selScreenW, selScreenY + selScreenH),   // 4: bottom-right
+            ImVec2(selScreenX + selScreenW/2, selScreenY + selScreenH), // 5: bottom-center
+            ImVec2(selScreenX, selScreenY + selScreenH),             // 6: bottom-left
+            ImVec2(selScreenX, selScreenY + selScreenH/2)            // 7: left-center
+        };
+
+        // Check hover on resize handles FIRST
+        for (int h = 0; h < 8; h++) {
+            if (mouse_pos.x >= handles[h].x - clickArea && mouse_pos.x <= handles[h].x + clickArea &&
+                mouse_pos.y >= handles[h].y - clickArea && mouse_pos.y <= handles[h].y + clickArea) {
+                s_HoveredResizeHandle = h;
+                break;
+            }
+        }
+
+        // Draw handles with hover highlighting (Figma-style white squares with blue border)
+        for (int h = 0; h < 8; h++) {
+            bool isHovered = (s_HoveredResizeHandle == h);
+            ImU32 fillColor = isHovered ? IM_COL32(0, 200, 255, 255) : IM_COL32(255, 255, 255, 255);
+            ImU32 borderColor = isHovered ? IM_COL32(0, 100, 200, 255) : IM_COL32(0, 150, 255, 255);
+            float drawSize = isHovered ? hs + 2 : hs;
+
+            dl->AddRectFilled(ImVec2(handles[h].x - drawSize/2, handles[h].y - drawSize/2),
+                             ImVec2(handles[h].x + drawSize/2, handles[h].y + drawSize/2), fillColor);
+            dl->AddRect(ImVec2(handles[h].x - drawSize/2, handles[h].y - drawSize/2),
+                       ImVec2(handles[h].x + drawSize/2, handles[h].y + drawSize/2), borderColor, 0, 0, 2.0f);
+        }
+
+        // Set cursor based on hovered handle
+        if (s_HoveredResizeHandle >= 0) {
+            switch (s_HoveredResizeHandle) {
+                case 0: case 4: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNWSE); break; // TL, BR - diagonal
+                case 2: case 6: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNESW); break; // TR, BL - diagonal
+                case 1: case 5: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeNS); break;   // T, B - vertical
+                case 3: case 7: ImGui::SetMouseCursor(ImGuiMouseCursor_ResizeEW); break;   // R, L - horizontal
+            }
+
+            // Start resize when clicking on handle
+            if (ImGui::IsMouseClicked(0) && !s_ResizingSection) {
+                s_ResizingSection = true;
+                s_ResizeSectionIndex = g_SelectedSectionIndex;
+                s_ResizeHandle = s_HoveredResizeHandle;
+                s_ResizeStartX = mouse_pos.x;
+                s_ResizeStartY = mouse_pos.y;
+                s_ResizeOrigX = selectedSec.x_position;
+                s_ResizeOrigY = selectedSec.y_position;
+                s_ResizeOrigW = selectedSec.width;
+                s_ResizeOrigH = selectedSec.height;
+
+                // Cancel any drag
+                g_DraggingSection = false;
+                g_DraggedSectionIndex = -1;
+            }
+        }
+
+        // Show section size indicator
+        char sizeText[64];
+        snprintf(sizeText, sizeof(sizeText), "W: %.0fpx  H: %.0fpx", selectedSec.width, selectedSec.height);
+        dl->AddText(ImVec2(selScreenX + 10, selScreenY + 5), IM_COL32(255, 255, 255, 200), sizeText);
+    }
+
+    // Handle resize with full 8-handle support (width and height)
+    if (s_ResizingSection && s_ResizeSectionIndex >= 0 && s_ResizeSectionIndex < (int)g_Sections.size()) {
+        auto& sec = g_Sections[s_ResizeSectionIndex];
+        if (mouse_down) {
+            float deltaX = (mouse_pos.x - s_ResizeStartX) / g_Zoom;
+            float deltaY = (mouse_pos.y - s_ResizeStartY) / g_Zoom;
+
+            float newX = s_ResizeOrigX;
+            float newY = s_ResizeOrigY;
+            float newW = s_ResizeOrigW;
+            float newH = s_ResizeOrigH;
+
+            // Apply resize based on handle (Figma-style)
+            switch (s_ResizeHandle) {
+                case 0: // Top-left corner
+                    newX = s_ResizeOrigX + deltaX;
+                    newY = s_ResizeOrigY + deltaY;
+                    newW = s_ResizeOrigW - deltaX;
+                    newH = s_ResizeOrigH - deltaY;
+                    break;
+                case 1: // Top-center (height only)
+                    newY = s_ResizeOrigY + deltaY;
+                    newH = s_ResizeOrigH - deltaY;
+                    break;
+                case 2: // Top-right corner
+                    newY = s_ResizeOrigY + deltaY;
+                    newW = s_ResizeOrigW + deltaX;
+                    newH = s_ResizeOrigH - deltaY;
+                    break;
+                case 3: // Right-center (width only)
+                    newW = s_ResizeOrigW + deltaX;
+                    break;
+                case 4: // Bottom-right corner
+                    newW = s_ResizeOrigW + deltaX;
+                    newH = s_ResizeOrigH + deltaY;
+                    break;
+                case 5: // Bottom-center (height only)
+                    newH = s_ResizeOrigH + deltaY;
+                    break;
+                case 6: // Bottom-left corner
+                    newX = s_ResizeOrigX + deltaX;
+                    newW = s_ResizeOrigW - deltaX;
+                    newH = s_ResizeOrigH + deltaY;
+                    break;
+                case 7: // Left-center (width only)
+                    newX = s_ResizeOrigX + deltaX;
+                    newW = s_ResizeOrigW - deltaX;
+                    break;
+            }
+
+            // Enforce minimum sizes
+            if (newW < 50) { newW = 50; }
+            if (newH < 30) { newH = 30; }
+            // Maximum width is canvas width
+            float canvasWidth = ww / g_Zoom;
+            if (newW > canvasWidth) { newW = canvasWidth; }
+            if (newH > 2000) newH = 2000;
+
+            // Snap to other section heights
+            float snapThreshold = 8.0f;
+            for (int si = 0; si < (int)g_Sections.size(); si++) {
+                if (si == s_ResizeSectionIndex) continue;
+                if (std::abs(newH - g_Sections[si].height) < snapThreshold) {
+                    newH = g_Sections[si].height;
+                    s_AlignLinesH.push_back(newH);
+                }
+                // Snap to other section widths
+                if (std::abs(newW - g_Sections[si].width) < snapThreshold) {
+                    newW = g_Sections[si].width;
+                }
+            }
+
+            sec.x_position = newX;
+            sec.y_position = newY;
+            sec.width = newW;
+            sec.height = newH;
+        } else {
+            s_ResizingSection = false;
+            s_ResizeSectionIndex = -1;
+        }
+    }
+
+    // Draw alignment indicator when heights match
+    if (!s_AlignLinesH.empty()) {
+        ImU32 guideColor = IM_COL32(255, 0, 128, 200);
+        char heightText[32];
+        snprintf(heightText, sizeof(heightText), "Matched: %.0fpx", s_AlignLinesH[0]);
+        dl->AddText(ImVec2(wx + ww/2 - 40, cp.y + 10), guideColor, heightText);
     }
 
     // Show drop indicator at end
@@ -12838,14 +25214,17 @@ void RenderUI() {
         g_DraggedSectionIndex = -1;
         g_DropTargetIndex = -1;
     }
-    if (ImGui::IsWindowHovered()) {
-        g_CanvasScrollY -= io.MouseWheel * 40;
-        g_CanvasScrollY = std::max(0.0f, g_CanvasScrollY);
-    }
     if (g_Sections.empty()) {
         const char* t = "Click a section to start";
         ImVec2 ts = ImGui::CalcTextSize(t);
         dl->AddText(ImVec2(wx + ww / 2 - ts.x / 2, cp.y + cs.y / 2), ImGui::ColorConvertFloat4ToU32(ImVec4(0.5f, 0.5f, 0.5f, 1)), t);
+    }
+    } // End of normal mode block
+
+    // Handle scroll
+    if (ImGui::IsWindowHovered()) {
+        g_CanvasScrollY -= io.MouseWheel * 40;
+        g_CanvasScrollY = std::max(0.0f, g_CanvasScrollY);
     }
     ImGui::End();
 
@@ -12938,14 +25317,15 @@ void RenderUI() {
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TEXT BOX PROPERTIES");
             ImGui::Separator();
 
-            // Text content inputs
-            char tb[256], sb[256], cb[1024];
+            // Text content inputs - larger buffers for multiline
+            char tb[512], sb[512];
+            static char contentBuf[32768];  // 32KB buffer for large text content
             strncpy(tb, sec.title.c_str(), sizeof(tb) - 1);
             tb[sizeof(tb) - 1] = '\0';
             strncpy(sb, sec.subtitle.c_str(), sizeof(sb) - 1);
             sb[sizeof(sb) - 1] = '\0';
-            strncpy(cb, sec.content.c_str(), sizeof(cb) - 1);
-            cb[sizeof(cb) - 1] = '\0';
+            strncpy(contentBuf, sec.content.c_str(), sizeof(contentBuf) - 1);
+            contentBuf[sizeof(contentBuf) - 1] = '\0';
 
             ImGui::Text("Title");
             if (ImGui::InputText("##T", tb, sizeof(tb))) sec.title = tb;
@@ -12953,8 +25333,10 @@ void RenderUI() {
             ImGui::Text("Subtitle");
             if (ImGui::InputText("##S", sb, sizeof(sb))) sec.subtitle = sb;
 
-            ImGui::Text("Content (Text)");
-            if (ImGui::InputTextMultiline("##C", cb, sizeof(cb), ImVec2(-1, 100))) sec.content = cb;
+            ImGui::Text("Content (Multiline - No Limit)");
+            if (ImGui::InputTextMultiline("##C", contentBuf, sizeof(contentBuf), ImVec2(-1, 200), ImGuiInputTextFlags_AllowTabInput)) {
+                sec.content = contentBuf;
+            }
 
             // Size controls
             ImGui::Spacing();
@@ -12968,6 +25350,15 @@ void RenderUI() {
             ImGui::Text("Padding:");
             ImGui::SetNextItemWidth(200);
             ImGui::SliderFloat("##TBP", &sec.padding, 10.0f, 100.0f, "%.0fpx");
+
+            // Margin controls
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "MARGIN");
+            ImGui::Separator();
+            ImGui::SliderFloat("Top##TBMargin", &sec.margin_top, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SliderFloat("Right##TBMargin", &sec.margin_right, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SliderFloat("Bottom##TBMargin", &sec.margin_bottom, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SliderFloat("Left##TBMargin", &sec.margin_left, 0.0f, 100.0f, "%.0fpx");
 
             // Text alignment
             ImGui::Spacing();
@@ -13032,6 +25423,2355 @@ void RenderUI() {
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "You can drag this text box section up/down to position it anywhere!");
+        }
+        // ==================== BASIC ELEMENTS PROPERTIES ====================
+        // Logo Element Properties
+        else if (sec.type == SEC_LOGO) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.5f, 1), "LOGO PROPERTIES");
+            ImGui::Separator();
+
+            // Logo Image
+            ImGui::Text("Logo Image:");
+            if (sec.logo_texture_id > 0) {
+                ImGui::Image((ImTextureID)(intptr_t)sec.logo_texture_id, ImVec2(80, 40));
+                ImGui::SameLine();
+                if (ImGui::Button("Remove##LogoImg")) {
+                    glDeleteTextures(1, &sec.logo_texture_id);
+                    sec.logo_texture_id = 0;
+                    sec.logo_path.clear();
+                }
+            }
+
+            if (ImGui::Button("Choose Logo Image...##LogoImg")) {
+                // Use native file dialog
+                char cmd[512];
+                snprintf(cmd, sizeof(cmd),
+                    "osascript -e 'POSIX path of (choose file of type {\"public.image\"} with prompt \"Select Logo Image\")' 2>/dev/null");
+                FILE* fp = popen(cmd, "r");
+                if (fp) {
+                    char result[1024];
+                    if (fgets(result, sizeof(result), fp)) {
+                        // Remove trailing newline
+                        result[strcspn(result, "\n")] = 0;
+                        sec.logo_path = result;
+
+                        // Load the image
+                        int w, h, n;
+                        unsigned char* imgData = stbi_load(sec.logo_path.c_str(), &w, &h, &n, 4);
+                        if (imgData) {
+                            if (sec.logo_texture_id > 0) {
+                                glDeleteTextures(1, &sec.logo_texture_id);
+                            }
+                            glGenTextures(1, &sec.logo_texture_id);
+                            glBindTexture(GL_TEXTURE_2D, sec.logo_texture_id);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, imgData);
+                            stbi_image_free(imgData);
+                            printf("[Logo] Loaded image: %s (%dx%d)\n", sec.logo_path.c_str(), w, h);
+                        }
+                    }
+                    pclose(fp);
+                }
+            }
+
+            if (!sec.logo_path.empty()) {
+                ImGui::TextWrapped("Path: %s", sec.logo_path.c_str());
+            }
+
+            ImGui::Spacing();
+            char logoBuf[128];
+            strncpy(logoBuf, sec.title.c_str(), sizeof(logoBuf) - 1);
+            logoBuf[sizeof(logoBuf) - 1] = '\0';
+            ImGui::Text("Alt Text (Fallback)");
+            if (ImGui::InputText("##LogoText", logoBuf, sizeof(logoBuf))) sec.title = logoBuf;
+
+            ImGui::Spacing();
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##LogoBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Width##Logo", &sec.width, 1.0f, 50.0f, 500.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Height##Logo", &sec.height, 1.0f, 30.0f, 200.0f, "%.0fpx");
+        }
+        // Heading Element Properties
+        else if (sec.type == SEC_HEADING) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.5f, 1), "HEADING PROPERTIES");
+            ImGui::Separator();
+
+            char headingBuf[256];
+            strncpy(headingBuf, sec.title.c_str(), sizeof(headingBuf) - 1);
+            headingBuf[sizeof(headingBuf) - 1] = '\0';
+            ImGui::Text("Heading Text");
+            if (ImGui::InputText("##HeadingText", headingBuf, sizeof(headingBuf))) sec.title = headingBuf;
+
+            ImGui::Spacing();
+            ImGui::Text("Text Color:");
+            ImGui::ColorEdit4("##HeadingC", (float*)&sec.title_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##HeadingBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Font Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##HeadingFS", &sec.title_font_size, 16.0f, 96.0f, "%.0fpx");
+            ImGui::Text("Font Weight:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##HeadingFW", &sec.title_font_weight, 100.0f, 900.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::Text("Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Width##Heading", &sec.width, 1.0f, 100.0f, 1000.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Height##Heading", &sec.height, 1.0f, 30.0f, 200.0f, "%.0fpx");
+        }
+        // Text Element Properties
+        else if (sec.type == SEC_TEXT_ELEMENT) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.3f, 0.8f, 0.5f, 1), "TEXT PROPERTIES");
+            ImGui::Separator();
+
+            static char textElementBuf[32768];  // 32KB buffer for large text
+            strncpy(textElementBuf, sec.content.c_str(), sizeof(textElementBuf) - 1);
+            textElementBuf[sizeof(textElementBuf) - 1] = '\0';
+            ImGui::Text("Text Content (Multiline)");
+            if (ImGui::InputTextMultiline("##TextContent", textElementBuf, sizeof(textElementBuf), ImVec2(-1, 120), ImGuiInputTextFlags_AllowTabInput)) {
+                sec.content = textElementBuf;
+            }
+
+            ImGui::Spacing();
+            ImGui::Text("Text Color:");
+            ImGui::ColorEdit4("##TextC", (float*)&sec.content_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##TextBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Font Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##TextFS", &sec.content_font_size, 10.0f, 48.0f, "%.0fpx");
+
+            ImGui::Spacing();
+            ImGui::Text("Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Width##Text", &sec.width, 1.0f, 50.0f, 800.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Height##Text", &sec.height, 1.0f, 20.0f, 300.0f, "%.0fpx");
+
+            // Margin controls
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "MARGIN");
+            ImGui::Separator();
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Top##TextMargin", &sec.margin_top, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Right##TextMargin", &sec.margin_right, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Bottom##TextMargin", &sec.margin_bottom, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Left##TextMargin", &sec.margin_left, 0.0f, 100.0f, "%.0fpx");
+        }
+        // Button Element Properties (with Action)
+        else if (sec.type == SEC_BUTTON_ELEMENT) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.6f, 1.0f, 1), "BUTTON PROPERTIES");
+            ImGui::Separator();
+
+            char btnTextBuf[128];
+            strncpy(btnTextBuf, sec.button_text.c_str(), sizeof(btnTextBuf) - 1);
+            btnTextBuf[sizeof(btnTextBuf) - 1] = '\0';
+            ImGui::Text("Button Text");
+            if (ImGui::InputText("##BtnText", btnTextBuf, sizeof(btnTextBuf))) sec.button_text = btnTextBuf;
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(1.0f, 0.8f, 0.2f, 1), "ACTION (Click Behavior)");
+            ImGui::Separator();
+
+            char linkBuf[256];
+            strncpy(linkBuf, sec.button_link.c_str(), sizeof(linkBuf) - 1);
+            linkBuf[sizeof(linkBuf) - 1] = '\0';
+            ImGui::Text("Link URL / Action");
+            if (ImGui::InputText("##BtnLink", linkBuf, sizeof(linkBuf))) sec.button_link = linkBuf;
+            if (ImGui::IsItemHovered()) {
+                ImGui::SetTooltip("Enter URL (https://...) or action:\n#section - scroll to section\npage.html - navigate to page");
+            }
+
+            // Action type dropdown
+            static const char* actionTypes[] = {"Link (URL)", "Scroll to Section", "Open Popup", "Submit Form"};
+            static int actionType = 0;
+            ImGui::Combo("Action Type", &actionType, actionTypes, 4);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "STYLE");
+            ImGui::Separator();
+
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##BtnBg", (float*)&sec.button_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::Text("Text Color:");
+            ImGui::ColorEdit4("##BtnTextC", (float*)&sec.button_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Font Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##BtnFS", &sec.button_font_size, 10.0f, 32.0f, "%.0fpx");
+
+            ImGui::Text("Border Radius:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##BtnRadius", &sec.button_border_radius, 0.0f, 30.0f, "%.0fpx");
+
+            ImGui::Spacing();
+            ImGui::Text("Size:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Width##Btn", &sec.width, 1.0f, 80.0f, 400.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(150);
+            ImGui::DragFloat("Height##Btn", &sec.height, 1.0f, 30.0f, 100.0f, "%.0fpx");
+        }
+        // ==================== CONNECTOR PROPERTIES ====================
+
+        // Text Block Connector Properties
+        else if (sec.type == SEC_TEXT_CONNECTOR) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TEXT BLOCK PROPERTIES");
+            ImGui::Separator();
+
+            // Background color
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##TextConnBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            // Content width and padding
+            ImGui::Spacing();
+            ImGui::Text("Content Width:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##TCWidth", &sec.text_content_width, 300.0f, 1200.0f, "%.0fpx");
+
+            ImGui::Text("Padding:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##TCPad", &sec.text_padding, 10.0f, 100.0f, "%.0fpx");
+
+            ImGui::Text("Height:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##TCH", &sec.height, 50.0f, 600.0f, "%.0fpx");
+
+            // Margin controls
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "MARGIN");
+            ImGui::Separator();
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Top##TCMargin", &sec.margin_top, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Right##TCMargin", &sec.margin_right, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Bottom##TCMargin", &sec.margin_bottom, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Left##TCMargin", &sec.margin_left, 0.0f, 100.0f, "%.0fpx");
+
+            // Text blocks management
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "TEXT BLOCKS");
+            ImGui::Separator();
+
+            for (int b = 0; b < (int)sec.text_blocks.size(); b++) {
+                ImGui::PushID(b);
+                TextBlock& block = sec.text_blocks[b];
+
+                ImGui::Text("Block %d", b + 1);
+
+                // Font size
+                ImGui::SetNextItemWidth(100);
+                ImGui::SliderFloat("##FS", &block.fontSize, 10.0f, 48.0f, "%.0fpx");
+                ImGui::SameLine();
+                ImGui::Text("Size");
+
+                // Line spacing
+                ImGui::SetNextItemWidth(100);
+                ImGui::SliderFloat("##LS", &block.lineSpacing, 1.0f, 3.0f, "%.1f");
+                ImGui::SameLine();
+                ImGui::Text("Line Spacing");
+
+                // Colors
+                ImGui::Text("Text Color:");
+                ImGui::ColorEdit4("##TC", (float*)&block.textColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::SameLine();
+                ImGui::Text("Bold Color:");
+                ImGui::ColorEdit4("##BC", (float*)&block.boldColor, ImGuiColorEditFlags_NoInputs);
+
+                // Segments
+                for (int s = 0; s < (int)block.segments.size(); s++) {
+                    ImGui::PushID(s);
+                    TextSegment& seg = block.segments[s];
+                    char segBuf[512];
+                    strncpy(segBuf, seg.text.c_str(), sizeof(segBuf) - 1);
+                    segBuf[sizeof(segBuf) - 1] = '\0';
+
+                    ImGui::SetNextItemWidth(200);
+                    if (ImGui::InputText("##Seg", segBuf, sizeof(segBuf))) seg.text = segBuf;
+                    ImGui::SameLine();
+                    ImGui::Checkbox("Bold##SB", &seg.isBold);
+                    ImGui::SameLine();
+                    if (ImGui::Button("X##DelSeg")) {
+                        block.segments.erase(block.segments.begin() + s);
+                        s--;
+                    }
+                    ImGui::PopID();
+                }
+
+                if (ImGui::Button("+ Add Segment")) {
+                    TextSegment newSeg;
+                    newSeg.text = "New text";
+                    block.segments.push_back(newSeg);
+                }
+
+                ImGui::Separator();
+                ImGui::PopID();
+            }
+
+            if (ImGui::Button("+ Add Text Block", ImVec2(-1, 26))) {
+                TextBlock newBlock;
+                TextSegment seg;
+                seg.text = "New text block";
+                newBlock.segments.push_back(seg);
+                sec.text_blocks.push_back(newBlock);
+            }
+        }
+        // Bar Heading Connector Properties
+        else if (sec.type == SEC_BAR_CONNECTOR) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BAR HEADING PROPERTIES");
+            ImGui::Separator();
+
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##BarSecBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Section Height:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##BarSecH", &sec.height, 30.0f, 200.0f, "%.0fpx");
+
+            for (int i = 0; i < (int)sec.bar_items.size(); i++) {
+                ImGui::PushID(i);
+                BarItem& bar = sec.bar_items[i];
+
+                ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "Bar %d", i + 1);
+
+                ImGui::Text("Heading:");
+                ImGui::SetNextItemWidth(200);
+                ImGui::InputText("##BarHead", bar.heading, sizeof(bar.heading));
+
+                ImGui::Text("Bar Color:");
+                ImGui::ColorEdit4("##BarCol", (float*)&bar.barColor, ImGuiColorEditFlags_NoInputs);
+
+                ImGui::Text("Text Color:");
+                ImGui::ColorEdit4("##BarTextCol", (float*)&bar.headingColor, ImGuiColorEditFlags_NoInputs);
+
+                ImGui::Text("Bar Width:");
+                ImGui::SetNextItemWidth(150);
+                ImGui::SliderFloat("##BarW", &bar.barWidth, 200.0f, 1200.0f, "%.0fpx");
+
+                ImGui::Text("Bar Height:");
+                ImGui::SetNextItemWidth(150);
+                ImGui::SliderFloat("##BarH", &bar.barHeight, 30.0f, 100.0f, "%.0fpx");
+
+                ImGui::Text("Text Size:");
+                ImGui::SetNextItemWidth(100);
+                ImGui::SliderFloat("##BarTS", &bar.headingSize, 0.8f, 2.5f, "%.1fx");
+
+                ImGui::Text("Boldness:");
+                ImGui::SetNextItemWidth(100);
+                ImGui::SliderFloat("##BarBold", &bar.headingBoldness, 0.0f, 3.0f, "%.1f");
+
+                ImGui::Text("Padding Left:");
+                ImGui::SetNextItemWidth(100);
+                ImGui::SliderFloat("##BarPL", &bar.paddingLeft, 10.0f, 100.0f, "%.0fpx");
+
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - 25);
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.2f, 0.2f, 1));
+                if (ImGui::Button("X##DelBar", ImVec2(22, 18)) && sec.bar_items.size() > 1) {
+                    sec.bar_items.erase(sec.bar_items.begin() + i);
+                    i--;
+                }
+                ImGui::PopStyleColor();
+
+                ImGui::Separator();
+                ImGui::PopID();
+            }
+
+            if (ImGui::Button("+ Add Bar", ImVec2(-1, 26))) {
+                sec.bar_items.push_back(BarItem());
+            }
+        }
+        // Footer Columns Connector Properties
+        else if (sec.type == SEC_FOOTER_CONNECTOR) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "FOOTER COLUMNS PROPERTIES");
+            ImGui::Separator();
+
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##FootBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Section Height:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##FootH", &sec.height, 100.0f, 500.0f, "%.0fpx");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "HEADING STYLE");
+            ImGui::Separator();
+
+            ImGui::Text("Heading Color:");
+            ImGui::ColorEdit4("##FootHeadC", (float*)&sec.footer_heading_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Heading Size:");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("##FootHS", &sec.footer_heading_size, 0.8f, 2.0f, "%.1fx");
+
+            ImGui::Text("Heading Boldness:");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("##FootHB", &sec.footer_heading_boldness, 0.0f, 3.0f, "%.1f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "SUBHEADING STYLE");
+            ImGui::Separator();
+
+            ImGui::Text("Subheading Color:");
+            ImGui::ColorEdit4("##FootSubC", (float*)&sec.footer_subheading_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Subheading Size:");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("##FootSS", &sec.footer_subheading_size, 0.8f, 1.5f, "%.1fx");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "LAYOUT");
+            ImGui::Separator();
+
+            ImGui::Text("Column Width:");
+            ImGui::SetNextItemWidth(150);
+            ImGui::SliderFloat("##FootCW", &sec.footer_column_width, 150.0f, 400.0f, "%.0fpx");
+
+            ImGui::Text("Item Spacing:");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("##FootIS", &sec.footer_item_spacing, 4.0f, 20.0f, "%.0fpx");
+
+            // Columns
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "COLUMNS");
+            ImGui::Separator();
+
+            for (int c = 0; c < (int)sec.footer_columns.size(); c++) {
+                ImGui::PushID(c);
+                FooterColumn& col = sec.footer_columns[c];
+
+                ImGui::Text("Column %d:", c + 1);
+                ImGui::SetNextItemWidth(200);
+                ImGui::InputText("##ColHead", col.heading, sizeof(col.heading));
+
+                // Items in column
+                for (int it = 0; it < (int)col.items.size(); it++) {
+                    ImGui::PushID(it);
+                    char itemBuf[256];
+                    strncpy(itemBuf, col.items[it].c_str(), sizeof(itemBuf) - 1);
+                    itemBuf[sizeof(itemBuf) - 1] = '\0';
+                    ImGui::SetNextItemWidth(180);
+                    if (ImGui::InputText("##Item", itemBuf, sizeof(itemBuf))) col.items[it] = itemBuf;
+                    ImGui::SameLine();
+                    if (ImGui::Button("X##DelItem")) {
+                        col.items.erase(col.items.begin() + it);
+                        it--;
+                    }
+                    ImGui::PopID();
+                }
+                if (ImGui::Button("+ Add Item")) {
+                    col.items.push_back("New Item");
+                }
+
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - 60);
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.2f, 0.2f, 1));
+                if (ImGui::Button("Del Col##DC", ImVec2(55, 18)) && sec.footer_columns.size() > 1) {
+                    sec.footer_columns.erase(sec.footer_columns.begin() + c);
+                    c--;
+                }
+                ImGui::PopStyleColor();
+
+                ImGui::Separator();
+                ImGui::PopID();
+            }
+
+            if (ImGui::Button("+ Add Column", ImVec2(-1, 26))) {
+                FooterColumn col;
+                strcpy(col.heading, "NEW COLUMN");
+                col.items.push_back("Item 1");
+                sec.footer_columns.push_back(col);
+            }
+        }
+        // Card Connector Properties - EXACT match to original Card_connector
+        else if (sec.type == SEC_CARD_CONNECTOR) {
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "THUMBNAIL CARDS");
+            ImGui::Separator();
+
+            // Section settings
+            ImGui::Text("Section Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##CardConnBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Cards Per Row:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(120);
+            ImGui::SliderInt("##CardPR", &sec.connector_cards_per_row, 1, 20);
+
+            ImGui::Text("Card Spacing:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(120);
+            ImGui::SliderFloat("##CardSpacing", &sec.connector_card_spacing, 0.0f, 50.0f, "%.0f");
+
+            ImGui::Text("Section Padding:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(120);
+            ImGui::SliderFloat("##CardPadding", &sec.connector_card_padding, 0.0f, 100.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Card selector
+            ImGui::Text("Cards: %d", (int)sec.connector_cards.size());
+            ImGui::SameLine();
+
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Card")) {
+                ThumbnailCard card;
+                snprintf(card.heading, sizeof(card.heading), "Card %d", (int)sec.connector_cards.size() + 1);
+                sec.connector_cards.push_back(card);
+            }
+            ImGui::PopStyleColor();
+
+            ImGui::SameLine();
+
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+            if (sec.connector_cards.size() > 1) {
+                if (ImGui::Button("- Delete Card")) {
+                    if (g_SelectedCardIndex >= 0 && g_SelectedCardIndex < (int)sec.connector_cards.size()) {
+                        if (sec.connector_cards[g_SelectedCardIndex].textureID)
+                            glDeleteTextures(1, &sec.connector_cards[g_SelectedCardIndex].textureID);
+                        sec.connector_cards.erase(sec.connector_cards.begin() + g_SelectedCardIndex);
+                        if (g_SelectedCardIndex >= (int)sec.connector_cards.size())
+                            g_SelectedCardIndex = (int)sec.connector_cards.size() - 1;
+                    }
+                }
+            } else {
+                ImGui::BeginDisabled();
+                ImGui::Button("- Delete Card");
+                ImGui::EndDisabled();
+            }
+            ImGui::PopStyleColor();
+
+            ImGui::Spacing();
+
+            // Card selector dropdown
+            ImGui::Text("Select Card:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(150);
+            char cardLabel[32];
+            snprintf(cardLabel, sizeof(cardLabel), "Card %d", g_SelectedCardIndex + 1);
+            if (ImGui::BeginCombo("##cardselect", cardLabel)) {
+                for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                    bool isSelected = (g_SelectedCardIndex == i);
+                    char label[32];
+                    snprintf(label, sizeof(label), "Card %d", i + 1);
+                    if (ImGui::Selectable(label, isSelected)) {
+                        g_SelectedCardIndex = i;
+                    }
+                    if (isSelected) ImGui::SetItemDefaultFocus();
+                }
+                ImGui::EndCombo();
+            }
+
+            // Ensure valid selection
+            if (g_SelectedCardIndex >= (int)sec.connector_cards.size()) g_SelectedCardIndex = (int)sec.connector_cards.size() - 1;
+            if (g_SelectedCardIndex < 0) g_SelectedCardIndex = 0;
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            if (sec.connector_cards.size() > 0) {
+                ThumbnailCard& card = sec.connector_cards[g_SelectedCardIndex];
+
+                // Image upload button
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.8f, 1.0f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.6f, 0.9f, 1.0f));
+                if (ImGui::Button("Upload Image", ImVec2(-1, 40))) {
+                    char filename[1024] = {0};
+                    FILE* f = popen("osascript -e 'set theFile to choose file of type {\"public.image\"} with prompt \"Select card image\"' -e 'POSIX path of theFile' 2>/dev/null", "r");
+                    if (f) {
+                        if (fgets(filename, sizeof(filename), f)) {
+                            size_t len = strlen(filename);
+                            if (len > 0 && filename[len-1] == '\n') filename[len-1] = '\0';
+                            if (strlen(filename) > 0) {
+                                card.imagePath = filename;
+                                int w, h, n;
+                                unsigned char* data = stbi_load(filename, &w, &h, &n, 4);
+                                if (data) {
+                                    if (card.textureID) glDeleteTextures(1, &card.textureID);
+                                    glGenTextures(1, &card.textureID);
+                                    glBindTexture(GL_TEXTURE_2D, card.textureID);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                    stbi_image_free(data);
+                                    card.imageWidth = w;
+                                    card.imageHeight = h;
+                                }
+                            }
+                        }
+                        pclose(f);
+                    }
+                }
+                ImGui::PopStyleColor(2);
+
+                if (card.textureID != 0) {
+                    ImGui::TextColored(ImVec4(0.5f, 0.8f, 0.5f, 1.0f), "Image loaded: %dx%d", card.imageWidth, card.imageHeight);
+                } else {
+                    ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1.0f), "No image selected");
+                }
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // Heading input
+                ImGui::Text("Heading:");
+                ImGui::PushItemWidth(-1);
+                ImGui::InputText("##heading", card.heading, sizeof(card.heading));
+                ImGui::PopItemWidth();
+
+                // Heading formatting - Bold | Size | Color on one line
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Bold##heading", &card.headingBoldness, 0.0f, 3.0f, "%.1f");
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Size##heading", &card.headingSize, 0.8f, 2.5f, "%.1f");
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::ColorEdit4("##headingColor", (float*)&card.headingColor, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+                ImGui::SameLine();
+                ImGui::Text("Color");
+
+                ImGui::Spacing();
+
+                // Description input
+                ImGui::Text("Description:");
+                ImGui::PushItemWidth(-1);
+                ImGui::InputTextMultiline("##description", card.description, sizeof(card.description), ImVec2(-1, 100));
+                ImGui::PopItemWidth();
+
+                // Description formatting - Bold | Size | Color on one line
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Bold##desc", &card.descriptionBoldness, 0.0f, 3.0f, "%.1f");
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Size##desc", &card.descriptionSize, 0.6f, 2.0f, "%.1f");
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::ColorEdit4("##descColor", (float*)&card.descriptionColor, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+                ImGui::SameLine();
+                ImGui::Text("Color");
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // Card background color
+                ImGui::Text("Card Background:");
+                ImGui::SameLine();
+                ImGui::ColorEdit4("##cardColor", (float*)&card.cardColor, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoLabel);
+
+                ImGui::Spacing();
+
+                // Card size - Width | Height on one line
+                ImGui::Text("Card Size:");
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Width", &card.cardWidth, 150.0f, 500.0f, "%.0f");
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::PushItemWidth(100);
+                ImGui::SliderFloat("Height", &card.cardHeight, 80.0f, 600.0f, "%.0f");
+                ImGui::PopItemWidth();
+
+                ImGui::Spacing();
+
+                // Card border radius (rectangle vs rounded)
+                ImGui::Text("Card Shape:");
+                ImGui::PushItemWidth(-1);
+                ImGui::SliderFloat("##CardRadius", &card.cardBorderRadius, 0.0f, 30.0f, "%.0f (0=Rectangle)");
+                ImGui::PopItemWidth();
+
+                ImGui::Spacing();
+
+                // Image height percentage
+                ImGui::Text("Image Size:");
+                ImGui::PushItemWidth(-1);
+                ImGui::SliderFloat("##ImageHeight", &card.imageHeightPercent, 10.0f, 90.0f, "%.0f%% of card");
+                ImGui::PopItemWidth();
+
+                ImGui::Spacing();
+
+                // Border settings
+                ImGui::Text("Border Color:");
+                ImGui::ColorEdit4("##borderColor", (float*)&card.borderColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::SameLine();
+                ImGui::Text("Thickness:");
+                ImGui::SameLine();
+                ImGui::PushItemWidth(80);
+                ImGui::SliderFloat("##borderThick", &card.borderThickness, 0.0f, 10.0f, "%.1f");
+                ImGui::PopItemWidth();
+
+                ImGui::Spacing();
+
+                // Show/Hide READ MORE button option
+                ImGui::Checkbox("Show READ MORE Button", &card.showReadMore);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // ACTION SETTINGS for this card
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "Card Click Action:");
+                RenderActionSettings("cardAction", &card.actionType, card.actionTarget, sizeof(card.actionTarget), g_Sections);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // Apply Style to All Cards button
+                ImGui::TextColored(ImVec4(0.9f, 0.7f, 0.2f, 1), "APPLY TO ALL CARDS");
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.5f, 0.1f, 1.0f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.8f, 0.6f, 0.2f, 1.0f));
+                if (ImGui::Button("Apply Size to All", ImVec2(-1, 26))) {
+                    for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                        if (i != g_SelectedCardIndex) {
+                            sec.connector_cards[i].cardWidth = card.cardWidth;
+                            sec.connector_cards[i].cardHeight = card.cardHeight;
+                        }
+                    }
+                }
+                if (ImGui::Button("Apply Colors to All", ImVec2(-1, 26))) {
+                    for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                        if (i != g_SelectedCardIndex) {
+                            sec.connector_cards[i].cardColor = card.cardColor;
+                            sec.connector_cards[i].headingColor = card.headingColor;
+                            sec.connector_cards[i].descriptionColor = card.descriptionColor;
+                            sec.connector_cards[i].borderColor = card.borderColor;
+                        }
+                    }
+                }
+                if (ImGui::Button("Apply Font Style to All", ImVec2(-1, 26))) {
+                    for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                        if (i != g_SelectedCardIndex) {
+                            sec.connector_cards[i].headingSize = card.headingSize;
+                            sec.connector_cards[i].headingBoldness = card.headingBoldness;
+                            sec.connector_cards[i].descriptionSize = card.descriptionSize;
+                            sec.connector_cards[i].descriptionBoldness = card.descriptionBoldness;
+                        }
+                    }
+                }
+                if (ImGui::Button("Apply Border to All", ImVec2(-1, 26))) {
+                    for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                        if (i != g_SelectedCardIndex) {
+                            sec.connector_cards[i].borderColor = card.borderColor;
+                            sec.connector_cards[i].borderThickness = card.borderThickness;
+                        }
+                    }
+                }
+                ImGui::Spacing();
+                if (ImGui::Button("Apply ALL Styles to All Cards", ImVec2(-1, 30))) {
+                    for (int i = 0; i < (int)sec.connector_cards.size(); i++) {
+                        if (i != g_SelectedCardIndex) {
+                            // Size and shape
+                            sec.connector_cards[i].cardWidth = card.cardWidth;
+                            sec.connector_cards[i].cardHeight = card.cardHeight;
+                            sec.connector_cards[i].cardBorderRadius = card.cardBorderRadius;
+                            sec.connector_cards[i].imageHeightPercent = card.imageHeightPercent;
+                            // Colors
+                            sec.connector_cards[i].cardColor = card.cardColor;
+                            sec.connector_cards[i].headingColor = card.headingColor;
+                            sec.connector_cards[i].descriptionColor = card.descriptionColor;
+                            // Font styles
+                            sec.connector_cards[i].headingSize = card.headingSize;
+                            sec.connector_cards[i].headingBoldness = card.headingBoldness;
+                            sec.connector_cards[i].descriptionSize = card.descriptionSize;
+                            sec.connector_cards[i].descriptionBoldness = card.descriptionBoldness;
+                            // Border
+                            sec.connector_cards[i].borderColor = card.borderColor;
+                            sec.connector_cards[i].borderThickness = card.borderThickness;
+                            // READ MORE visibility
+                            sec.connector_cards[i].showReadMore = card.showReadMore;
+                        }
+                    }
+                }
+                ImGui::PopStyleColor(2);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // Clear button
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.8f, 0.3f, 0.3f, 1.0f));
+                if (ImGui::Button("Clear Card", ImVec2(-1, 30))) {
+                    if (card.textureID != 0) {
+                        glDeleteTextures(1, &card.textureID);
+                        card.textureID = 0;
+                    }
+                    card.imagePath.clear();
+                    card.heading[0] = '\0';
+                    card.description[0] = '\0';
+                }
+                ImGui::PopStyleColor(2);
+            }
+        }
+        // Vertical Layout Connector Properties - EXACT match to original vertical_connector
+        else if (sec.type == SEC_VERTICAL_CONNECTOR) {
+            ImGui::Text("Global Styles");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Background color - inline
+            ImGui::Text("Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##bgColor", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+
+            // Heading Style - Color | Size | Bold on one line
+            ImGui::Text("Heading Style:");
+            ImGui::ColorEdit4("##hColor", (float*)&sec.vertical_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::PushItemWidth(70);
+            ImGui::SliderFloat("Size##h", &sec.vertical_heading_size, 0.8f, 2.5f, "%.1f");
+            ImGui::PopItemWidth();
+            ImGui::SameLine();
+            ImGui::PushItemWidth(70);
+            ImGui::SliderFloat("Bold##h", &sec.vertical_heading_boldness, 0.0f, 3.0f, "%.1f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+
+            // Description Style - Color | Size | Bold on one line
+            ImGui::Text("Description Style:");
+            ImGui::ColorEdit4("##dColor", (float*)&sec.vertical_desc_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::PushItemWidth(70);
+            ImGui::SliderFloat("Size##d", &sec.vertical_desc_size, 0.6f, 2.0f, "%.1f");
+            ImGui::PopItemWidth();
+            ImGui::SameLine();
+            ImGui::PushItemWidth(70);
+            ImGui::SliderFloat("Bold##d", &sec.vertical_desc_boldness, 0.0f, 3.0f, "%.1f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Layout
+            ImGui::Text("Layout:");
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Content Width", &sec.vertical_content_width, 300.0f, 800.0f, "%.0f");
+            ImGui::SliderFloat("Vertical Spacing", &sec.vertical_spacing, 5.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+
+            // Margin controls
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "MARGIN");
+            ImGui::Separator();
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Top##VCMargin", &sec.margin_top, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Right##VCMargin", &sec.margin_right, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Bottom##VCMargin", &sec.margin_bottom, 0.0f, 100.0f, "%.0fpx");
+            ImGui::SetNextItemWidth(100);
+            ImGui::SliderFloat("Left##VCMargin", &sec.margin_left, 0.0f, 100.0f, "%.0fpx");
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Block Management - Add buttons on one line
+            ImGui::Text("Content Blocks:");
+
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Heading")) {
+                VerticalBlock b;
+                b.type = 0;
+                strcpy(b.text, "New Heading");
+                sec.vertical_blocks.push_back(b);
+                g_SelectedVertBlockIndex = (int)sec.vertical_blocks.size() - 1;
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("+ Description")) {
+                VerticalBlock b;
+                b.type = 1;
+                strcpy(b.text, "New description text...");
+                sec.vertical_blocks.push_back(b);
+                g_SelectedVertBlockIndex = (int)sec.vertical_blocks.size() - 1;
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("+ Image")) {
+                std::string path = OpenFileDialog("Select an image");
+                if (!path.empty()) {
+                    VerticalBlock b;
+                    b.type = 2;
+                    b.imagePath = path;
+                    b.posX = 350.0f;  // Default position (right side)
+                    b.posY = 30.0f;
+                    b.displayWidth = 150.0f;
+                    int w, h, n;
+                    unsigned char* data = stbi_load(path.c_str(), &w, &h, &n, 4);
+                    if (data) {
+                        glGenTextures(1, &b.textureID);
+                        glBindTexture(GL_TEXTURE_2D, b.textureID);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                        stbi_image_free(data);
+                        b.imageWidth = w;
+                        b.imageHeight = h;
+                    }
+                    sec.vertical_blocks.push_back(b);
+                    g_SelectedVertBlockIndex = (int)sec.vertical_blocks.size() - 1;
+                }
+            }
+            ImGui::PopStyleColor();
+
+            ImGui::Spacing();
+
+            // Block list with move up/down and delete
+            ImGui::Text("Blocks (%d):", (int)sec.vertical_blocks.size());
+            ImGui::BeginChild("BlockList", ImVec2(-1, 150), true);
+
+            int blockToDelete = -1;
+            int blockToMoveUp = -1;
+            int blockToMoveDown = -1;
+
+            for (int i = 0; i < (int)sec.vertical_blocks.size(); i++) {
+                ImGui::PushID(i);
+
+                bool isSelected = (g_SelectedVertBlockIndex == i);
+                const char* typeStr = sec.vertical_blocks[i].type == 0 ? "[H]" :
+                                      sec.vertical_blocks[i].type == 1 ? "[D]" : "[I]";
+
+                char label[64];
+                if (sec.vertical_blocks[i].type == 2) {
+                    snprintf(label, sizeof(label), "%s Image", typeStr);
+                } else {
+                    char preview[30];
+                    strncpy(preview, sec.vertical_blocks[i].text, 25);
+                    preview[25] = '\0';
+                    if (strlen(sec.vertical_blocks[i].text) > 25) strcat(preview, "...");
+                    snprintf(label, sizeof(label), "%s %s", typeStr, preview);
+                }
+
+                if (ImGui::Selectable(label, isSelected)) {
+                    g_SelectedVertBlockIndex = i;
+                }
+
+                // Context buttons - move up/down and delete
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - 60);
+                if (i > 0 && ImGui::SmallButton("^")) blockToMoveUp = i;
+                ImGui::SameLine();
+                if (i < (int)sec.vertical_blocks.size() - 1 && ImGui::SmallButton("v")) blockToMoveDown = i;
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                if (ImGui::SmallButton("X")) blockToDelete = i;
+                ImGui::PopStyleColor();
+
+                ImGui::PopID();
+            }
+            ImGui::EndChild();
+
+            // Handle reordering and deletion
+            if (blockToMoveUp > 0) {
+                std::swap(sec.vertical_blocks[blockToMoveUp], sec.vertical_blocks[blockToMoveUp - 1]);
+                if (g_SelectedVertBlockIndex == blockToMoveUp) g_SelectedVertBlockIndex--;
+                else if (g_SelectedVertBlockIndex == blockToMoveUp - 1) g_SelectedVertBlockIndex++;
+            }
+            if (blockToMoveDown >= 0 && blockToMoveDown < (int)sec.vertical_blocks.size() - 1) {
+                std::swap(sec.vertical_blocks[blockToMoveDown], sec.vertical_blocks[blockToMoveDown + 1]);
+                if (g_SelectedVertBlockIndex == blockToMoveDown) g_SelectedVertBlockIndex++;
+                else if (g_SelectedVertBlockIndex == blockToMoveDown + 1) g_SelectedVertBlockIndex--;
+            }
+            if (blockToDelete >= 0 && sec.vertical_blocks.size() > 1) {
+                if (sec.vertical_blocks[blockToDelete].type == 2 && sec.vertical_blocks[blockToDelete].textureID != 0) {
+                    glDeleteTextures(1, &sec.vertical_blocks[blockToDelete].textureID);
+                }
+                sec.vertical_blocks.erase(sec.vertical_blocks.begin() + blockToDelete);
+                if (g_SelectedVertBlockIndex >= (int)sec.vertical_blocks.size()) g_SelectedVertBlockIndex = (int)sec.vertical_blocks.size() - 1;
+                if (g_SelectedVertBlockIndex < 0) g_SelectedVertBlockIndex = 0;
+            }
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Edit selected block
+            if (g_SelectedVertBlockIndex >= 0 && g_SelectedVertBlockIndex < (int)sec.vertical_blocks.size()) {
+                VerticalBlock& block = sec.vertical_blocks[g_SelectedVertBlockIndex];
+
+                ImGui::Text("Edit Block #%d:", g_SelectedVertBlockIndex + 1);
+
+                if (block.type == 0) {  // Heading
+                    ImGui::Text("Type: Heading");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputText("##blockText", block.text, sizeof(block.text));
+                    ImGui::PopItemWidth();
+                }
+                else if (block.type == 1) {  // Description
+                    ImGui::Text("Type: Description");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputTextMultiline("##blockText", block.text, sizeof(block.text), ImVec2(-1, 100));
+                    ImGui::PopItemWidth();
+                }
+                else if (block.type == 2) {  // Image
+                    ImGui::Text("Type: Image");
+
+                    if (block.textureID != 0) {
+                        ImGui::Text("Size: %dx%d", block.imageWidth, block.imageHeight);
+
+                        ImGui::Spacing();
+                        ImGui::TextColored(ImVec4(0.5f, 0.8f, 0.5f, 1.0f), "Drag image in preview to move");
+                        ImGui::Spacing();
+
+                        // Image size control
+                        ImGui::PushItemWidth(150);
+                        ImGui::SliderFloat("Display Width", &block.displayWidth, 50.0f, 500.0f, "%.0f");
+                        ImGui::PopItemWidth();
+
+                        // Position controls - X and Y sliders
+                        ImGui::Text("Position X:");
+                        ImGui::PushItemWidth(-1);
+                        ImGui::SliderFloat("##imgPosX", &block.posX, 0.0f, 800.0f, "%.0f");
+                        ImGui::PopItemWidth();
+
+                        ImGui::Text("Position Y:");
+                        ImGui::PushItemWidth(-1);
+                        ImGui::SliderFloat("##imgPosY", &block.posY, 0.0f, 500.0f, "%.0f");
+                        ImGui::PopItemWidth();
+
+                        ImGui::Spacing();
+
+                        // Preview thumbnail
+                        float aspect = (float)block.imageHeight / (float)block.imageWidth;
+                        float previewH = 80.0f * aspect;
+                        ImGui::Image((ImTextureID)(intptr_t)block.textureID, ImVec2(80, previewH));
+                    }
+
+                    // Replace image button
+                    if (ImGui::Button("Replace Image")) {
+                        std::string path = OpenFileDialog("Select an image");
+                        if (!path.empty()) {
+                            block.imagePath = path;
+                            if (block.textureID != 0) glDeleteTextures(1, &block.textureID);
+                            int w, h, n;
+                            unsigned char* data = stbi_load(path.c_str(), &w, &h, &n, 4);
+                            if (data) {
+                                glGenTextures(1, &block.textureID);
+                                glBindTexture(GL_TEXTURE_2D, block.textureID);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                stbi_image_free(data);
+                                block.imageWidth = w;
+                                block.imageHeight = h;
+                            }
+                        }
+                    }
+
+                    // Show upload button if no image loaded
+                    if (block.textureID == 0) {
+                        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.8f, 1.0f));
+                        if (ImGui::Button("Upload Image", ImVec2(-1, 35))) {
+                            std::string path = OpenFileDialog("Select an image");
+                            if (!path.empty()) {
+                                block.imagePath = path;
+                                int w, h, n;
+                                unsigned char* data = stbi_load(path.c_str(), &w, &h, &n, 4);
+                                if (data) {
+                                    glGenTextures(1, &block.textureID);
+                                    glBindTexture(GL_TEXTURE_2D, block.textureID);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                    stbi_image_free(data);
+                                    block.imageWidth = w;
+                                    block.imageHeight = h;
+                                }
+                            }
+                        }
+                        ImGui::PopStyleColor();
+                    }
+                }
+            }
+        }
+        // ==================== NAVBAR CONNECTOR PROPERTIES ====================
+        else if (sec.type == SEC_NAVBAR_CONNECTOR) {
+            ImGui::Text("Navbar Style");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Colors
+            ImGui::Text("Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##navBg", (float*)&sec.navbar_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Hover:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##navHover", (float*)&sec.navbar_hover_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Dropdown:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##navDrop", (float*)&sec.navbar_dropdown_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##navText", (float*)&sec.navbar_text_color, ImGuiColorEditFlags_NoInputs);
+
+            // Text style controls
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "TEXT STYLE");
+            ImGui::Separator();
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Font Scale", &sec.navbar_font_scale, 0.5f, 2.0f, "%.1f");
+            ImGui::SliderFloat("Text Bold", &sec.navbar_font_boldness, 0.0f, 3.0f, "%.1f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Layout settings
+            ImGui::Text("Layout:");
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Navbar Height", &sec.navbar_height, 30.0f, 80.0f, "%.0f");
+            ImGui::SliderFloat("Padding X", &sec.navbar_padding_x, 0.0f, 30.0f, "%.0f");
+            ImGui::SliderFloat("Padding Y", &sec.navbar_padding_y, 0.0f, 30.0f, "%.0f");
+            ImGui::SliderFloat("Spacing", &sec.navbar_spacing, 0.0f, 40.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+
+            ImGui::Checkbox("Rounded Corners", &sec.navbar_rounded);
+            if (sec.navbar_rounded) {
+                ImGui::PushItemWidth(150);
+                ImGui::SliderFloat("Corner Radius", &sec.navbar_rounding, 0.0f, 20.0f, "%.0f");
+                ImGui::PopItemWidth();
+            }
+
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Font Scale", &sec.navbar_font_scale, 0.7f, 1.5f, "%.1f");
+            ImGui::PopItemWidth();
+
+            // Update section height based on navbar height
+            sec.height = (int)sec.navbar_height;
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Menu Items Management
+            ImGui::Text("Menu Items:");
+
+            // Add new menu item
+            static char newMenuName[64] = "";
+            ImGui::PushItemWidth(150);
+            ImGui::InputText("##newMenu", newMenuName, sizeof(newMenuName));
+            ImGui::PopItemWidth();
+            ImGui::SameLine();
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Menu") && strlen(newMenuName) > 0) {
+                NavbarMenuItem item;
+                strncpy(item.label, newMenuName, sizeof(item.label) - 1);
+                sec.navbar_items.push_back(item);
+                newMenuName[0] = '\0';
+            }
+            ImGui::PopStyleColor();
+
+            ImGui::Spacing();
+
+            // Menu items list
+            static int selectedNavItem = 0;
+            if (selectedNavItem >= (int)sec.navbar_items.size()) selectedNavItem = (int)sec.navbar_items.size() - 1;
+            if (selectedNavItem < 0) selectedNavItem = 0;
+
+            ImGui::BeginChild("NavMenuList", ImVec2(-1, 120), true);
+            int menuToDelete = -1;
+            for (int i = 0; i < (int)sec.navbar_items.size(); i++) {
+                ImGui::PushID(i);
+                char label[128];
+                int childCount = (int)sec.navbar_items[i].children.size();
+                if (childCount > 0) {
+                    snprintf(label, sizeof(label), "%s (%d sub)", sec.navbar_items[i].label, childCount);
+                } else {
+                    snprintf(label, sizeof(label), "%s", sec.navbar_items[i].label);
+                }
+                // Use AllowItemOverlap so delete button can be clicked
+                if (ImGui::Selectable(label, selectedNavItem == i, ImGuiSelectableFlags_AllowItemOverlap)) {
+                    selectedNavItem = i;
+                }
+
+                // Delete button
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - 15);
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.2f, 0.2f, 1.0f));
+                ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.9f, 0.3f, 0.3f, 1.0f));
+                if (sec.navbar_items.size() > 1 && ImGui::SmallButton("X")) {
+                    menuToDelete = i;
+                }
+                ImGui::PopStyleColor(2);
+                ImGui::PopID();
+            }
+            // Delete outside loop to avoid iterator invalidation
+            static bool menuWasDeleted = false;
+            if (menuToDelete >= 0) {
+                sec.navbar_items.erase(sec.navbar_items.begin() + menuToDelete);
+                if (selectedNavItem >= (int)sec.navbar_items.size()) selectedNavItem = (int)sec.navbar_items.size() - 1;
+                menuWasDeleted = true;
+            }
+            ImGui::EndChild();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Edit selected menu item
+            static int lastSelectedNavItem = -1;
+            static int selectedSubItem = -1;
+            static char newSubItem[64] = "";
+
+            // Reset sub-item selection when switching menu items or when menu was deleted
+            if (lastSelectedNavItem != selectedNavItem || menuWasDeleted) {
+                selectedSubItem = -1;
+                newSubItem[0] = '\0';
+                lastSelectedNavItem = selectedNavItem;
+                menuWasDeleted = false;
+            }
+
+            if (selectedNavItem >= 0 && selectedNavItem < (int)sec.navbar_items.size()) {
+                NavbarMenuItem& item = sec.navbar_items[selectedNavItem];
+
+                ImGui::PushID(selectedNavItem + 5000);  // Unique ID scope for this menu item
+
+                ImGui::Text("Edit Menu: %s", item.label);
+
+                // Edit label
+                ImGui::Text("Label:");
+                ImGui::PushItemWidth(-1);
+                ImGui::InputText("##editLabel", item.label, sizeof(item.label));
+                ImGui::PopItemWidth();
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // ACTION SETTINGS for this menu item
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "Click Action:");
+                RenderActionSettings("navAction", &item.actionType, item.actionTarget, sizeof(item.actionTarget), g_Sections);
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                // Dropdown items (children)
+                ImGui::Text("Dropdown Items:");
+
+                // Add new dropdown item
+                ImGui::PushItemWidth(150);
+                ImGui::InputText("##newSubInput", newSubItem, sizeof(newSubItem));
+                ImGui::PopItemWidth();
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.6f, 1.0f));
+                if (ImGui::Button("+ Add Sub##addSubBtn") && strlen(newSubItem) > 0) {
+                    item.children.push_back(newSubItem);
+                    // Also add default action entries
+                    item.childActionTypes.push_back(ACTION_NONE);
+                    item.childActionTargets.push_back("");
+                    newSubItem[0] = '\0';
+                }
+                ImGui::PopStyleColor();
+
+                // List of dropdown items
+                if (!item.children.empty()) {
+                    // Ensure action vectors are synced with children size
+                    while (item.childActionTypes.size() < item.children.size()) {
+                        item.childActionTypes.push_back(ACTION_NONE);
+                        item.childActionTargets.push_back("");
+                    }
+                    // Trim if too many
+                    while (item.childActionTypes.size() > item.children.size()) {
+                        item.childActionTypes.pop_back();
+                        item.childActionTargets.pop_back();
+                    }
+
+                    ImGui::BeginChild("SubItemList", ImVec2(-1, 100), true);
+                    int subToDelete = -1;
+                    for (int j = 0; j < (int)item.children.size(); j++) {
+                        ImGui::PushID(j + 2000);
+
+                        // Selectable sub-item with AllowItemOverlap so button can be clicked
+                        bool isSelected = (selectedSubItem == j);
+                        if (ImGui::Selectable(item.children[j].c_str(), isSelected, ImGuiSelectableFlags_AllowItemOverlap)) {
+                            selectedSubItem = j;
+                        }
+
+                        // Delete button on same line
+                        ImGui::SameLine(ImGui::GetContentRegionAvail().x - 15);
+                        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7f, 0.2f, 0.2f, 1.0f));
+                        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.9f, 0.3f, 0.3f, 1.0f));
+                        if (ImGui::SmallButton("X")) {
+                            subToDelete = j;
+                        }
+                        ImGui::PopStyleColor(2);
+                        ImGui::PopID();
+                    }
+                    if (subToDelete >= 0) {
+                        item.children.erase(item.children.begin() + subToDelete);
+                        if (subToDelete < (int)item.childActionTypes.size()) {
+                            item.childActionTypes.erase(item.childActionTypes.begin() + subToDelete);
+                        }
+                        if (subToDelete < (int)item.childActionTargets.size()) {
+                            item.childActionTargets.erase(item.childActionTargets.begin() + subToDelete);
+                        }
+                        if (selectedSubItem >= (int)item.children.size()) selectedSubItem = -1;
+                        if (selectedSubItem == subToDelete) selectedSubItem = -1;
+                    }
+                    ImGui::EndChild();
+
+                    // Edit selected sub-item action
+                    if (selectedSubItem >= 0 && selectedSubItem < (int)item.children.size()) {
+                        ImGui::Spacing();
+                        ImGui::TextColored(ImVec4(0.8f, 0.6f, 0.2f, 1), "Sub-Item Action: %s", item.children[selectedSubItem].c_str());
+
+                        // Edit sub-item text
+                        static char subEditBuf[256];
+                        strncpy(subEditBuf, item.children[selectedSubItem].c_str(), sizeof(subEditBuf) - 1);
+                        ImGui::PushItemWidth(150);
+                        if (ImGui::InputText("##editSubLabel", subEditBuf, sizeof(subEditBuf))) {
+                            item.children[selectedSubItem] = subEditBuf;
+                        }
+                        ImGui::PopItemWidth();
+
+                        // Action settings for this sub-item
+                        static char subTargetBuf[512];
+                        strncpy(subTargetBuf, item.childActionTargets[selectedSubItem].c_str(), sizeof(subTargetBuf) - 1);
+                        RenderActionSettings("subAction", &item.childActionTypes[selectedSubItem], subTargetBuf, sizeof(subTargetBuf), g_Sections);
+                        item.childActionTargets[selectedSubItem] = subTargetBuf;
+                    }
+                } else {
+                    ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No dropdown items");
+                    selectedSubItem = -1;
+                }
+
+                ImGui::PopID();  // End unique ID scope for this menu item
+            }
+
+            // Reset theme button
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+            if (ImGui::Button("Reset Theme")) {
+                sec.navbar_bg_color = ImVec4(0.12f, 0.12f, 0.12f, 1.0f);
+                sec.navbar_hover_color = ImVec4(0.26f, 0.26f, 0.26f, 1.0f);
+                sec.navbar_dropdown_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
+                sec.navbar_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                sec.navbar_height = 42.0f;
+                sec.navbar_padding_x = 10.0f;
+                sec.navbar_padding_y = 8.0f;
+                sec.navbar_spacing = 18.0f;
+                sec.navbar_rounding = 4.0f;
+                sec.navbar_font_scale = 1.0f;
+                sec.navbar_rounded = true;
+            }
+        }
+        // ==================== COPYRIGHT CONNECTOR PROPERTIES ====================
+        else if (sec.type == SEC_COPYRIGHT_CONNECTOR) {
+            ImGui::Text("Copyright Bar Style");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Background with opacity control
+            ImGui::Text("Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##copyrightBg", (float*)&sec.copyright_bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("BG Opacity", &sec.copyright_bg_opacity, 0.0f, 1.0f, "%.2f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+
+            ImGui::Text("Text Color:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##copyrightText", (float*)&sec.copyright_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Link Color:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##copyrightLink", (float*)&sec.copyright_link_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Font sizes
+            ImGui::Text("Typography:");
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Main Text Size", &sec.copyright_font_size, 8.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Subtext Size", &sec.copyright_subtext_size, 8.0f, 18.0f, "%.0f");
+            ImGui::SliderFloat("Padding", &sec.copyright_padding, 5.0f, 40.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Main copyright text
+            ImGui::Text("Main Text:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##copyrightMainText", sec.copyright_text, sizeof(sec.copyright_text));
+            ImGui::PopItemWidth();
+
+            // Subtext (company info)
+            ImGui::Text("Company Text:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##copyrightSubText", sec.copyright_subtext, sizeof(sec.copyright_subtext));
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Links management
+            ImGui::Text("Links:");
+
+            // Add new link
+            static char newLinkText[64] = "";
+            static char newLinkUrl[128] = "#";
+            static bool newLinkBold = true;
+
+            ImGui::PushItemWidth(100);
+            ImGui::InputText("##newLinkText", newLinkText, sizeof(newLinkText));
+            ImGui::PopItemWidth();
+            ImGui::SameLine();
+            ImGui::Checkbox("Bold##newLink", &newLinkBold);
+            ImGui::SameLine();
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Link") && strlen(newLinkText) > 0) {
+                CopyrightLink link;
+                strncpy(link.text, newLinkText, sizeof(link.text) - 1);
+                strncpy(link.url, newLinkUrl, sizeof(link.url) - 1);
+                link.isBold = newLinkBold;
+                sec.copyright_links.push_back(link);
+                newLinkText[0] = '\0';
+                strcpy(newLinkUrl, "#");
+                newLinkBold = true;
+            }
+            ImGui::PopStyleColor();
+
+            // List existing links
+            static int selectedCopyrightLink = -1;
+            if (!sec.copyright_links.empty()) {
+                ImGui::BeginChild("CopyrightLinkList", ImVec2(-1, 80), true);
+                int linkToDelete = -1;
+                for (int i = 0; i < (int)sec.copyright_links.size(); i++) {
+                    ImGui::PushID(i);
+                    CopyrightLink& link = sec.copyright_links[i];
+
+                    // Selectable link
+                    bool isSelected = (selectedCopyrightLink == i);
+                    char linkLabel[300];
+                    snprintf(linkLabel, sizeof(linkLabel), "%s%s", link.text, link.isBold ? " [B]" : "");
+                    if (ImGui::Selectable(linkLabel, isSelected)) {
+                        selectedCopyrightLink = i;
+                    }
+
+                    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 20);
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                    if (ImGui::SmallButton("X")) {
+                        linkToDelete = i;
+                    }
+                    ImGui::PopStyleColor();
+                    ImGui::PopID();
+                }
+                if (linkToDelete >= 0) {
+                    sec.copyright_links.erase(sec.copyright_links.begin() + linkToDelete);
+                    if (selectedCopyrightLink >= (int)sec.copyright_links.size()) selectedCopyrightLink = -1;
+                }
+                ImGui::EndChild();
+
+                // Edit selected link
+                if (selectedCopyrightLink >= 0 && selectedCopyrightLink < (int)sec.copyright_links.size()) {
+                    CopyrightLink& link = sec.copyright_links[selectedCopyrightLink];
+
+                    ImGui::Spacing();
+                    ImGui::TextColored(ImVec4(0.8f, 0.6f, 0.2f, 1), "Edit Link: %s", link.text);
+
+                    ImGui::PushItemWidth(150);
+                    ImGui::InputText("##editLinkText", link.text, sizeof(link.text));
+                    ImGui::PopItemWidth();
+                    ImGui::SameLine();
+                    ImGui::Checkbox("Bold##editLink", &link.isBold);
+
+                    // Action settings for this link
+                    RenderActionSettings("copyrightLinkAction", &link.actionType, link.url, sizeof(link.url), g_Sections);
+                }
+            } else {
+                ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No links added");
+                selectedCopyrightLink = -1;
+            }
+
+            // Reset button
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+            if (ImGui::Button("Reset Defaults")) {
+                strcpy(sec.copyright_text, "Website under development.");
+                strcpy(sec.copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
+                sec.copyright_bg_color = ImVec4(0.18f, 0.18f, 0.18f, 1.0f);
+                sec.copyright_text_color = ImVec4(0.7f, 0.7f, 0.7f, 1.0f);
+                sec.copyright_link_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+                sec.copyright_font_size = 11.0f;
+                sec.copyright_subtext_size = 10.0f;
+                sec.copyright_padding = 15.0f;
+                sec.copyright_bg_opacity = 1.0f;
+            }
+        }
+        // Article Cards connector properties
+        else if (sec.type == SEC_ARTICLE_CONNECTOR) {
+            ImGui::Text("Article Cards Style");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Layout settings
+            ImGui::Text("Layout:");
+            ImGui::PushItemWidth(150);
+            ImGui::SliderInt("Cards Per Row", &sec.article_cards_per_row, 1, 4);
+            ImGui::SliderFloat("Card Spacing", &sec.article_card_spacing, 5.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Text("Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##articleBg", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Article cards management
+            ImGui::Text("Article Cards:");
+
+            // Add new card
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Card")) {
+                ArticleCard card;
+                snprintf(card.heading, sizeof(card.heading), "New Article %d", (int)sec.article_cards.size() + 1);
+                sec.article_cards.push_back(card);
+            }
+            ImGui::PopStyleColor();
+
+            // List existing cards
+            static int selectedArticleCard = -1;
+            if (!sec.article_cards.empty()) {
+                ImGui::BeginChild("ArticleCardList", ImVec2(-1, 100), true);
+                int cardToDelete = -1;
+                for (int i = 0; i < (int)sec.article_cards.size(); i++) {
+                    ImGui::PushID(i);
+                    ArticleCard& card = sec.article_cards[i];
+
+                    bool isSelected = (selectedArticleCard == i);
+                    char cardLabel[300];
+                    snprintf(cardLabel, sizeof(cardLabel), "%d. %s", i + 1, card.heading);
+
+                    // Delete button first (right side)
+                    float contentWidth = ImGui::GetContentRegionAvail().x;
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() + contentWidth - 25);
+                    if (ImGui::SmallButton("X##del")) {
+                        cardToDelete = i;
+                    }
+                    ImGui::PopStyleColor();
+
+                    // Selectable on same line (left side)
+                    ImGui::SameLine();
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() - contentWidth + 5);
+                    if (ImGui::Selectable(cardLabel, isSelected, 0, ImVec2(contentWidth - 35, 0))) {
+                        selectedArticleCard = i;
+                    }
+                    ImGui::PopID();
+                }
+                if (cardToDelete >= 0) {
+                    sec.article_cards.erase(sec.article_cards.begin() + cardToDelete);
+                    if (selectedArticleCard >= (int)sec.article_cards.size()) selectedArticleCard = -1;
+                }
+                ImGui::EndChild();
+
+                // Edit selected card
+                if (selectedArticleCard >= 0 && selectedArticleCard < (int)sec.article_cards.size()) {
+                    ArticleCard& card = sec.article_cards[selectedArticleCard];
+
+                    ImGui::Spacing();
+                    ImGui::TextColored(ImVec4(0.91f, 0.4f, 0.1f, 1), "Editing Card %d", selectedArticleCard + 1);
+                    ImGui::Separator();
+                    ImGui::Spacing();
+
+                    // Content
+                    ImGui::Text("Heading:");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputText("##articleHeading", card.heading, sizeof(card.heading));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Text("Date:");
+                    ImGui::PushItemWidth(150);
+                    ImGui::InputText("##articleDate", card.date, sizeof(card.date));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Text("Description:");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputTextMultiline("##articleDesc", card.description, sizeof(card.description), ImVec2(-1, 60));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Text("Read More Text:");
+                    ImGui::PushItemWidth(150);
+                    ImGui::InputText("##articleReadMore", card.readMoreText, sizeof(card.readMoreText));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::Spacing();
+
+                    // Colors
+                    ImGui::Text("Colors:");
+                    ImGui::Text("Heading:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleHeadingClr", (float*)&card.headingColor, ImGuiColorEditFlags_NoInputs);
+                    ImGui::SameLine();
+                    ImGui::Text("Date:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleDateClr", (float*)&card.dateColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::Text("Description:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleDescClr", (float*)&card.descriptionColor, ImGuiColorEditFlags_NoInputs);
+                    ImGui::SameLine();
+                    ImGui::Text("Read More:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleRMClr", (float*)&card.readMoreColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::Text("Card BG:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleCardBg", (float*)&card.cardBgColor, ImGuiColorEditFlags_NoInputs);
+                    ImGui::SameLine();
+                    ImGui::Text("Accent:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##articleAccent", (float*)&card.accentColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::Spacing();
+
+                    // Sizes
+                    ImGui::Text("Sizes:");
+                    ImGui::PushItemWidth(100);
+                    ImGui::SliderFloat("Card Width", &card.cardWidth, 200.0f, 800.0f, "%.0f");
+                    ImGui::SliderFloat("Card Height", &card.cardHeight, 100.0f, 400.0f, "%.0f");
+                    ImGui::SliderFloat("Accent Width", &card.accentWidth, 2.0f, 12.0f, "%.0f");
+                    ImGui::SliderFloat("Card Padding", &card.cardPadding, 5.0f, 40.0f, "%.0f");
+                    ImGui::PopItemWidth();
+
+                    ImGui::Spacing();
+                    ImGui::Text("Font Sizes:");
+                    ImGui::PushItemWidth(100);
+                    ImGui::SliderFloat("Heading##sz", &card.headingSize, 0.6f, 2.0f, "%.1f");
+                    ImGui::SameLine();
+                    ImGui::SliderFloat("Date##sz", &card.dateSize, 0.5f, 1.5f, "%.1f");
+                    ImGui::SliderFloat("Desc##sz", &card.descriptionSize, 0.5f, 1.5f, "%.1f");
+                    ImGui::SameLine();
+                    ImGui::SliderFloat("ReadMore##sz", &card.readMoreSize, 0.5f, 1.5f, "%.1f");
+                    ImGui::PopItemWidth();
+
+                    ImGui::Spacing();
+                    ImGui::Separator();
+                    ImGui::Spacing();
+
+                    // Action settings for heading
+                    ImGui::TextColored(ImVec4(0.91f, 0.4f, 0.1f, 1), "Heading Action:");
+                    RenderActionSettings("articleHeadingAction", &card.headingActionType, card.headingActionTarget, sizeof(card.headingActionTarget), g_Sections);
+
+                    ImGui::Spacing();
+
+                    // Action settings for read more button
+                    ImGui::TextColored(ImVec4(0.4f, 0.4f, 0.4f, 1), "Read More Action:");
+                    RenderActionSettings("articleReadMoreAction", &card.readMoreActionType, card.readMoreActionTarget, sizeof(card.readMoreActionTarget), g_Sections);
+                }
+            } else {
+                ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No cards added");
+                selectedArticleCard = -1;
+            }
+        }
+        // Contact Form connector properties
+        else if (sec.type == SEC_CONTACT_FORM_CONNECTOR) {
+            ImGui::Text("Contact Form Style");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Title
+            ImGui::Text("Form Title:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##formTitle", sec.contact_form_title, sizeof(sec.contact_form_title));
+            ImGui::PopItemWidth();
+
+            ImGui::Text("Title Color:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##formTitleClr", (float*)&sec.contact_form_title_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Title Size", &sec.contact_form_title_size, 0.8f, 2.0f, "%.1f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Input styling
+            ImGui::Text("Input Style:");
+            ImGui::Text("BG:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##inputBg", (float*)&sec.contact_form_input_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##inputText", (float*)&sec.contact_form_input_text, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Input Height", &sec.contact_form_input_height, 30.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Textarea Height", &sec.contact_form_textarea_height, 80.0f, 300.0f, "%.0f");
+            ImGui::SliderFloat("Field Spacing", &sec.contact_form_spacing, 10.0f, 40.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Submit button styling
+            ImGui::Text("Submit Button:");
+            ImGui::PushItemWidth(150);
+            ImGui::InputText("##submitText", sec.contact_form_submit_text, sizeof(sec.contact_form_submit_text));
+            ImGui::PopItemWidth();
+
+            ImGui::Text("BG:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##btnBg", (float*)&sec.contact_form_button_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##btnText", (float*)&sec.contact_form_button_text, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Border:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##btnBorder", (float*)&sec.contact_form_button_border, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Button Width", &sec.contact_form_button_width, 60.0f, 200.0f, "%.0f");
+            ImGui::SliderFloat("Button Height", &sec.contact_form_button_height, 30.0f, 60.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+
+            // Submit action
+            ImGui::TextColored(ImVec4(0.2f, 0.6f, 0.9f, 1), "Submit Action:");
+            RenderActionSettings("contactFormSubmit", &sec.contact_form_submit_action, sec.contact_form_submit_target, sizeof(sec.contact_form_submit_target), g_Sections);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Form fields management
+            ImGui::Text("Form Fields:");
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Field")) {
+                ContactFormField newField;
+                snprintf(newField.label, sizeof(newField.label), "Field %d", (int)sec.contact_form_fields.size() + 1);
+                strcpy(newField.placeholder, "Enter value...");
+                newField.fieldType = 0;
+                newField.width = 0.5f;
+                sec.contact_form_fields.push_back(newField);
+            }
+            ImGui::PopStyleColor();
+
+            static int selectedFormField = -1;
+            if (!sec.contact_form_fields.empty()) {
+                ImGui::BeginChild("FormFieldList", ImVec2(-1, 100), true);
+                int fieldToDelete = -1;
+                for (int i = 0; i < (int)sec.contact_form_fields.size(); i++) {
+                    ImGui::PushID(i);
+                    ContactFormField& field = sec.contact_form_fields[i];
+
+                    bool isSelected = (selectedFormField == i);
+                    const char* typeNames[] = {"Text", "Email", "Phone", "Textarea"};
+                    char fieldLabel[300];
+                    snprintf(fieldLabel, sizeof(fieldLabel), "%d. %s (%s, %.0f%%)", i + 1, field.placeholder, typeNames[field.fieldType], field.width * 100);
+                    if (ImGui::Selectable(fieldLabel, isSelected)) {
+                        selectedFormField = i;
+                    }
+
+                    ImGui::SameLine(ImGui::GetContentRegionAvail().x - 20);
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                    if (ImGui::SmallButton("X") && sec.contact_form_fields.size() > 1) {
+                        fieldToDelete = i;
+                    }
+                    ImGui::PopStyleColor();
+                    ImGui::PopID();
+                }
+                if (fieldToDelete >= 0) {
+                    sec.contact_form_fields.erase(sec.contact_form_fields.begin() + fieldToDelete);
+                    if (selectedFormField >= (int)sec.contact_form_fields.size()) selectedFormField = -1;
+                }
+                ImGui::EndChild();
+
+                // Edit selected field
+                if (selectedFormField >= 0 && selectedFormField < (int)sec.contact_form_fields.size()) {
+                    ContactFormField& field = sec.contact_form_fields[selectedFormField];
+
+                    ImGui::Spacing();
+                    ImGui::TextColored(ImVec4(0.2f, 0.6f, 0.9f, 1), "Edit Field %d:", selectedFormField + 1);
+
+                    ImGui::PushItemWidth(150);
+                    ImGui::InputText("Placeholder##field", field.placeholder, sizeof(field.placeholder));
+
+                    const char* typeOptions[] = {"Text", "Email", "Phone", "Textarea"};
+                    ImGui::Combo("Type##field", &field.fieldType, typeOptions, 4);
+
+                    const char* widthOptions[] = {"Half Width (50%)", "Full Width (100%)"};
+                    int widthIdx = field.width >= 1.0f ? 1 : 0;
+                    if (ImGui::Combo("Width##field", &widthIdx, widthOptions, 2)) {
+                        field.width = widthIdx == 1 ? 1.0f : 0.5f;
+                    }
+                    ImGui::PopItemWidth();
+                }
+            } else {
+                ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No fields added");
+                selectedFormField = -1;
+            }
+        }
+        // Search Connector properties
+        else if (sec.type == SEC_SEARCH_CONNECTOR) {
+            ImGui::Text("Search Bar Style");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Placeholder text
+            ImGui::Text("Placeholder:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##searchPlaceholder", sec.search_placeholder, sizeof(sec.search_placeholder));
+            ImGui::PopItemWidth();
+
+            // Button text
+            ImGui::Text("Button Text:");
+            ImGui::PushItemWidth(120);
+            ImGui::InputText("##searchBtnText", sec.search_button_text, sizeof(sec.search_button_text));
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Input field styling
+            ImGui::Text("Input Field:");
+            ImGui::Text("BG:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##searchInputBg", (float*)&sec.search_input_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Border:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##searchInputBorder", (float*)&sec.search_input_border, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##searchInputText", (float*)&sec.search_input_text, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Input Width", &sec.search_input_width, 200.0f, 800.0f, "%.0f");
+            ImGui::SliderFloat("Input Height", &sec.search_input_height, 30.0f, 60.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Button styling
+            ImGui::Text("Search Button:");
+            ImGui::Text("BG:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##searchBtnBg", (float*)&sec.search_button_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##searchBtnTextClr", (float*)&sec.search_button_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Button Width", &sec.search_button_width, 60.0f, 200.0f, "%.0f");
+            ImGui::SliderFloat("Border Radius", &sec.search_border_radius, 0.0f, 20.0f, "%.0f");
+            ImGui::PopItemWidth();
+        }
+        // Logo Connector properties
+        else if (sec.type == SEC_LOGO_CONNECTOR) {
+            ImGui::Text("Logo Settings");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Upload logo button
+            if (ImGui::Button("Upload Logo Image", ImVec2(-1, 35))) {
+                std::string path = OpenFileDialog("Select logo image");
+                if (!path.empty()) {
+                    int w, h, c;
+                    unsigned char* data = stbi_load(path.c_str(), &w, &h, &c, 4);
+                    if (data) {
+                        // Delete old texture if exists
+                        if (sec.logo_connector_texture != 0) {
+                            glDeleteTextures(1, &sec.logo_connector_texture);
+                        }
+                        // Create new texture
+                        glGenTextures(1, &sec.logo_connector_texture);
+                        glBindTexture(GL_TEXTURE_2D, sec.logo_connector_texture);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+                        sec.logo_image_path = path;
+                        sec.logo_image_width = w;
+                        sec.logo_image_height = h;
+
+                        // Store image data for saving
+                        sec.logo_image_data.assign(data, data + w * h * 4);
+
+                        stbi_image_free(data);
+                    }
+                }
+            }
+
+            // Show image info
+            if (sec.logo_connector_texture != 0) {
+                ImGui::TextColored(ImVec4(0.5f, 0.8f, 0.5f, 1), "Image: %dx%d", sec.logo_image_width, sec.logo_image_height);
+
+                // Clear logo button
+                ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                if (ImGui::Button("Clear Logo", ImVec2(-1, 25))) {
+                    if (sec.logo_connector_texture != 0) {
+                        glDeleteTextures(1, &sec.logo_connector_texture);
+                        sec.logo_connector_texture = 0;
+                    }
+                    sec.logo_image_path.clear();
+                    sec.logo_image_data.clear();
+                    sec.logo_image_width = 0;
+                    sec.logo_image_height = 0;
+                }
+                ImGui::PopStyleColor();
+            } else {
+                ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "No logo uploaded");
+            }
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Logo size
+            ImGui::Text("Logo Size:");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Width##logo", &sec.logo_width, 50.0f, 500.0f, "%.0f");
+            ImGui::SliderFloat("Height##logo", &sec.logo_height, 30.0f, 300.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Checkbox("Maintain Aspect Ratio", &sec.logo_maintain_aspect);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Logo alignment
+            ImGui::Text("Alignment:");
+            const char* alignOptions[] = {"Left", "Center", "Right"};
+            ImGui::PushItemWidth(100);
+            ImGui::Combo("##logoAlign", &sec.logo_alignment, alignOptions, 3);
+            ImGui::PopItemWidth();
+
+            // Padding
+            ImGui::Text("Padding:");
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("##logoPad", &sec.logo_padding, 0.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Background color
+            ImGui::Text("Background:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##logoBg", (float*)&sec.logo_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "(set alpha > 0 to show)");
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Logo link
+            ImGui::Text("Click Link (URL):");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##logoLink", sec.logo_link, sizeof(sec.logo_link));
+            ImGui::PopItemWidth();
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "(usually homepage URL)");
+        }
+        // Bullet Connector properties
+        else if (sec.type == SEC_BULLET_CONNECTOR) {
+            ImGui::Text("Bullet Points");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Main heading
+            ImGui::Text("Main Heading:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputTextMultiline("##bulletHeading", sec.bullet_main_heading, sizeof(sec.bullet_main_heading), ImVec2(-1, 50));
+            ImGui::PopItemWidth();
+
+            ImGui::Text("Footer Text:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##bulletFooter", sec.bullet_footer_text, sizeof(sec.bullet_footer_text));
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Colors
+            ImGui::Text("Colors:");
+            ImGui::Text("Heading:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##bulletHeadingClr", (float*)&sec.bullet_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Items:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##bulletItemClr", (float*)&sec.bullet_item_color, ImGuiColorEditFlags_NoInputs);
+
+            // Sizes
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Heading Size", &sec.bullet_heading_size, 0.5f, 2.0f, "%.1f");
+            ImGui::SliderFloat("Heading Bold", &sec.bullet_heading_boldness, 0.0f, 3.0f, "%.1f");
+            ImGui::SliderFloat("Item Size", &sec.bullet_item_size, 0.5f, 2.0f, "%.1f");
+            ImGui::SliderFloat("Column Spacing", &sec.bullet_column_spacing, 10.0f, 100.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Columns management
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLUMNS");
+
+            // Add column button
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Column", ImVec2(-1, 26))) {
+                BulletColumn newCol;
+                snprintf(newCol.subheading, sizeof(newCol.subheading), "Column %d", (int)sec.bullet_columns.size() + 1);
+                sec.bullet_columns.push_back(newCol);
+            }
+            ImGui::PopStyleColor();
+
+            // List columns
+            static int selectedBulletCol = -1;
+            if (!sec.bullet_columns.empty()) {
+                ImGui::BeginChild("BulletColList", ImVec2(-1, 80), true);
+                int colToDelete = -1;
+                for (int i = 0; i < (int)sec.bullet_columns.size(); i++) {
+                    ImGui::PushID(i);
+                    BulletColumn& col = sec.bullet_columns[i];
+                    bool isSelected = (selectedBulletCol == i);
+                    char colLabel[300];
+                    snprintf(colLabel, sizeof(colLabel), "%d. %s", i + 1, col.subheading);
+
+                    // Delete button first (right side)
+                    float contentWidth = ImGui::GetContentRegionAvail().x;
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() + contentWidth - 25);
+                    if (ImGui::SmallButton("X##del")) {
+                        colToDelete = i;
+                    }
+                    ImGui::PopStyleColor();
+
+                    // Selectable on same line (left side)
+                    ImGui::SameLine();
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() - contentWidth + 5);
+                    if (ImGui::Selectable(colLabel, isSelected, 0, ImVec2(contentWidth - 35, 0))) {
+                        selectedBulletCol = i;
+                    }
+                    ImGui::PopID();
+                }
+                if (colToDelete >= 0) {
+                    sec.bullet_columns.erase(sec.bullet_columns.begin() + colToDelete);
+                    if (selectedBulletCol >= (int)sec.bullet_columns.size()) selectedBulletCol = -1;
+                }
+                ImGui::EndChild();
+
+                // Edit selected column
+                if (selectedBulletCol >= 0 && selectedBulletCol < (int)sec.bullet_columns.size()) {
+                    BulletColumn& col = sec.bullet_columns[selectedBulletCol];
+
+                    ImGui::Spacing();
+                    ImGui::TextColored(ImVec4(0.91f, 0.4f, 0.1f, 1), "Editing Column %d", selectedBulletCol + 1);
+                    ImGui::Separator();
+
+                    // Column subheading
+                    ImGui::Text("Subheading:");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputText("##colSubheading", col.subheading, sizeof(col.subheading));
+                    ImGui::PopItemWidth();
+
+                    // Column style
+                    ImGui::Text("Color:");
+                    ImGui::SameLine();
+                    ImGui::ColorEdit4("##colSubClr", (float*)&col.subheadingColor, ImGuiColorEditFlags_NoInputs);
+                    ImGui::PushItemWidth(100);
+                    ImGui::SliderFloat("Size##colSub", &col.subheadingSize, 0.5f, 2.0f, "%.1f");
+                    ImGui::SliderFloat("Bold##colSub", &col.subheadingBoldness, 0.0f, 3.0f, "%.1f");
+                    ImGui::PopItemWidth();
+
+                    ImGui::Spacing();
+
+                    // Bullet items
+                    ImGui::Text("Bullet Items:");
+
+                    // Add item button
+                    static char newBulletItem[256] = "";
+                    ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x - 60);
+                    ImGui::InputText("##newItem", newBulletItem, sizeof(newBulletItem));
+                    ImGui::PopItemWidth();
+                    ImGui::SameLine();
+                    if (ImGui::Button("Add", ImVec2(-1, 0)) && strlen(newBulletItem) > 0) {
+                        col.bullet_items.push_back(newBulletItem);
+                        newBulletItem[0] = '\0';
+                    }
+
+                    // List bullet items
+                    ImGui::BeginChild("BulletItemsList", ImVec2(-1, 100), true);
+                    int itemToDelete = -1;
+                    for (int bi = 0; bi < (int)col.bullet_items.size(); bi++) {
+                        ImGui::PushID(bi);
+                        char itemBuf[256];
+                        strncpy(itemBuf, col.bullet_items[bi].c_str(), sizeof(itemBuf) - 1);
+                        itemBuf[sizeof(itemBuf) - 1] = '\0';
+                        ImGui::PushItemWidth(ImGui::GetContentRegionAvail().x - 30);
+                        if (ImGui::InputText("##itemEdit", itemBuf, sizeof(itemBuf))) {
+                            col.bullet_items[bi] = itemBuf;
+                        }
+                        ImGui::PopItemWidth();
+                        ImGui::SameLine();
+                        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                        if (ImGui::SmallButton("X")) {
+                            itemToDelete = bi;
+                        }
+                        ImGui::PopStyleColor();
+                        ImGui::PopID();
+                    }
+                    if (itemToDelete >= 0) {
+                        col.bullet_items.erase(col.bullet_items.begin() + itemToDelete);
+                    }
+                    ImGui::EndChild();
+
+                    // Apply to all columns button
+                    ImGui::Spacing();
+                    if (ImGui::Button("Apply Style to All Columns", ImVec2(-1, 26))) {
+                        for (int i = 0; i < (int)sec.bullet_columns.size(); i++) {
+                            if (i != selectedBulletCol) {
+                                sec.bullet_columns[i].subheadingColor = col.subheadingColor;
+                                sec.bullet_columns[i].subheadingSize = col.subheadingSize;
+                                sec.bullet_columns[i].subheadingBoldness = col.subheadingBoldness;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // Icon properties
+        else if (sec.type == SEC_ICON) {
+            ImGui::Text("Icon Element");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Current icon display and picker button
+            ImGui::Text("Current Icon: %s", g_IconNames[sec.icon_type]);
+
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.7f, 1.0f));
+            if (ImGui::Button("Select Icon...", ImVec2(-1, 30))) {
+                g_ShowIconPickerPopup = true;
+                g_IconPickerTarget = &sec.icon_type;
+            }
+            ImGui::PopStyleColor();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Icon properties
+            ImGui::Text("Icon Properties:");
+            ImGui::PushItemWidth(-1);
+            ImGui::SliderFloat("Size##iconSize", &sec.icon_size, 16.0f, 200.0f, "%.0f px");
+            ImGui::SliderFloat("Stroke##iconStroke", &sec.icon_stroke_width, 1.0f, 10.0f, "%.1f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Text("Icon Color:");
+            ImGui::ColorEdit4("##iconColor", (float*)&sec.icon_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+
+            ImGui::Spacing();
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##iconBgColor", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+        }
+        // Service Card Connector properties
+        else if (sec.type == SEC_SERVICE_CARD_CONNECTOR) {
+            ImGui::Text("Service Cards");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::PushItemWidth(120);
+            ImGui::SliderInt("Cards per Row", &sec.service_cards_per_row, 1, 6);
+            ImGui::SliderFloat("Spacing", &sec.service_card_spacing, 5.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##svcBgColor", (float*)&sec.bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CARDS");
+
+            // Add card button
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
+            if (ImGui::Button("+ Add Card", ImVec2(-1, 26))) {
+                ServiceCard newCard;
+                snprintf(newCard.title, sizeof(newCard.title), "Service %d", (int)sec.service_cards.size() + 1);
+                snprintf(newCard.badgeText, sizeof(newCard.badgeText), "CATEGORY");
+                sec.service_cards.push_back(newCard);
+            }
+            ImGui::PopStyleColor();
+
+            // List cards
+            static int selectedServiceCard = -1;
+            if (!sec.service_cards.empty()) {
+                ImGui::BeginChild("ServiceCardList", ImVec2(-1, 80), true);
+                int cardToDelete = -1;
+                for (int i = 0; i < (int)sec.service_cards.size(); i++) {
+                    ImGui::PushID(i);
+                    ServiceCard& card = sec.service_cards[i];
+                    bool isSelected = (selectedServiceCard == i);
+                    char cardLabel[300];
+                    snprintf(cardLabel, sizeof(cardLabel), "%d. %s", i + 1, card.title);
+
+                    float contentWidth = ImGui::GetContentRegionAvail().x;
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1.0f));
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() + contentWidth - 25);
+                    if (ImGui::SmallButton("X##del")) {
+                        cardToDelete = i;
+                    }
+                    ImGui::PopStyleColor();
+
+                    ImGui::SameLine();
+                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() - contentWidth + 5);
+                    if (ImGui::Selectable(cardLabel, isSelected, 0, ImVec2(contentWidth - 35, 0))) {
+                        selectedServiceCard = i;
+                    }
+                    ImGui::PopID();
+                }
+                if (cardToDelete >= 0) {
+                    sec.service_cards.erase(sec.service_cards.begin() + cardToDelete);
+                    if (selectedServiceCard >= (int)sec.service_cards.size()) selectedServiceCard = -1;
+                }
+                ImGui::EndChild();
+
+                // Edit selected card
+                if (selectedServiceCard >= 0 && selectedServiceCard < (int)sec.service_cards.size()) {
+                    ServiceCard& card = sec.service_cards[selectedServiceCard];
+
+                    ImGui::Spacing();
+                    ImGui::TextColored(ImVec4(0.9f, 0.4f, 0.1f, 1), "Editing Card %d", selectedServiceCard + 1);
+                    ImGui::Separator();
+
+                    ImGui::Text("Title:");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputText("##cardTitle", card.title, sizeof(card.title));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Text("Badge Text:");
+                    ImGui::PushItemWidth(-1);
+                    ImGui::InputText("##badgeText", card.badgeText, sizeof(card.badgeText));
+                    ImGui::PopItemWidth();
+
+                    ImGui::Text("Badge Color:");
+                    ImGui::ColorEdit4("##badgeColor", (float*)&card.badgeColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::Text("Title Color:");
+                    ImGui::ColorEdit4("##cardTitleColor", (float*)&card.titleColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::Text("Card Background:");
+                    ImGui::ColorEdit4("##cardBgColor", (float*)&card.cardBgColor, ImGuiColorEditFlags_NoInputs);
+
+                    ImGui::PushItemWidth(120);
+                    ImGui::SliderFloat("Border Radius", &card.borderRadius, 0.0f, 30.0f, "%.0f");
+                    ImGui::PopItemWidth();
+                }
+            }
+        }
+        // Glass Bar Connector properties
+        else if (sec.type == SEC_GLASS_BAR_CONNECTOR) {
+            ImGui::Text("Glass Bar");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Main Text:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##glassText", sec.glass_bar_text, sizeof(sec.glass_bar_text));
+            ImGui::PopItemWidth();
+
+            ImGui::Text("Highlight Text:");
+            ImGui::PushItemWidth(-1);
+            ImGui::InputText("##glassHighlight", sec.glass_bar_highlight, sizeof(sec.glass_bar_highlight));
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::Separator();
+            ImGui::Text("Colors:");
+
+            ImGui::Text("Text:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##glassTextClr", (float*)&sec.glass_bar_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SameLine();
+            ImGui::Text("Highlight:");
+            ImGui::SameLine();
+            ImGui::ColorEdit4("##glassHighlightClr", (float*)&sec.glass_bar_highlight_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Text("Background:");
+            ImGui::ColorEdit4("##glassBgClr", (float*)&sec.glass_bar_bg_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+
+            ImGui::Spacing();
+            ImGui::Text("Style:");
+            ImGui::PushItemWidth(150);
+            ImGui::SliderFloat("Opacity", &sec.glass_bar_opacity, 0.0f, 1.0f, "%.2f");
+            ImGui::SliderFloat("Border Radius", &sec.glass_bar_border_radius, 0.0f, 50.0f, "%.0f");
+            ImGui::SliderFloat("Padding", &sec.glass_bar_padding, 5.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
         }
         // Regular section content
         else {
@@ -14060,6 +28800,36 @@ void RenderUI() {
 
         ImGui::Spacing();
         ImGui::Spacing();
+
+        // Copy/Paste buttons
+        ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "COPY / PASTE");
+        ImGui::Separator();
+        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.5f, 0.7f, 1));
+        if (ImGui::Button("Copy Section (Ctrl+C)", ImVec2(-1, 26))) {
+            g_CopiedSection = sec;  // Deep copy
+            g_HasCopiedSection = true;
+        }
+        ImGui::PopStyleColor();
+
+        if (g_HasCopiedSection) {
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1));
+            if (ImGui::Button("Paste Section (Ctrl+V)", ImVec2(-1, 26))) {
+                WebSection newSection = g_CopiedSection;
+                newSection.id = g_NextSectionId++;
+                newSection.x_position += 30;
+                newSection.y_position += 30;
+                newSection.z_index = (int)g_Sections.size();
+                for (auto& s : g_Sections) s.selected = false;
+                newSection.selected = true;
+                g_Sections.push_back(newSection);
+                g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+            }
+            ImGui::PopStyleColor();
+        } else {
+            ImGui::TextColored(ImVec4(0.5f, 0.5f, 0.5f, 1), "(No section copied)");
+        }
+
+        ImGui::Spacing();
         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.6f, 0.2f, 0.2f, 1));
         if (ImGui::Button("Delete Section", ImVec2(-1, 28))) {
             g_Sections.erase(g_Sections.begin() + g_SelectedSectionIndex);
@@ -14279,34 +29049,40 @@ void RenderUI() {
         ImGui::End();
     }
 
-    // ==================== SAVE AS IMGUI TEMPLATE POPUP (Global) ====================
+    // ==================== SAVE TEMPLATE POPUP (Global - Unified Save) ====================
     if (g_ShowSaveImGuiTemplatePopup) {
-        static char imguiTemplateName[256] = "";
+        static char templateSaveName[256] = "";
         static bool nameInitialized = false;
 
         // Initialize name from project name once
-        if (!nameInitialized && !g_FigmaProject.name.empty()) {
-            strncpy(imguiTemplateName, g_FigmaProject.name.c_str(), sizeof(imguiTemplateName));
+        if (!nameInitialized) {
+            if (!g_FigmaProject.name.empty()) {
+                strncpy(templateSaveName, g_FigmaProject.name.c_str(), sizeof(templateSaveName));
+            } else if (!g_ProjectName.empty()) {
+                strncpy(templateSaveName, g_ProjectName.c_str(), sizeof(templateSaveName));
+            }
             nameInitialized = true;
         }
 
-        ImGui::SetNextWindowSize(ImVec2(400, 180), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowSize(ImVec2(400, 160), ImGuiCond_FirstUseEver);
         ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 
-        if (ImGui::Begin("Save as ImGui Template", &g_ShowSaveImGuiTemplatePopup, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "Save current design as ImGui Template");
+        if (ImGui::Begin("Save Template", &g_ShowSaveImGuiTemplatePopup, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "Save your design to database");
             ImGui::Separator();
             ImGui::Spacing();
 
             ImGui::Text("Template Name:");
             ImGui::SetNextItemWidth(-1);
-            ImGui::InputText("##SaveTemplateName", imguiTemplateName, sizeof(imguiTemplateName));
+            ImGui::InputText("##SaveTemplateName", templateSaveName, sizeof(templateSaveName));
 
             ImGui::Spacing();
-            ImGui::TextDisabled("Layers: %zu | Canvas: %.0fx%.0f",
-                g_FigmaProject.layers.size(),
-                g_FigmaProject.canvas_width,
-                g_FigmaProject.canvas_height);
+            // Show sections count for Normal mode, layers for Figma mode
+            if (!g_FigmaMode && !g_Sections.empty()) {
+                ImGui::TextDisabled("Sections: %zu", g_Sections.size());
+            } else if (!g_FigmaProject.layers.empty()) {
+                ImGui::TextDisabled("Layers: %zu", g_FigmaProject.layers.size());
+            }
 
             ImGui::Spacing();
             ImGui::Separator();
@@ -14315,13 +29091,29 @@ void RenderUI() {
             // Save button (green)
             ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.6f, 0.3f, 1.0f));
             ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.7f, 0.4f, 1.0f));
-            if (ImGui::Button("Save Template", ImVec2(150, 30))) {
-                if (strlen(imguiTemplateName) > 0) {
-                    if (SaveAsImGuiTemplate(imguiTemplateName)) {
-                        printf("[ImGui Templates] Saved successfully!\n");
-                        imguiTemplateName[0] = '\0';
+            if (ImGui::Button("Save", ImVec2(120, 30))) {
+                if (strlen(templateSaveName) > 0) {
+                    // Save everything to database (both templates/sections AND imgui_templates)
+                    bool saved = false;
+
+                    // Always save to templates/sections table first (for Template Gallery)
+                    if (!g_FigmaMode && !g_Sections.empty()) {
+                        saved = SaveTemplate(templateSaveName, "User designed template");
+                    }
+
+                    // Also save to imgui_templates (unified save)
+                    if (SaveAsImGuiTemplate(templateSaveName)) {
+                        saved = true;
+                    }
+
+                    if (saved) {
+                        printf("[Save] Template '%s' saved to database!\n", templateSaveName);
+                        templateSaveName[0] = '\0';
                         nameInitialized = false;
                         g_ShowSaveImGuiTemplatePopup = false;
+                        // Refresh template lists
+                        LoadAvailableTemplates();
+                        g_ImGuiTemplatesList = GetImGuiTemplates();
                     }
                 }
             }
@@ -14330,9 +29122,204 @@ void RenderUI() {
             ImGui::SameLine();
 
             if (ImGui::Button("Cancel", ImVec2(100, 30))) {
-                imguiTemplateName[0] = '\0';
+                templateSaveName[0] = '\0';
                 nameInitialized = false;
                 g_ShowSaveImGuiTemplatePopup = false;
+            }
+        }
+        ImGui::End();
+    }
+
+    // ==================== COPY TEMPLATE POPUP ====================
+    if (g_ShowCopyTemplatePopup) {
+        static char copyTemplateName[256] = "";
+        static bool copyNameInitialized = false;
+
+        // Initialize name with current project name + " - Copy"
+        if (!copyNameInitialized) {
+            snprintf(copyTemplateName, sizeof(copyTemplateName), "%s - Copy", g_ProjectName.c_str());
+            copyNameInitialized = true;
+        }
+
+        ImGui::SetNextWindowSize(ImVec2(400, 180), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::Begin("Copy Template", &g_ShowCopyTemplatePopup, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize)) {
+            ImGui::TextColored(ImVec4(0.8f, 0.5f, 0.2f, 1), "Create a copy of current template");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("New Template Name:");
+            ImGui::SetNextItemWidth(-1);
+            ImGui::InputText("##CopyTemplateName", copyTemplateName, sizeof(copyTemplateName));
+
+            ImGui::Spacing();
+            ImGui::Spacing();
+
+            bool canCopy = strlen(copyTemplateName) > 0;
+
+            ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.8f, 0.5f, 0.2f, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.9f, 0.6f, 0.3f, 1.0f));
+
+            if (!canCopy) {
+                ImGui::PushStyleVar(ImGuiStyleVar_Alpha, 0.5f);
+            }
+
+            if (ImGui::Button("Copy Template", ImVec2(150, 30)) && canCopy) {
+                // Check database connection
+                if (!g_DBConnection || !g_UseDatabase) {
+                    printf("[Copy Template] ERROR: Database not connected!\n");
+                } else {
+                    // Sync current page back to g_NormalPages
+                    if (g_CurrentPageIndex >= 0 && g_CurrentPageIndex < (int)g_NormalPages.size()) {
+                        g_NormalPages[g_CurrentPageIndex].sections = g_Sections;
+                    }
+
+                    // Save to database as new template
+                    bool savedToSections = false;
+                    bool savedToImGui = false;
+
+                    // Save to templates/sections tables (main database storage)
+                    if (!g_Sections.empty() || !g_NormalPages.empty()) {
+                        savedToSections = SaveTemplate(copyTemplateName, "Copy of " + g_ProjectName);
+                        if (savedToSections) {
+                            printf("[Copy Template] Saved to templates/sections table: %s\n", copyTemplateName);
+                        }
+                    }
+
+                    // Also save to imgui_templates table
+                    savedToImGui = SaveAsImGuiTemplate(copyTemplateName);
+                    if (savedToImGui) {
+                        printf("[Copy Template] Saved to imgui_templates table: %s\n", copyTemplateName);
+                    }
+
+                    if (savedToSections || savedToImGui) {
+                        printf("[Copy Template] SUCCESS - Template copied to database: %s\n", copyTemplateName);
+
+                        // Refresh template lists from database
+                        LoadAvailableTemplates();
+                        g_ImGuiTemplatesList = GetImGuiTemplates();
+
+                        copyTemplateName[0] = '\0';
+                        copyNameInitialized = false;
+                        g_ShowCopyTemplatePopup = false;
+                    } else {
+                        printf("[Copy Template] ERROR: Failed to save template to database!\n");
+                    }
+                }
+            }
+
+            if (!canCopy) {
+                ImGui::PopStyleVar();
+            }
+            ImGui::PopStyleColor(2);
+
+            ImGui::SameLine();
+
+            if (ImGui::Button("Cancel", ImVec2(100, 30))) {
+                copyTemplateName[0] = '\0';
+                copyNameInitialized = false;
+                g_ShowCopyTemplatePopup = false;
+            }
+        }
+        ImGui::End();
+    }
+
+    // ==================== ICON PICKER POPUP ====================
+    if (g_ShowIconPickerPopup) {
+        ImGui::SetNextWindowSize(ImVec2(500, 420), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowPos(ImGui::GetMainViewport()->GetCenter(), ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+
+        if (ImGui::Begin("Select Icon", &g_ShowIconPickerPopup, ImGuiWindowFlags_NoCollapse)) {
+            ImGui::TextColored(ImVec4(0.2f, 0.6f, 0.9f, 1), g_AddingNewIcon ? "Select an icon to add:" : "Choose an icon:");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Grid layout for icons
+            float iconButtonSize = 70.0f;
+            float iconDisplaySize = 32.0f;
+            int iconsPerRow = 6;
+
+            ImGui::BeginChild("IconGrid", ImVec2(-1, 320), true);
+
+            for (int i = 0; i < ICON_COUNT; i++) {
+                ImGui::PushID(i);
+
+                // Calculate position in grid
+                int col = i % iconsPerRow;
+                if (col > 0) {
+                    ImGui::SameLine();
+                }
+
+                // Create a button with icon preview
+                ImVec2 cursorPos = ImGui::GetCursorScreenPos();
+                bool isSelected = (g_IconPickerTarget && *g_IconPickerTarget == i);
+
+                // Highlight selected icon
+                if (isSelected) {
+                    ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.5f, 0.8f, 1.0f));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.4f, 0.6f, 0.9f, 1.0f));
+                }
+
+                if (ImGui::Button("##iconBtn", ImVec2(iconButtonSize, iconButtonSize))) {
+                    if (g_AddingNewIcon) {
+                        // Create new icon section with selected icon
+                        WebSection sec(g_NextSectionId++, SEC_ICON);
+                        sec.icon_type = i;
+                        if (g_FreeDesignMode) {
+                            float nextY = 20;
+                            for (const auto& s : g_Sections) {
+                                float sBottom = s.y_position + s.height;
+                                if (sBottom > nextY) nextY = sBottom + 20;
+                            }
+                            sec.x_position = 20;
+                            sec.y_position = nextY;
+                            sec.width = 100;
+                            sec.height = 100;
+                            sec.z_index = (int)g_Sections.size();
+                            sec.use_manual_position = true;
+                        } else {
+                            sec.height = 100;
+                        }
+                        g_Sections.push_back(sec);
+                        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+                        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+                        g_AddingNewIcon = false;
+                    } else if (g_IconPickerTarget) {
+                        // Update existing icon
+                        *g_IconPickerTarget = i;
+                    }
+                    g_ShowIconPickerPopup = false;
+                    g_IconPickerTarget = nullptr;
+                }
+
+                if (isSelected) {
+                    ImGui::PopStyleColor(2);
+                }
+
+                // Draw icon on top of button
+                ImDrawList* dl = ImGui::GetWindowDrawList();
+                float iconCenterX = cursorPos.x + iconButtonSize / 2;
+                float iconCenterY = cursorPos.y + iconButtonSize / 2 - 8;
+                ImU32 iconColor = isSelected ? IM_COL32(255, 255, 255, 255) : IM_COL32(200, 200, 200, 255);
+                DrawIcon(dl, i, iconCenterX, iconCenterY, iconDisplaySize, iconColor, 2.0f);
+
+                // Draw icon name below
+                ImVec2 textSize = ImGui::CalcTextSize(g_IconNames[i]);
+                float textX = cursorPos.x + (iconButtonSize - textSize.x) / 2;
+                float textY = cursorPos.y + iconButtonSize - 18;
+                dl->AddText(ImVec2(textX, textY), IM_COL32(180, 180, 180, 255), g_IconNames[i]);
+
+                ImGui::PopID();
+            }
+
+            ImGui::EndChild();
+
+            ImGui::Spacing();
+            if (ImGui::Button("Cancel", ImVec2(-1, 28))) {
+                g_ShowIconPickerPopup = false;
+                g_IconPickerTarget = nullptr;
+                g_AddingNewIcon = false;
             }
         }
         ImGui::End();
@@ -14355,7 +29342,7 @@ void RenderUI() {
                 ImGui::Spacing();
                 ImGui::TextWrapped("To save an ImGui template:");
                 ImGui::BulletText("Import a Figma design (URL or API)");
-                ImGui::BulletText("Click 'Export Code' > 'Save as ImGui Template'");
+                ImGui::BulletText("Click 'Save Template' in top bar");
                 ImGui::Spacing();
             } else {
                 // Refresh button
@@ -14830,14 +29817,25 @@ void RenderUI() {
                                 else if (typeStr == "LAYER_INPUT") layer.type = LAYER_INPUT;
                                 else layer.type = LAYER_DIV;
 
-                                // Parse colors from rgba strings
-                                auto parseRGBA = [](const std::string& rgbaStr) -> ImVec4 {
-                                    // Parse "rgba(r,g,b,a)" format
-                                    if (rgbaStr.find("rgba(") == 0) {
-                                        int r = 0, g = 0, b = 0;
-                                        float a = 1.0f;
-                                        if (sscanf(rgbaStr.c_str(), "rgba(%d,%d,%d,%f)", &r, &g, &b, &a) >= 3) {
+                                // Parse colors from rgb/rgba strings
+                                auto parseRGBA = [](const std::string& colorStr) -> ImVec4 {
+                                    if (colorStr.empty()) return ImVec4(0, 0, 0, 0);
+
+                                    int r = 0, g = 0, b = 0;
+                                    float a = 1.0f;
+
+                                    // Parse "rgba(r, g, b, a)" format
+                                    if (colorStr.find("rgba(") == 0 || colorStr.find("rgba") != std::string::npos) {
+                                        if (sscanf(colorStr.c_str(), "rgba(%d, %d, %d, %f)", &r, &g, &b, &a) >= 3 ||
+                                            sscanf(colorStr.c_str(), "rgba(%d,%d,%d,%f)", &r, &g, &b, &a) >= 3) {
                                             return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, a);
+                                        }
+                                    }
+                                    // Parse "rgb(r, g, b)" format
+                                    else if (colorStr.find("rgb(") == 0 || colorStr.find("rgb") != std::string::npos) {
+                                        if (sscanf(colorStr.c_str(), "rgb(%d, %d, %d)", &r, &g, &b) == 3 ||
+                                            sscanf(colorStr.c_str(), "rgb(%d,%d,%d)", &r, &g, &b) == 3) {
+                                            return ImVec4(r / 255.0f, g / 255.0f, b / 255.0f, 1.0f);
                                         }
                                     }
                                     return ImVec4(0, 0, 0, 0);
@@ -14866,6 +29864,13 @@ void RenderUI() {
                                     }
                                 }
 
+                                // Debug: print parsed colors for first 5 layers
+                                if (layerCount < 5) {
+                                    printf("[FigmaDesign] Layer %d '%s': bg=(%.2f,%.2f,%.2f,%.2f)\n",
+                                        layer.id, layer.name.c_str(),
+                                        layer.bg_color.x, layer.bg_color.y, layer.bg_color.z, layer.bg_color.w);
+                                }
+
                                 g_FigmaProject.layers.push_back(layer);
                                 layerCount++;
                                 pos = idPos + 5;
@@ -14876,6 +29881,7 @@ void RenderUI() {
                         }
 
                         g_FigmaMode = true;
+                        RewriteFigmaActionsToInternal();
                         g_ShowURLImportDialog = false;
                     } else {
                         g_FigmaImportStatus = "Error: Could not read layers.json";
