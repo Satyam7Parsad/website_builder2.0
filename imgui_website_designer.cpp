@@ -955,6 +955,11 @@ struct ServicesSectionCard {
     ImVec4 linkColor;
     ImVec4 cardBgColor;
     float borderRadius;
+    // Image properties
+    std::string imagePath;
+    GLuint textureID;
+    int imageWidth, imageHeight;
+    float imageHeight_display;       // Height of image area in card
 
     ServicesSectionCard() : iconType(ICON_STAR),
                             iconBgColor(0.95f, 0.5f, 0.2f, 1),
@@ -965,7 +970,9 @@ struct ServicesSectionCard {
                             bulletColor(0.95f, 0.5f, 0.2f, 1),
                             linkColor(0.95f, 0.5f, 0.2f, 1),
                             cardBgColor(1, 1, 1, 1),
-                            borderRadius(12.0f) {
+                            borderRadius(12.0f),
+                            textureID(0), imageWidth(0), imageHeight(0),
+                            imageHeight_display(180.0f) {
         strcpy(title, "Service Title");
         strcpy(description, "Service description goes here.");
         strcpy(bullets[0], "Feature one");
@@ -1736,6 +1743,11 @@ struct WebSection {
     ImVec4 story_button_text_color;
     ImVec4 story_stats_bg;
     ImVec4 story_stats_text_color;
+    // Story section images (collage of 3 images)
+    std::string story_images[3];          // Image paths
+    GLuint story_image_textures[3];       // Texture IDs
+    int story_image_widths[3];
+    int story_image_heights[3];
 
     // ========== SERVICES SECTION CONNECTOR ==========
     char services_label[64];
@@ -1938,6 +1950,7 @@ struct WebSection {
         story_accent_color(0.95f, 0.5f, 0.2f, 1), story_text_color(0.3f, 0.3f, 0.35f, 1),
         story_button_bg(0.95f, 0.5f, 0.2f, 1), story_button_text_color(1, 1, 1, 1),
         story_stats_bg(0.95f, 0.5f, 0.2f, 1), story_stats_text_color(1, 1, 1, 1),
+        story_image_textures{0, 0, 0}, story_image_widths{0, 0, 0}, story_image_heights{0, 0, 0},
         // Services section defaults
         services_cards_per_row(3), services_card_spacing(24.0f),
         services_label_color(0.95f, 0.5f, 0.2f, 1), services_heading_color(0.1f, 0.1f, 0.15f, 1),
@@ -23116,16 +23129,39 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         dl->AddText(font, 32.0f, ImVec2(statsX + (statsSize - numSize.x)/2, statsY + (statsSize - numSize.y)/2),
                    ImGui::ColorConvertFloat4ToU32(sec.story_stats_text_color), sec.story_stats_number);
 
-        // Placeholder rectangles for image collage
+        // Image collage (3 images)
         float imgX = x + leftW;
         float imgY = y + 30;
-        dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + 150, imgY + 180), IM_COL32(200, 200, 210, 255), 8.0f);
-        dl->AddRectFilled(ImVec2(imgX + 160, imgY), ImVec2(imgX + 280, imgY + 120), IM_COL32(200, 200, 210, 255), 8.0f);
-        dl->AddRectFilled(ImVec2(imgX + 160, imgY + 130), ImVec2(imgX + 280, imgY + 250), IM_COL32(200, 200, 210, 255), 8.0f);
-        // Image placeholders text
-        dl->AddText(font, 11.0f, ImVec2(imgX + 50, imgY + 80), IM_COL32(150, 150, 150, 255), "Image 1");
-        dl->AddText(font, 11.0f, ImVec2(imgX + 195, imgY + 50), IM_COL32(150, 150, 150, 255), "Image 2");
-        dl->AddText(font, 11.0f, ImVec2(imgX + 195, imgY + 180), IM_COL32(150, 150, 150, 255), "Image 3");
+        // Image 1 - tall left image
+        float img1W = 150, img1H = 180;
+        if (sec.story_image_textures[0] != 0) {
+            dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[0],
+                               ImVec2(imgX, imgY), ImVec2(imgX + img1W, imgY + img1H),
+                               ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), 8.0f);
+        } else {
+            dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + img1W, imgY + img1H), IM_COL32(200, 200, 210, 255), 8.0f);
+            dl->AddText(font, 11.0f, ImVec2(imgX + 40, imgY + 85), IM_COL32(150, 150, 150, 255), "Click to add\nImage 1");
+        }
+        // Image 2 - top right
+        float img2X = imgX + 160, img2W = 120, img2H = 120;
+        if (sec.story_image_textures[1] != 0) {
+            dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[1],
+                               ImVec2(img2X, imgY), ImVec2(img2X + img2W, imgY + img2H),
+                               ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), 8.0f);
+        } else {
+            dl->AddRectFilled(ImVec2(img2X, imgY), ImVec2(img2X + img2W, imgY + img2H), IM_COL32(200, 200, 210, 255), 8.0f);
+            dl->AddText(font, 11.0f, ImVec2(img2X + 25, imgY + 50), IM_COL32(150, 150, 150, 255), "Click to add\nImage 2");
+        }
+        // Image 3 - bottom right
+        float img3Y = imgY + 130, img3W = 120, img3H = 120;
+        if (sec.story_image_textures[2] != 0) {
+            dl->AddImageRounded((ImTextureID)(intptr_t)sec.story_image_textures[2],
+                               ImVec2(img2X, img3Y), ImVec2(img2X + img3W, img3Y + img3H),
+                               ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), 8.0f);
+        } else {
+            dl->AddRectFilled(ImVec2(img2X, img3Y), ImVec2(img2X + img3W, img3Y + img3H), IM_COL32(200, 200, 210, 255), 8.0f);
+            dl->AddText(font, 11.0f, ImVec2(img2X + 25, img3Y + 50), IM_COL32(150, 150, 150, 255), "Click to add\nImage 3");
+        }
 
         if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
         return;
@@ -23187,9 +23223,18 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             dl->AddRectFilled(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), ImGui::ColorConvertFloat4ToU32(card.cardBgColor), card.borderRadius);
             dl->AddRect(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), IM_COL32(230, 230, 235, 255), card.borderRadius, 0, 1.0f);
 
-            // Image placeholder with number
+            // Image area with number overlay
             float imgH = 140;
-            dl->AddRectFilled(ImVec2(cx + 15, cy + 15), ImVec2(cx + cardW - 15, cy + imgH), IM_COL32(220, 220, 225, 255), 8.0f);
+            if (card.textureID != 0) {
+                // Show uploaded image
+                dl->AddImageRounded((ImTextureID)(intptr_t)card.textureID,
+                                   ImVec2(cx + 15, cy + 15), ImVec2(cx + cardW - 15, cy + imgH),
+                                   ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), 8.0f);
+            } else {
+                // Placeholder
+                dl->AddRectFilled(ImVec2(cx + 15, cy + 15), ImVec2(cx + cardW - 15, cy + imgH), IM_COL32(220, 220, 225, 255), 8.0f);
+            }
+            // Number overlay
             char numStr[8]; snprintf(numStr, sizeof(numStr), "%02d", (int)(i + 1));
             ImVec2 numSize = font->CalcTextSizeA(48.0f, FLT_MAX, 0.0f, numStr);
             dl->AddText(font, 48.0f, ImVec2(cx + cardW - 15 - numSize.x - 10, cy + imgH - numSize.y - 5), IM_COL32(200, 200, 205, 180), numStr);
@@ -29347,6 +29392,48 @@ void RenderUI() {
             ImGui::ColorEdit4("Text", (float*)&sec.story_text_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Button BG", (float*)&sec.story_button_bg, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Stats BG", (float*)&sec.story_stats_bg, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLLAGE IMAGES");
+            for (int i = 0; i < 3; i++) {
+                ImGui::PushID(i + 1000);
+                char imgLabel[32]; snprintf(imgLabel, sizeof(imgLabel), "Image %d:", i + 1);
+                ImGui::Text("%s", imgLabel);
+                if (sec.story_image_textures[i] != 0) {
+                    ImGui::Image((ImTextureID)(intptr_t)sec.story_image_textures[i], ImVec2(80, 60));
+                    ImGui::SameLine();
+                    if (ImGui::Button("Remove")) {
+                        glDeleteTextures(1, &sec.story_image_textures[i]);
+                        sec.story_image_textures[i] = 0;
+                        sec.story_images[i] = "";
+                    }
+                } else {
+                    static char imgPath[512] = "";
+                    ImGui::InputText("##storyImgPath", imgPath, sizeof(imgPath));
+                    ImGui::SameLine();
+                    if (ImGui::Button("Load")) {
+                        if (imgPath[0] != '\0') {
+                            int w, h, c;
+                            unsigned char* data = stbi_load(imgPath, &w, &h, &c, 4);
+                            if (data) {
+                                GLuint tex;
+                                glGenTextures(1, &tex);
+                                glBindTexture(GL_TEXTURE_2D, tex);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                stbi_image_free(data);
+                                sec.story_image_textures[i] = tex;
+                                sec.story_images[i] = imgPath;
+                                sec.story_image_widths[i] = w;
+                                sec.story_image_heights[i] = h;
+                                imgPath[0] = '\0';
+                            }
+                        }
+                    }
+                }
+                ImGui::PopID();
+            }
         }
         // Services Section Connector properties
         else if (sec.type == SEC_SERVICES_SECTION_CONNECTOR) {
@@ -29392,6 +29479,7 @@ void RenderUI() {
                 ImGui::InputText("Title", card.title, sizeof(card.title));
                 ImGui::InputTextMultiline("Desc", card.description, sizeof(card.description), ImVec2(-1, 50));
                 ImGui::SliderInt("Icon", &card.iconType, 0, ICON_COUNT - 1);
+                ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[card.iconType]);
                 ImGui::ColorEdit4("Icon BG", (float*)&card.iconBgColor, ImGuiColorEditFlags_NoInputs);
                 ImGui::Text("Bullets:");
                 for (int b = 0; b < 6; b++) {
@@ -29400,6 +29488,47 @@ void RenderUI() {
                 }
                 ImGui::SliderInt("Bullet Count", &card.bulletCount, 0, 6);
                 ImGui::InputText("Link Text", card.linkText, sizeof(card.linkText));
+
+                // Card Image
+                ImGui::Spacing();
+                ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CARD IMAGE");
+                if (card.textureID != 0) {
+                    ImGui::Image((ImTextureID)(intptr_t)card.textureID, ImVec2(120, 80));
+                    if (ImGui::Button("Remove Image##svc")) {
+                        glDeleteTextures(1, &card.textureID);
+                        card.textureID = 0;
+                        card.imagePath = "";
+                    }
+                } else {
+                    static char svcImgPath[512] = "";
+                    ImGui::InputText("##svcCardImg", svcImgPath, sizeof(svcImgPath));
+                    ImGui::SameLine();
+                    if (ImGui::Button("Load##svcImg")) {
+                        if (svcImgPath[0] != '\0') {
+                            int w, h, c;
+                            unsigned char* data = stbi_load(svcImgPath, &w, &h, &c, 4);
+                            if (data) {
+                                GLuint tex;
+                                glGenTextures(1, &tex);
+                                glBindTexture(GL_TEXTURE_2D, tex);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                stbi_image_free(data);
+                                card.textureID = tex;
+                                card.imagePath = svcImgPath;
+                                card.imageWidth = w;
+                                card.imageHeight = h;
+                                svcImgPath[0] = '\0';
+                            }
+                        }
+                    }
+                }
+
+                if (ImGui::Button("Delete Card##svc")) {
+                    sec.services_cards.erase(sec.services_cards.begin() + selSvcCard);
+                    selSvcCard = -1;
+                }
             }
         }
         // Clients Grid Connector properties
