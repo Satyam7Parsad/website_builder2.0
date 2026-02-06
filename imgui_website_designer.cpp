@@ -79,7 +79,9 @@ enum SectionType {
     SEC_FEATURES_GRID_CONNECTOR,   // Feature cards with icons and checkmark lists
     SEC_PROCESS_TIMELINE_CONNECTOR, // Horizontal process timeline with steps
     SEC_HERO_SECTION_CONNECTOR,    // Full hero section with badge, buttons, stats
-    SEC_FOOTER_SECTION_CONNECTOR   // Advanced footer with columns, email signup, social links
+    SEC_FOOTER_SECTION_CONNECTOR,  // Advanced footer with columns, email signup, social links
+    SEC_CTA_SECTION_CONNECTOR,     // Call to action with background image and buttons
+    SEC_MARQUEE_CONNECTOR          // Client logo marquee with continuous scrolling
 };
 
 // ============================================================================
@@ -1153,6 +1155,19 @@ struct FooterSocialLink {
     }
 };
 
+// Marquee logo item for scrolling client logos
+struct MarqueeLogoItem {
+    char text[64];              // Logo text (e.g., "NIKE", "QUAD")
+    std::string imagePath;      // Optional logo image
+    GLuint textureID;
+    int imageWidth, imageHeight;
+    bool useImage;              // True = use image, False = use text
+
+    MarqueeLogoItem() : textureID(0), imageWidth(0), imageHeight(0), useImage(false) {
+        strcpy(text, "LOGO");
+    }
+};
+
 // Content block for vertical_connector (vertical text + image layout)
 struct VerticalBlock {
     int type; // 0=Heading, 1=Description, 2=Image
@@ -1926,6 +1941,47 @@ struct WebSection {
     ImVec4 footer_bottom_bg;             // Bottom bar background
     ImVec4 footer_bottom_link_color;     // Bottom links color
     float footer_border_radius;          // Border radius for elements
+    float footer_brand_size;             // Brand name text size
+    float footer_column_heading_size;    // Column heading text size
+    float footer_link_size;              // Link text size
+    float footer_newsletter_size;        // Newsletter heading size
+    float footer_copyright_size;         // Copyright text size
+    float footer_button_size;            // Button text size
+
+    // ========== CTA SECTION CONNECTOR ==========
+    char cta_heading[256];               // "Ready to Elevate Your Visual Content?"
+    char cta_subtitle[512];              // "Partner with 50+ years..."
+    char cta_btn_primary_text[64];       // "Start Your Project"
+    char cta_btn_secondary_text[64];     // Phone number
+    int cta_btn_primary_action;
+    char cta_btn_primary_target[512];
+    int cta_btn_secondary_action;
+    char cta_btn_secondary_target[512];
+    std::string cta_bg_image_path;       // Background image
+    GLuint cta_bg_texture;
+    int cta_bg_width, cta_bg_height;
+    ImVec4 cta_overlay_color;            // Teal gradient overlay
+    ImVec4 cta_heading_color;
+    ImVec4 cta_subtitle_color;
+    ImVec4 cta_btn_primary_bg;
+    ImVec4 cta_btn_primary_text_color;
+    ImVec4 cta_btn_secondary_bg;
+    ImVec4 cta_btn_secondary_text_color;
+    float cta_heading_size;
+    float cta_subtitle_size;
+    float cta_btn_size;
+    float cta_btn_radius;
+    bool cta_btn_secondary_has_icon;     // Show phone icon
+
+    // ========== MARQUEE CONNECTOR ==========
+    std::vector<MarqueeLogoItem> marquee_items;  // Logo items
+    ImVec4 marquee_bg_color;             // Dark background
+    ImVec4 marquee_text_color;           // Text color for logos
+    float marquee_height;                // Bar height
+    float marquee_speed;                 // Scroll speed (pixels per second)
+    float marquee_spacing;               // Space between logos
+    float marquee_text_size;             // Logo text size
+    float marquee_scroll_offset;         // Current scroll position (for animation)
 
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
@@ -2085,7 +2141,22 @@ struct WebSection {
         footer_submit_bg(0.95f, 0.5f, 0.2f, 1.0f), footer_submit_icon_color(1.0f, 1.0f, 1.0f, 1.0f),
         footer_social_bg(0.15f, 0.17f, 0.22f, 1.0f), footer_social_icon_color(0.8f, 0.8f, 0.85f, 1.0f),
         footer_copyright_color(0.5f, 0.5f, 0.55f, 1.0f), footer_bottom_bg(0.06f, 0.08f, 0.12f, 1.0f),
-        footer_bottom_link_color(0.6f, 0.6f, 0.65f, 1.0f), footer_border_radius(8.0f) {
+        footer_bottom_link_color(0.6f, 0.6f, 0.65f, 1.0f), footer_border_radius(8.0f),
+        footer_brand_size(18.0f), footer_column_heading_size(13.0f), footer_link_size(11.0f),
+        footer_newsletter_size(13.0f), footer_copyright_size(11.0f), footer_button_size(11.0f),
+        // CTA Section connector defaults
+        cta_btn_primary_action(ACTION_SCROLL_TO_SECTION), cta_btn_secondary_action(ACTION_PHONE),
+        cta_bg_texture(0), cta_bg_width(0), cta_bg_height(0),
+        cta_overlay_color(0.2f, 0.5f, 0.5f, 0.85f),
+        cta_heading_color(1.0f, 1.0f, 1.0f, 1.0f), cta_subtitle_color(1.0f, 1.0f, 1.0f, 0.9f),
+        cta_btn_primary_bg(1.0f, 1.0f, 1.0f, 1.0f), cta_btn_primary_text_color(0.1f, 0.1f, 0.15f, 1.0f),
+        cta_btn_secondary_bg(0.35f, 0.55f, 0.55f, 0.7f), cta_btn_secondary_text_color(1.0f, 1.0f, 1.0f, 1.0f),
+        cta_heading_size(42.0f), cta_subtitle_size(16.0f), cta_btn_size(14.0f), cta_btn_radius(30.0f),
+        cta_btn_secondary_has_icon(true),
+        // Marquee connector defaults
+        marquee_bg_color(0.12f, 0.14f, 0.18f, 1.0f), marquee_text_color(0.5f, 0.5f, 0.55f, 1.0f),
+        marquee_height(50.0f), marquee_speed(50.0f), marquee_spacing(80.0f),
+        marquee_text_size(14.0f), marquee_scroll_offset(0.0f) {
         // Initialize char arrays
         story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
         story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
@@ -2112,6 +2183,13 @@ struct WebSection {
         strcpy(footer_bottom_links[2], "Cookies");
         footer_bottom_links[3][0] = '\0';
         for (int i = 0; i < 4; i++) { footer_bottom_link_actions[i] = 0; footer_bottom_link_targets[i][0] = '\0'; }
+        // CTA Section connector char arrays
+        strcpy(cta_heading, "Ready to Elevate Your Visual Content?");
+        strcpy(cta_subtitle, "Partner with 50+ years of premedia excellence. Let's create something extraordinary together.");
+        strcpy(cta_btn_primary_text, "Start Your Project");
+        strcpy(cta_btn_secondary_text, "+1 (212) 380-1654");
+        strcpy(cta_btn_primary_target, "contact");
+        strcpy(cta_btn_secondary_target, "+12123801654");
         strcpy(copyright_text, "Website under development.");
         strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
         strcpy(contact_form_title, "Contact Us");
@@ -3384,6 +3462,52 @@ struct WebSection {
                 footer_bottom_bg = ImVec4(0.06f, 0.08f, 0.12f, 1.0f);
                 footer_bottom_link_color = ImVec4(0.6f, 0.6f, 0.65f, 1.0f);
                 footer_border_radius = 8.0f;
+                break;
+
+            case SEC_CTA_SECTION_CONNECTOR:
+                name = "CTA Section";
+                height = 350;
+                bg_color = ImVec4(0.2f, 0.5f, 0.5f, 1.0f);  // Teal
+                strcpy(cta_heading, "Ready to Elevate Your Visual Content?");
+                strcpy(cta_subtitle, "Partner with 50+ years of premedia excellence. Let's create something extraordinary together.");
+                strcpy(cta_btn_primary_text, "Start Your Project");
+                strcpy(cta_btn_secondary_text, "+1 (212) 380-1654");
+                cta_btn_primary_action = ACTION_SCROLL_TO_SECTION;
+                cta_btn_secondary_action = ACTION_PHONE;
+                strcpy(cta_btn_primary_target, "contact");
+                strcpy(cta_btn_secondary_target, "+12123801654");
+                cta_overlay_color = ImVec4(0.15f, 0.45f, 0.45f, 0.85f);
+                cta_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                cta_subtitle_color = ImVec4(1.0f, 1.0f, 1.0f, 0.9f);
+                cta_btn_primary_bg = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                cta_btn_primary_text_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
+                cta_btn_secondary_bg = ImVec4(0.35f, 0.55f, 0.55f, 0.7f);
+                cta_btn_secondary_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                cta_heading_size = 42.0f;
+                cta_subtitle_size = 16.0f;
+                cta_btn_size = 14.0f;
+                cta_btn_radius = 30.0f;
+                cta_btn_secondary_has_icon = true;
+                break;
+
+            case SEC_MARQUEE_CONNECTOR:
+                name = "Client Logo Marquee";
+                height = 50;
+                marquee_bg_color = ImVec4(0.12f, 0.14f, 0.18f, 1.0f);
+                marquee_text_color = ImVec4(0.5f, 0.5f, 0.55f, 1.0f);
+                marquee_height = 50.0f;
+                marquee_speed = 50.0f;
+                marquee_spacing = 80.0f;
+                marquee_text_size = 14.0f;
+                marquee_scroll_offset = 0.0f;
+                {
+                    const char* logos[] = {"BLAIR", "APPLESEEDS", "QUAD", "MACMILLAN", "SPRINGER", "NIKE", "FENDER", "ZALE"};
+                    for (int i = 0; i < 8; i++) {
+                        MarqueeLogoItem item;
+                        strcpy(item.text, logos[i]);
+                        marquee_items.push_back(item);
+                    }
+                }
                 break;
 
             default:
@@ -23930,14 +24054,14 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         std::string brandPart1 = std::string(sec.footer_brand_name).substr(0, 4);
         std::string brandPart2 = std::string(sec.footer_brand_name).length() > 4 ? std::string(sec.footer_brand_name).substr(4) : "";
         if (brandPart1.length() > 0) {
-            ImVec2 p1Size = font->CalcTextSizeA(18.0f, FLT_MAX, 0.0f, brandPart1.c_str());
-            dl->AddText(font, 18.0f, ImVec2(brandX, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_brand_color), brandPart1.c_str());
+            ImVec2 p1Size = font->CalcTextSizeA(sec.footer_brand_size, FLT_MAX, 0.0f, brandPart1.c_str());
+            dl->AddText(font, sec.footer_brand_size, ImVec2(brandX, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_brand_color), brandPart1.c_str());
             if (brandPart2.length() > 0) {
-                dl->AddText(font, 18.0f, ImVec2(brandX + p1Size.x, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_bg), brandPart2.c_str());
+                dl->AddText(font, sec.footer_brand_size, ImVec2(brandX + p1Size.x, contentY), ImGui::ColorConvertFloat4ToU32(sec.footer_submit_bg), brandPart2.c_str());
             }
         }
         // Subtitle
-        dl->AddText(font, 11.0f, ImVec2(brandX, contentY + 22), ImGui::ColorConvertFloat4ToU32(sec.footer_subtitle_sec_color), sec.footer_brand_subtitle);
+        dl->AddText(font, sec.footer_link_size, ImVec2(brandX, contentY + sec.footer_brand_size + 4), ImGui::ColorConvertFloat4ToU32(sec.footer_subtitle_sec_color), sec.footer_brand_subtitle);
 
         // Description (wrapped)
         float descY = contentY + 55;
@@ -23983,12 +24107,12 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             const auto& col = sec.footer_section_columns[c];
             float colCurY = contentY;
             // Heading
-            dl->AddText(font, 13.0f, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.headingColor), col.heading);
-            colCurY += 28;
+            dl->AddText(font, sec.footer_column_heading_size, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.headingColor), col.heading);
+            colCurY += sec.footer_column_heading_size + 15;
             // Links
             for (size_t l = 0; l < col.links.size() && l < 6; l++) {
-                dl->AddText(font, 11.0f, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.linkColor), col.links[l].text);
-                colCurY += 22;
+                dl->AddText(font, sec.footer_link_size, ImVec2(colStartX, colCurY), ImGui::ColorConvertFloat4ToU32(col.linkColor), col.links[l].text);
+                colCurY += sec.footer_link_size + 11;
             }
             colStartX += colWidth;
         }
@@ -23996,7 +24120,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // Newsletter section (right side)
         float newsX = x + sectionW - 280;
         float newsY = contentY;
-        dl->AddText(font, 13.0f, ImVec2(newsX, newsY), ImGui::ColorConvertFloat4ToU32(sec.footer_newsletter_color), sec.footer_newsletter_heading);
+        dl->AddText(font, sec.footer_newsletter_size, ImVec2(newsX, newsY), ImGui::ColorConvertFloat4ToU32(sec.footer_newsletter_color), sec.footer_newsletter_heading);
         newsY += 24;
         // Subtitle (wrapped)
         std::string newsSubText = sec.footer_newsletter_subtitle;
@@ -24057,14 +24181,155 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float bottomY = y + h - bottomH;
         dl->AddRectFilled(ImVec2(x, bottomY), ImVec2(x + sectionW, y + h), ImGui::ColorConvertFloat4ToU32(sec.footer_bottom_bg));
         // Copyright text
-        dl->AddText(font, 11.0f, ImVec2(leftX, bottomY + 18), ImGui::ColorConvertFloat4ToU32(sec.footer_copyright_color), sec.footer_copyright);
+        dl->AddText(font, sec.footer_copyright_size, ImVec2(leftX, bottomY + (bottomH - sec.footer_copyright_size)/2), ImGui::ColorConvertFloat4ToU32(sec.footer_copyright_color), sec.footer_copyright);
         // Bottom links (right side)
         float bottomLinkX = x + sectionW - 200;
         for (int i = 0; i < sec.footer_bottom_link_count && i < 4; i++) {
-            ImVec2 linkSize = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, sec.footer_bottom_links[i]);
-            dl->AddText(font, 11.0f, ImVec2(bottomLinkX, bottomY + 18), ImGui::ColorConvertFloat4ToU32(sec.footer_bottom_link_color), sec.footer_bottom_links[i]);
+            ImVec2 linkSize = font->CalcTextSizeA(sec.footer_button_size, FLT_MAX, 0.0f, sec.footer_bottom_links[i]);
+            dl->AddText(font, sec.footer_button_size, ImVec2(bottomLinkX, bottomY + (bottomH - sec.footer_button_size)/2), ImGui::ColorConvertFloat4ToU32(sec.footer_bottom_link_color), sec.footer_bottom_links[i]);
             bottomLinkX += linkSize.x + 20;
         }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_CTA_SECTION_CONNECTOR - Call to Action with background
+    // ========================================================================
+    if (sec.type == SEC_CTA_SECTION_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Background image or solid color
+        if (sec.cta_bg_texture != 0) {
+            dl->AddImage((ImTextureID)(intptr_t)sec.cta_bg_texture, section_min, section_max);
+        } else {
+            // Gradient-like effect using two rectangles
+            dl->AddRectFilledMultiColor(section_min, section_max,
+                IM_COL32(50, 130, 130, 255), IM_COL32(80, 150, 140, 255),
+                IM_COL32(80, 150, 140, 255), IM_COL32(50, 130, 130, 255));
+        }
+        // Overlay
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.cta_overlay_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+
+        // Heading
+        float headingY = y + h * 0.25f;
+        ImVec2 headingSize = font->CalcTextSizeA(sec.cta_heading_size, FLT_MAX, 0.0f, sec.cta_heading);
+        // Bold effect for heading
+        for (int layer = 0; layer < 5; layer++) {
+            float offsetX = (layer % 3 - 1) * 0.4f;
+            float offsetY = (layer / 3 - 1) * 0.4f;
+            dl->AddText(font, sec.cta_heading_size, ImVec2(centerX - headingSize.x/2 + offsetX, headingY + offsetY),
+                       ImGui::ColorConvertFloat4ToU32(sec.cta_heading_color), sec.cta_heading);
+        }
+
+        // Subtitle
+        float subtitleY = headingY + sec.cta_heading_size + 20;
+        ImVec2 subtitleSize = font->CalcTextSizeA(sec.cta_subtitle_size, FLT_MAX, 0.0f, sec.cta_subtitle);
+        dl->AddText(font, sec.cta_subtitle_size, ImVec2(centerX - subtitleSize.x/2, subtitleY),
+                   ImGui::ColorConvertFloat4ToU32(sec.cta_subtitle_color), sec.cta_subtitle);
+
+        // Buttons
+        float btnY = subtitleY + sec.cta_subtitle_size + 40;
+        float btnH = 50;
+
+        // Primary button (white)
+        ImVec2 primarySize = font->CalcTextSizeA(sec.cta_btn_size, FLT_MAX, 0.0f, sec.cta_btn_primary_text);
+        float primaryW = primarySize.x + 60;
+        float primaryX = centerX - (primaryW + 20) / 2 - 60;
+        dl->AddRectFilled(ImVec2(primaryX, btnY), ImVec2(primaryX + primaryW, btnY + btnH),
+                         ImGui::ColorConvertFloat4ToU32(sec.cta_btn_primary_bg), sec.cta_btn_radius);
+        dl->AddText(font, sec.cta_btn_size, ImVec2(primaryX + (primaryW - primarySize.x)/2 - 10, btnY + (btnH - primarySize.y)/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.cta_btn_primary_text_color), sec.cta_btn_primary_text);
+        // Arrow
+        float arrowX = primaryX + primaryW - 30;
+        float arrowY = btnY + btnH/2;
+        dl->AddLine(ImVec2(arrowX, arrowY), ImVec2(arrowX + 12, arrowY), ImGui::ColorConvertFloat4ToU32(sec.cta_btn_primary_text_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 8, arrowY - 4), ImVec2(arrowX + 12, arrowY), ImGui::ColorConvertFloat4ToU32(sec.cta_btn_primary_text_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 8, arrowY + 4), ImVec2(arrowX + 12, arrowY), ImGui::ColorConvertFloat4ToU32(sec.cta_btn_primary_text_color), 2.0f);
+
+        // Secondary button (semi-transparent with phone)
+        ImVec2 secondarySize = font->CalcTextSizeA(sec.cta_btn_size, FLT_MAX, 0.0f, sec.cta_btn_secondary_text);
+        float secondaryW = secondarySize.x + (sec.cta_btn_secondary_has_icon ? 50 : 40);
+        float secondaryX = primaryX + primaryW + 20;
+        dl->AddRectFilled(ImVec2(secondaryX, btnY), ImVec2(secondaryX + secondaryW, btnY + btnH),
+                         ImGui::ColorConvertFloat4ToU32(sec.cta_btn_secondary_bg), sec.cta_btn_radius);
+        dl->AddRect(ImVec2(secondaryX, btnY), ImVec2(secondaryX + secondaryW, btnY + btnH),
+                   IM_COL32(255, 255, 255, 80), sec.cta_btn_radius, 0, 1.5f);
+        // Phone icon
+        if (sec.cta_btn_secondary_has_icon) {
+            float iconX = secondaryX + 18;
+            float iconY = btnY + btnH/2;
+            dl->AddCircle(ImVec2(iconX, iconY), 8, ImGui::ColorConvertFloat4ToU32(sec.cta_btn_secondary_text_color), 12, 1.5f);
+            dl->AddText(font, sec.cta_btn_size, ImVec2(secondaryX + 35, btnY + (btnH - secondarySize.y)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.cta_btn_secondary_text_color), sec.cta_btn_secondary_text);
+        } else {
+            dl->AddText(font, sec.cta_btn_size, ImVec2(secondaryX + (secondaryW - secondarySize.x)/2, btnY + (btnH - secondarySize.y)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.cta_btn_secondary_text_color), sec.cta_btn_secondary_text);
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_MARQUEE_CONNECTOR - Scrolling client logos
+    // ========================================================================
+    if (sec.type == SEC_MARQUEE_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.marquee_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+
+        // Calculate total content width
+        float totalWidth = 0;
+        for (const auto& item : sec.marquee_items) {
+            ImVec2 textSize = font->CalcTextSizeA(sec.marquee_text_size, FLT_MAX, 0.0f, item.text);
+            totalWidth += textSize.x + sec.marquee_spacing;
+        }
+        if (totalWidth < 1) totalWidth = 1;
+
+        // Update scroll offset (animate)
+        sec.marquee_scroll_offset += sec.marquee_speed * ImGui::GetIO().DeltaTime;
+        if (sec.marquee_scroll_offset > totalWidth) {
+            sec.marquee_scroll_offset -= totalWidth;
+        }
+
+        // Clip to section bounds
+        dl->PushClipRect(section_min, section_max, true);
+
+        // Draw logos twice for seamless loop
+        float centerY = y + h / 2;
+        for (int pass = 0; pass < 2; pass++) {
+            float startX = x - sec.marquee_scroll_offset + pass * totalWidth;
+            float logoX = startX;
+
+            for (const auto& item : sec.marquee_items) {
+                if (item.useImage && item.textureID != 0) {
+                    // Draw image logo
+                    float imgH = sec.marquee_text_size * 1.5f;
+                    float imgW = imgH * ((float)item.imageWidth / (float)item.imageHeight);
+                    dl->AddImage((ImTextureID)(intptr_t)item.textureID,
+                                ImVec2(logoX, centerY - imgH/2),
+                                ImVec2(logoX + imgW, centerY + imgH/2));
+                    logoX += imgW + sec.marquee_spacing;
+                } else {
+                    // Draw text logo
+                    ImVec2 textSize = font->CalcTextSizeA(sec.marquee_text_size, FLT_MAX, 0.0f, item.text);
+                    dl->AddText(font, sec.marquee_text_size,
+                               ImVec2(logoX, centerY - textSize.y/2),
+                               ImGui::ColorConvertFloat4ToU32(sec.marquee_text_color), item.text);
+                    logoX += textSize.x + sec.marquee_spacing;
+                }
+            }
+        }
+
+        dl->PopClipRect();
 
         if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
         return;
@@ -24974,6 +25239,44 @@ void RenderUI() {
 
     if (ImGui::Button("+ Footer Section", ImVec2(-1, 26))) {
         WebSection sec(g_NextSectionId++, SEC_FOOTER_SECTION_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ CTA Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_CTA_SECTION_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Logo Marquee", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_MARQUEE_CONNECTOR);
         if (g_FreeDesignMode) {
             float nextY = 20;
             for (const auto& s : g_Sections) {
@@ -29855,10 +30158,13 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.services_accent_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SERVICE CARDS");
             ImGui::Text("Cards: %d", (int)sec.services_cards.size());
             if (ImGui::Button("+ Add Card") && sec.services_cards.size() < 9) {
                 sec.services_cards.push_back(ServicesSectionCard());
             }
+            ImGui::SameLine();
+            ImGui::TextColored(ImVec4(0.6f, 0.6f, 0.6f, 1), "(Click card below to edit/add image)");
             static int selSvcCard = -1;
             for (size_t i = 0; i < sec.services_cards.size(); i++) {
                 ImGui::PushID((int)i);
@@ -30339,9 +30645,167 @@ void RenderUI() {
             }
 
             ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Brand Name", &sec.footer_brand_size, 12.0f, 28.0f, "%.0f");
+            ImGui::SliderFloat("Column Heading", &sec.footer_column_heading_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Links", &sec.footer_link_size, 9.0f, 16.0f, "%.0f");
+            ImGui::SliderFloat("Newsletter", &sec.footer_newsletter_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Copyright", &sec.footer_copyright_size, 9.0f, 14.0f, "%.0f");
+            ImGui::SliderFloat("Button", &sec.footer_button_size, 9.0f, 14.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND");
             ImGui::ColorEdit4("Section BG##footer", (float*)&sec.footer_sec_bg_color, ImGuiColorEditFlags_NoInputs);
             ImGui::SliderFloat("Border Radius##footer", &sec.footer_border_radius, 0.0f, 20.0f, "%.0f");
+        }
+        // CTA Section Connector properties
+        else if (sec.type == SEC_CTA_SECTION_CONNECTOR) {
+            ImGui::Text("CTA Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CONTENT");
+            ImGui::InputText("Heading##cta", sec.cta_heading, sizeof(sec.cta_heading));
+            ImGui::InputTextMultiline("Subtitle##cta", sec.cta_subtitle, sizeof(sec.cta_subtitle), ImVec2(-1, 60));
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BUTTONS");
+            ImGui::InputText("Primary Text##cta", sec.cta_btn_primary_text, sizeof(sec.cta_btn_primary_text));
+            const char* actionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
+            ImGui::Combo("Primary Action##cta", &sec.cta_btn_primary_action, actionNames, IM_ARRAYSIZE(actionNames));
+            ImGui::InputText("Primary Target##cta", sec.cta_btn_primary_target, sizeof(sec.cta_btn_primary_target));
+            ImGui::ColorEdit4("Primary BG##cta", (float*)&sec.cta_btn_primary_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Primary Text##ctaClr", (float*)&sec.cta_btn_primary_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::InputText("Secondary Text##cta", sec.cta_btn_secondary_text, sizeof(sec.cta_btn_secondary_text));
+            ImGui::Combo("Secondary Action##cta", &sec.cta_btn_secondary_action, actionNames, IM_ARRAYSIZE(actionNames));
+            ImGui::InputText("Secondary Target##cta", sec.cta_btn_secondary_target, sizeof(sec.cta_btn_secondary_target));
+            ImGui::ColorEdit4("Secondary BG##cta", (float*)&sec.cta_btn_secondary_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Secondary Text##ctaClr", (float*)&sec.cta_btn_secondary_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::Checkbox("Phone Icon##cta", &sec.cta_btn_secondary_has_icon);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(100);
+            ImGui::SliderFloat("Heading Size##cta", &sec.cta_heading_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Subtitle Size##cta", &sec.cta_subtitle_size, 12.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Button Size##cta", &sec.cta_btn_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Button Radius##cta", &sec.cta_btn_radius, 0.0f, 40.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Heading##ctaHeadClr", (float*)&sec.cta_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Subtitle##ctaSubClr", (float*)&sec.cta_subtitle_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Overlay##ctaOver", (float*)&sec.cta_overlay_color, ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_AlphaBar);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND IMAGE");
+            if (sec.cta_bg_texture != 0) {
+                ImGui::Image((ImTextureID)(intptr_t)sec.cta_bg_texture, ImVec2(120, 80));
+                if (ImGui::Button("Remove BG##cta")) {
+                    glDeleteTextures(1, &sec.cta_bg_texture);
+                    sec.cta_bg_texture = 0;
+                    sec.cta_bg_image_path = "";
+                }
+            } else {
+                if (ImGui::Button("Browse BG Image##cta")) {
+                    std::string selectedPath = OpenImageFileDialog();
+                    if (!selectedPath.empty()) {
+                        int w, h, c;
+                        unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
+                        if (data) {
+                            GLuint tex;
+                            glGenTextures(1, &tex);
+                            glBindTexture(GL_TEXTURE_2D, tex);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                            stbi_image_free(data);
+                            sec.cta_bg_texture = tex;
+                            sec.cta_bg_image_path = selectedPath;
+                            sec.cta_bg_width = w;
+                            sec.cta_bg_height = h;
+                        }
+                    }
+                }
+            }
+        }
+        // Marquee Connector properties
+        else if (sec.type == SEC_MARQUEE_CONNECTOR) {
+            ImGui::Text("Logo Marquee");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SETTINGS");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Height##marquee", &sec.marquee_height, 30.0f, 100.0f, "%.0f");
+            sec.height = (int)sec.marquee_height;
+            ImGui::SliderFloat("Speed##marquee", &sec.marquee_speed, 10.0f, 200.0f, "%.0f px/s");
+            ImGui::SliderFloat("Spacing##marquee", &sec.marquee_spacing, 20.0f, 150.0f, "%.0f");
+            ImGui::SliderFloat("Text Size##marquee", &sec.marquee_text_size, 10.0f, 24.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Background##marquee", (float*)&sec.marquee_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Text Color##marquee", (float*)&sec.marquee_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "LOGOS (%d)", (int)sec.marquee_items.size());
+            if (ImGui::Button("+ Add Logo##marquee") && sec.marquee_items.size() < 20) {
+                sec.marquee_items.push_back(MarqueeLogoItem());
+            }
+            static int selMarqueeLogo = -1;
+            for (size_t i = 0; i < sec.marquee_items.size(); i++) {
+                ImGui::PushID((int)i + 9000);
+                char label[64]; snprintf(label, sizeof(label), "%d: %s", (int)i+1, sec.marquee_items[i].text);
+                if (ImGui::Selectable(label, selMarqueeLogo == (int)i)) selMarqueeLogo = (int)i;
+                ImGui::PopID();
+            }
+            if (selMarqueeLogo >= 0 && selMarqueeLogo < (int)sec.marquee_items.size()) {
+                auto& item = sec.marquee_items[selMarqueeLogo];
+                ImGui::InputText("Logo Text##marqueeItem", item.text, sizeof(item.text));
+                ImGui::Checkbox("Use Image##marqueeItem", &item.useImage);
+                if (item.useImage) {
+                    if (item.textureID != 0) {
+                        ImGui::Image((ImTextureID)(intptr_t)item.textureID, ImVec2(80, 40));
+                        if (ImGui::Button("Remove##marqueeImg")) {
+                            glDeleteTextures(1, &item.textureID);
+                            item.textureID = 0;
+                            item.imagePath = "";
+                        }
+                    } else {
+                        if (ImGui::Button("Browse Logo##marqueeImg")) {
+                            std::string selectedPath = OpenImageFileDialog();
+                            if (!selectedPath.empty()) {
+                                int w, h, c;
+                                unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
+                                if (data) {
+                                    GLuint tex;
+                                    glGenTextures(1, &tex);
+                                    glBindTexture(GL_TEXTURE_2D, tex);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                    stbi_image_free(data);
+                                    item.textureID = tex;
+                                    item.imagePath = selectedPath;
+                                    item.imageWidth = w;
+                                    item.imageHeight = h;
+                                }
+                            }
+                        }
+                    }
+                }
+                if (ImGui::Button("Delete Logo##marquee")) {
+                    sec.marquee_items.erase(sec.marquee_items.begin() + selMarqueeLogo);
+                    selMarqueeLogo = -1;
+                }
+            }
         }
         // Regular section content
         else {
