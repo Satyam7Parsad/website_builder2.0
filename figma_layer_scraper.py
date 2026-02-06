@@ -208,6 +208,11 @@ class FigmaLayerScraper:
 
                     const tagName = el.tagName.toLowerCase();
 
+                    // Skip non-visual/metadata elements
+                    if (['source', 'script', 'style', 'meta', 'link', 'noscript', 'template', 'slot'].includes(tagName)) {
+                        return;
+                    }
+
                     // Text elements
                     if (['h1','h2','h3','h4','h5','h6','p','span','a','label','li'].includes(tagName)) {
                         // Only get direct text content
@@ -228,12 +233,26 @@ class FigmaLayerScraper:
                         imageSrc = el.currentSrc || el.src || el.dataset.src || '';
                     }
 
-                    // Button elements
-                    let isDisabled = false;
-                    let buttonType = 'button';
-                    let dataTarget = '';
-                    let formId = '';
+                    // Picture elements (responsive images)
+                    if (tagName === 'picture') {
+                        layerType = 'image';
+                        // Get image from child img element
+                        const imgChild = el.querySelector('img');
+                        if (imgChild) {
+                            imageSrc = imgChild.currentSrc || imgChild.src || '';
+                        }
+                        // Fallback: get from first source srcset
+                        if (!imageSrc) {
+                            const sourceEl = el.querySelector('source');
+                            if (sourceEl && sourceEl.srcset) {
+                                // srcset can have multiple URLs, get the first one
+                                const srcsetParts = sourceEl.srcset.split(',')[0].trim().split(' ');
+                                imageSrc = srcsetParts[0] || '';
+                            }
+                        }
+                    }
 
+                    // Button elements
                     if (tagName === 'button' || (tagName === 'a' && (
                         el.className.includes('btn') ||
                         el.className.includes('button') ||
@@ -241,39 +260,6 @@ class FigmaLayerScraper:
                     ))) {
                         layerType = 'button';
                         text = el.textContent.trim().substring(0, 100);
-
-                        // Extract button-specific attributes
-                        isDisabled = el.disabled || el.hasAttribute('disabled') || el.classList.contains('disabled');
-                        buttonType = el.type || 'button';  // submit, reset, button
-                        dataTarget = el.getAttribute('data-target') || el.getAttribute('data-bs-target') || '';
-                        formId = el.getAttribute('form') || '';
-                    }
-
-                    // Extract onclick and determine action type
-                    let onclickAction = el.getAttribute('onclick') || '';
-                    let actionType = 'none';
-                    const href = el.href || '';
-
-                    if (href && href.startsWith('http')) {
-                        actionType = 'link';
-                    } else if (href && href.startsWith('#')) {
-                        actionType = 'scroll';
-                    } else if (href && href.startsWith('mailto:')) {
-                        actionType = 'email';
-                    } else if (href && href.startsWith('tel:')) {
-                        actionType = 'phone';
-                    } else if (onclickAction) {
-                        if (onclickAction.includes('submit') || onclickAction.includes('form')) {
-                            actionType = 'submit';
-                        } else if (onclickAction.includes('popup') || onclickAction.includes('modal') || onclickAction.includes('open')) {
-                            actionType = 'popup';
-                        } else {
-                            actionType = 'script';
-                        }
-                    } else if (el.type === 'submit') {
-                        actionType = 'submit';
-                    } else if (layerType === 'button') {
-                        actionType = 'button';
                     }
 
                     // Input elements
@@ -319,14 +305,7 @@ class FigmaLayerScraper:
                                 zIndex: parseInt(style.zIndex) || 0,
                                 text: text,
                                 imageSrc: imageSrc,
-                                href: href,
-                                onclick: onclickAction,
-                                actionType: actionType,
-                                // Button-specific properties
-                                disabled: isDisabled,
-                                buttonType: buttonType,
-                                dataTarget: dataTarget,
-                                formId: formId,
+                                href: el.href || '',
                                 // Colors
                                 bgColor: style.backgroundColor,
                                 textColor: style.color,
@@ -396,11 +375,23 @@ class FigmaLayerScraper:
 
             layer_type = type_map.get(raw['type'], 'LAYER_DIV')
 
-            # Generate name
-            if raw['text']:
-                name = raw['text'][:30]
-            elif raw['tagName']:
-                name = f"{raw['tagName']}_{self.next_layer_id}"
+            # Generate name - clean up HTML artifacts
+            text_for_name = raw.get('text', '')
+            # Remove HTML tags and clean up
+            import re
+            text_for_name = re.sub(r'<[^>]+>', '', text_for_name)  # Remove HTML tags
+            text_for_name = re.sub(r'\s+', ' ', text_for_name).strip()  # Normalize whitespace
+
+            if text_for_name and len(text_for_name) > 2 and not text_for_name.startswith('|'):
+                name = text_for_name[:30]
+            elif raw.get('tagName'):
+                tag = raw['tagName']
+                if tag == 'picture':
+                    name = f"picture_{self.next_layer_id}"
+                elif tag == 'img':
+                    name = f"image_{self.next_layer_id}"
+                else:
+                    name = f"{tag}_{self.next_layer_id}"
             else:
                 name = f"Layer_{self.next_layer_id}"
 
@@ -417,7 +408,6 @@ class FigmaLayerScraper:
                 'id': self.next_layer_id,
                 'type': layer_type,
                 'name': name,
-                'element_id': raw.get('id', ''),  # HTML element ID for scroll targets
                 'x': raw['x'],
                 'y': raw['y'],
                 'width': raw['width'],
@@ -426,13 +416,6 @@ class FigmaLayerScraper:
                 'text': raw.get('text', ''),
                 'image_path': raw.get('imageSrc', ''),
                 'href': raw.get('href', ''),
-                'onclick_action': raw.get('onclick', ''),
-                'action_type': raw.get('actionType', 'none'),
-                # Button-specific properties
-                'disabled': raw.get('disabled', False),
-                'button_type': raw.get('buttonType', 'button'),
-                'data_target': raw.get('dataTarget', ''),
-                'form_id': raw.get('formId', ''),
                 'bg_color': raw.get('bgColor', 'rgba(0,0,0,0)'),
                 'text_color': raw.get('textColor', 'rgb(0,0,0)'),
                 'border_color': raw.get('borderColor', 'rgb(0,0,0)'),
@@ -460,37 +443,102 @@ class FigmaLayerScraper:
         return processed
 
     async def _download_images(self, page):
-        """Download all images referenced by layers"""
+        """Download all images referenced by layers (including background images)"""
+        import re
+
         image_urls = set()
-        for layer in self.layers:
+        bg_image_urls = {}  # url -> layer indices that use it
+
+        for idx, layer in enumerate(self.layers):
+            # Regular image sources
             if layer['image_path'] and not layer['image_path'].startswith('data:'):
                 image_urls.add(layer['image_path'])
 
-        print(f"   📥 Downloading {len(image_urls)} images...")
+            # Background images from CSS
+            bg_img = layer.get('background_image', '')
+            if bg_img and bg_img != 'none':
+                urls = re.findall(r'url\(["\']?([^"\')\s]+)["\']?\)', bg_img)
+                for url in urls:
+                    if url and not url.startswith('data:'):
+                        if url.startswith('//'):
+                            url = 'https:' + url
+                        if url.startswith('http'):
+                            if url not in bg_image_urls:
+                                bg_image_urls[url] = []
+                            bg_image_urls[url].append(idx)
 
-        for idx, url in enumerate(list(image_urls)[:50]):  # Limit to 50
+        total = len(image_urls) + len(bg_image_urls)
+        print(f"   📥 Downloading {total} images ({len(image_urls)} regular, {len(bg_image_urls)} background)...")
+
+        downloaded = 0
+        url_to_local = {}
+
+        # Download regular images
+        for idx, url in enumerate(list(image_urls)[:50]):
             try:
                 response = await page.request.get(url)
                 if response.ok:
                     data = await response.body()
                     ext = 'jpg'
-                    if 'png' in url.lower() or 'image/png' in response.headers.get('content-type', ''):
+                    ct = response.headers.get('content-type', '')
+                    if 'png' in url.lower() or 'image/png' in ct:
                         ext = 'png'
-                    elif 'webp' in url.lower():
+                    elif 'webp' in url.lower() or 'image/webp' in ct:
                         ext = 'webp'
+                    elif 'svg' in url.lower() or 'image/svg' in ct:
+                        ext = 'svg'
 
-                    local_path = f"{self.output_dir}/images/img_{idx}.{ext}"
+                    local_path = f"{self.output_dir}/images/img_{downloaded}.{ext}"
                     with open(local_path, 'wb') as f:
                         f.write(data)
 
-                    # Update layer image paths
-                    for layer in self.layers:
-                        if layer['image_path'] == url:
-                            layer['image_path'] = local_path
-
+                    url_to_local[url] = local_path
+                    downloaded += 1
                     print(f"      ✓ {os.path.basename(local_path)}")
             except Exception as e:
                 print(f"      ⚠️ Failed: {url[:50]}... ({e})")
+
+        # Download background images
+        for url, layer_indices in list(bg_image_urls.items())[:30]:
+            try:
+                response = await page.request.get(url)
+                if response.ok:
+                    data = await response.body()
+                    ext = 'jpg'
+                    ct = response.headers.get('content-type', '')
+                    if 'png' in url.lower() or 'image/png' in ct:
+                        ext = 'png'
+                    elif 'webp' in url.lower() or 'image/webp' in ct:
+                        ext = 'webp'
+                    elif 'svg' in url.lower() or 'image/svg' in ct:
+                        ext = 'svg'
+
+                    local_path = f"{self.output_dir}/images/bg_{downloaded}.{ext}"
+                    with open(local_path, 'wb') as f:
+                        f.write(data)
+
+                    url_to_local[url] = local_path
+                    downloaded += 1
+                    print(f"      ✓ {os.path.basename(local_path)} (bg)")
+            except Exception as e:
+                print(f"      ⚠️ Failed bg: {url[:50]}... ({e})")
+
+        # Update layer paths
+        for layer in self.layers:
+            # Update regular image paths
+            if layer['image_path'] in url_to_local:
+                layer['image_path'] = url_to_local[layer['image_path']]
+
+            # Update background images - set image_path for rendering
+            bg_img = layer.get('background_image', '')
+            if bg_img and bg_img != 'none':
+                for orig_url, local_path in url_to_local.items():
+                    if orig_url in bg_img:
+                        layer['background_image'] = bg_img.replace(orig_url, local_path)
+                        # Also set image_path so C++ can render it
+                        if not layer['image_path']:
+                            layer['image_path'] = local_path
+                        break
 
     def _generate_output(self) -> dict:
         """Generate final output structure"""
