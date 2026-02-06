@@ -81,7 +81,8 @@ enum SectionType {
     SEC_HERO_SECTION_CONNECTOR,    // Full hero section with badge, buttons, stats
     SEC_FOOTER_SECTION_CONNECTOR,  // Advanced footer with columns, email signup, social links
     SEC_CTA_SECTION_CONNECTOR,     // Call to action with background image and buttons
-    SEC_MARQUEE_CONNECTOR          // Client logo marquee with continuous scrolling
+    SEC_MARQUEE_CONNECTOR,         // Client logo marquee with continuous scrolling
+    SEC_CONTACT_SECTION_CONNECTOR  // Contact section with form and info cards
 };
 
 // ============================================================================
@@ -1168,6 +1169,30 @@ struct MarqueeLogoItem {
     }
 };
 
+// Contact info item (for Contact Section Connector)
+struct ContactInfoItem {
+    int iconType;               // Icon from IconType enum
+    char title[128];            // e.g., "Headquarters", "Email Us"
+    char lines[4][256];         // Up to 4 lines of text
+    int lineCount;
+    ImVec4 iconBgColor;
+    ImVec4 iconColor;
+    ImVec4 titleColor;
+    ImVec4 textColor;
+
+    ContactInfoItem() : iconType(ICON_LOCATION), lineCount(2),
+                        iconBgColor(0.95f, 0.5f, 0.2f, 0.15f),
+                        iconColor(0.95f, 0.5f, 0.2f, 1),
+                        titleColor(0.1f, 0.1f, 0.15f, 1),
+                        textColor(0.4f, 0.4f, 0.45f, 1) {
+        strcpy(title, "Contact Info");
+        strcpy(lines[0], "Line 1");
+        strcpy(lines[1], "Line 2");
+        lines[2][0] = '\0';
+        lines[3][0] = '\0';
+    }
+};
+
 // Content block for vertical_connector (vertical text + image layout)
 struct VerticalBlock {
     int type; // 0=Heading, 1=Description, 2=Image
@@ -1301,13 +1326,21 @@ struct BulletColumn {
 struct ContactFormField {
     char label[128];
     char placeholder[256];
-    int fieldType;  // 0=text, 1=email, 2=phone, 3=textarea
+    int fieldType;  // 0=text, 1=email, 2=phone, 3=textarea, 4=dropdown
     float width;    // Width percentage (0.5 = 50% for 2-column, 1.0 = full width)
     bool required;
+    char dropdownOptions[512];  // Comma-separated options for dropdown
+    ImVec4 labelColor;
+    ImVec4 inputBgColor;
+    ImVec4 inputBorderColor;
 
-    ContactFormField() : fieldType(0), width(0.5f), required(false) {
+    ContactFormField() : fieldType(0), width(0.5f), required(false),
+                         labelColor(0.3f, 0.3f, 0.35f, 1),
+                         inputBgColor(1, 1, 1, 1),
+                         inputBorderColor(0.85f, 0.85f, 0.88f, 1) {
         strcpy(label, "Field");
         strcpy(placeholder, "Enter value...");
+        dropdownOptions[0] = '\0';
     }
 };
 
@@ -1826,6 +1859,12 @@ struct WebSection {
     int story_image_heights[3];
     float story_image_display_w[3];       // Display width for each image
     float story_image_display_h[3];       // Display height for each image
+    // Story text sizes
+    float story_label_size;
+    float story_heading_size;
+    float story_text_size;
+    float story_button_size;
+    float story_stats_size;
 
     // ========== SERVICES SECTION CONNECTOR ==========
     char services_label[64];
@@ -1839,6 +1878,14 @@ struct WebSection {
     ImVec4 services_heading_color;
     ImVec4 services_accent_color;
     ImVec4 services_subtitle_color;
+    int services_selected_card;   // Per-section selected card index (fixes multi-card upload)
+    // Services text sizes
+    float services_label_size;
+    float services_heading_size;
+    float services_subtitle_size;
+    float services_card_title_size;
+    float services_card_desc_size;
+    float services_bullet_size;
 
     // ========== CLIENTS GRID CONNECTOR ==========
     char clients_label[64];
@@ -1852,6 +1899,10 @@ struct WebSection {
     ImVec4 clients_heading_color;
     ImVec4 clients_accent_color;
     ImVec4 clients_subtitle_color;
+    // Clients text sizes
+    float clients_label_size;
+    float clients_heading_size;
+    float clients_subtitle_size;
 
     // ========== FEATURES GRID CONNECTOR ==========
     char features_label[64];
@@ -1865,6 +1916,13 @@ struct WebSection {
     ImVec4 features_heading_color;
     ImVec4 features_accent_color;
     ImVec4 features_subtitle_color;
+    // Features text sizes
+    float features_label_size;
+    float features_heading_size;
+    float features_subtitle_size;
+    float features_card_title_size;
+    float features_card_desc_size;
+    float features_check_size;
 
     // ========== PROCESS TIMELINE CONNECTOR ==========
     char process_label[64];
@@ -1878,6 +1936,13 @@ struct WebSection {
     ImVec4 process_subtitle_color;
     ImVec4 process_line_color;
     ImVec4 process_bg_color;         // Section background (dark theme)
+    // Process text sizes
+    float process_label_size;
+    float process_heading_size;
+    float process_subtitle_size;
+    float process_step_number_size;
+    float process_step_title_size;
+    float process_step_desc_size;
 
     // ========== HERO SECTION CONNECTOR ==========
     char hero_badge_text[128];       // "Your Premier Visual Production Partner"
@@ -1908,6 +1973,13 @@ struct WebSection {
     ImVec4 hero_btn_secondary_border;
     float hero_btn_border_radius;
     float hero_badge_border_radius;
+    // Hero text sizes
+    float hero_badge_size;
+    float hero_heading_size;
+    float hero_description_size;
+    float hero_button_size;
+    float hero_stats_number_size;
+    float hero_stats_label_size;
 
     // ========== FOOTER SECTION CONNECTOR ==========
     char footer_brand_name[128];         // "OMNiON"
@@ -1982,6 +2054,44 @@ struct WebSection {
     float marquee_spacing;               // Space between logos
     float marquee_text_size;             // Logo text size
     float marquee_scroll_offset;         // Current scroll position (for animation)
+
+    // ========== CONTACT SECTION CONNECTOR ==========
+    char contact_label[64];              // "GET IN TOUCH"
+    char contact_heading[256];           // "Let's"
+    char contact_heading_accent[128];    // "Connect"
+    char contact_description[1024];      // Description text
+    std::vector<ContactInfoItem> contact_info_items;  // Headquarters, Email, Call, Working Hours
+    // Note: Uses existing contact_form_fields, contact_form_title
+    char contact_form_subtitle[512];     // Form description
+    char contact_submit_text[64];        // "Send Message"
+    int contact_submit_action;           // Action type
+    char contact_submit_target[512];     // Action target
+    ImVec4 contact_bg_color;
+    ImVec4 contact_label_color;
+    ImVec4 contact_heading_color;
+    ImVec4 contact_accent_color;
+    ImVec4 contact_desc_color;
+    ImVec4 contact_form_bg;
+    // Note: Uses existing contact_form_title_color
+    ImVec4 contact_submit_bg;
+    ImVec4 contact_submit_text_color;
+    float contact_section_form_border_radius;
+    float contact_submit_border_radius;
+    std::vector<int> contact_social_icons;           // Social icon types
+    ImVec4 contact_social_icon_bg;
+    ImVec4 contact_social_icon_color;
+    int contact_selected_info_item;      // For UI selection
+    int contact_selected_form_field;     // For UI selection
+    // Contact text sizes
+    float contact_label_size;
+    float contact_heading_size;
+    float contact_desc_size;
+    float contact_info_title_size;
+    float contact_info_text_size;
+    float contact_section_form_title_size;  // Renamed to avoid conflict
+    float contact_form_subtitle_size;
+    float contact_field_label_size;
+    float contact_button_size;
 
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
@@ -2156,7 +2266,38 @@ struct WebSection {
         // Marquee connector defaults
         marquee_bg_color(0.12f, 0.14f, 0.18f, 1.0f), marquee_text_color(0.5f, 0.5f, 0.55f, 1.0f),
         marquee_height(50.0f), marquee_speed(50.0f), marquee_spacing(80.0f),
-        marquee_text_size(14.0f), marquee_scroll_offset(0.0f) {
+        marquee_text_size(14.0f), marquee_scroll_offset(0.0f),
+        // Contact Section connector defaults
+        contact_submit_action(ACTION_EXTERNAL_URL), contact_bg_color(0.98f, 0.98f, 0.99f, 1.0f),
+        contact_label_color(0.95f, 0.5f, 0.2f, 1.0f), contact_heading_color(0.1f, 0.1f, 0.15f, 1.0f),
+        contact_accent_color(0.95f, 0.5f, 0.2f, 1.0f), contact_desc_color(0.4f, 0.4f, 0.45f, 1.0f),
+        contact_form_bg(1.0f, 1.0f, 1.0f, 1.0f),
+        contact_submit_bg(0.95f, 0.5f, 0.2f, 1.0f), contact_submit_text_color(1.0f, 1.0f, 1.0f, 1.0f),
+        contact_section_form_border_radius(16.0f), contact_submit_border_radius(30.0f),
+        contact_social_icon_bg(0.95f, 0.95f, 0.97f, 1.0f), contact_social_icon_color(0.3f, 0.3f, 0.35f, 1.0f),
+        contact_selected_info_item(0), contact_selected_form_field(0), services_selected_card(0),
+        // Text size defaults for all 10 connectors
+        // Story Section
+        story_label_size(12.0f), story_heading_size(42.0f), story_text_size(14.0f),
+        story_button_size(13.0f), story_stats_size(48.0f),
+        // Services Section
+        services_label_size(12.0f), services_heading_size(36.0f), services_subtitle_size(14.0f),
+        services_card_title_size(18.0f), services_card_desc_size(13.0f), services_bullet_size(12.0f),
+        // Clients Grid
+        clients_label_size(12.0f), clients_heading_size(36.0f), clients_subtitle_size(14.0f),
+        // Features Grid
+        features_label_size(12.0f), features_heading_size(36.0f), features_subtitle_size(14.0f),
+        features_card_title_size(18.0f), features_card_desc_size(13.0f), features_check_size(12.0f),
+        // Process Timeline
+        process_label_size(12.0f), process_heading_size(36.0f), process_subtitle_size(14.0f),
+        process_step_number_size(32.0f), process_step_title_size(16.0f), process_step_desc_size(12.0f),
+        // Hero Section
+        hero_badge_size(12.0f), hero_heading_size(52.0f), hero_description_size(16.0f),
+        hero_button_size(14.0f), hero_stats_number_size(36.0f), hero_stats_label_size(12.0f),
+        // Contact Section
+        contact_label_size(12.0f), contact_heading_size(42.0f), contact_desc_size(14.0f),
+        contact_info_title_size(15.0f), contact_info_text_size(13.0f), contact_section_form_title_size(26.0f),
+        contact_form_subtitle_size(13.0f), contact_field_label_size(12.0f), contact_button_size(14.0f) {
         // Initialize char arrays
         story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
         story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
@@ -2190,6 +2331,15 @@ struct WebSection {
         strcpy(cta_btn_secondary_text, "+1 (212) 380-1654");
         strcpy(cta_btn_primary_target, "contact");
         strcpy(cta_btn_secondary_target, "+12123801654");
+        // Contact Section connector char arrays
+        strcpy(contact_label, "GET IN TOUCH");
+        strcpy(contact_heading, "Let's");
+        strcpy(contact_heading_accent, "Connect");
+        strcpy(contact_description, "Ready to transform your visual content? Reach out to our team for a personalized consultation and discover how OMNiON can elevate your brand.");
+        strcpy(contact_form_title, "Request a Quote");
+        strcpy(contact_form_subtitle, "Fill out the form and we'll get back to you within 24 hours.");
+        strcpy(contact_submit_text, "Send Message");
+        strcpy(contact_submit_target, "");
         strcpy(copyright_text, "Website under development.");
         strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
         strcpy(contact_form_title, "Contact Us");
@@ -3508,6 +3658,111 @@ struct WebSection {
                         marquee_items.push_back(item);
                     }
                 }
+                break;
+
+            case SEC_CONTACT_SECTION_CONNECTOR:
+                name = "Contact Section";
+                height = 600;
+                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                strcpy(contact_label, "GET IN TOUCH");
+                strcpy(contact_heading, "Let's");
+                strcpy(contact_heading_accent, "Connect");
+                strcpy(contact_description, "Ready to transform your visual content? Reach out to our team for a personalized consultation and discover how OMNiON can elevate your brand.");
+                strcpy(contact_form_title, "Request a Quote");
+                strcpy(contact_form_subtitle, "Fill out the form and we'll get back to you within 24 hours.");
+                strcpy(contact_submit_text, "Send Message");
+                contact_submit_action = ACTION_EXTERNAL_URL;
+                contact_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                contact_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
+                contact_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                contact_desc_color = ImVec4(0.4f, 0.4f, 0.45f, 1.0f);
+                contact_form_bg = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                contact_form_title_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
+                contact_submit_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                contact_submit_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                contact_section_form_border_radius = 16.0f;
+                contact_submit_border_radius = 30.0f;
+                contact_social_icon_bg = ImVec4(0.95f, 0.95f, 0.97f, 1.0f);
+                contact_social_icon_color = ImVec4(0.3f, 0.3f, 0.35f, 1.0f);
+                // Add default contact info items
+                {
+                    ContactInfoItem hq;
+                    hq.iconType = ICON_LOCATION;
+                    strcpy(hq.title, "Headquarters");
+                    strcpy(hq.lines[0], "#549, 9th A Main Road, First Stage");
+                    strcpy(hq.lines[1], "Indira Nagar, Bangalore - 560038");
+                    strcpy(hq.lines[2], "Karnataka, India");
+                    hq.lineCount = 3;
+                    contact_info_items.push_back(hq);
+
+                    ContactInfoItem email;
+                    email.iconType = ICON_MAIL;
+                    strcpy(email.title, "Email Us");
+                    strcpy(email.lines[0], "info@omnion.us");
+                    strcpy(email.lines[1], "sales@omnion.us");
+                    email.lineCount = 2;
+                    contact_info_items.push_back(email);
+
+                    ContactInfoItem call;
+                    call.iconType = ICON_PHONE;
+                    strcpy(call.title, "Call Us");
+                    strcpy(call.lines[0], "USA: +1 (212) 380-1654");
+                    strcpy(call.lines[1], "EU: +44 (207) 993-5830");
+                    call.lineCount = 2;
+                    contact_info_items.push_back(call);
+
+                    ContactInfoItem hours;
+                    hours.iconType = ICON_CLOCK;
+                    strcpy(hours.title, "Working Hours");
+                    strcpy(hours.lines[0], "24/7 Global Operations");
+                    strcpy(hours.lines[1], "Follow-the-Sun Model");
+                    hours.lineCount = 2;
+                    contact_info_items.push_back(hours);
+                }
+                // Add default form fields
+                {
+                    ContactFormField fn; fn.fieldType = 0; fn.required = true;
+                    strcpy(fn.label, "First Name"); strcpy(fn.placeholder, "");
+                    contact_form_fields.push_back(fn);
+
+                    ContactFormField ln; ln.fieldType = 0; ln.required = true;
+                    strcpy(ln.label, "Last Name"); strcpy(ln.placeholder, "");
+                    contact_form_fields.push_back(ln);
+
+                    ContactFormField em; em.fieldType = 1; em.required = true;
+                    strcpy(em.label, "Email Address"); strcpy(em.placeholder, "");
+                    contact_form_fields.push_back(em);
+
+                    ContactFormField ph; ph.fieldType = 2; ph.required = false;
+                    strcpy(ph.label, "Phone Number"); strcpy(ph.placeholder, "");
+                    contact_form_fields.push_back(ph);
+
+                    ContactFormField co; co.fieldType = 0; co.required = false;
+                    strcpy(co.label, "Company Name"); strcpy(co.placeholder, "");
+                    contact_form_fields.push_back(co);
+
+                    ContactFormField svc; svc.fieldType = 4; svc.required = true;
+                    strcpy(svc.label, "Service Interested In");
+                    strcpy(svc.placeholder, "Select a service...");
+                    strcpy(svc.dropdownOptions, "Image Editing,Photo Retouching,3D Rendering,Color Correction,Other");
+                    contact_form_fields.push_back(svc);
+
+                    ContactFormField vol; vol.fieldType = 4; vol.required = false;
+                    strcpy(vol.label, "Estimated Monthly Volume");
+                    strcpy(vol.placeholder, "Select volume range...");
+                    strcpy(vol.dropdownOptions, "1-100,101-500,501-1000,1000+");
+                    contact_form_fields.push_back(vol);
+
+                    ContactFormField det; det.fieldType = 3; det.required = true;
+                    strcpy(det.label, "Project Details");
+                    strcpy(det.placeholder, "Tell us about your project requirements...");
+                    contact_form_fields.push_back(det);
+                }
+                // Default social icons
+                contact_social_icons.push_back(ICON_LOGIN);  // LinkedIn placeholder
+                contact_social_icons.push_back(ICON_SHARE);  // Twitter placeholder
+                contact_social_icons.push_back(ICON_CAMERA); // Instagram placeholder
+                contact_social_icons.push_back(ICON_STAR);   // Behance placeholder
                 break;
 
             default:
@@ -24335,6 +24590,233 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         return;
     }
 
+    // ========================================================================
+    // SEC_CONTACT_SECTION_CONNECTOR - Contact form with info cards
+    // ========================================================================
+    if (sec.type == SEC_CONTACT_SECTION_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.contact_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float padding = 60.0f;
+        float contentWidth = sectionW - padding * 2;
+        float leftWidth = contentWidth * 0.45f;
+        float rightWidth = contentWidth * 0.50f;
+        float gap = contentWidth * 0.05f;
+        float leftX = x + padding;
+        float rightX = leftX + leftWidth + gap;
+        float currentY = y + padding;
+
+        // LEFT SIDE: Label, Heading, Description, Contact Info, Social Icons
+
+        // Label with line
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.contact_label);
+        float lineW = 30.0f;
+        dl->AddLine(ImVec2(leftX, currentY + labelTextSize.y/2), ImVec2(leftX + lineW, currentY + labelTextSize.y/2),
+                    ImGui::ColorConvertFloat4ToU32(sec.contact_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(leftX + lineW + 10, currentY),
+                    ImGui::ColorConvertFloat4ToU32(sec.contact_label_color), sec.contact_label);
+        currentY += labelTextSize.y + 20.0f;
+
+        // Heading + Accent
+        float headingSize = 42.0f;
+        ImVec2 headingTextSize = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.contact_heading);
+        ImVec2 accentTextSize = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.contact_heading_accent);
+
+        // Draw heading bold
+        for (int l = 0; l < 6; l++) {
+            float ox = (l % 3) * 0.4f, oy = (l / 3) * 0.4f;
+            dl->AddText(font, headingSize, ImVec2(leftX + ox, currentY + oy),
+                        ImGui::ColorConvertFloat4ToU32(sec.contact_heading_color), sec.contact_heading);
+        }
+        dl->AddText(font, headingSize, ImVec2(leftX + headingTextSize.x + 10, currentY),
+                    ImGui::ColorConvertFloat4ToU32(sec.contact_accent_color), sec.contact_heading_accent);
+        currentY += headingSize + 20.0f;
+
+        // Description
+        float descSize = 14.0f;
+        float descHeight = DrawWrappedText(dl, sec.contact_description, leftX, currentY, leftWidth,
+                                           ImGui::ColorConvertFloat4ToU32(sec.contact_desc_color), true, descSize, 400);
+        currentY += descHeight + 30.0f;
+
+        // Contact Info Items
+        for (size_t i = 0; i < sec.contact_info_items.size(); i++) {
+            const auto& item = sec.contact_info_items[i];
+            float itemY = currentY;
+
+            // Icon circle
+            float iconSize = 45.0f;
+            float iconCX = leftX + iconSize/2;
+            float iconCY = itemY + iconSize/2;
+            dl->AddCircleFilled(ImVec2(iconCX, iconCY), iconSize/2, ImGui::ColorConvertFloat4ToU32(item.iconBgColor), 32);
+            DrawIcon(dl, item.iconType, iconCX, iconCY, iconSize * 0.5f, ImGui::ColorConvertFloat4ToU32(item.iconColor), 2.0f);
+
+            // Title and lines
+            float textX = leftX + iconSize + 15.0f;
+            float titleFontSize = 15.0f;
+            float lineFontSize = 13.0f;
+            for (int l = 0; l < 4; l++) {
+                dl->AddText(font, titleFontSize, ImVec2(textX + (l%2)*0.3f, itemY + (l/2)*0.3f),
+                            ImGui::ColorConvertFloat4ToU32(item.titleColor), item.title);
+            }
+            itemY += titleFontSize + 5.0f;
+
+            for (int ln = 0; ln < item.lineCount && ln < 4; ln++) {
+                if (strlen(item.lines[ln]) > 0) {
+                    dl->AddText(font, lineFontSize, ImVec2(textX, itemY),
+                                ImGui::ColorConvertFloat4ToU32(item.textColor), item.lines[ln]);
+                    itemY += lineFontSize + 3.0f;
+                }
+            }
+
+            currentY = itemY + 15.0f;
+        }
+
+        // Social Icons
+        currentY += 10.0f;
+        float socialSize = 40.0f;
+        float socialSpacing = 10.0f;
+        float socialX = leftX;
+        for (size_t i = 0; i < sec.contact_social_icons.size(); i++) {
+            dl->AddCircleFilled(ImVec2(socialX + socialSize/2, currentY + socialSize/2), socialSize/2,
+                               ImGui::ColorConvertFloat4ToU32(sec.contact_social_icon_bg), 32);
+            DrawIcon(dl, sec.contact_social_icons[i], socialX + socialSize/2, currentY + socialSize/2,
+                     socialSize * 0.45f, ImGui::ColorConvertFloat4ToU32(sec.contact_social_icon_color), 1.5f);
+            socialX += socialSize + socialSpacing;
+        }
+
+        // RIGHT SIDE: Form Card
+        float formY = y + padding;
+        float formH = h - padding * 2;
+        float formPadding = 30.0f;
+
+        // Form background with shadow
+        dl->AddRectFilled(ImVec2(rightX + 4, formY + 4), ImVec2(rightX + rightWidth + 4, formY + formH + 4),
+                         IM_COL32(0, 0, 0, 20), sec.contact_section_form_border_radius);
+        dl->AddRectFilled(ImVec2(rightX, formY), ImVec2(rightX + rightWidth, formY + formH),
+                         ImGui::ColorConvertFloat4ToU32(sec.contact_form_bg), sec.contact_section_form_border_radius);
+
+        float formContentY = formY + formPadding;
+        float formContentX = rightX + formPadding;
+        float formContentW = rightWidth - formPadding * 2;
+
+        // Form Title
+        float formTitleSize = 26.0f;
+        for (int l = 0; l < 4; l++) {
+            dl->AddText(font, formTitleSize, ImVec2(formContentX + (l%2)*0.3f, formContentY + (l/2)*0.3f),
+                        ImGui::ColorConvertFloat4ToU32(sec.contact_form_title_color), sec.contact_form_title);
+        }
+        formContentY += formTitleSize + 8.0f;
+
+        // Form Subtitle
+        float formSubSize = 13.0f;
+        dl->AddText(font, formSubSize, ImVec2(formContentX, formContentY),
+                    ImGui::ColorConvertFloat4ToU32(sec.contact_desc_color), sec.contact_form_subtitle);
+        formContentY += formSubSize + 25.0f;
+
+        // Form Fields
+        float fieldH = 42.0f;
+        float fieldSpacing = 18.0f;
+        float labelFontSize = 12.0f;
+
+        for (size_t i = 0; i < sec.contact_form_fields.size(); i++) {
+            const auto& field = sec.contact_form_fields[i];
+
+            // Check if this and next field can be side by side (both short text fields)
+            bool sideBySide = false;
+            float fieldW = formContentW;
+            if (i + 1 < sec.contact_form_fields.size() &&
+                field.fieldType != 3 && field.fieldType != 4 &&
+                sec.contact_form_fields[i+1].fieldType != 3 && sec.contact_form_fields[i+1].fieldType != 4) {
+                sideBySide = true;
+                fieldW = (formContentW - 15.0f) / 2;
+            }
+
+            // Label
+            char labelBuf[128];
+            snprintf(labelBuf, sizeof(labelBuf), "%s%s", field.label, field.required ? " *" : "");
+            dl->AddText(font, labelFontSize, ImVec2(formContentX, formContentY),
+                        ImGui::ColorConvertFloat4ToU32(field.labelColor), labelBuf);
+            formContentY += labelFontSize + 6.0f;
+
+            float currentFieldH = (field.fieldType == 3) ? 80.0f : fieldH;
+
+            // Field background
+            dl->AddRectFilled(ImVec2(formContentX, formContentY), ImVec2(formContentX + fieldW, formContentY + currentFieldH),
+                             ImGui::ColorConvertFloat4ToU32(field.inputBgColor), 8.0f);
+            dl->AddRect(ImVec2(formContentX, formContentY), ImVec2(formContentX + fieldW, formContentY + currentFieldH),
+                       ImGui::ColorConvertFloat4ToU32(field.inputBorderColor), 8.0f, 0, 1.0f);
+
+            // Placeholder text
+            if (strlen(field.placeholder) > 0) {
+                dl->AddText(font, 13.0f, ImVec2(formContentX + 12.0f, formContentY + (currentFieldH - 13.0f)/2),
+                            IM_COL32(150, 150, 155, 180), field.placeholder);
+            }
+
+            // Dropdown arrow for dropdown fields
+            if (field.fieldType == 4) {
+                float arrowX = formContentX + fieldW - 25.0f;
+                float arrowY = formContentY + currentFieldH/2;
+                dl->AddTriangleFilled(ImVec2(arrowX, arrowY - 4), ImVec2(arrowX + 8, arrowY - 4),
+                                     ImVec2(arrowX + 4, arrowY + 4), IM_COL32(100, 100, 105, 200));
+            }
+
+            // Handle side by side
+            if (sideBySide && i + 1 < sec.contact_form_fields.size()) {
+                const auto& field2 = sec.contact_form_fields[i+1];
+                float field2X = formContentX + fieldW + 15.0f;
+
+                // Field 2 label (draw at same Y as field 1 label)
+                float label2Y = formContentY - labelFontSize - 6.0f;
+                char label2Buf[128];
+                snprintf(label2Buf, sizeof(label2Buf), "%s%s", field2.label, field2.required ? " *" : "");
+                dl->AddText(font, labelFontSize, ImVec2(field2X, label2Y),
+                            ImGui::ColorConvertFloat4ToU32(field2.labelColor), label2Buf);
+
+                // Field 2 background
+                dl->AddRectFilled(ImVec2(field2X, formContentY), ImVec2(field2X + fieldW, formContentY + fieldH),
+                                 ImGui::ColorConvertFloat4ToU32(field2.inputBgColor), 8.0f);
+                dl->AddRect(ImVec2(field2X, formContentY), ImVec2(field2X + fieldW, formContentY + fieldH),
+                           ImGui::ColorConvertFloat4ToU32(field2.inputBorderColor), 8.0f, 0, 1.0f);
+
+                if (strlen(field2.placeholder) > 0) {
+                    dl->AddText(font, 13.0f, ImVec2(field2X + 12.0f, formContentY + (fieldH - 13.0f)/2),
+                                IM_COL32(150, 150, 155, 180), field2.placeholder);
+                }
+
+                i++; // Skip next field since we rendered it
+            }
+
+            formContentY += currentFieldH + fieldSpacing;
+        }
+
+        // Submit Button
+        formContentY += 5.0f;
+        float btnH = 50.0f;
+        dl->AddRectFilled(ImVec2(formContentX, formContentY), ImVec2(formContentX + formContentW, formContentY + btnH),
+                         ImGui::ColorConvertFloat4ToU32(sec.contact_submit_bg), sec.contact_submit_border_radius);
+
+        // Button text with arrow icon
+        float btnTextSize = 14.0f;
+        ImVec2 btnTextDim = font->CalcTextSizeA(btnTextSize, FLT_MAX, 0.0f, sec.contact_submit_text);
+        float totalBtnContent = btnTextDim.x + 25.0f; // text + space + arrow
+        float btnTextX = formContentX + (formContentW - totalBtnContent) / 2;
+        float btnTextY = formContentY + (btnH - btnTextSize) / 2;
+        dl->AddText(font, btnTextSize, ImVec2(btnTextX, btnTextY),
+                    ImGui::ColorConvertFloat4ToU32(sec.contact_submit_text_color), sec.contact_submit_text);
+
+        // Arrow icon (simple triangle)
+        float arrowX = btnTextX + btnTextDim.x + 12.0f;
+        float arrowY = formContentY + btnH/2;
+        dl->AddTriangleFilled(ImVec2(arrowX, arrowY - 5), ImVec2(arrowX, arrowY + 5),
+                             ImVec2(arrowX + 8, arrowY), ImGui::ColorConvertFloat4ToU32(sec.contact_submit_text_color));
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
     // Default - render title and paragraphs
     float contentY = y + sec.padding_top;
 
@@ -25277,6 +25759,25 @@ void RenderUI() {
 
     if (ImGui::Button("+ Logo Marquee", ImVec2(-1, 26))) {
         WebSection sec(g_NextSectionId++, SEC_MARQUEE_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Contact Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_CONTACT_SECTION_CONNECTOR);
         if (g_FreeDesignMode) {
             float nextY = 20;
             for (const auto& s : g_Sections) {
@@ -30081,6 +30582,16 @@ void RenderUI() {
             ImGui::ColorEdit4("Stats BG", (float*)&sec.story_stats_bg, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size", &sec.story_label_size, 8.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size", &sec.story_heading_size, 24.0f, 72.0f, "%.0f");
+            ImGui::SliderFloat("Text Size", &sec.story_text_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Button Size", &sec.story_button_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Stats Size", &sec.story_stats_size, 24.0f, 72.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLLAGE IMAGES");
             for (int i = 0; i < 3; i++) {
                 ImGui::PushID(i + 1000);
@@ -30158,22 +30669,64 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.services_accent_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size##svc", &sec.services_label_size, 8.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##svc", &sec.services_heading_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Subtitle Size##svc", &sec.services_subtitle_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Card Title##svc", &sec.services_card_title_size, 12.0f, 32.0f, "%.0f");
+            ImGui::SliderFloat("Card Desc##svc", &sec.services_card_desc_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Bullet Size##svc", &sec.services_bullet_size, 8.0f, 18.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SERVICE CARDS");
             ImGui::Text("Cards: %d", (int)sec.services_cards.size());
             if (ImGui::Button("+ Add Card") && sec.services_cards.size() < 9) {
                 sec.services_cards.push_back(ServicesSectionCard());
             }
-            ImGui::SameLine();
-            ImGui::TextColored(ImVec4(0.6f, 0.6f, 0.6f, 1), "(Click card below to edit/add image)");
-            static int selSvcCard = -1;
-            for (size_t i = 0; i < sec.services_cards.size(); i++) {
-                ImGui::PushID((int)i);
-                char cardLabel[64]; snprintf(cardLabel, sizeof(cardLabel), "Card %d: %s", (int)i+1, sec.services_cards[i].title);
-                if (ImGui::Selectable(cardLabel, selSvcCard == (int)i)) selSvcCard = (int)i;
-                ImGui::PopID();
+
+            // Card selection - use per-section index to allow multi-card upload
+            // Validate selection
+            if (sec.services_selected_card < 0 || sec.services_selected_card >= (int)sec.services_cards.size()) {
+                sec.services_selected_card = sec.services_cards.size() > 0 ? 0 : -1;
             }
-            if (selSvcCard >= 0 && selSvcCard < (int)sec.services_cards.size()) {
-                auto& card = sec.services_cards[selSvcCard];
+
+            if (sec.services_cards.size() > 0) {
+                ImGui::Text("Select Card (click to edit):");
+                for (size_t i = 0; i < sec.services_cards.size(); i++) {
+                    ImGui::PushID((int)i + 7000);
+                    char cardLabel[128];
+                    bool hasImage = sec.services_cards[i].textureID != 0;
+                    snprintf(cardLabel, sizeof(cardLabel), "%s Card %d: %s",
+                             (sec.services_selected_card == (int)i) ? ">" : " ",
+                             (int)i+1, sec.services_cards[i].title);
+
+                    // Highlight selected card
+                    if (sec.services_selected_card == (int)i) {
+                        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.2f, 0.8f, 0.4f, 1.0f));
+                    } else if (!hasImage) {
+                        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.7f, 0.7f, 0.7f, 1.0f));  // Grey if no image
+                    }
+
+                    bool clicked = ImGui::Selectable(cardLabel, sec.services_selected_card == (int)i, ImGuiSelectableFlags_None);
+
+                    if (sec.services_selected_card == (int)i || !hasImage) {
+                        ImGui::PopStyleColor();
+                    }
+
+                    if (clicked) {
+                        sec.services_selected_card = (int)i;
+                    }
+                    ImGui::PopID();
+                }
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "EDITING CARD %d", sec.services_selected_card + 1);
+                ImGui::Spacing();
+
+                auto& card = sec.services_cards[sec.services_selected_card];
                 ImGui::InputText("Title", card.title, sizeof(card.title));
                 ImGui::InputTextMultiline("Desc", card.description, sizeof(card.description), ImVec2(-1, 50));
                 ImGui::SliderInt("Icon", &card.iconType, 0, ICON_COUNT - 1);
@@ -30187,25 +30740,36 @@ void RenderUI() {
                 ImGui::SliderInt("Bullet Count", &card.bulletCount, 0, 6);
                 ImGui::InputText("Link Text", card.linkText, sizeof(card.linkText));
 
-                // Card Image
+                // Card Image - ALWAYS VISIBLE when card is selected
                 ImGui::Spacing();
                 ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CARD IMAGE");
-                ImGui::PushID(selSvcCard + 5000); // Unique ID for this card's image controls
-                if (card.textureID != 0) {
-                    ImGui::Image((ImTextureID)(intptr_t)card.textureID, ImVec2(120, 80));
+
+                // Get current card index at the moment of interaction (not cached reference)
+                int currentCardIdx = sec.services_selected_card;
+                ImGui::PushID(currentCardIdx + 5000);
+
+                // Access card directly each time to ensure we get the right one
+                ServicesSectionCard& currentCard = sec.services_cards[currentCardIdx];
+
+                if (currentCard.textureID != 0) {
+                    ImGui::Image((ImTextureID)(intptr_t)currentCard.textureID, ImVec2(120, 80));
                     if (ImGui::Button("Remove Image")) {
-                        glDeleteTextures(1, &card.textureID);
-                        card.textureID = 0;
-                        card.imagePath = "";
+                        glDeleteTextures(1, &sec.services_cards[sec.services_selected_card].textureID);
+                        sec.services_cards[sec.services_selected_card].textureID = 0;
+                        sec.services_cards[sec.services_selected_card].imagePath = "";
                     }
-                    // Image size control
                     ImGui::PushItemWidth(120);
-                    ImGui::SliderFloat("Image Height", &card.imageHeight_display, 80.0f, 300.0f, "%.0f");
+                    ImGui::SliderFloat("Image Height", &sec.services_cards[sec.services_selected_card].imageHeight_display, 80.0f, 300.0f, "%.0f");
                     ImGui::PopItemWidth();
                 } else {
-                    if (ImGui::Button("Browse...")) {
+                    ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1), "No image uploaded");
+                    char uploadBtnLabel[64];
+                    snprintf(uploadBtnLabel, sizeof(uploadBtnLabel), "Browse Image...##svcCard%d", currentCardIdx);
+                    if (ImGui::Button(uploadBtnLabel)) {
+                        // Capture the card index BEFORE opening file dialog
+                        int cardToUpload = sec.services_selected_card;
                         std::string selectedPath = OpenImageFileDialog();
-                        if (!selectedPath.empty()) {
+                        if (!selectedPath.empty() && cardToUpload >= 0 && cardToUpload < (int)sec.services_cards.size()) {
                             int w, h, c;
                             unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
                             if (data) {
@@ -30216,20 +30780,24 @@ void RenderUI() {
                                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
                                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                                 stbi_image_free(data);
-                                card.textureID = tex;
-                                card.imagePath = selectedPath;
-                                card.imageWidth = w;
-                                card.imageHeight = h;
+                                // Directly access the card using the captured index
+                                sec.services_cards[cardToUpload].textureID = tex;
+                                sec.services_cards[cardToUpload].imagePath = selectedPath;
+                                sec.services_cards[cardToUpload].imageWidth = w;
+                                sec.services_cards[cardToUpload].imageHeight = h;
                             }
                         }
                     }
                 }
                 ImGui::PopID();
 
-                if (ImGui::Button("Delete Card##svc")) {
-                    sec.services_cards.erase(sec.services_cards.begin() + selSvcCard);
-                    selSvcCard = -1;
+                ImGui::Spacing();
+                if (ImGui::Button("Delete This Card##svc")) {
+                    sec.services_cards.erase(sec.services_cards.begin() + sec.services_selected_card);
+                    sec.services_selected_card = sec.services_cards.size() > 0 ? 0 : -1;
                 }
+            } else {
+                ImGui::TextColored(ImVec4(0.7f, 0.7f, 0.7f, 1), "No cards. Click '+ Add Card' to create one.");
             }
         }
         // Clients Grid Connector properties
@@ -30258,6 +30826,14 @@ void RenderUI() {
             ImGui::ColorEdit4("Label", (float*)&sec.clients_label_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Heading", (float*)&sec.clients_heading_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Accent", (float*)&sec.clients_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size##cli", &sec.clients_label_size, 8.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##cli", &sec.clients_heading_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Subtitle Size##cli", &sec.clients_subtitle_size, 10.0f, 24.0f, "%.0f");
+            ImGui::PopItemWidth();
 
             ImGui::Spacing();
             ImGui::Text("Clients: %d", (int)sec.clients_items.size());
@@ -30310,6 +30886,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Label", (float*)&sec.features_label_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Heading", (float*)&sec.features_heading_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Accent", (float*)&sec.features_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size##feat", &sec.features_label_size, 8.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##feat", &sec.features_heading_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Subtitle Size##feat", &sec.features_subtitle_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Card Title##feat", &sec.features_card_title_size, 12.0f, 32.0f, "%.0f");
+            ImGui::SliderFloat("Card Desc##feat", &sec.features_card_desc_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Check Items##feat", &sec.features_check_size, 8.0f, 18.0f, "%.0f");
+            ImGui::PopItemWidth();
 
             ImGui::Spacing();
             ImGui::Text("Feature Cards: %d", (int)sec.features_cards.size());
@@ -30366,6 +30953,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.process_accent_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Background", (float*)&sec.process_bg_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Line", (float*)&sec.process_line_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size##proc", &sec.process_label_size, 8.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##proc", &sec.process_heading_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Subtitle Size##proc", &sec.process_subtitle_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Step Number##proc", &sec.process_step_number_size, 20.0f, 48.0f, "%.0f");
+            ImGui::SliderFloat("Step Title##proc", &sec.process_step_title_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Step Desc##proc", &sec.process_step_desc_size, 8.0f, 18.0f, "%.0f");
+            ImGui::PopItemWidth();
 
             ImGui::Spacing();
             ImGui::Text("Steps: %d", (int)sec.process_steps.size());
@@ -30435,6 +31033,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Secondary Border", (float*)&sec.hero_btn_secondary_border, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Secondary Text", (float*)&sec.hero_btn_secondary_text_color, ImGuiColorEditFlags_NoInputs);
             ImGui::SliderFloat("Button Radius", &sec.hero_btn_border_radius, 0.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Badge Size##hero", &sec.hero_badge_size, 8.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##hero", &sec.hero_heading_size, 32.0f, 80.0f, "%.0f");
+            ImGui::SliderFloat("Desc Size##hero", &sec.hero_description_size, 12.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Button Size##hero", &sec.hero_button_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Stats Number##hero", &sec.hero_stats_number_size, 24.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Stats Label##hero", &sec.hero_stats_label_size, 8.0f, 18.0f, "%.0f");
+            ImGui::PopItemWidth();
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "FEATURE BADGES");
@@ -30805,6 +31414,190 @@ void RenderUI() {
                     sec.marquee_items.erase(sec.marquee_items.begin() + selMarqueeLogo);
                     selMarqueeLogo = -1;
                 }
+            }
+        }
+        // Contact Section Connector properties
+        else if (sec.type == SEC_CONTACT_SECTION_CONNECTOR) {
+            ImGui::Text("Contact Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##contactLabel", sec.contact_label, sizeof(sec.contact_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##contactHeading", sec.contact_heading, sizeof(sec.contact_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##contactAccent", sec.contact_heading_accent, sizeof(sec.contact_heading_accent));
+
+            ImGui::Text("Description:");
+            ImGui::InputTextMultiline("##contactDesc", sec.contact_description, sizeof(sec.contact_description), ImVec2(-1, 60));
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Background", (float*)&sec.contact_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Label", (float*)&sec.contact_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.contact_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.contact_accent_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Description", (float*)&sec.contact_desc_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::PushItemWidth(120);
+            ImGui::SliderFloat("Label Size##cont", &sec.contact_label_size, 8.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Heading Size##cont", &sec.contact_heading_size, 28.0f, 60.0f, "%.0f");
+            ImGui::SliderFloat("Desc Size##cont", &sec.contact_desc_size, 10.0f, 20.0f, "%.0f");
+            ImGui::SliderFloat("Info Title##cont", &sec.contact_info_title_size, 10.0f, 24.0f, "%.0f");
+            ImGui::SliderFloat("Info Text##cont", &sec.contact_info_text_size, 8.0f, 18.0f, "%.0f");
+            ImGui::SliderFloat("Form Title##cont", &sec.contact_section_form_title_size, 18.0f, 40.0f, "%.0f");
+            ImGui::SliderFloat("Form Subtitle##cont", &sec.contact_form_subtitle_size, 10.0f, 18.0f, "%.0f");
+            ImGui::SliderFloat("Field Label##cont", &sec.contact_field_label_size, 8.0f, 16.0f, "%.0f");
+            ImGui::SliderFloat("Button Size##cont", &sec.contact_button_size, 10.0f, 20.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            // Contact Info Items
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CONTACT INFO ITEMS");
+            ImGui::Text("Items: %d", (int)sec.contact_info_items.size());
+            if (ImGui::Button("+ Add Info Item") && sec.contact_info_items.size() < 6) {
+                sec.contact_info_items.push_back(ContactInfoItem());
+            }
+
+            // Validate selection
+            if (sec.contact_selected_info_item < 0 || sec.contact_selected_info_item >= (int)sec.contact_info_items.size()) {
+                sec.contact_selected_info_item = sec.contact_info_items.size() > 0 ? 0 : -1;
+            }
+
+            if (sec.contact_info_items.size() > 0) {
+                ImGui::Text("Select Item:");
+                for (size_t i = 0; i < sec.contact_info_items.size(); i++) {
+                    ImGui::PushID((int)i + 8000);
+                    char itemLabel[64]; snprintf(itemLabel, sizeof(itemLabel), "%d. %s", (int)i+1, sec.contact_info_items[i].title);
+                    if (ImGui::Selectable(itemLabel, sec.contact_selected_info_item == (int)i))
+                        sec.contact_selected_info_item = (int)i;
+                    ImGui::PopID();
+                }
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "EDITING ITEM %d", sec.contact_selected_info_item + 1);
+
+                auto& item = sec.contact_info_items[sec.contact_selected_info_item];
+                ImGui::InputText("Title##infoItem", item.title, sizeof(item.title));
+                ImGui::SliderInt("Icon##infoItem", &item.iconType, 0, ICON_COUNT - 1);
+                ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[item.iconType]);
+                ImGui::ColorEdit4("Icon BG##infoItem", (float*)&item.iconBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Icon Color##infoItem", (float*)&item.iconColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Title Color##infoItem", (float*)&item.titleColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Text Color##infoItem", (float*)&item.textColor, ImGuiColorEditFlags_NoInputs);
+
+                ImGui::Text("Lines:");
+                ImGui::SliderInt("Line Count##infoItem", &item.lineCount, 1, 4);
+                for (int ln = 0; ln < 4; ln++) {
+                    char lnLabel[16]; snprintf(lnLabel, sizeof(lnLabel), "Line %d##il%d", ln+1, ln);
+                    ImGui::InputText(lnLabel, item.lines[ln], sizeof(item.lines[ln]));
+                }
+
+                if (ImGui::Button("Delete Item##infoItem")) {
+                    sec.contact_info_items.erase(sec.contact_info_items.begin() + sec.contact_selected_info_item);
+                    sec.contact_selected_info_item = sec.contact_info_items.size() > 0 ? 0 : -1;
+                }
+            }
+
+            // Form Settings
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "FORM SETTINGS");
+
+            ImGui::Text("Form Title:");
+            ImGui::InputText("##formTitle", sec.contact_form_title, sizeof(sec.contact_form_title));
+
+            ImGui::Text("Form Subtitle:");
+            ImGui::InputText("##formSubtitle", sec.contact_form_subtitle, sizeof(sec.contact_form_subtitle));
+
+            ImGui::Text("Submit Button Text:");
+            ImGui::InputText("##submitText", sec.contact_submit_text, sizeof(sec.contact_submit_text));
+
+            ImGui::Text("Submit Action:");
+            ImGui::Combo("##submitAction", &sec.contact_submit_action, "None\0Scroll to Section\0Open URL\0Email\0Phone\0Download\0");
+            ImGui::InputText("Target##submit", sec.contact_submit_target, sizeof(sec.contact_submit_target));
+
+            ImGui::Text("Form Colors:");
+            ImGui::ColorEdit4("Form BG", (float*)&sec.contact_form_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Form Title", (float*)&sec.contact_form_title_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Submit BG", (float*)&sec.contact_submit_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Submit Text", (float*)&sec.contact_submit_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::SliderFloat("Form Radius", &sec.contact_section_form_border_radius, 0.0f, 30.0f, "%.0f");
+            ImGui::SliderFloat("Button Radius", &sec.contact_submit_border_radius, 0.0f, 40.0f, "%.0f");
+
+            // Form Fields
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "FORM FIELDS");
+            ImGui::Text("Fields: %d", (int)sec.contact_form_fields.size());
+            if (ImGui::Button("+ Add Field") && sec.contact_form_fields.size() < 12) {
+                sec.contact_form_fields.push_back(ContactFormField());
+            }
+
+            // Validate field selection
+            if (sec.contact_selected_form_field < 0 || sec.contact_selected_form_field >= (int)sec.contact_form_fields.size()) {
+                sec.contact_selected_form_field = sec.contact_form_fields.size() > 0 ? 0 : -1;
+            }
+
+            if (sec.contact_form_fields.size() > 0) {
+                ImGui::Text("Select Field:");
+                for (size_t i = 0; i < sec.contact_form_fields.size(); i++) {
+                    ImGui::PushID((int)i + 9000);
+                    char fldLabel[64]; snprintf(fldLabel, sizeof(fldLabel), "%d. %s", (int)i+1, sec.contact_form_fields[i].label);
+                    if (ImGui::Selectable(fldLabel, sec.contact_selected_form_field == (int)i))
+                        sec.contact_selected_form_field = (int)i;
+                    ImGui::PopID();
+                }
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.4f, 1), "EDITING FIELD %d", sec.contact_selected_form_field + 1);
+
+                auto& field = sec.contact_form_fields[sec.contact_selected_form_field];
+                ImGui::InputText("Label##field", field.label, sizeof(field.label));
+                ImGui::InputText("Placeholder##field", field.placeholder, sizeof(field.placeholder));
+                ImGui::Combo("Type##field", &field.fieldType, "Text\0Email\0Phone\0Textarea\0Dropdown\0");
+                ImGui::Checkbox("Required##field", &field.required);
+
+                if (field.fieldType == 4) { // Dropdown
+                    ImGui::Text("Options (comma-separated):");
+                    ImGui::InputText("##dropOptions", field.dropdownOptions, sizeof(field.dropdownOptions));
+                }
+
+                ImGui::ColorEdit4("Label Color##field", (float*)&field.labelColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Input BG##field", (float*)&field.inputBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Border##field", (float*)&field.inputBorderColor, ImGuiColorEditFlags_NoInputs);
+
+                if (ImGui::Button("Delete Field##field")) {
+                    sec.contact_form_fields.erase(sec.contact_form_fields.begin() + sec.contact_selected_form_field);
+                    sec.contact_selected_form_field = sec.contact_form_fields.size() > 0 ? 0 : -1;
+                }
+            }
+
+            // Social Icons
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SOCIAL ICONS");
+            ImGui::ColorEdit4("Social BG", (float*)&sec.contact_social_icon_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Social Icon Color", (float*)&sec.contact_social_icon_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::Text("Icons: %d", (int)sec.contact_social_icons.size());
+            if (ImGui::Button("+ Add Social Icon") && sec.contact_social_icons.size() < 6) {
+                sec.contact_social_icons.push_back(ICON_STAR);
+            }
+            for (size_t i = 0; i < sec.contact_social_icons.size(); i++) {
+                ImGui::PushID((int)i + 9500);
+                char socLabel[32]; snprintf(socLabel, sizeof(socLabel), "Icon %d", (int)i+1);
+                ImGui::SliderInt(socLabel, &sec.contact_social_icons[i], 0, ICON_COUNT - 1);
+                ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[sec.contact_social_icons[i]]);
+                ImGui::SameLine();
+                if (ImGui::Button("X")) {
+                    sec.contact_social_icons.erase(sec.contact_social_icons.begin() + i);
+                }
+                ImGui::PopID();
             }
         }
         // Regular section content
