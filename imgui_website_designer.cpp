@@ -57,7 +57,13 @@ enum SectionType {
     SEC_BULLET_CONNECTOR,      // Bullet point columns with heading and subheadings
     SEC_ICON,                  // Icon element with selectable icons
     SEC_SERVICE_CARD_CONNECTOR, // Service cards with image, badge tag, and title
-    SEC_GLASS_BAR_CONNECTOR    // Glass effect text bar
+    SEC_GLASS_BAR_CONNECTOR,   // Glass effect text bar
+    SEC_STORY_CONNECTOR,       // About/Story section with image collage and stats
+    SEC_SERVICES_SECTION_CONNECTOR, // Services section with image cards and bullet lists
+    SEC_CLIENTS_GRID_CONNECTOR,    // Client/partner logo grid
+    SEC_FEATURES_GRID_CONNECTOR,   // Feature cards with icons and checkmark lists
+    SEC_PROCESS_TIMELINE_CONNECTOR, // Horizontal process timeline with steps
+    SEC_HERO_SECTION_CONNECTOR     // Full hero section with badge, buttons, stats
 };
 
 // ============================================================================
@@ -919,6 +925,166 @@ struct ServiceCard {
     }
 };
 
+// ============================================================================
+// NEW CONNECTOR STRUCTS
+// ============================================================================
+
+// Story section feature badge (colored dot + text)
+struct StoryFeatureBadge {
+    char text[128];
+    ImVec4 dotColor;
+    StoryFeatureBadge() : dotColor(0.95f, 0.6f, 0.2f, 1) {
+        strcpy(text, "Feature Item");
+    }
+};
+
+// Services section card item (with image, icon, bullets)
+struct ServicesSectionCard {
+    char title[256];
+    char description[1024];
+    int iconType;                    // From IconType enum
+    ImVec4 iconBgColor;
+    char bullets[6][256];            // Up to 6 bullet points
+    int bulletCount;
+    char linkText[64];
+    int linkActionType;
+    char linkTarget[512];
+    ImVec4 titleColor;
+    ImVec4 descColor;
+    ImVec4 bulletColor;
+    ImVec4 linkColor;
+    ImVec4 cardBgColor;
+    float borderRadius;
+
+    ServicesSectionCard() : iconType(ICON_STAR),
+                            iconBgColor(0.95f, 0.5f, 0.2f, 1),
+                            bulletCount(3),
+                            linkActionType(0),
+                            titleColor(0.1f, 0.1f, 0.15f, 1),
+                            descColor(0.3f, 0.3f, 0.35f, 1),
+                            bulletColor(0.95f, 0.5f, 0.2f, 1),
+                            linkColor(0.95f, 0.5f, 0.2f, 1),
+                            cardBgColor(1, 1, 1, 1),
+                            borderRadius(12.0f) {
+        strcpy(title, "Service Title");
+        strcpy(description, "Service description goes here.");
+        strcpy(bullets[0], "Feature one");
+        strcpy(bullets[1], "Feature two");
+        strcpy(bullets[2], "Feature three");
+        for (int i = 3; i < 6; i++) bullets[i][0] = '\0';
+        strcpy(linkText, "Learn More");
+        strcpy(linkTarget, "");
+    }
+};
+
+// Client/Partner logo item
+struct ClientItem {
+    char name[128];           // Company name displayed below logo
+    char logoText[64];        // Text-based logo (if no image)
+    bool useTextLogo;         // True = use text, False = use image
+    std::string imagePath;
+    GLuint textureID;
+    int imageWidth, imageHeight;
+    ImVec4 textColor;
+    ImVec4 cardBgColor;
+    int actionType;
+    char actionTarget[512];
+
+    ClientItem() : useTextLogo(true), textureID(0), imageWidth(0), imageHeight(0),
+                   textColor(0.2f, 0.2f, 0.25f, 1),
+                   cardBgColor(1, 1, 1, 1),
+                   actionType(0) {
+        strcpy(name, "Company Name");
+        strcpy(logoText, "LOGO");
+        strcpy(actionTarget, "");
+    }
+};
+
+// Feature card item (icon + title + description + checkmarks)
+struct FeatureCardItem {
+    char title[256];
+    char description[1024];
+    int iconType;
+    ImVec4 iconBgColor;
+    char checkmarks[6][256];     // Up to 6 checkmark items
+    int checkmarkCount;
+    ImVec4 titleColor;
+    ImVec4 descColor;
+    ImVec4 checkColor;
+    ImVec4 cardBgColor;
+    float borderRadius;
+
+    FeatureCardItem() : iconType(ICON_SETTINGS),
+                        iconBgColor(0.95f, 0.5f, 0.2f, 1),
+                        checkmarkCount(3),
+                        titleColor(0.1f, 0.1f, 0.15f, 1),
+                        descColor(0.3f, 0.3f, 0.35f, 1),
+                        checkColor(0.95f, 0.5f, 0.2f, 1),
+                        cardBgColor(1, 1, 1, 1),
+                        borderRadius(12.0f) {
+        strcpy(title, "Feature Title");
+        strcpy(description, "Feature description goes here.");
+        strcpy(checkmarks[0], "Checkmark item one");
+        strcpy(checkmarks[1], "Checkmark item two");
+        strcpy(checkmarks[2], "Checkmark item three");
+        for (int i = 3; i < 6; i++) checkmarks[i][0] = '\0';
+    }
+};
+
+// Process timeline step
+struct ProcessStep {
+    char title[128];
+    char description[512];
+    int iconType;
+    ImVec4 iconBgColor;
+    ImVec4 numberBgColor;
+    ImVec4 numberTextColor;
+    ImVec4 titleColor;
+    ImVec4 descColor;
+    ImVec4 cardBgColor;
+    float borderRadius;
+
+    ProcessStep() : iconType(ICON_BULB),
+                    iconBgColor(0.95f, 0.5f, 0.2f, 1),
+                    numberBgColor(0.95f, 0.5f, 0.2f, 1),
+                    numberTextColor(0.1f, 0.1f, 0.15f, 1),
+                    titleColor(1, 1, 1, 1),
+                    descColor(0.7f, 0.7f, 0.75f, 1),
+                    cardBgColor(0.15f, 0.18f, 0.25f, 0.8f),
+                    borderRadius(8.0f) {
+        strcpy(title, "Step Title");
+        strcpy(description, "Step description goes here.");
+    }
+};
+
+// Hero section stat item (icon + number + label)
+struct HeroStatItem {
+    int iconType;
+    char number[32];
+    char label[64];
+    ImVec4 iconColor;
+    ImVec4 numberColor;
+    ImVec4 labelColor;
+
+    HeroStatItem() : iconType(ICON_CALENDAR),
+                     iconColor(0.95f, 0.5f, 0.2f, 1),
+                     numberColor(0.1f, 0.1f, 0.15f, 1),
+                     labelColor(0.4f, 0.4f, 0.45f, 1) {
+        strcpy(number, "50+");
+        strcpy(label, "STAT LABEL");
+    }
+};
+
+// Hero section feature badge (checkmark + text)
+struct HeroFeatureBadge {
+    char text[128];
+    ImVec4 checkColor;
+
+    HeroFeatureBadge() : checkColor(0.95f, 0.5f, 0.2f, 1) {
+        strcpy(text, "Feature Item");
+    }
+};
+
 // Content block for vertical_connector (vertical text + image layout)
 struct VerticalBlock {
     int type; // 0=Heading, 1=Description, 2=Image
@@ -1550,6 +1716,109 @@ struct WebSection {
     float glass_bar_border_radius;
     float glass_bar_padding;
 
+    // ========== STORY CONNECTOR ==========
+    char story_label[64];            // "OUR STORY"
+    char story_heading[256];         // "Five Decades of"
+    char story_heading_accent[128];  // "Visual Mastery" (colored)
+    char story_paragraphs[3][1024];  // Up to 3 paragraphs
+    int story_paragraph_count;
+    std::vector<StoryFeatureBadge> story_badges;  // Feature badges with dots
+    char story_button_text[64];
+    int story_button_action;
+    char story_button_target[512];
+    char story_stats_number[32];     // "50+"
+    char story_stats_label[64];      // Optional label
+    ImVec4 story_label_color;
+    ImVec4 story_heading_color;
+    ImVec4 story_accent_color;
+    ImVec4 story_text_color;
+    ImVec4 story_button_bg;
+    ImVec4 story_button_text_color;
+    ImVec4 story_stats_bg;
+    ImVec4 story_stats_text_color;
+
+    // ========== SERVICES SECTION CONNECTOR ==========
+    char services_label[64];
+    char services_heading[256];
+    char services_heading_accent[128];
+    char services_subtitle[512];
+    std::vector<ServicesSectionCard> services_cards;
+    int services_cards_per_row;
+    float services_card_spacing;
+    ImVec4 services_label_color;
+    ImVec4 services_heading_color;
+    ImVec4 services_accent_color;
+    ImVec4 services_subtitle_color;
+
+    // ========== CLIENTS GRID CONNECTOR ==========
+    char clients_label[64];
+    char clients_heading[256];
+    char clients_heading_accent[128];
+    char clients_subtitle[512];
+    std::vector<ClientItem> clients_items;
+    int clients_per_row;
+    float clients_card_spacing;
+    ImVec4 clients_label_color;
+    ImVec4 clients_heading_color;
+    ImVec4 clients_accent_color;
+    ImVec4 clients_subtitle_color;
+
+    // ========== FEATURES GRID CONNECTOR ==========
+    char features_label[64];
+    char features_heading[256];
+    char features_heading_accent[128];
+    char features_subtitle[512];
+    std::vector<FeatureCardItem> features_cards;
+    int features_cards_per_row;
+    float features_card_spacing;
+    ImVec4 features_label_color;
+    ImVec4 features_heading_color;
+    ImVec4 features_accent_color;
+    ImVec4 features_subtitle_color;
+
+    // ========== PROCESS TIMELINE CONNECTOR ==========
+    char process_label[64];
+    char process_heading[256];
+    char process_heading_accent[128];
+    char process_subtitle[512];
+    std::vector<ProcessStep> process_steps;
+    ImVec4 process_label_color;
+    ImVec4 process_heading_color;
+    ImVec4 process_accent_color;
+    ImVec4 process_subtitle_color;
+    ImVec4 process_line_color;
+    ImVec4 process_bg_color;         // Section background (dark theme)
+
+    // ========== HERO SECTION CONNECTOR ==========
+    char hero_badge_text[128];       // "Your Premier Visual Production Partner"
+    int hero_badge_icon_left;        // Icon type for left side
+    int hero_badge_icon_right;       // Icon type for right side
+    char hero_heading[256];          // "Transforming Ideas into"
+    char hero_heading_accent[128];   // "Visual Excellence"
+    char hero_description[1024];     // Description paragraph
+    char hero_btn_primary_text[64];  // "Explore Our Services"
+    char hero_btn_secondary_text[64]; // "Partner With Us"
+    int hero_btn_primary_action;
+    char hero_btn_primary_target[512];
+    int hero_btn_secondary_action;
+    char hero_btn_secondary_target[512];
+    std::vector<HeroFeatureBadge> hero_feature_badges;  // Row of feature badges
+    std::vector<HeroStatItem> hero_stats;               // Stats counter items
+    ImVec4 hero_bg_color;
+    ImVec4 hero_badge_bg;
+    ImVec4 hero_badge_text_color;
+    ImVec4 hero_badge_icon_color;
+    ImVec4 hero_heading_color;
+    ImVec4 hero_accent_color;
+    ImVec4 hero_description_color;
+    ImVec4 hero_btn_primary_bg;
+    ImVec4 hero_btn_primary_text_color;
+    ImVec4 hero_btn_secondary_bg;
+    ImVec4 hero_btn_secondary_text_color;
+    ImVec4 hero_btn_secondary_border;
+    float hero_btn_border_radius;
+    float hero_badge_border_radius;
+
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
         title_font_size(48), subtitle_font_size(20), content_font_size(16),
@@ -1662,7 +1931,53 @@ struct WebSection {
         service_cards_per_row(3), service_card_spacing(20.0f),
         glass_bar_text_color(0.2f, 0.2f, 0.25f, 1.0f), glass_bar_highlight_color(0.3f, 0.5f, 0.9f, 1.0f),
         glass_bar_bg_color(0.95f, 0.95f, 0.98f, 0.9f), glass_bar_opacity(0.9f),
-        glass_bar_border_radius(30.0f), glass_bar_padding(20.0f) {
+        glass_bar_border_radius(30.0f), glass_bar_padding(20.0f),
+        // Story connector defaults
+        story_paragraph_count(0), story_button_action(0),
+        story_label_color(0.95f, 0.5f, 0.2f, 1), story_heading_color(0.1f, 0.1f, 0.15f, 1),
+        story_accent_color(0.95f, 0.5f, 0.2f, 1), story_text_color(0.3f, 0.3f, 0.35f, 1),
+        story_button_bg(0.95f, 0.5f, 0.2f, 1), story_button_text_color(1, 1, 1, 1),
+        story_stats_bg(0.95f, 0.5f, 0.2f, 1), story_stats_text_color(1, 1, 1, 1),
+        // Services section defaults
+        services_cards_per_row(3), services_card_spacing(24.0f),
+        services_label_color(0.95f, 0.5f, 0.2f, 1), services_heading_color(0.1f, 0.1f, 0.15f, 1),
+        services_accent_color(0.95f, 0.5f, 0.2f, 1), services_subtitle_color(0.4f, 0.4f, 0.45f, 1),
+        // Clients grid defaults
+        clients_per_row(4), clients_card_spacing(20.0f),
+        clients_label_color(0.95f, 0.5f, 0.2f, 1), clients_heading_color(0.1f, 0.1f, 0.15f, 1),
+        clients_accent_color(0.95f, 0.5f, 0.2f, 1), clients_subtitle_color(0.4f, 0.4f, 0.45f, 1),
+        // Features grid defaults
+        features_cards_per_row(3), features_card_spacing(24.0f),
+        features_label_color(0.95f, 0.5f, 0.2f, 1), features_heading_color(0.1f, 0.1f, 0.15f, 1),
+        features_accent_color(0.95f, 0.5f, 0.2f, 1), features_subtitle_color(0.4f, 0.4f, 0.45f, 1),
+        // Process timeline defaults
+        process_label_color(0.95f, 0.5f, 0.2f, 1), process_heading_color(1, 1, 1, 1),
+        process_accent_color(0.95f, 0.5f, 0.2f, 1), process_subtitle_color(0.6f, 0.6f, 0.65f, 1),
+        process_line_color(0.95f, 0.5f, 0.2f, 0.5f), process_bg_color(0.08f, 0.1f, 0.14f, 1),
+        // Hero section connector defaults
+        hero_badge_icon_left(ICON_STAR), hero_badge_icon_right(ICON_STAR),
+        hero_btn_primary_action(ACTION_SCROLL_TO_SECTION), hero_btn_secondary_action(ACTION_SCROLL_TO_SECTION),
+        hero_bg_color(0.98f, 0.98f, 0.99f, 1.0f),
+        hero_badge_bg(1.0f, 1.0f, 1.0f, 0.95f), hero_badge_text_color(0.2f, 0.2f, 0.25f, 1.0f),
+        hero_badge_icon_color(0.95f, 0.5f, 0.2f, 1.0f),
+        hero_heading_color(0.1f, 0.1f, 0.15f, 1.0f), hero_accent_color(0.95f, 0.5f, 0.2f, 1.0f),
+        hero_description_color(0.4f, 0.4f, 0.45f, 1.0f),
+        hero_btn_primary_bg(0.95f, 0.5f, 0.2f, 1.0f), hero_btn_primary_text_color(1.0f, 1.0f, 1.0f, 1.0f),
+        hero_btn_secondary_bg(1.0f, 1.0f, 1.0f, 0.0f), hero_btn_secondary_text_color(0.1f, 0.1f, 0.15f, 1.0f),
+        hero_btn_secondary_border(0.8f, 0.8f, 0.85f, 1.0f),
+        hero_btn_border_radius(30.0f), hero_badge_border_radius(25.0f) {
+        // Initialize char arrays
+        story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
+        story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
+        story_button_text[0] = '\0'; story_button_target[0] = '\0';
+        story_stats_number[0] = '\0'; story_stats_label[0] = '\0';
+        services_label[0] = '\0'; services_heading[0] = '\0'; services_heading_accent[0] = '\0'; services_subtitle[0] = '\0';
+        clients_label[0] = '\0'; clients_heading[0] = '\0'; clients_heading_accent[0] = '\0'; clients_subtitle[0] = '\0';
+        features_label[0] = '\0'; features_heading[0] = '\0'; features_heading_accent[0] = '\0'; features_subtitle[0] = '\0';
+        process_label[0] = '\0'; process_heading[0] = '\0'; process_heading_accent[0] = '\0'; process_subtitle[0] = '\0';
+        hero_badge_text[0] = '\0'; hero_heading[0] = '\0'; hero_heading_accent[0] = '\0'; hero_description[0] = '\0';
+        hero_btn_primary_text[0] = '\0'; hero_btn_secondary_text[0] = '\0';
+        hero_btn_primary_target[0] = '\0'; hero_btn_secondary_target[0] = '\0';
         strcpy(copyright_text, "Website under development.");
         strcpy(copyright_subtext, "2025 COMPANY NAME. ALL RIGHTS RESERVED.");
         strcpy(contact_form_title, "Contact Us");
@@ -2579,6 +2894,281 @@ struct WebSection {
                 glass_bar_opacity = 0.95f;
                 glass_bar_border_radius = 30.0f;
                 glass_bar_padding = 20.0f;
+                break;
+
+            case SEC_STORY_CONNECTOR:
+                name = "Story Section";
+                height = 500;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                strcpy(story_label, "OUR STORY");
+                strcpy(story_heading, "Five Decades of");
+                strcpy(story_heading_accent, "Visual Mastery");
+                strcpy(story_paragraphs[0], "Founded in 1974, OMNiON pioneered global outsourcing in publishing and media services from Bangalore, India's Silicon Valley.");
+                strcpy(story_paragraphs[1], "Today, we continue to serve the world's most prestigious brands, retailers, publishers, and agencies with unmatched expertise.");
+                strcpy(story_paragraphs[2], "Our global delivery model provides 24/7/365 services through world-class infrastructure and over 500 skilled professionals.");
+                story_paragraph_count = 3;
+                {
+                    StoryFeatureBadge b1; strcpy(b1.text, "ISO 9001:2015 Certified"); b1.dotColor = ImVec4(0.95f, 0.7f, 0.2f, 1); story_badges.push_back(b1);
+                    StoryFeatureBadge b2; strcpy(b2.text, "ISO 27001 Compliant"); b2.dotColor = ImVec4(0.9f, 0.3f, 0.3f, 1); story_badges.push_back(b2);
+                    StoryFeatureBadge b3; strcpy(b3.text, "24/7 Global Operations"); b3.dotColor = ImVec4(0.9f, 0.3f, 0.3f, 1); story_badges.push_back(b3);
+                    StoryFeatureBadge b4; strcpy(b4.text, "Enterprise Security"); b4.dotColor = ImVec4(0.95f, 0.5f, 0.2f, 1); story_badges.push_back(b4);
+                }
+                strcpy(story_button_text, "Partner With Us");
+                story_button_action = 0;
+                strcpy(story_button_target, "");
+                strcpy(story_stats_number, "50+");
+                strcpy(story_stats_label, "Years");
+                story_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                story_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1);
+                story_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                story_text_color = ImVec4(0.3f, 0.3f, 0.35f, 1);
+                story_button_bg = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                story_button_text_color = ImVec4(1, 1, 1, 1);
+                story_stats_bg = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                story_stats_text_color = ImVec4(1, 1, 1, 1);
+                break;
+
+            case SEC_SERVICES_SECTION_CONNECTOR:
+                name = "Services Section";
+                height = 600;
+                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                strcpy(services_label, "OUR SERVICES");
+                strcpy(services_heading, "Comprehensive");
+                strcpy(services_heading_accent, "PreMedia Solutions");
+                strcpy(services_subtitle, "End-to-end visual production services tailored for enterprise needs.");
+                services_cards_per_row = 3;
+                services_card_spacing = 24.0f;
+                services_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                services_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1);
+                services_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                services_subtitle_color = ImVec4(0.4f, 0.4f, 0.45f, 1);
+                {
+                    ServicesSectionCard c1;
+                    strcpy(c1.title, "Product Imaging");
+                    strcpy(c1.description, "High-volume product photography and catalog imaging with color-accurate output.");
+                    c1.iconType = ICON_CAMERA;
+                    strcpy(c1.bullets[0], "E-commerce Photography");
+                    strcpy(c1.bullets[1], "Catalog Production");
+                    strcpy(c1.bullets[2], "360° Product Views");
+                    strcpy(c1.bullets[3], "Ghost Mannequin");
+                    c1.bulletCount = 4;
+                    services_cards.push_back(c1);
+
+                    ServicesSectionCard c2;
+                    strcpy(c2.title, "Packaging Design");
+                    strcpy(c2.description, "Strategic packaging solutions that enhance brand presence.");
+                    c2.iconType = ICON_SHOPPING;
+                    strcpy(c2.bullets[0], "Structural Design");
+                    strcpy(c2.bullets[1], "Brand Identity");
+                    strcpy(c2.bullets[2], "Print Production");
+                    c2.bulletCount = 3;
+                    services_cards.push_back(c2);
+
+                    ServicesSectionCard c3;
+                    strcpy(c3.title, "Photo Retouching");
+                    strcpy(c3.description, "Expert-level retouching services delivering flawless imagery.");
+                    c3.iconType = ICON_BULB;
+                    strcpy(c3.bullets[0], "High-End Beauty Retouching");
+                    strcpy(c3.bullets[1], "Product Enhancement");
+                    strcpy(c3.bullets[2], "Color Correction");
+                    c3.bulletCount = 3;
+                    services_cards.push_back(c3);
+                }
+                break;
+
+            case SEC_CLIENTS_GRID_CONNECTOR:
+                name = "Clients Grid";
+                height = 400;
+                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                strcpy(clients_label, "OUR CLIENTS");
+                strcpy(clients_heading, "Trusted by");
+                strcpy(clients_heading_accent, "Global Leaders");
+                strcpy(clients_subtitle, "Partnering with world-renowned brands across industries since 1974");
+                clients_per_row = 4;
+                clients_card_spacing = 20.0f;
+                clients_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                clients_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1);
+                clients_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                clients_subtitle_color = ImVec4(0.4f, 0.4f, 0.45f, 1);
+                {
+                    const char* names[] = {"Nike", "Fender", "Zale Corporation", "Blair", "Quad/Graphics", "Macmillan UK", "Springer-Verlag", "Elsevier"};
+                    const char* logos[] = {"NIKE", "FENDER", "ZALE", "BLAIR", "QUAD", "MACMILLAN", "SPRINGER", "ELSEVIER"};
+                    for (int i = 0; i < 8; i++) {
+                        ClientItem ci;
+                        strcpy(ci.name, names[i]);
+                        strcpy(ci.logoText, logos[i]);
+                        clients_items.push_back(ci);
+                    }
+                }
+                break;
+
+            case SEC_FEATURES_GRID_CONNECTOR:
+                name = "Features Grid";
+                height = 550;
+                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                strcpy(features_label, "INFRASTRUCTURE");
+                strcpy(features_heading, "World-Class");
+                strcpy(features_heading_accent, "Technology & Facilities");
+                strcpy(features_subtitle, "State-of-the-art infrastructure powering global operations 24/7");
+                features_cards_per_row = 3;
+                features_card_spacing = 24.0f;
+                features_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                features_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1);
+                features_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                features_subtitle_color = ImVec4(0.4f, 0.4f, 0.45f, 1);
+                {
+                    FeatureCardItem f1;
+                    strcpy(f1.title, "Enterprise Data Center");
+                    strcpy(f1.description, "Tier-3 certified facility with redundant power and network infrastructure.");
+                    f1.iconType = ICON_LAPTOP;
+                    strcpy(f1.checkmarks[0], "Petabyte-scale storage");
+                    strcpy(f1.checkmarks[1], "High-speed fiber connectivity");
+                    strcpy(f1.checkmarks[2], "Real-time backup systems");
+                    f1.checkmarkCount = 3;
+                    features_cards.push_back(f1);
+
+                    FeatureCardItem f2;
+                    strcpy(f2.title, "Security & Compliance");
+                    strcpy(f2.description, "Military-grade security protocols protecting your assets.");
+                    f2.iconType = ICON_LOCK;
+                    strcpy(f2.checkmarks[0], "ISO 27001 Certified");
+                    strcpy(f2.checkmarks[1], "SOC 2 Type II Compliant");
+                    strcpy(f2.checkmarks[2], "GDPR Ready");
+                    f2.checkmarkCount = 3;
+                    features_cards.push_back(f2);
+
+                    FeatureCardItem f3;
+                    strcpy(f3.title, "Production Workstations");
+                    strcpy(f3.description, "500+ high-performance workstations with premium software.");
+                    f3.iconType = ICON_SETTINGS;
+                    strcpy(f3.checkmarks[0], "Color-calibrated monitors");
+                    strcpy(f3.checkmarks[1], "Adobe Creative Cloud");
+                    strcpy(f3.checkmarks[2], "ESKO Suite");
+                    f3.checkmarkCount = 3;
+                    features_cards.push_back(f3);
+
+                    FeatureCardItem f4;
+                    strcpy(f4.title, "AI & Automation");
+                    strcpy(f4.description, "Proprietary AI-powered tools accelerating production.");
+                    f4.iconType = ICON_BULB;
+                    strcpy(f4.checkmarks[0], "Automated QC systems");
+                    strcpy(f4.checkmarks[1], "Smart batch processing");
+                    strcpy(f4.checkmarks[2], "ML-enhanced retouching");
+                    f4.checkmarkCount = 3;
+                    features_cards.push_back(f4);
+
+                    FeatureCardItem f5;
+                    strcpy(f5.title, "Global Delivery Network");
+                    strcpy(f5.description, "Distributed CDN ensuring fast, secure file delivery.");
+                    f5.iconType = ICON_WIFI;
+                    strcpy(f5.checkmarks[0], "Multi-region CDN");
+                    strcpy(f5.checkmarks[1], "Secure file transfer");
+                    strcpy(f5.checkmarks[2], "Real-time tracking");
+                    f5.checkmarkCount = 3;
+                    features_cards.push_back(f5);
+
+                    FeatureCardItem f6;
+                    strcpy(f6.title, "24/7 Operations");
+                    strcpy(f6.description, "Round-the-clock production across multiple shifts.");
+                    f6.iconType = ICON_CLOCK;
+                    strcpy(f6.checkmarks[0], "Follow-the-sun model");
+                    strcpy(f6.checkmarks[1], "Dedicated project managers");
+                    strcpy(f6.checkmarks[2], "Real-time communication");
+                    f6.checkmarkCount = 3;
+                    features_cards.push_back(f6);
+                }
+                break;
+
+            case SEC_PROCESS_TIMELINE_CONNECTOR:
+                name = "Process Timeline";
+                height = 450;
+                bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);  // Dark background
+                strcpy(process_label, "OUR PROCESS");
+                strcpy(process_heading, "Streamlined");
+                strcpy(process_heading_accent, "Workflow Excellence");
+                strcpy(process_subtitle, "A proven methodology delivering consistent, high-quality results since 1974");
+                process_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                process_heading_color = ImVec4(1, 1, 1, 1);
+                process_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
+                process_subtitle_color = ImVec4(0.6f, 0.6f, 0.65f, 1);
+                process_line_color = ImVec4(0.95f, 0.5f, 0.2f, 0.5f);
+                process_bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);
+                {
+                    ProcessStep s1;
+                    strcpy(s1.title, "Discovery");
+                    strcpy(s1.description, "Understanding your brand, requirements, and project scope.");
+                    s1.iconType = ICON_BULB;
+                    process_steps.push_back(s1);
+
+                    ProcessStep s2;
+                    strcpy(s2.title, "Asset Ingestion");
+                    strcpy(s2.description, "Secure file transfer and quality assessment of materials.");
+                    s2.iconType = ICON_UPLOAD;
+                    process_steps.push_back(s2);
+
+                    ProcessStep s3;
+                    strcpy(s3.title, "Production");
+                    strcpy(s3.description, "Expert execution with multi-stage quality checks.");
+                    s3.iconType = ICON_SETTINGS;
+                    process_steps.push_back(s3);
+
+                    ProcessStep s4;
+                    strcpy(s4.title, "Quality Assurance");
+                    strcpy(s4.description, "Rigorous QC protocols ensuring pixel-perfect output.");
+                    s4.iconType = ICON_CHECK;
+                    process_steps.push_back(s4);
+
+                    ProcessStep s5;
+                    strcpy(s5.title, "Delivery");
+                    strcpy(s5.description, "Secure delivery with ongoing support and revisions.");
+                    s5.iconType = ICON_DOWNLOAD;
+                    process_steps.push_back(s5);
+                }
+                break;
+
+            case SEC_HERO_SECTION_CONNECTOR:
+                name = "Hero Section";
+                height = 600;
+                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                hero_bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
+                strcpy(hero_badge_text, "Your Premier Visual Production Partner");
+                hero_badge_icon_left = ICON_STAR;
+                hero_badge_icon_right = ICON_STAR;
+                strcpy(hero_heading, "Transforming Ideas into");
+                strcpy(hero_heading_accent, "Visual Excellence");
+                strcpy(hero_description, "From concept to completion, we deliver world-class visual production services for global brands, publishers, and agencies with precision, creativity, and unmatched expertise.");
+                strcpy(hero_btn_primary_text, "Explore Our Services");
+                strcpy(hero_btn_secondary_text, "Partner With Us");
+                hero_btn_primary_action = ACTION_SCROLL_TO_SECTION;
+                hero_btn_secondary_action = ACTION_SCROLL_TO_SECTION;
+                strcpy(hero_btn_primary_target, "services");
+                strcpy(hero_btn_secondary_target, "contact");
+                hero_badge_bg = ImVec4(1.0f, 1.0f, 1.0f, 0.95f);
+                hero_badge_text_color = ImVec4(0.2f, 0.2f, 0.25f, 1.0f);
+                hero_badge_icon_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                hero_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
+                hero_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                hero_description_color = ImVec4(0.4f, 0.4f, 0.45f, 1.0f);
+                hero_btn_primary_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                hero_btn_primary_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                hero_btn_secondary_bg = ImVec4(1.0f, 1.0f, 1.0f, 0.0f);
+                hero_btn_secondary_text_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
+                hero_btn_secondary_border = ImVec4(0.8f, 0.8f, 0.85f, 1.0f);
+                hero_btn_border_radius = 30.0f;
+                hero_badge_border_radius = 25.0f;
+                {
+                    // Default feature badges
+                    HeroFeatureBadge b1; strcpy(b1.text, "ISO 9001:2015 Certified"); b1.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b1);
+                    HeroFeatureBadge b2; strcpy(b2.text, "Global 24/7 Operations"); b2.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b2);
+                    HeroFeatureBadge b3; strcpy(b3.text, "500+ Skilled Professionals"); b3.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b3);
+                    HeroFeatureBadge b4; strcpy(b4.text, "50+ Years Experience"); b4.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b4);
+
+                    // Default stats
+                    HeroStatItem s1; s1.iconType = ICON_CALENDAR; strcpy(s1.number, "50+"); strcpy(s1.label, "Years Experience"); hero_stats.push_back(s1);
+                    HeroStatItem s2; s2.iconType = ICON_AVATAR; strcpy(s2.number, "500+"); strcpy(s2.label, "Team Members"); hero_stats.push_back(s2);
+                    HeroStatItem s3; s3.iconType = ICON_INCREASE; strcpy(s3.number, "10K+"); strcpy(s3.label, "Projects Delivered"); hero_stats.push_back(s3);
+                    HeroStatItem s4; s4.iconType = ICON_STAR; strcpy(s4.number, "100+"); strcpy(s4.label, "Global Clients"); hero_stats.push_back(s4);
+                }
                 break;
 
             default:
@@ -3738,6 +4328,38 @@ std::string ServiceCardsToJson(const std::vector<ServiceCard>& cards) {
     return oss.str();
 }
 
+// Serialize HeroFeatureBadges to JSON
+std::string HeroFeatureBadgesToJson(const std::vector<HeroFeatureBadge>& badges) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < badges.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& badge = badges[i];
+        oss << "{\"text\":\"" << JsonEscape(badge.text) << "\""
+            << ",\"checkColor\":" << ColorToJson(badge.checkColor) << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
+// Serialize HeroStats to JSON
+std::string HeroStatsToJson(const std::vector<HeroStatItem>& stats) {
+    std::ostringstream oss;
+    oss << "[";
+    for (size_t i = 0; i < stats.size(); i++) {
+        if (i > 0) oss << ",";
+        const auto& stat = stats[i];
+        oss << "{\"iconType\":" << stat.iconType
+            << ",\"number\":\"" << JsonEscape(stat.number) << "\""
+            << ",\"label\":\"" << JsonEscape(stat.label) << "\""
+            << ",\"iconColor\":" << ColorToJson(stat.iconColor)
+            << ",\"numberColor\":" << ColorToJson(stat.numberColor)
+            << ",\"labelColor\":" << ColorToJson(stat.labelColor) << "}";
+    }
+    oss << "]";
+    return oss.str();
+}
+
 // Parse JSON string helper - simple extraction
 std::string ExtractJsonString(const std::string& json, const std::string& key) {
     std::string searchKey = "\"" + key + "\":\"";
@@ -3796,6 +4418,50 @@ int ExtractJsonInt(const std::string& json, const std::string& key, int defaultV
     if (start == std::string::npos) return defaultVal;
     start += searchKey.length();
     return std::stoi(json.substr(start));
+}
+
+// Parse HeroFeatureBadges from JSON
+std::vector<HeroFeatureBadge> HeroFeatureBadgesFromJson(const std::string& json) {
+    std::vector<HeroFeatureBadge> badges;
+    size_t pos = 0;
+    while ((pos = json.find("{", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+        std::string obj = json.substr(pos, end - pos + 1);
+        HeroFeatureBadge badge;
+        std::string text = ExtractJsonString(obj, "text");
+        strncpy(badge.text, text.c_str(), sizeof(badge.text) - 1);
+        badge.text[sizeof(badge.text) - 1] = '\0';
+        badge.checkColor = ExtractJsonColor(obj, "checkColor");
+        badges.push_back(badge);
+        pos = end + 1;
+    }
+    return badges;
+}
+
+// Parse HeroStats from JSON
+std::vector<HeroStatItem> HeroStatsFromJson(const std::string& json) {
+    std::vector<HeroStatItem> stats;
+    size_t pos = 0;
+    while ((pos = json.find("{", pos)) != std::string::npos) {
+        size_t end = json.find("}", pos);
+        if (end == std::string::npos) break;
+        std::string obj = json.substr(pos, end - pos + 1);
+        HeroStatItem stat;
+        stat.iconType = ExtractJsonInt(obj, "iconType", 0);
+        std::string num = ExtractJsonString(obj, "number");
+        strncpy(stat.number, num.c_str(), sizeof(stat.number) - 1);
+        stat.number[sizeof(stat.number) - 1] = '\0';
+        std::string lbl = ExtractJsonString(obj, "label");
+        strncpy(stat.label, lbl.c_str(), sizeof(stat.label) - 1);
+        stat.label[sizeof(stat.label) - 1] = '\0';
+        stat.iconColor = ExtractJsonColor(obj, "iconColor");
+        stat.numberColor = ExtractJsonColor(obj, "numberColor");
+        stat.labelColor = ExtractJsonColor(obj, "labelColor");
+        stats.push_back(stat);
+        pos = end + 1;
+    }
+    return stats;
 }
 
 // Parse ServiceCards from JSON
@@ -4315,6 +4981,18 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
                 // GLASS BAR COLUMNS
                 << "glass_bar_text, glass_bar_highlight, glass_bar_text_color, glass_bar_highlight_color, "
                 << "glass_bar_bg_color, glass_bar_opacity, glass_bar_border_radius, glass_bar_padding, "
+                // HERO SECTION COLUMNS
+                << "hero_badge_text, hero_badge_icon_left, hero_badge_icon_right, "
+                << "hero_heading, hero_heading_accent, hero_description, "
+                << "hero_btn_primary_text, hero_btn_secondary_text, "
+                << "hero_btn_primary_action, hero_btn_primary_target, "
+                << "hero_btn_secondary_action, hero_btn_secondary_target, "
+                << "hero_feature_badges_json, hero_stats_json, "
+                << "hero_bg_color, hero_badge_bg, hero_badge_text_color, hero_badge_icon_color, "
+                << "hero_heading_color, hero_accent_color, hero_description_color, "
+                << "hero_btn_primary_bg, hero_btn_primary_text_color, "
+                << "hero_btn_secondary_bg, hero_btn_secondary_text_color, hero_btn_secondary_border, "
+                << "hero_btn_border_radius, hero_badge_border_radius, "
                 // PAGE COLUMNS
                 << "page_index, page_name"
                 << ") VALUES ("
@@ -4448,6 +5126,33 @@ bool SaveTemplate(const std::string& name, const std::string& description) {
                 << "'" << ColorToSQL(sec.glass_bar_highlight_color) << "', "
                 << "'" << ColorToSQL(sec.glass_bar_bg_color) << "', "
                 << sec.glass_bar_opacity << ", " << sec.glass_bar_border_radius << ", " << sec.glass_bar_padding << ", "
+                // HERO SECTION VALUES
+                << "'" << SQLEscape(sec.hero_badge_text) << "', "
+                << sec.hero_badge_icon_left << ", " << sec.hero_badge_icon_right << ", "
+                << "'" << SQLEscape(sec.hero_heading) << "', "
+                << "'" << SQLEscape(sec.hero_heading_accent) << "', "
+                << "'" << SQLEscape(sec.hero_description) << "', "
+                << "'" << SQLEscape(sec.hero_btn_primary_text) << "', "
+                << "'" << SQLEscape(sec.hero_btn_secondary_text) << "', "
+                << sec.hero_btn_primary_action << ", "
+                << "'" << SQLEscape(sec.hero_btn_primary_target) << "', "
+                << sec.hero_btn_secondary_action << ", "
+                << "'" << SQLEscape(sec.hero_btn_secondary_target) << "', "
+                << "'" << SQLEscape(HeroFeatureBadgesToJson(sec.hero_feature_badges)) << "', "
+                << "'" << SQLEscape(HeroStatsToJson(sec.hero_stats)) << "', "
+                << "'" << ColorToSQL(sec.hero_bg_color) << "', "
+                << "'" << ColorToSQL(sec.hero_badge_bg) << "', "
+                << "'" << ColorToSQL(sec.hero_badge_text_color) << "', "
+                << "'" << ColorToSQL(sec.hero_badge_icon_color) << "', "
+                << "'" << ColorToSQL(sec.hero_heading_color) << "', "
+                << "'" << ColorToSQL(sec.hero_accent_color) << "', "
+                << "'" << ColorToSQL(sec.hero_description_color) << "', "
+                << "'" << ColorToSQL(sec.hero_btn_primary_bg) << "', "
+                << "'" << ColorToSQL(sec.hero_btn_primary_text_color) << "', "
+                << "'" << ColorToSQL(sec.hero_btn_secondary_bg) << "', "
+                << "'" << ColorToSQL(sec.hero_btn_secondary_text_color) << "', "
+                << "'" << ColorToSQL(sec.hero_btn_secondary_border) << "', "
+                << sec.hero_btn_border_radius << ", " << sec.hero_badge_border_radius << ", "
                 // PAGE COLUMNS
                 << pageIdx << ", '" << SQLEscape(currentPage.name) << "'"
                 << ")";
@@ -8543,7 +9248,19 @@ bool LoadTemplate(const std::string& filepath) {
                 // GLASS BAR COLUMNS (starting at column 161)
                 "glass_bar_text, glass_bar_highlight, glass_bar_text_color, glass_bar_highlight_color, "
                 "glass_bar_bg_color, glass_bar_opacity, glass_bar_border_radius, glass_bar_padding, "
-                // PAGE COLUMNS (starting at column 169)
+                // HERO SECTION COLUMNS (starting at column 169)
+                "hero_badge_text, hero_badge_icon_left, hero_badge_icon_right, "
+                "hero_heading, hero_heading_accent, hero_description, "
+                "hero_btn_primary_text, hero_btn_secondary_text, "
+                "hero_btn_primary_action, hero_btn_primary_target, "
+                "hero_btn_secondary_action, hero_btn_secondary_target, "
+                "hero_feature_badges_json, hero_stats_json, "
+                "hero_bg_color, hero_badge_bg, hero_badge_text_color, hero_badge_icon_color, "
+                "hero_heading_color, hero_accent_color, hero_description_color, "
+                "hero_btn_primary_bg, hero_btn_primary_text_color, "
+                "hero_btn_secondary_bg, hero_btn_secondary_text_color, hero_btn_secondary_border, "
+                "hero_btn_border_radius, hero_badge_border_radius, "
+                // PAGE COLUMNS (starting at column 197)
                 "page_index, page_name "
                 "FROM sections WHERE template_id=" + std::to_string(template_id) + " ORDER BY page_index, section_order";
         result = PQexec(g_DBConnection, query.c_str());
@@ -8919,9 +9636,59 @@ bool LoadTemplate(const std::string& filepath) {
             sec.glass_bar_border_radius = PQgetisnull(result, row_num, 167) ? 30.0f : atof(PQgetvalue(result, row_num, 167));
             sec.glass_bar_padding = PQgetisnull(result, row_num, 168) ? 20.0f : atof(PQgetvalue(result, row_num, 168));
 
-            // PAGE COLUMNS (columns 169-170)
-            int pageIdx = PQgetisnull(result, row_num, 169) ? 0 : atoi(PQgetvalue(result, row_num, 169));
-            std::string pageName = PQgetisnull(result, row_num, 170) ? "Home" : PQgetvalue(result, row_num, 170);
+            // HERO SECTION COLUMNS (columns 169-196)
+            if (!PQgetisnull(result, row_num, 169)) {
+                strncpy(sec.hero_badge_text, PQgetvalue(result, row_num, 169), sizeof(sec.hero_badge_text) - 1);
+            }
+            sec.hero_badge_icon_left = PQgetisnull(result, row_num, 170) ? ICON_STAR : atoi(PQgetvalue(result, row_num, 170));
+            sec.hero_badge_icon_right = PQgetisnull(result, row_num, 171) ? ICON_STAR : atoi(PQgetvalue(result, row_num, 171));
+            if (!PQgetisnull(result, row_num, 172)) {
+                strncpy(sec.hero_heading, PQgetvalue(result, row_num, 172), sizeof(sec.hero_heading) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 173)) {
+                strncpy(sec.hero_heading_accent, PQgetvalue(result, row_num, 173), sizeof(sec.hero_heading_accent) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 174)) {
+                strncpy(sec.hero_description, PQgetvalue(result, row_num, 174), sizeof(sec.hero_description) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 175)) {
+                strncpy(sec.hero_btn_primary_text, PQgetvalue(result, row_num, 175), sizeof(sec.hero_btn_primary_text) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 176)) {
+                strncpy(sec.hero_btn_secondary_text, PQgetvalue(result, row_num, 176), sizeof(sec.hero_btn_secondary_text) - 1);
+            }
+            sec.hero_btn_primary_action = PQgetisnull(result, row_num, 177) ? 0 : atoi(PQgetvalue(result, row_num, 177));
+            if (!PQgetisnull(result, row_num, 178)) {
+                strncpy(sec.hero_btn_primary_target, PQgetvalue(result, row_num, 178), sizeof(sec.hero_btn_primary_target) - 1);
+            }
+            sec.hero_btn_secondary_action = PQgetisnull(result, row_num, 179) ? 0 : atoi(PQgetvalue(result, row_num, 179));
+            if (!PQgetisnull(result, row_num, 180)) {
+                strncpy(sec.hero_btn_secondary_target, PQgetvalue(result, row_num, 180), sizeof(sec.hero_btn_secondary_target) - 1);
+            }
+            if (!PQgetisnull(result, row_num, 181)) {
+                sec.hero_feature_badges = HeroFeatureBadgesFromJson(PQgetvalue(result, row_num, 181));
+            }
+            if (!PQgetisnull(result, row_num, 182)) {
+                sec.hero_stats = HeroStatsFromJson(PQgetvalue(result, row_num, 182));
+            }
+            sec.hero_bg_color = PQgetisnull(result, row_num, 183) ? ImVec4(0.98f, 0.98f, 0.99f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 183));
+            sec.hero_badge_bg = PQgetisnull(result, row_num, 184) ? ImVec4(1.0f, 1.0f, 1.0f, 0.95f) : SQLToColor(PQgetvalue(result, row_num, 184));
+            sec.hero_badge_text_color = PQgetisnull(result, row_num, 185) ? ImVec4(0.2f, 0.2f, 0.25f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 185));
+            sec.hero_badge_icon_color = PQgetisnull(result, row_num, 186) ? ImVec4(0.95f, 0.5f, 0.2f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 186));
+            sec.hero_heading_color = PQgetisnull(result, row_num, 187) ? ImVec4(0.1f, 0.1f, 0.15f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 187));
+            sec.hero_accent_color = PQgetisnull(result, row_num, 188) ? ImVec4(0.95f, 0.5f, 0.2f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 188));
+            sec.hero_description_color = PQgetisnull(result, row_num, 189) ? ImVec4(0.4f, 0.4f, 0.45f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 189));
+            sec.hero_btn_primary_bg = PQgetisnull(result, row_num, 190) ? ImVec4(0.95f, 0.5f, 0.2f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 190));
+            sec.hero_btn_primary_text_color = PQgetisnull(result, row_num, 191) ? ImVec4(1.0f, 1.0f, 1.0f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 191));
+            sec.hero_btn_secondary_bg = PQgetisnull(result, row_num, 192) ? ImVec4(1.0f, 1.0f, 1.0f, 0.0f) : SQLToColor(PQgetvalue(result, row_num, 192));
+            sec.hero_btn_secondary_text_color = PQgetisnull(result, row_num, 193) ? ImVec4(0.1f, 0.1f, 0.15f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 193));
+            sec.hero_btn_secondary_border = PQgetisnull(result, row_num, 194) ? ImVec4(0.8f, 0.8f, 0.85f, 1.0f) : SQLToColor(PQgetvalue(result, row_num, 194));
+            sec.hero_btn_border_radius = PQgetisnull(result, row_num, 195) ? 30.0f : atof(PQgetvalue(result, row_num, 195));
+            sec.hero_badge_border_radius = PQgetisnull(result, row_num, 196) ? 25.0f : atof(PQgetvalue(result, row_num, 196));
+
+            // PAGE COLUMNS (columns 197-198)
+            int pageIdx = PQgetisnull(result, row_num, 197) ? 0 : atoi(PQgetvalue(result, row_num, 197));
+            std::string pageName = PQgetisnull(result, row_num, 198) ? "Home" : PQgetvalue(result, row_num, 198);
 
             // Ensure g_NormalPages has enough pages
             while ((int)g_NormalPages.size() <= pageIdx) {
@@ -22251,6 +23018,642 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         return;
     }
 
+    // ========================================================================
+    // SEC_STORY_CONNECTOR - About/Story section with content and stats
+    // ========================================================================
+    if (sec.type == SEC_STORY_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Section background
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float leftW = sectionW * 0.55f;  // Left content area
+        float rightW = sectionW * 0.4f;  // Right area for stats badge
+        float padding = 40.0f;
+
+        // Left side content
+        float contentX = x + padding;
+        float contentY = y + padding;
+
+        // Section label with line "— OUR STORY"
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.story_label);
+        dl->AddLine(ImVec2(contentX, contentY + labelSize/2), ImVec2(contentX + 30, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.story_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(contentX + 40, contentY),
+                   ImGui::ColorConvertFloat4ToU32(sec.story_label_color), sec.story_label);
+        contentY += 35;
+
+        // Two-tone heading
+        float headingSize = 36.0f;
+        ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.story_heading);
+        dl->AddText(font, headingSize, ImVec2(contentX, contentY),
+                   ImGui::ColorConvertFloat4ToU32(sec.story_heading_color), sec.story_heading);
+        dl->AddText(font, headingSize, ImVec2(contentX, contentY + headingSize + 5),
+                   ImGui::ColorConvertFloat4ToU32(sec.story_accent_color), sec.story_heading_accent);
+        contentY += headingSize * 2 + 30;
+
+        // Paragraphs
+        float paraSize = 14.0f;
+        float paraWidth = leftW - padding;
+        for (int i = 0; i < sec.story_paragraph_count && i < 3; i++) {
+            if (sec.story_paragraphs[i][0] != '\0') {
+                ImVec2 pSize = font->CalcTextSizeA(paraSize, FLT_MAX, paraWidth, sec.story_paragraphs[i]);
+                dl->AddText(font, paraSize, ImVec2(contentX, contentY),
+                           ImGui::ColorConvertFloat4ToU32(sec.story_text_color), sec.story_paragraphs[i], nullptr, paraWidth);
+                contentY += pSize.y + 15;
+            }
+        }
+        contentY += 10;
+
+        // Feature badges (2x2 grid with colored dots)
+        float badgeX = contentX;
+        float badgeY = contentY;
+        float badgeColW = (leftW - padding) / 2;
+        for (size_t i = 0; i < sec.story_badges.size() && i < 4; i++) {
+            float bx = badgeX + (i % 2) * badgeColW;
+            float by = badgeY + (i / 2) * 28;
+            // Colored dot
+            dl->AddCircleFilled(ImVec2(bx + 6, by + 8), 6, ImGui::ColorConvertFloat4ToU32(sec.story_badges[i].dotColor));
+            // Badge text
+            dl->AddText(font, 13.0f, ImVec2(bx + 20, by),
+                       ImGui::ColorConvertFloat4ToU32(sec.story_text_color), sec.story_badges[i].text);
+        }
+        contentY = badgeY + 70;
+
+        // CTA Button
+        if (sec.story_button_text[0] != '\0') {
+            float btnW = 150, btnH = 40;
+            ImVec2 btnMin(contentX, contentY);
+            ImVec2 btnMax(contentX + btnW, contentY + btnH);
+            dl->AddRectFilled(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.story_button_bg), 6.0f);
+            ImVec2 btnTextSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.story_button_text);
+            dl->AddText(font, 14.0f, ImVec2(contentX + (btnW - btnTextSize.x)/2, contentY + (btnH - btnTextSize.y)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.story_button_text_color), sec.story_button_text);
+            // Arrow
+            float arrowX = contentX + btnW - 25;
+            float arrowY = contentY + btnH/2;
+            dl->AddLine(ImVec2(arrowX, arrowY), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.story_button_text_color), 2.0f);
+            dl->AddLine(ImVec2(arrowX + 6, arrowY - 4), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.story_button_text_color), 2.0f);
+            dl->AddLine(ImVec2(arrowX + 6, arrowY + 4), ImVec2(arrowX + 10, arrowY), ImGui::ColorConvertFloat4ToU32(sec.story_button_text_color), 2.0f);
+        }
+
+        // Right side - Stats badge
+        float statsX = x + leftW + 40;
+        float statsY = y + h - 120;
+        float statsSize = 80;
+        dl->AddRectFilled(ImVec2(statsX, statsY), ImVec2(statsX + statsSize, statsY + statsSize),
+                         ImGui::ColorConvertFloat4ToU32(sec.story_stats_bg), 8.0f);
+        ImVec2 numSize = font->CalcTextSizeA(32.0f, FLT_MAX, 0.0f, sec.story_stats_number);
+        dl->AddText(font, 32.0f, ImVec2(statsX + (statsSize - numSize.x)/2, statsY + (statsSize - numSize.y)/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.story_stats_text_color), sec.story_stats_number);
+
+        // Placeholder rectangles for image collage
+        float imgX = x + leftW;
+        float imgY = y + 30;
+        dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + 150, imgY + 180), IM_COL32(200, 200, 210, 255), 8.0f);
+        dl->AddRectFilled(ImVec2(imgX + 160, imgY), ImVec2(imgX + 280, imgY + 120), IM_COL32(200, 200, 210, 255), 8.0f);
+        dl->AddRectFilled(ImVec2(imgX + 160, imgY + 130), ImVec2(imgX + 280, imgY + 250), IM_COL32(200, 200, 210, 255), 8.0f);
+        // Image placeholders text
+        dl->AddText(font, 11.0f, ImVec2(imgX + 50, imgY + 80), IM_COL32(150, 150, 150, 255), "Image 1");
+        dl->AddText(font, 11.0f, ImVec2(imgX + 195, imgY + 50), IM_COL32(150, 150, 150, 255), "Image 2");
+        dl->AddText(font, 11.0f, ImVec2(imgX + 195, imgY + 180), IM_COL32(150, 150, 150, 255), "Image 3");
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_SERVICES_SECTION_CONNECTOR - Services with cards
+    // ========================================================================
+    if (sec.type == SEC_SERVICES_SECTION_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+        float contentY = y + 40;
+
+        // Section label
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.services_label);
+        float labelX = centerX - labelTextSize.x/2;
+        dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.services_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(labelX, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_label_color), sec.services_label);
+        dl->AddLine(ImVec2(labelX + labelTextSize.x + 5, contentY + labelSize/2), ImVec2(labelX + labelTextSize.x + 35, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.services_label_color), 2.0f);
+        contentY += 30;
+
+        // Two-tone heading
+        float headingSize = 32.0f;
+        std::string fullHeading = std::string(sec.services_heading) + " " + std::string(sec.services_heading_accent);
+        ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.services_heading);
+        ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.services_heading_accent);
+        float totalW = h1Size.x + 10 + h2Size.x;
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_heading_color), sec.services_heading);
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2 + h1Size.x + 10, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_accent_color), sec.services_heading_accent);
+        contentY += headingSize + 15;
+
+        // Subtitle
+        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.services_subtitle);
+        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_subtitle_color), sec.services_subtitle);
+        contentY += 50;
+
+        // Service cards
+        int cardsPerRow = sec.services_cards_per_row;
+        float spacing = sec.services_card_spacing;
+        float cardW = (sectionW - 80 - spacing * (cardsPerRow - 1)) / cardsPerRow;
+        float cardH = 320;
+        float startX = x + 40;
+
+        for (size_t i = 0; i < sec.services_cards.size(); i++) {
+            const auto& card = sec.services_cards[i];
+            int col = i % cardsPerRow;
+            int row = i / cardsPerRow;
+            float cx = startX + col * (cardW + spacing);
+            float cy = contentY + row * (cardH + spacing);
+
+            // Card background
+            dl->AddRectFilled(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), ImGui::ColorConvertFloat4ToU32(card.cardBgColor), card.borderRadius);
+            dl->AddRect(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), IM_COL32(230, 230, 235, 255), card.borderRadius, 0, 1.0f);
+
+            // Image placeholder with number
+            float imgH = 140;
+            dl->AddRectFilled(ImVec2(cx + 15, cy + 15), ImVec2(cx + cardW - 15, cy + imgH), IM_COL32(220, 220, 225, 255), 8.0f);
+            char numStr[8]; snprintf(numStr, sizeof(numStr), "%02d", (int)(i + 1));
+            ImVec2 numSize = font->CalcTextSizeA(48.0f, FLT_MAX, 0.0f, numStr);
+            dl->AddText(font, 48.0f, ImVec2(cx + cardW - 15 - numSize.x - 10, cy + imgH - numSize.y - 5), IM_COL32(200, 200, 205, 180), numStr);
+
+            // Icon badge (top-left overlapping)
+            float iconBadgeSize = 44;
+            float ibx = cx + 25, iby = cy + imgH - iconBadgeSize/2;
+            dl->AddRectFilled(ImVec2(ibx, iby), ImVec2(ibx + iconBadgeSize, iby + iconBadgeSize), ImGui::ColorConvertFloat4ToU32(card.iconBgColor), 10.0f);
+            DrawIcon(dl, card.iconType, ibx + iconBadgeSize/2, iby + iconBadgeSize/2, iconBadgeSize * 0.5f, IM_COL32(255, 255, 255, 255), 2.0f);
+
+            float textY = cy + imgH + 20;
+            // Title
+            dl->AddText(font, 16.0f, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
+            textY += 25;
+            // Description
+            ImVec2 descSize = font->CalcTextSizeA(12.0f, FLT_MAX, cardW - 30, card.description);
+            dl->AddText(font, 12.0f, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 30);
+            textY += descSize.y + 15;
+
+            // Bullet points
+            for (int b = 0; b < card.bulletCount && b < 6; b++) {
+                if (card.bullets[b][0] != '\0') {
+                    // Orange square bullet
+                    dl->AddRectFilled(ImVec2(cx + 15, textY + 4), ImVec2(cx + 21, textY + 10), ImGui::ColorConvertFloat4ToU32(card.bulletColor));
+                    dl->AddText(font, 12.0f, ImVec2(cx + 28, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.bullets[b]);
+                    textY += 18;
+                }
+            }
+
+            // Learn More link
+            if (card.linkText[0] != '\0') {
+                textY = cy + cardH - 30;
+                dl->AddText(font, 13.0f, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.linkColor), card.linkText);
+                ImVec2 linkSize = font->CalcTextSizeA(13.0f, FLT_MAX, 0.0f, card.linkText);
+                // Arrow
+                float ax = cx + 15 + linkSize.x + 8;
+                dl->AddLine(ImVec2(ax, textY + 7), ImVec2(ax + 8, textY + 7), ImGui::ColorConvertFloat4ToU32(card.linkColor), 1.5f);
+                dl->AddLine(ImVec2(ax + 5, textY + 4), ImVec2(ax + 8, textY + 7), ImGui::ColorConvertFloat4ToU32(card.linkColor), 1.5f);
+                dl->AddLine(ImVec2(ax + 5, textY + 10), ImVec2(ax + 8, textY + 7), ImGui::ColorConvertFloat4ToU32(card.linkColor), 1.5f);
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_CLIENTS_GRID_CONNECTOR - Client/Partner logo grid
+    // ========================================================================
+    if (sec.type == SEC_CLIENTS_GRID_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+        float contentY = y + 40;
+
+        // Section label with lines
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.clients_label);
+        float labelX = centerX - labelTextSize.x/2;
+        dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.clients_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(labelX, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_label_color), sec.clients_label);
+        dl->AddLine(ImVec2(labelX + labelTextSize.x + 5, contentY + labelSize/2), ImVec2(labelX + labelTextSize.x + 35, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.clients_label_color), 2.0f);
+        contentY += 30;
+
+        // Two-tone heading
+        float headingSize = 32.0f;
+        ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.clients_heading);
+        ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.clients_heading_accent);
+        float totalW = h1Size.x + 10 + h2Size.x;
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_heading_color), sec.clients_heading);
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2 + h1Size.x + 10, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_accent_color), sec.clients_heading_accent);
+        contentY += headingSize + 15;
+
+        // Subtitle
+        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.clients_subtitle);
+        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_subtitle_color), sec.clients_subtitle);
+        contentY += 50;
+
+        // Client cards grid
+        int perRow = sec.clients_per_row;
+        float spacing = sec.clients_card_spacing;
+        float cardW = (sectionW - 80 - spacing * (perRow - 1)) / perRow;
+        float cardH = 100;
+        float startX = x + 40;
+
+        for (size_t i = 0; i < sec.clients_items.size(); i++) {
+            const auto& client = sec.clients_items[i];
+            int col = i % perRow;
+            int row = i / perRow;
+            float cx = startX + col * (cardW + spacing);
+            float cy = contentY + row * (cardH + spacing);
+
+            // Card background with shadow
+            dl->AddRectFilled(ImVec2(cx + 2, cy + 2), ImVec2(cx + cardW + 2, cy + cardH + 2), IM_COL32(0, 0, 0, 20), 8.0f);
+            dl->AddRectFilled(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), ImGui::ColorConvertFloat4ToU32(client.cardBgColor), 8.0f);
+
+            // Logo text or placeholder
+            if (client.useTextLogo) {
+                ImVec2 logoSize = font->CalcTextSizeA(20.0f, FLT_MAX, 0.0f, client.logoText);
+                dl->AddText(font, 20.0f, ImVec2(cx + (cardW - logoSize.x)/2, cy + 25), ImGui::ColorConvertFloat4ToU32(client.textColor), client.logoText);
+            } else {
+                // Image placeholder
+                dl->AddRectFilled(ImVec2(cx + cardW/2 - 30, cy + 15), ImVec2(cx + cardW/2 + 30, cy + 55), IM_COL32(220, 220, 225, 255), 4.0f);
+            }
+
+            // Company name
+            ImVec2 nameSize = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, client.name);
+            dl->AddText(font, 11.0f, ImVec2(cx + (cardW - nameSize.x)/2, cy + cardH - 25), IM_COL32(120, 120, 130, 255), client.name);
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_FEATURES_GRID_CONNECTOR - Feature cards with checkmarks
+    // ========================================================================
+    if (sec.type == SEC_FEATURES_GRID_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+        float contentY = y + 40;
+
+        // Section label with lines
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.features_label);
+        float labelX = centerX - labelTextSize.x/2;
+        dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.features_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(labelX, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_label_color), sec.features_label);
+        dl->AddLine(ImVec2(labelX + labelTextSize.x + 5, contentY + labelSize/2), ImVec2(labelX + labelTextSize.x + 35, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.features_label_color), 2.0f);
+        contentY += 30;
+
+        // Two-tone heading
+        float headingSize = 32.0f;
+        ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.features_heading);
+        ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.features_heading_accent);
+        float totalW = h1Size.x + 10 + h2Size.x;
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_heading_color), sec.features_heading);
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2 + h1Size.x + 10, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_accent_color), sec.features_heading_accent);
+        contentY += headingSize + 15;
+
+        // Subtitle
+        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.features_subtitle);
+        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_subtitle_color), sec.features_subtitle);
+        contentY += 50;
+
+        // Feature cards
+        int perRow = sec.features_cards_per_row;
+        float spacing = sec.features_card_spacing;
+        float cardW = (sectionW - 80 - spacing * (perRow - 1)) / perRow;
+        float cardH = 200;
+        float startX = x + 40;
+
+        for (size_t i = 0; i < sec.features_cards.size(); i++) {
+            const auto& card = sec.features_cards[i];
+            int col = i % perRow;
+            int row = i / perRow;
+            float cx = startX + col * (cardW + spacing);
+            float cy = contentY + row * (cardH + spacing);
+
+            // Card background
+            dl->AddRectFilled(ImVec2(cx + 2, cy + 2), ImVec2(cx + cardW + 2, cy + cardH + 2), IM_COL32(0, 0, 0, 15), card.borderRadius);
+            dl->AddRectFilled(ImVec2(cx, cy), ImVec2(cx + cardW, cy + cardH), ImGui::ColorConvertFloat4ToU32(card.cardBgColor), card.borderRadius);
+
+            // Icon badge
+            float iconSize = 44;
+            float ix = cx + 20, iy = cy + 20;
+            dl->AddRectFilled(ImVec2(ix, iy), ImVec2(ix + iconSize, iy + iconSize), ImGui::ColorConvertFloat4ToU32(card.iconBgColor), 10.0f);
+            DrawIcon(dl, card.iconType, ix + iconSize/2, iy + iconSize/2, iconSize * 0.5f, IM_COL32(255, 255, 255, 255), 2.0f);
+
+            float textY = cy + 80;
+            // Title
+            dl->AddText(font, 15.0f, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
+            textY += 22;
+            // Description
+            dl->AddText(font, 12.0f, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 40);
+            textY += 45;
+
+            // Checkmark items
+            for (int c = 0; c < card.checkmarkCount && c < 6; c++) {
+                if (card.checkmarks[c][0] != '\0') {
+                    // Checkmark icon
+                    float chkX = cx + 20, chkY = textY + 2;
+                    dl->AddLine(ImVec2(chkX, chkY + 5), ImVec2(chkX + 4, chkY + 9), ImGui::ColorConvertFloat4ToU32(card.checkColor), 2.0f);
+                    dl->AddLine(ImVec2(chkX + 4, chkY + 9), ImVec2(chkX + 12, chkY + 1), ImGui::ColorConvertFloat4ToU32(card.checkColor), 2.0f);
+                    dl->AddText(font, 11.0f, ImVec2(cx + 38, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.checkmarks[c]);
+                    textY += 16;
+                }
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_PROCESS_TIMELINE_CONNECTOR - Horizontal process timeline
+    // ========================================================================
+    if (sec.type == SEC_PROCESS_TIMELINE_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.process_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+        float contentY = y + 40;
+
+        // Section label with lines
+        float labelSize = 12.0f;
+        ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.process_label);
+        float labelX = centerX - labelTextSize.x/2;
+        dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.process_label_color), 2.0f);
+        dl->AddText(font, labelSize, ImVec2(labelX, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_label_color), sec.process_label);
+        dl->AddLine(ImVec2(labelX + labelTextSize.x + 5, contentY + labelSize/2), ImVec2(labelX + labelTextSize.x + 35, contentY + labelSize/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.process_label_color), 2.0f);
+        contentY += 30;
+
+        // Two-tone heading (italic style simulated)
+        float headingSize = 36.0f;
+        ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.process_heading);
+        ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.process_heading_accent);
+        float totalW = h1Size.x + 10 + h2Size.x;
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_heading_color), sec.process_heading);
+        dl->AddText(font, headingSize, ImVec2(centerX - totalW/2 + h1Size.x + 10, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_accent_color), sec.process_heading_accent);
+        contentY += headingSize + 15;
+
+        // Subtitle
+        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.process_subtitle);
+        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_subtitle_color), sec.process_subtitle);
+        contentY += 60;
+
+        // Timeline
+        int stepCount = (int)sec.process_steps.size();
+        if (stepCount > 0) {
+            float timelineW = sectionW - 120;
+            float stepW = timelineW / stepCount;
+            float startX = x + 60;
+            float circleY = contentY + 20;
+            float circleR = 20;
+
+            // Connecting line
+            dl->AddLine(ImVec2(startX + circleR, circleY), ImVec2(startX + timelineW - circleR, circleY),
+                       ImGui::ColorConvertFloat4ToU32(sec.process_line_color), 2.0f);
+
+            // Steps
+            for (int i = 0; i < stepCount; i++) {
+                const auto& step = sec.process_steps[i];
+                float sx = startX + i * stepW + stepW/2;
+
+                // Number circle
+                dl->AddCircleFilled(ImVec2(sx, circleY), circleR, ImGui::ColorConvertFloat4ToU32(step.numberBgColor));
+                char numStr[8]; snprintf(numStr, sizeof(numStr), "%02d", i + 1);
+                ImVec2 numSize = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, numStr);
+                dl->AddText(font, 12.0f, ImVec2(sx - numSize.x/2, circleY - numSize.y/2), ImGui::ColorConvertFloat4ToU32(step.numberTextColor), numStr);
+
+                // Card below
+                float cardW = stepW - 20;
+                float cardH = 160;
+                float cardX = sx - cardW/2;
+                float cardY = circleY + circleR + 20;
+
+                dl->AddRectFilled(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH), ImGui::ColorConvertFloat4ToU32(step.cardBgColor), step.borderRadius);
+                dl->AddRect(ImVec2(cardX, cardY), ImVec2(cardX + cardW, cardY + cardH), IM_COL32(255, 255, 255, 30), step.borderRadius, 0, 1.0f);
+
+                // Icon badge
+                float iconSize = 40;
+                float ix = cardX + (cardW - iconSize)/2, iy = cardY + 15;
+                dl->AddRectFilled(ImVec2(ix, iy), ImVec2(ix + iconSize, iy + iconSize), ImGui::ColorConvertFloat4ToU32(step.iconBgColor), 10.0f);
+                DrawIcon(dl, step.iconType, ix + iconSize/2, iy + iconSize/2, iconSize * 0.45f, IM_COL32(255, 255, 255, 255), 2.0f);
+
+                // Title (centered)
+                ImVec2 titleSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, step.title);
+                dl->AddText(font, 14.0f, ImVec2(cardX + (cardW - titleSize.x)/2, cardY + 65), ImGui::ColorConvertFloat4ToU32(step.titleColor), step.title);
+
+                // Description (centered, wrapped)
+                float descY = cardY + 90;
+                ImVec2 descSize = font->CalcTextSizeA(11.0f, FLT_MAX, cardW - 20, step.description);
+                dl->AddText(font, 11.0f, ImVec2(cardX + 10, descY), ImGui::ColorConvertFloat4ToU32(step.descColor), step.description, nullptr, cardW - 20);
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_HERO_SECTION_CONNECTOR - Full hero section with badge, buttons, stats
+    // ========================================================================
+    if (sec.type == SEC_HERO_SECTION_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.hero_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float centerX = x + sectionW / 2;
+        float contentY = y + 50;
+        float contentW = sectionW * 0.7f;  // 70% width for content
+        float contentX = x + (sectionW - contentW) / 2;
+
+        // Glass badge with icons and text
+        {
+            float badgeH = 36;
+            ImVec2 badgeTextSize = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, sec.hero_badge_text);
+            float badgeW = badgeTextSize.x + 70;  // Extra space for icons
+            float badgeX = centerX - badgeW/2;
+            float badgeY = contentY;
+
+            // Badge background (glass effect)
+            dl->AddRectFilled(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH),
+                             ImGui::ColorConvertFloat4ToU32(sec.hero_badge_bg), sec.hero_badge_border_radius);
+            dl->AddRect(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH),
+                       IM_COL32(200, 200, 200, 80), sec.hero_badge_border_radius, 0, 1.0f);
+
+            // Left icon
+            DrawIcon(dl, sec.hero_badge_icon_left, badgeX + 18, badgeY + badgeH/2, 14,
+                    ImGui::ColorConvertFloat4ToU32(sec.hero_badge_icon_color), 1.5f);
+
+            // Badge text
+            dl->AddText(font, 12.0f, ImVec2(badgeX + 35, badgeY + (badgeH - 12)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_badge_text_color), sec.hero_badge_text);
+
+            // Right icon
+            DrawIcon(dl, sec.hero_badge_icon_right, badgeX + badgeW - 18, badgeY + badgeH/2, 14,
+                    ImGui::ColorConvertFloat4ToU32(sec.hero_badge_icon_color), 1.5f);
+
+            contentY += badgeH + 30;
+        }
+
+        // Two-tone heading
+        {
+            float headingSize = 48.0f;
+            ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.hero_heading);
+            ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.hero_heading_accent);
+            float totalW = h1Size.x + 15 + h2Size.x;
+            float headX = centerX - totalW/2;
+
+            dl->AddText(font, headingSize, ImVec2(headX, contentY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_heading_color), sec.hero_heading);
+            dl->AddText(font, headingSize, ImVec2(headX + h1Size.x + 15, contentY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color), sec.hero_heading_accent);
+
+            contentY += headingSize + 20;
+        }
+
+        // Description paragraph
+        {
+            float descW = contentW * 0.8f;
+            float descX = centerX - descW/2;
+            ImVec2 descSize = font->CalcTextSizeA(16.0f, FLT_MAX, descW, sec.hero_description);
+            dl->AddText(font, 16.0f, ImVec2(descX, contentY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_description_color), sec.hero_description, nullptr, descW);
+            contentY += descSize.y + 35;
+        }
+
+        // Two CTA buttons
+        {
+            float btnH = 48;
+            float btnSpacing = 15;
+            float primaryW = 180, secondaryW = 160;
+            float totalBtnW = primaryW + btnSpacing + secondaryW;
+            float btnStartX = centerX - totalBtnW/2;
+
+            // Primary button (filled)
+            dl->AddRectFilled(ImVec2(btnStartX, contentY), ImVec2(btnStartX + primaryW, contentY + btnH),
+                             ImGui::ColorConvertFloat4ToU32(sec.hero_btn_primary_bg), sec.hero_btn_border_radius);
+            ImVec2 primTxtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.hero_btn_primary_text);
+            dl->AddText(font, 14.0f, ImVec2(btnStartX + (primaryW - primTxtSize.x)/2, contentY + (btnH - 14)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_primary_text_color), sec.hero_btn_primary_text);
+
+            // Secondary button (outline)
+            float secBtnX = btnStartX + primaryW + btnSpacing;
+            dl->AddRect(ImVec2(secBtnX, contentY), ImVec2(secBtnX + secondaryW, contentY + btnH),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_border), sec.hero_btn_border_radius, 0, 2.0f);
+            ImVec2 secTxtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.hero_btn_secondary_text);
+            dl->AddText(font, 14.0f, ImVec2(secBtnX + (secondaryW - secTxtSize.x)/2, contentY + (btnH - 14)/2),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_text_color), sec.hero_btn_secondary_text);
+
+            // Arrow icon in secondary button
+            float arrowX = secBtnX + secondaryW - 28;
+            float arrowY = contentY + btnH/2;
+            dl->AddLine(ImVec2(arrowX, arrowY), ImVec2(arrowX + 10, arrowY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_text_color), 1.5f);
+            dl->AddLine(ImVec2(arrowX + 6, arrowY - 4), ImVec2(arrowX + 10, arrowY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_text_color), 1.5f);
+            dl->AddLine(ImVec2(arrowX + 6, arrowY + 4), ImVec2(arrowX + 10, arrowY),
+                       ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_text_color), 1.5f);
+
+            contentY += btnH + 30;
+        }
+
+        // Feature badges row (checkmarks with text)
+        if (!sec.hero_feature_badges.empty()) {
+            int badgeCount = (int)sec.hero_feature_badges.size();
+            float badgeSpacing = 30;
+            float totalBadgeW = 0;
+            std::vector<float> badgeWidths;
+            for (const auto& badge : sec.hero_feature_badges) {
+                ImVec2 size = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, badge.text);
+                float w = 24 + size.x;  // checkmark + text
+                badgeWidths.push_back(w);
+                totalBadgeW += w;
+            }
+            totalBadgeW += (badgeCount - 1) * badgeSpacing;
+
+            float badgeX = centerX - totalBadgeW/2;
+            for (int i = 0; i < badgeCount; i++) {
+                const auto& badge = sec.hero_feature_badges[i];
+                // Checkmark
+                float chkX = badgeX, chkY = contentY + 4;
+                dl->AddCircleFilled(ImVec2(chkX + 8, chkY + 6), 10, ImGui::ColorConvertFloat4ToU32(badge.checkColor));
+                dl->AddLine(ImVec2(chkX + 4, chkY + 6), ImVec2(chkX + 7, chkY + 9), IM_COL32(255, 255, 255, 255), 2.0f);
+                dl->AddLine(ImVec2(chkX + 7, chkY + 9), ImVec2(chkX + 12, chkY + 3), IM_COL32(255, 255, 255, 255), 2.0f);
+                // Text
+                dl->AddText(font, 12.0f, ImVec2(badgeX + 24, contentY),
+                           ImGui::ColorConvertFloat4ToU32(sec.hero_description_color), badge.text);
+                badgeX += badgeWidths[i] + badgeSpacing;
+            }
+            contentY += 35;
+        }
+
+        // Stats counter section
+        if (!sec.hero_stats.empty()) {
+            contentY += 20;
+            int statCount = (int)sec.hero_stats.size();
+            float statSpacing = 60;
+            float statW = 100;
+            float totalStatW = statCount * statW + (statCount - 1) * statSpacing;
+            float statStartX = centerX - totalStatW/2;
+
+            for (int i = 0; i < statCount; i++) {
+                const auto& stat = sec.hero_stats[i];
+                float sx = statStartX + i * (statW + statSpacing);
+
+                // Icon
+                float iconSize = 28;
+                float iconX = sx + statW/2;
+                float iconY = contentY + 10;
+                dl->AddCircleFilled(ImVec2(iconX, iconY), 22, IM_COL32(255, 240, 230, 255));
+                DrawIcon(dl, stat.iconType, iconX, iconY, iconSize * 0.4f,
+                        ImGui::ColorConvertFloat4ToU32(stat.iconColor), 2.0f);
+
+                // Number
+                float numY = contentY + 45;
+                ImVec2 numSize = font->CalcTextSizeA(28.0f, FLT_MAX, 0.0f, stat.number);
+                dl->AddText(font, 28.0f, ImVec2(sx + (statW - numSize.x)/2, numY),
+                           ImGui::ColorConvertFloat4ToU32(stat.numberColor), stat.number);
+
+                // Label
+                float lblY = numY + 32;
+                ImVec2 lblSize = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, stat.label);
+                dl->AddText(font, 11.0f, ImVec2(sx + (statW - lblSize.x)/2, lblY),
+                           ImGui::ColorConvertFloat4ToU32(stat.labelColor), stat.label);
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
     // Default - render title and paragraphs
     float contentY = y + sec.padding_top;
 
@@ -23031,6 +24434,120 @@ void RenderUI() {
             sec.x_position = 20;
             sec.y_position = nextY;
             sec.width = 600;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Story Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_STORY_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 900;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Services Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_SERVICES_SECTION_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Clients Grid", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_CLIENTS_GRID_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Features Grid", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_FEATURES_GRID_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Process Timeline", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_PROCESS_TIMELINE_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Hero Section", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_HERO_SECTION_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
             sec.z_index = (int)g_Sections.size();
             sec.use_manual_position = true;
         }
@@ -27772,6 +29289,371 @@ void RenderUI() {
             ImGui::SliderFloat("Border Radius", &sec.glass_bar_border_radius, 0.0f, 50.0f, "%.0f");
             ImGui::SliderFloat("Padding", &sec.glass_bar_padding, 5.0f, 50.0f, "%.0f");
             ImGui::PopItemWidth();
+        }
+        // Story Connector properties
+        else if (sec.type == SEC_STORY_CONNECTOR) {
+            ImGui::Text("Story Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##storyLabel", sec.story_label, sizeof(sec.story_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##storyHeading", sec.story_heading, sizeof(sec.story_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##storyAccent", sec.story_heading_accent, sizeof(sec.story_heading_accent));
+
+            ImGui::Spacing();
+            ImGui::Text("Paragraphs:");
+            for (int i = 0; i < 3; i++) {
+                char label[32]; snprintf(label, sizeof(label), "##storyPara%d", i);
+                ImGui::InputTextMultiline(label, sec.story_paragraphs[i], sizeof(sec.story_paragraphs[i]), ImVec2(-1, 60));
+            }
+            ImGui::SliderInt("Paragraph Count", &sec.story_paragraph_count, 0, 3);
+
+            ImGui::Spacing();
+            ImGui::Text("Feature Badges:");
+            for (size_t i = 0; i < sec.story_badges.size() && i < 4; i++) {
+                ImGui::PushID((int)i);
+                ImGui::InputText("##badgeText", sec.story_badges[i].text, sizeof(sec.story_badges[i].text));
+                ImGui::SameLine();
+                ImGui::ColorEdit4("##badgeDot", (float*)&sec.story_badges[i].dotColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::PopID();
+            }
+            if (sec.story_badges.size() < 4 && ImGui::Button("+ Add Badge")) {
+                sec.story_badges.push_back(StoryFeatureBadge());
+            }
+
+            ImGui::Spacing();
+            ImGui::Text("Button:");
+            ImGui::InputText("##storyBtn", sec.story_button_text, sizeof(sec.story_button_text));
+
+            ImGui::Text("Stats Number:");
+            ImGui::InputText("##storyStats", sec.story_stats_number, sizeof(sec.story_stats_number));
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Label", (float*)&sec.story_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.story_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.story_accent_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Text", (float*)&sec.story_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Button BG", (float*)&sec.story_button_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Stats BG", (float*)&sec.story_stats_bg, ImGuiColorEditFlags_NoInputs);
+        }
+        // Services Section Connector properties
+        else if (sec.type == SEC_SERVICES_SECTION_CONNECTOR) {
+            ImGui::Text("Services Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##svcLabel", sec.services_label, sizeof(sec.services_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##svcHeading", sec.services_heading, sizeof(sec.services_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##svcAccent", sec.services_heading_accent, sizeof(sec.services_heading_accent));
+
+            ImGui::Text("Subtitle:");
+            ImGui::InputText("##svcSubtitle", sec.services_subtitle, sizeof(sec.services_subtitle));
+
+            ImGui::SliderInt("Cards per Row", &sec.services_cards_per_row, 1, 4);
+            ImGui::SliderFloat("Card Spacing", &sec.services_card_spacing, 10.0f, 50.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Label", (float*)&sec.services_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.services_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.services_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Cards: %d", (int)sec.services_cards.size());
+            if (ImGui::Button("+ Add Card") && sec.services_cards.size() < 9) {
+                sec.services_cards.push_back(ServicesSectionCard());
+            }
+            static int selSvcCard = -1;
+            for (size_t i = 0; i < sec.services_cards.size(); i++) {
+                ImGui::PushID((int)i);
+                char cardLabel[64]; snprintf(cardLabel, sizeof(cardLabel), "Card %d: %s", (int)i+1, sec.services_cards[i].title);
+                if (ImGui::Selectable(cardLabel, selSvcCard == (int)i)) selSvcCard = (int)i;
+                ImGui::PopID();
+            }
+            if (selSvcCard >= 0 && selSvcCard < (int)sec.services_cards.size()) {
+                auto& card = sec.services_cards[selSvcCard];
+                ImGui::InputText("Title", card.title, sizeof(card.title));
+                ImGui::InputTextMultiline("Desc", card.description, sizeof(card.description), ImVec2(-1, 50));
+                ImGui::SliderInt("Icon", &card.iconType, 0, ICON_COUNT - 1);
+                ImGui::ColorEdit4("Icon BG", (float*)&card.iconBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::Text("Bullets:");
+                for (int b = 0; b < 6; b++) {
+                    char bLabel[16]; snprintf(bLabel, sizeof(bLabel), "##b%d", b);
+                    ImGui::InputText(bLabel, card.bullets[b], sizeof(card.bullets[b]));
+                }
+                ImGui::SliderInt("Bullet Count", &card.bulletCount, 0, 6);
+                ImGui::InputText("Link Text", card.linkText, sizeof(card.linkText));
+            }
+        }
+        // Clients Grid Connector properties
+        else if (sec.type == SEC_CLIENTS_GRID_CONNECTOR) {
+            ImGui::Text("Clients Grid");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##cliLabel", sec.clients_label, sizeof(sec.clients_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##cliHeading", sec.clients_heading, sizeof(sec.clients_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##cliAccent", sec.clients_heading_accent, sizeof(sec.clients_heading_accent));
+
+            ImGui::Text("Subtitle:");
+            ImGui::InputText("##cliSubtitle", sec.clients_subtitle, sizeof(sec.clients_subtitle));
+
+            ImGui::SliderInt("Items per Row", &sec.clients_per_row, 2, 6);
+            ImGui::SliderFloat("Spacing", &sec.clients_card_spacing, 10.0f, 40.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Label", (float*)&sec.clients_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.clients_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.clients_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Clients: %d", (int)sec.clients_items.size());
+            if (ImGui::Button("+ Add Client") && sec.clients_items.size() < 12) {
+                sec.clients_items.push_back(ClientItem());
+            }
+            static int selClient = -1;
+            for (size_t i = 0; i < sec.clients_items.size(); i++) {
+                ImGui::PushID((int)i);
+                char cliLabel[64]; snprintf(cliLabel, sizeof(cliLabel), "%d: %s", (int)i+1, sec.clients_items[i].name);
+                if (ImGui::Selectable(cliLabel, selClient == (int)i)) selClient = (int)i;
+                ImGui::PopID();
+            }
+            if (selClient >= 0 && selClient < (int)sec.clients_items.size()) {
+                auto& cli = sec.clients_items[selClient];
+                ImGui::InputText("Name", cli.name, sizeof(cli.name));
+                ImGui::InputText("Logo Text", cli.logoText, sizeof(cli.logoText));
+                ImGui::Checkbox("Use Text Logo", &cli.useTextLogo);
+                ImGui::ColorEdit4("Text Color", (float*)&cli.textColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Card BG", (float*)&cli.cardBgColor, ImGuiColorEditFlags_NoInputs);
+                if (ImGui::Button("Delete Client")) {
+                    sec.clients_items.erase(sec.clients_items.begin() + selClient);
+                    selClient = -1;
+                }
+            }
+        }
+        // Features Grid Connector properties
+        else if (sec.type == SEC_FEATURES_GRID_CONNECTOR) {
+            ImGui::Text("Features Grid");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##featLabel", sec.features_label, sizeof(sec.features_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##featHeading", sec.features_heading, sizeof(sec.features_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##featAccent", sec.features_heading_accent, sizeof(sec.features_heading_accent));
+
+            ImGui::Text("Subtitle:");
+            ImGui::InputText("##featSubtitle", sec.features_subtitle, sizeof(sec.features_subtitle));
+
+            ImGui::SliderInt("Cards per Row", &sec.features_cards_per_row, 1, 4);
+            ImGui::SliderFloat("Spacing", &sec.features_card_spacing, 10.0f, 50.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Label", (float*)&sec.features_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.features_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.features_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Feature Cards: %d", (int)sec.features_cards.size());
+            if (ImGui::Button("+ Add Feature") && sec.features_cards.size() < 9) {
+                sec.features_cards.push_back(FeatureCardItem());
+            }
+            static int selFeat = -1;
+            for (size_t i = 0; i < sec.features_cards.size(); i++) {
+                ImGui::PushID((int)i);
+                char fLabel[64]; snprintf(fLabel, sizeof(fLabel), "%d: %s", (int)i+1, sec.features_cards[i].title);
+                if (ImGui::Selectable(fLabel, selFeat == (int)i)) selFeat = (int)i;
+                ImGui::PopID();
+            }
+            if (selFeat >= 0 && selFeat < (int)sec.features_cards.size()) {
+                auto& feat = sec.features_cards[selFeat];
+                ImGui::InputText("Title", feat.title, sizeof(feat.title));
+                ImGui::InputTextMultiline("Desc", feat.description, sizeof(feat.description), ImVec2(-1, 50));
+                ImGui::SliderInt("Icon", &feat.iconType, 0, ICON_COUNT - 1);
+                ImGui::ColorEdit4("Icon BG", (float*)&feat.iconBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::Text("Checkmarks:");
+                for (int c = 0; c < 6; c++) {
+                    char cLabel[16]; snprintf(cLabel, sizeof(cLabel), "##c%d", c);
+                    ImGui::InputText(cLabel, feat.checkmarks[c], sizeof(feat.checkmarks[c]));
+                }
+                ImGui::SliderInt("Checkmark Count", &feat.checkmarkCount, 0, 6);
+                if (ImGui::Button("Delete Feature")) {
+                    sec.features_cards.erase(sec.features_cards.begin() + selFeat);
+                    selFeat = -1;
+                }
+            }
+        }
+        // Process Timeline Connector properties
+        else if (sec.type == SEC_PROCESS_TIMELINE_CONNECTOR) {
+            ImGui::Text("Process Timeline");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::Text("Section Label:");
+            ImGui::InputText("##procLabel", sec.process_label, sizeof(sec.process_label));
+
+            ImGui::Text("Heading:");
+            ImGui::InputText("##procHeading", sec.process_heading, sizeof(sec.process_heading));
+
+            ImGui::Text("Heading Accent:");
+            ImGui::InputText("##procAccent", sec.process_heading_accent, sizeof(sec.process_heading_accent));
+
+            ImGui::Text("Subtitle:");
+            ImGui::InputText("##procSubtitle", sec.process_subtitle, sizeof(sec.process_subtitle));
+
+            ImGui::Spacing();
+            ImGui::Text("Colors:");
+            ImGui::ColorEdit4("Label", (float*)&sec.process_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.process_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.process_accent_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Background", (float*)&sec.process_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Line", (float*)&sec.process_line_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::Text("Steps: %d", (int)sec.process_steps.size());
+            if (ImGui::Button("+ Add Step") && sec.process_steps.size() < 7) {
+                sec.process_steps.push_back(ProcessStep());
+            }
+            static int selStep = -1;
+            for (size_t i = 0; i < sec.process_steps.size(); i++) {
+                ImGui::PushID((int)i);
+                char sLabel[64]; snprintf(sLabel, sizeof(sLabel), "Step %d: %s", (int)i+1, sec.process_steps[i].title);
+                if (ImGui::Selectable(sLabel, selStep == (int)i)) selStep = (int)i;
+                ImGui::PopID();
+            }
+            if (selStep >= 0 && selStep < (int)sec.process_steps.size()) {
+                auto& step = sec.process_steps[selStep];
+                ImGui::InputText("Title", step.title, sizeof(step.title));
+                ImGui::InputTextMultiline("Desc", step.description, sizeof(step.description), ImVec2(-1, 60));
+                ImGui::SliderInt("Icon", &step.iconType, 0, ICON_COUNT - 1);
+                ImGui::ColorEdit4("Icon BG", (float*)&step.iconBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Number BG", (float*)&step.numberBgColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Card BG", (float*)&step.cardBgColor, ImGuiColorEditFlags_NoInputs);
+                if (ImGui::Button("Delete Step")) {
+                    sec.process_steps.erase(sec.process_steps.begin() + selStep);
+                    selStep = -1;
+                }
+            }
+        }
+        // Hero Section Connector properties
+        else if (sec.type == SEC_HERO_SECTION_CONNECTOR) {
+            ImGui::Text("Hero Section");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            // Badge
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BADGE");
+            ImGui::InputText("Badge Text", sec.hero_badge_text, sizeof(sec.hero_badge_text));
+            ImGui::SliderInt("Left Icon##badge", &sec.hero_badge_icon_left, 0, ICON_COUNT - 1);
+            ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[sec.hero_badge_icon_left]);
+            ImGui::SliderInt("Right Icon##badge", &sec.hero_badge_icon_right, 0, ICON_COUNT - 1);
+            ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[sec.hero_badge_icon_right]);
+            ImGui::ColorEdit4("Badge BG", (float*)&sec.hero_badge_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Badge Text", (float*)&sec.hero_badge_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Badge Icons", (float*)&sec.hero_badge_icon_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SliderFloat("Badge Radius", &sec.hero_badge_border_radius, 0.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "HEADING");
+            ImGui::InputText("Heading", sec.hero_heading, sizeof(sec.hero_heading));
+            ImGui::InputText("Heading Accent", sec.hero_heading_accent, sizeof(sec.hero_heading_accent));
+            ImGui::ColorEdit4("Heading Color", (float*)&sec.hero_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent Color", (float*)&sec.hero_accent_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "DESCRIPTION");
+            ImGui::InputTextMultiline("##heroDesc", sec.hero_description, sizeof(sec.hero_description), ImVec2(-1, 80));
+            ImGui::ColorEdit4("Description", (float*)&sec.hero_description_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BUTTONS");
+            ImGui::InputText("Primary Button", sec.hero_btn_primary_text, sizeof(sec.hero_btn_primary_text));
+            ImGui::InputText("Primary Target", sec.hero_btn_primary_target, sizeof(sec.hero_btn_primary_target));
+            ImGui::ColorEdit4("Primary BG", (float*)&sec.hero_btn_primary_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Primary Text", (float*)&sec.hero_btn_primary_text_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::InputText("Secondary Button", sec.hero_btn_secondary_text, sizeof(sec.hero_btn_secondary_text));
+            ImGui::InputText("Secondary Target", sec.hero_btn_secondary_target, sizeof(sec.hero_btn_secondary_target));
+            ImGui::ColorEdit4("Secondary Border", (float*)&sec.hero_btn_secondary_border, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Secondary Text", (float*)&sec.hero_btn_secondary_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::SliderFloat("Button Radius", &sec.hero_btn_border_radius, 0.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "FEATURE BADGES");
+            ImGui::Text("Badges: %d", (int)sec.hero_feature_badges.size());
+            if (ImGui::Button("+ Add Badge##hero") && sec.hero_feature_badges.size() < 6) {
+                sec.hero_feature_badges.push_back(HeroFeatureBadge());
+            }
+            static int selHeroBadge = -1;
+            for (size_t i = 0; i < sec.hero_feature_badges.size(); i++) {
+                ImGui::PushID((int)i);
+                char bLabel[64]; snprintf(bLabel, sizeof(bLabel), "%d: %s", (int)i+1, sec.hero_feature_badges[i].text);
+                if (ImGui::Selectable(bLabel, selHeroBadge == (int)i)) selHeroBadge = (int)i;
+                ImGui::PopID();
+            }
+            if (selHeroBadge >= 0 && selHeroBadge < (int)sec.hero_feature_badges.size()) {
+                auto& badge = sec.hero_feature_badges[selHeroBadge];
+                ImGui::InputText("Text##heroBadge", badge.text, sizeof(badge.text));
+                ImGui::ColorEdit4("Check Color", (float*)&badge.checkColor, ImGuiColorEditFlags_NoInputs);
+                if (ImGui::Button("Delete Badge##hero")) {
+                    sec.hero_feature_badges.erase(sec.hero_feature_badges.begin() + selHeroBadge);
+                    selHeroBadge = -1;
+                }
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "STATS");
+            ImGui::Text("Stats: %d", (int)sec.hero_stats.size());
+            if (ImGui::Button("+ Add Stat##hero") && sec.hero_stats.size() < 6) {
+                sec.hero_stats.push_back(HeroStatItem());
+            }
+            static int selHeroStat = -1;
+            for (size_t i = 0; i < sec.hero_stats.size(); i++) {
+                ImGui::PushID((int)i + 100);
+                char sLabel[64]; snprintf(sLabel, sizeof(sLabel), "%d: %s - %s", (int)i+1, sec.hero_stats[i].number, sec.hero_stats[i].label);
+                if (ImGui::Selectable(sLabel, selHeroStat == (int)i)) selHeroStat = (int)i;
+                ImGui::PopID();
+            }
+            if (selHeroStat >= 0 && selHeroStat < (int)sec.hero_stats.size()) {
+                auto& stat = sec.hero_stats[selHeroStat];
+                ImGui::SliderInt("Icon##heroStat", &stat.iconType, 0, ICON_COUNT - 1);
+                ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[stat.iconType]);
+                ImGui::InputText("Number##heroStat", stat.number, sizeof(stat.number));
+                ImGui::InputText("Label##heroStat", stat.label, sizeof(stat.label));
+                ImGui::ColorEdit4("Icon Color", (float*)&stat.iconColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Number Color", (float*)&stat.numberColor, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Label Color", (float*)&stat.labelColor, ImGuiColorEditFlags_NoInputs);
+                if (ImGui::Button("Delete Stat##hero")) {
+                    sec.hero_stats.erase(sec.hero_stats.begin() + selHeroStat);
+                    selHeroStat = -1;
+                }
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND");
+            ImGui::ColorEdit4("Section BG", (float*)&sec.hero_bg_color, ImGuiColorEditFlags_NoInputs);
         }
         // Regular section content
         else {
