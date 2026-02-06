@@ -2903,9 +2903,9 @@ struct WebSection {
                 strcpy(story_label, "OUR STORY");
                 strcpy(story_heading, "Five Decades of");
                 strcpy(story_heading_accent, "Visual Mastery");
-                strcpy(story_paragraphs[0], "Founded in 1974, OMNiON pioneered global outsourcing in publishing and media services from Bangalore, India's Silicon Valley.");
-                strcpy(story_paragraphs[1], "Today, we continue to serve the world's most prestigious brands, retailers, publishers, and agencies with unmatched expertise.");
-                strcpy(story_paragraphs[2], "Our global delivery model provides 24/7/365 services through world-class infrastructure and over 500 skilled professionals.");
+                strcpy(story_paragraphs[0], "Founded in 1974 by M.C. Abraham, OMNiON pioneered global outsourcing in publishing and media services from Bangalore, India's Silicon Valley.");
+                strcpy(story_paragraphs[1], "Today, under the leadership of Mat Abraham (20+ years at Quad/Graphics, USA), we continue to serve the world's most prestigious brands, retailers, publishers, and agencies with unmatched expertise in premedia services.");
+                strcpy(story_paragraphs[2], "Our global delivery model provides 24/7/365 services through world-class infrastructure, cutting-edge technology, and over 500 skilled professionals dedicated to pixel-perfect precision and creative excellence.");
                 story_paragraph_count = 3;
                 {
                     StoryFeatureBadge b1; strcpy(b1.text, "ISO 9001:2015 Certified"); b1.dotColor = ImVec4(0.95f, 0.7f, 0.2f, 1); story_badges.push_back(b1);
@@ -2915,9 +2915,9 @@ struct WebSection {
                 }
                 strcpy(story_button_text, "Partner With Us");
                 story_button_action = 0;
-                strcpy(story_button_target, "");
+                strcpy(story_button_target, "contact");
                 strcpy(story_stats_number, "50+");
-                strcpy(story_stats_label, "Years");
+                strcpy(story_stats_label, "");
                 story_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
                 story_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1);
                 story_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
@@ -2935,7 +2935,7 @@ struct WebSection {
                 strcpy(services_label, "OUR SERVICES");
                 strcpy(services_heading, "Comprehensive");
                 strcpy(services_heading_accent, "PreMedia Solutions");
-                strcpy(services_subtitle, "End-to-end visual production services tailored for enterprise needs.");
+                strcpy(services_subtitle, "End-to-end visual production services tailored for enterprise needs, delivered with 50+ years of expertise and world-class infrastructure.");
                 services_cards_per_row = 3;
                 services_card_spacing = 24.0f;
                 services_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
@@ -2945,33 +2945,39 @@ struct WebSection {
                 {
                     ServicesSectionCard c1;
                     strcpy(c1.title, "Product Imaging");
-                    strcpy(c1.description, "High-volume product photography and catalog imaging with color-accurate output.");
+                    strcpy(c1.description, "High-volume product photography and catalog imaging with color-accurate, print-ready output for e-commerce and retail publications.");
                     c1.iconType = ICON_CAMERA;
                     strcpy(c1.bullets[0], "E-commerce Photography");
                     strcpy(c1.bullets[1], "Catalog Production");
                     strcpy(c1.bullets[2], "360° Product Views");
                     strcpy(c1.bullets[3], "Ghost Mannequin");
                     c1.bulletCount = 4;
+                    strcpy(c1.linkText, "Learn More");
                     services_cards.push_back(c1);
 
                     ServicesSectionCard c2;
                     strcpy(c2.title, "Packaging Design");
-                    strcpy(c2.description, "Strategic packaging solutions that enhance brand presence.");
+                    strcpy(c2.description, "Strategic packaging solutions that enhance brand presence and consumer engagement from concept to print-ready artwork.");
                     c2.iconType = ICON_SHOPPING;
+                    c2.iconBgColor = ImVec4(0.6f, 0.4f, 0.8f, 1.0f);
                     strcpy(c2.bullets[0], "Structural Design");
                     strcpy(c2.bullets[1], "Brand Identity");
                     strcpy(c2.bullets[2], "Print Production");
-                    c2.bulletCount = 3;
+                    strcpy(c2.bullets[3], "Dieline Creation");
+                    c2.bulletCount = 4;
+                    strcpy(c2.linkText, "Learn More");
                     services_cards.push_back(c2);
 
                     ServicesSectionCard c3;
                     strcpy(c3.title, "Photo Retouching");
-                    strcpy(c3.description, "Expert-level retouching services delivering flawless imagery.");
+                    strcpy(c3.description, "Expert-level retouching services delivering flawless imagery while maintaining natural appearance and brand consistency.");
                     c3.iconType = ICON_BULB;
                     strcpy(c3.bullets[0], "High-End Beauty Retouching");
                     strcpy(c3.bullets[1], "Product Enhancement");
                     strcpy(c3.bullets[2], "Color Correction");
-                    c3.bulletCount = 3;
+                    strcpy(c3.bullets[3], "Composite Imaging");
+                    c3.bulletCount = 4;
+                    strcpy(c3.linkText, "Learn More");
                     services_cards.push_back(c3);
                 }
                 break;
@@ -3009,7 +3015,7 @@ struct WebSection {
                 strcpy(features_label, "INFRASTRUCTURE");
                 strcpy(features_heading, "World-Class");
                 strcpy(features_heading_accent, "Technology & Facilities");
-                strcpy(features_subtitle, "State-of-the-art infrastructure powering global operations 24/7");
+                strcpy(features_subtitle, "State-of-the-art infrastructure in Bangalore, India's Silicon Valley, powering global operations 24/7");
                 features_cards_per_row = 3;
                 features_card_spacing = 24.0f;
                 features_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1);
@@ -3019,7 +3025,7 @@ struct WebSection {
                 {
                     FeatureCardItem f1;
                     strcpy(f1.title, "Enterprise Data Center");
-                    strcpy(f1.description, "Tier-3 certified facility with redundant power and network infrastructure.");
+                    strcpy(f1.description, "Tier-3 certified facility with redundant power, cooling, and network infrastructure ensuring 99.99% uptime.");
                     f1.iconType = ICON_LAPTOP;
                     strcpy(f1.checkmarks[0], "Petabyte-scale storage");
                     strcpy(f1.checkmarks[1], "High-speed fiber connectivity");
@@ -3029,7 +3035,7 @@ struct WebSection {
 
                     FeatureCardItem f2;
                     strcpy(f2.title, "Security & Compliance");
-                    strcpy(f2.description, "Military-grade security protocols protecting your assets.");
+                    strcpy(f2.description, "Military-grade security protocols protecting your valuable assets and intellectual property.");
                     f2.iconType = ICON_LOCK;
                     strcpy(f2.checkmarks[0], "ISO 27001 Certified");
                     strcpy(f2.checkmarks[1], "SOC 2 Type II Compliant");
@@ -3039,7 +3045,7 @@ struct WebSection {
 
                     FeatureCardItem f3;
                     strcpy(f3.title, "Production Workstations");
-                    strcpy(f3.description, "500+ high-performance workstations with premium software.");
+                    strcpy(f3.description, "500+ high-performance workstations with color-calibrated displays and premium software stack.");
                     f3.iconType = ICON_SETTINGS;
                     strcpy(f3.checkmarks[0], "Color-calibrated monitors");
                     strcpy(f3.checkmarks[1], "Adobe Creative Cloud");
@@ -3049,7 +3055,7 @@ struct WebSection {
 
                     FeatureCardItem f4;
                     strcpy(f4.title, "AI & Automation");
-                    strcpy(f4.description, "Proprietary AI-powered tools accelerating production.");
+                    strcpy(f4.description, "Proprietary AI-powered tools accelerating production while maintaining artistic quality.");
                     f4.iconType = ICON_BULB;
                     strcpy(f4.checkmarks[0], "Automated QC systems");
                     strcpy(f4.checkmarks[1], "Smart batch processing");
@@ -3059,7 +3065,7 @@ struct WebSection {
 
                     FeatureCardItem f5;
                     strcpy(f5.title, "Global Delivery Network");
-                    strcpy(f5.description, "Distributed CDN ensuring fast, secure file delivery.");
+                    strcpy(f5.description, "Distributed CDN ensuring fast, secure file delivery to clients worldwide.");
                     f5.iconType = ICON_WIFI;
                     strcpy(f5.checkmarks[0], "Multi-region CDN");
                     strcpy(f5.checkmarks[1], "Secure file transfer");
@@ -3069,7 +3075,7 @@ struct WebSection {
 
                     FeatureCardItem f6;
                     strcpy(f6.title, "24/7 Operations");
-                    strcpy(f6.description, "Round-the-clock production across multiple shifts.");
+                    strcpy(f6.description, "Round-the-clock production across multiple shifts for uninterrupted global service.");
                     f6.iconType = ICON_CLOCK;
                     strcpy(f6.checkmarks[0], "Follow-the-sun model");
                     strcpy(f6.checkmarks[1], "Dedicated project managers");
@@ -3096,31 +3102,31 @@ struct WebSection {
                 {
                     ProcessStep s1;
                     strcpy(s1.title, "Discovery");
-                    strcpy(s1.description, "Understanding your brand, requirements, and project scope.");
+                    strcpy(s1.description, "Understanding your brand, requirements, and project scope to create a tailored production plan.");
                     s1.iconType = ICON_BULB;
                     process_steps.push_back(s1);
 
                     ProcessStep s2;
                     strcpy(s2.title, "Asset Ingestion");
-                    strcpy(s2.description, "Secure file transfer and quality assessment of materials.");
+                    strcpy(s2.description, "Secure file transfer, cataloging, and quality assessment of all source materials.");
                     s2.iconType = ICON_UPLOAD;
                     process_steps.push_back(s2);
 
                     ProcessStep s3;
                     strcpy(s3.title, "Production");
-                    strcpy(s3.description, "Expert execution with multi-stage quality checks.");
+                    strcpy(s3.description, "Expert execution with multi-stage quality checks and brand guideline compliance.");
                     s3.iconType = ICON_SETTINGS;
                     process_steps.push_back(s3);
 
                     ProcessStep s4;
                     strcpy(s4.title, "Quality Assurance");
-                    strcpy(s4.description, "Rigorous QC protocols ensuring pixel-perfect output.");
+                    strcpy(s4.description, "Rigorous QC protocols ensuring pixel-perfect output meeting international standards.");
                     s4.iconType = ICON_CHECK;
                     process_steps.push_back(s4);
 
                     ProcessStep s5;
                     strcpy(s5.title, "Delivery");
-                    strcpy(s5.description, "Secure delivery with ongoing support and revisions.");
+                    strcpy(s5.description, "Secure delivery in required formats with ongoing support and revisions as needed.");
                     s5.iconType = ICON_DOWNLOAD;
                     process_steps.push_back(s5);
                 }
@@ -3129,45 +3135,45 @@ struct WebSection {
             case SEC_HERO_SECTION_CONNECTOR:
                 name = "Hero Section";
                 height = 600;
-                bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
-                hero_bg_color = ImVec4(0.98f, 0.98f, 0.99f, 1.0f);
-                strcpy(hero_badge_text, "Your Premier Visual Production Partner");
+                bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);  // Dark background
+                hero_bg_color = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);
+                strcpy(hero_badge_text, "Pioneering Excellence Since 1974");
                 hero_badge_icon_left = ICON_STAR;
                 hero_badge_icon_right = ICON_STAR;
-                strcpy(hero_heading, "Transforming Ideas into");
-                strcpy(hero_heading_accent, "Visual Excellence");
-                strcpy(hero_description, "From concept to completion, we deliver world-class visual production services for global brands, publishers, and agencies with precision, creativity, and unmatched expertise.");
-                strcpy(hero_btn_primary_text, "Explore Our Services");
-                strcpy(hero_btn_secondary_text, "Partner With Us");
+                strcpy(hero_heading, "Mastering the Art of");
+                strcpy(hero_heading_accent, "PreMedia Excellence");
+                strcpy(hero_description, "India's premier PreMedia company delivering world-class Imaging, Packaging Design, Retouching, 3D Visualization & Publishing solutions to Fortune 500 brands across the globe with 24/7 operations.");
+                strcpy(hero_btn_primary_text, "Explore Services");
+                strcpy(hero_btn_secondary_text, "View Portfolio");
                 hero_btn_primary_action = ACTION_SCROLL_TO_SECTION;
                 hero_btn_secondary_action = ACTION_SCROLL_TO_SECTION;
                 strcpy(hero_btn_primary_target, "services");
-                strcpy(hero_btn_secondary_target, "contact");
-                hero_badge_bg = ImVec4(1.0f, 1.0f, 1.0f, 0.95f);
-                hero_badge_text_color = ImVec4(0.2f, 0.2f, 0.25f, 1.0f);
+                strcpy(hero_btn_secondary_target, "portfolio");
+                hero_badge_bg = ImVec4(0.15f, 0.18f, 0.22f, 0.9f);  // Dark glass badge
+                hero_badge_text_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);  // Orange text
                 hero_badge_icon_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
-                hero_heading_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
-                hero_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
-                hero_description_color = ImVec4(0.4f, 0.4f, 0.45f, 1.0f);
+                hero_heading_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  // White heading
+                hero_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);  // Orange accent
+                hero_description_color = ImVec4(0.7f, 0.7f, 0.75f, 1.0f);  // Light gray
                 hero_btn_primary_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
                 hero_btn_primary_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
-                hero_btn_secondary_bg = ImVec4(1.0f, 1.0f, 1.0f, 0.0f);
-                hero_btn_secondary_text_color = ImVec4(0.1f, 0.1f, 0.15f, 1.0f);
-                hero_btn_secondary_border = ImVec4(0.8f, 0.8f, 0.85f, 1.0f);
+                hero_btn_secondary_bg = ImVec4(0.15f, 0.18f, 0.22f, 1.0f);  // Dark button
+                hero_btn_secondary_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                hero_btn_secondary_border = ImVec4(0.3f, 0.35f, 0.4f, 1.0f);
                 hero_btn_border_radius = 30.0f;
                 hero_badge_border_radius = 25.0f;
                 {
                     // Default feature badges
-                    HeroFeatureBadge b1; strcpy(b1.text, "ISO 9001:2015 Certified"); b1.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b1);
-                    HeroFeatureBadge b2; strcpy(b2.text, "Global 24/7 Operations"); b2.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b2);
-                    HeroFeatureBadge b3; strcpy(b3.text, "500+ Skilled Professionals"); b3.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b3);
-                    HeroFeatureBadge b4; strcpy(b4.text, "50+ Years Experience"); b4.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b4);
+                    HeroFeatureBadge b1; strcpy(b1.text, "50+ Years Experience"); b1.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b1);
+                    HeroFeatureBadge b2; strcpy(b2.text, "500+ Global Clients"); b2.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b2);
+                    HeroFeatureBadge b3; strcpy(b3.text, "24/7 Operations"); b3.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b3);
+                    HeroFeatureBadge b4; strcpy(b4.text, "ISO 9001 Certified"); b4.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b4);
 
                     // Default stats
-                    HeroStatItem s1; s1.iconType = ICON_CALENDAR; strcpy(s1.number, "50+"); strcpy(s1.label, "Years Experience"); hero_stats.push_back(s1);
-                    HeroStatItem s2; s2.iconType = ICON_AVATAR; strcpy(s2.number, "500+"); strcpy(s2.label, "Team Members"); hero_stats.push_back(s2);
-                    HeroStatItem s3; s3.iconType = ICON_INCREASE; strcpy(s3.number, "10K+"); strcpy(s3.label, "Projects Delivered"); hero_stats.push_back(s3);
-                    HeroStatItem s4; s4.iconType = ICON_STAR; strcpy(s4.number, "100+"); strcpy(s4.label, "Global Clients"); hero_stats.push_back(s4);
+                    HeroStatItem s1; s1.iconType = ICON_CALENDAR; strcpy(s1.number, "50+"); strcpy(s1.label, "YEARS OF EXCELLENCE"); s1.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s1.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s1.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s1);
+                    HeroStatItem s2; s2.iconType = ICON_WIFI; strcpy(s2.number, "500+"); strcpy(s2.label, "GLOBAL CLIENTS"); s2.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s2.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s2.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s2);
+                    HeroStatItem s3; s3.iconType = ICON_CAMERA; strcpy(s3.number, "10+"); strcpy(s3.label, "IMAGES PROCESSED"); s3.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s3.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s3.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s3);
+                    HeroStatItem s4; s4.iconType = ICON_STAR; strcpy(s4.number, "99%"); strcpy(s4.label, "CLIENT SATISFACTION"); s4.iconColor = ImVec4(0.95f, 0.5f, 0.2f, 1); s4.numberColor = ImVec4(0.1f, 0.1f, 0.15f, 1); s4.labelColor = ImVec4(0.4f, 0.4f, 0.45f, 1); hero_stats.push_back(s4);
                 }
                 break;
 
