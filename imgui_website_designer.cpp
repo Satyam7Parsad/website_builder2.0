@@ -82,7 +82,9 @@ enum SectionType {
     SEC_FOOTER_SECTION_CONNECTOR,  // Advanced footer with columns, email signup, social links
     SEC_CTA_SECTION_CONNECTOR,     // Call to action with background image and buttons
     SEC_MARQUEE_CONNECTOR,         // Client logo marquee with continuous scrolling
-    SEC_CONTACT_SECTION_CONNECTOR  // Contact section with form and info cards
+    SEC_CONTACT_SECTION_CONNECTOR, // Contact section with form and info cards
+    SEC_TOP_BAR_CONNECTOR,         // Top contact bar with email, phone, social icons
+    SEC_ADVANCED_NAVBAR_CONNECTOR  // Navigation bar with logo, menu, CTA button
 };
 
 // ============================================================================
@@ -2093,6 +2095,82 @@ struct WebSection {
     float contact_field_label_size;
     float contact_button_size;
 
+    // ========== CONNECTOR SCALE CONTROLS (100 = default) ==========
+    float connector_text_scale;      // Text size scale (100 = normal)
+    float connector_margin_scale;    // Margin scale (100 = normal)
+    float connector_padding_scale;   // Padding scale (100 = normal)
+
+    // ========== TOP BAR CONNECTOR ==========
+    char topbar_email[128];          // Contact email
+    char topbar_phone_usa[64];       // USA phone
+    char topbar_phone_eu[64];        // EU phone
+    ImVec4 topbar_bg_color;          // Background color
+    ImVec4 topbar_text_color;        // Text color
+    ImVec4 topbar_icon_color;        // Social icon color
+    bool topbar_show_social;         // Show social icons
+    int topbar_social_icons[5];      // Social icon types (up to 5)
+    int topbar_social_count;         // Number of social icons
+
+    // ========== ADVANCED NAVBAR CONNECTOR ==========
+    char navbar_logo_text[64];       // Logo text (e.g., "OMNiON")
+    char navbar_logo_accent[32];     // Logo accent part (e.g., "ON" in different color)
+    std::string navbar_logo_image;   // Logo image path
+    GLuint navbar_logo_texture;      // Logo texture ID
+    char navbar_menu_items[8][64];   // Menu item texts (up to 8)
+    int navbar_menu_actions[8];      // Action types for each menu item
+    char navbar_menu_targets[8][256]; // Action targets for each menu item
+    int navbar_menu_count;           // Number of menu items
+    int navbar_active_item;          // Currently active/selected menu item index
+    char navbar_cta_text[64];        // CTA button text
+    int navbar_cta_action;           // CTA button action type
+    char navbar_cta_target[256];     // CTA button action target
+    // Note: navbar_bg_color and navbar_text_color already exist above
+    ImVec4 navbar_active_color;      // Active menu item color
+    ImVec4 navbar_cta_bg;            // CTA button background
+    ImVec4 navbar_cta_text_color;    // CTA button text color
+    float navbar_cta_radius;         // CTA button border radius
+
+    // ========== HERO SECTION IMAGES (right side - two carousels) ==========
+    // Carousel 1 (top)
+    std::vector<std::string> hero_carousel1_images;
+    std::vector<GLuint> hero_carousel1_textures;
+    int hero_carousel1_frame;
+    float hero_carousel1_timer;
+    float hero_carousel1_speed;
+    bool hero_carousel1_animate;
+    char hero_image1_label[128];
+    char hero_image1_badge[64];
+    float hero_image1_width;
+    float hero_image1_height;
+    float hero_image1_x_offset;
+    float hero_image1_y_offset;
+    float hero_image1_radius;
+
+    // Carousel 2 (bottom)
+    std::vector<std::string> hero_carousel2_images;
+    std::vector<GLuint> hero_carousel2_textures;
+    int hero_carousel2_frame;
+    float hero_carousel2_timer;
+    float hero_carousel2_speed;
+    bool hero_carousel2_animate;
+    char hero_image2_label[128];
+    char hero_image2_badge[64];
+    float hero_image2_width;
+    float hero_image2_height;
+    float hero_image2_x_offset;
+    float hero_image2_y_offset;
+    float hero_image2_radius;
+
+    // Glass effect
+    bool hero_glass_effect;
+    float hero_glass_opacity;
+    ImVec4 hero_glass_color1;
+    ImVec4 hero_glass_color2;
+
+    // Hero Background Image
+    std::string hero_bg_image_path;
+    GLuint hero_bg_image_texture;
+
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
         title_font_size(48), subtitle_font_size(20), content_font_size(16),
@@ -2297,7 +2375,24 @@ struct WebSection {
         // Contact Section
         contact_label_size(12.0f), contact_heading_size(42.0f), contact_desc_size(14.0f),
         contact_info_title_size(15.0f), contact_info_text_size(13.0f), contact_section_form_title_size(26.0f),
-        contact_form_subtitle_size(13.0f), contact_field_label_size(12.0f), contact_button_size(14.0f) {
+        contact_form_subtitle_size(13.0f), contact_field_label_size(12.0f), contact_button_size(14.0f),
+        // Connector scale controls (100 = default)
+        connector_text_scale(100.0f), connector_margin_scale(100.0f), connector_padding_scale(100.0f),
+        // Top Bar Connector
+        topbar_bg_color(0.1f, 0.1f, 0.12f, 1.0f), topbar_text_color(0.7f, 0.7f, 0.7f, 1.0f),
+        topbar_icon_color(0.7f, 0.7f, 0.7f, 1.0f), topbar_show_social(true), topbar_social_count(4),
+        // Advanced Navbar Connector (note: navbar_bg_color and navbar_text_color already initialized above)
+        navbar_logo_texture(0), navbar_menu_count(6), navbar_active_item(0), navbar_cta_action(0),
+        navbar_active_color(0.95f, 0.5f, 0.2f, 1.0f), navbar_cta_bg(0.95f, 0.5f, 0.2f, 1.0f),
+        navbar_cta_text_color(1.0f, 1.0f, 1.0f, 1.0f), navbar_cta_radius(20.0f),
+        // Hero Section Carousels & Glass
+        hero_carousel1_frame(0), hero_carousel1_timer(0.0f), hero_carousel1_speed(3.0f), hero_carousel1_animate(true),
+        hero_image1_width(280.0f), hero_image1_height(200.0f), hero_image1_x_offset(0.0f), hero_image1_y_offset(0.0f), hero_image1_radius(16.0f),
+        hero_carousel2_frame(0), hero_carousel2_timer(0.0f), hero_carousel2_speed(3.0f), hero_carousel2_animate(true),
+        hero_image2_width(280.0f), hero_image2_height(200.0f), hero_image2_x_offset(0.0f), hero_image2_y_offset(0.0f), hero_image2_radius(16.0f),
+        hero_glass_effect(true), hero_glass_opacity(100.0f),
+        hero_glass_color1(0.15f, 0.15f, 0.2f, 1.0f), hero_glass_color2(0.1f, 0.12f, 0.15f, 1.0f),
+        hero_bg_image_texture(0) {
         // Initialize char arrays
         story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
         story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
@@ -2352,6 +2447,32 @@ struct WebSection {
         strcpy(glass_bar_text, "Your text here");
         strcpy(glass_bar_highlight, "highlight");
         logo_link[0] = '\0';
+        // Top Bar Connector
+        strcpy(topbar_email, "Sales@OMNiON.biz");
+        strcpy(topbar_phone_usa, "USA: +1-212-380-1654");
+        strcpy(topbar_phone_eu, "EU: +44-207-993-5630");
+        topbar_social_icons[0] = 0; topbar_social_icons[1] = 1; topbar_social_icons[2] = 2; topbar_social_icons[3] = 3; topbar_social_icons[4] = 4;
+        // Advanced Navbar Connector
+        strcpy(navbar_logo_text, "OMNi");
+        strcpy(navbar_logo_accent, "ON");
+        strcpy(navbar_menu_items[0], "Home"); strcpy(navbar_menu_targets[0], "#home");
+        strcpy(navbar_menu_items[1], "PreMedia"); strcpy(navbar_menu_targets[1], "#premedia");
+        strcpy(navbar_menu_items[2], "Services"); strcpy(navbar_menu_targets[2], "#services");
+        strcpy(navbar_menu_items[3], "Portfolio"); strcpy(navbar_menu_targets[3], "#portfolio");
+        strcpy(navbar_menu_items[4], "About Us"); strcpy(navbar_menu_targets[4], "#about");
+        strcpy(navbar_menu_items[5], "News"); strcpy(navbar_menu_targets[5], "#news");
+        strcpy(navbar_menu_items[6], "Contact"); strcpy(navbar_menu_targets[6], "#contact");
+        navbar_menu_items[7][0] = '\0'; navbar_menu_targets[7][0] = '\0';
+        for (int i = 0; i < 8; i++) navbar_menu_actions[i] = 1; // Scroll to Section
+        strcpy(navbar_cta_text, "Get Started");
+        strcpy(navbar_cta_target, "#contact");
+        // Hero Section Images
+        hero_image1_label[0] = '\0'; hero_image1_badge[0] = '\0';
+        hero_image2_label[0] = '\0'; hero_image2_badge[0] = '\0';
+        strcpy(hero_image1_badge, "MENTOR");
+        strcpy(hero_image1_label, "M.C. Abraham - Industry Legend");
+        strcpy(hero_image2_badge, "OUR SERVICES");
+        strcpy(hero_image2_label, "Edit & Illustration");
         SetDefaults();
     }
 
@@ -3524,6 +3645,35 @@ struct WebSection {
                 hero_btn_secondary_border = ImVec4(0.3f, 0.35f, 0.4f, 1.0f);
                 hero_btn_border_radius = 30.0f;
                 hero_badge_border_radius = 25.0f;
+                // Glass effect
+                hero_glass_effect = true;
+                hero_glass_opacity = 100.0f;
+                hero_glass_color1 = ImVec4(0.08f, 0.1f, 0.14f, 1.0f);
+                hero_glass_color2 = ImVec4(0.12f, 0.14f, 0.18f, 1.0f);
+                // Carousel 1 (top image)
+                hero_carousel1_frame = 0;
+                hero_carousel1_timer = 0.0f;
+                hero_carousel1_speed = 3.0f;
+                hero_carousel1_animate = true;
+                hero_image1_width = 300.0f;
+                hero_image1_height = 220.0f;
+                hero_image1_x_offset = 0.0f;
+                hero_image1_y_offset = 0.0f;
+                hero_image1_radius = 16.0f;
+                strcpy(hero_image1_label, "PREMIUM PRODUCT IMAGING SERVICES");
+                strcpy(hero_image1_badge, "MENTOR");
+                // Carousel 2 (bottom image)
+                hero_carousel2_frame = 0;
+                hero_carousel2_timer = 0.0f;
+                hero_carousel2_speed = 3.0f;
+                hero_carousel2_animate = true;
+                hero_image2_width = 300.0f;
+                hero_image2_height = 220.0f;
+                hero_image2_x_offset = 0.0f;
+                hero_image2_y_offset = 0.0f;
+                hero_image2_radius = 16.0f;
+                strcpy(hero_image2_label, "AWARD-WINNING DESIGN TEAM");
+                strcpy(hero_image2_badge, "EXPERT");
                 {
                     // Default feature badges
                     HeroFeatureBadge b1; strcpy(b1.text, "50+ Years Experience"); b1.checkColor = ImVec4(0.95f, 0.5f, 0.2f, 1); hero_feature_badges.push_back(b1);
@@ -3763,6 +3913,59 @@ struct WebSection {
                 contact_social_icons.push_back(ICON_SHARE);  // Twitter placeholder
                 contact_social_icons.push_back(ICON_CAMERA); // Instagram placeholder
                 contact_social_icons.push_back(ICON_STAR);   // Behance placeholder
+                break;
+
+            case SEC_TOP_BAR_CONNECTOR:
+                name = "Top Contact Bar";
+                height = 40;
+                bg_color = ImVec4(0.1f, 0.1f, 0.12f, 1.0f);
+                topbar_bg_color = ImVec4(0.1f, 0.1f, 0.12f, 1.0f);
+                topbar_text_color = ImVec4(0.7f, 0.7f, 0.75f, 1.0f);
+                topbar_icon_color = ImVec4(0.7f, 0.7f, 0.75f, 1.0f);
+                strcpy(topbar_email, "Sales@OMNiON.biz");
+                strcpy(topbar_phone_usa, "USA: +1-212-380-1654");
+                strcpy(topbar_phone_eu, "EU: +44-207-993-5630");
+                topbar_show_social = true;
+                topbar_social_count = 4;
+                break;
+
+            case SEC_ADVANCED_NAVBAR_CONNECTOR:
+                name = "Navigation Bar";
+                height = 60;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                navbar_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                navbar_text_color = ImVec4(0.2f, 0.2f, 0.25f, 1.0f);
+                navbar_active_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                navbar_cta_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                navbar_cta_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                navbar_cta_radius = 20.0f;
+                strcpy(navbar_logo_text, "OMNi");
+                strcpy(navbar_logo_accent, "ON");
+                navbar_menu_count = 7;
+                navbar_active_item = 0;
+                strcpy(navbar_menu_items[0], "Home");
+                strcpy(navbar_menu_items[1], "PreMedia");
+                strcpy(navbar_menu_items[2], "Services");
+                strcpy(navbar_menu_items[3], "Portfolio");
+                strcpy(navbar_menu_items[4], "About Us");
+                strcpy(navbar_menu_items[5], "News");
+                strcpy(navbar_menu_items[6], "Contact");
+                // Initialize menu actions (1=Scroll to Section)
+                for (int i = 0; i < 8; i++) {
+                    navbar_menu_actions[i] = 1; // Scroll to Section
+                    strcpy(navbar_menu_targets[i], "");
+                }
+                strcpy(navbar_menu_targets[0], "#home");
+                strcpy(navbar_menu_targets[1], "#premedia");
+                strcpy(navbar_menu_targets[2], "#services");
+                strcpy(navbar_menu_targets[3], "#portfolio");
+                strcpy(navbar_menu_targets[4], "#about");
+                strcpy(navbar_menu_targets[5], "#news");
+                strcpy(navbar_menu_targets[6], "#contact");
+                // CTA button
+                strcpy(navbar_cta_text, "Get Started");
+                navbar_cta_action = 1; // Scroll to Section
+                strcpy(navbar_cta_target, "#contact");
                 break;
 
             default:
@@ -4417,6 +4620,21 @@ static float g_Zoom = 1.0f;
 static bool g_FreeDesignMode = true;           // Free design mode enabled - Figma-like free positioning
 static float g_CanvasScrollX = 0;              // Horizontal scroll for free design mode
 static ImVec4 g_NormalCanvasBgColor = ImVec4(1, 1, 1, 1);  // Canvas background color for Normal mode
+
+// ============================================================================
+// GLOBAL TYPOGRAPHY CONTROL - Control all text sizes from one place
+// ============================================================================
+static float g_GlobalLabelSize = 12.0f;        // Section labels (OUR STORY, OUR SERVICES, etc.)
+static float g_GlobalHeadingSize = 42.0f;      // Main headings
+static float g_GlobalSubheadingSize = 14.0f;   // Subtitles and descriptions
+static float g_GlobalCardTitleSize = 18.0f;    // Card titles
+static float g_GlobalCardDescSize = 13.0f;     // Card descriptions
+static float g_GlobalButtonSize = 14.0f;       // Button text
+static float g_GlobalStatsSize = 48.0f;        // Stats numbers
+static float g_GlobalSmallTextSize = 12.0f;    // Small text (bullets, check items, etc.)
+static float g_GlobalScaleFactor = 1.0f;       // Master scale multiplier (0.5x to 2.0x)
+static bool g_ShowGlobalTypography = false;    // Toggle for global typography panel
+
 static std::string g_ProjectName = "My Website";
 static std::string g_CurrentPage = "Home";
 static int g_CurrentPageIndex = 0;
@@ -23632,7 +23850,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float contentY = y + padding;
 
         // Section label with line "— OUR STORY"
-        float labelSize = 12.0f;
+        float labelSize = sec.story_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.story_label);
         dl->AddLine(ImVec2(contentX, contentY + labelSize/2), ImVec2(contentX + 30, contentY + labelSize/2),
                    ImGui::ColorConvertFloat4ToU32(sec.story_label_color), 2.0f);
@@ -23641,7 +23859,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += 35;
 
         // Two-tone heading
-        float headingSize = 36.0f;
+        float headingSize = sec.story_heading_size;
         ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.story_heading);
         dl->AddText(font, headingSize, ImVec2(contentX, contentY),
                    ImGui::ColorConvertFloat4ToU32(sec.story_heading_color), sec.story_heading);
@@ -23650,7 +23868,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += headingSize * 2 + 30;
 
         // Paragraphs
-        float paraSize = 14.0f;
+        float paraSize = sec.story_text_size;
         float paraWidth = leftW - padding;
         for (int i = 0; i < sec.story_paragraph_count && i < 3; i++) {
             if (sec.story_paragraphs[i][0] != '\0') {
@@ -23672,7 +23890,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             // Colored dot
             dl->AddCircleFilled(ImVec2(bx + 6, by + 8), 6, ImGui::ColorConvertFloat4ToU32(sec.story_badges[i].dotColor));
             // Badge text
-            dl->AddText(font, 13.0f, ImVec2(bx + 20, by),
+            dl->AddText(font, sec.story_text_size, ImVec2(bx + 20, by),
                        ImGui::ColorConvertFloat4ToU32(sec.story_text_color), sec.story_badges[i].text);
         }
         contentY = badgeY + 70;
@@ -23683,8 +23901,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
             ImVec2 btnMin(contentX, contentY);
             ImVec2 btnMax(contentX + btnW, contentY + btnH);
             dl->AddRectFilled(btnMin, btnMax, ImGui::ColorConvertFloat4ToU32(sec.story_button_bg), 6.0f);
-            ImVec2 btnTextSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.story_button_text);
-            dl->AddText(font, 14.0f, ImVec2(contentX + (btnW - btnTextSize.x)/2, contentY + (btnH - btnTextSize.y)/2),
+            ImVec2 btnTextSize = font->CalcTextSizeA(sec.story_button_size, FLT_MAX, 0.0f, sec.story_button_text);
+            dl->AddText(font, sec.story_button_size, ImVec2(contentX + (btnW - btnTextSize.x)/2, contentY + (btnH - btnTextSize.y)/2),
                        ImGui::ColorConvertFloat4ToU32(sec.story_button_text_color), sec.story_button_text);
             // Arrow
             float arrowX = contentX + btnW - 25;
@@ -23700,8 +23918,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float statsSize = 80;
         dl->AddRectFilled(ImVec2(statsX, statsY), ImVec2(statsX + statsSize, statsY + statsSize),
                          ImGui::ColorConvertFloat4ToU32(sec.story_stats_bg), 8.0f);
-        ImVec2 numSize = font->CalcTextSizeA(32.0f, FLT_MAX, 0.0f, sec.story_stats_number);
-        dl->AddText(font, 32.0f, ImVec2(statsX + (statsSize - numSize.x)/2, statsY + (statsSize - numSize.y)/2),
+        ImVec2 numSize = font->CalcTextSizeA(sec.story_stats_size, FLT_MAX, 0.0f, sec.story_stats_number);
+        dl->AddText(font, sec.story_stats_size, ImVec2(statsX + (statsSize - numSize.x)/2, statsY + (statsSize - numSize.y)/2),
                    ImGui::ColorConvertFloat4ToU32(sec.story_stats_text_color), sec.story_stats_number);
 
         // Image collage (3 images) - using configurable display sizes
@@ -23757,7 +23975,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float contentY = y + 40;
 
         // Section label
-        float labelSize = 12.0f;
+        float labelSize = sec.services_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.services_label);
         float labelX = centerX - labelTextSize.x/2;
         dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
@@ -23768,7 +23986,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += 30;
 
         // Two-tone heading
-        float headingSize = 32.0f;
+        float headingSize = sec.services_heading_size;
         std::string fullHeading = std::string(sec.services_heading) + " " + std::string(sec.services_heading_accent);
         ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.services_heading);
         ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.services_heading_accent);
@@ -23778,8 +23996,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += headingSize + 15;
 
         // Subtitle
-        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.services_subtitle);
-        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_subtitle_color), sec.services_subtitle);
+        ImVec2 subSize = font->CalcTextSizeA(sec.services_subtitle_size, FLT_MAX, 0.0f, sec.services_subtitle);
+        dl->AddText(font, sec.services_subtitle_size, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.services_subtitle_color), sec.services_subtitle);
         contentY += 50;
 
         // Service cards
@@ -23824,11 +24042,11 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
 
             float textY = cy + imgH + 20;
             // Title
-            dl->AddText(font, 16.0f, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
-            textY += 25;
+            dl->AddText(font, sec.services_card_title_size, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
+            textY += sec.services_card_title_size + 9;
             // Description
-            ImVec2 descSize = font->CalcTextSizeA(12.0f, FLT_MAX, cardW - 30, card.description);
-            dl->AddText(font, 12.0f, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 30);
+            ImVec2 descSize = font->CalcTextSizeA(sec.services_card_desc_size, FLT_MAX, cardW - 30, card.description);
+            dl->AddText(font, sec.services_card_desc_size, ImVec2(cx + 15, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 30);
             textY += descSize.y + 15;
 
             // Bullet points
@@ -23836,8 +24054,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                 if (card.bullets[b][0] != '\0') {
                     // Orange square bullet
                     dl->AddRectFilled(ImVec2(cx + 15, textY + 4), ImVec2(cx + 21, textY + 10), ImGui::ColorConvertFloat4ToU32(card.bulletColor));
-                    dl->AddText(font, 12.0f, ImVec2(cx + 28, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.bullets[b]);
-                    textY += 18;
+                    dl->AddText(font, sec.services_bullet_size, ImVec2(cx + 28, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.bullets[b]);
+                    textY += sec.services_bullet_size + 6;
                 }
             }
 
@@ -23871,7 +24089,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float contentY = y + 40;
 
         // Section label with lines
-        float labelSize = 12.0f;
+        float labelSize = sec.clients_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.clients_label);
         float labelX = centerX - labelTextSize.x/2;
         dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
@@ -23882,7 +24100,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += 30;
 
         // Two-tone heading
-        float headingSize = 32.0f;
+        float headingSize = sec.clients_heading_size;
         ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.clients_heading);
         ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.clients_heading_accent);
         float totalW = h1Size.x + 10 + h2Size.x;
@@ -23891,8 +24109,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += headingSize + 15;
 
         // Subtitle
-        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.clients_subtitle);
-        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_subtitle_color), sec.clients_subtitle);
+        ImVec2 subSize = font->CalcTextSizeA(sec.clients_subtitle_size, FLT_MAX, 0.0f, sec.clients_subtitle);
+        dl->AddText(font, sec.clients_subtitle_size, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.clients_subtitle_color), sec.clients_subtitle);
         contentY += 50;
 
         // Client cards grid
@@ -23944,7 +24162,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float contentY = y + 40;
 
         // Section label with lines
-        float labelSize = 12.0f;
+        float labelSize = sec.features_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.features_label);
         float labelX = centerX - labelTextSize.x/2;
         dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
@@ -23955,7 +24173,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += 30;
 
         // Two-tone heading
-        float headingSize = 32.0f;
+        float headingSize = sec.features_heading_size;
         ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.features_heading);
         ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.features_heading_accent);
         float totalW = h1Size.x + 10 + h2Size.x;
@@ -23964,8 +24182,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += headingSize + 15;
 
         // Subtitle
-        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.features_subtitle);
-        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_subtitle_color), sec.features_subtitle);
+        ImVec2 subSize = font->CalcTextSizeA(sec.features_subtitle_size, FLT_MAX, 0.0f, sec.features_subtitle);
+        dl->AddText(font, sec.features_subtitle_size, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.features_subtitle_color), sec.features_subtitle);
         contentY += 50;
 
         // Feature cards
@@ -23994,10 +24212,10 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
 
             float textY = cy + 80;
             // Title
-            dl->AddText(font, 15.0f, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
-            textY += 22;
+            dl->AddText(font, sec.features_card_title_size, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.titleColor), card.title);
+            textY += sec.features_card_title_size + 7;
             // Description
-            dl->AddText(font, 12.0f, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 40);
+            dl->AddText(font, sec.features_card_desc_size, ImVec2(cx + 20, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.description, nullptr, cardW - 40);
             textY += 45;
 
             // Checkmark items
@@ -24007,8 +24225,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                     float chkX = cx + 20, chkY = textY + 2;
                     dl->AddLine(ImVec2(chkX, chkY + 5), ImVec2(chkX + 4, chkY + 9), ImGui::ColorConvertFloat4ToU32(card.checkColor), 2.0f);
                     dl->AddLine(ImVec2(chkX + 4, chkY + 9), ImVec2(chkX + 12, chkY + 1), ImGui::ColorConvertFloat4ToU32(card.checkColor), 2.0f);
-                    dl->AddText(font, 11.0f, ImVec2(cx + 38, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.checkmarks[c]);
-                    textY += 16;
+                    dl->AddText(font, sec.features_check_size, ImVec2(cx + 38, textY), ImGui::ColorConvertFloat4ToU32(card.descColor), card.checkmarks[c]);
+                    textY += sec.features_check_size + 5;
                 }
             }
         }
@@ -24030,7 +24248,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float contentY = y + 40;
 
         // Section label with lines
-        float labelSize = 12.0f;
+        float labelSize = sec.process_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.process_label);
         float labelX = centerX - labelTextSize.x/2;
         dl->AddLine(ImVec2(labelX - 35, contentY + labelSize/2), ImVec2(labelX - 5, contentY + labelSize/2),
@@ -24041,7 +24259,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += 30;
 
         // Two-tone heading (italic style simulated)
-        float headingSize = 36.0f;
+        float headingSize = sec.process_heading_size;
         ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.process_heading);
         ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.process_heading_accent);
         float totalW = h1Size.x + 10 + h2Size.x;
@@ -24050,8 +24268,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         contentY += headingSize + 15;
 
         // Subtitle
-        ImVec2 subSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.process_subtitle);
-        dl->AddText(font, 14.0f, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_subtitle_color), sec.process_subtitle);
+        ImVec2 subSize = font->CalcTextSizeA(sec.process_subtitle_size, FLT_MAX, 0.0f, sec.process_subtitle);
+        dl->AddText(font, sec.process_subtitle_size, ImVec2(centerX - subSize.x/2, contentY), ImGui::ColorConvertFloat4ToU32(sec.process_subtitle_color), sec.process_subtitle);
         contentY += 60;
 
         // Timeline
@@ -24075,8 +24293,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                 // Number circle
                 dl->AddCircleFilled(ImVec2(sx, circleY), circleR, ImGui::ColorConvertFloat4ToU32(step.numberBgColor));
                 char numStr[8]; snprintf(numStr, sizeof(numStr), "%02d", i + 1);
-                ImVec2 numSize = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, numStr);
-                dl->AddText(font, 12.0f, ImVec2(sx - numSize.x/2, circleY - numSize.y/2), ImGui::ColorConvertFloat4ToU32(step.numberTextColor), numStr);
+                ImVec2 numSize = font->CalcTextSizeA(sec.process_step_number_size, FLT_MAX, 0.0f, numStr);
+                dl->AddText(font, sec.process_step_number_size, ImVec2(sx - numSize.x/2, circleY - numSize.y/2), ImGui::ColorConvertFloat4ToU32(step.numberTextColor), numStr);
 
                 // Card below
                 float cardW = stepW - 20;
@@ -24094,13 +24312,13 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                 DrawIcon(dl, step.iconType, ix + iconSize/2, iy + iconSize/2, iconSize * 0.45f, IM_COL32(255, 255, 255, 255), 2.0f);
 
                 // Title (centered)
-                ImVec2 titleSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, step.title);
-                dl->AddText(font, 14.0f, ImVec2(cardX + (cardW - titleSize.x)/2, cardY + 65), ImGui::ColorConvertFloat4ToU32(step.titleColor), step.title);
+                ImVec2 titleSize = font->CalcTextSizeA(sec.process_step_title_size, FLT_MAX, 0.0f, step.title);
+                dl->AddText(font, sec.process_step_title_size, ImVec2(cardX + (cardW - titleSize.x)/2, cardY + 65), ImGui::ColorConvertFloat4ToU32(step.titleColor), step.title);
 
                 // Description (centered, wrapped)
                 float descY = cardY + 90;
-                ImVec2 descSize = font->CalcTextSizeA(11.0f, FLT_MAX, cardW - 20, step.description);
-                dl->AddText(font, 11.0f, ImVec2(cardX + 10, descY), ImGui::ColorConvertFloat4ToU32(step.descColor), step.description, nullptr, cardW - 20);
+                ImVec2 descSize = font->CalcTextSizeA(sec.process_step_desc_size, FLT_MAX, cardW - 20, step.description);
+                dl->AddText(font, sec.process_step_desc_size, ImVec2(cardX + 10, descY), ImGui::ColorConvertFloat4ToU32(step.descColor), step.description, nullptr, cardW - 20);
             }
         }
 
@@ -24109,70 +24327,110 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
     }
 
     // ========================================================================
-    // SEC_HERO_SECTION_CONNECTOR - Full hero section with badge, buttons, stats
+    // SEC_HERO_SECTION_CONNECTOR - Full hero section with glass effect & images
     // ========================================================================
     if (sec.type == SEC_HERO_SECTION_CONNECTOR) {
         ImVec2 section_min(x, y);
         ImVec2 section_max(x + sectionW, y + h);
-        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.hero_bg_color));
+
+        // Background: First draw solid color or background image
+        if (sec.hero_bg_image_texture != 0) {
+            // Draw background image
+            dl->AddImage((ImTextureID)(intptr_t)sec.hero_bg_image_texture,
+                        section_min, section_max, ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255));
+        } else {
+            dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.hero_bg_color));
+        }
+
+        // Glass effect overlay (gradient from dark to slightly lighter)
+        if (sec.hero_glass_effect && sec.hero_glass_opacity > 0.0f) {
+            float glassAlpha = (sec.hero_glass_opacity / 100.0f);
+            if (glassAlpha > 2.0f) glassAlpha = 2.0f;  // Cap at 200%
+
+            // Draw gradient overlay using multiple rect strips
+            int gradientSteps = 20;
+            float stripH = h / gradientSteps;
+            for (int i = 0; i < gradientSteps; i++) {
+                float t = (float)i / gradientSteps;
+                ImVec4 c;
+                c.x = sec.hero_glass_color1.x + (sec.hero_glass_color2.x - sec.hero_glass_color1.x) * t;
+                c.y = sec.hero_glass_color1.y + (sec.hero_glass_color2.y - sec.hero_glass_color1.y) * t;
+                c.z = sec.hero_glass_color1.z + (sec.hero_glass_color2.z - sec.hero_glass_color1.z) * t;
+                c.w = glassAlpha > 1.0f ? 1.0f : glassAlpha;  // Opacity capped at 1.0 for alpha
+                dl->AddRectFilled(ImVec2(x, y + i * stripH), ImVec2(x + sectionW, y + (i + 1) * stripH),
+                                 ImGui::ColorConvertFloat4ToU32(c));
+            }
+        }
 
         ImFont* font = ImGui::GetFont();
-        float centerX = x + sectionW / 2;
-        float contentY = y + 50;
-        float contentW = sectionW * 0.7f;  // 70% width for content
-        float contentX = x + (sectionW - contentW) / 2;
+        float padding = 60.0f;
+
+        // Split layout: 55% left (content), 45% right (images)
+        float leftWidth = (sectionW - padding * 2) * 0.55f;
+        float rightWidth = (sectionW - padding * 2) * 0.40f;
+        float gap = (sectionW - padding * 2) * 0.05f;
+        float leftX = x + padding;
+        float rightX = leftX + leftWidth + gap;
+        float contentY = y + padding;
+
+        // ========== LEFT SIDE: Content ==========
 
         // Glass badge with icons and text
         {
             float badgeH = 36;
-            ImVec2 badgeTextSize = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, sec.hero_badge_text);
-            float badgeW = badgeTextSize.x + 70;  // Extra space for icons
-            float badgeX = centerX - badgeW/2;
-            float badgeY = contentY;
+            ImVec2 badgeTextSize = font->CalcTextSizeA(sec.hero_badge_size, FLT_MAX, 0.0f, sec.hero_badge_text);
+            float badgeW = badgeTextSize.x + 70;
+            float badgeX = leftX;
 
             // Badge background (glass effect)
-            dl->AddRectFilled(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH),
+            dl->AddRectFilled(ImVec2(badgeX, contentY), ImVec2(badgeX + badgeW, contentY + badgeH),
                              ImGui::ColorConvertFloat4ToU32(sec.hero_badge_bg), sec.hero_badge_border_radius);
-            dl->AddRect(ImVec2(badgeX, badgeY), ImVec2(badgeX + badgeW, badgeY + badgeH),
-                       IM_COL32(200, 200, 200, 80), sec.hero_badge_border_radius, 0, 1.0f);
+            dl->AddRect(ImVec2(badgeX, contentY), ImVec2(badgeX + badgeW, contentY + badgeH),
+                       IM_COL32(255, 255, 255, 40), sec.hero_badge_border_radius, 0, 1.0f);
 
             // Left icon
-            DrawIcon(dl, sec.hero_badge_icon_left, badgeX + 18, badgeY + badgeH/2, 14,
+            DrawIcon(dl, sec.hero_badge_icon_left, badgeX + 18, contentY + badgeH/2, 14,
                     ImGui::ColorConvertFloat4ToU32(sec.hero_badge_icon_color), 1.5f);
 
             // Badge text
-            dl->AddText(font, 12.0f, ImVec2(badgeX + 35, badgeY + (badgeH - 12)/2),
+            dl->AddText(font, sec.hero_badge_size, ImVec2(badgeX + 35, contentY + (badgeH - sec.hero_badge_size)/2),
                        ImGui::ColorConvertFloat4ToU32(sec.hero_badge_text_color), sec.hero_badge_text);
 
             // Right icon
-            DrawIcon(dl, sec.hero_badge_icon_right, badgeX + badgeW - 18, badgeY + badgeH/2, 14,
+            DrawIcon(dl, sec.hero_badge_icon_right, badgeX + badgeW - 18, contentY + badgeH/2, 14,
                     ImGui::ColorConvertFloat4ToU32(sec.hero_badge_icon_color), 1.5f);
 
             contentY += badgeH + 30;
         }
 
-        // Two-tone heading
+        // Two-tone heading (with bold effect)
         {
-            float headingSize = 48.0f;
+            float headingSize = sec.hero_heading_size;
             ImVec2 h1Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.hero_heading);
             ImVec2 h2Size = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.hero_heading_accent);
-            float totalW = h1Size.x + 15 + h2Size.x;
-            float headX = centerX - totalW/2;
 
-            dl->AddText(font, headingSize, ImVec2(headX, contentY),
-                       ImGui::ColorConvertFloat4ToU32(sec.hero_heading_color), sec.hero_heading);
-            dl->AddText(font, headingSize, ImVec2(headX + h1Size.x + 15, contentY),
-                       ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color), sec.hero_heading_accent);
+            // Bold effect for main heading
+            for (int l = 0; l < 6; l++) {
+                float ox = (l % 3) * 0.5f, oy = (l / 3) * 0.5f;
+                dl->AddText(font, headingSize, ImVec2(leftX + ox, contentY + oy),
+                           ImGui::ColorConvertFloat4ToU32(sec.hero_heading_color), sec.hero_heading);
+            }
+            contentY += headingSize + 5;
 
-            contentY += headingSize + 20;
+            // Accent text on new line
+            for (int l = 0; l < 6; l++) {
+                float ox = (l % 3) * 0.5f, oy = (l / 3) * 0.5f;
+                dl->AddText(font, headingSize, ImVec2(leftX + ox, contentY + oy),
+                           ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color), sec.hero_heading_accent);
+            }
+            contentY += headingSize + 25;
         }
 
         // Description paragraph
         {
-            float descW = contentW * 0.8f;
-            float descX = centerX - descW/2;
-            ImVec2 descSize = font->CalcTextSizeA(16.0f, FLT_MAX, descW, sec.hero_description);
-            dl->AddText(font, 16.0f, ImVec2(descX, contentY),
+            float descW = leftWidth * 0.9f;
+            ImVec2 descSize = font->CalcTextSizeA(sec.hero_description_size, FLT_MAX, descW, sec.hero_description);
+            dl->AddText(font, sec.hero_description_size, ImVec2(leftX, contentY),
                        ImGui::ColorConvertFloat4ToU32(sec.hero_description_color), sec.hero_description, nullptr, descW);
             contentY += descSize.y + 35;
         }
@@ -24181,23 +24439,21 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         {
             float btnH = 48;
             float btnSpacing = 15;
-            float primaryW = 180, secondaryW = 160;
-            float totalBtnW = primaryW + btnSpacing + secondaryW;
-            float btnStartX = centerX - totalBtnW/2;
+            float primaryW = 170, secondaryW = 150;
 
             // Primary button (filled)
-            dl->AddRectFilled(ImVec2(btnStartX, contentY), ImVec2(btnStartX + primaryW, contentY + btnH),
+            dl->AddRectFilled(ImVec2(leftX, contentY), ImVec2(leftX + primaryW, contentY + btnH),
                              ImGui::ColorConvertFloat4ToU32(sec.hero_btn_primary_bg), sec.hero_btn_border_radius);
-            ImVec2 primTxtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.hero_btn_primary_text);
-            dl->AddText(font, 14.0f, ImVec2(btnStartX + (primaryW - primTxtSize.x)/2, contentY + (btnH - 14)/2),
+            ImVec2 primTxtSize = font->CalcTextSizeA(sec.hero_button_size, FLT_MAX, 0.0f, sec.hero_btn_primary_text);
+            dl->AddText(font, sec.hero_button_size, ImVec2(leftX + (primaryW - primTxtSize.x)/2, contentY + (btnH - sec.hero_button_size)/2),
                        ImGui::ColorConvertFloat4ToU32(sec.hero_btn_primary_text_color), sec.hero_btn_primary_text);
 
             // Secondary button (outline)
-            float secBtnX = btnStartX + primaryW + btnSpacing;
+            float secBtnX = leftX + primaryW + btnSpacing;
             dl->AddRect(ImVec2(secBtnX, contentY), ImVec2(secBtnX + secondaryW, contentY + btnH),
                        ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_border), sec.hero_btn_border_radius, 0, 2.0f);
-            ImVec2 secTxtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.hero_btn_secondary_text);
-            dl->AddText(font, 14.0f, ImVec2(secBtnX + (secondaryW - secTxtSize.x)/2, contentY + (btnH - 14)/2),
+            ImVec2 secTxtSize = font->CalcTextSizeA(sec.hero_button_size, FLT_MAX, 0.0f, sec.hero_btn_secondary_text);
+            dl->AddText(font, sec.hero_button_size, ImVec2(secBtnX + (secondaryW - secTxtSize.x)/2, contentY + (btnH - sec.hero_button_size)/2),
                        ImGui::ColorConvertFloat4ToU32(sec.hero_btn_secondary_text_color), sec.hero_btn_secondary_text);
 
             // Arrow icon in secondary button
@@ -24216,65 +24472,187 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // Feature badges row (checkmarks with text)
         if (!sec.hero_feature_badges.empty()) {
             int badgeCount = (int)sec.hero_feature_badges.size();
-            float badgeSpacing = 30;
-            float totalBadgeW = 0;
-            std::vector<float> badgeWidths;
-            for (const auto& badge : sec.hero_feature_badges) {
-                ImVec2 size = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, badge.text);
-                float w = 24 + size.x;  // checkmark + text
-                badgeWidths.push_back(w);
-                totalBadgeW += w;
-            }
-            totalBadgeW += (badgeCount - 1) * badgeSpacing;
+            float badgeSpacing = 25;
+            float badgeX = leftX;
 
-            float badgeX = centerX - totalBadgeW/2;
             for (int i = 0; i < badgeCount; i++) {
                 const auto& badge = sec.hero_feature_badges[i];
-                // Checkmark
+                ImVec2 txtSize = font->CalcTextSizeA(sec.hero_stats_label_size, FLT_MAX, 0.0f, badge.text);
+
+                // Checkmark circle
                 float chkX = badgeX, chkY = contentY + 4;
                 dl->AddCircleFilled(ImVec2(chkX + 8, chkY + 6), 10, ImGui::ColorConvertFloat4ToU32(badge.checkColor));
                 dl->AddLine(ImVec2(chkX + 4, chkY + 6), ImVec2(chkX + 7, chkY + 9), IM_COL32(255, 255, 255, 255), 2.0f);
                 dl->AddLine(ImVec2(chkX + 7, chkY + 9), ImVec2(chkX + 12, chkY + 3), IM_COL32(255, 255, 255, 255), 2.0f);
+
                 // Text
-                dl->AddText(font, 12.0f, ImVec2(badgeX + 24, contentY),
+                dl->AddText(font, sec.hero_stats_label_size, ImVec2(badgeX + 24, contentY),
                            ImGui::ColorConvertFloat4ToU32(sec.hero_description_color), badge.text);
-                badgeX += badgeWidths[i] + badgeSpacing;
+                badgeX += 24 + txtSize.x + badgeSpacing;
             }
             contentY += 35;
         }
 
-        // Stats counter section
-        if (!sec.hero_stats.empty()) {
-            contentY += 20;
-            int statCount = (int)sec.hero_stats.size();
-            float statSpacing = 60;
-            float statW = 100;
-            float totalStatW = statCount * statW + (statCount - 1) * statSpacing;
-            float statStartX = centerX - totalStatW/2;
+        // ========== RIGHT SIDE: Two Image Carousels (Stacked) ==========
+        float baseImageX = rightX;
+        float baseImageY = y + padding;
+        float spacing = 20.0f;
 
-            for (int i = 0; i < statCount; i++) {
-                const auto& stat = sec.hero_stats[i];
-                float sx = statStartX + i * (statW + statSpacing);
+        // ===== CAROUSEL 1 (Top) =====
+        {
+            float imgX = baseImageX + sec.hero_image1_x_offset;
+            float imgY = baseImageY + sec.hero_image1_y_offset;
+            float imgW = sec.hero_image1_width;
+            float imgH = sec.hero_image1_height;
+            float radius = sec.hero_image1_radius;
 
-                // Icon
-                float iconSize = 28;
-                float iconX = sx + statW/2;
-                float iconY = contentY + 10;
-                dl->AddCircleFilled(ImVec2(iconX, iconY), 22, IM_COL32(255, 240, 230, 255));
-                DrawIcon(dl, stat.iconType, iconX, iconY, iconSize * 0.4f,
-                        ImGui::ColorConvertFloat4ToU32(stat.iconColor), 2.0f);
+            // Update animation timer for carousel 1
+            if (sec.hero_carousel1_animate && !sec.hero_carousel1_textures.empty()) {
+                sec.hero_carousel1_timer += ImGui::GetIO().DeltaTime;
+                if (sec.hero_carousel1_timer >= sec.hero_carousel1_speed) {
+                    sec.hero_carousel1_timer = 0.0f;
+                    sec.hero_carousel1_frame++;
+                    if (sec.hero_carousel1_frame >= (int)sec.hero_carousel1_textures.size()) {
+                        sec.hero_carousel1_frame = 0;
+                    }
+                }
+            }
 
-                // Number
-                float numY = contentY + 45;
-                ImVec2 numSize = font->CalcTextSizeA(28.0f, FLT_MAX, 0.0f, stat.number);
-                dl->AddText(font, 28.0f, ImVec2(sx + (statW - numSize.x)/2, numY),
-                           ImGui::ColorConvertFloat4ToU32(stat.numberColor), stat.number);
+            // Draw current frame or placeholder
+            if (!sec.hero_carousel1_textures.empty()) {
+                int frameIdx = sec.hero_carousel1_frame;
+                if (frameIdx >= 0 && frameIdx < (int)sec.hero_carousel1_textures.size()) {
+                    GLuint currentTex = sec.hero_carousel1_textures[frameIdx];
+                    if (currentTex != 0) {
+                        dl->AddImageRounded((ImTextureID)(intptr_t)currentTex,
+                                           ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                                           ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), radius);
+                    }
+                }
 
-                // Label
-                float lblY = numY + 32;
-                ImVec2 lblSize = font->CalcTextSizeA(11.0f, FLT_MAX, 0.0f, stat.label);
-                dl->AddText(font, 11.0f, ImVec2(sx + (statW - lblSize.x)/2, lblY),
-                           ImGui::ColorConvertFloat4ToU32(stat.labelColor), stat.label);
+                // Dot indicators
+                if (sec.hero_carousel1_textures.size() > 1) {
+                    float dotSize = 6.0f;
+                    float dotSpacing = 12.0f;
+                    int numDots = (int)sec.hero_carousel1_textures.size();
+                    float totalDotsW = numDots * dotSpacing;
+                    float dotsX = imgX + (imgW - totalDotsW) / 2;
+                    float dotsY = imgY + imgH - 15;
+                    for (int i = 0; i < numDots; i++) {
+                        ImU32 dotColor = (i == sec.hero_carousel1_frame)
+                            ? ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color)
+                            : IM_COL32(255, 255, 255, 120);
+                        dl->AddCircleFilled(ImVec2(dotsX + i * dotSpacing + dotSize/2, dotsY), dotSize/2, dotColor);
+                    }
+                }
+            } else {
+                dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                                 IM_COL32(60, 65, 75, 255), radius);
+                const char* txt = "Image 1";
+                ImVec2 txtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, txt);
+                dl->AddText(font, 14.0f, ImVec2(imgX + (imgW - txtSize.x)/2, imgY + (imgH - 14)/2),
+                           IM_COL32(150, 150, 155, 255), txt);
+            }
+
+            // Badge (top-left)
+            if (strlen(sec.hero_image1_badge) > 0) {
+                float badgeFontSize = 10.0f;
+                ImVec2 badgeSize = font->CalcTextSizeA(badgeFontSize, FLT_MAX, 0.0f, sec.hero_image1_badge);
+                float badgeW = badgeSize.x + 16;
+                float badgeH = badgeSize.y + 10;
+                dl->AddRectFilled(ImVec2(imgX + 10, imgY + 10), ImVec2(imgX + 10 + badgeW, imgY + 10 + badgeH),
+                                 ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color), 4.0f);
+                dl->AddText(font, badgeFontSize, ImVec2(imgX + 18, imgY + 15),
+                           IM_COL32(255, 255, 255, 255), sec.hero_image1_badge);
+            }
+
+            // Label (bottom overlay)
+            if (strlen(sec.hero_image1_label) > 0) {
+                float labelH = 32;
+                float labelY = imgY + imgH - labelH;
+                dl->AddRectFilled(ImVec2(imgX, labelY), ImVec2(imgX + imgW, imgY + imgH),
+                                 IM_COL32(0, 0, 0, 160), 0.0f, ImDrawFlags_RoundCornersBottom);
+                dl->AddText(font, 11.0f, ImVec2(imgX + 12, labelY + (labelH - 11)/2),
+                           IM_COL32(255, 255, 255, 255), sec.hero_image1_label);
+            }
+        }
+
+        // ===== CAROUSEL 2 (Bottom) =====
+        {
+            float imgX = baseImageX + sec.hero_image2_x_offset;
+            float imgY = baseImageY + sec.hero_image1_height + spacing + sec.hero_image2_y_offset;
+            float imgW = sec.hero_image2_width;
+            float imgH = sec.hero_image2_height;
+            float radius = sec.hero_image2_radius;
+
+            // Update animation timer for carousel 2
+            if (sec.hero_carousel2_animate && !sec.hero_carousel2_textures.empty()) {
+                sec.hero_carousel2_timer += ImGui::GetIO().DeltaTime;
+                if (sec.hero_carousel2_timer >= sec.hero_carousel2_speed) {
+                    sec.hero_carousel2_timer = 0.0f;
+                    sec.hero_carousel2_frame++;
+                    if (sec.hero_carousel2_frame >= (int)sec.hero_carousel2_textures.size()) {
+                        sec.hero_carousel2_frame = 0;
+                    }
+                }
+            }
+
+            // Draw current frame or placeholder
+            if (!sec.hero_carousel2_textures.empty()) {
+                int frameIdx = sec.hero_carousel2_frame;
+                if (frameIdx >= 0 && frameIdx < (int)sec.hero_carousel2_textures.size()) {
+                    GLuint currentTex = sec.hero_carousel2_textures[frameIdx];
+                    if (currentTex != 0) {
+                        dl->AddImageRounded((ImTextureID)(intptr_t)currentTex,
+                                           ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                                           ImVec2(0, 0), ImVec2(1, 1), IM_COL32(255, 255, 255, 255), radius);
+                    }
+                }
+
+                // Dot indicators
+                if (sec.hero_carousel2_textures.size() > 1) {
+                    float dotSize = 6.0f;
+                    float dotSpacing = 12.0f;
+                    int numDots = (int)sec.hero_carousel2_textures.size();
+                    float totalDotsW = numDots * dotSpacing;
+                    float dotsX = imgX + (imgW - totalDotsW) / 2;
+                    float dotsY = imgY + imgH - 15;
+                    for (int i = 0; i < numDots; i++) {
+                        ImU32 dotColor = (i == sec.hero_carousel2_frame)
+                            ? ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color)
+                            : IM_COL32(255, 255, 255, 120);
+                        dl->AddCircleFilled(ImVec2(dotsX + i * dotSpacing + dotSize/2, dotsY), dotSize/2, dotColor);
+                    }
+                }
+            } else {
+                dl->AddRectFilled(ImVec2(imgX, imgY), ImVec2(imgX + imgW, imgY + imgH),
+                                 IM_COL32(60, 65, 75, 255), radius);
+                const char* txt = "Image 2";
+                ImVec2 txtSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, txt);
+                dl->AddText(font, 14.0f, ImVec2(imgX + (imgW - txtSize.x)/2, imgY + (imgH - 14)/2),
+                           IM_COL32(150, 150, 155, 255), txt);
+            }
+
+            // Badge (top-left)
+            if (strlen(sec.hero_image2_badge) > 0) {
+                float badgeFontSize = 10.0f;
+                ImVec2 badgeSize = font->CalcTextSizeA(badgeFontSize, FLT_MAX, 0.0f, sec.hero_image2_badge);
+                float badgeW = badgeSize.x + 16;
+                float badgeH = badgeSize.y + 10;
+                dl->AddRectFilled(ImVec2(imgX + 10, imgY + 10), ImVec2(imgX + 10 + badgeW, imgY + 10 + badgeH),
+                                 ImGui::ColorConvertFloat4ToU32(sec.hero_accent_color), 4.0f);
+                dl->AddText(font, badgeFontSize, ImVec2(imgX + 18, imgY + 15),
+                           IM_COL32(255, 255, 255, 255), sec.hero_image2_badge);
+            }
+
+            // Label (bottom overlay)
+            if (strlen(sec.hero_image2_label) > 0) {
+                float labelH = 32;
+                float labelY = imgY + imgH - labelH;
+                dl->AddRectFilled(ImVec2(imgX, labelY), ImVec2(imgX + imgW, imgY + imgH),
+                                 IM_COL32(0, 0, 0, 160), 0.0f, ImDrawFlags_RoundCornersBottom);
+                dl->AddText(font, 11.0f, ImVec2(imgX + 12, labelY + (labelH - 11)/2),
+                           IM_COL32(255, 255, 255, 255), sec.hero_image2_label);
             }
         }
 
@@ -24611,7 +24989,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // LEFT SIDE: Label, Heading, Description, Contact Info, Social Icons
 
         // Label with line
-        float labelSize = 12.0f;
+        float labelSize = sec.contact_label_size;
         ImVec2 labelTextSize = font->CalcTextSizeA(labelSize, FLT_MAX, 0.0f, sec.contact_label);
         float lineW = 30.0f;
         dl->AddLine(ImVec2(leftX, currentY + labelTextSize.y/2), ImVec2(leftX + lineW, currentY + labelTextSize.y/2),
@@ -24621,7 +24999,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         currentY += labelTextSize.y + 20.0f;
 
         // Heading + Accent
-        float headingSize = 42.0f;
+        float headingSize = sec.contact_heading_size;
         ImVec2 headingTextSize = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.contact_heading);
         ImVec2 accentTextSize = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.contact_heading_accent);
 
@@ -24636,7 +25014,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         currentY += headingSize + 20.0f;
 
         // Description
-        float descSize = 14.0f;
+        float descSize = sec.contact_desc_size;
         float descHeight = DrawWrappedText(dl, sec.contact_description, leftX, currentY, leftWidth,
                                            ImGui::ColorConvertFloat4ToU32(sec.contact_desc_color), true, descSize, 400);
         currentY += descHeight + 30.0f;
@@ -24655,8 +25033,8 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
 
             // Title and lines
             float textX = leftX + iconSize + 15.0f;
-            float titleFontSize = 15.0f;
-            float lineFontSize = 13.0f;
+            float titleFontSize = sec.contact_info_title_size;
+            float lineFontSize = sec.contact_info_text_size;
             for (int l = 0; l < 4; l++) {
                 dl->AddText(font, titleFontSize, ImVec2(textX + (l%2)*0.3f, itemY + (l/2)*0.3f),
                             ImGui::ColorConvertFloat4ToU32(item.titleColor), item.title);
@@ -24703,7 +25081,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float formContentW = rightWidth - formPadding * 2;
 
         // Form Title
-        float formTitleSize = 26.0f;
+        float formTitleSize = sec.contact_section_form_title_size;
         for (int l = 0; l < 4; l++) {
             dl->AddText(font, formTitleSize, ImVec2(formContentX + (l%2)*0.3f, formContentY + (l/2)*0.3f),
                         ImGui::ColorConvertFloat4ToU32(sec.contact_form_title_color), sec.contact_form_title);
@@ -24711,7 +25089,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         formContentY += formTitleSize + 8.0f;
 
         // Form Subtitle
-        float formSubSize = 13.0f;
+        float formSubSize = sec.contact_form_subtitle_size;
         dl->AddText(font, formSubSize, ImVec2(formContentX, formContentY),
                     ImGui::ColorConvertFloat4ToU32(sec.contact_desc_color), sec.contact_form_subtitle);
         formContentY += formSubSize + 25.0f;
@@ -24719,7 +25097,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // Form Fields
         float fieldH = 42.0f;
         float fieldSpacing = 18.0f;
-        float labelFontSize = 12.0f;
+        float labelFontSize = sec.contact_field_label_size;
 
         for (size_t i = 0; i < sec.contact_form_fields.size(); i++) {
             const auto& field = sec.contact_form_fields[i];
@@ -24799,7 +25177,7 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
                          ImGui::ColorConvertFloat4ToU32(sec.contact_submit_bg), sec.contact_submit_border_radius);
 
         // Button text with arrow icon
-        float btnTextSize = 14.0f;
+        float btnTextSize = sec.contact_button_size;
         ImVec2 btnTextDim = font->CalcTextSizeA(btnTextSize, FLT_MAX, 0.0f, sec.contact_submit_text);
         float totalBtnContent = btnTextDim.x + 25.0f; // text + space + arrow
         float btnTextX = formContentX + (formContentW - totalBtnContent) / 2;
@@ -24812,6 +25190,159 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         float arrowY = formContentY + btnH/2;
         dl->AddTriangleFilled(ImVec2(arrowX, arrowY - 5), ImVec2(arrowX, arrowY + 5),
                              ImVec2(arrowX + 8, arrowY), ImGui::ColorConvertFloat4ToU32(sec.contact_submit_text_color));
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_TOP_BAR_CONNECTOR - Dark top bar with email, phones, social icons
+    // ========================================================================
+    if (sec.type == SEC_TOP_BAR_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.topbar_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float fontSize = 11.0f;
+        float padding = 30.0f;
+        float centerY = y + h / 2;
+
+        // LEFT SIDE: Email with icon
+        float leftX = x + padding;
+        float iconSize = 12.0f;
+
+        // Email icon (envelope)
+        DrawIcon(dl, ICON_MAIL, leftX + iconSize/2, centerY, iconSize,
+                ImGui::ColorConvertFloat4ToU32(sec.topbar_icon_color), 1.5f);
+        leftX += iconSize + 8.0f;
+
+        // Email text
+        ImVec2 emailSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, sec.topbar_email);
+        dl->AddText(font, fontSize, ImVec2(leftX, centerY - emailSize.y/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.topbar_text_color), sec.topbar_email);
+        leftX += emailSize.x + 25.0f;
+
+        // Separator
+        dl->AddLine(ImVec2(leftX, y + 10), ImVec2(leftX, y + h - 10), IM_COL32(80, 80, 85, 255), 1.0f);
+        leftX += 25.0f;
+
+        // USA Phone
+        ImVec2 usaSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, sec.topbar_phone_usa);
+        dl->AddText(font, fontSize, ImVec2(leftX, centerY - usaSize.y/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.topbar_text_color), sec.topbar_phone_usa);
+        leftX += usaSize.x + 25.0f;
+
+        // Separator
+        dl->AddLine(ImVec2(leftX, y + 10), ImVec2(leftX, y + h - 10), IM_COL32(80, 80, 85, 255), 1.0f);
+        leftX += 25.0f;
+
+        // EU Phone
+        ImVec2 euSize = font->CalcTextSizeA(fontSize, FLT_MAX, 0.0f, sec.topbar_phone_eu);
+        dl->AddText(font, fontSize, ImVec2(leftX, centerY - euSize.y/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.topbar_text_color), sec.topbar_phone_eu);
+
+        // RIGHT SIDE: Social icons
+        if (sec.topbar_show_social && sec.topbar_social_count > 0) {
+            float rightX = x + sectionW - padding;
+            float socialSize = 14.0f;
+            float socialSpacing = 18.0f;
+
+            // Draw social icons from right to left
+            for (int i = sec.topbar_social_count - 1; i >= 0; i--) {
+                rightX -= socialSize;
+                DrawIcon(dl, sec.topbar_social_icons[i], rightX + socialSize/2, centerY, socialSize,
+                        ImGui::ColorConvertFloat4ToU32(sec.topbar_icon_color), 1.5f);
+                rightX -= socialSpacing;
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_ADVANCED_NAVBAR_CONNECTOR - White navbar with logo, menu, CTA button
+    // ========================================================================
+    if (sec.type == SEC_ADVANCED_NAVBAR_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.navbar_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float padding = 40.0f;
+        float centerY = y + h / 2;
+
+        // LEFT SIDE: Logo
+        float leftX = x + padding;
+        float logoSize = 36.0f;
+
+        // Logo circle background
+        dl->AddCircleFilled(ImVec2(leftX + logoSize/2, centerY), logoSize/2,
+                           ImGui::ColorConvertFloat4ToU32(sec.navbar_cta_bg), 32);
+
+        // "O" letter in circle
+        ImVec2 oSize = font->CalcTextSizeA(20.0f, FLT_MAX, 0.0f, "O");
+        dl->AddText(font, 20.0f, ImVec2(leftX + (logoSize - oSize.x)/2, centerY - oSize.y/2),
+                   IM_COL32(255, 255, 255, 255), "O");
+        leftX += logoSize + 8.0f;
+
+        // Brand text: "OMNi" + "ON" (accent color)
+        float brandSize = 18.0f;
+        ImVec2 logoTextSize = font->CalcTextSizeA(brandSize, FLT_MAX, 0.0f, sec.navbar_logo_text);
+        ImVec2 accentSize = font->CalcTextSizeA(brandSize, FLT_MAX, 0.0f, sec.navbar_logo_accent);
+
+        // Bold effect for brand
+        for (int l = 0; l < 4; l++) {
+            float ox = (l % 2) * 0.4f, oy = (l / 2) * 0.4f;
+            dl->AddText(font, brandSize, ImVec2(leftX + ox, centerY - logoTextSize.y/2 + oy),
+                       ImGui::ColorConvertFloat4ToU32(sec.navbar_text_color), sec.navbar_logo_text);
+        }
+        leftX += logoTextSize.x;
+
+        // Accent part
+        for (int l = 0; l < 4; l++) {
+            float ox = (l % 2) * 0.4f, oy = (l / 2) * 0.4f;
+            dl->AddText(font, brandSize, ImVec2(leftX + ox, centerY - accentSize.y/2 + oy),
+                       ImGui::ColorConvertFloat4ToU32(sec.navbar_cta_bg), sec.navbar_logo_accent);
+        }
+
+        // CENTER: Menu items
+        float menuSpacing = 30.0f;
+        float menuFontSize = 13.0f;
+        float totalMenuWidth = 0.0f;
+
+        // Calculate total menu width
+        for (int i = 0; i < sec.navbar_menu_count; i++) {
+            ImVec2 itemSize = font->CalcTextSizeA(menuFontSize, FLT_MAX, 0.0f, sec.navbar_menu_items[i]);
+            totalMenuWidth += itemSize.x;
+            if (i < sec.navbar_menu_count - 1) totalMenuWidth += menuSpacing;
+        }
+
+        float menuStartX = x + (sectionW - totalMenuWidth) / 2;
+        float menuX = menuStartX;
+
+        for (int i = 0; i < sec.navbar_menu_count; i++) {
+            ImVec2 itemSize = font->CalcTextSizeA(menuFontSize, FLT_MAX, 0.0f, sec.navbar_menu_items[i]);
+            ImU32 itemColor = (i == 0) ? ImGui::ColorConvertFloat4ToU32(sec.navbar_active_color)
+                                       : ImGui::ColorConvertFloat4ToU32(sec.navbar_text_color);
+            dl->AddText(font, menuFontSize, ImVec2(menuX, centerY - itemSize.y/2), itemColor, sec.navbar_menu_items[i]);
+            menuX += itemSize.x + menuSpacing;
+        }
+
+        // RIGHT SIDE: CTA Button
+        float rightX = x + sectionW - padding;
+        float btnH = 38.0f;
+        float btnFontSize = 13.0f;
+        ImVec2 ctaSize = font->CalcTextSizeA(btnFontSize, FLT_MAX, 0.0f, sec.navbar_cta_text);
+        float btnW = ctaSize.x + 40.0f;
+        float btnX = rightX - btnW;
+        float btnY = centerY - btnH/2;
+
+        dl->AddRectFilled(ImVec2(btnX, btnY), ImVec2(btnX + btnW, btnY + btnH),
+                         ImGui::ColorConvertFloat4ToU32(sec.navbar_cta_bg), sec.navbar_cta_radius);
+        dl->AddText(font, btnFontSize, ImVec2(btnX + (btnW - ctaSize.x)/2, centerY - ctaSize.y/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.navbar_cta_text_color), sec.navbar_cta_text);
 
         if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
         return;
@@ -24873,6 +25404,97 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         // ... rendering code removed ...
     }
     */
+}
+
+// ============================================================================
+// GLOBAL TYPOGRAPHY - Apply to all sections
+// ============================================================================
+void ApplyGlobalTypographyToAllSections() {
+    float scale = g_GlobalScaleFactor;
+
+    for (auto& sec : g_Sections) {
+        // Story Section
+        if (sec.type == SEC_STORY_CONNECTOR) {
+            sec.story_label_size = g_GlobalLabelSize * scale;
+            sec.story_heading_size = g_GlobalHeadingSize * scale;
+            sec.story_text_size = g_GlobalSubheadingSize * scale;
+            sec.story_button_size = g_GlobalButtonSize * scale;
+            sec.story_stats_size = g_GlobalStatsSize * scale;
+        }
+        // Services Section
+        else if (sec.type == SEC_SERVICES_SECTION_CONNECTOR) {
+            sec.services_label_size = g_GlobalLabelSize * scale;
+            sec.services_heading_size = g_GlobalHeadingSize * scale;
+            sec.services_subtitle_size = g_GlobalSubheadingSize * scale;
+            sec.services_card_title_size = g_GlobalCardTitleSize * scale;
+            sec.services_card_desc_size = g_GlobalCardDescSize * scale;
+            sec.services_bullet_size = g_GlobalSmallTextSize * scale;
+        }
+        // Clients Grid
+        else if (sec.type == SEC_CLIENTS_GRID_CONNECTOR) {
+            sec.clients_label_size = g_GlobalLabelSize * scale;
+            sec.clients_heading_size = g_GlobalHeadingSize * scale;
+            sec.clients_subtitle_size = g_GlobalSubheadingSize * scale;
+        }
+        // Features Grid
+        else if (sec.type == SEC_FEATURES_GRID_CONNECTOR) {
+            sec.features_label_size = g_GlobalLabelSize * scale;
+            sec.features_heading_size = g_GlobalHeadingSize * scale;
+            sec.features_subtitle_size = g_GlobalSubheadingSize * scale;
+            sec.features_card_title_size = g_GlobalCardTitleSize * scale;
+            sec.features_card_desc_size = g_GlobalCardDescSize * scale;
+            sec.features_check_size = g_GlobalSmallTextSize * scale;
+        }
+        // Process Timeline
+        else if (sec.type == SEC_PROCESS_TIMELINE_CONNECTOR) {
+            sec.process_label_size = g_GlobalLabelSize * scale;
+            sec.process_heading_size = g_GlobalHeadingSize * scale;
+            sec.process_subtitle_size = g_GlobalSubheadingSize * scale;
+            sec.process_step_number_size = g_GlobalStatsSize * 0.7f * scale;
+            sec.process_step_title_size = g_GlobalCardTitleSize * 0.9f * scale;
+            sec.process_step_desc_size = g_GlobalSmallTextSize * scale;
+        }
+        // Hero Section
+        else if (sec.type == SEC_HERO_SECTION_CONNECTOR) {
+            sec.hero_badge_size = g_GlobalLabelSize * scale;
+            sec.hero_heading_size = g_GlobalHeadingSize * 1.2f * scale;  // Hero heading is bigger
+            sec.hero_description_size = g_GlobalSubheadingSize * 1.1f * scale;
+            sec.hero_button_size = g_GlobalButtonSize * scale;
+            sec.hero_stats_number_size = g_GlobalStatsSize * 0.8f * scale;
+            sec.hero_stats_label_size = g_GlobalSmallTextSize * scale;
+        }
+        // Footer Section
+        else if (sec.type == SEC_FOOTER_SECTION_CONNECTOR) {
+            sec.footer_brand_size = g_GlobalCardTitleSize * scale;
+            sec.footer_column_heading_size = g_GlobalSmallTextSize * 1.1f * scale;
+            sec.footer_link_size = g_GlobalSmallTextSize * scale;
+            sec.footer_newsletter_size = g_GlobalSmallTextSize * 1.1f * scale;
+            sec.footer_copyright_size = g_GlobalSmallTextSize * scale;
+            sec.footer_button_size = g_GlobalSmallTextSize * scale;
+        }
+        // CTA Section
+        else if (sec.type == SEC_CTA_SECTION_CONNECTOR) {
+            sec.cta_heading_size = g_GlobalHeadingSize * scale;
+            sec.cta_subtitle_size = g_GlobalSubheadingSize * 1.1f * scale;
+            sec.cta_btn_size = g_GlobalButtonSize * scale;
+        }
+        // Marquee
+        else if (sec.type == SEC_MARQUEE_CONNECTOR) {
+            sec.marquee_text_size = g_GlobalSmallTextSize * 1.2f * scale;
+        }
+        // Contact Section
+        else if (sec.type == SEC_CONTACT_SECTION_CONNECTOR) {
+            sec.contact_label_size = g_GlobalLabelSize * scale;
+            sec.contact_heading_size = g_GlobalHeadingSize * scale;
+            sec.contact_desc_size = g_GlobalSubheadingSize * scale;
+            sec.contact_info_title_size = g_GlobalCardTitleSize * 0.85f * scale;
+            sec.contact_info_text_size = g_GlobalSmallTextSize * 1.1f * scale;
+            sec.contact_section_form_title_size = g_GlobalCardTitleSize * 1.4f * scale;
+            sec.contact_form_subtitle_size = g_GlobalSmallTextSize * 1.1f * scale;
+            sec.contact_field_label_size = g_GlobalSmallTextSize * scale;
+            sec.contact_button_size = g_GlobalButtonSize * scale;
+        }
+    }
 }
 
 // ============================================================================
@@ -25793,6 +26415,105 @@ void RenderUI() {
         g_Sections.push_back(sec);
         g_SelectedSectionIndex = (int)g_Sections.size() - 1;
         for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Top Contact Bar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_TOP_BAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Advanced Navbar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_ADVANCED_NAVBAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    // ========================================================================
+    // GLOBAL TYPOGRAPHY CONTROL
+    // ========================================================================
+    ImGui::Spacing();
+    ImGui::TextColored(ImVec4(0.9f, 0.4f, 0.9f, 1), "GLOBAL TYPOGRAPHY");
+    ImGui::Separator();
+
+    if (ImGui::Button(g_ShowGlobalTypography ? "Hide Typography Panel" : "Show Typography Panel", ImVec2(-1, 26))) {
+        g_ShowGlobalTypography = !g_ShowGlobalTypography;
+    }
+
+    if (g_ShowGlobalTypography) {
+        ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.18f, 0.18f, 0.22f, 1.0f));
+        ImGui::BeginChild("GlobalTypoPanel", ImVec2(-1, 280), true);
+
+        bool changed = false;
+
+        ImGui::TextColored(ImVec4(0.9f, 0.7f, 0.2f, 1), "Master Scale");
+        ImGui::PushItemWidth(-1);
+        if (ImGui::SliderFloat("##masterScale", &g_GlobalScaleFactor, 0.5f, 2.0f, "%.2fx")) changed = true;
+        ImGui::PopItemWidth();
+
+        ImGui::Spacing();
+        ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "Text Sizes (px)");
+
+        ImGui::PushItemWidth(100);
+        if (ImGui::SliderFloat("Labels", &g_GlobalLabelSize, 8.0f, 24.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Headings", &g_GlobalHeadingSize, 24.0f, 72.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Subtitles", &g_GlobalSubheadingSize, 10.0f, 28.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Card Titles", &g_GlobalCardTitleSize, 12.0f, 32.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Card Desc", &g_GlobalCardDescSize, 10.0f, 20.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Buttons", &g_GlobalButtonSize, 10.0f, 24.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Stats/Numbers", &g_GlobalStatsSize, 24.0f, 72.0f, "%.0f")) changed = true;
+        if (ImGui::SliderFloat("Small Text", &g_GlobalSmallTextSize, 8.0f, 18.0f, "%.0f")) changed = true;
+        ImGui::PopItemWidth();
+
+        // Apply in real-time whenever any slider changes
+        if (changed) {
+            ApplyGlobalTypographyToAllSections();
+        }
+
+        ImGui::Spacing();
+        ImGui::Separator();
+
+        if (ImGui::Button("Reset to Defaults", ImVec2(-1, 24))) {
+            g_GlobalLabelSize = 12.0f;
+            g_GlobalHeadingSize = 42.0f;
+            g_GlobalSubheadingSize = 14.0f;
+            g_GlobalCardTitleSize = 18.0f;
+            g_GlobalCardDescSize = 13.0f;
+            g_GlobalButtonSize = 14.0f;
+            g_GlobalStatsSize = 48.0f;
+            g_GlobalSmallTextSize = 12.0f;
+            g_GlobalScaleFactor = 1.0f;
+            ApplyGlobalTypographyToAllSections();
+        }
+
+        ImGui::EndChild();
+        ImGui::PopStyleColor();
     }
 
     ImGui::Spacing();
@@ -30582,13 +31303,16 @@ void RenderUI() {
             ImGui::ColorEdit4("Stats BG", (float*)&sec.story_stats_bg, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size", &sec.story_label_size, 8.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size", &sec.story_heading_size, 24.0f, 72.0f, "%.0f");
-            ImGui::SliderFloat("Text Size", &sec.story_text_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Button Size", &sec.story_button_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Stats Size", &sec.story_stats_size, 24.0f, 72.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##story", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.story_label_size = 12.0f * scale;
+                sec.story_heading_size = 42.0f * scale;
+                sec.story_text_size = 14.0f * scale;
+                sec.story_button_size = 13.0f * scale;
+                sec.story_stats_size = 48.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -30669,14 +31393,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.services_accent_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size##svc", &sec.services_label_size, 8.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##svc", &sec.services_heading_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Subtitle Size##svc", &sec.services_subtitle_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Card Title##svc", &sec.services_card_title_size, 12.0f, 32.0f, "%.0f");
-            ImGui::SliderFloat("Card Desc##svc", &sec.services_card_desc_size, 10.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Bullet Size##svc", &sec.services_bullet_size, 8.0f, 18.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##svc", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.services_label_size = 12.0f * scale;
+                sec.services_heading_size = 36.0f * scale;
+                sec.services_subtitle_size = 14.0f * scale;
+                sec.services_card_title_size = 18.0f * scale;
+                sec.services_card_desc_size = 13.0f * scale;
+                sec.services_bullet_size = 12.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -30828,11 +31555,14 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.clients_accent_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size##cli", &sec.clients_label_size, 8.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##cli", &sec.clients_heading_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Subtitle Size##cli", &sec.clients_subtitle_size, 10.0f, 24.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##cli", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.clients_label_size = 12.0f * scale;
+                sec.clients_heading_size = 32.0f * scale;
+                sec.clients_subtitle_size = 14.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -30888,14 +31618,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Accent", (float*)&sec.features_accent_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size##feat", &sec.features_label_size, 8.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##feat", &sec.features_heading_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Subtitle Size##feat", &sec.features_subtitle_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Card Title##feat", &sec.features_card_title_size, 12.0f, 32.0f, "%.0f");
-            ImGui::SliderFloat("Card Desc##feat", &sec.features_card_desc_size, 10.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Check Items##feat", &sec.features_check_size, 8.0f, 18.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##feat", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.features_label_size = 12.0f * scale;
+                sec.features_heading_size = 32.0f * scale;
+                sec.features_subtitle_size = 14.0f * scale;
+                sec.features_card_title_size = 15.0f * scale;
+                sec.features_card_desc_size = 12.0f * scale;
+                sec.features_check_size = 11.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -30955,14 +31688,17 @@ void RenderUI() {
             ImGui::ColorEdit4("Line", (float*)&sec.process_line_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size##proc", &sec.process_label_size, 8.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##proc", &sec.process_heading_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Subtitle Size##proc", &sec.process_subtitle_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Step Number##proc", &sec.process_step_number_size, 20.0f, 48.0f, "%.0f");
-            ImGui::SliderFloat("Step Title##proc", &sec.process_step_title_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Step Desc##proc", &sec.process_step_desc_size, 8.0f, 18.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##proc", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.process_label_size = 12.0f * scale;
+                sec.process_heading_size = 36.0f * scale;
+                sec.process_subtitle_size = 14.0f * scale;
+                sec.process_step_number_size = 12.0f * scale;
+                sec.process_step_title_size = 14.0f * scale;
+                sec.process_step_desc_size = 11.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -31035,14 +31771,17 @@ void RenderUI() {
             ImGui::SliderFloat("Button Radius", &sec.hero_btn_border_radius, 0.0f, 30.0f, "%.0f");
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Badge Size##hero", &sec.hero_badge_size, 8.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##hero", &sec.hero_heading_size, 32.0f, 80.0f, "%.0f");
-            ImGui::SliderFloat("Desc Size##hero", &sec.hero_description_size, 12.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Button Size##hero", &sec.hero_button_size, 10.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Stats Number##hero", &sec.hero_stats_number_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Stats Label##hero", &sec.hero_stats_label_size, 8.0f, 18.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##hero", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.hero_badge_size = 12.0f * scale;
+                sec.hero_heading_size = 52.0f * scale;
+                sec.hero_description_size = 16.0f * scale;
+                sec.hero_button_size = 14.0f * scale;
+                sec.hero_stats_number_size = 36.0f * scale;
+                sec.hero_stats_label_size = 12.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -31098,7 +31837,309 @@ void RenderUI() {
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BACKGROUND");
-            ImGui::ColorEdit4("Section BG", (float*)&sec.hero_bg_color, ImGuiColorEditFlags_NoInputs);
+
+            // Background Image Upload
+            ImGui::Text("Background Image:");
+            if (sec.hero_bg_image_texture != 0) {
+                ImGui::Image((ImTextureID)(intptr_t)sec.hero_bg_image_texture, ImVec2(120, 70));
+                ImGui::SameLine();
+                if (ImGui::Button("Remove BG##heroBg")) {
+                    glDeleteTextures(1, &sec.hero_bg_image_texture);
+                    sec.hero_bg_image_texture = 0;
+                    sec.hero_bg_image_path = "";
+                }
+            } else {
+                if (ImGui::Button("Browse Background...##heroBg")) {
+                    std::string selectedPath = OpenImageFileDialog();
+                    if (!selectedPath.empty()) {
+                        int w, h, c;
+                        unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
+                        if (data) {
+                            GLuint tex;
+                            glGenTextures(1, &tex);
+                            glBindTexture(GL_TEXTURE_2D, tex);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                            stbi_image_free(data);
+                            sec.hero_bg_image_texture = tex;
+                            sec.hero_bg_image_path = selectedPath;
+                        }
+                    }
+                }
+            }
+            ImGui::ColorEdit4("Background Color", (float*)&sec.hero_bg_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.9f, 0.6f, 1), "GLASS OVERLAY");
+            ImGui::Checkbox("Enable Glass Effect", &sec.hero_glass_effect);
+            if (sec.hero_glass_effect) {
+                ImGui::PushItemWidth(150);
+                ImGui::SliderFloat("Glass Opacity", &sec.hero_glass_opacity, 0.0f, 200.0f, "%.0f%%");
+                ImGui::PopItemWidth();
+                ImGui::ColorEdit4("Glass Color 1", (float*)&sec.hero_glass_color1, ImGuiColorEditFlags_NoInputs);
+                ImGui::ColorEdit4("Glass Color 2", (float*)&sec.hero_glass_color2, ImGuiColorEditFlags_NoInputs);
+            }
+
+            // ===== CAROUSEL 1 (Top Image) =====
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "IMAGE 1 (Top)");
+            ImGui::PushItemWidth(100);
+            ImGui::DragFloat("Width##img1", &sec.hero_image1_width, 1.0f, 50.0f, 500.0f, "%.0f");
+            ImGui::SameLine();
+            ImGui::DragFloat("Height##img1", &sec.hero_image1_height, 1.0f, 50.0f, 400.0f, "%.0f");
+            ImGui::DragFloat("X Offset##img1", &sec.hero_image1_x_offset, 1.0f, -200.0f, 200.0f, "%.0f");
+            ImGui::SameLine();
+            ImGui::DragFloat("Y Offset##img1", &sec.hero_image1_y_offset, 1.0f, -200.0f, 200.0f, "%.0f");
+            ImGui::SliderFloat("Radius##img1", &sec.hero_image1_radius, 0.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+            ImGui::InputText("Badge##img1", sec.hero_image1_badge, sizeof(sec.hero_image1_badge));
+            ImGui::InputText("Label##img1", sec.hero_image1_label, sizeof(sec.hero_image1_label));
+            ImGui::Checkbox("Animate##img1", &sec.hero_carousel1_animate);
+            if (sec.hero_carousel1_animate) {
+                ImGui::SameLine();
+                ImGui::PushItemWidth(80);
+                ImGui::SliderFloat("Speed##img1", &sec.hero_carousel1_speed, 0.5f, 10.0f, "%.1fs");
+                ImGui::PopItemWidth();
+            }
+            ImGui::Text("Images: %d", (int)sec.hero_carousel1_images.size());
+            ImGui::SameLine();
+            if (ImGui::Button("+ Add##img1")) {
+                std::string selectedPath = OpenImageFileDialog();
+                if (!selectedPath.empty()) {
+                    int w, h, c;
+                    unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
+                    if (data) {
+                        GLuint tex;
+                        glGenTextures(1, &tex);
+                        glBindTexture(GL_TEXTURE_2D, tex);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                        stbi_image_free(data);
+                        sec.hero_carousel1_images.push_back(selectedPath);
+                        sec.hero_carousel1_textures.push_back(tex);
+                    }
+                }
+            }
+            if (!sec.hero_carousel1_textures.empty()) {
+                ImGui::BeginChild("Carousel1Imgs", ImVec2(-1, 60), true);
+                for (int i = 0; i < (int)sec.hero_carousel1_textures.size(); i++) {
+                    ImGui::PushID(i + 11000);
+                    if (sec.hero_carousel1_textures[i] != 0) {
+                        ImGui::Image((ImTextureID)(intptr_t)sec.hero_carousel1_textures[i], ImVec2(50, 35));
+                        ImGui::SameLine();
+                        if (ImGui::Button("X")) {
+                            glDeleteTextures(1, &sec.hero_carousel1_textures[i]);
+                            sec.hero_carousel1_textures.erase(sec.hero_carousel1_textures.begin() + i);
+                            sec.hero_carousel1_images.erase(sec.hero_carousel1_images.begin() + i);
+                            if (sec.hero_carousel1_frame >= (int)sec.hero_carousel1_textures.size()) sec.hero_carousel1_frame = 0;
+                            ImGui::PopID();
+                            break;
+                        }
+                        ImGui::SameLine();
+                    }
+                    ImGui::PopID();
+                }
+                ImGui::EndChild();
+            }
+
+            // ===== CAROUSEL 2 (Bottom Image) =====
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "IMAGE 2 (Bottom)");
+            ImGui::PushItemWidth(100);
+            ImGui::DragFloat("Width##img2", &sec.hero_image2_width, 1.0f, 50.0f, 500.0f, "%.0f");
+            ImGui::SameLine();
+            ImGui::DragFloat("Height##img2", &sec.hero_image2_height, 1.0f, 50.0f, 400.0f, "%.0f");
+            ImGui::DragFloat("X Offset##img2", &sec.hero_image2_x_offset, 1.0f, -200.0f, 200.0f, "%.0f");
+            ImGui::SameLine();
+            ImGui::DragFloat("Y Offset##img2", &sec.hero_image2_y_offset, 1.0f, -200.0f, 200.0f, "%.0f");
+            ImGui::SliderFloat("Radius##img2", &sec.hero_image2_radius, 0.0f, 50.0f, "%.0f");
+            ImGui::PopItemWidth();
+            ImGui::InputText("Badge##img2", sec.hero_image2_badge, sizeof(sec.hero_image2_badge));
+            ImGui::InputText("Label##img2", sec.hero_image2_label, sizeof(sec.hero_image2_label));
+            ImGui::Checkbox("Animate##img2", &sec.hero_carousel2_animate);
+            if (sec.hero_carousel2_animate) {
+                ImGui::SameLine();
+                ImGui::PushItemWidth(80);
+                ImGui::SliderFloat("Speed##img2", &sec.hero_carousel2_speed, 0.5f, 10.0f, "%.1fs");
+                ImGui::PopItemWidth();
+            }
+            ImGui::Text("Images: %d", (int)sec.hero_carousel2_images.size());
+            ImGui::SameLine();
+            if (ImGui::Button("+ Add##img2")) {
+                std::string selectedPath = OpenImageFileDialog();
+                if (!selectedPath.empty()) {
+                    int w, h, c;
+                    unsigned char* data = stbi_load(selectedPath.c_str(), &w, &h, &c, 4);
+                    if (data) {
+                        GLuint tex;
+                        glGenTextures(1, &tex);
+                        glBindTexture(GL_TEXTURE_2D, tex);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                        stbi_image_free(data);
+                        sec.hero_carousel2_images.push_back(selectedPath);
+                        sec.hero_carousel2_textures.push_back(tex);
+                    }
+                }
+            }
+            if (!sec.hero_carousel2_textures.empty()) {
+                ImGui::BeginChild("Carousel2Imgs", ImVec2(-1, 60), true);
+                for (int i = 0; i < (int)sec.hero_carousel2_textures.size(); i++) {
+                    ImGui::PushID(i + 12000);
+                    if (sec.hero_carousel2_textures[i] != 0) {
+                        ImGui::Image((ImTextureID)(intptr_t)sec.hero_carousel2_textures[i], ImVec2(50, 35));
+                        ImGui::SameLine();
+                        if (ImGui::Button("X")) {
+                            glDeleteTextures(1, &sec.hero_carousel2_textures[i]);
+                            sec.hero_carousel2_textures.erase(sec.hero_carousel2_textures.begin() + i);
+                            sec.hero_carousel2_images.erase(sec.hero_carousel2_images.begin() + i);
+                            if (sec.hero_carousel2_frame >= (int)sec.hero_carousel2_textures.size()) sec.hero_carousel2_frame = 0;
+                            ImGui::PopID();
+                            break;
+                        }
+                        ImGui::SameLine();
+                    }
+                    ImGui::PopID();
+                }
+                ImGui::EndChild();
+            }
+        }
+        // Top Bar Connector properties
+        else if (sec.type == SEC_TOP_BAR_CONNECTOR) {
+            ImGui::Text("Top Contact Bar");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CONTACT INFO");
+            ImGui::InputText("Email", sec.topbar_email, sizeof(sec.topbar_email));
+            ImGui::InputText("USA Phone", sec.topbar_phone_usa, sizeof(sec.topbar_phone_usa));
+            ImGui::InputText("EU Phone", sec.topbar_phone_eu, sizeof(sec.topbar_phone_eu));
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "SOCIAL ICONS");
+            ImGui::Checkbox("Show Social Icons", &sec.topbar_show_social);
+            if (sec.topbar_show_social) {
+                ImGui::SliderInt("Icon Count", &sec.topbar_social_count, 0, 5);
+                for (int i = 0; i < sec.topbar_social_count; i++) {
+                    ImGui::PushID(i + 8000);
+                    char iconLabel[32];
+                    snprintf(iconLabel, sizeof(iconLabel), "Icon %d", i + 1);
+                    ImGui::SliderInt(iconLabel, &sec.topbar_social_icons[i], 0, ICON_COUNT - 1);
+                    ImGui::SameLine(); ImGui::Text("(%s)", g_IconNames[sec.topbar_social_icons[i]]);
+                    ImGui::PopID();
+                }
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Background", (float*)&sec.topbar_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Text", (float*)&sec.topbar_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Icons", (float*)&sec.topbar_icon_color, ImGuiColorEditFlags_NoInputs);
+        }
+        // Advanced Navbar Connector properties
+        else if (sec.type == SEC_ADVANCED_NAVBAR_CONNECTOR) {
+            ImGui::Text("Navigation Bar");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "LOGO");
+            ImGui::InputText("Logo Text", sec.navbar_logo_text, sizeof(sec.navbar_logo_text));
+            ImGui::InputText("Logo Accent", sec.navbar_logo_accent, sizeof(sec.navbar_logo_accent));
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "MENU ITEMS");
+            ImGui::SliderInt("Menu Count", &sec.navbar_menu_count, 1, 8);
+            ImGui::SliderInt("Active Item", &sec.navbar_active_item, 0, sec.navbar_menu_count - 1);
+
+            // Action types for navbar menu items
+            static const char* navActionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
+
+            static int selectedNavMenuItem = -1;
+            ImGui::Text("Click menu item to edit:");
+            for (int i = 0; i < sec.navbar_menu_count; i++) {
+                ImGui::PushID(i + 9000);
+                char menuLabel[64];
+                snprintf(menuLabel, sizeof(menuLabel), "%d: %s", i + 1, sec.navbar_menu_items[i]);
+                bool isSelected = (selectedNavMenuItem == i);
+                if (ImGui::Selectable(menuLabel, isSelected)) {
+                    selectedNavMenuItem = i;
+                }
+                ImGui::PopID();
+            }
+
+            // Edit selected menu item
+            if (selectedNavMenuItem >= 0 && selectedNavMenuItem < sec.navbar_menu_count) {
+                ImGui::Spacing();
+                ImGui::TextColored(ImVec4(0.5f, 0.8f, 1.0f, 1), "EDIT MENU ITEM %d", selectedNavMenuItem + 1);
+                ImGui::Indent();
+                ImGui::InputText("Text##navItem", sec.navbar_menu_items[selectedNavMenuItem], sizeof(sec.navbar_menu_items[selectedNavMenuItem]));
+                ImGui::Combo("Action##navItem", &sec.navbar_menu_actions[selectedNavMenuItem], navActionNames, IM_ARRAYSIZE(navActionNames));
+
+                // Show appropriate target input based on action type
+                int actionType = sec.navbar_menu_actions[selectedNavMenuItem];
+                if (actionType == 1) { // Scroll to Section
+                    ImGui::InputText("Section ID##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                    ImGui::TextDisabled("e.g. #services, #about");
+                } else if (actionType == 2) { // Link to Page
+                    ImGui::InputText("Page##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                    ImGui::TextDisabled("e.g. /about, /contact");
+                } else if (actionType == 3) { // External URL
+                    ImGui::InputText("URL##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                    ImGui::TextDisabled("e.g. https://example.com");
+                } else if (actionType == 4) { // Popup
+                    ImGui::InputText("Popup ID##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                } else if (actionType == 5) { // Download
+                    ImGui::InputText("File URL##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                } else if (actionType == 6) { // Email
+                    ImGui::InputText("Email##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                    ImGui::TextDisabled("e.g. info@example.com");
+                } else if (actionType == 7) { // Phone
+                    ImGui::InputText("Phone##navItem", sec.navbar_menu_targets[selectedNavMenuItem], sizeof(sec.navbar_menu_targets[selectedNavMenuItem]));
+                    ImGui::TextDisabled("e.g. +1-555-123-4567");
+                }
+
+                if (ImGui::Button("Set as Active")) {
+                    sec.navbar_active_item = selectedNavMenuItem;
+                }
+                ImGui::Unindent();
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "CTA BUTTON");
+            ImGui::InputText("CTA Text", sec.navbar_cta_text, sizeof(sec.navbar_cta_text));
+            ImGui::Combo("CTA Action", &sec.navbar_cta_action, navActionNames, IM_ARRAYSIZE(navActionNames));
+
+            // Show appropriate target input for CTA based on action type
+            int ctaActionType = sec.navbar_cta_action;
+            if (ctaActionType == 1) { // Scroll to Section
+                ImGui::InputText("Section ID##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+                ImGui::TextDisabled("e.g. #contact");
+            } else if (ctaActionType == 2) { // Link to Page
+                ImGui::InputText("Page##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            } else if (ctaActionType == 3) { // External URL
+                ImGui::InputText("URL##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            } else if (ctaActionType == 4) { // Popup
+                ImGui::InputText("Popup ID##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            } else if (ctaActionType == 5) { // Download
+                ImGui::InputText("File URL##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            } else if (ctaActionType == 6) { // Email
+                ImGui::InputText("Email##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            } else if (ctaActionType == 7) { // Phone
+                ImGui::InputText("Phone##cta", sec.navbar_cta_target, sizeof(sec.navbar_cta_target));
+            }
+
+            ImGui::SliderFloat("CTA Radius", &sec.navbar_cta_radius, 0.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Background", (float*)&sec.navbar_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Menu Text", (float*)&sec.navbar_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Active Item", (float*)&sec.navbar_active_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("CTA Background", (float*)&sec.navbar_cta_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("CTA Text", (float*)&sec.navbar_cta_text_color, ImGuiColorEditFlags_NoInputs);
         }
         // Footer Section Connector properties
         else if (sec.type == SEC_FOOTER_SECTION_CONNECTOR) {
@@ -31114,6 +32155,20 @@ void RenderUI() {
             ImGui::ColorEdit4("Brand Color", (float*)&sec.footer_brand_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Subtitle Color", (float*)&sec.footer_subtitle_sec_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Desc Color", (float*)&sec.footer_desc_color, ImGuiColorEditFlags_NoInputs);
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
+            ImGui::PushItemWidth(120);
+            if (ImGui::SliderFloat("Size##footer", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.footer_brand_size = 18.0f * scale;
+                sec.footer_column_heading_size = 13.0f * scale;
+                sec.footer_link_size = 12.0f * scale;
+                sec.footer_newsletter_size = 13.0f * scale;
+                sec.footer_copyright_size = 12.0f * scale;
+                sec.footer_button_size = 12.0f * scale;
+            }
+            ImGui::PopItemWidth();
 
             // Certification Badges
             ImGui::Spacing();
@@ -31297,11 +32352,14 @@ void RenderUI() {
             ImGui::Checkbox("Phone Icon##cta", &sec.cta_btn_secondary_has_icon);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TEXT SIZES");
-            ImGui::PushItemWidth(100);
-            ImGui::SliderFloat("Heading Size##cta", &sec.cta_heading_size, 24.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Subtitle Size##cta", &sec.cta_subtitle_size, 12.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Button Size##cta", &sec.cta_btn_size, 10.0f, 20.0f, "%.0f");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
+            ImGui::PushItemWidth(120);
+            if (ImGui::SliderFloat("Size##cta", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.cta_heading_size = 42.0f * scale;
+                sec.cta_subtitle_size = 16.0f * scale;
+                sec.cta_btn_size = 14.0f * scale;
+            }
             ImGui::SliderFloat("Button Radius##cta", &sec.cta_btn_radius, 0.0f, 40.0f, "%.0f");
             ImGui::PopItemWidth();
 
@@ -31355,7 +32413,15 @@ void RenderUI() {
             sec.height = (int)sec.marquee_height;
             ImGui::SliderFloat("Speed##marquee", &sec.marquee_speed, 10.0f, 200.0f, "%.0f px/s");
             ImGui::SliderFloat("Spacing##marquee", &sec.marquee_spacing, 20.0f, 150.0f, "%.0f");
-            ImGui::SliderFloat("Text Size##marquee", &sec.marquee_text_size, 10.0f, 24.0f, "%.0f");
+            ImGui::PopItemWidth();
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
+            ImGui::PushItemWidth(120);
+            if (ImGui::SliderFloat("Size##marq", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.marquee_text_size = 14.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             ImGui::Spacing();
@@ -31443,17 +32509,20 @@ void RenderUI() {
             ImGui::ColorEdit4("Description", (float*)&sec.contact_desc_color, ImGuiColorEditFlags_NoInputs);
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZES");
+            ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.9f, 1), "TEXT SIZE");
             ImGui::PushItemWidth(120);
-            ImGui::SliderFloat("Label Size##cont", &sec.contact_label_size, 8.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Heading Size##cont", &sec.contact_heading_size, 28.0f, 60.0f, "%.0f");
-            ImGui::SliderFloat("Desc Size##cont", &sec.contact_desc_size, 10.0f, 20.0f, "%.0f");
-            ImGui::SliderFloat("Info Title##cont", &sec.contact_info_title_size, 10.0f, 24.0f, "%.0f");
-            ImGui::SliderFloat("Info Text##cont", &sec.contact_info_text_size, 8.0f, 18.0f, "%.0f");
-            ImGui::SliderFloat("Form Title##cont", &sec.contact_section_form_title_size, 18.0f, 40.0f, "%.0f");
-            ImGui::SliderFloat("Form Subtitle##cont", &sec.contact_form_subtitle_size, 10.0f, 18.0f, "%.0f");
-            ImGui::SliderFloat("Field Label##cont", &sec.contact_field_label_size, 8.0f, 16.0f, "%.0f");
-            ImGui::SliderFloat("Button Size##cont", &sec.contact_button_size, 10.0f, 20.0f, "%.0f");
+            if (ImGui::SliderFloat("Size##cont", &sec.connector_text_scale, 50.0f, 200.0f, "%.0f%%")) {
+                float scale = sec.connector_text_scale / 100.0f;
+                sec.contact_label_size = 12.0f * scale;
+                sec.contact_heading_size = 42.0f * scale;
+                sec.contact_desc_size = 14.0f * scale;
+                sec.contact_info_title_size = 15.0f * scale;
+                sec.contact_info_text_size = 13.0f * scale;
+                sec.contact_section_form_title_size = 26.0f * scale;
+                sec.contact_form_subtitle_size = 13.0f * scale;
+                sec.contact_field_label_size = 12.0f * scale;
+                sec.contact_button_size = 14.0f * scale;
+            }
             ImGui::PopItemWidth();
 
             // Contact Info Items
