@@ -2218,8 +2218,7 @@ struct WebSection {
     };
     StatItem stats_items[6];
     int stats_count;
-    ImVec4 stats_bg_color1;          // Gradient start
-    ImVec4 stats_bg_color2;          // Gradient end
+    ImVec4 stats_bg_color;           // Single background color
     ImVec4 stats_text_color;
     ImVec4 stats_label_color;
     ImVec4 stats_icon_color;
@@ -2238,10 +2237,12 @@ struct WebSection {
     struct PortfolioItem {
         std::string image_path;
         GLuint texture;
-        int category;                // Which tab (0 = All, 1 = first tab, etc.)
-        float width_ratio;           // Width ratio in grid (1.0 = normal, 2.0 = double)
-        float height_ratio;          // Height ratio in grid
-        PortfolioItem() : texture(0), category(0), width_ratio(1.0f), height_ratio(1.0f) {}
+        int category;                // Which tab (0 = All, 1+ = specific tab)
+        float width;                 // Image width
+        float height;                // Image height
+        float x_offset;              // X position offset
+        float y_offset;              // Y position offset
+        PortfolioItem() : texture(0), category(0), width(200.0f), height(150.0f), x_offset(0.0f), y_offset(0.0f) {}
     };
     std::vector<PortfolioItem> portfolio_items;
     char portfolio_btn_text[64];     // "View Full Portfolio"
@@ -2486,7 +2487,7 @@ struct WebSection {
         hero_bg_image_texture(0),
         // Stats Bar Connector
         stats_count(4),
-        stats_bg_color1(0.95f, 0.55f, 0.2f, 1.0f), stats_bg_color2(0.9f, 0.4f, 0.15f, 1.0f),
+        stats_bg_color(0.95f, 0.5f, 0.2f, 1.0f),
         stats_text_color(1.0f, 1.0f, 1.0f, 1.0f), stats_label_color(1.0f, 1.0f, 1.0f, 0.9f),
         stats_icon_color(1.0f, 1.0f, 1.0f, 1.0f),
         stats_border_radius(20.0f), stats_value_size(32.0f), stats_label_size(11.0f),
@@ -4101,9 +4102,8 @@ struct WebSection {
             case SEC_STATS_BAR_CONNECTOR:
                 name = "Stats Bar";
                 height = 120;
-                bg_color = ImVec4(0.95f, 0.55f, 0.2f, 1.0f);
-                stats_bg_color1 = ImVec4(0.95f, 0.55f, 0.2f, 1.0f);
-                stats_bg_color2 = ImVec4(0.9f, 0.4f, 0.15f, 1.0f);
+                bg_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                stats_bg_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
                 stats_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
                 stats_label_color = ImVec4(1.0f, 1.0f, 1.0f, 0.9f);
                 stats_icon_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -25532,28 +25532,22 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
     }
 
     // ========================================================================
-    // SEC_STATS_BAR_CONNECTOR - Orange gradient bar with stats and icons
+    // SEC_STATS_BAR_CONNECTOR - Orange bar with stats and icons
     // ========================================================================
     if (sec.type == SEC_STATS_BAR_CONNECTOR) {
         ImVec2 section_min(x, y);
         ImVec2 section_max(x + sectionW, y + h);
 
-        // Draw gradient background
+        // Draw solid background bar
         float barPadding = 60.0f;
         float barH = h - 40.0f;
         float barY = y + 20.0f;
         ImVec2 bar_min(x + barPadding, barY);
         ImVec2 bar_max(x + sectionW - barPadding, barY + barH);
 
-        // Horizontal gradient
-        ImU32 col1 = ImGui::ColorConvertFloat4ToU32(sec.stats_bg_color1);
-        ImU32 col2 = ImGui::ColorConvertFloat4ToU32(sec.stats_bg_color2);
-        dl->AddRectFilledMultiColor(bar_min, bar_max, col1, col2, col2, col1);
-        dl->AddRect(bar_min, bar_max, col1, sec.stats_border_radius, 0, 0);
-
-        // Rounded corners overlay (approximate with filled rounded rect)
-        dl->AddRectFilled(bar_min, bar_max, IM_COL32(0,0,0,0), sec.stats_border_radius);
-        dl->AddRectFilledMultiColor(bar_min, bar_max, col1, col2, col2, col1);
+        // Single solid color background with rounded corners
+        ImU32 bgColor = ImGui::ColorConvertFloat4ToU32(sec.stats_bg_color);
+        dl->AddRectFilled(bar_min, bar_max, bgColor, sec.stats_border_radius);
 
         ImFont* font = ImGui::GetFont();
         float centerY = barY + barH / 2;
@@ -25675,60 +25669,82 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         }
         contentY += tabHeight + 40.0f;
 
-        // Portfolio grid (placeholder images)
+        // Portfolio grid - render uploaded images filtered by active tab
         float gridPadding = padding;
         float gridWidth = sectionW - gridPadding * 2;
         float imageSpacing = sec.portfolio_image_spacing;
-        int cols = 3;
-        float smallImageW = (gridWidth - imageSpacing * 2) / cols;
-        float largeImageW = smallImageW * 2 + imageSpacing;
-        float imageH = 160.0f;
-
-        // Draw portfolio items or placeholders
         float gridX = x + gridPadding;
         float gridY = contentY;
 
-        // Row 1: Large image + 2 small images
-        // Large image (left)
-        dl->AddRectFilled(ImVec2(gridX, gridY), ImVec2(gridX + largeImageW, gridY + imageH * 2 + imageSpacing),
-                         IM_COL32(200, 200, 210, 255), sec.portfolio_image_radius);
-
-        // Small images (right column)
-        float rightX = gridX + largeImageW + imageSpacing;
-        dl->AddRectFilled(ImVec2(rightX, gridY), ImVec2(rightX + smallImageW, gridY + imageH),
-                         IM_COL32(220, 200, 200, 255), sec.portfolio_image_radius);
-        dl->AddRectFilled(ImVec2(rightX + smallImageW + imageSpacing, gridY), ImVec2(rightX + smallImageW * 2 + imageSpacing, gridY + imageH),
-                         IM_COL32(200, 220, 200, 255), sec.portfolio_image_radius);
-
-        // Row 2 right
-        dl->AddRectFilled(ImVec2(rightX, gridY + imageH + imageSpacing), ImVec2(rightX + smallImageW, gridY + imageH * 2 + imageSpacing),
-                         IM_COL32(210, 210, 230, 255), sec.portfolio_image_radius);
-        dl->AddRectFilled(ImVec2(rightX + smallImageW + imageSpacing, gridY + imageH + imageSpacing), ImVec2(rightX + smallImageW * 2 + imageSpacing, gridY + imageH * 2 + imageSpacing),
-                         IM_COL32(230, 210, 210, 255), sec.portfolio_image_radius);
-
-        // Row 3: 4 small images
-        gridY += imageH * 2 + imageSpacing * 2;
-        for (int i = 0; i < 4; i++) {
-            float imgX = gridX + i * (smallImageW + imageSpacing);
-            if (i >= 2) imgX = gridX + largeImageW + imageSpacing + (i - 2) * (smallImageW + imageSpacing);
-            if (i < 2) {
-                dl->AddRectFilled(ImVec2(gridX + i * (smallImageW * 0.85f + imageSpacing), gridY),
-                                 ImVec2(gridX + i * (smallImageW * 0.85f + imageSpacing) + smallImageW * 0.85f, gridY + imageH),
-                                 IM_COL32(200 + i*15, 210, 220 - i*10, 255), sec.portfolio_image_radius);
+        // Filter images by active tab (0 = show all, 1+ = specific category)
+        std::vector<int> visibleImages;
+        for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
+            auto& item = sec.portfolio_items[i];
+            // Show if: active tab is 0 (All), OR item category matches active tab
+            if (sec.portfolio_active_tab == 0 || item.category == sec.portfolio_active_tab) {
+                visibleImages.push_back((int)i);
             }
         }
 
-        // Draw actual portfolio images if loaded
-        for (size_t i = 0; i < sec.portfolio_items.size() && i < 8; i++) {
-            auto& item = sec.portfolio_items[i];
-            if (item.texture != 0 && (sec.portfolio_active_tab == 0 || item.category == sec.portfolio_active_tab)) {
-                // Position based on index (simplified grid)
-                // Real implementation would have proper masonry layout
+        // Render visible images in a grid layout
+        float currentX = gridX;
+        float currentY = gridY;
+        float rowMaxHeight = 0;
+        int imagesInRow = 0;
+        int maxImagesPerRow = 4;
+
+        if (visibleImages.empty()) {
+            // Show placeholder when no images
+            float placeholderW = 200.0f;
+            float placeholderH = 150.0f;
+            dl->AddRectFilled(ImVec2(centerX - placeholderW/2, gridY),
+                             ImVec2(centerX + placeholderW/2, gridY + placeholderH),
+                             IM_COL32(220, 220, 230, 255), sec.portfolio_image_radius);
+            ImVec2 noImgText = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, "No images");
+            dl->AddText(font, 14.0f, ImVec2(centerX - noImgText.x/2, gridY + placeholderH/2 - noImgText.y/2),
+                       IM_COL32(150, 150, 160, 255), "No images");
+            gridY += placeholderH + imageSpacing;
+        } else {
+            for (int idx : visibleImages) {
+                auto& item = sec.portfolio_items[idx];
+                float imgW = item.width;
+                float imgH = item.height;
+
+                // Check if image fits in current row
+                if (imagesInRow > 0 && (currentX + imgW + item.x_offset > gridX + gridWidth || imagesInRow >= maxImagesPerRow)) {
+                    // Move to next row
+                    currentX = gridX;
+                    currentY += rowMaxHeight + imageSpacing;
+                    rowMaxHeight = 0;
+                    imagesInRow = 0;
+                }
+
+                float drawX = currentX + item.x_offset;
+                float drawY = currentY + item.y_offset;
+
+                // Draw image or placeholder
+                if (item.texture != 0) {
+                    dl->AddImageRounded((ImTextureID)(intptr_t)item.texture,
+                                       ImVec2(drawX, drawY),
+                                       ImVec2(drawX + imgW, drawY + imgH),
+                                       ImVec2(0, 0), ImVec2(1, 1),
+                                       IM_COL32(255, 255, 255, 255),
+                                       sec.portfolio_image_radius);
+                } else {
+                    dl->AddRectFilled(ImVec2(drawX, drawY),
+                                     ImVec2(drawX + imgW, drawY + imgH),
+                                     IM_COL32(200, 200, 210, 255), sec.portfolio_image_radius);
+                }
+
+                currentX += imgW + imageSpacing;
+                if (imgH > rowMaxHeight) rowMaxHeight = imgH;
+                imagesInRow++;
             }
+            gridY = currentY + rowMaxHeight + imageSpacing;
         }
 
         // "View Full Portfolio" button
-        contentY = gridY + imageH + 50.0f;
+        contentY = gridY + 50.0f;
         ImVec2 btnTextSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.portfolio_btn_text);
         float btnW = btnTextSize.x + 50.0f;
         float btnH = 50.0f;
@@ -32625,8 +32641,7 @@ void RenderUI() {
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
-            ImGui::ColorEdit4("Gradient Start", (float*)&sec.stats_bg_color1, ImGuiColorEditFlags_NoInputs);
-            ImGui::ColorEdit4("Gradient End", (float*)&sec.stats_bg_color2, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Background", (float*)&sec.stats_bg_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Value Text", (float*)&sec.stats_text_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Label Text", (float*)&sec.stats_label_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("Icons", (float*)&sec.stats_icon_color, ImGuiColorEditFlags_NoInputs);
@@ -32644,28 +32659,67 @@ void RenderUI() {
             ImGui::InputText("Description", sec.portfolio_description, sizeof(sec.portfolio_description));
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TAB FILTERS");
-            ImGui::SliderInt("Tab Count", &sec.portfolio_tab_count, 1, 8);
-            ImGui::SliderInt("Active Tab", &sec.portfolio_active_tab, 0, sec.portfolio_tab_count - 1);
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TAB BUTTONS");
+            ImGui::Text("Tabs: %d", sec.portfolio_tab_count);
 
+            // Add tab button
+            if (ImGui::Button("+ Add Tab") && sec.portfolio_tab_count < 8) {
+                strcpy(sec.portfolio_tabs[sec.portfolio_tab_count], "New Tab");
+                sec.portfolio_tab_count++;
+            }
+            ImGui::SameLine();
+            // Delete last tab button
+            if (ImGui::Button("- Delete Tab") && sec.portfolio_tab_count > 1) {
+                sec.portfolio_tab_count--;
+                if (sec.portfolio_active_tab >= sec.portfolio_tab_count) {
+                    sec.portfolio_active_tab = sec.portfolio_tab_count - 1;
+                }
+            }
+
+            // Tab selection and editing
+            static int selectedTab = -1;
             for (int i = 0; i < sec.portfolio_tab_count && i < 8; i++) {
                 ImGui::PushID(i + 8100);
-                char tabLabel[32];
-                snprintf(tabLabel, sizeof(tabLabel), "Tab %d", i + 1);
-                ImGui::InputText(tabLabel, sec.portfolio_tabs[i], sizeof(sec.portfolio_tabs[i]));
+                char tabLabel[64];
+                snprintf(tabLabel, sizeof(tabLabel), "%d: %s%s", i + 1, sec.portfolio_tabs[i],
+                        (i == sec.portfolio_active_tab) ? " [ACTIVE]" : "");
+                if (ImGui::Selectable(tabLabel, selectedTab == i)) {
+                    selectedTab = i;
+                }
                 ImGui::PopID();
+            }
+
+            if (selectedTab >= 0 && selectedTab < sec.portfolio_tab_count) {
+                ImGui::Indent();
+                ImGui::InputText("Tab Name##edit", sec.portfolio_tabs[selectedTab], sizeof(sec.portfolio_tabs[selectedTab]));
+                if (ImGui::Button("Set as Active Tab")) {
+                    sec.portfolio_active_tab = selectedTab;
+                }
+                ImGui::Unindent();
             }
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "PORTFOLIO IMAGES");
-            ImGui::Text("Images: %d", (int)sec.portfolio_items.size());
+            ImGui::Text("Total Images: %d", (int)sec.portfolio_items.size());
 
+            // Count images per category
+            int categoryCount[9] = {0};
+            for (const auto& item : sec.portfolio_items) {
+                if (item.category >= 0 && item.category < 9) categoryCount[item.category]++;
+            }
+            ImGui::TextDisabled("Tab 0 (All): shows all | Others filter by category");
+
+            // Add image button
             if (ImGui::Button("+ Add Image##portfolio")) {
                 std::string path = OpenFileDialog("Select portfolio image");
                 if (!path.empty()) {
                     WebSection::PortfolioItem item;
                     item.image_path = path;
-                    item.category = sec.portfolio_active_tab;
+                    item.category = (sec.portfolio_active_tab > 0) ? sec.portfolio_active_tab : 1;
+                    item.width = 200.0f;
+                    item.height = 150.0f;
+                    item.x_offset = 0.0f;
+                    item.y_offset = 0.0f;
 
                     int w, h, channels;
                     unsigned char* data = stbi_load(path.c_str(), &w, &h, &channels, 4);
@@ -32678,31 +32732,66 @@ void RenderUI() {
                         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
                         stbi_image_free(data);
                         item.texture = tex;
+                        // Set default size based on image aspect
+                        float aspect = (float)w / (float)h;
+                        item.height = 150.0f;
+                        item.width = item.height * aspect;
                     }
                     sec.portfolio_items.push_back(item);
                 }
             }
 
+            // Image list
             static int selectedPortfolioImg = -1;
+            ImGui::BeginChild("ImageList##portfolio", ImVec2(-1, 120), true);
             for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
                 ImGui::PushID((int)i + 8200);
                 char imgLabel[64];
-                snprintf(imgLabel, sizeof(imgLabel), "%d: Cat %d", (int)i + 1, sec.portfolio_items[i].category);
+                const char* catName = (sec.portfolio_items[i].category > 0 && sec.portfolio_items[i].category <= sec.portfolio_tab_count)
+                    ? sec.portfolio_tabs[sec.portfolio_items[i].category - 1] : "All";
+                snprintf(imgLabel, sizeof(imgLabel), "%d: %s (%.0fx%.0f)", (int)i + 1, catName,
+                        sec.portfolio_items[i].width, sec.portfolio_items[i].height);
                 if (ImGui::Selectable(imgLabel, selectedPortfolioImg == (int)i)) {
                     selectedPortfolioImg = (int)i;
                 }
                 ImGui::PopID();
             }
+            ImGui::EndChild();
 
+            // Edit selected image
             if (selectedPortfolioImg >= 0 && selectedPortfolioImg < (int)sec.portfolio_items.size()) {
                 auto& img = sec.portfolio_items[selectedPortfolioImg];
+                ImGui::Spacing();
+                ImGui::TextColored(ImVec4(0.5f, 0.8f, 1.0f, 1), "EDIT IMAGE %d", selectedPortfolioImg + 1);
+
+                // Preview
                 if (img.texture != 0) {
-                    ImGui::Image((ImTextureID)(intptr_t)img.texture, ImVec2(100, 70));
+                    float previewH = 80.0f;
+                    float aspect = img.width / img.height;
+                    ImGui::Image((ImTextureID)(intptr_t)img.texture, ImVec2(previewH * aspect, previewH));
                 }
-                ImGui::SliderInt("Category##img", &img.category, 0, sec.portfolio_tab_count - 1);
-                ImGui::SliderFloat("Width Ratio##img", &img.width_ratio, 0.5f, 2.0f, "%.1f");
-                ImGui::SliderFloat("Height Ratio##img", &img.height_ratio, 0.5f, 2.0f, "%.1f");
-                if (ImGui::Button("Delete Image##portfolio")) {
+
+                // Category dropdown
+                const char* catItems[9];
+                catItems[0] = "All Categories";
+                for (int c = 1; c <= sec.portfolio_tab_count && c < 9; c++) {
+                    catItems[c] = sec.portfolio_tabs[c - 1];
+                }
+                ImGui::Combo("Category##img", &img.category, catItems, sec.portfolio_tab_count + 1);
+
+                // Size sliders
+                ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.2f, 1), "SIZE");
+                ImGui::DragFloat("Width##img", &img.width, 1.0f, 50.0f, 600.0f, "%.0f px");
+                ImGui::DragFloat("Height##img", &img.height, 1.0f, 50.0f, 600.0f, "%.0f px");
+
+                // Position sliders
+                ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.2f, 1), "POSITION");
+                ImGui::DragFloat("X Offset##img", &img.x_offset, 1.0f, -500.0f, 500.0f, "%.0f px");
+                ImGui::DragFloat("Y Offset##img", &img.y_offset, 1.0f, -500.0f, 500.0f, "%.0f px");
+
+                // Delete button
+                ImGui::Spacing();
+                if (ImGui::Button("Delete Image##portfolio", ImVec2(-1, 0))) {
                     if (img.texture != 0) glDeleteTextures(1, &img.texture);
                     sec.portfolio_items.erase(sec.portfolio_items.begin() + selectedPortfolioImg);
                     selectedPortfolioImg = -1;
@@ -32710,11 +32799,13 @@ void RenderUI() {
             }
 
             ImGui::Spacing();
-            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BUTTON");
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "VIEW PORTFOLIO BUTTON");
             ImGui::InputText("Button Text", sec.portfolio_btn_text, sizeof(sec.portfolio_btn_text));
             static const char* btnActionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
-            ImGui::Combo("Button Action", &sec.portfolio_btn_action, btnActionNames, IM_ARRAYSIZE(btnActionNames));
-            ImGui::InputText("Button Target", sec.portfolio_btn_target, sizeof(sec.portfolio_btn_target));
+            ImGui::Combo("Action##portfolioBtn", &sec.portfolio_btn_action, btnActionNames, IM_ARRAYSIZE(btnActionNames));
+            if (sec.portfolio_btn_action > 0) {
+                ImGui::InputText("Target##portfolioBtn", sec.portfolio_btn_target, sizeof(sec.portfolio_btn_target));
+            }
             ImGui::SliderFloat("Button Radius", &sec.portfolio_btn_radius, 0.0f, 30.0f, "%.0f");
 
             ImGui::Spacing();
