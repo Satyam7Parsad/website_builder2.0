@@ -84,7 +84,9 @@ enum SectionType {
     SEC_MARQUEE_CONNECTOR,         // Client logo marquee with continuous scrolling
     SEC_CONTACT_SECTION_CONNECTOR, // Contact section with form and info cards
     SEC_TOP_BAR_CONNECTOR,         // Top contact bar with email, phone, social icons
-    SEC_ADVANCED_NAVBAR_CONNECTOR  // Navigation bar with logo, menu, CTA button
+    SEC_ADVANCED_NAVBAR_CONNECTOR, // Navigation bar with logo, menu, CTA button
+    SEC_STATS_BAR_CONNECTOR,       // Stats bar with icons and numbers (orange gradient)
+    SEC_PORTFOLIO_TAB_CONNECTOR    // Portfolio gallery with tab filters
 };
 
 // ============================================================================
@@ -121,6 +123,10 @@ enum IconType {
     ICON_SHARE,
     ICON_BOOKMARK,
     ICON_CAMERA,
+    ICON_BUILDING,
+    ICON_TEAM,
+    ICON_DESKTOP,
+    ICON_SERVER,
     ICON_COUNT  // Total count of icons
 };
 
@@ -131,7 +137,8 @@ static const char* g_IconNames[] = {
     "Hourglass", "Location", "Shopping", "Upload", "Laptop",
     "Pie Chart", "Mail", "Bulb", "Cross", "Login",
     "Heart", "Star", "Search", "Home", "Settings",
-    "User", "Download", "Share", "Bookmark", "Camera"
+    "User", "Download", "Share", "Bookmark", "Camera",
+    "Building", "Team", "Desktop", "Server"
 };
 
 // Helper: Draw icon at specified position
@@ -346,6 +353,37 @@ inline void DrawIcon(ImDrawList* dl, int iconType, float cx, float cy, float siz
             dl->AddRect(ImVec2(cx - hw, cy - hw*0.4f), ImVec2(cx + hw, cy + hw*0.7f), color, 4.0f, 0, strokeWidth);
             dl->AddCircle(ImVec2(cx, cy + hw*0.1f), r*0.4f, color, 24, strokeWidth);
             dl->AddRect(ImVec2(cx - hw*0.3f, cy - hw*0.7f), ImVec2(cx + hw*0.3f, cy - hw*0.4f), color, 0, 0, strokeWidth);
+            break;
+        }
+        case ICON_BUILDING: {
+            // Building/facility icon
+            dl->AddRect(ImVec2(cx - hw*0.7f, cy - hw*0.5f), ImVec2(cx + hw*0.7f, cy + hw*0.7f), color, 2.0f, 0, strokeWidth);
+            dl->AddRect(ImVec2(cx - hw*0.5f, cy - hw*0.3f), ImVec2(cx - hw*0.2f, cy), color, 0, 0, strokeWidth);
+            dl->AddRect(ImVec2(cx + hw*0.2f, cy - hw*0.3f), ImVec2(cx + hw*0.5f, cy), color, 0, 0, strokeWidth);
+            dl->AddRect(ImVec2(cx - hw*0.15f, cy + hw*0.2f), ImVec2(cx + hw*0.15f, cy + hw*0.7f), color, 0, 0, strokeWidth);
+            break;
+        }
+        case ICON_TEAM: {
+            // Team/people icon
+            dl->AddCircle(ImVec2(cx, cy - hw*0.3f), r*0.3f, color, 24, strokeWidth);
+            dl->AddCircle(ImVec2(cx - hw*0.5f, cy - hw*0.15f), r*0.25f, color, 24, strokeWidth);
+            dl->AddCircle(ImVec2(cx + hw*0.5f, cy - hw*0.15f), r*0.25f, color, 24, strokeWidth);
+            dl->AddBezierQuadratic(ImVec2(cx - hw*0.4f, cy + hw*0.1f), ImVec2(cx, cy + hw*0.5f), ImVec2(cx + hw*0.4f, cy + hw*0.1f), color, strokeWidth);
+            break;
+        }
+        case ICON_DESKTOP: {
+            // Desktop/monitor icon
+            dl->AddRect(ImVec2(cx - hw*0.7f, cy - hw*0.5f), ImVec2(cx + hw*0.7f, cy + hw*0.3f), color, 3.0f, 0, strokeWidth);
+            dl->AddLine(ImVec2(cx, cy + hw*0.3f), ImVec2(cx, cy + hw*0.6f), color, strokeWidth);
+            dl->AddLine(ImVec2(cx - hw*0.4f, cy + hw*0.6f), ImVec2(cx + hw*0.4f, cy + hw*0.6f), color, strokeWidth);
+            break;
+        }
+        case ICON_SERVER: {
+            // Server/storage icon
+            dl->AddRect(ImVec2(cx - hw*0.6f, cy - hw*0.6f), ImVec2(cx + hw*0.6f, cy - hw*0.1f), color, 3.0f, 0, strokeWidth);
+            dl->AddRect(ImVec2(cx - hw*0.6f, cy + hw*0.1f), ImVec2(cx + hw*0.6f, cy + hw*0.6f), color, 3.0f, 0, strokeWidth);
+            dl->AddCircleFilled(ImVec2(cx + hw*0.35f, cy - hw*0.35f), r*0.1f, color);
+            dl->AddCircleFilled(ImVec2(cx + hw*0.35f, cy + hw*0.35f), r*0.1f, color);
             break;
         }
         default:
@@ -2171,6 +2209,59 @@ struct WebSection {
     std::string hero_bg_image_path;
     GLuint hero_bg_image_texture;
 
+    // ========== STATS BAR CONNECTOR ==========
+    struct StatItem {
+        int icon_type;
+        char value[32];
+        char label[64];
+        StatItem() : icon_type(0) { value[0] = '\0'; label[0] = '\0'; }
+    };
+    StatItem stats_items[6];
+    int stats_count;
+    ImVec4 stats_bg_color1;          // Gradient start
+    ImVec4 stats_bg_color2;          // Gradient end
+    ImVec4 stats_text_color;
+    ImVec4 stats_label_color;
+    ImVec4 stats_icon_color;
+    float stats_border_radius;
+    float stats_value_size;
+    float stats_label_size;
+
+    // ========== PORTFOLIO TAB CONNECTOR ==========
+    char portfolio_label[64];        // "PORTFOLIO"
+    char portfolio_heading[128];     // "Our"
+    char portfolio_heading_accent[128]; // "Creative Work"
+    char portfolio_description[256];
+    char portfolio_tabs[8][32];      // Tab names (All Work, Imaging, etc.)
+    int portfolio_tab_count;
+    int portfolio_active_tab;
+    struct PortfolioItem {
+        std::string image_path;
+        GLuint texture;
+        int category;                // Which tab (0 = All, 1 = first tab, etc.)
+        float width_ratio;           // Width ratio in grid (1.0 = normal, 2.0 = double)
+        float height_ratio;          // Height ratio in grid
+        PortfolioItem() : texture(0), category(0), width_ratio(1.0f), height_ratio(1.0f) {}
+    };
+    std::vector<PortfolioItem> portfolio_items;
+    char portfolio_btn_text[64];     // "View Full Portfolio"
+    int portfolio_btn_action;
+    char portfolio_btn_target[256];
+    ImVec4 portfolio_bg_color;
+    ImVec4 portfolio_label_color;
+    ImVec4 portfolio_heading_color;
+    ImVec4 portfolio_accent_color;
+    ImVec4 portfolio_desc_color;
+    ImVec4 portfolio_tab_bg;
+    ImVec4 portfolio_tab_active_bg;
+    ImVec4 portfolio_tab_text;
+    ImVec4 portfolio_tab_active_text;
+    ImVec4 portfolio_btn_bg;
+    ImVec4 portfolio_btn_text_color;
+    float portfolio_btn_radius;
+    float portfolio_image_radius;
+    float portfolio_image_spacing;
+
     WebSection(int _id, SectionType _type) : id(_id), type(_type),
         x_position(0), y_position(0), width(800), height(300), selected(false), z_index(0),
         title_font_size(48), subtitle_font_size(20), content_font_size(16),
@@ -2392,7 +2483,27 @@ struct WebSection {
         hero_image2_width(280.0f), hero_image2_height(200.0f), hero_image2_x_offset(0.0f), hero_image2_y_offset(0.0f), hero_image2_radius(16.0f),
         hero_glass_effect(true), hero_glass_opacity(100.0f),
         hero_glass_color1(0.15f, 0.15f, 0.2f, 1.0f), hero_glass_color2(0.1f, 0.12f, 0.15f, 1.0f),
-        hero_bg_image_texture(0) {
+        hero_bg_image_texture(0),
+        // Stats Bar Connector
+        stats_count(4),
+        stats_bg_color1(0.95f, 0.55f, 0.2f, 1.0f), stats_bg_color2(0.9f, 0.4f, 0.15f, 1.0f),
+        stats_text_color(1.0f, 1.0f, 1.0f, 1.0f), stats_label_color(1.0f, 1.0f, 1.0f, 0.9f),
+        stats_icon_color(1.0f, 1.0f, 1.0f, 1.0f),
+        stats_border_radius(20.0f), stats_value_size(32.0f), stats_label_size(11.0f),
+        // Portfolio Tab Connector
+        portfolio_tab_count(5), portfolio_active_tab(0), portfolio_btn_action(0),
+        portfolio_bg_color(1.0f, 1.0f, 1.0f, 1.0f),
+        portfolio_label_color(0.95f, 0.5f, 0.2f, 1.0f),
+        portfolio_heading_color(0.15f, 0.15f, 0.2f, 1.0f),
+        portfolio_accent_color(0.95f, 0.5f, 0.2f, 1.0f),
+        portfolio_desc_color(0.4f, 0.4f, 0.45f, 1.0f),
+        portfolio_tab_bg(0.95f, 0.95f, 0.97f, 1.0f),
+        portfolio_tab_active_bg(0.95f, 0.5f, 0.2f, 1.0f),
+        portfolio_tab_text(0.3f, 0.3f, 0.35f, 1.0f),
+        portfolio_tab_active_text(1.0f, 1.0f, 1.0f, 1.0f),
+        portfolio_btn_bg(0.95f, 0.5f, 0.2f, 1.0f),
+        portfolio_btn_text_color(1.0f, 1.0f, 1.0f, 1.0f),
+        portfolio_btn_radius(25.0f), portfolio_image_radius(12.0f), portfolio_image_spacing(15.0f) {
         // Initialize char arrays
         story_label[0] = '\0'; story_heading[0] = '\0'; story_heading_accent[0] = '\0';
         story_paragraphs[0][0] = '\0'; story_paragraphs[1][0] = '\0'; story_paragraphs[2][0] = '\0';
@@ -2473,6 +2584,25 @@ struct WebSection {
         strcpy(hero_image1_label, "M.C. Abraham - Industry Legend");
         strcpy(hero_image2_badge, "OUR SERVICES");
         strcpy(hero_image2_label, "Edit & Illustration");
+        // Stats Bar Connector defaults
+        strcpy(stats_items[0].value, "150,000"); strcpy(stats_items[0].label, "SQ. FT. FACILITY"); stats_items[0].icon_type = ICON_BUILDING;
+        strcpy(stats_items[1].value, "500+"); strcpy(stats_items[1].label, "SKILLED PROFESSIONALS"); stats_items[1].icon_type = ICON_TEAM;
+        strcpy(stats_items[2].value, "500+"); strcpy(stats_items[2].label, "WORKSTATIONS"); stats_items[2].icon_type = ICON_DESKTOP;
+        strcpy(stats_items[3].value, "10+ PB"); strcpy(stats_items[3].label, "STORAGE CAPACITY"); stats_items[3].icon_type = ICON_SERVER;
+        for (int i = 4; i < 6; i++) { stats_items[i].value[0] = '\0'; stats_items[i].label[0] = '\0'; stats_items[i].icon_type = 0; }
+        // Portfolio Tab Connector defaults
+        strcpy(portfolio_label, "PORTFOLIO");
+        strcpy(portfolio_heading, "Our");
+        strcpy(portfolio_heading_accent, "Creative Work");
+        strcpy(portfolio_description, "A showcase of excellence across industries and visual disciplines");
+        strcpy(portfolio_tabs[0], "All Work");
+        strcpy(portfolio_tabs[1], "Imaging");
+        strcpy(portfolio_tabs[2], "Packaging");
+        strcpy(portfolio_tabs[3], "Retouching");
+        strcpy(portfolio_tabs[4], "3D & Animation");
+        for (int i = 5; i < 8; i++) portfolio_tabs[i][0] = '\0';
+        strcpy(portfolio_btn_text, "View Full Portfolio");
+        portfolio_btn_target[0] = '\0';
         SetDefaults();
     }
 
@@ -3966,6 +4096,59 @@ struct WebSection {
                 strcpy(navbar_cta_text, "Get Started");
                 navbar_cta_action = 1; // Scroll to Section
                 strcpy(navbar_cta_target, "#contact");
+                break;
+
+            case SEC_STATS_BAR_CONNECTOR:
+                name = "Stats Bar";
+                height = 120;
+                bg_color = ImVec4(0.95f, 0.55f, 0.2f, 1.0f);
+                stats_bg_color1 = ImVec4(0.95f, 0.55f, 0.2f, 1.0f);
+                stats_bg_color2 = ImVec4(0.9f, 0.4f, 0.15f, 1.0f);
+                stats_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                stats_label_color = ImVec4(1.0f, 1.0f, 1.0f, 0.9f);
+                stats_icon_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                stats_border_radius = 20.0f;
+                stats_value_size = 32.0f;
+                stats_label_size = 11.0f;
+                stats_count = 4;
+                strcpy(stats_items[0].value, "150,000"); strcpy(stats_items[0].label, "SQ. FT. FACILITY"); stats_items[0].icon_type = ICON_BUILDING;
+                strcpy(stats_items[1].value, "500+"); strcpy(stats_items[1].label, "SKILLED PROFESSIONALS"); stats_items[1].icon_type = ICON_TEAM;
+                strcpy(stats_items[2].value, "500+"); strcpy(stats_items[2].label, "WORKSTATIONS"); stats_items[2].icon_type = ICON_DESKTOP;
+                strcpy(stats_items[3].value, "10+ PB"); strcpy(stats_items[3].label, "STORAGE CAPACITY"); stats_items[3].icon_type = ICON_SERVER;
+                break;
+
+            case SEC_PORTFOLIO_TAB_CONNECTOR:
+                name = "Portfolio Gallery";
+                height = 800;
+                bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                portfolio_bg_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                portfolio_label_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                portfolio_heading_color = ImVec4(0.15f, 0.15f, 0.2f, 1.0f);
+                portfolio_accent_color = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                portfolio_desc_color = ImVec4(0.4f, 0.4f, 0.45f, 1.0f);
+                portfolio_tab_bg = ImVec4(0.95f, 0.95f, 0.97f, 1.0f);
+                portfolio_tab_active_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                portfolio_tab_text = ImVec4(0.3f, 0.3f, 0.35f, 1.0f);
+                portfolio_tab_active_text = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                portfolio_btn_bg = ImVec4(0.95f, 0.5f, 0.2f, 1.0f);
+                portfolio_btn_text_color = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);
+                portfolio_btn_radius = 25.0f;
+                portfolio_image_radius = 12.0f;
+                portfolio_image_spacing = 15.0f;
+                portfolio_tab_count = 5;
+                portfolio_active_tab = 0;
+                strcpy(portfolio_label, "PORTFOLIO");
+                strcpy(portfolio_heading, "Our");
+                strcpy(portfolio_heading_accent, "Creative Work");
+                strcpy(portfolio_description, "A showcase of excellence across industries and visual disciplines");
+                strcpy(portfolio_tabs[0], "All Work");
+                strcpy(portfolio_tabs[1], "Imaging");
+                strcpy(portfolio_tabs[2], "Packaging");
+                strcpy(portfolio_tabs[3], "Retouching");
+                strcpy(portfolio_tabs[4], "3D & Animation");
+                strcpy(portfolio_btn_text, "View Full Portfolio");
+                portfolio_btn_action = 3; // External URL
+                strcpy(portfolio_btn_target, "#portfolio");
                 break;
 
             default:
@@ -25348,6 +25531,228 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         return;
     }
 
+    // ========================================================================
+    // SEC_STATS_BAR_CONNECTOR - Orange gradient bar with stats and icons
+    // ========================================================================
+    if (sec.type == SEC_STATS_BAR_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+
+        // Draw gradient background
+        float barPadding = 60.0f;
+        float barH = h - 40.0f;
+        float barY = y + 20.0f;
+        ImVec2 bar_min(x + barPadding, barY);
+        ImVec2 bar_max(x + sectionW - barPadding, barY + barH);
+
+        // Horizontal gradient
+        ImU32 col1 = ImGui::ColorConvertFloat4ToU32(sec.stats_bg_color1);
+        ImU32 col2 = ImGui::ColorConvertFloat4ToU32(sec.stats_bg_color2);
+        dl->AddRectFilledMultiColor(bar_min, bar_max, col1, col2, col2, col1);
+        dl->AddRect(bar_min, bar_max, col1, sec.stats_border_radius, 0, 0);
+
+        // Rounded corners overlay (approximate with filled rounded rect)
+        dl->AddRectFilled(bar_min, bar_max, IM_COL32(0,0,0,0), sec.stats_border_radius);
+        dl->AddRectFilledMultiColor(bar_min, bar_max, col1, col2, col2, col1);
+
+        ImFont* font = ImGui::GetFont();
+        float centerY = barY + barH / 2;
+
+        // Calculate stat item positions
+        if (sec.stats_count > 0) {
+            float totalWidth = sectionW - barPadding * 2;
+            float itemWidth = totalWidth / sec.stats_count;
+
+            for (int i = 0; i < sec.stats_count && i < 6; i++) {
+                float itemCenterX = bar_min.x + itemWidth * i + itemWidth / 2;
+
+                // Icon
+                float iconSize = 24.0f;
+                float iconY = centerY - 25.0f;
+                DrawIcon(dl, sec.stats_items[i].icon_type, itemCenterX, iconY, iconSize,
+                        ImGui::ColorConvertFloat4ToU32(sec.stats_icon_color), 2.0f);
+
+                // Value text
+                ImVec2 valueSize = font->CalcTextSizeA(sec.stats_value_size, FLT_MAX, 0.0f, sec.stats_items[i].value);
+                float valueY = centerY + 5.0f;
+                dl->AddText(font, sec.stats_value_size, ImVec2(itemCenterX - valueSize.x/2, valueY),
+                           ImGui::ColorConvertFloat4ToU32(sec.stats_text_color), sec.stats_items[i].value);
+
+                // Label text
+                ImVec2 labelSize = font->CalcTextSizeA(sec.stats_label_size, FLT_MAX, 0.0f, sec.stats_items[i].label);
+                float labelY = valueY + valueSize.y + 5.0f;
+                dl->AddText(font, sec.stats_label_size, ImVec2(itemCenterX - labelSize.x/2, labelY),
+                           ImGui::ColorConvertFloat4ToU32(sec.stats_label_color), sec.stats_items[i].label);
+            }
+        }
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
+    // ========================================================================
+    // SEC_PORTFOLIO_TAB_CONNECTOR - Portfolio gallery with tab filters
+    // ========================================================================
+    if (sec.type == SEC_PORTFOLIO_TAB_CONNECTOR) {
+        ImVec2 section_min(x, y);
+        ImVec2 section_max(x + sectionW, y + h);
+        dl->AddRectFilled(section_min, section_max, ImGui::ColorConvertFloat4ToU32(sec.portfolio_bg_color));
+
+        ImFont* font = ImGui::GetFont();
+        float padding = 60.0f;
+        float contentY = y + 50.0f;
+        float centerX = x + sectionW / 2;
+
+        // Label (PORTFOLIO)
+        ImVec2 labelSize = font->CalcTextSizeA(12.0f, FLT_MAX, 0.0f, sec.portfolio_label);
+        dl->AddText(font, 12.0f, ImVec2(centerX - labelSize.x/2, contentY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_label_color), sec.portfolio_label);
+
+        // Decorative lines around label
+        float lineWidth = 30.0f;
+        float lineY = contentY + labelSize.y/2;
+        dl->AddLine(ImVec2(centerX - labelSize.x/2 - lineWidth - 10, lineY),
+                   ImVec2(centerX - labelSize.x/2 - 10, lineY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_label_color), 2.0f);
+        dl->AddLine(ImVec2(centerX + labelSize.x/2 + 10, lineY),
+                   ImVec2(centerX + labelSize.x/2 + lineWidth + 10, lineY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_label_color), 2.0f);
+        contentY += 40.0f;
+
+        // Heading: "Our" + "Creative Work"
+        float headingSize = 42.0f;
+        ImVec2 headingPart1 = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.portfolio_heading);
+        ImVec2 headingPart2 = font->CalcTextSizeA(headingSize, FLT_MAX, 0.0f, sec.portfolio_heading_accent);
+        float totalHeadingW = headingPart1.x + 12.0f + headingPart2.x;
+        float headingStartX = centerX - totalHeadingW/2;
+
+        // Bold effect
+        for (int l = 0; l < 4; l++) {
+            float ox = (l % 2) * 0.5f;
+            float oy = (l / 2) * 0.5f;
+            dl->AddText(font, headingSize, ImVec2(headingStartX + ox, contentY + oy),
+                       ImGui::ColorConvertFloat4ToU32(sec.portfolio_heading_color), sec.portfolio_heading);
+            dl->AddText(font, headingSize, ImVec2(headingStartX + headingPart1.x + 12.0f + ox, contentY + oy),
+                       ImGui::ColorConvertFloat4ToU32(sec.portfolio_accent_color), sec.portfolio_heading_accent);
+        }
+        contentY += headingPart1.y + 20.0f;
+
+        // Description
+        ImVec2 descSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.portfolio_description);
+        dl->AddText(font, 14.0f, ImVec2(centerX - descSize.x/2, contentY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_desc_color), sec.portfolio_description);
+        contentY += 50.0f;
+
+        // Tab buttons
+        float tabHeight = 36.0f;
+        float tabSpacing = 10.0f;
+        float tabRadius = 18.0f;
+
+        // Calculate total tabs width
+        float totalTabsWidth = 0;
+        for (int i = 0; i < sec.portfolio_tab_count && i < 8; i++) {
+            ImVec2 tabSize = font->CalcTextSizeA(13.0f, FLT_MAX, 0.0f, sec.portfolio_tabs[i]);
+            totalTabsWidth += tabSize.x + 30.0f + tabSpacing;
+        }
+        totalTabsWidth -= tabSpacing;
+
+        float tabX = centerX - totalTabsWidth/2;
+        for (int i = 0; i < sec.portfolio_tab_count && i < 8; i++) {
+            ImVec2 tabTextSize = font->CalcTextSizeA(13.0f, FLT_MAX, 0.0f, sec.portfolio_tabs[i]);
+            float tabW = tabTextSize.x + 30.0f;
+
+            ImVec2 tabMin(tabX, contentY);
+            ImVec2 tabMax(tabX + tabW, contentY + tabHeight);
+
+            bool isActive = (i == sec.portfolio_active_tab);
+            ImU32 tabBg = ImGui::ColorConvertFloat4ToU32(isActive ? sec.portfolio_tab_active_bg : sec.portfolio_tab_bg);
+            ImU32 tabText = ImGui::ColorConvertFloat4ToU32(isActive ? sec.portfolio_tab_active_text : sec.portfolio_tab_text);
+
+            dl->AddRectFilled(tabMin, tabMax, tabBg, tabRadius);
+            dl->AddText(font, 13.0f, ImVec2(tabX + 15.0f, contentY + (tabHeight - tabTextSize.y)/2), tabText, sec.portfolio_tabs[i]);
+
+            tabX += tabW + tabSpacing;
+        }
+        contentY += tabHeight + 40.0f;
+
+        // Portfolio grid (placeholder images)
+        float gridPadding = padding;
+        float gridWidth = sectionW - gridPadding * 2;
+        float imageSpacing = sec.portfolio_image_spacing;
+        int cols = 3;
+        float smallImageW = (gridWidth - imageSpacing * 2) / cols;
+        float largeImageW = smallImageW * 2 + imageSpacing;
+        float imageH = 160.0f;
+
+        // Draw portfolio items or placeholders
+        float gridX = x + gridPadding;
+        float gridY = contentY;
+
+        // Row 1: Large image + 2 small images
+        // Large image (left)
+        dl->AddRectFilled(ImVec2(gridX, gridY), ImVec2(gridX + largeImageW, gridY + imageH * 2 + imageSpacing),
+                         IM_COL32(200, 200, 210, 255), sec.portfolio_image_radius);
+
+        // Small images (right column)
+        float rightX = gridX + largeImageW + imageSpacing;
+        dl->AddRectFilled(ImVec2(rightX, gridY), ImVec2(rightX + smallImageW, gridY + imageH),
+                         IM_COL32(220, 200, 200, 255), sec.portfolio_image_radius);
+        dl->AddRectFilled(ImVec2(rightX + smallImageW + imageSpacing, gridY), ImVec2(rightX + smallImageW * 2 + imageSpacing, gridY + imageH),
+                         IM_COL32(200, 220, 200, 255), sec.portfolio_image_radius);
+
+        // Row 2 right
+        dl->AddRectFilled(ImVec2(rightX, gridY + imageH + imageSpacing), ImVec2(rightX + smallImageW, gridY + imageH * 2 + imageSpacing),
+                         IM_COL32(210, 210, 230, 255), sec.portfolio_image_radius);
+        dl->AddRectFilled(ImVec2(rightX + smallImageW + imageSpacing, gridY + imageH + imageSpacing), ImVec2(rightX + smallImageW * 2 + imageSpacing, gridY + imageH * 2 + imageSpacing),
+                         IM_COL32(230, 210, 210, 255), sec.portfolio_image_radius);
+
+        // Row 3: 4 small images
+        gridY += imageH * 2 + imageSpacing * 2;
+        for (int i = 0; i < 4; i++) {
+            float imgX = gridX + i * (smallImageW + imageSpacing);
+            if (i >= 2) imgX = gridX + largeImageW + imageSpacing + (i - 2) * (smallImageW + imageSpacing);
+            if (i < 2) {
+                dl->AddRectFilled(ImVec2(gridX + i * (smallImageW * 0.85f + imageSpacing), gridY),
+                                 ImVec2(gridX + i * (smallImageW * 0.85f + imageSpacing) + smallImageW * 0.85f, gridY + imageH),
+                                 IM_COL32(200 + i*15, 210, 220 - i*10, 255), sec.portfolio_image_radius);
+            }
+        }
+
+        // Draw actual portfolio images if loaded
+        for (size_t i = 0; i < sec.portfolio_items.size() && i < 8; i++) {
+            auto& item = sec.portfolio_items[i];
+            if (item.texture != 0 && (sec.portfolio_active_tab == 0 || item.category == sec.portfolio_active_tab)) {
+                // Position based on index (simplified grid)
+                // Real implementation would have proper masonry layout
+            }
+        }
+
+        // "View Full Portfolio" button
+        contentY = gridY + imageH + 50.0f;
+        ImVec2 btnTextSize = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, sec.portfolio_btn_text);
+        float btnW = btnTextSize.x + 50.0f;
+        float btnH = 50.0f;
+        float btnX = centerX - btnW/2;
+
+        dl->AddRectFilled(ImVec2(btnX, contentY), ImVec2(btnX + btnW, contentY + btnH),
+                         ImGui::ColorConvertFloat4ToU32(sec.portfolio_btn_bg), sec.portfolio_btn_radius);
+        dl->AddText(font, 14.0f, ImVec2(btnX + 20.0f, contentY + (btnH - btnTextSize.y)/2),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_btn_text_color), sec.portfolio_btn_text);
+
+        // Arrow icon
+        float arrowX = btnX + btnW - 25.0f;
+        float arrowY = contentY + btnH/2;
+        dl->AddLine(ImVec2(arrowX - 5, arrowY), ImVec2(arrowX + 5, arrowY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_btn_text_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 2, arrowY - 4), ImVec2(arrowX + 6, arrowY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_btn_text_color), 2.0f);
+        dl->AddLine(ImVec2(arrowX + 2, arrowY + 4), ImVec2(arrowX + 6, arrowY),
+                   ImGui::ColorConvertFloat4ToU32(sec.portfolio_btn_text_color), 2.0f);
+
+        if (sec.selected) dl->AddRect(section_min, section_max, IM_COL32(100, 150, 255, 255), 0, 0, 2.0f);
+        return;
+    }
+
     // Default - render title and paragraphs
     float contentY = y + sec.padding_top;
 
@@ -26438,6 +26843,44 @@ void RenderUI() {
 
     if (ImGui::Button("+ Advanced Navbar", ImVec2(-1, 26))) {
         WebSection sec(g_NextSectionId++, SEC_ADVANCED_NAVBAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Stats Bar", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_STATS_BAR_CONNECTOR);
+        if (g_FreeDesignMode) {
+            float nextY = 20;
+            for (const auto& s : g_Sections) {
+                float sBottom = s.y_position + s.height;
+                if (sBottom > nextY) nextY = sBottom + 20;
+            }
+            sec.x_position = 20;
+            sec.y_position = nextY;
+            sec.width = 1000;
+            sec.z_index = (int)g_Sections.size();
+            sec.use_manual_position = true;
+        }
+        g_Sections.push_back(sec);
+        g_SelectedSectionIndex = (int)g_Sections.size() - 1;
+        for (int j = 0; j < (int)g_Sections.size(); j++) g_Sections[j].selected = (j == g_SelectedSectionIndex);
+    }
+
+    if (ImGui::Button("+ Portfolio Gallery", ImVec2(-1, 26))) {
+        WebSection sec(g_NextSectionId++, SEC_PORTFOLIO_TAB_CONNECTOR);
         if (g_FreeDesignMode) {
             float nextY = 20;
             for (const auto& s : g_Sections) {
@@ -32140,6 +32583,158 @@ void RenderUI() {
             ImGui::ColorEdit4("Active Item", (float*)&sec.navbar_active_color, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("CTA Background", (float*)&sec.navbar_cta_bg, ImGuiColorEditFlags_NoInputs);
             ImGui::ColorEdit4("CTA Text", (float*)&sec.navbar_cta_text_color, ImGuiColorEditFlags_NoInputs);
+        }
+        // Stats Bar Connector properties
+        else if (sec.type == SEC_STATS_BAR_CONNECTOR) {
+            ImGui::Text("Stats Bar");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "STATS ITEMS");
+            ImGui::SliderInt("Stats Count", &sec.stats_count, 1, 6);
+
+            static int selectedStatItem = 0;
+            if (selectedStatItem >= sec.stats_count) selectedStatItem = 0;
+
+            ImGui::Text("Click to edit stat item:");
+            for (int i = 0; i < sec.stats_count && i < 6; i++) {
+                ImGui::PushID(i + 8000);
+                char statLabel[96];
+                snprintf(statLabel, sizeof(statLabel), "%d: %s - %s", i + 1, sec.stats_items[i].value, sec.stats_items[i].label);
+                if (ImGui::Selectable(statLabel, selectedStatItem == i)) {
+                    selectedStatItem = i;
+                }
+                ImGui::PopID();
+            }
+
+            if (selectedStatItem >= 0 && selectedStatItem < sec.stats_count) {
+                ImGui::Spacing();
+                ImGui::TextColored(ImVec4(0.5f, 0.8f, 1.0f, 1), "EDIT STAT %d", selectedStatItem + 1);
+                ImGui::Indent();
+                ImGui::InputText("Value##stat", sec.stats_items[selectedStatItem].value, sizeof(sec.stats_items[selectedStatItem].value));
+                ImGui::InputText("Label##stat", sec.stats_items[selectedStatItem].label, sizeof(sec.stats_items[selectedStatItem].label));
+                ImGui::Combo("Icon##stat", &sec.stats_items[selectedStatItem].icon_type, g_IconNames, IM_ARRAYSIZE(g_IconNames));
+                ImGui::Unindent();
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "APPEARANCE");
+            ImGui::SliderFloat("Value Size", &sec.stats_value_size, 16.0f, 48.0f, "%.0f");
+            ImGui::SliderFloat("Label Size", &sec.stats_label_size, 8.0f, 16.0f, "%.0f");
+            ImGui::SliderFloat("Border Radius", &sec.stats_border_radius, 0.0f, 40.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Gradient Start", (float*)&sec.stats_bg_color1, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Gradient End", (float*)&sec.stats_bg_color2, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Value Text", (float*)&sec.stats_text_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Label Text", (float*)&sec.stats_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Icons", (float*)&sec.stats_icon_color, ImGuiColorEditFlags_NoInputs);
+        }
+        // Portfolio Tab Connector properties
+        else if (sec.type == SEC_PORTFOLIO_TAB_CONNECTOR) {
+            ImGui::Text("Portfolio Gallery");
+            ImGui::Separator();
+            ImGui::Spacing();
+
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "HEADER");
+            ImGui::InputText("Label", sec.portfolio_label, sizeof(sec.portfolio_label));
+            ImGui::InputText("Heading", sec.portfolio_heading, sizeof(sec.portfolio_heading));
+            ImGui::InputText("Heading Accent", sec.portfolio_heading_accent, sizeof(sec.portfolio_heading_accent));
+            ImGui::InputText("Description", sec.portfolio_description, sizeof(sec.portfolio_description));
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "TAB FILTERS");
+            ImGui::SliderInt("Tab Count", &sec.portfolio_tab_count, 1, 8);
+            ImGui::SliderInt("Active Tab", &sec.portfolio_active_tab, 0, sec.portfolio_tab_count - 1);
+
+            for (int i = 0; i < sec.portfolio_tab_count && i < 8; i++) {
+                ImGui::PushID(i + 8100);
+                char tabLabel[32];
+                snprintf(tabLabel, sizeof(tabLabel), "Tab %d", i + 1);
+                ImGui::InputText(tabLabel, sec.portfolio_tabs[i], sizeof(sec.portfolio_tabs[i]));
+                ImGui::PopID();
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "PORTFOLIO IMAGES");
+            ImGui::Text("Images: %d", (int)sec.portfolio_items.size());
+
+            if (ImGui::Button("+ Add Image##portfolio")) {
+                std::string path = OpenFileDialog("Select portfolio image");
+                if (!path.empty()) {
+                    WebSection::PortfolioItem item;
+                    item.image_path = path;
+                    item.category = sec.portfolio_active_tab;
+
+                    int w, h, channels;
+                    unsigned char* data = stbi_load(path.c_str(), &w, &h, &channels, 4);
+                    if (data) {
+                        GLuint tex;
+                        glGenTextures(1, &tex);
+                        glBindTexture(GL_TEXTURE_2D, tex);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                        stbi_image_free(data);
+                        item.texture = tex;
+                    }
+                    sec.portfolio_items.push_back(item);
+                }
+            }
+
+            static int selectedPortfolioImg = -1;
+            for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
+                ImGui::PushID((int)i + 8200);
+                char imgLabel[64];
+                snprintf(imgLabel, sizeof(imgLabel), "%d: Cat %d", (int)i + 1, sec.portfolio_items[i].category);
+                if (ImGui::Selectable(imgLabel, selectedPortfolioImg == (int)i)) {
+                    selectedPortfolioImg = (int)i;
+                }
+                ImGui::PopID();
+            }
+
+            if (selectedPortfolioImg >= 0 && selectedPortfolioImg < (int)sec.portfolio_items.size()) {
+                auto& img = sec.portfolio_items[selectedPortfolioImg];
+                if (img.texture != 0) {
+                    ImGui::Image((ImTextureID)(intptr_t)img.texture, ImVec2(100, 70));
+                }
+                ImGui::SliderInt("Category##img", &img.category, 0, sec.portfolio_tab_count - 1);
+                ImGui::SliderFloat("Width Ratio##img", &img.width_ratio, 0.5f, 2.0f, "%.1f");
+                ImGui::SliderFloat("Height Ratio##img", &img.height_ratio, 0.5f, 2.0f, "%.1f");
+                if (ImGui::Button("Delete Image##portfolio")) {
+                    if (img.texture != 0) glDeleteTextures(1, &img.texture);
+                    sec.portfolio_items.erase(sec.portfolio_items.begin() + selectedPortfolioImg);
+                    selectedPortfolioImg = -1;
+                }
+            }
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "BUTTON");
+            ImGui::InputText("Button Text", sec.portfolio_btn_text, sizeof(sec.portfolio_btn_text));
+            static const char* btnActionNames[] = {"None", "Scroll to Section", "Link to Page", "External URL", "Popup", "Download", "Email", "Phone"};
+            ImGui::Combo("Button Action", &sec.portfolio_btn_action, btnActionNames, IM_ARRAYSIZE(btnActionNames));
+            ImGui::InputText("Button Target", sec.portfolio_btn_target, sizeof(sec.portfolio_btn_target));
+            ImGui::SliderFloat("Button Radius", &sec.portfolio_btn_radius, 0.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "APPEARANCE");
+            ImGui::SliderFloat("Image Radius", &sec.portfolio_image_radius, 0.0f, 30.0f, "%.0f");
+            ImGui::SliderFloat("Image Spacing", &sec.portfolio_image_spacing, 5.0f, 30.0f, "%.0f");
+
+            ImGui::Spacing();
+            ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "COLORS");
+            ImGui::ColorEdit4("Background", (float*)&sec.portfolio_bg_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Label", (float*)&sec.portfolio_label_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Heading", (float*)&sec.portfolio_heading_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Accent", (float*)&sec.portfolio_accent_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Description", (float*)&sec.portfolio_desc_color, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Tab Background", (float*)&sec.portfolio_tab_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Tab Active BG", (float*)&sec.portfolio_tab_active_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Tab Text", (float*)&sec.portfolio_tab_text, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Tab Active Text", (float*)&sec.portfolio_tab_active_text, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Button BG", (float*)&sec.portfolio_btn_bg, ImGuiColorEditFlags_NoInputs);
+            ImGui::ColorEdit4("Button Text", (float*)&sec.portfolio_btn_text_color, ImGuiColorEditFlags_NoInputs);
         }
         // Footer Section Connector properties
         else if (sec.type == SEC_FOOTER_SECTION_CONNECTOR) {
