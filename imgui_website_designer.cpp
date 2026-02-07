@@ -2237,12 +2237,9 @@ struct WebSection {
     struct PortfolioItem {
         std::string image_path;
         GLuint texture;
-        int category;                // Which tab (0 = All, 1+ = specific tab)
-        float width;                 // Image width
-        float height;                // Image height
-        float x_offset;              // X position offset
-        float y_offset;              // Y position offset
-        PortfolioItem() : texture(0), category(0), width(200.0f), height(150.0f), x_offset(0.0f), y_offset(0.0f) {}
+        int category;                // Which tab (1+ = specific tab, 0 = all tabs)
+        int slot;                    // Which slot position (0-7) in the grid
+        PortfolioItem() : texture(0), category(1), slot(0) {}
     };
     std::vector<PortfolioItem> portfolio_items;
     char portfolio_btn_text[64];     // "View Full Portfolio"
@@ -25669,79 +25666,95 @@ void RenderSectionPreview(ImDrawList* dl, WebSection& sec, ImVec2 pos, float w, 
         }
         contentY += tabHeight + 40.0f;
 
-        // Portfolio grid - render uploaded images filtered by active tab
+        // Portfolio grid - MASONRY LAYOUT matching original design
+        // Layout: 8 image slots
+        // Row 1-2: Large image LEFT (spans 2 rows) + 4 small images RIGHT (2x2 grid)
+        // Row 3: 4 images across bottom
         float gridPadding = padding;
         float gridWidth = sectionW - gridPadding * 2;
-        float imageSpacing = sec.portfolio_image_spacing;
+        float sp = sec.portfolio_image_spacing;
         float gridX = x + gridPadding;
         float gridY = contentY;
 
-        // Filter images by active tab (0 = show all, 1+ = specific category)
-        std::vector<int> visibleImages;
-        for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
-            auto& item = sec.portfolio_items[i];
-            // Show if: active tab is 0 (All), OR item category matches active tab
-            if (sec.portfolio_active_tab == 0 || item.category == sec.portfolio_active_tab) {
-                visibleImages.push_back((int)i);
+        // Calculate slot dimensions
+        float smallH = 140.0f;  // Height of small images
+        float largeH = smallH * 2 + sp;  // Large image spans 2 rows
+        float col3W = gridWidth / 3.0f;  // 3 column base
+        float largeW = col3W * 1.5f - sp;  // Large image width (~50% of grid)
+        float smallW = (gridWidth - largeW - sp * 2) / 2.0f;  // Small images fill remaining
+
+        // Define 8 slot positions (x, y, w, h)
+        struct SlotPos { float x, y, w, h; };
+        SlotPos slots[8] = {
+            // Slot 0: Large image LEFT (spans rows 1-2)
+            { gridX, gridY, largeW, largeH },
+            // Slot 1: Top right row, first
+            { gridX + largeW + sp, gridY, smallW, smallH },
+            // Slot 2: Top right row, second
+            { gridX + largeW + sp + smallW + sp, gridY, smallW, smallH },
+            // Slot 3: Middle right row, first
+            { gridX + largeW + sp, gridY + smallH + sp, smallW, smallH },
+            // Slot 4: Middle right row, second
+            { gridX + largeW + sp + smallW + sp, gridY + smallH + sp, smallW, smallH },
+            // Row 3: 4 images across
+            // Slot 5: Bottom row, first
+            { gridX, gridY + largeH + sp, smallW * 0.9f, smallH },
+            // Slot 6: Bottom row, second
+            { gridX + smallW * 0.9f + sp, gridY + largeH + sp, smallW * 0.9f, smallH },
+            // Slot 7: Bottom row, third (taller)
+            { gridX + largeW + sp, gridY + largeH + sp, smallW, smallH * 1.5f },
+            // Slot 8 would be here but we have 8 slots (0-7)
+        };
+
+        // Placeholder colors for empty slots
+        ImU32 placeholderColors[8] = {
+            IM_COL32(180, 190, 200, 255),  // Slot 0 - blue-ish
+            IM_COL32(220, 200, 200, 255),  // Slot 1 - pink-ish
+            IM_COL32(200, 220, 220, 255),  // Slot 2 - cyan-ish
+            IM_COL32(210, 210, 230, 255),  // Slot 3 - lavender
+            IM_COL32(230, 210, 200, 255),  // Slot 4 - peach
+            IM_COL32(220, 210, 190, 255),  // Slot 5 - warm
+            IM_COL32(200, 200, 200, 255),  // Slot 6 - gray
+            IM_COL32(210, 220, 210, 255),  // Slot 7 - green-ish
+        };
+
+        // Draw 8 slots - find image by slot number and category
+        for (int slot = 0; slot < 8; slot++) {
+            SlotPos& s = slots[slot];
+
+            // Find image for this slot that matches current tab
+            // Category matches: item.category == active_tab+1, OR item.category == 0 (shows in all)
+            int imgIdx = -1;
+            for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
+                auto& item = sec.portfolio_items[i];
+                if (item.slot == slot) {
+                    // Check if category matches active tab
+                    if (item.category == 0 || item.category == sec.portfolio_active_tab + 1) {
+                        imgIdx = (int)i;
+                        break;
+                    }
+                }
+            }
+
+            if (imgIdx >= 0 && sec.portfolio_items[imgIdx].texture != 0) {
+                // Draw actual image
+                auto& item = sec.portfolio_items[imgIdx];
+                dl->AddImageRounded((ImTextureID)(intptr_t)item.texture,
+                                   ImVec2(s.x, s.y),
+                                   ImVec2(s.x + s.w, s.y + s.h),
+                                   ImVec2(0, 0), ImVec2(1, 1),
+                                   IM_COL32(255, 255, 255, 255),
+                                   sec.portfolio_image_radius);
+            } else {
+                // Draw placeholder
+                dl->AddRectFilled(ImVec2(s.x, s.y), ImVec2(s.x + s.w, s.y + s.h),
+                                 placeholderColors[slot], sec.portfolio_image_radius);
             }
         }
 
-        // Render visible images in a grid layout
-        float currentX = gridX;
-        float currentY = gridY;
-        float rowMaxHeight = 0;
-        int imagesInRow = 0;
-        int maxImagesPerRow = 4;
-
-        if (visibleImages.empty()) {
-            // Show placeholder when no images
-            float placeholderW = 200.0f;
-            float placeholderH = 150.0f;
-            dl->AddRectFilled(ImVec2(centerX - placeholderW/2, gridY),
-                             ImVec2(centerX + placeholderW/2, gridY + placeholderH),
-                             IM_COL32(220, 220, 230, 255), sec.portfolio_image_radius);
-            ImVec2 noImgText = font->CalcTextSizeA(14.0f, FLT_MAX, 0.0f, "No images");
-            dl->AddText(font, 14.0f, ImVec2(centerX - noImgText.x/2, gridY + placeholderH/2 - noImgText.y/2),
-                       IM_COL32(150, 150, 160, 255), "No images");
-            gridY += placeholderH + imageSpacing;
-        } else {
-            for (int idx : visibleImages) {
-                auto& item = sec.portfolio_items[idx];
-                float imgW = item.width;
-                float imgH = item.height;
-
-                // Check if image fits in current row
-                if (imagesInRow > 0 && (currentX + imgW + item.x_offset > gridX + gridWidth || imagesInRow >= maxImagesPerRow)) {
-                    // Move to next row
-                    currentX = gridX;
-                    currentY += rowMaxHeight + imageSpacing;
-                    rowMaxHeight = 0;
-                    imagesInRow = 0;
-                }
-
-                float drawX = currentX + item.x_offset;
-                float drawY = currentY + item.y_offset;
-
-                // Draw image or placeholder
-                if (item.texture != 0) {
-                    dl->AddImageRounded((ImTextureID)(intptr_t)item.texture,
-                                       ImVec2(drawX, drawY),
-                                       ImVec2(drawX + imgW, drawY + imgH),
-                                       ImVec2(0, 0), ImVec2(1, 1),
-                                       IM_COL32(255, 255, 255, 255),
-                                       sec.portfolio_image_radius);
-                } else {
-                    dl->AddRectFilled(ImVec2(drawX, drawY),
-                                     ImVec2(drawX + imgW, drawY + imgH),
-                                     IM_COL32(200, 200, 210, 255), sec.portfolio_image_radius);
-                }
-
-                currentX += imgW + imageSpacing;
-                if (imgH > rowMaxHeight) rowMaxHeight = imgH;
-                imagesInRow++;
-            }
-            gridY = currentY + rowMaxHeight + imageSpacing;
-        }
+        // Update gridY for button placement
+        float bottomSlotY = slots[7].y + slots[7].h;  // Bottom of slot 7 (tallest in row 3)
+        gridY = bottomSlotY + sp;
 
         // "View Full Portfolio" button
         contentY = gridY + 50.0f;
@@ -32700,102 +32713,70 @@ void RenderUI() {
 
             ImGui::Spacing();
             ImGui::TextColored(ImVec4(0.9f, 0.6f, 0.2f, 1), "PORTFOLIO IMAGES");
-            ImGui::Text("Total Images: %d", (int)sec.portfolio_items.size());
+            ImGui::TextDisabled("8 slots per tab. Select tab, then upload images.");
+            ImGui::Text("Current Tab: %s", sec.portfolio_tabs[sec.portfolio_active_tab]);
 
-            // Count images per category
-            int categoryCount[9] = {0};
-            for (const auto& item : sec.portfolio_items) {
-                if (item.category >= 0 && item.category < 9) categoryCount[item.category]++;
-            }
-            ImGui::TextDisabled("Tab 0 (All): shows all | Others filter by category");
+            // Show 8 slots for current tab
+            const char* slotNames[8] = {"Slot 1 (Large)", "Slot 2", "Slot 3", "Slot 4", "Slot 5", "Slot 6", "Slot 7", "Slot 8 (Tall)"};
 
-            // Add image button
-            if (ImGui::Button("+ Add Image##portfolio")) {
-                std::string path = OpenFileDialog("Select portfolio image");
-                if (!path.empty()) {
-                    WebSection::PortfolioItem item;
-                    item.image_path = path;
-                    item.category = (sec.portfolio_active_tab > 0) ? sec.portfolio_active_tab : 1;
-                    item.width = 200.0f;
-                    item.height = 150.0f;
-                    item.x_offset = 0.0f;
-                    item.y_offset = 0.0f;
+            for (int slot = 0; slot < 8; slot++) {
+                ImGui::PushID(slot + 9000);
 
-                    int w, h, channels;
-                    unsigned char* data = stbi_load(path.c_str(), &w, &h, &channels, 4);
-                    if (data) {
-                        GLuint tex;
-                        glGenTextures(1, &tex);
-                        glBindTexture(GL_TEXTURE_2D, tex);
-                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-                        stbi_image_free(data);
-                        item.texture = tex;
-                        // Set default size based on image aspect
-                        float aspect = (float)w / (float)h;
-                        item.height = 150.0f;
-                        item.width = item.height * aspect;
+                // Find image for this slot and current active tab
+                int imgIdx = -1;
+                for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
+                    auto& item = sec.portfolio_items[i];
+                    // Match: same slot AND (category matches active tab OR category is 0 for all)
+                    if (item.slot == slot && (item.category == sec.portfolio_active_tab + 1 || item.category == 0)) {
+                        imgIdx = (int)i;
+                        break;
                     }
-                    sec.portfolio_items.push_back(item);
                 }
-            }
 
-            // Image list
-            static int selectedPortfolioImg = -1;
-            ImGui::BeginChild("ImageList##portfolio", ImVec2(-1, 120), true);
-            for (size_t i = 0; i < sec.portfolio_items.size(); i++) {
-                ImGui::PushID((int)i + 8200);
-                char imgLabel[64];
-                const char* catName = (sec.portfolio_items[i].category > 0 && sec.portfolio_items[i].category <= sec.portfolio_tab_count)
-                    ? sec.portfolio_tabs[sec.portfolio_items[i].category - 1] : "All";
-                snprintf(imgLabel, sizeof(imgLabel), "%d: %s (%.0fx%.0f)", (int)i + 1, catName,
-                        sec.portfolio_items[i].width, sec.portfolio_items[i].height);
-                if (ImGui::Selectable(imgLabel, selectedPortfolioImg == (int)i)) {
-                    selectedPortfolioImg = (int)i;
+                if (imgIdx >= 0) {
+                    // Has image - show preview and delete button
+                    auto& img = sec.portfolio_items[imgIdx];
+                    ImGui::Text("%s:", slotNames[slot]);
+                    ImGui::SameLine();
+                    if (img.texture != 0) {
+                        ImGui::Image((ImTextureID)(intptr_t)img.texture, ImVec2(40, 30));
+                        ImGui::SameLine();
+                    }
+                    if (ImGui::SmallButton("X##del")) {
+                        if (img.texture != 0) glDeleteTextures(1, &img.texture);
+                        sec.portfolio_items.erase(sec.portfolio_items.begin() + imgIdx);
+                    }
+                } else {
+                    // Empty slot - show upload button
+                    ImGui::Text("%s:", slotNames[slot]);
+                    ImGui::SameLine();
+                    char btnLabel[32];
+                    snprintf(btnLabel, sizeof(btnLabel), "+ Upload##slot%d", slot);
+                    if (ImGui::SmallButton(btnLabel)) {
+                        std::string path = OpenFileDialog("Select image for slot");
+                        if (!path.empty()) {
+                            WebSection::PortfolioItem item;
+                            item.image_path = path;
+                            item.category = sec.portfolio_active_tab + 1;  // Assign to current tab
+                            item.slot = slot;
+
+                            int w, h, channels;
+                            unsigned char* data = stbi_load(path.c_str(), &w, &h, &channels, 4);
+                            if (data) {
+                                GLuint tex;
+                                glGenTextures(1, &tex);
+                                glBindTexture(GL_TEXTURE_2D, tex);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+                                stbi_image_free(data);
+                                item.texture = tex;
+                            }
+                            sec.portfolio_items.push_back(item);
+                        }
+                    }
                 }
                 ImGui::PopID();
-            }
-            ImGui::EndChild();
-
-            // Edit selected image
-            if (selectedPortfolioImg >= 0 && selectedPortfolioImg < (int)sec.portfolio_items.size()) {
-                auto& img = sec.portfolio_items[selectedPortfolioImg];
-                ImGui::Spacing();
-                ImGui::TextColored(ImVec4(0.5f, 0.8f, 1.0f, 1), "EDIT IMAGE %d", selectedPortfolioImg + 1);
-
-                // Preview
-                if (img.texture != 0) {
-                    float previewH = 80.0f;
-                    float aspect = img.width / img.height;
-                    ImGui::Image((ImTextureID)(intptr_t)img.texture, ImVec2(previewH * aspect, previewH));
-                }
-
-                // Category dropdown
-                const char* catItems[9];
-                catItems[0] = "All Categories";
-                for (int c = 1; c <= sec.portfolio_tab_count && c < 9; c++) {
-                    catItems[c] = sec.portfolio_tabs[c - 1];
-                }
-                ImGui::Combo("Category##img", &img.category, catItems, sec.portfolio_tab_count + 1);
-
-                // Size sliders
-                ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.2f, 1), "SIZE");
-                ImGui::DragFloat("Width##img", &img.width, 1.0f, 50.0f, 600.0f, "%.0f px");
-                ImGui::DragFloat("Height##img", &img.height, 1.0f, 50.0f, 600.0f, "%.0f px");
-
-                // Position sliders
-                ImGui::TextColored(ImVec4(0.8f, 0.8f, 0.2f, 1), "POSITION");
-                ImGui::DragFloat("X Offset##img", &img.x_offset, 1.0f, -500.0f, 500.0f, "%.0f px");
-                ImGui::DragFloat("Y Offset##img", &img.y_offset, 1.0f, -500.0f, 500.0f, "%.0f px");
-
-                // Delete button
-                ImGui::Spacing();
-                if (ImGui::Button("Delete Image##portfolio", ImVec2(-1, 0))) {
-                    if (img.texture != 0) glDeleteTextures(1, &img.texture);
-                    sec.portfolio_items.erase(sec.portfolio_items.begin() + selectedPortfolioImg);
-                    selectedPortfolioImg = -1;
-                }
             }
 
             ImGui::Spacing();
